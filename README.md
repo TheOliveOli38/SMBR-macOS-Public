@@ -34,12 +34,12 @@ Recompile of Super Mario Bros. Remastered to macOS!
 This port is built as a Universal 2 binary (natively compatible with Intel and Apple Silicon) and will run on macOS 10.15 Catalina or higher.
 
 ### Compatible Macs
-This port uses the Metal rendering option, using MoltenVK. Thus, not all Macs compatible with macOS Catalina will be able to run SMB1R. The oldest compatible machines are:
-- MacBook (Early 2016)
-- MacBook Air (Early 2015)
-- MacBook Pro (15-inch Mid 2012, NVIDIA) or MacBook Pro (13-inch Early 2015, Intel)
-- iMac (Late 2012, NVIDIA) or iMac (Late 2015, Intel)
-- Mac mini (2018)
+This port uses the Metal rendering option, using MoltenVK. Thus, a few Macs compatible with macOS Catalina will not be able to run SMB1R. The oldest compatible machines are:
+- MacBook (Early 2015)
+- MacBook Air (Mid 2013)
+- MacBook Pro (15-inch Mid 2012, NVIDIA) or MacBook Pro (13-inch Late 2013, Intel)
+- iMac (Late 2012, NVIDIA) or iMac (Late 2013, Intel)
+- Mac mini (Late 2014)
 - Mac Studio (M1 Max, 2022)
 - Mac Pro (Late 2013)
 
