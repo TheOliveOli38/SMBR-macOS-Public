@@ -13,12 +13,12 @@ Recompile of Super Mario Bros. Remastered to macOS!
 ### macOS 12 Monterey and older
 1. Launch the app. You will see the following message:
    
-<img width="372" height="404" alt="Screen Shot 2025-09-19 at 12 36 01 PM" src="https://github.com/user-attachments/assets/55ff1c16-cda6-4373-a6f5-3794bfd9a6fb" />
+<img width="532" height="311" alt="Screen Shot 2025-10-02 at 8 43 50 AM" src="https://github.com/user-attachments/assets/52ffe260-bdcd-4e75-b24c-a9d37ca5ed6e" />
 
 2. Open System Preferences and navigate to "Security and Privacy"
 3. Click the "Open Anyway" button, as seen here:
-   
-<img width="780" height="699" alt="Screen Shot 2025-09-19 at 12 36 14 PM" src="https://github.com/user-attachments/assets/ae664d9a-eb20-4bc0-9040-85505ea46871" />
+
+<img width="780" height="685" alt="Screen Shot 2025-10-02 at 8 44 10 AM" src="https://github.com/user-attachments/assets/3fe4dded-0532-459f-b553-988efe8edc6b" />
 
 ### macOS 13 Ventura and newer
 1. Launch the app. You will see the following message:
