@@ -105,7 +105,7 @@ var undo_redo = UndoRedo.new()
 
 func _ready() -> void:
 	$TileMenu.hide()
-	Global.set_discord_status("In The Level Editor...")
+	DiscordManager.set_discord_status("In The Level Editor...")
 	Global.level_editor = self
 	playing_level = false
 	menu_open = $TileMenu.visible
@@ -131,6 +131,10 @@ func _ready() -> void:
 			$Info.hide()
 			%Grid.hide()
 			play_level()
+			_physics_process(0)
+			set_physics_process(false)
+			for i in [$TileMenu]:
+				i.queue_free()
 		else:
 			Global.current_game_mode = Global.GameMode.LEVEL_EDITOR
 	else:
@@ -147,7 +151,8 @@ func _physics_process(delta: float) -> void:
 		handle_tile_cursor()
 	if [EditorState.IDLE, EditorState.TRACK_EDITING].has(current_state):
 		handle_camera(delta)
-	%ThemeName.text = Global.level_theme
+	if is_instance_valid(%ThemeName):
+		%ThemeName.text = Global.level_theme
 	handle_hud()
 	if Input.is_action_just_pressed("editor_open_menu"):
 		if current_state == EditorState.IDLE:
@@ -155,7 +160,7 @@ func _physics_process(delta: float) -> void:
 		elif current_state == EditorState.TILE_MENU:
 			close_tile_menu()
 	if Input.is_action_just_pressed("editor_play") and (current_state == EditorState.IDLE or current_state == EditorState.PLAYTESTING) and Global.current_game_mode == Global.GameMode.LEVEL_EDITOR:
-		Checkpoint.passed = false
+		Checkpoint.passed_checkpoints.clear()
 		if current_state == EditorState.PLAYTESTING:
 			stop_testing()
 		else:
@@ -240,7 +245,6 @@ func cleanup() -> void:
 	playing_level = !playing_level
 	play_pipe_transition = false
 	play_door_transition = false
-	Door.unlocked_doors = []
 	LevelPersistance.reset_states()
 	KeyItem.total_collected = 0
 	Global.get_node("GameHUD").visible = playing_level
@@ -278,7 +282,8 @@ func parse_tiles() -> void:
 	for i in entity_layer_nodes:
 		if is_instance_valid(i) == false:
 			continue
-		saved_entity_layers[idx] = i.duplicate(DUPLICATE_USE_INSTANTIATION)
+		if load_play == false:
+			saved_entity_layers[idx] = i.duplicate(DUPLICATE_USE_INSTANTIATION)
 		if i is Player:
 			i.direction = 1
 			i.velocity = Vector2.ZERO
@@ -295,6 +300,8 @@ func return_to_editor() -> void:
 	return_editor_tiles()
 	%Camera.enabled = true
 	%Camera.make_current()
+	KeyItem.total_collected = 0
+	Door.unlocked_doors.clear()
 	editor_start.emit()
 	current_state = EditorState.IDLE
 	handle_hud()
@@ -351,6 +358,7 @@ func save_level() -> void:
 	$LevelSaver.write_file(level_file, file_name)
 	%SaveDialog.text = str("'") +  file_name + "'" + " Saved." 
 	%SaveAnimation.play("Show")
+	current_state = EditorState.TILE_MENU
 	level_saved.emit()
 
 func close_save_menu() -> void:
@@ -358,8 +366,6 @@ func close_save_menu() -> void:
 	%SaveLevelDialog.hide()
 	menu_open = false
 	current_state = EditorState.TILE_MENU
-
-const CUSTOM_LEVEL_DIR := "user://custom_levels/"
 
 func handle_tile_cursor() -> void:
 	Input.set_custom_mouse_cursor(null)
@@ -395,9 +401,9 @@ func handle_tile_cursor() -> void:
 	
 	if current_state == EditorState.IDLE:
 		if Input.is_action_just_pressed("scroll_up"):
-			selected_tile_index += 1
-		if Input.is_action_just_pressed("scroll_down"):
 			selected_tile_index -= 1
+		if Input.is_action_just_pressed("scroll_down"):
+			selected_tile_index += 1
 	
 		if Input.is_action_just_pressed("editor_copy"):
 			copy_node(tile_position)
@@ -655,7 +661,9 @@ func transition_to_sublevel(sub_lvl_idx := 0) -> void:
 		level_file = $LevelSaver.save_level(level_name, level_author, level_desc, difficulty)
 		LevelPersistance.reset_states()
 	sub_level_id = sub_lvl_idx
-	$LevelLoader.load_level(sub_lvl_idx)
+	await $LevelLoader.load_level(sub_lvl_idx)
+	if Settings.file.visuals.transition_animation == 0:
+		Global.do_fake_transition(0.1)
 	await get_tree().physics_frame
 	if (play_pipe_transition or play_door_transition) and play_transition:
 		parse_tiles()
