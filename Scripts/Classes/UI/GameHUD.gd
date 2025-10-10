@@ -41,7 +41,6 @@ func handle_main_hud() -> void:
 	if current_chara != Global.player_characters[0]:
 		update_character_info()
 	%CharacterIcon.get_node("Shadow").texture = %CharacterIcon.texture
-	%ModernLifeCount.text = "*" + (str(Global.lives).pad_zeros(2) if Settings.file.difficulty.inf_lives == 0 else "∞")
 	%CharacterIcon.visible = Global.current_game_mode != Global.GameMode.BOO_RACE
 	%ModernLifeCount.visible = Global.current_game_mode != Global.GameMode.BOO_RACE
 	var world_num := str(Global.world_num)
@@ -82,6 +81,14 @@ func handle_modern_hud() -> void:
 	%ModernTime.text = "⏲" + str(Global.time).pad_zeros(3)
 	%ModernKeyCount.visible = KeyItem.total_collected > 0
 	%ModernKeyAmount.text = "*" + str(KeyItem.total_collected).pad_zeros(2)
+	if Global.current_game_mode == Global.GameMode.CUSTOM_LEVEL:
+		$ModernHUD/TopLeft/LifeCount.hide()
+		%DeathCountLabel.show()
+		%DeathCountLabel.text = "☠*" + str(Global.total_deaths).pad_zeros(2)
+	else:
+		$ModernHUD/TopLeft/LifeCount.show()
+		%DeathCountLabel.hide()
+		%ModernLifeCount.text = "*" + (str(Global.lives).pad_zeros(2) if Settings.file.difficulty.inf_lives == 0 else "∞")
 	if get_tree().get_first_node_in_group("Players") == null or Settings.file.difficulty.time_limit == 0:
 		%ModernTime.text = "⏲---"
 

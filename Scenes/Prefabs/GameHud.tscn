@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=3 uid="uid://bod0jkf7jc5pm"]
+[gd_scene load_steps=42 format=3 uid="uid://bod0jkf7jc5pm"]
 
 [ext_resource type="Script" uid="uid://bjbd3a6su47si" path="res://Scripts/Classes/UI/GameHUD.gd" id="1_f34v2"]
 [ext_resource type="Script" uid="uid://caq1qiwmy0mox" path="res://Scripts/Parts/BetterAnimatedSprite.gd" id="2_cbrve"]
@@ -105,6 +105,9 @@ _data = {
 &"Flash": SubResource("Animation_niy8w"),
 &"RESET": SubResource("Animation_oqalm")
 }
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_h6dkv"]
+shader = ExtResource("9_oqalm")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jwl8o"]
 bg_color = Color(0, 0, 0, 1)
@@ -783,6 +786,7 @@ region_rect = Rect2(0, 0, 8, 8)
 [node name="ModernRadar" type="Sprite2D" parent="ModernHUD/TopLeft/RedCoins/YoshiEgg"]
 unique_name_in_owner = true
 visible = false
+material = SubResource("ShaderMaterial_h6dkv")
 texture = ExtResource("7_r3m7e")
 centered = false
 hframes = 3
@@ -824,6 +828,7 @@ hframes = 2
 region_rect = Rect2(0, 0, 8, 8)
 
 [node name="LifeCount" type="HBoxContainer" parent="ModernHUD/TopLeft"]
+visible = false
 layout_mode = 0
 offset_left = 20.0
 offset_top = 44.0
@@ -833,6 +838,7 @@ theme_override_constants/separation = -4
 
 [node name="CharacterIcon" type="TextureRect" parent="ModernHUD/TopLeft/LifeCount"]
 unique_name_in_owner = true
+visible = false
 layout_mode = 2
 size_flags_vertical = 4
 texture = ExtResource("10_2w8b3")
@@ -860,7 +866,23 @@ metadata/_custom_type_script = "uid://cbal8ms2oe1ik"
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 2
-text = "*"
+text = "*00"
+
+[node name="DeathCount" type="Control" parent="ModernHUD/TopLeft"]
+anchors_preset = 0
+offset_left = 20.0
+offset_top = 44.0
+offset_right = 60.0
+offset_bottom = 60.0
+
+[node name="DeathCountLabel" type="Label" parent="ModernHUD/TopLeft/DeathCount"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = -4.0
+offset_right = 36.0
+offset_bottom = 16.0
+size_flags_horizontal = 2
+text = "☠*00"
 
 [node name="ModernKeyCount" type="Control" parent="ModernHUD/TopLeft"]
 unique_name_in_owner = true
@@ -1066,7 +1088,7 @@ metadata/_custom_type_script = "uid://cbal8ms2oe1ik"
 
 [node name="TextShadowColourChanger" type="Node" parent="." node_paths=PackedStringArray("labels", "shadow_node")]
 script = ExtResource("18_jwl8o")
-labels = [NodePath("../Main/ScoreName/CharacterName"), NodePath("../Main/ScoreName/Score"), NodePath("../Main/CoinCount/CoinLabel"), NodePath("../Main/LevelDisplay/WorldTitle"), NodePath("../Main/LevelDisplay/WorldTitle/LevelNum"), NodePath("../Main/TimeDisplay/TimeLabel"), NodePath("../Main/TimeDisplay/TimeLabel/Time"), NodePath("../Main/TimeDisplay/TimeLabel/VBoxContainer/Stopwatch"), NodePath("../Main/TimeDisplay/TimeLabel/VBoxContainer/PB"), NodePath("../ModernHUD/TopLeft/CoinCount/ModernCoinCount"), NodePath("../ModernHUD/Right/ModernTime"), NodePath("../ModernHUD/Right/ModernTime/ModernScore"), NodePath("../Main/CoinCount/KeyCount/KeyAmount"), NodePath("../ModernHUD/TopLeft/ModernKeyCount/ModernKeyAmount"), NodePath("../ModernHUD/TopLeft/LifeCount/ModernLifeCount"), NodePath("../Combo/ComboAmount"), null, null, NodePath("../ModernHUD/Right/ModernTime/VBoxContainer/ModernPB"), NodePath("../Main/TimeDisplay/TimeLabel/VBoxContainer/IGT"), NodePath("../ModernHUD/Right/ModernTime/VBoxContainer/ModernIGT")]
+labels = [NodePath("../Main/ScoreName/CharacterName"), NodePath("../Main/ScoreName/Score"), NodePath("../Main/CoinCount/CoinLabel"), NodePath("../Main/LevelDisplay/WorldTitle"), NodePath("../Main/LevelDisplay/WorldTitle/LevelNum"), NodePath("../Main/TimeDisplay/TimeLabel"), NodePath("../Main/TimeDisplay/TimeLabel/Time"), NodePath("../Main/TimeDisplay/TimeLabel/VBoxContainer/Stopwatch"), NodePath("../Main/TimeDisplay/TimeLabel/VBoxContainer/PB"), NodePath("../ModernHUD/TopLeft/CoinCount/ModernCoinCount"), NodePath("../ModernHUD/Right/ModernTime"), NodePath("../ModernHUD/Right/ModernTime/ModernScore"), NodePath("../Main/CoinCount/KeyCount/KeyAmount"), NodePath("../ModernHUD/TopLeft/ModernKeyCount/ModernKeyAmount"), NodePath("../ModernHUD/TopLeft/LifeCount/ModernLifeCount"), NodePath("../Combo/ComboAmount"), NodePath("../ModernHUD/TopLeft/DeathCount/DeathCountLabel"), null, NodePath("../ModernHUD/Right/ModernTime/VBoxContainer/ModernPB"), NodePath("../Main/TimeDisplay/TimeLabel/VBoxContainer/IGT"), NodePath("../ModernHUD/Right/ModernTime/VBoxContainer/ModernIGT")]
 shadow_node = NodePath("../Main/RedCoins/BorderL/Shadow")
 
 [node name="HudTemplate" type="Sprite2D" parent="."]
@@ -1078,7 +1100,7 @@ centered = false
 
 [node name="LabelFontChanger" type="Node" parent="." node_paths=PackedStringArray("labels")]
 script = ExtResource("15_jwl8o")
-labels = [NodePath("../Main/ScoreName/CharacterName"), NodePath("../Main/ScoreName/Score"), NodePath("../Main/CoinCount/CoinLabel"), NodePath("../Main/LevelDisplay/WorldTitle"), NodePath("../Main/LevelDisplay/WorldTitle/LevelNum"), NodePath("../Main/TimeDisplay/TimeLabel"), NodePath("../Main/TimeDisplay/TimeLabel/Time"), NodePath("../ModernHUD/TopLeft/CoinCount/ModernCoinCount"), NodePath("../ModernHUD/Right/ModernTime"), NodePath("../ModernHUD/Right/ModernTime/ModernScore"), NodePath("../Main/CoinCount/KeyCount/KeyAmount"), NodePath("../Main/TimeDisplay/TimeLabel/VBoxContainer/Stopwatch"), NodePath("../Main/TimeDisplay/TimeLabel/VBoxContainer/PB"), NodePath("../ModernHUD/TopLeft/LifeCount/ModernLifeCount"), NodePath("../Main/CoinCount/KeyCount/KeyAmount"), NodePath("../Combo/ComboAmount"), NodePath("../ModernHUD/TopLeft/ModernKeyCount/ModernKeyAmount"), NodePath("../Main/LevelDisplay/WorldTitle/LevelNum/Crown"), NodePath("../ModernHUD/Right/ModernTime/VBoxContainer/ModernPB"), NodePath("../Main/TimeDisplay/TimeLabel/VBoxContainer/IGT"), NodePath("../ModernHUD/Right/ModernTime/VBoxContainer/ModernIGT")]
+labels = [NodePath("../Main/ScoreName/CharacterName"), NodePath("../Main/ScoreName/Score"), NodePath("../Main/CoinCount/CoinLabel"), NodePath("../Main/LevelDisplay/WorldTitle"), NodePath("../Main/LevelDisplay/WorldTitle/LevelNum"), NodePath("../Main/TimeDisplay/TimeLabel"), NodePath("../Main/TimeDisplay/TimeLabel/Time"), NodePath("../ModernHUD/TopLeft/CoinCount/ModernCoinCount"), NodePath("../ModernHUD/Right/ModernTime"), NodePath("../ModernHUD/Right/ModernTime/ModernScore"), NodePath("../Main/CoinCount/KeyCount/KeyAmount"), NodePath("../Main/TimeDisplay/TimeLabel/VBoxContainer/Stopwatch"), NodePath("../Main/TimeDisplay/TimeLabel/VBoxContainer/PB"), NodePath("../ModernHUD/TopLeft/LifeCount/ModernLifeCount"), NodePath("../Main/CoinCount/KeyCount/KeyAmount"), NodePath("../Combo/ComboAmount"), NodePath("../ModernHUD/TopLeft/ModernKeyCount/ModernKeyAmount"), NodePath("../Main/LevelDisplay/WorldTitle/LevelNum/Crown"), NodePath("../ModernHUD/Right/ModernTime/VBoxContainer/ModernPB"), NodePath("../Main/TimeDisplay/TimeLabel/VBoxContainer/IGT"), NodePath("../ModernHUD/Right/ModernTime/VBoxContainer/ModernIGT"), NodePath("../ModernHUD/TopLeft/DeathCount/DeathCountLabel")]
 metadata/_custom_type_script = "uid://co6tjg3w6qpd8"
 
 [node name="TextureUpdater" type="Node" parent="." node_paths=PackedStringArray("sprites")]

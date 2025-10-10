@@ -27,6 +27,8 @@ func _ready() -> void:
 	AudioManager.stop_all_music()
 	Global.second_quest = false
 	%LevelList.open(true)
+	for i in 5:
+		NewLevelBuilder.sub_levels[i] = null
 	await get_tree().process_frame
 	if last_played_container != null:
 		print(saved_search_values)

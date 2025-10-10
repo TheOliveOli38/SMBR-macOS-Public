@@ -781,7 +781,7 @@ func enter_pipe(pipe: PipeArea, warp_to_level := true) -> void:
 		await get_tree().create_timer(1, false).timeout
 		if Global.current_game_mode == Global.GameMode.LEVEL_EDITOR or Global.current_game_mode == Global.GameMode.CUSTOM_LEVEL:
 			LevelEditor.play_pipe_transition = true
-			owner.transition_to_sublevel(pipe.target_sub_level)
+			Global.transition_to_scene(NewLevelBuilder.sub_levels[pipe.target_sub_level])
 		else:
 			Global.transition_to_scene(pipe.target_level)
 

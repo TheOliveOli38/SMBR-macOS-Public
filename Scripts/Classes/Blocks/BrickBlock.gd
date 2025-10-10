@@ -4,6 +4,7 @@ extends Block
 var ticking_down := false
 
 func _ready() -> void:
+	if item == null: return
 	if item_amount == 10 and item.resource_path == "res://Scenes/Prefabs/Entities/Items/SpinningCoin.tscn" and is_instance_valid(Global.level_editor) == false:
 		Global.log_warning("Coin Brick Block is wrong! please report!: " + name)
 
