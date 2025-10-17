@@ -64,14 +64,17 @@ func update_visuals() -> void:
 		hide()
 
 func exit_pipe() -> void:
+	can_enter = false
 	pipe_exited.emit()
-	await get_tree().physics_frame
 	for i in get_tree().get_nodes_in_group("Players"):
+		if i.is_node_ready() == false:
+			await i.ready
 		i.go_to_exit_pipe(self)
 	for i in get_tree().get_nodes_in_group("Players"):
 		await get_tree().create_timer(0.5, false).timeout
 		await i.exit_pipe(self)
 	exiting_pipe_id = -1
+	can_enter = true
 
 func get_vector(direction := 0) -> Vector2:
 	match direction:
