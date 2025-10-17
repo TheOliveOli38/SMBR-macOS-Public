@@ -13,8 +13,6 @@ offset_left = -20.0
 offset_right = 20.0
 texture = ExtResource("2_iy32g")
 region_rect = Rect2(0, 0, 24, 8)
-patch_margin_left = 8
-patch_margin_right = 8
 
 [node name="ResourceSetter" parent="AnimatableBody2D/Sprite" index="0"]
 resource_json = ExtResource("3_50hv7")
@@ -28,9 +26,6 @@ region_enabled = true
 region_rect = Rect2(24, 0, 16, 8)
 script = ExtResource("4_0jnxm")
 metadata/_custom_type_script = "uid://364rywt44hy6"
-
-[node name="Collision" parent="AnimatableBody2D" index="1"]
-visible = true
 
 [node name="AnimationPauser" type="Node" parent="." index="4" node_paths=PackedStringArray("animation_player") groups=["BooBlocks"]]
 script = ExtResource("3_iy32g")

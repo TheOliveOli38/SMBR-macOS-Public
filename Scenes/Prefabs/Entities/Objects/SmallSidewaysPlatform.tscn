@@ -15,7 +15,6 @@ offset_right = 16.0
 metadata/_custom_type_script = "uid://cq6f682453q6o"
 
 [node name="Collision" parent="AnimatableBody2D" index="1"]
-visible = true
 shape = SubResource("RectangleShape2D_dspyy")
 
 [node name="SecondQuestReplacer" parent="." index="3"]

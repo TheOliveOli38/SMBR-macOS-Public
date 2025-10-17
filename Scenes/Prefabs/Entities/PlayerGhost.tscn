@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://btiev75x1wtvk"]
+[gd_scene load_steps=8 format=3 uid="uid://btiev75x1wtvk"]
 
 [ext_resource type="Script" uid="uid://0cmcgxyt0akj" path="res://Scripts/Parts/PlayerGhost.gd" id="1_nj8xm"]
 [ext_resource type="Shader" uid="uid://cjfd0fbhvx370" path="res://Scenes/Parts/DitheredTransparency.gdshader" id="2_ovt7x"]
@@ -6,7 +6,6 @@
 [ext_resource type="Script" uid="uid://b08qfwj5jk6g1" path="res://Scripts/Parts/PlayerSprite.gd" id="3_r56m0"]
 [ext_resource type="Script" uid="uid://cbal8ms2oe1ik" path="res://Scripts/Classes/Components/ResourceSetterNew.gd" id="4_nj8xm"]
 [ext_resource type="Script" uid="uid://co6tjg3w6qpd8" path="res://Scripts/Parts/LabelFontChanger.gd" id="5_r56m0"]
-[ext_resource type="Resource" uid="uid://8dcuxbc3h2u2" path="res://Resources/ThemedResources/Font.tres" id="6_ovt7x"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_nj8xm"]
 shader = ExtResource("2_ovt7x")
@@ -54,5 +53,4 @@ text = "PB"
 [node name="LabelFontChanger" type="Node" parent="Label" node_paths=PackedStringArray("labels")]
 script = ExtResource("5_r56m0")
 labels = [NodePath("..")]
-resource = ExtResource("6_ovt7x")
 metadata/_custom_type_script = "uid://co6tjg3w6qpd8"

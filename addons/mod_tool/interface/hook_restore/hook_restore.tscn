@@ -1,8 +1,9 @@
 [gd_scene load_steps=2 format=3 uid="uid://camcc83bvu086"]
 
-[ext_resource type="Script" path="res://addons/mod_tool/interface/hook_restore/hook_restore.gd" id="1_wq3ld"]
+[ext_resource type="Script" uid="uid://dy72tnwnjxxpb" path="res://addons/mod_tool/interface/hook_restore/hook_restore.gd" id="1_wq3ld"]
 
 [node name="HookRestore" type="Window"]
+oversampling_override = 1.0
 title = "Mod Dev Tool"
 initial_position = 1
 size = Vector2i(640, 375)

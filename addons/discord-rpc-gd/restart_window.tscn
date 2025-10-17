@@ -32,7 +32,6 @@ size = Vector2i(430, 500)
 visible = true
 transient = false
 unresizable = true
-auto_translate = false
 theme = SubResource("Theme_swwco")
 ok_button_text = "Restart"
 cancel_button_text = "Save and restart"
@@ -44,7 +43,7 @@ anchor_right = 0.5
 offset_left = -207.0
 offset_top = 8.0
 offset_right = 207.0
-offset_bottom = 458.0
+offset_bottom = 455.0
 grow_horizontal = 2
 mouse_filter = 1
 

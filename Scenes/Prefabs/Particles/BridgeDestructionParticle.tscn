@@ -11,7 +11,6 @@ Overworld = ExtResource("2_4osef")
 metadata/_custom_type_script = "uid://cmvlgsjmsk0v5"
 
 [node name="BridgeDestructionParticle" instance=ExtResource("1_25jih")]
-region_rect = Rect2(0, 0, 16, 16)
 
 [node name="Sprite" parent="TL" index="0"]
 texture = ExtResource("2_4osef")

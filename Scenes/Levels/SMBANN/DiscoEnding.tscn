@@ -203,8 +203,8 @@ script = ExtResource("3_xj4cw")
 combo_meter_rate = 0.0
 metadata/_custom_type_script = "uid://bjs5mlc3xrxud"
 
-[connection signal="ready" from="DiscoLevel" to="DiscoLevel" method="write_final_rank"]
 [connection signal="ready" from="DiscoLevel" to="DiscoLevel" method="level_finished"]
+[connection signal="ready" from="DiscoLevel" to="DiscoLevel" method="write_final_rank"]
 
 [editable path="DayBG"]
 [editable path="LevelBG"]

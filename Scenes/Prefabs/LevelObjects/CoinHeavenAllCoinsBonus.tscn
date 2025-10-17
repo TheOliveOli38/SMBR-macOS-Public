@@ -1,8 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://cm6nbstl2uceh"]
+[gd_scene load_steps=4 format=3 uid="uid://cm6nbstl2uceh"]
 
 [ext_resource type="Script" uid="uid://ds3idw2a2udai" path="res://Scripts/Parts/CoinHeavenAllCoinsBonus.gd" id="1_pr18t"]
 [ext_resource type="Script" uid="uid://co6tjg3w6qpd8" path="res://Scripts/Parts/LabelFontChanger.gd" id="1_rbqyi"]
-[ext_resource type="Resource" uid="uid://8dcuxbc3h2u2" path="res://Resources/ThemedResources/Font.tres" id="2_pr18t"]
 [ext_resource type="Script" uid="uid://dt2p68xl462v2" path="res://Scripts/Parts/TextShadowColourChanger.gd" id="3_uimg1"]
 
 [node name="CoinHeavenAllCoinsBonus" type="Node"]
@@ -38,7 +37,6 @@ horizontal_alignment = 1
 [node name="LabelFontChanger" type="Node" parent="." node_paths=PackedStringArray("labels")]
 script = ExtResource("1_rbqyi")
 labels = [NodePath("../CanvasLayer/VBoxContainer/Label"), NodePath("../CanvasLayer/VBoxContainer/Label2")]
-resource = ExtResource("2_pr18t")
 metadata/_custom_type_script = "uid://co6tjg3w6qpd8"
 
 [node name="TextShadowColourChanger" type="Node" parent="." node_paths=PackedStringArray("labels")]

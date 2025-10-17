@@ -3,6 +3,9 @@
 [ext_resource type="Script" uid="uid://b5jrj8u7cx8id" path="res://Scripts/Parts/TilePropertyValue.gd" id="1_q3buy"]
 
 [sub_resource type="FontFile" id="FontFile_wb64e"]
+subpixel_positioning = 0
+msdf_pixel_range = 14
+msdf_size = 128
 cache/0/16/0/ascent = 0.0
 cache/0/16/0/descent = 0.0
 cache/0/16/0/underline_position = 0.0

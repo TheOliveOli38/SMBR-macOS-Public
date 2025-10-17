@@ -107,10 +107,9 @@ collision_mask = 5
 position = Vector2(0, 1.5)
 shape = SubResource("RectangleShape2D_4qu2r")
 
-[node name="BlockBouncingDetection" type="Node" parent="." node_paths=PackedStringArray("hitbox")]
+[node name="BlockBouncingDetection" type="Node" parent="."]
 script = ExtResource("4_lwdcj")
 detection_type = 1
-hitbox = NodePath("")
 metadata/_custom_type_script = "uid://cmg61722ktg2m"
 
 [connection signal="area_entered" from="Hitbox" to="." method="on_area_entered"]

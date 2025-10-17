@@ -9,6 +9,9 @@ num_of_worlds = 4
 [node name="Slot1" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer/SlotContainer" index="0"]
 focus_neighbor_left = NodePath("../Slot5")
 
+[node name="Cursor" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer/SlotContainer/Slot1" index="1"]
+visible = true
+
 [node name="Slot5" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer/SlotContainer" index="4"]
 focus_neighbor_right = NodePath("../Slot1")
 

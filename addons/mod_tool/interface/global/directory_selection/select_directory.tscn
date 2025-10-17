@@ -1,8 +1,9 @@
 [gd_scene load_steps=2 format=3 uid="uid://du17jjwqtopix"]
 
-[ext_resource type="Script" path="res://addons/mod_tool/interface/global/directory_selection/select_directory.gd" id="1"]
+[ext_resource type="Script" uid="uid://dyxgsmyqpv8e2" path="res://addons/mod_tool/interface/global/directory_selection/select_directory.gd" id="1"]
 
 [node name="SelectDirectory" type="Window"]
+oversampling_override = 1.0
 initial_position = 2
 size = Vector2i(400, 250)
 script = ExtResource("1")

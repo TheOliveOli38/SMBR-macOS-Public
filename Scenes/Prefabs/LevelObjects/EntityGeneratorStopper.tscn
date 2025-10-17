@@ -12,6 +12,5 @@ texture = ExtResource("2_bd4qu")
 
 [node name="PlayerDetection" parent="." index="1"]
 visible = true
-priority = 1
 
 [connection signal="player_entered" from="PlayerDetection" to="." method="deactivate_all_generators" unbinds=1]

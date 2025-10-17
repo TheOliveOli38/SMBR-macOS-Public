@@ -116,14 +116,14 @@ tilemap = NodePath("../Tiles")
 metadata/_custom_type_script = "uid://cybpwmw4ywoow"
 
 [connection signal="collected" from="Tiles/Coin" to="Tiles/Coin/LevelPersistance" method="set_as_active"]
-[connection signal="collected" from="Tiles/@Node2D@47579" to="Tiles/@Node2D@47579/LevelPersistance" method="set_as_active"]
-[connection signal="collected" from="Tiles/@Node2D@47580" to="Tiles/@Node2D@47580/LevelPersistance" method="set_as_active"]
-[connection signal="collected" from="Tiles/@Node2D@47581" to="Tiles/@Node2D@47581/LevelPersistance" method="set_as_active"]
-[connection signal="collected" from="Tiles/@Node2D@47582" to="Tiles/@Node2D@47582/LevelPersistance" method="set_as_active"]
-[connection signal="collected" from="Tiles/@Node2D@47583" to="Tiles/@Node2D@47583/LevelPersistance" method="set_as_active"]
-[connection signal="collected" from="Tiles/@Node2D@47584" to="Tiles/@Node2D@47584/LevelPersistance" method="set_as_active"]
-[connection signal="collected" from="Tiles/@Node2D@47585" to="Tiles/@Node2D@47585/LevelPersistance" method="set_as_active"]
-[connection signal="collected" from="Tiles/@Node2D@47586" to="Tiles/@Node2D@47586/LevelPersistance" method="set_as_active"]
+[connection signal="collected" from="Tiles/@Node2D@65976" to="Tiles/@Node2D@65976/LevelPersistance" method="set_as_active"]
+[connection signal="collected" from="Tiles/@Node2D@65977" to="Tiles/@Node2D@65977/LevelPersistance" method="set_as_active"]
+[connection signal="collected" from="Tiles/@Node2D@65978" to="Tiles/@Node2D@65978/LevelPersistance" method="set_as_active"]
+[connection signal="collected" from="Tiles/@Node2D@65979" to="Tiles/@Node2D@65979/LevelPersistance" method="set_as_active"]
+[connection signal="collected" from="Tiles/@Node2D@65980" to="Tiles/@Node2D@65980/LevelPersistance" method="set_as_active"]
+[connection signal="collected" from="Tiles/@Node2D@65981" to="Tiles/@Node2D@65981/LevelPersistance" method="set_as_active"]
+[connection signal="collected" from="Tiles/@Node2D@65982" to="Tiles/@Node2D@65982/LevelPersistance" method="set_as_active"]
+[connection signal="collected" from="Tiles/@Node2D@65983" to="Tiles/@Node2D@65983/LevelPersistance" method="set_as_active"]
 [connection signal="player_entered" from="UpsideDownGravityArea2" to="UpsideDownGravityArea2" method="on_player_entered"]
 [connection signal="player_exited" from="UpsideDownGravityArea2" to="UpsideDownGravityArea2" method="on_player_exited"]
 

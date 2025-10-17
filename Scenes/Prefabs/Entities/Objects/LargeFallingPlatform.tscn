@@ -16,7 +16,6 @@ offset_left = -24.0
 offset_right = 24.0
 
 [node name="CollisionShape2D" parent="." index="1"]
-position = Vector2(0, 4)
 shape = SubResource("RectangleShape2D_jcaah")
 
 [node name="CollisionShape2D" parent="PlayerDetect" index="0"]

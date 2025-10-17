@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://dtiqcfrw110kd"]
+[gd_scene load_steps=9 format=3 uid="uid://dtiqcfrw110kd"]
 
 [ext_resource type="Script" uid="uid://cufb1mxff7b8f" path="res://Scripts/UI/SelectableSliderNode.gd" id="1_ro726"]
 [ext_resource type="Texture2D" uid="uid://3p2l7rec0gh5" path="res://Assets/Sprites/UI/Cursor.png" id="2_rggaq"]
@@ -7,7 +7,6 @@
 [ext_resource type="AudioStream" uid="uid://drs3md0tuek2w" path="res://Assets/Audio/SFX/Beep.wav" id="4_rggaq"]
 [ext_resource type="Script" uid="uid://d63p6qr5a748" path="res://Scripts/UI/AutoScrollContainer.gd" id="5_b21k4"]
 [ext_resource type="Script" uid="uid://co6tjg3w6qpd8" path="res://Scripts/Parts/LabelFontChanger.gd" id="6_5rt0a"]
-[ext_resource type="Resource" uid="uid://8dcuxbc3h2u2" path="res://Resources/ThemedResources/Font.tres" id="7_b21k4"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vnuis"]
 atlas = ExtResource("2_rggaq")
@@ -62,5 +61,4 @@ bus = &"SFX"
 [node name="LabelFontChanger" type="Node" parent="." node_paths=PackedStringArray("labels")]
 script = ExtResource("6_5rt0a")
 labels = [NodePath("../AutoScrollContainer/Title"), NodePath("../Value")]
-resource = ExtResource("7_b21k4")
 metadata/_custom_type_script = "uid://co6tjg3w6qpd8"
