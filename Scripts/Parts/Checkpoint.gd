@@ -58,8 +58,10 @@ func on_area_entered(area: Area2D) -> void:
 		old_state = LevelPersistance.active_nodes.duplicate(true)
 		unlocked_doors = Door.unlocked_doors.duplicate()
 		Level.start_level_path = Global.current_level.scene_file_path
-		if Global.current_game_mode == Global.GameMode.LEVEL_EDITOR or Global.current_game_mode == Global.GameMode.CUSTOM_LEVEL:
+		if Global.current_game_mode == Global.GameMode.LEVEL_EDITOR:
 			sublevel_id = Global.level_editor.sub_level_id
+		elif Global.current_game_mode == Global.GameMode.CUSTOM_LEVEL:
+			sublevel_id = Global.current_level.sublevel_id
 		if Settings.file.difficulty.checkpoint_style == 2 and has_meta("is_flag"):
 			if player.power_state.state_name == "Small":
 				player.get_power_up("Big")

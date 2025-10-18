@@ -100,8 +100,17 @@ func _ready() -> void:
 		$Timer.start()
 	else:
 		if NewLevelBuilder.sub_levels == [null, null, null, null, null]:
+			Global.clear_saved_values()
+			Global.reset_values()
+			wait_for_build_completion()
 			NewLevelBuilder.load_level(LevelEditor.level_file)
-		transition()
+		else:
+			await get_tree().create_timer(0.1, false).timeout
+			can_transition = true
+
+func wait_for_build_completion() -> void:
+	await NewLevelBuilder.level_building_complete
+	can_transition = true
 
 func handle_challenge_mode_transition() -> void:
 	$BG/Control/LivesCount.hide()
@@ -132,7 +141,6 @@ func transition() -> void:
 	elif Global.current_game_mode != Global.GameMode.CUSTOM_LEVEL:
 		Global.transition_to_scene(level_to_transition_to)
 	else:
-		await get_tree().create_timer(0.25, false).timeout
 		Global.transition_to_scene(NewLevelBuilder.sub_levels[Checkpoint.sublevel_id])
 
 func show_best_time() -> void:

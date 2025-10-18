@@ -30,6 +30,7 @@ use_discord=true
 
 ModLoaderStore="*res://addons/mod_loader/mod_loader_store.gd"
 ModLoader="*res://addons/mod_loader/mod_loader.gd"
+NewLevelBuilder="*res://Scenes/Prefabs/Autoload/NewLevelBuilder.gd"
 Global="*res://Scenes/Prefabs/Global.tscn"
 Settings="*res://Scenes/Prefabs/Autoload/Settings.tscn"
 SaveManager="*res://Scripts/Classes/Singletons/SaveManager.gd"
@@ -38,7 +39,6 @@ AudioManager="*res://Scenes/Prefabs/Autoload/AudioManager.tscn"
 BetterTerrain="*res://addons/better-terrain/BetterTerrain.gd"
 GameBanana="*res://Scripts/Classes/Singletons/GameBananaManager.gd"
 SpeedrunHandler="*res://Scripts/Classes/Singletons/SpeedrunHandler.gd"
-NewLevelBuilder="*res://Scenes/Prefabs/Autoload/NewLevelBuilder.gd"
 
 [debug]
 

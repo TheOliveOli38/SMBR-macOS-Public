@@ -29,6 +29,7 @@ func load_level(level_file := {}) -> void:
 
 func build_sublevel(level_idx := 0, level_file := {}) -> PackedScene:
 	var level = BASE_LEVEL_SCENE.instantiate()
+	level.sublevel_id = level_idx
 	sub_level_file = level_file["Levels"][level_idx]
 	return pack_level_into_scene(build_level(level))
 
@@ -77,7 +78,7 @@ func add_entities(level: Node, chunk := "", chunk_id := 0, layer := 0) -> void:
 		if entity_map[entity_id][0] != "res://Scenes/Prefabs/Entities/Player.tscn":
 			entity_node = load(entity_map[entity_id][0]).instantiate()
 		else:
-			entity_node = get_node("EntityLayer1/Player")
+			entity_node = level.get_node("EntityLayer1/Player")
 		if entity_node == null:
 			continue
 		var offset = entity_map[entity_id][1].split(",")
@@ -118,6 +119,7 @@ func apply_level_data(level: Level, data := "") -> void:
 	level.theme = Level.THEME_IDXS[values[0]]
 	Global.level_theme = level.theme
 	level.theme_time = ["Day", "Night"][values[1]]
+	level.music = load(LevelEditor.music_track_list[values[2]])
 	Global.theme_time = level.theme_time
 	level.campaign = ["SMB1", "SMBLL", "SMBS", "SMBANN"][values[3]]
 	Global.current_campaign = level.campaign
@@ -132,20 +134,12 @@ func apply_bg_data(level: Node, data := "") -> void:
 	var id := 0
 	
 	const BG_VALUES := ["primary_layer", "second_layer", "second_layer_offset", "time_of_day", "particles", "liquid_layer", "overlay_clouds"]
-	var SELECTORS = [%PrimaryLayer, %SecondLayer, %SecondLayerOffset, %TimeOfDay, %Particles, %LiquidLayer, %OverlayClouds]
 	for i in split:
 		var value := 0
 		if i.length() > 1:
 			value = (decode_from_base64_2char(i))
 		else:
 			value = (base64_charset.find(i))
-		if is_instance_valid($TileMenu):
-			if SELECTORS[id] is SpinBox:
-				SELECTORS[id].value = value
-			elif SELECTORS[id] is Button:
-				SELECTORS[id].set_pressed_no_signal(bool(value))
-			else:
-				SELECTORS[id].selected = value
 		level.get_node("LevelBG").set_value(value, BG_VALUES[id])
 		id += 1
 	

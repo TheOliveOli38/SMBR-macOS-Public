@@ -229,7 +229,7 @@ func _ready() -> void:
 	handle_power_up_states(0)
 	set_power_state_frame()
 	handle_invincible_palette()
-	if Global.level_editor == null:
+	if [Global.GameMode.LEVEL_EDITOR, Global.GameMode.CUSTOM_LEVEL].has(Global.current_game_mode):
 		recenter_camera()
 
 func apply_character_physics() -> void:

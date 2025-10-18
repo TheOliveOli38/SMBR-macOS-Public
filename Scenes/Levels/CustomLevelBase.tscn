@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://bigssps82viks"]
 
-[ext_resource type="Script" uid="uid://bcqr1v25ygedb" path="res://Scripts/Classes/LevelClass.gd" id="1_8pu80"]
+[ext_resource type="Script" uid="uid://c0kflqgd1w6sg" path="res://Scripts/Classes/CustomLevel.gd" id="1_8pu80"]
 [ext_resource type="PackedScene" uid="uid://bksxgpygrdjl7" path="res://Scenes/Prefabs/LevelBG.tscn" id="2_f32q3"]
 [ext_resource type="Texture2D" uid="uid://cbha2l6hg1kfo" path="res://Assets/Sprites/UI/EditorGrid.png" id="3_e7vnc"]
 [ext_resource type="Texture2D" uid="uid://bxciugu0dg7e8" path="res://Assets/Sprites/Editor/ChunkDisplay.png" id="4_rhepb"]
