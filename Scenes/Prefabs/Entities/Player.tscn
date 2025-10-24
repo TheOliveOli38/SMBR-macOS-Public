@@ -516,22 +516,25 @@ offset = Vector2(0, 1)
 script = ExtResource("5_x2idl")
 metadata/_custom_type_script = "uid://caq1qiwmy0mox"
 
-[node name="Hammer" type="Sprite2D" parent="SpriteScaleJoint/Sprite"]
+[node name="Hammer" type="Node2D" parent="SpriteScaleJoint/Sprite"]
 unique_name_in_owner = true
 visible = false
+
+[node name="HammerSprite" type="Sprite2D" parent="SpriteScaleJoint/Sprite/Hammer"]
+unique_name_in_owner = true
 position = Vector2(8, 8)
 texture = ExtResource("3_a1d2e")
 offset = Vector2(0, -8)
 region_enabled = true
 region_rect = Rect2(0, 0, 16, 16)
 
-[node name="Animation" type="AnimationPlayer" parent="SpriteScaleJoint/Sprite/Hammer"]
+[node name="Animation" type="AnimationPlayer" parent="SpriteScaleJoint/Sprite/Hammer/HammerSprite"]
 libraries = {
 &"": SubResource("AnimationLibrary_bl5al")
 }
 autoplay = "Swing"
 
-[node name="ResourceSetterNew" type="Node" parent="SpriteScaleJoint/Sprite/Hammer" node_paths=PackedStringArray("node_to_affect")]
+[node name="ResourceSetterNew" type="Node" parent="SpriteScaleJoint/Sprite/Hammer/HammerSprite" node_paths=PackedStringArray("node_to_affect")]
 script = ExtResource("25_cekpg")
 node_to_affect = NodePath("..")
 property_name = "texture"
@@ -539,15 +542,14 @@ mode = 1
 resource_json = ExtResource("7_2mfvl")
 metadata/_custom_type_script = "uid://cbal8ms2oe1ik"
 
-[node name="HammerHitbox" type="Area2D" parent="SpriteScaleJoint/Sprite"]
+[node name="HammerHitbox" type="Area2D" parent="SpriteScaleJoint/Sprite/Hammer"]
 unique_name_in_owner = true
-visible = false
-position = Vector2(16, 16)
+position = Vector2(0, 16)
 collision_layer = 0
 collision_mask = 0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="SpriteScaleJoint/Sprite/HammerHitbox"]
-position = Vector2(-3.49691e-07, -8)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SpriteScaleJoint/Sprite/Hammer/HammerHitbox"]
+position = Vector2(16, -8)
 shape = SubResource("RectangleShape2D_a1d2e")
 
 [node name="Wings" type="Node2D" parent="SpriteScaleJoint/Sprite"]
@@ -563,6 +565,21 @@ frame_progress = 0.9603284
 flip_h = true
 
 [node name="ResourceSetterNew" type="Node" parent="SpriteScaleJoint/Sprite/Wings/BigWing" node_paths=PackedStringArray("node_to_affect")]
+script = ExtResource("25_cekpg")
+node_to_affect = NodePath("..")
+property_name = "sprite_frames"
+resource_json = ExtResource("9_o70e0")
+metadata/_custom_type_script = "uid://cbal8ms2oe1ik"
+
+[node name="FireWing" type="AnimatedSprite2D" parent="SpriteScaleJoint/Sprite/Wings"]
+unique_name_in_owner = true
+position = Vector2(-10, -3)
+sprite_frames = SubResource("SpriteFrames_uwhl4")
+animation = &"Idle"
+frame_progress = 0.9603284
+flip_h = true
+
+[node name="ResourceSetterNew" type="Node" parent="SpriteScaleJoint/Sprite/Wings/FireWing" node_paths=PackedStringArray("node_to_affect")]
 script = ExtResource("25_cekpg")
 node_to_affect = NodePath("..")
 property_name = "sprite_frames"
@@ -655,7 +672,7 @@ metadata/_custom_type_script = "uid://c8xvkkv34fjr4"
 script = ExtResource("6_7nbqp")
 state_name = "Fire"
 power_tier = 2
-hitbox_size = "Big"
+hitbox_size = "Fire"
 damage_state = NodePath("../Big")
 metadata/_custom_type_script = "uid://c8xvkkv34fjr4"
 
@@ -687,6 +704,14 @@ debug_color = Color(1, 0, 0, 0.419608)
 script = ExtResource("21_jl70t")
 offset = Vector2(0, -10)
 
+[node name="FireShape" type="CollisionShape2D" parent="Hitbox" groups=["FireCollisions"]]
+position = Vector2(0, -4.75)
+shape = SubResource("RectangleShape2D_vijl6")
+disabled = true
+debug_color = Color(1, 0, 0, 0.419608)
+script = ExtResource("21_jl70t")
+offset = Vector2(0, -10)
+
 [node name="WaterDetect" type="Area2D" parent="."]
 visible = false
 position = Vector2(0, -13)
@@ -708,6 +733,14 @@ debug_color = Color(1, 0, 0, 0.419608)
 script = ExtResource("21_jl70t")
 offset = Vector2(0, -13)
 
+[node name="FireShape" type="CollisionShape2D" parent="WaterDetect" groups=["FireCollisions"]]
+position = Vector2(0, -1.75)
+shape = SubResource("RectangleShape2D_sda2e")
+disabled = true
+debug_color = Color(1, 0, 0, 0.419608)
+script = ExtResource("21_jl70t")
+offset = Vector2(0, -13)
+
 [node name="LavaPoisonDetect" type="Area2D" parent="."]
 visible = false
 position = Vector2(0, -13)
@@ -722,6 +755,14 @@ script = ExtResource("21_jl70t")
 offset = Vector2(0, -14)
 
 [node name="BigShape" type="CollisionShape2D" parent="LavaPoisonDetect" groups=["BigCollisions"]]
+position = Vector2(0, -1.25)
+shape = SubResource("RectangleShape2D_o70e0")
+disabled = true
+debug_color = Color(1, 0, 0, 0.419608)
+script = ExtResource("21_jl70t")
+offset = Vector2(0, -14)
+
+[node name="FireShape" type="CollisionShape2D" parent="LavaPoisonDetect" groups=["FireCollisions"]]
 position = Vector2(0, -1.25)
 shape = SubResource("RectangleShape2D_o70e0")
 disabled = true
@@ -1056,6 +1097,11 @@ polygon = PackedVector2Array(-4, -2, -2, 0, 2, 0, 4, -2, 4, -23, 1, -28, -1, -28
 one_way_collision = true
 script = ExtResource("35_nbkfn")
 
+[node name="FireCollision" type="CollisionPolygon2D" parent="." groups=["FireCollisions"]]
+polygon = PackedVector2Array(-4, -2, -2, 0, 2, 0, 4, -2, 4, -23, 1, -28, -1, -28, -4, -23)
+one_way_collision = true
+script = ExtResource("35_nbkfn")
+
 [node name="FootL" type="CollisionShape2D" parent="." groups=["StepCollision"]]
 position = Vector2(-6, -4)
 shape = SubResource("SeparationRayShape2D_6ws8x")
@@ -1106,6 +1152,15 @@ link = NodePath("../../SmallCollision")
 metadata/scalable = false
 
 [node name="BigShape" type="CollisionShape2D" parent="BlockCollision" node_paths=PackedStringArray("link") groups=["BigCollisions"]]
+position = Vector2(0, -6)
+shape = SubResource("RectangleShape2D_34tqy")
+disabled = true
+debug_color = Color(1, 0, 0, 0.419608)
+script = ExtResource("21_jl70t")
+link = NodePath("../../BigCollision")
+metadata/scalable = false
+
+[node name="FireShape" type="CollisionShape2D" parent="BlockCollision" node_paths=PackedStringArray("link") groups=["FireCollisions"]]
 position = Vector2(0, -6)
 shape = SubResource("RectangleShape2D_34tqy")
 disabled = true

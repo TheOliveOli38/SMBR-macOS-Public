@@ -23,6 +23,7 @@
 		"RUN_SKID": 8.0,
 
 		"DECEL": 3.0,
+		"AIR_DECEL": 0.0,
 		"AIR_ACCEL": 3.0,
 		"AIR_SKID": 1.5,
 
@@ -32,12 +33,27 @@
 		"SWIM_GRAVITY": 2.5,
 		"MAX_SWIM_FALL_SPEED": 200.0,
 
+		"DEATH_COLLISION": false,
+		"DEATH_HANG_TIMER": 0.5,
+		"DEATH_X_VELOCITY": 0,
+		"DEATH_DECEL": 3.0,
 		"DEATH_JUMP_HEIGHT": 300.0,
+		"DEATH_FALL_GRAVITY": 11.0,
+		"MAX_DEATH_FALL_SPEED": 280.0,
 		
-		"can_air_turn": false
+		"can_air_turn": false,
+		"disable_rainbow_on_powerup": false
 	},
 	"small_hitbox_scale": [1.0, 1.0],
 	"small_crouch_scale": 0.75,
 	"big_hitbox_scale": [1.0, 1.0],
-	"big_crouch_scale": 0.5
+	"big_crouch_scale": 0.5,
+	"fire_hitbox_scale": [1.0, 1.0],
+	"fire_crouch_scale": 0.5,
+	
+	"small_wing_offset": [0, 0],
+	"big_wing_offset": [0, 0],
+	"fire_wing_offset": [0, 0],
+	
+	"hammer_offset": [0, 0],
 }

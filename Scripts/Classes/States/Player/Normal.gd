@@ -107,8 +107,9 @@ func ground_acceleration(delta: float) -> void:
 			target_accel = player.WALK_SKID
 	player.velocity.x = move_toward(player.velocity.x, target_move_speed * player.input_direction, (target_accel / delta) * delta)
 
-func deceleration(delta: float) -> void:
-	player.velocity.x = move_toward(player.velocity.x, 0, (player.DECEL / delta) * delta)
+func deceleration(delta: float, airborne := false) -> void:
+	var decel_type = player.DECEL if not airborne else player.AIR_DECEL
+	player.velocity.x = move_toward(player.velocity.x, 0, (decel_type / delta) * delta)
 
 func ground_skid(delta: float) -> void:
 	var target_skid := player.RUN_SKID
@@ -131,6 +132,8 @@ func handle_air_movement(delta: float) -> void:
 		air_skid(delta)
 	if player.input_direction != 0:
 		air_acceleration(delta)
+	else:
+		deceleration(delta, true)
 		
 	if Global.player_action_pressed("jump", player.player_id) == false and player.has_jumped and not player.jump_cancelled:
 		player.jump_cancelled = true
@@ -185,118 +188,110 @@ func handle_animations() -> void:
 	player.sprite.scale.x = player.direction * player.gravity_vector.y
 
 func get_animation_name() -> String:
+	# SkyanUltra: Simplified animation table and optimized nesting.
+	var vel_x: float = abs(player.velocity.x)
+	var vel_y := player.velocity.y
+	var on_floor := player.is_actually_on_floor()
+	var on_wall := player.is_actually_on_wall()
+	var airborne := not on_floor
+	var has_flight := player.flight_meter > 0
+	var moving := vel_x >= 5 and not on_wall
+	var running := vel_x >= player.RUN_SPEED - 10
+
+	# --- Attack Animations ---
 	if player.attacking:
 		if player.crouching:
 			return "CrouchAttack"
-		elif player.is_actually_on_floor():
+		if on_floor:
 			if player.skidding:
 				return "SkidAttack"
-			elif abs(player.velocity.x) >= 5 and not player.is_actually_on_wall():
+			if moving:
 				if player.in_water:
 					return "SwimAttack"
-				elif player.flight_meter > 0:
+				if has_flight:
 					return "FlyAttack"
-				elif abs(player.velocity.x) < player.RUN_SPEED - 10:
-					return "WalkAttack"
-				else:
-					return "RunAttack"
-			else:
-				return "IdleAttack"
+				return "RunAttack" if running else "WalkAttack"
+			return "IdleAttack"
 		else:
 			if player.in_water:
 				return "SwimAttack"
-			elif player.flight_meter > 0:
+			if has_flight:
 				return "FlyAttack"
-			else:
-				return "AirAttack"
+			return "AirAttack"
+
+	# --- Kick Animation ---
 	if player.kicking and player.can_kick_anim:
 		return "Kick"
+
+	# --- Crouch Animations ---
 	if player.crouching and not wall_pushing:
 		if player.bumping and player.can_bump_crouch:
 			return "CrouchBump"
-		elif player.is_on_floor() == false:
-			if player.velocity.y >= 0:
-				return "CrouchFall"
-			elif player.velocity.y < 0:
-				return "CrouchJump"
-		elif player.is_actually_on_floor():
-			if abs(player.velocity.x) >= 5 and not player.is_actually_on_wall():
-				return "CrouchMove"
-			elif player.in_water:
-				return "WaterCrouch"
-			elif player.flight_meter > 0:
-				return "WingCrouch"
-			else:
-				return "Crouch"
-	if player.is_actually_on_floor():
+		if airborne:
+			return "CrouchFall" if vel_y >= 0 else "CrouchJump"
+		if moving:
+			return "CrouchMove"
+		if player.in_water:
+			return "WaterCrouch"
+		if has_flight:
+			return "WingCrouch"
+		return "Crouch"
+
+	# --- Grounded Animations ---
+	if on_floor:
 		if player.skidding:
 			return "Skid"
-		elif abs(player.velocity.x) >= 5 and not player.is_actually_on_wall():
+		if moving:
 			if player.in_water:
 				return "WaterMove"
-			elif player.flight_meter > 0:
+			if has_flight:
 				return "WingMove"
-			elif abs(player.velocity.x) < player.RUN_SPEED - 10:
-				return "Walk"
-			else:
-				return "Run"
-		else:
-			if Global.player_action_pressed("move_up", player.player_id):
-				if player.in_water:
-					return "WaterLookUp"
-				elif player.flight_meter > 0:
-					return "WingLookUp"
-				else:
-					return "LookUp"
-			else:
-				if player.in_water:
-					return "WaterIdle"
-				elif player.flight_meter > 0:
-					return "WingIdle"
-				else:
-					return "Idle"
-	else:
+			return "Run" if running else "Walk"
+		# Idle States
+		if Global.player_action_pressed("move_up", player.player_id):
+			if player.in_water:
+				return "WaterLookUp"
+			if has_flight:
+				return "WingLookUp"
+			return "LookUp"
 		if player.in_water:
-			if swim_up_meter > 0:
-				if player.bumping and player.can_bump_swim:
-					return "SwimBump"
-				else:
-					return "SwimUp"
-			else:
-				return "SwimIdle"
-		elif player.flight_meter > 0:
-			if swim_up_meter > 0:
-				if player.bumping and player.can_bump_fly:
-					return "FlyBump"
-				else:
-					return "FlyUp"
-			else:
-				return "FlyIdle"
-		if player.has_jumped:
-			if player.bumping and player.can_bump_jump:
-				if abs(player.velocity_x_jump_stored) < player.RUN_SPEED - 10:
-					return "JumpBump"
-				else:
-					return "RunJumpBump"
-			elif player.velocity.y < 0:
-				if player.is_invincible:
-					return "StarJump"
-				elif abs(player.velocity_x_jump_stored) < player.RUN_SPEED - 10:
-					return "Jump"
-				else:
-					return "RunJump"
-			else:
-				if player.is_invincible:
-					return "StarFall"
-				elif abs(player.velocity_x_jump_stored) < player.RUN_SPEED - 10:
-					return "JumpFall"
-				else:
-					return "RunJumpFall"
+			return "WaterIdle"
+		if has_flight:
+			return "WingIdle"
+		return "Idle"
+
+	# --- Airborne Animations ---
+	if player.in_water:
+		if swim_up_meter > 0:
+			if player.bumping and player.can_bump_swim:
+				return "SwimBump"
+			return "SwimUp"
+		return "SwimIdle"
+
+	if has_flight:
+		if swim_up_meter > 0:
+			if player.bumping and player.can_bump_fly:
+				return "FlyBump"
+			return "FlyUp"
+		return "FlyIdle"
+
+	if player.has_jumped:
+		var run_jump: bool = abs(player.velocity_x_jump_stored) >= player.RUN_SPEED - 10
+		if player.bumping and player.can_bump_jump:
+			return "RunJumpBump" if run_jump else "JumpBump"
+		if vel_y < 0:
+			if player.is_invincible:
+				return "StarJump"
+			return "RunJump" if run_jump else "Jump"
 		else:
-			# guzlad: Fixes characters with fall anims not playing them, but also prevents old characters without that anim not being accurate
-			if !player.sprite.sprite_frames.has_animation("Fall"):
-				player.sprite.frame = walk_frame
-			return "Fall"
+			if player.is_invincible:
+				return "StarFall"
+			return "RunJumpFall" if run_jump else "JumpFall"
+	else:
+		# guzlad: Fixes characters with fall anims not playing them, but also prevents old characters without that anim not being accurate
+		if not player.sprite.sprite_frames.has_animation("Fall"):
+			player.sprite.frame = walk_frame
+		return "Fall"
 
 func exit() -> void:
 	if owner.has_hammer:
