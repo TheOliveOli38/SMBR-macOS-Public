@@ -181,6 +181,8 @@ const ANIMATION_FALLBACKS := {
 	"Walk": "Move",
 	"Run": "Move",
 	"CrouchMove": "Crouch",
+	"WaterCrouchMove": "CrouchMove",
+	"WingCrouchMove": "WaterCrouchMove",
 	"Pipe": "Idle",
 	"PipeWalk": "Walk",
 	"FlagSlide": "Climb",
@@ -282,6 +284,7 @@ func apply_character_physics(apply: bool) -> void:
 	
 	for i in get_tree().get_nodes_in_group("SmallCollisions"):
 		var hitbox_scale = json.get("small_hitbox_scale", [1, 1]) if apply else [1, 1]
+		i.hitbox = Vector3(hitbox_scale[0], hitbox_scale[1] if i.get_meta("scalable", true) else 1, json.get("small_crouch_scale", 0.75) if apply else 0.75)
 		i.hitbox = Vector3(hitbox_scale[0], hitbox_scale[1] if i.get_meta("scalable", true) else 1, json.get("small_crouch_scale", 0.75) if apply else 0.75)
 		i._physics_process(0)
 	for i in get_tree().get_nodes_in_group("BigCollisions"):
@@ -975,7 +978,8 @@ func do_smoke_effect() -> void:
 func on_timeout() -> void:
 	AudioManager.stop_music_override(AudioManager.MUSIC_OVERRIDES.STAR)
 	await get_tree().create_timer(1, false).timeout
-	is_invincible = false
+	if $StarTimer.is_stopped():
+		is_invincible = false
 
 
 func on_area_entered(area: Area2D) -> void:

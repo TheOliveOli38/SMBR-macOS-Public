@@ -230,6 +230,10 @@ func get_animation_name() -> String:
 		if airborne:
 			return "CrouchFall" if vel_y >= 0 else "CrouchJump"
 		if moving:
+			if player.in_water:
+				return "WaterCrouch"
+			if has_flight:
+				return "WingCrouch"
 			return "CrouchMove"
 		if player.in_water:
 			return "WaterCrouch"
