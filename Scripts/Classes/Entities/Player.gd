@@ -46,6 +46,7 @@ var MAX_DEATH_FALL_SPEED := 280.0       # The player's maximum fall speed during
 #endregion
 
 var disable_rainbow_on_powerup := false # Determines whether or not the player will play the rainbow effect upon picking up a Fire Flower or equivalent power-up.
+var can_break_bricks := []              # Determines which hitbox forms can break bricks.
 
 @onready var camera_center_joint: Node2D = $CameraCenterJoint
 
@@ -282,20 +283,20 @@ func apply_character_physics(apply: bool) -> void:
 		for i in json.physics:
 			set(i, json.physics[i])
 	
-	for i in get_tree().get_nodes_in_group("SmallCollisions"):
-		var hitbox_scale = json.get("small_hitbox_scale", [1, 1]) if apply else [1, 1]
-		i.hitbox = Vector3(hitbox_scale[0], hitbox_scale[1] if i.get_meta("scalable", true) else 1, json.get("small_crouch_scale", 0.75) if apply else 0.75)
-		i.hitbox = Vector3(hitbox_scale[0], hitbox_scale[1] if i.get_meta("scalable", true) else 1, json.get("small_crouch_scale", 0.75) if apply else 0.75)
-		i._physics_process(0)
-	for i in get_tree().get_nodes_in_group("BigCollisions"):
-		var hitbox_scale = json.get("big_hitbox_scale", [1, 1]) if apply else [1, 1]
-		i.hitbox = Vector3(hitbox_scale[0], hitbox_scale[1] if i.get_meta("scalable", true) else 1, json.get("big_crouch_scale", 0.5) if apply else 0.5)
-		i._physics_process(0)
-	for i in get_tree().get_nodes_in_group("FireCollisions"):
-		var hitbox_scale = json.get("fire_hitbox_scale", [1, 1]) if apply else [1, 1]
-		i.hitbox = Vector3(hitbox_scale[0], hitbox_scale[1] if i.get_meta("scalable", true) else 1, json.get("big_crouch_scale", 0.5) if apply else 0.5)
-		i._physics_process(0)
+	for i in ["Small", "Big", "Fire"]:
+		var hitbox_scale = json.get(i.to_snake_case() + "_hitbox_scale", [1, 1]) if apply else [1, 1]
+		var hitbox_crouch = i.to_snake_case() + "_crouch_scale"
+		var break_bricks = i.to_snake_case() + "_can_break_bricks"
 		
+		for o in get_tree().get_nodes_in_group(i + "Collisions"):
+			if i == "Small":
+				o.hitbox = Vector3(hitbox_scale[0], hitbox_scale[1] if o.get_meta("scalable", true) else 1, json.get(hitbox_crouch, 0.75) if apply else 0.75)
+			else:
+				o.hitbox = Vector3(hitbox_scale[0], hitbox_scale[1] if o.get_meta("scalable", true) else 1, json.get(hitbox_crouch, 0.5) if apply else 0.5)
+			o._physics_process(0)
+		break_bricks = json.get(break_bricks, false if i == "Small" else true) if apply else false if i == "Small" else true
+		if break_bricks: can_break_bricks.append(i)
+	
 	# SkyanUltra: This section controls all CHARACTER COSMETIC values. These have no need
 	# to be checked for apply, as they do not affect gameplay in a significant way.
 	disable_rainbow_on_powerup = json.get("disable_rainbow_on_powerup", false)
