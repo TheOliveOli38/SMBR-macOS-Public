@@ -4,6 +4,7 @@ func enter(_msg := {}) -> void:
 	player.can_hurt = false
 	player.has_jumped = false
 	player.crouching = false
+	player.in_cutscene = true
 	player.get_node("CameraCenterJoint/RightWall").set_collision_layer_value(1, false)
 
 func physics_update(delta: float) -> void:

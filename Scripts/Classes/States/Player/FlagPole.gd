@@ -5,6 +5,7 @@ var can_land := true
 @export var castle: Node = null
 
 func enter(_msg := {}) -> void:
+	player.in_cutscene = true
 	player.direction = 1
 	player.stop_all_timers()
 	await Global.level_complete_begin

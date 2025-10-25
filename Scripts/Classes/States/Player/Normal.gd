@@ -210,7 +210,17 @@ func get_animation_name() -> String:
 	var airborne := not on_floor
 	var has_flight := player.flight_meter > 0
 	var moving := vel_x >= 5 and not on_wall
+	var pushing := player.input_direction != 0 and on_wall
 	var running := vel_x >= player.RUN_SPEED - 10
+
+	var anim_context := ""
+	if player.in_water:
+		anim_context = "Water"
+	elif has_flight:
+		anim_context = "Wing"
+
+	var ctx = func(anim_name: String) -> String:
+		return anim_context + anim_name
 
 	# --- Attack Animations ---
 	if player.attacking:
@@ -235,7 +245,7 @@ func get_animation_name() -> String:
 
 	# --- Kick Animation ---
 	if player.kicking and player.can_kick_anim:
-		return "Kick"
+		return ctx.call("Kick")
 
 	# --- Crouch Animations ---
 	if player.crouching and not wall_pushing:
@@ -244,39 +254,23 @@ func get_animation_name() -> String:
 		if airborne:
 			return "CrouchFall" if vel_y >= 0 else "CrouchJump"
 		if moving:
-			if player.in_water:
-				return "WaterCrouch"
-			if has_flight:
-				return "WingCrouch"
-			return "CrouchMove"
-		if player.in_water:
-			return "WaterCrouch"
-		if has_flight:
-			return "WingCrouch"
-		return "Crouch"
+			return ctx.call("CrouchMove")
+		return ctx.call("Crouch")
 
 	# --- Grounded Animations ---
 	if on_floor:
 		if player.skidding:
 			return "Skid"
+		if pushing and player.can_push_anim:
+			return ctx.call("Push")
 		if moving:
-			if player.in_water:
-				return "WaterMove"
-			if has_flight:
-				return "WingMove"
+			if anim_context != "":
+				return ctx.call("Move")
 			return "Run" if running else "Walk"
 		# Idle States
 		if player.looking_up:
-			if player.in_water:
-				return "WaterLookUp"
-			if has_flight:
-				return "WingLookUp"
-			return "LookUp"
-		if player.in_water:
-			return "WaterIdle"
-		if has_flight:
-			return "WingIdle"
-		return "Idle"
+			return ctx.call("LookUp")
+		return ctx.call("Idle")
 
 	# --- Airborne Animations ---
 	if player.in_water:

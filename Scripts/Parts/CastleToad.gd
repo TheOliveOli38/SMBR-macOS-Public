@@ -29,6 +29,13 @@ func begin() -> void:
 		await get_tree().create_timer(7, false).timeout
 		exit_level()
 
+func _physics_process(_delta: float) -> void:
+	var pose_type := "PosePeach" if play_end_music else "PoseToad"
+	for i: Player in get_tree().get_nodes_in_group("Players"):
+		if i.in_cutscene and i.can_pose_castle and i.is_actually_on_wall():
+			i.is_posing = true; i.can_pose_castle = false
+			i.play_animation(pose_type)
+
 func exit_level() -> void:
 	match Global.current_game_mode:
 		Global.GameMode.MARATHON_PRACTICE:

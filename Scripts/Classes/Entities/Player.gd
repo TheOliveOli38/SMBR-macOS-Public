@@ -95,6 +95,7 @@ var can_big_grow = false
 
 var kicking = false
 var can_kick_anim = false
+var can_push_anim = false
 
 @export var player_id := 0
 const ONE_UP_NOTE = preload("uid://dopxwjj37gu0l")
@@ -106,7 +107,9 @@ var pipe_move_direction := 1
 var stomp_combo := 0
 
 var is_invincible := false
+var in_cutscene := false
 var can_pose := false
+var can_pose_castle := false
 var is_posing := false
 
 const COMBO_VALS := [100, 200, 400, 500, 800, 1000, 2000, 4000, 5000, 8000, null]
@@ -170,6 +173,10 @@ const ANIMATION_FALLBACKS := {
 	"Crouch": "Idle",
 	"WaterCrouch": "Crouch",
 	"WingCrouch": "WaterCrouch",
+	
+	# --- Cutscene States ---
+	"PoseToad": "PoseDoor",
+	"PosePeach": "PoseToad",
 
 	# --- Jump & Fall States ---
 	"Fall": "Move",
@@ -779,12 +786,14 @@ func set_power_state_frame() -> void:
 	var frames = %Sprite.sprite_frames
 	if frames:
 		can_pose = frames.has_animation("PoseDoor")
+		can_pose_castle = can_pose or frames.has_animation("PoseToad") or frames.has_animation("PosePeach")
 		can_big_grow = frames.has_animation("BigGrow")
 		can_bump_jump = frames.has_animation("JumpBump")
 		can_bump_crouch = frames.has_animation("CrouchBump")
 		can_bump_swim = frames.has_animation("SwimBump")
 		can_bump_fly = frames.has_animation("FlyBump")
 		can_kick_anim = frames.has_animation("Kick")
+		can_push_anim = frames.has_animation("Push")
 
 func get_power_up(power_name := "", give_points := true) -> void:
 	if is_dead:
