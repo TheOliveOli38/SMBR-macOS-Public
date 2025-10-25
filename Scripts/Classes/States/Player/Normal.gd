@@ -67,6 +67,8 @@ func grounded(delta: float) -> void:
 	if not player.crouching:
 		if Global.player_action_pressed("move_down", player.player_id):
 			player.crouching = true
+			AudioManager.play_sfx("crouch", player.global_position)
+			AudioManager.kill_sfx("uncrouch")
 	else:
 		can_wall_push = player.test_move(player.global_transform, Vector2.UP * 8 * player.gravity_vector.y) and player.power_state.hitbox_size != "Small"
 		if Global.player_action_pressed("move_down", player.player_id) == false:
@@ -75,11 +77,23 @@ func grounded(delta: float) -> void:
 			else:
 				wall_pushing = false
 				player.crouching = false
+				AudioManager.play_sfx("uncrouch", player.global_position)
+				AudioManager.kill_sfx("crouch")
 		else:
 			player.crouching = true
 			wall_pushing = false
 		if wall_pushing:
 			player.global_position.x += (-50 * player.direction * delta)
+	if not player.looking_up:
+		if Global.player_action_pressed("move_up", player.player_id) and not player.crouching:
+			player.looking_up = true
+			AudioManager.play_sfx("look_up", player.global_position)
+			AudioManager.kill_sfx("stop_look_up")
+	else:
+		if not Global.player_action_pressed("move_up", player.player_id) and not player.crouching:
+			player.looking_up = false
+			AudioManager.play_sfx("stop_look_up", player.global_position)
+			AudioManager.kill_sfx("look_up")
 
 func handle_ground_movement(delta: float) -> void:
 	if player.skidding:
@@ -252,7 +266,7 @@ func get_animation_name() -> String:
 				return "WingMove"
 			return "Run" if running else "Walk"
 		# Idle States
-		if Global.player_action_pressed("move_up", player.player_id):
+		if player.looking_up:
 			if player.in_water:
 				return "WaterLookUp"
 			if has_flight:

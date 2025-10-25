@@ -104,34 +104,34 @@ var audio_override_queue := []
 #var audio_override_queue: Array[Dictionary] = []
 
 func play_sfx(stream_name = "", position := Vector2.ZERO, pitch := 1.0) -> void:
-
-	if queued_sfxs.has(stream_name):
-		return
-	queued_sfxs.append(stream_name)
-	if stream_name is String:
-		if active_sfxs.has(stream_name):
-			active_sfxs[stream_name].queue_free()
-	var player = AudioStreamPlayer2D.new()
-	player.global_position = position
-	var stream = stream_name
-	var is_custom = false
-	if stream_name is String:
-		is_custom = sfx_library[stream_name].contains(Global.config_path.path_join("custom_characters"))
-		stream = import_stream(sfx_library[stream_name])
-	if is_custom == false:
-		player.stream = ResourceSetter.get_resource(stream, player)
-	else:
-		player.stream = stream
-	player.autoplay = true
-	player.pitch_scale = pitch
-	player.max_distance = 99999
-	player.bus = "SFX"
-	add_child(player)
-	active_sfxs[stream_name] = player
-	queued_sfxs.erase(stream_name)
-	await player.finished
-	active_sfxs.erase(stream_name)
-	player.queue_free()
+	if sfx_library.has(stream_name): # SkyanUltra: Simple check that allows for custom optional sounds.
+		if queued_sfxs.has(stream_name):
+			return
+		queued_sfxs.append(stream_name)
+		if stream_name is String:
+			if active_sfxs.has(stream_name):
+				active_sfxs[stream_name].queue_free()
+		var player = AudioStreamPlayer2D.new()
+		player.global_position = position
+		var stream = stream_name
+		var is_custom = false
+		if stream_name is String:
+			is_custom = sfx_library[stream_name].contains(Global.config_path.path_join("custom_characters"))
+			stream = import_stream(sfx_library[stream_name])
+		if is_custom == false:
+			player.stream = ResourceSetter.get_resource(stream, player)
+		else:
+			player.stream = stream
+		player.autoplay = true
+		player.pitch_scale = pitch
+		player.max_distance = 99999
+		player.bus = "SFX"
+		add_child(player)
+		active_sfxs[stream_name] = player
+		queued_sfxs.erase(stream_name)
+		await player.finished
+		active_sfxs.erase(stream_name)
+		player.queue_free()
 
 func play_global_sfx(stream_name := "") -> void:
 	if get_viewport().get_camera_2d() == null:
@@ -152,7 +152,7 @@ func stop_all_music() -> void:
 	AudioManager.stop_music_override(MUSIC_OVERRIDES.NONE, true)
 
 func kill_sfx(sfx_name := "") -> void:
-	print(active_sfxs)
+	#print(active_sfxs) SkyanUltra: log spam what are we doing
 	if active_sfxs.has(sfx_name):
 		active_sfxs[sfx_name].queue_free()
 		active_sfxs.erase(sfx_name)
@@ -295,7 +295,7 @@ func import_stream(file_path := "", loop_point := -1.0) -> AudioStream:
 		stream = AudioStreamOggVorbis.load_from_file(ResourceSetter.get_pure_resource_path(file_path))
 	elif path.contains(".wav"):
 		stream = AudioStreamWAV.load_from_file(path)
-		print([path, stream])
+		#print([path, stream])
 	if path.contains(".mp3"):
 		stream.set_loop(loop_point >= 0)
 		stream.set_loop_offset(loop_point)

@@ -76,10 +76,16 @@ var crouching := false:
 	get(): # You can't crouch if the animation somehow doesn't exist.
 		if not sprite.sprite_frames.has_animation("Crouch"): return false
 		return crouching
+var looking_up := false:
+	get(): # Same deal, can't look up if the animation doesn't exist.
+		if not sprite.sprite_frames.has_animation("LookUp"): return false
+		return looking_up
 var skidding := false
 
 var bumping := false
 var can_bump_sfx := true
+var just_landed := false
+var can_land_sfx := false
 var can_bump_jump = false
 var can_bump_crouch = false
 var can_bump_swim = false
@@ -362,9 +368,12 @@ func _physics_process(delta: float) -> void:
 	if is_actually_on_ceiling() and can_bump_sfx:
 		bump_ceiling()
 	elif is_actually_on_floor() and not is_invincible:
+		land_on_ground()
 		stomp_combo = 0
 	elif velocity.y > 15:
 		can_bump_sfx = true
+	if not is_actually_on_floor() and not just_landed:
+		can_land_sfx = true
 	handle_water_detection()
 	%SkidParticles.visible = Settings.file.visuals.extra_particles == 1
 	%SkidParticles.emitting = ((skidding and skid_frames > 2) or crouching) and is_on_floor() and abs(velocity.x) > 25 and Settings.file.visuals.extra_particles == 1
@@ -514,6 +523,14 @@ func add_stomp_combo(award_score := true) -> void:
 			Global.score += COMBO_VALS[stomp_combo]
 			score_note_spawner.spawn_note(COMBO_VALS[stomp_combo])
 		stomp_combo += 1
+
+func land_on_ground() -> void:
+	if can_land_sfx:
+		AudioManager.play_sfx("land", global_position)
+		just_landed = true
+		can_land_sfx = false
+		await get_tree().create_timer(0.1).timeout
+		just_landed = false
 
 func bump_ceiling() -> void:
 	AudioManager.play_sfx("bump", global_position)
