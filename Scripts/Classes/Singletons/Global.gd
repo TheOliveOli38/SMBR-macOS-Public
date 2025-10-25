@@ -34,7 +34,7 @@ var ROM_POINTER_PATH = config_path.path_join("rom_pointer.smb")
 var ROM_PATH = config_path.path_join("baserom.nes")
 var ROM_ASSETS_PATH = config_path.path_join("resource_packs/BaseAssets")
 const ROM_PACK_NAME := "BaseAssets"
-const ROM_ASSETS_VERSION := 0
+const ROM_ASSETS_VERSION := 1
 
 var server_version := -1
 var current_version := -1
@@ -59,8 +59,8 @@ signal text_shadow_changed
 
 var debugged_in := true
 
-var score_tween = create_tween()
-var time_tween = create_tween()
+var score_tween = null
+var time_tween = null
 
 var total_deaths := 0
 
@@ -88,6 +88,12 @@ var world_num := 1
 
 var level_num := 1
 var disco_mode := false
+
+enum Room{MAIN_ROOM, BONUS_ROOM, COIN_HEAVEN, PIPE_CUTSCENE, TITLE_SCREEN}
+
+const room_strings := ["MainRoom", "BonusRoom", "CoinHeaven", "PipeCutscene", "TitleScreen"]
+
+var current_room: Room = Room.MAIN_ROOM
 
 signal transition_finished
 var transitioning_scene := false
@@ -229,6 +235,7 @@ func check_for_rom() -> void:
 		if pack_dict.get("version", -1) == ROM_ASSETS_VERSION:
 			rom_assets_exist = true 
 		else:
+			ResourceGenerator.updating = true
 			OS.move_to_trash(ROM_ASSETS_PATH)
 
 func _process(delta: float) -> void:
@@ -239,6 +246,10 @@ func _process(delta: float) -> void:
 		AudioManager.current_level_theme = ""
 		level_theme_changed.emit()
 		log_comment("Reloaded resource packs!")
+	
+	if Input.is_action_just_pressed("toggle_fps_count"):
+		%FPSCount.visible = !%FPSCount.visible
+	%FPSCount.text = str(int(Engine.get_frames_per_second())) + " FPS"
 
 	handle_p_switch(delta)
 	if Input.is_key_label_pressed(KEY_F11) and debug_mode == false and OS.is_debug_build():
@@ -253,6 +264,10 @@ func take_screenshot() -> void:
 	var img: Image = get_viewport().get_texture().get_image()
 	var filename = Global.config_path.path_join("screenshots/screenshot_" + str(int(Time.get_unix_time_from_system())) + ".png")
 	var err = img.save_png(filename)
+	if !err:
+		log_comment("Screenshot Saved!")
+	else:
+		log_error(error_string(err))
 
 func handle_p_switch(delta: float) -> void:
 	if p_switch_active and get_tree().paused == false:
@@ -299,8 +314,10 @@ func tally_time() -> void:
 	score_tally_finished.emit()
 
 func cancel_score_tally() -> void:
-	score_tween.kill()
-	time_tween.kill()
+	if score_tween != null:
+		score_tween.kill()
+	if time_tween != null:
+		time_tween.kill()
 	tallying_score = false
 	$ScoreTally.stop()
 
@@ -327,6 +344,8 @@ func reset_values() -> void:
 	Level.in_vine_level = false
 	Level.vine_return_level = ""
 	Level.vine_warp_level = ""
+	p_switch_active = false
+	p_switch_timer = 0.0
 
 func clear_saved_values() -> void:
 	coins = 0
@@ -437,6 +456,12 @@ func log_comment(msg := "") -> void:
 	await get_tree().create_timer(2, false).timeout
 	error_message.queue_free()
 
+func level_editor_is_playtesting() -> bool:
+	if Global.current_game_mode == Global.GameMode.LEVEL_EDITOR:
+		if Global.level_editor.current_state == LevelEditor.EditorState.PLAYTESTING:
+			return true
+	return false
+
 func unlock_achievement(achievement_id := AchievementID.SMB1_CLEAR) -> void:
 	achievements[achievement_id] = "1"
 	if achievement_id != AchievementID.COMPLETIONIST:
@@ -447,7 +472,7 @@ func check_completionist_achievement() -> void:
 	if achievements.count("0") == 1:
 		unlock_achievement(AchievementID.COMPLETIONIST)
 
-const FONT = preload("uid://cd221873lbtj1")
+const FONT = preload("res://Assets/Sprites/UI/Font.fnt")
 
 func sanitize_string(string := "") -> String:
 	string = string.to_upper()
@@ -455,3 +480,11 @@ func sanitize_string(string := "") -> String:
 		if FONT.has_char(string.unicode_at(i)) == false and string[i] != "\n":
 			string = string.replace(string[i], " ")
 	return string
+
+func get_base_asset_version() -> int:
+	var json = JSON.parse_string(FileAccess.open("user://BaseAssets/pack_info.json", FileAccess.READ).get_as_text())
+	var version = json.version
+	return get_version_num_int(version)
+
+func get_version_num_int(ver_num := "0.0.0") -> int:
+	return int(ver_num.replace(".", ""))
