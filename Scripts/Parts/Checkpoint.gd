@@ -66,6 +66,7 @@ func on_area_entered(area: Area2D) -> void:
 			sublevel_id = Global.level_editor.sub_level_id
 		elif Global.current_game_mode == Global.GameMode.CUSTOM_LEVEL:
 			sublevel_id = Global.current_level.sublevel_id
+			print(sublevel_id)
 		if Settings.file.difficulty.checkpoint_style == 2 and has_meta("is_flag"):
 			if player.power_state.state_name == "Small":
 				player.get_power_up("Big", false)

@@ -1,4 +1,4 @@
 class_name CustomLevel
 extends Level
 
-var sublevel_id := 0
+@export var sublevel_id := 0

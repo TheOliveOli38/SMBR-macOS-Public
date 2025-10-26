@@ -235,6 +235,8 @@ func _ready() -> void:
 	handle_invincible_palette()
 	if [Global.GameMode.LEVEL_EDITOR, Global.GameMode.CUSTOM_LEVEL].has(Global.current_game_mode):
 		recenter_camera()
+	if Global.current_game_mode == Global.GameMode.CUSTOM_LEVEL:
+		editor_level_start()
 
 func apply_character_physics(apply: bool) -> void:
 	var path = "res://Assets/Sprites/Players/" + character + "/CharacterInfo.json"

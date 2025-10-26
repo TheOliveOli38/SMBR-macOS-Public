@@ -30,6 +30,7 @@ func load_level(level_file := {}) -> void:
 func build_sublevel(level_idx := 0, level_file := {}) -> PackedScene:
 	var level = BASE_LEVEL_SCENE.instantiate()
 	level.sublevel_id = level_idx
+	print(level_idx)
 	sub_level_file = level_file["Levels"][level_idx]
 	return pack_level_into_scene(build_level(level))
 
