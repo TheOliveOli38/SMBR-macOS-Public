@@ -334,6 +334,7 @@ func reset_values() -> void:
 	Checkpoint.sublevel_id = 0
 	Global.total_deaths = 0
 	Door.unlocked_doors = []
+	Door.exiting_door_id = -1
 	Checkpoint.unlocked_doors = []
 	KeyItem.total_collected = 0
 	Checkpoint.keys_collected = 0

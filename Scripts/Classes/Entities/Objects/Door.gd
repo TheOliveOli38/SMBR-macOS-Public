@@ -112,7 +112,12 @@ func player_enter(player: Player) -> void:
 	LevelEditor.play_door_transition = true
 	AudioManager.play_sfx("door_open", global_position)
 	await get_tree().create_timer(0.5, false).timeout
-	if Global.current_level.sublevel_id == sublevel_id:
+	var level_id = -1
+	if Global.current_level is CustomLevel:
+		level_id = Global.current_level.sublevel_id
+	elif Global.level_editor != null:
+		level_id = Global.level_editor.sub_level_id
+	if level_id == sublevel_id:
 		Global.do_fake_transition()
 		if Global.fade_transition:
 			await get_tree().create_timer(0.25, false).timeout

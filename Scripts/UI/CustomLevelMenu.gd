@@ -22,6 +22,7 @@ func _ready() -> void:
 	Global.world_num = 1
 	Global.level_num = 1
 	Global.reset_values()
+	Global.clear_saved_values()
 	Checkpoint.sublevel_id = 0
 	Global.current_campaign = "SMB1"
 	AudioManager.stop_all_music()

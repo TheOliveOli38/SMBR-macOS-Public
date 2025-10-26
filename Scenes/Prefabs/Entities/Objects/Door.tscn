@@ -71,7 +71,7 @@ static var colour_ids := {}
 
 
 func _process(_delta: float) -> void:
-	$\"../LevelEditorVisibleNode/Label\".text = str(owner.door_id)
+	$\"../LevelEditorVisibleNode/Label\".text = str(owner.door_id) +\"/\" + str(owner.sublevel_id)
 "
 
 [sub_resource type="Animation" id="Animation_hk64y"]

@@ -7,7 +7,8 @@ func _ready() -> void:
 
 func do_cycle() -> void:
 	if BooRaceHandler.countdown_active == false:
-		AudioManager.play_sfx("burner", global_position)
+		if $OnScreen.is_on_screen():
+			AudioManager.play_sfx("burner", global_position)
 		do_animation()
 		await get_tree().create_timer(0.25, false).timeout
 		%Shape.set_deferred("disabled", false)
