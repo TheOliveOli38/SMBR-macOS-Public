@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c0umucm61jjqs"
-path="res://.godot/imported/TransitionTemplate.png-5f5be056a088d0b541306876784af78e.ctex"
+uid="uid://cs28m2tkqkqpt"
+path="res://.godot/imported/OverworldANN.png-a917c4a1e4c1e40208df341e8af51f42.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/UI/TransitionTemplate.png"
-dest_files=["res://.godot/imported/TransitionTemplate.png-5f5be056a088d0b541306876784af78e.ctex"]
+source_file="res://Assets/Sprites/Backgrounds/Hills/OverworldANN.png"
+dest_files=["res://.godot/imported/OverworldANN.png-a917c4a1e4c1e40208df341e8af51f42.ctex"]
 
 [params]
 

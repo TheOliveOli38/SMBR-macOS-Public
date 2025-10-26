@@ -59,8 +59,8 @@ signal text_shadow_changed
 
 var debugged_in := true
 
-var score_tween = create_tween()
-var time_tween = create_tween()
+var score_tween = null
+var time_tween = null
 
 var total_deaths := 0
 
@@ -314,8 +314,10 @@ func tally_time() -> void:
 	score_tally_finished.emit()
 
 func cancel_score_tally() -> void:
-	score_tween.kill()
-	time_tween.kill()
+	if score_tween != null:
+		score_tween.kill()
+	if time_tween != null:
+		time_tween.kill()
 	tallying_score = false
 	$ScoreTally.stop()
 
@@ -456,6 +458,12 @@ func log_comment(msg := "") -> void:
 	$CanvasLayer/VBoxContainer.add_child(error_message)
 	await get_tree().create_timer(2, false).timeout
 	error_message.queue_free()
+
+func level_editor_is_playtesting() -> bool:
+	if Global.current_game_mode == Global.GameMode.LEVEL_EDITOR:
+		if Global.level_editor.current_state == LevelEditor.EditorState.PLAYTESTING:
+			return true
+	return false
 
 func unlock_achievement(achievement_id := AchievementID.SMB1_CLEAR) -> void:
 	achievements[achievement_id] = "1"

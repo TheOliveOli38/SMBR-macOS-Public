@@ -138,6 +138,7 @@ offset_left = -44.0
 offset_top = -11.0
 offset_right = 156.0
 offset_bottom = 5.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 text = "CHALLENGE_DIALOGUE_SCORE"
 uppercase = true
 
@@ -151,6 +152,7 @@ offset_right = 20.0
 offset_bottom = 11.0
 text = "0"
 horizontal_alignment = 2
+uppercase = true
 
 [node name="Target" type="Label" parent="BG/Control/ChallengeScoreText"]
 layout_mode = 1
@@ -161,8 +163,10 @@ offset_left = -8.0
 offset_right = 8.0
 offset_bottom = 23.0
 theme_override_colors/font_color = Color(0.462745, 0.52549, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 text = "/00000"
 horizontal_alignment = 2
+uppercase = true
 
 [node name="ChallengeCoins2" type="Label" parent="BG/Control"]
 unique_name_in_owner = true
@@ -172,6 +176,7 @@ offset_left = -44.0
 offset_top = -27.0
 offset_right = 156.0
 offset_bottom = -11.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 text = "CHALLENGE_DIALOGUE_COINS"
 uppercase = true
 

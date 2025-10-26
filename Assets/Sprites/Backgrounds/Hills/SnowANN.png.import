@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://clph6cskwmoqn"
-path="res://.godot/imported/AnniversaryQuestionBlock.png-03e33ea0390ea91d8472d5afd8a7d0e4.ctex"
+uid="uid://wq4msfwikcwr"
+path="res://.godot/imported/SnowANN.png-547267a957ae04d1a3806374cbacb137.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/Blocks/AnniversaryQuestionBlock.png"
-dest_files=["res://.godot/imported/AnniversaryQuestionBlock.png-03e33ea0390ea91d8472d5afd8a7d0e4.ctex"]
+source_file="res://Assets/Sprites/Backgrounds/Hills/SnowANN.png"
+dest_files=["res://.godot/imported/SnowANN.png-547267a957ae04d1a3806374cbacb137.ctex"]
 
 [params]
 
