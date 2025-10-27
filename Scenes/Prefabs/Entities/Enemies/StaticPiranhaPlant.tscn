@@ -1,6 +1,5 @@
-[gd_scene load_steps=19 format=3 uid="uid://csw2u3q38xrq0"]
+[gd_scene load_steps=21 format=3 uid="uid://csw2u3q38xrq0"]
 
-[ext_resource type="Script" uid="uid://bpydbpyjk1mt4" path="res://Scripts/Classes/Entities/Enemy.gd" id="1_vypk5"]
 [ext_resource type="Texture2D" uid="uid://dbq6cn2hp6ijx" path="res://Assets/Sprites/Enemies/PiranhaPlant.png" id="2_oy87v"]
 [ext_resource type="Script" uid="uid://caq1qiwmy0mox" path="res://Scripts/Parts/BetterAnimatedSprite.gd" id="3_1x1il"]
 [ext_resource type="Script" uid="uid://bx6r8sjar6cwr" path="res://Scripts/Classes/Components/BasicStaticMovement.gd" id="4_oy87v"]
@@ -13,6 +12,14 @@
 [ext_resource type="Script" uid="uid://5octqlf4ohel" path="res://Scripts/Classes/Components/ScoreNoteSpawner.gd" id="9_hqsfc"]
 [ext_resource type="Script" uid="uid://cmg61722ktg2m" path="res://Scripts/Classes/Components/BlockBouncingDetection.gd" id="10_q1mv6"]
 [ext_resource type="Script" uid="uid://c3gg32ivrlq8n" path="res://Scripts/Classes/Components/GibSpawner.gd" id="13_bc7fo"]
+[ext_resource type="Script" uid="uid://ctfbuoxtnnl0q" path="res://Scripts/Classes/Components/EditorPropertyExposer.gd" id="13_w45fi"]
+
+[sub_resource type="GDScript" id="GDScript_2s76u"]
+script/source = "extends Enemy
+
+@export_enum(\"Up\", \"Down\", \"Left\", \"Right\") var facing_direction := 0
+@export var gravity_enabled := true
+"
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_64ore"]
 atlas = ExtResource("2_oy87v")
@@ -36,16 +43,25 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_oy87v"]
+size = Vector2(6, 13)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vypk5"]
 size = Vector2(10, 10)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_oy87v"]
-size = Vector2(6, 13)
+[sub_resource type="GDScript" id="GDScript_qutrf"]
+script/source = "extends Node
+
+func _physics_process(delta: float) -> void:
+	$\"../RotationJoint\".global_rotation_degrees = [0, 180, 270, 90][owner.facing_direction]
+	$\"../RotationJoint\".position = [Vector2.ZERO, Vector2(0, -16), Vector2(8, -8), Vector2(-8, -8)][owner.facing_direction]
+	$\"../BasicStaticMovement\".auto_call = owner.gravity_enabled
+"
 
 [node name="StaticPiranhaPlant" type="CharacterBody2D" node_paths=PackedStringArray("on_screen_enabler", "score_note_adder")]
 collision_layer = 16
 collision_mask = 2
-script = ExtResource("1_vypk5")
+script = SubResource("GDScript_2s76u")
 on_screen_enabler = NodePath("VisibleOnScreenEnabler2D")
 score_note_adder = NodePath("ScoreNoteSpawner")
 metadata/_custom_type_script = "uid://bpydbpyjk1mt4"
@@ -56,7 +72,7 @@ metadata/_custom_type_script = "uid://bpydbpyjk1mt4"
 position = Vector2(0, -12)
 sprite_frames = SubResource("SpriteFrames_jddy0")
 autoplay = "default"
-frame_progress = 0.99667037
+frame_progress = 0.2978113
 offset = Vector2(0, 1)
 script = ExtResource("3_1x1il")
 metadata/_custom_type_script = "uid://caq1qiwmy0mox"
@@ -68,36 +84,41 @@ property_name = "sprite_frames"
 resource_json = ExtResource("5_bc7fo")
 metadata/_custom_type_script = "uid://cbal8ms2oe1ik"
 
+[node name="Hitbox" type="Area2D" parent="RotationJoint"]
+script = ExtResource("5_1x1il")
+metadata/_custom_type_script = "uid://cnheej0sxmoxg"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RotationJoint/Hitbox"]
+position = Vector2(0, -6)
+shape = SubResource("RectangleShape2D_oy87v")
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="RotationJoint"]
+position = Vector2(0, -5)
+remote_path = NodePath("../../Collision")
+
 [node name="Collision" type="CollisionShape2D" parent="."]
 position = Vector2(0, -5)
 shape = SubResource("RectangleShape2D_vypk5")
 
 [node name="BasicStaticMovement" type="Node" parent="." node_paths=PackedStringArray("visuals")]
 script = ExtResource("4_oy87v")
+auto_call = false
 visuals = NodePath("../RotationJoint/Sprite")
 metadata/_custom_type_script = "uid://bx6r8sjar6cwr"
 
-[node name="Hitbox" type="Area2D" parent="."]
-script = ExtResource("5_1x1il")
-metadata/_custom_type_script = "uid://cnheej0sxmoxg"
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
-position = Vector2(0, -6)
-shape = SubResource("RectangleShape2D_oy87v")
-
 [node name="ExplosionDetection" type="Node" parent="." node_paths=PackedStringArray("hitbox")]
 script = ExtResource("6_jddy0")
-hitbox = NodePath("../Hitbox")
+hitbox = NodePath("../RotationJoint/Hitbox")
 metadata/_custom_type_script = "uid://ba18grqjixded"
 
 [node name="FireballDetection" type="Node" parent="." node_paths=PackedStringArray("hitbox")]
 script = ExtResource("7_hqsfc")
-hitbox = NodePath("../Hitbox")
+hitbox = NodePath("../RotationJoint/Hitbox")
 metadata/_custom_type_script = "uid://dri2d5jtu0fbq"
 
 [node name="ShellDetection" type="Node" parent="." node_paths=PackedStringArray("hitbox")]
 script = ExtResource("8_q1mv6")
-hitbox = NodePath("../Hitbox")
+hitbox = NodePath("../RotationJoint/Hitbox")
 metadata/_custom_type_script = "uid://bbww34oiexbx2"
 
 [node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
@@ -112,7 +133,7 @@ metadata/_custom_type_script = "uid://5octqlf4ohel"
 [node name="BlockBouncingDetection" type="Node" parent="." node_paths=PackedStringArray("hitbox")]
 script = ExtResource("10_q1mv6")
 detection_type = 1
-hitbox = NodePath("../Hitbox")
+hitbox = NodePath("../RotationJoint/Hitbox")
 metadata/_custom_type_script = "uid://cmg61722ktg2m"
 
 [node name="GibSpawner" type="Node" parent="." node_paths=PackedStringArray("visuals")]
@@ -121,8 +142,17 @@ visuals = NodePath("../RotationJoint/Sprite")
 gib_type = 2
 metadata/_custom_type_script = "uid://c3gg32ivrlq8n"
 
+[node name="Node" type="Node" parent="."]
+process_mode = 3
+script = SubResource("GDScript_qutrf")
+
+[node name="EditorPropertyExposer" type="Node" parent="."]
+script = ExtResource("13_w45fi")
+properties = Array[String](["facing_direction", "gravity_enabled"])
+metadata/_custom_type_script = "uid://ctfbuoxtnnl0q"
+
 [connection signal="killed" from="." to="GibSpawner" method="summon_gib"]
-[connection signal="player_entered" from="Hitbox" to="." method="damage_player"]
+[connection signal="player_entered" from="RotationJoint/Hitbox" to="." method="damage_player"]
 [connection signal="explosion_entered" from="ExplosionDetection" to="." method="die_from_object"]
 [connection signal="explosion_entered" from="ExplosionDetection" to="ScoreNoteSpawner" method="spawn_note" binds= [200]]
 [connection signal="fireball_hit" from="FireballDetection" to="." method="die_from_object"]
