@@ -44,6 +44,7 @@ metadata/_edit_use_anchors_ = true
 unique_name_in_owner = true
 material = SubResource("CanvasItemMaterial_qar1j")
 position = Vector2(-64, 0)
+emitting = false
 amount = 64
 texture = ExtResource("1_0tjo2")
 lifetime = 2.0

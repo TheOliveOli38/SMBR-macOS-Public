@@ -1,0 +1,113 @@
+[gd_scene load_steps=17 format=3 uid="uid://cmu6ii610jyfx"]
+
+[ext_resource type="Script" uid="uid://bpydbpyjk1mt4" path="res://Scripts/Classes/Entities/Enemy.gd" id="1_50rwk"]
+[ext_resource type="Script" uid="uid://bpx2wod4fnuts" path="res://Scripts/Classes/Entities/Enemies/ChainChomp.gd" id="1_eahip"]
+[ext_resource type="Texture2D" uid="uid://dbftqf3duhoyh" path="res://Assets/Sprites/Enemies/ChainChomp.png" id="2_1t3ir"]
+[ext_resource type="Texture2D" uid="uid://ch3ljpol0k4qf" path="res://Assets/Sprites/Enemies/ChainChompPost.png" id="2_agulk"]
+[ext_resource type="Script" uid="uid://caq1qiwmy0mox" path="res://Scripts/Parts/BetterAnimatedSprite.gd" id="3_agulk"]
+[ext_resource type="JSON" path="res://Assets/Sprites/Enemies/ChainChompPost.json" id="4_7wo1h"]
+[ext_resource type="Script" uid="uid://u6v0r2dk1tbw" path="res://Scripts/Parts/Chain.gd" id="5_48u40"]
+[ext_resource type="Texture2D" uid="uid://dc0swj8v8a2it" path="res://Assets/Sprites/Enemies/ChainChompChain.png" id="6_eahip"]
+[ext_resource type="JSON" path="res://Assets/Sprites/Enemies/ChainChompChain.json" id="6_xko1t"]
+[ext_resource type="Script" uid="uid://cbal8ms2oe1ik" path="res://Scripts/Classes/Components/ResourceSetterNew.gd" id="8_tts7t"]
+[ext_resource type="JSON" path="res://Assets/Sprites/Enemies/ChainChomp.json" id="9_xko1t"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_48u40"]
+size = Vector2(16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_48u40"]
+atlas = ExtResource("2_1t3ir")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eahip"]
+atlas = ExtResource("2_1t3ir")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_y7oy5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_48u40")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eahip")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_eahip"]
+size = Vector2(10, 10)
+
+[node name="ChainChomp" type="Node2D"]
+script = ExtResource("1_eahip")
+
+[node name="Post" type="StaticBody2D" parent="."]
+position = Vector2(0, -8)
+collision_layer = 2
+collision_mask = 0
+
+[node name="Collision" type="CollisionShape2D" parent="Post"]
+shape = SubResource("RectangleShape2D_48u40")
+one_way_collision = true
+
+[node name="Sprite" type="Sprite2D" parent="Post"]
+texture = ExtResource("2_agulk")
+
+[node name="ResourceSetterNew" type="Node" parent="Post/Sprite" node_paths=PackedStringArray("node_to_affect")]
+script = ExtResource("8_tts7t")
+node_to_affect = NodePath("..")
+property_name = "texture"
+mode = 1
+resource_json = ExtResource("4_7wo1h")
+metadata/_custom_type_script = "uid://cbal8ms2oe1ik"
+
+[node name="Rope" type="Node2D" parent="." node_paths=PackedStringArray("left", "right")]
+script = ExtResource("5_48u40")
+left = NodePath("../Post")
+right = NodePath("../Enemy")
+length = 48
+texture = ExtResource("6_eahip")
+
+[node name="ResourceSetterNew" type="Node" parent="Rope" node_paths=PackedStringArray("node_to_affect")]
+script = ExtResource("8_tts7t")
+node_to_affect = NodePath("..")
+property_name = "texture"
+mode = 1
+resource_json = ExtResource("6_xko1t")
+metadata/_custom_type_script = "uid://cbal8ms2oe1ik"
+
+[node name="Enemy" type="CharacterBody2D" parent="."]
+position = Vector2(19, -13)
+collision_layer = 16
+collision_mask = 18
+script = ExtResource("1_50rwk")
+metadata/_custom_type_script = "uid://bpydbpyjk1mt4"
+
+[node name="Sprite" type="AnimatedSprite2D" parent="Enemy"]
+unique_name_in_owner = true
+sprite_frames = SubResource("SpriteFrames_y7oy5")
+autoplay = "default"
+frame_progress = 0.038236167
+flip_h = true
+script = ExtResource("3_agulk")
+do_offset = false
+metadata/_custom_type_script = "uid://caq1qiwmy0mox"
+
+[node name="ResourceSetterNew" type="Node" parent="Enemy/Sprite" node_paths=PackedStringArray("node_to_affect")]
+script = ExtResource("8_tts7t")
+node_to_affect = NodePath("..")
+property_name = "sprite_frames"
+resource_json = ExtResource("9_xko1t")
+metadata/_custom_type_script = "uid://cbal8ms2oe1ik"
+
+[node name="Collision" type="CollisionShape2D" parent="Enemy"]
+position = Vector2(0, 3)
+shape = SubResource("RectangleShape2D_eahip")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+
+[connection signal="timeout" from="Timer" to="." method="lunge"]

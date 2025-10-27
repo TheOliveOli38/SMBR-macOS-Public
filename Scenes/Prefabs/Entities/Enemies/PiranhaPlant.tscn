@@ -184,10 +184,12 @@ _data = {
 [sub_resource type="GDScript" id="GDScript_ofvpu"]
 script/source = "extends Node
 
+
 func _process(_delta: float) -> void:
-	const OFFSETS = [Vector2.ZERO, Vector2(0, -16), Vector2(-16, 0), Vector2(16, 0)]
-	$\"../RotationJoint\".global_rotation_degrees = [0, 180, 90, -90][owner.pipe_direction]
-	$\"../RotationJoint\".position = OFFSETS[owner.pipe_direction]
+	if Global.level_editor != null:
+		const OFFSETS = [Vector2.ZERO, Vector2(0, -16), Vector2(-16, 0), Vector2(16, 0)]
+		$\"../RotationJoint\".global_rotation_degrees = [0, 180, 90, -90][owner.pipe_direction]
+		$\"../RotationJoint\".position = OFFSETS[owner.pipe_direction]
 "
 
 [node name="PirannhaPlant" type="CharacterBody2D" node_paths=PackedStringArray("on_screen_enabler", "score_note_adder") groups=["Enemies"]]

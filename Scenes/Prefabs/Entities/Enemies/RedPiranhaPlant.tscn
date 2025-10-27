@@ -1,9 +1,13 @@
-[gd_scene load_steps=2 format=3 uid="uid://kj5pw3xhq8f7"]
+[gd_scene load_steps=3 format=3 uid="uid://kj5pw3xhq8f7"]
 
 [ext_resource type="PackedScene" uid="uid://1rxw4k4wq3ni" path="res://Scenes/Prefabs/Entities/Enemies/PiranhaPlant.tscn" id="1_6wd2m"]
+[ext_resource type="JSON" path="res://Assets/Sprites/Enemies/RedPiranhaPlant.json" id="2_potth"]
 
 [node name="RedPirannhaPlant" instance=ExtResource("1_6wd2m")]
 player_range = 16
+
+[node name="ResourceSetterNew" parent="RotationJoint/Sprite" index="1"]
+resource_json = ExtResource("2_potth")
 
 [node name="Animation" parent="." index="1"]
 speed_scale = 2.0

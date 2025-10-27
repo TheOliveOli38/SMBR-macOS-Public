@@ -1,4 +1,4 @@
-[gd_scene load_steps=309 format=3 uid="uid://gbcmqonky63j"]
+[gd_scene load_steps=311 format=3 uid="uid://gbcmqonky63j"]
 
 [ext_resource type="Script" uid="uid://c2lnc7vnq3xth" path="res://Scripts/Classes/Editor/LevelEditor.gd" id="1_0qbyu"]
 [ext_resource type="PackedScene" uid="uid://bksxgpygrdjl7" path="res://Scenes/Prefabs/LevelBG.tscn" id="1_ujeu4"]
@@ -170,6 +170,8 @@
 [ext_resource type="JSON" path="res://Assets/Sprites/Tilesets/Platform.json" id="104_111c4"]
 [ext_resource type="Texture2D" uid="uid://b6llxbiv825av" path="res://Assets/Sprites/Editor/PlatformIcons/SideToSideVerrt.png" id="105_ipwxy"]
 [ext_resource type="PackedScene" uid="uid://cjkmd2yf3f84v" path="res://Scenes/Prefabs/Entities/Objects/SmallVerticalPlatform.tscn" id="106_g86mr"]
+[ext_resource type="JSON" path="res://Assets/Sprites/Enemies/ChainChomp.json" id="107_0p3ev"]
+[ext_resource type="PackedScene" uid="uid://cmu6ii610jyfx" path="res://Scenes/Prefabs/Entities/Enemies/ChainChomp.tscn" id="107_76wn1"]
 [ext_resource type="PackedScene" uid="uid://c6x7gv2lqeu1x" path="res://Scenes/Prefabs/Entities/Objects/VerticalPlatform.tscn" id="107_bdir0"]
 [ext_resource type="JSON" path="res://Assets/Sprites/Blocks/OnOffBlockRed.json" id="107_mbniv"]
 [ext_resource type="Texture2D" uid="uid://h2ceiq5q4i15" path="res://Assets/Sprites/Editor/PlatformIcons/SideToSideHori.png" id="108_73mr2"]
@@ -3392,6 +3394,16 @@ entity_scene = ExtResource("100_pam3a")
 metadata/can_be_stored = true
 metadata/cannon_ammo = false
 
+[node name="ChainChomp" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Enemies/MarginContainer/GridContainer" groups=["Selectors"] instance=ExtResource("8_wkmjk")]
+layout_mode = 2
+tile_name = "ENEMY_CHOMP"
+type = 1
+icon_texture = ExtResource("107_0p3ev")
+icon_region_override = Rect2(0, 0, 16, 16)
+entity_scene = ExtResource("107_76wn1")
+metadata/can_be_stored = true
+metadata/cannon_ammo = false
+
 [node name="Blocks" type="VBoxContainer" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer"]
 layout_mode = 2
 
@@ -5462,6 +5474,7 @@ metadata/_custom_type_script = "uid://dt2p68xl462v2"
 [connection signal="tile_selected" from="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Enemies/MarginContainer/GridContainer/Barrel" to="." method="on_tile_selected"]
 [connection signal="tile_selected" from="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Enemies/MarginContainer/GridContainer/RockyWrench" to="." method="on_tile_selected"]
 [connection signal="tile_selected" from="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Enemies/MarginContainer/GridContainer/Wiggler" to="." method="on_tile_selected"]
+[connection signal="tile_selected" from="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Enemies/MarginContainer/GridContainer/ChainChomp" to="." method="on_tile_selected"]
 [connection signal="tile_selected" from="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Blocks/MarginContainer/GridContainer/QuestionBlock" to="." method="on_tile_selected"]
 [connection signal="tile_selected" from="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Blocks/MarginContainer/GridContainer/BrickBlock" to="." method="on_tile_selected"]
 [connection signal="tile_selected" from="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Blocks/MarginContainer/GridContainer/TurnBlock" to="." method="on_tile_selected"]
