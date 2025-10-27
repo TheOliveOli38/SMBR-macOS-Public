@@ -1,4 +1,4 @@
-[gd_scene load_steps=299 format=3 uid="uid://gbcmqonky63j"]
+[gd_scene load_steps=301 format=3 uid="uid://gbcmqonky63j"]
 
 [ext_resource type="Script" uid="uid://c2lnc7vnq3xth" path="res://Scripts/Classes/Editor/LevelEditor.gd" id="1_0qbyu"]
 [ext_resource type="PackedScene" uid="uid://bksxgpygrdjl7" path="res://Scenes/Prefabs/LevelBG.tscn" id="1_ujeu4"]
@@ -66,7 +66,9 @@
 [ext_resource type="PackedScene" uid="uid://duptcik2j0b04" path="res://Scenes/Prefabs/Entities/Enemies/Bowser.tscn" id="41_3yhuv"]
 [ext_resource type="JSON" path="res://Assets/Sprites/Enemies/Lakitu.json" id="44_h5kf7"]
 [ext_resource type="PackedScene" uid="uid://4bb81eil6a4c" path="res://Scenes/Prefabs/Entities/Enemies/Lakitu.tscn" id="45_my64r"]
+[ext_resource type="PackedScene" uid="uid://csw2u3q38xrq0" path="res://Scenes/Prefabs/Entities/Enemies/StaticPiranhaPlant.tscn" id="45_q3e2o"]
 [ext_resource type="JSON" path="res://Assets/Sprites/Enemies/BulletBill.json" id="46_kk6ga"]
+[ext_resource type="PackedScene" uid="uid://csjhgkhqqr4g" path="res://Scenes/Prefabs/Entities/Enemies/StaticRedPiranhaPlant.tscn" id="46_u56lk"]
 [ext_resource type="PackedScene" uid="uid://c1wl10xa3jara" path="res://Scenes/Prefabs/Entities/Enemies/BulletBill.tscn" id="47_6kfoe"]
 [ext_resource type="JSON" path="res://Assets/Sprites/Enemies/Pokey.json" id="48_5n4dw"]
 [ext_resource type="PackedScene" uid="uid://beggmeixrin75" path="res://Scenes/Prefabs/Entities/Enemies/Pokey.tscn" id="49_wb48v"]
@@ -2910,6 +2912,26 @@ secondary_icon_texture = ExtResource("25_m2rct")
 entity_scene = ExtResource("26_rrtv3")
 tile_offset = Vector2i(8, 8)
 
+[node name="StaticPiranhaPlant" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Enemies/MarginContainer/GridContainer/Plants" groups=["Selectors"] instance=ExtResource("8_wkmjk")]
+layout_mode = 0
+offset_right = 16.0
+offset_bottom = 16.0
+tile_name = "ENEMY_PLANT"
+type = 1
+icon_texture = ExtResource("23_0c3br")
+icon_region_override = Rect2(0, 0, 16, 16)
+entity_scene = ExtResource("45_q3e2o")
+
+[node name="StaticRedPiranhaPlant" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Enemies/MarginContainer/GridContainer/Plants" groups=["Selectors"] instance=ExtResource("8_wkmjk")]
+layout_mode = 0
+offset_right = 16.0
+offset_bottom = 16.0
+tile_name = "ENEMY_REDPLANT"
+type = 1
+icon_texture = ExtResource("25_1o7dj")
+icon_region_override = Rect2(0, 0, 16, 16)
+entity_scene = ExtResource("46_u56lk")
+
 [node name="TextureRect" type="TextureRect" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Enemies/MarginContainer/GridContainer/Plants"]
 layout_mode = 1
 anchors_preset = 15
@@ -5331,6 +5353,8 @@ metadata/_custom_type_script = "uid://dt2p68xl462v2"
 [connection signal="tile_selected" from="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Enemies/MarginContainer/GridContainer/Koopas/RedParaKoopa" to="." method="on_tile_selected"]
 [connection signal="tile_selected" from="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Enemies/MarginContainer/GridContainer/Plants/PipePiranhaPlant" to="." method="on_tile_selected"]
 [connection signal="tile_selected" from="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Enemies/MarginContainer/GridContainer/Plants/PipeRedPiranhaPlant" to="." method="on_tile_selected"]
+[connection signal="tile_selected" from="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Enemies/MarginContainer/GridContainer/Plants/StaticPiranhaPlant" to="." method="on_tile_selected"]
+[connection signal="tile_selected" from="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Enemies/MarginContainer/GridContainer/Plants/StaticRedPiranhaPlant" to="." method="on_tile_selected"]
 [connection signal="tile_selected" from="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Enemies/MarginContainer/GridContainer/Buzzy" to="." method="on_tile_selected"]
 [connection signal="tile_selected" from="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Enemies/MarginContainer/GridContainer/Spiny" to="." method="on_tile_selected"]
 [connection signal="tile_selected" from="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Enemies/MarginContainer/GridContainer/CheepCheeps/GreenCheepCheep" to="." method="on_tile_selected"]
