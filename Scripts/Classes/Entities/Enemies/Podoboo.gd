@@ -12,10 +12,6 @@ signal killed
 
 const BASE_LINE := 48
 
-func _ready() -> void:
-	if Global.current_game_mode != Global.GameMode.LEVEL_EDITOR and global_position.y > -32:
-		Global.log_warning("Podoboo is too low! Forgot to update!")
-
 func _physics_process(delta: float) -> void:
 	velocity += (5 / delta) * delta
 	velocity = clamp(velocity, -INF, 280)

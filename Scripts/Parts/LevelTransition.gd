@@ -40,6 +40,7 @@ func _ready() -> void:
 	Level.in_vine_level = false
 	Global.p_switch_active = false
 	Lakitu.present = false
+	Door.exiting_door_id = -1
 	Global.p_switch_timer = -1
 	if Checkpoint.passed_checkpoints.is_empty() == false:
 		Door.unlocked_doors = Checkpoint.unlocked_doors.duplicate()
@@ -103,6 +104,8 @@ func _ready() -> void:
 			Global.clear_saved_values()
 			Global.reset_values()
 			wait_for_build_completion()
+			%Loading.show()
+			await get_tree().create_timer(0.1, false).timeout
 			NewLevelBuilder.load_level(LevelEditor.level_file)
 		else:
 			await get_tree().create_timer(0.1, false).timeout
@@ -111,6 +114,7 @@ func _ready() -> void:
 func wait_for_build_completion() -> void:
 	await NewLevelBuilder.level_building_complete
 	can_transition = true
+	%Loading.hide()
 
 func handle_challenge_mode_transition() -> void:
 	$BG/Control/LivesCount.hide()

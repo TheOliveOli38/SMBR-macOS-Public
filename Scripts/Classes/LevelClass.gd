@@ -84,7 +84,8 @@ static var can_set_time := true
 
 func _enter_tree() -> void:
 	Global.current_level = self
-	update_theme()
+	if is_inside_tree():
+		update_theme()
 	SpeedrunHandler.timer_active = true
 	SpeedrunHandler.ghost_active = true
 	if can_set_time:
