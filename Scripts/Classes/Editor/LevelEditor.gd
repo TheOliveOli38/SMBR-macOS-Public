@@ -234,6 +234,8 @@ func open_save_dialog() -> void:
 	menu_open = true
 
 func stop_testing() -> void:
+	if current_state == EditorState.IDLE:
+		return
 	cleanup()
 	return_to_editor()
 	

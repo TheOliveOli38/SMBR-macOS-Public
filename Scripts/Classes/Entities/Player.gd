@@ -611,6 +611,7 @@ func die(pit := false) -> void:
 		return
 	is_dead = true
 	visible = not pit
+	Global.death_load = false
 	flight_meter = 0
 	dead.emit()
 	Global.p_switch_active = false

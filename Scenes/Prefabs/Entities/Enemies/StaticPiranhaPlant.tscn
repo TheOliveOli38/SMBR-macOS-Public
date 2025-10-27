@@ -1,5 +1,6 @@
 [gd_scene load_steps=21 format=3 uid="uid://csw2u3q38xrq0"]
 
+[ext_resource type="Script" uid="uid://cvqh3d3x1aicv" path="res://Scripts/Classes/Entities/Enemies/StaticPiranhaPlant.gd" id="1_w45fi"]
 [ext_resource type="Texture2D" uid="uid://dbq6cn2hp6ijx" path="res://Assets/Sprites/Enemies/PiranhaPlant.png" id="2_oy87v"]
 [ext_resource type="Script" uid="uid://caq1qiwmy0mox" path="res://Scripts/Parts/BetterAnimatedSprite.gd" id="3_1x1il"]
 [ext_resource type="Script" uid="uid://bx6r8sjar6cwr" path="res://Scripts/Classes/Components/BasicStaticMovement.gd" id="4_oy87v"]
@@ -13,13 +14,6 @@
 [ext_resource type="Script" uid="uid://cmg61722ktg2m" path="res://Scripts/Classes/Components/BlockBouncingDetection.gd" id="10_q1mv6"]
 [ext_resource type="Script" uid="uid://c3gg32ivrlq8n" path="res://Scripts/Classes/Components/GibSpawner.gd" id="13_bc7fo"]
 [ext_resource type="Script" uid="uid://ctfbuoxtnnl0q" path="res://Scripts/Classes/Components/EditorPropertyExposer.gd" id="13_w45fi"]
-
-[sub_resource type="GDScript" id="GDScript_2s76u"]
-script/source = "extends Enemy
-
-@export_enum(\"Up\", \"Down\", \"Left\", \"Right\") var facing_direction := 0
-@export var gravity_enabled := true
-"
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_64ore"]
 atlas = ExtResource("2_oy87v")
@@ -52,16 +46,16 @@ size = Vector2(10, 10)
 [sub_resource type="GDScript" id="GDScript_qutrf"]
 script/source = "extends Node
 
-func _physics_process(delta: float) -> void:
-	$\"../RotationJoint\".global_rotation_degrees = [0, 180, 270, 90][owner.facing_direction]
-	$\"../RotationJoint\".position = [Vector2.ZERO, Vector2(0, -16), Vector2(8, -8), Vector2(-8, -8)][owner.facing_direction]
+func _physics_process(_delta: float) -> void:
+	$\"../RotationJoint\".global_rotation_degrees = [0, 180, 270, 90][owner.pipe_direction]
+	$\"../RotationJoint\".position = [Vector2.ZERO, Vector2(0, -16), Vector2(8, -8), Vector2(-8, -8)][owner.pipe_direction]
 	$\"../BasicStaticMovement\".auto_call = owner.gravity_enabled
 "
 
 [node name="StaticPiranhaPlant" type="CharacterBody2D" node_paths=PackedStringArray("on_screen_enabler", "score_note_adder")]
 collision_layer = 16
 collision_mask = 2
-script = SubResource("GDScript_2s76u")
+script = ExtResource("1_w45fi")
 on_screen_enabler = NodePath("VisibleOnScreenEnabler2D")
 score_note_adder = NodePath("ScoreNoteSpawner")
 metadata/_custom_type_script = "uid://bpydbpyjk1mt4"
@@ -148,7 +142,7 @@ script = SubResource("GDScript_qutrf")
 
 [node name="EditorPropertyExposer" type="Node" parent="."]
 script = ExtResource("13_w45fi")
-properties = Array[String](["facing_direction", "gravity_enabled"])
+properties = Array[String](["pipe_direction", "gravity_enabled"])
 metadata/_custom_type_script = "uid://ctfbuoxtnnl0q"
 
 [connection signal="killed" from="." to="GibSpawner" method="summon_gib"]
