@@ -1,4 +1,4 @@
-[gd_scene load_steps=301 format=3 uid="uid://gbcmqonky63j"]
+[gd_scene load_steps=303 format=3 uid="uid://gbcmqonky63j"]
 
 [ext_resource type="Script" uid="uid://c2lnc7vnq3xth" path="res://Scripts/Classes/Editor/LevelEditor.gd" id="1_0qbyu"]
 [ext_resource type="PackedScene" uid="uid://bksxgpygrdjl7" path="res://Scenes/Prefabs/LevelBG.tscn" id="1_ujeu4"]
@@ -156,6 +156,8 @@
 [ext_resource type="Texture2D" uid="uid://boj5qawy6b6t2" path="res://Assets/Sprites/Editor/SmallCastle.png" id="96_lm8lu"]
 [ext_resource type="PackedScene" uid="uid://bney0cc8cfm5s" path="res://Scenes/Prefabs/LevelObjects/EndFinalCastle.tscn" id="97_d32e2"]
 [ext_resource type="Texture2D" uid="uid://m86epuy45c3u" path="res://Assets/Sprites/Editor/LargeCastle.png" id="98_2umvb"]
+[ext_resource type="JSON" path="res://Assets/Sprites/Enemies/WigglerHead.json" id="99_4cny5"]
+[ext_resource type="PackedScene" uid="uid://dk2f45a0382vn" path="res://Scenes/Prefabs/Entities/Enemies/Wiggler.tscn" id="100_pam3a"]
 [ext_resource type="JSON" path="res://Assets/Sprites/Enemies/Barrel.json" id="102_6c7k7"]
 [ext_resource type="PackedScene" uid="uid://byu7xm153ktle" path="res://Scenes/Prefabs/Entities/Enemies/Barrel.tscn" id="103_k6wox"]
 [ext_resource type="JSON" path="res://Assets/Sprites/Blocks/OnOffSwitch.json" id="103_mbniv"]
@@ -3312,6 +3314,16 @@ entity_scene = ExtResource("90_7a43i")
 metadata/can_be_stored = true
 metadata/cannon_ammo = false
 
+[node name="Wiggler" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Enemies/MarginContainer/GridContainer" groups=["Selectors"] instance=ExtResource("8_wkmjk")]
+layout_mode = 2
+tile_name = "ENEMY_WIGGLER"
+type = 1
+icon_texture = ExtResource("99_4cny5")
+icon_region_override = Rect2(8, 8, 16, 16)
+entity_scene = ExtResource("100_pam3a")
+metadata/can_be_stored = true
+metadata/cannon_ammo = false
+
 [node name="Blocks" type="VBoxContainer" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer"]
 layout_mode = 2
 
@@ -5379,6 +5391,7 @@ metadata/_custom_type_script = "uid://dt2p68xl462v2"
 [connection signal="tile_selected" from="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Enemies/MarginContainer/GridContainer/Sigebou" to="." method="on_tile_selected"]
 [connection signal="tile_selected" from="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Enemies/MarginContainer/GridContainer/Barrel" to="." method="on_tile_selected"]
 [connection signal="tile_selected" from="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Enemies/MarginContainer/GridContainer/RockyWrench" to="." method="on_tile_selected"]
+[connection signal="tile_selected" from="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Enemies/MarginContainer/GridContainer/Wiggler" to="." method="on_tile_selected"]
 [connection signal="tile_selected" from="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Blocks/MarginContainer/GridContainer/QuestionBlock" to="." method="on_tile_selected"]
 [connection signal="tile_selected" from="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Blocks/MarginContainer/GridContainer/BrickBlock" to="." method="on_tile_selected"]
 [connection signal="tile_selected" from="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Blocks/MarginContainer/GridContainer/TurnBlock" to="." method="on_tile_selected"]

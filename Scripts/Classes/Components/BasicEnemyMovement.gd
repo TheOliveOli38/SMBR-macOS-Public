@@ -73,3 +73,4 @@ func wall_hit() -> void:
 	owner.direction *= -1
 	await get_tree().create_timer(0.1, false).timeout
 	can_hit = true
+	
