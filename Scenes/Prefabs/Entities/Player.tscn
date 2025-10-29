@@ -1138,6 +1138,18 @@ gravity = Vector2(0, 0)
 anim_speed_min = 1.0
 anim_speed_max = 1.0
 
+[node name="IceChecks" type="Node2D" parent="."]
+
+[node name="L" type="RayCast2D" parent="IceChecks"]
+position = Vector2(-4, 0)
+target_position = Vector2(0, 1)
+collision_mask = 512
+
+[node name="R" type="RayCast2D" parent="IceChecks"]
+position = Vector2(4, 0)
+target_position = Vector2(0, 1)
+collision_mask = 512
+
 [connection signal="frame_changed" from="SpriteScaleJoint/Sprite" to="SpriteScaleJoint/Sprite" method="on_frame_changed"]
 [connection signal="sprite_frames_changed" from="SpriteScaleJoint/Sprite" to="SpriteScaleJoint/Sprite" method="on_frame_changed"]
 [connection signal="area_entered" from="Hitbox" to="." method="on_area_entered"]

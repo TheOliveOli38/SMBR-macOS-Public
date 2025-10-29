@@ -1,0 +1,42 @@
+[gd_scene load_steps=8 format=3 uid="uid://bk5iue67nh4f3"]
+
+[ext_resource type="Script" uid="uid://bbrnvyt4tpk6t" path="res://Scripts/Classes/Blocks/FrozenBlock.gd" id="1_d6n84"]
+[ext_resource type="Script" uid="uid://cbal8ms2oe1ik" path="res://Scripts/Classes/Components/ResourceSetterNew.gd" id="1_mkugf"]
+[ext_resource type="JSON" path="res://Assets/Sprites/Blocks/FrozenBrickBlock.json" id="2_d6n84"]
+[ext_resource type="PackedScene" uid="uid://dsa8lpl7n8ge0" path="res://Scenes/Prefabs/Blocks/BrickBlocks/BrickBlock.tscn" id="2_p4aqe"]
+[ext_resource type="Script" uid="uid://bul1nbd2in1gn" path="res://Scripts/Classes/Components/PSwitcher.gd" id="5_44co0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mkugf"]
+size = Vector2(16, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p4aqe"]
+
+[node name="FrozenBrickBlock" type="StaticBody2D"]
+collision_layer = 518
+collision_mask = 0
+script = ExtResource("1_d6n84")
+melted_scene = ExtResource("2_p4aqe")
+
+[node name="Sprite" type="AnimatedSprite2D" parent="."]
+
+[node name="ResourceSetterNew" type="Node" parent="Sprite" node_paths=PackedStringArray("node_to_affect")]
+script = ExtResource("1_mkugf")
+node_to_affect = NodePath("..")
+property_name = "sprite_frames"
+resource_json = ExtResource("2_d6n84")
+metadata/_custom_type_script = "uid://cbal8ms2oe1ik"
+
+[node name="Collision" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_mkugf")
+
+[node name="Hitbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+shape = SubResource("RectangleShape2D_p4aqe")
+
+[node name="PSwitcher" type="Node" parent="."]
+script = ExtResource("5_44co0")
+new_scene = "uid://gwruwvbe6duy"
+metadata/_custom_type_script = "uid://bul1nbd2in1gn"
+
+[connection signal="area_entered" from="Hitbox" to="." method="area_entered"]

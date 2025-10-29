@@ -1,3 +1,4 @@
+class_name PlantFireball
 extends CharacterBody2D
 
 var direction := Vector2.ZERO

@@ -84,7 +84,7 @@ func grounded(delta: float) -> void:
 func handle_ground_movement(delta: float) -> void:
 	if player.skidding:
 		ground_skid(delta)
-	elif (player.input_direction != player.velocity_direction) and player.input_direction != 0 and abs(player.velocity.x) > player.SKID_THRESHOLD and not player.crouching:
+	elif (player.input_direction != player.velocity_direction) and player.input_direction != 0 and abs(player.velocity.x) > player.SKID_THRESHOLD and not player.crouching and not player.on_ice:
 		print([player.input_direction, player.velocity_direction])
 		player.skidding = true
 	elif player.input_direction != 0 and not player.crouching:
@@ -105,10 +105,15 @@ func ground_acceleration(delta: float) -> void:
 			target_accel = player.RUN_SKID
 		else:
 			target_accel = player.WALK_SKID
+	if player.on_ice:
+		target_accel = player.ICE_ACCEL
 	player.velocity.x = move_toward(player.velocity.x, target_move_speed * player.input_direction, (target_accel / delta) * delta)
 
 func deceleration(delta: float) -> void:
-	player.velocity.x = move_toward(player.velocity.x, 0, (player.DECEL / delta) * delta)
+	var target_decel = player.DECEL
+	if player.on_ice:
+		target_decel = player.ICE_DECEL
+	player.velocity.x = move_toward(player.velocity.x, 0, (target_decel / delta) * delta)
 
 func ground_skid(delta: float) -> void:
 	var target_skid := player.RUN_SKID

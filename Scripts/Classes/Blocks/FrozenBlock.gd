@@ -1,0 +1,24 @@
+extends StaticBody2D
+
+@export var melted_scene: PackedScene = null
+const SMOKE_PARTICLE = preload("uid://d08nv4qtfouv1")
+
+func _ready() -> void:
+	pass
+
+func area_entered(area: Area2D) -> void:
+	if area.owner is FireBall or area.owner is PlantFireball:
+		area.owner.hit()
+		melt()
+
+func melt() -> void:
+	var node = melted_scene.instantiate()
+	node.global_position = global_position
+	add_sibling(node)
+	summon_smoke()
+	queue_free()
+
+func summon_smoke() -> void:
+	var smoke = SMOKE_PARTICLE.instantiate()
+	smoke.global_position = global_position + Vector2(0, 8)
+	add_sibling(smoke)

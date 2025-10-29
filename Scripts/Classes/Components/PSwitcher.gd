@@ -25,4 +25,4 @@ func switch_to_other() -> void:
 		for i in properties:
 			new.set(i, owner.get(i))
 		owner.call_deferred("add_sibling", new)
-	owner.queue_free()
+		owner.queue_free()

@@ -23,6 +23,9 @@ var RUN_SPEED := 160.0                 # The player's speed while running, measu
 var GROUND_RUN_ACCEL := 1.25           # The player's acceleration while running, measured in px/frame
 var RUN_SKID := 8.0                    # The player's turning deceleration while running, measured in px/frame
 
+var ICE_ACCEL := 2.5
+var ICE_DECEL := 1.5
+
 var SKID_THRESHOLD := 100.0            # The horizontal speed required, to be able to start skidding.
 
 var DECEL := 3.0                       # The player's deceleration while no buttons are pressed, measured in px/frame
@@ -135,6 +138,8 @@ static var CHARACTER_COLOURS := [preload("res://Assets/Sprites/Players/Mario/Cha
 var can_timer_warn := true
 
 var colour_palette_texture: Texture = null
+
+var on_ice := false
 
 static var CHARACTER_PALETTES := [
 	preload("res://Assets/Sprites/Players/Mario/ColourPalette.json"),
@@ -300,14 +305,10 @@ func _physics_process(delta: float) -> void:
 	handle_directions()
 	handle_block_collision_detection()
 	handle_wing_flight(delta)
+	handle_ice_physics()
+	handle_skidding()
+	handle_step_collision()
 	air_frames = (air_frames + 1 if is_on_floor() == false else 0)
-	for i in get_tree().get_nodes_in_group("StepCollision"):
-		var on_wall := false
-		for x in [$StepWallChecks/LWall, $StepWallChecks/RWall]:
-			if x.is_colliding():
-				on_wall = true
-		var step_enabled = (not on_wall and air_frames < 4 and velocity.y >= 0)
-		i.set_deferred("disabled", not step_enabled)
 	if is_actually_on_ceiling() and can_bump_sfx:
 		bump_ceiling()
 	elif is_actually_on_floor() and not is_invincible:
@@ -315,13 +316,7 @@ func _physics_process(delta: float) -> void:
 	elif velocity.y > 15:
 		can_bump_sfx = true
 	handle_water_detection()
-	%SkidParticles.visible = Settings.file.visuals.extra_particles == 1
-	%SkidParticles.emitting = ((skidding and skid_frames > 2) or crouching) and is_on_floor() and abs(velocity.x) > 25 and Settings.file.visuals.extra_particles == 1
-	if $SkidSFX.playing:
-		if (is_actually_on_floor() and skidding) == false:
-			$SkidSFX.stop()
-	elif is_actually_on_floor() and skidding and Settings.file.audio.skid_sfx == 1:
-		$SkidSFX.play()
+
 
 const BUBBLE_PARTICLE = preload("uid://bwjae1h1airtr")
 
@@ -336,6 +331,24 @@ func summon_bubble() -> void:
 	var bubble = BUBBLE_PARTICLE.instantiate()
 	bubble.global_position = global_position + Vector2(0, -16 if power_state.hitbox_size == "Small" else -32)
 	add_sibling(bubble)
+
+func handle_skidding() -> void:
+	%SkidParticles.visible = Settings.file.visuals.extra_particles == 1
+	%SkidParticles.emitting = ((skidding and skid_frames > 2) or crouching) and is_on_floor() and abs(velocity.x) > 25 and Settings.file.visuals.extra_particles == 1
+	if $SkidSFX.playing:
+		if (is_actually_on_floor() and skidding) == false:
+			$SkidSFX.stop()
+	elif is_actually_on_floor() and skidding and Settings.file.audio.skid_sfx == 1:
+		$SkidSFX.play()
+
+func handle_step_collision() -> void:
+	for i in get_tree().get_nodes_in_group("StepCollision"):
+		var on_wall := false
+		for x in [$StepWallChecks/LWall, $StepWallChecks/RWall]:
+			if x.is_colliding():
+				on_wall = true
+		var step_enabled = (not on_wall and air_frames < 4 and velocity.y >= 0)
+		i.set_deferred("disabled", not step_enabled)
 
 func _process(delta: float) -> void:
 	handle_power_up_states(delta)
@@ -435,6 +448,9 @@ func is_actually_on_ceiling() -> bool:
 			if i.is_on_ceiling():
 				return true
 	return false
+
+func handle_ice_physics() -> void:
+	on_ice = $IceChecks/L.is_colliding() or $IceChecks/R.is_colliding()
 
 func enemy_bounce_off(add_combo := true, award_score := true) -> void:
 	if add_combo:

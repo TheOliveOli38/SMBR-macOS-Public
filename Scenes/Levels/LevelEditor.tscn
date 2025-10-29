@@ -1,4 +1,4 @@
-[gd_scene load_steps=311 format=3 uid="uid://gbcmqonky63j"]
+[gd_scene load_steps=321 format=3 uid="uid://gbcmqonky63j"]
 
 [ext_resource type="Script" uid="uid://c2lnc7vnq3xth" path="res://Scripts/Classes/Editor/LevelEditor.gd" id="1_0qbyu"]
 [ext_resource type="PackedScene" uid="uid://bksxgpygrdjl7" path="res://Scenes/Prefabs/LevelBG.tscn" id="1_ujeu4"]
@@ -37,8 +37,10 @@
 [ext_resource type="PackedScene" uid="uid://d2ainv86lt68a" path="res://Scenes/Prefabs/Blocks/SwitchSpikeBlock.tscn" id="20_sf60c"]
 [ext_resource type="PackedScene" uid="uid://doguqwqut2s5e" path="res://Scenes/Prefabs/Entities/Enemies/RedKoopaParaTroopa.tscn" id="21_dk6cd"]
 [ext_resource type="Texture2D" uid="uid://dqi2e7yddiqhy" path="res://Assets/Sprites/Editor/ScrollerIcon.png" id="22_3cjpb"]
+[ext_resource type="Texture2D" uid="uid://ctsptxfwdh7c4" path="res://Assets/Sprites/Blocks/IceBlock.png" id="22_cnvg7"]
 [ext_resource type="JSON" path="res://Assets/Sprites/Tilesets/Terrain/EmptyBlock.json" id="22_ulh3l"]
 [ext_resource type="JSON" path="res://Assets/Sprites/Enemies/PiranhaPlant.json" id="23_0c3br"]
+[ext_resource type="PackedScene" uid="uid://cl17n2obk214n" path="res://Scenes/Prefabs/Blocks/IceBlock.tscn" id="23_wnboq"]
 [ext_resource type="PackedScene" uid="uid://1rxw4k4wq3ni" path="res://Scenes/Prefabs/Entities/Enemies/PiranhaPlant.tscn" id="24_1o7dj"]
 [ext_resource type="JSON" path="res://Assets/Sprites/Enemies/RedPiranhaPlant.json" id="25_1o7dj"]
 [ext_resource type="Texture2D" uid="uid://b3dptpxx5dfa" path="res://Assets/Sprites/Editor/PipeDirections.png" id="25_dl3il"]
@@ -198,19 +200,27 @@
 [ext_resource type="PackedScene" uid="uid://svkvxdk8fsyj" path="res://Scenes/Prefabs/Blocks/Fan.tscn" id="133_s60en"]
 [ext_resource type="Texture2D" uid="uid://c8ir37jmcm4f4" path="res://Assets/Sprites/Editor/CameraLock.png" id="134_q440o"]
 [ext_resource type="JSON" path="res://Assets/Sprites/Blocks/OnFan.json" id="134_vlioy"]
+[ext_resource type="JSON" path="res://Assets/Sprites/Blocks/FrozenBrickBlock.json" id="135_cm3b2"]
 [ext_resource type="PackedScene" uid="uid://vgcgj3k2k8oy" path="res://Scenes/Prefabs/LevelObjects/CameraScrollStop.tscn" id="135_q440o"]
+[ext_resource type="PackedScene" uid="uid://bk5iue67nh4f3" path="res://Scenes/Prefabs/Blocks/FrozenBrickBlock.tscn" id="136_l0ypq"]
 [ext_resource type="PackedScene" uid="uid://dtpyjucfl16sw" path="res://Scenes/Prefabs/LevelObjects/CastleBridge.tscn" id="136_wxova"]
 [ext_resource type="JSON" path="res://Assets/Sprites/Blocks/OffFan.json" id="136_ym1gn"]
+[ext_resource type="JSON" path="res://Assets/Sprites/Blocks/FrozenCoin.json" id="137_0lb7j"]
 [ext_resource type="PackedScene" uid="uid://cbs645wiwmaxq" path="res://Scenes/Prefabs/Entities/Objects/Burner.tscn" id="137_evyrg"]
 [ext_resource type="JSON" path="res://Assets/Sprites/Players/ToadNPC.json" id="137_jmysq"]
 [ext_resource type="PackedScene" uid="uid://lglmgqp3emy4" path="res://Scenes/Prefabs/Blocks/OnOffFanRed.tscn" id="138_dsu6a"]
+[ext_resource type="PackedScene" uid="uid://gwruwvbe6duy" path="res://Scenes/Prefabs/Blocks/FrozenCoin.tscn" id="138_ixc5s"]
 [ext_resource type="PackedScene" uid="uid://c2ntyej6ddm72" path="res://Scenes/Prefabs/LevelObjects/CastleToad.tscn" id="138_oyulb"]
 [ext_resource type="JSON" path="res://Assets/Sprites/Blocks/BurnerBlock.json" id="138_sucb6"]
 [ext_resource type="PackedScene" uid="uid://3pvbcy3lkl7r" path="res://Scenes/Prefabs/Blocks/OnOffFanBlue.tscn" id="139_dsu6a"]
+[ext_resource type="JSON" path="res://Assets/Sprites/Blocks/FrozenTurnBlock.json" id="139_ixc5s"]
 [ext_resource type="Texture2D" uid="uid://boivfkpqvnx45" path="res://Assets/Sprites/Players/Peach.png" id="139_xenld"]
 [ext_resource type="StyleBox" uid="uid://comkghpj0djcl" path="res://Resources/UI/Panel.tres" id="139_ydoon"]
 [ext_resource type="PackedScene" uid="uid://ckrna543ixu1b" path="res://Scenes/Prefabs/LevelObjects/CastlePeach.tscn" id="140_um2ro"]
+[ext_resource type="PackedScene" uid="uid://vvdhaisnp55i" path="res://Scenes/Prefabs/Blocks/FrozenTurnBlock.tscn" id="140_w6mg2"]
 [ext_resource type="JSON" path="res://Assets/Sprites/Tilesets/Track.json" id="141_0jt4c"]
+[ext_resource type="JSON" path="res://Assets/Sprites/Blocks/FrozenMuncher.json" id="141_kxobe"]
+[ext_resource type="PackedScene" uid="uid://jnfsfhl2151e" path="res://Scenes/Prefabs/Blocks/FrozenMuncher.tscn" id="142_8urte"]
 [ext_resource type="PackedScene" uid="uid://dijxmmwdyjbjc" path="res://Scenes/Prefabs/Entities/Objects/Track.tscn" id="142_aglcy"]
 [ext_resource type="Texture2D" uid="uid://dtrgyp1sjp568" path="res://Assets/Sprites/Editor/TrackRider.png" id="143_jmysq"]
 [ext_resource type="PackedScene" uid="uid://dvmr3r2uub283" path="res://Scenes/Prefabs/Entities/Objects/TrackRider.tscn" id="144_m7msd"]
@@ -1029,6 +1039,16 @@ type = 1
 icon_texture = ExtResource("10_vhlvp")
 icon_region_override = Rect2(64, 32, 16, 16)
 entity_scene = ExtResource("16_5j6mu")
+tile_offset = Vector2i(0, 0)
+tile_coords = Vector2i(4, 2)
+
+[node name="IceBlock" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Tiles/MarginContainer/GridContainer" groups=["Selectors"] instance=ExtResource("8_wkmjk")]
+layout_mode = 2
+tile_name = "TILE_ICE"
+type = 1
+icon_texture = ExtResource("22_cnvg7")
+icon_region_override = Rect2(0, 0, 16, 16)
+entity_scene = ExtResource("23_wnboq")
 tile_offset = Vector2i(0, 0)
 tile_coords = Vector2i(4, 2)
 
@@ -3620,6 +3640,68 @@ entity_scene = ExtResource("121_qebwb")
 tile_offset = Vector2i(0, 0)
 
 [node name="TextureRect" type="TextureRect" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Blocks/MarginContainer/GridContainer/SpringBlock"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("22_3cjpb")
+expand_mode = 1
+stretch_mode = 3
+
+[node name="FrozenStuff" type="Control" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Blocks/MarginContainer/GridContainer"]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+mouse_force_pass_scroll_events = false
+script = ExtResource("20_jc7xg")
+
+[node name="BrickBlock" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Blocks/MarginContainer/GridContainer/FrozenStuff" groups=["Selectors"] instance=ExtResource("8_wkmjk")]
+layout_mode = 0
+offset_right = 16.0
+offset_bottom = 16.0
+tile_name = "BLOCK_FROZEN_BRICK"
+type = 1
+icon_texture = ExtResource("135_cm3b2")
+icon_region_override = Rect2(0, 0, 16, 16)
+entity_scene = ExtResource("136_l0ypq")
+tile_offset = Vector2i(0, 0)
+
+[node name="Coin" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Blocks/MarginContainer/GridContainer/FrozenStuff" groups=["Selectors"] instance=ExtResource("8_wkmjk")]
+layout_mode = 0
+offset_right = 16.0
+offset_bottom = 16.0
+tile_name = "BLOCK_FROZEN_COIN"
+type = 1
+icon_texture = ExtResource("137_0lb7j")
+icon_region_override = Rect2(0, 0, 16, 16)
+entity_scene = ExtResource("138_ixc5s")
+tile_offset = Vector2i(0, 0)
+
+[node name="TurnBlock" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Blocks/MarginContainer/GridContainer/FrozenStuff" groups=["Selectors"] instance=ExtResource("8_wkmjk")]
+layout_mode = 0
+offset_right = 16.0
+offset_bottom = 16.0
+tile_name = "BLOCK_FROZEN_TURN"
+type = 1
+icon_texture = ExtResource("139_ixc5s")
+icon_region_override = Rect2(0, 0, 16, 16)
+entity_scene = ExtResource("140_w6mg2")
+tile_offset = Vector2i(0, 0)
+
+[node name="Muncher" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Blocks/MarginContainer/GridContainer/FrozenStuff" groups=["Selectors"] instance=ExtResource("8_wkmjk")]
+layout_mode = 0
+offset_right = 16.0
+offset_bottom = 16.0
+tile_name = "BLOCK_FROZEN_MUNCHER"
+type = 1
+icon_texture = ExtResource("141_kxobe")
+icon_region_override = Rect2(0, 0, 16, 16)
+entity_scene = ExtResource("142_8urte")
+tile_offset = Vector2i(0, 0)
+
+[node name="TextureRect" type="TextureRect" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Blocks/MarginContainer/GridContainer/FrozenStuff"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0

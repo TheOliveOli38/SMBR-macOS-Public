@@ -1,0 +1,14 @@
+[gd_scene load_steps=4 format=3 uid="uid://gwruwvbe6duy"]
+
+[ext_resource type="PackedScene" uid="uid://bk5iue67nh4f3" path="res://Scenes/Prefabs/Blocks/FrozenBrickBlock.tscn" id="1_tf1gj"]
+[ext_resource type="PackedScene" uid="uid://chjxyhlwohmi6" path="res://Scenes/Prefabs/Entities/Items/Coin.tscn" id="2_n3k5x"]
+[ext_resource type="JSON" path="res://Assets/Sprites/Blocks/FrozenCoin.json" id="3_kmv6y"]
+
+[node name="FrozenCoin" instance=ExtResource("1_tf1gj")]
+melted_scene = ExtResource("2_n3k5x")
+
+[node name="ResourceSetterNew" parent="Sprite" index="0"]
+resource_json = ExtResource("3_kmv6y")
+
+[node name="PSwitcher" parent="." index="3"]
+new_scene = "uid://bk5iue67nh4f3"
