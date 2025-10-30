@@ -87,13 +87,8 @@
 	},
 	"variations": {
 		"default": {
-			"source": "FrozenBrickBlock.png",
-			"rect": [
-				0.0,
-				0.0,
-				48.0,
-				16.0
-			]
+			"SMB1": {"source": "FrozenBrickBlock.png", "rect": [0, 0, 48, 16]},
+			"SMBLL": {"source": "FrozenBrickBlock.png", "rect": [0, 16, 48, 16]}
 		}
 	}
 }

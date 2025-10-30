@@ -881,11 +881,11 @@ texture = ExtResource("1_vdakf")
 7:10/0 = 0
 7:10/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 7:10/0/metadata/_better_terrain = {
-0: [17],
+0: [17, 0],
 3: [17],
 4: [17],
 7: [17],
-8: [17],
+8: [17, 0],
 11: [22],
 12: [23],
 15: [0, 17],
@@ -894,11 +894,11 @@ texture = ExtResource("1_vdakf")
 8:10/0 = 0
 8:10/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 8:10/0/metadata/_better_terrain = {
-0: [17],
+0: [17, 0],
 3: [17, 0],
 4: [27],
 7: [26],
-8: [17],
+8: [17, 0],
 11: [17],
 12: [17],
 15: [17],
@@ -907,11 +907,11 @@ texture = ExtResource("1_vdakf")
 9:10/0 = 0
 9:10/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 9:10/0/metadata/_better_terrain = {
-0: [17],
+0: [17, 0],
 3: [28],
 4: [29],
 7: [17, 0],
-8: [17],
+8: [17, 0],
 11: [17],
 12: [17],
 15: [17],
@@ -920,11 +920,11 @@ texture = ExtResource("1_vdakf")
 10:10/0 = 0
 10:10/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 10:10/0/metadata/_better_terrain = {
-0: [17],
+0: [17, 0],
 3: [17],
 4: [17],
 7: [17],
-8: [17],
+8: [17, 0],
 11: [0, 17],
 12: [25],
 15: [24],

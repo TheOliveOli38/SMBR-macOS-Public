@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://bi1hb03wk001p"]
+[gd_scene load_steps=14 format=3 uid="uid://bi1hb03wk001p"]
 
 [ext_resource type="Script" uid="uid://bpydbpyjk1mt4" path="res://Scripts/Classes/Entities/Enemy.gd" id="1_cgdwi"]
 [ext_resource type="Texture2D" uid="uid://dg7yxoq44gaae" path="res://Assets/Sprites/Enemies/Muncher.png" id="2_ad4wf"]
@@ -37,12 +37,9 @@ size = Vector2(15.9, 16)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r7ue2"]
 size = Vector2(17, 18.5)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_3kryf"]
-size = Vector2(16, 16)
-
 [node name="Muncher" type="CharacterBody2D" node_paths=PackedStringArray("on_screen_enabler", "score_note_adder") groups=["Enemies"]]
 disable_mode = 1
-collision_layer = 20
+collision_layer = 22
 collision_mask = 4114
 script = ExtResource("1_cgdwi")
 on_screen_enabler = NodePath("VisibleOnScreenEnabler2D")
@@ -67,7 +64,6 @@ metadata/_custom_type_script = "uid://cbal8ms2oe1ik"
 
 [node name="Collision" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_cgdwi")
-one_way_collision = true
 
 [node name="Hitbox" type="Area2D" parent="."]
 
@@ -83,14 +79,6 @@ metadata/_custom_type_script = "uid://5octqlf4ohel"
 
 [node name="Movement" type="Node" parent="."]
 script = ExtResource("8_3kryf")
-
-[node name="AnimatableBody2D" type="AnimatableBody2D" parent="."]
-collision_layer = 33
-collision_mask = 0
-sync_to_physics = false
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatableBody2D"]
-shape = SubResource("RectangleShape2D_3kryf")
 
 [node name="EnemyPlayerDetection" type="Node" parent="." node_paths=PackedStringArray("hitbox")]
 script = ExtResource("8_cgdwi")

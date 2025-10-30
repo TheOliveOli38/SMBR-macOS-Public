@@ -114,10 +114,10 @@ func get_resource(json_file: JSON) -> Resource:
 		ResourceMode.SPRITE_FRAMES:
 			var animation_json = {}
 			
-			if source_json.has("animations"):
-				animation_json = source_json.get("animations")
-			elif json.has("animations"):
+			if json.has("animations"):
 				animation_json = json.get("animations")
+			elif source_json.has("animations"):
+				animation_json = source_json.get("animations")
 			
 			if json.has("animation_overrides"):
 				for i in json.get("animation_overrides").keys():
