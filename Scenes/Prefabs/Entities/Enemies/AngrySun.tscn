@@ -1,0 +1,90 @@
+[gd_scene load_steps=10 format=3 uid="uid://13vxk381k4gt"]
+
+[ext_resource type="Script" uid="uid://cxtekxsaprq8c" path="res://Scripts/Classes/Entities/Enemies/AngrySun.gd" id="1_b44wu"]
+[ext_resource type="Texture2D" uid="uid://dki2sbbbcsje0" path="res://Assets/Sprites/Enemies/AngrySun.png" id="2_4q5i4"]
+[ext_resource type="Script" uid="uid://chj8hu207lrh" path="res://Scripts/Classes/Components/EnemyPlayerDetection.gd" id="3_4q5i4"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2ut7f"]
+atlas = ExtResource("2_4q5i4")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yfrhs"]
+atlas = ExtResource("2_4q5i4")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vwhva"]
+atlas = ExtResource("2_4q5i4")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q5u7b"]
+atlas = ExtResource("2_4q5i4")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_cjcmn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2ut7f")
+}],
+"loop": true,
+"name": &"Charge",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yfrhs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vwhva")
+}],
+"loop": true,
+"name": &"Dive",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q5u7b")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_yfrhs"]
+radius = 8.0
+
+[node name="AngrySun" type="CharacterBody2D"]
+script = ExtResource("1_b44wu")
+metadata/_custom_type_script = "uid://bpydbpyjk1mt4"
+
+[node name="Sprite" type="AnimatedSprite2D" parent="."]
+unique_name_in_owner = true
+sprite_frames = SubResource("SpriteFrames_cjcmn")
+animation = &"Charge"
+autoplay = "Idle"
+frame_progress = 0.4604342
+
+[node name="IdleMeter" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+
+[node name="ChargeMeter" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[node name="Hitbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+shape = SubResource("CircleShape2D_yfrhs")
+
+[node name="EnemyPlayerDetection" type="Node" parent="." node_paths=PackedStringArray("hitbox")]
+script = ExtResource("3_4q5i4")
+hitbox = NodePath("../Hitbox")
+metadata/_custom_type_script = "uid://chj8hu207lrh"
+
+[connection signal="timeout" from="IdleMeter" to="." method="start_charging"]
+[connection signal="timeout" from="ChargeMeter" to="." method="start_diving"]
+[connection signal="hammer_player_hit" from="EnemyPlayerDetection" to="." method="die_from_hammer"]
+[connection signal="invincible_player_hit" from="EnemyPlayerDetection" to="." method="die_from_object"]
+[connection signal="player_hit" from="EnemyPlayerDetection" to="." method="damage_player"]
+[connection signal="player_stomped_on" from="EnemyPlayerDetection" to="." method="damage_player" flags=18]

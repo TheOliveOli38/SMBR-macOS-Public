@@ -1,4 +1,4 @@
-[gd_scene load_steps=321 format=3 uid="uid://gbcmqonky63j"]
+[gd_scene load_steps=325 format=3 uid="uid://gbcmqonky63j"]
 
 [ext_resource type="Script" uid="uid://c2lnc7vnq3xth" path="res://Scripts/Classes/Editor/LevelEditor.gd" id="1_0qbyu"]
 [ext_resource type="PackedScene" uid="uid://bksxgpygrdjl7" path="res://Scenes/Prefabs/LevelBG.tscn" id="1_ujeu4"]
@@ -126,6 +126,8 @@
 [ext_resource type="JSON" path="res://Assets/Sprites/Enemies/FighterFly.json" id="75_4ujsp"]
 [ext_resource type="PackedScene" uid="uid://cwhvsfp31cuu6" path="res://Scenes/Prefabs/Entities/Enemies/FighterFly.tscn" id="76_esk8u"]
 [ext_resource type="PackedScene" uid="uid://c0020qrw11oy4" path="res://Scenes/Prefabs/Blocks/OnOffSwitch.tscn" id="76_txi13"]
+[ext_resource type="PackedScene" uid="uid://csmgewjk06lkj" path="res://Scenes/Prefabs/Entities/Enemies/HomingBill.tscn" id="77_8urte"]
+[ext_resource type="JSON" path="res://Assets/Sprites/Enemies/HomingBill.json" id="77_da0p4"]
 [ext_resource type="PackedScene" uid="uid://c685xkxf085tc" path="res://Scenes/Prefabs/Blocks/OnOffBlockRed.tscn" id="78_wu64b"]
 [ext_resource type="PackedScene" uid="uid://b5cw2667exll" path="res://Scenes/Prefabs/Blocks/OnOffBlueBlock.tscn" id="79_iorxh"]
 [ext_resource type="Texture2D" uid="uid://b4tc7t4k0kp3g" path="res://Assets/Sprites/Editor/FireBar.png" id="80_gixmk"]
@@ -185,7 +187,9 @@
 [ext_resource type="Texture2D" uid="uid://cke2nve5v64am" path="res://Assets/Sprites/Editor/PlatformIcons/Falling.png" id="111_4b5os"]
 [ext_resource type="PackedScene" uid="uid://bm8obwlkm56wb" path="res://Scenes/Prefabs/Entities/Objects/FallingPlatform.tscn" id="112_3t8j1"]
 [ext_resource type="PackedScene" uid="uid://0q874wkbxcrr" path="res://Scenes/Prefabs/Blocks/SwitchSpikeBlockAlt.tscn" id="112_xde7w"]
+[ext_resource type="Texture2D" uid="uid://dki2sbbbcsje0" path="res://Assets/Sprites/Enemies/AngrySun.png" id="113_0x514"]
 [ext_resource type="PackedScene" uid="uid://dn3cblgvf2ba1" path="res://Scenes/Prefabs/Entities/Objects/LargeFallingPlatform.tscn" id="113_3t8j1"]
+[ext_resource type="PackedScene" uid="uid://13vxk381k4gt" path="res://Scenes/Prefabs/Entities/Enemies/AngrySun.tscn" id="114_1y4xk"]
 [ext_resource type="Script" uid="uid://dja6281w30iv0" path="res://Scripts/UI/TextValidator.gd" id="114_cjvlm"]
 [ext_resource type="Texture2D" uid="uid://bi13n4mw0to20" path="res://Assets/Sprites/Blocks/TimedBooBlock.png" id="114_swqrt"]
 [ext_resource type="Texture2D" uid="uid://cv27sth0k3amk" path="res://Assets/Sprites/Blocks/SwitchSpike.png" id="118_xde7w"]
@@ -3183,13 +3187,44 @@ icon_region_override = Rect2(0, 0, 16, 16)
 entity_scene = ExtResource("45_my64r")
 tile_offset = Vector2i(0, 0)
 
-[node name="BulletBill" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Enemies/MarginContainer/GridContainer" groups=["Selectors"] instance=ExtResource("8_wkmjk")]
+[node name="BulletBills" type="Control" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Enemies/MarginContainer/GridContainer"]
+custom_minimum_size = Vector2(16, 16)
 layout_mode = 2
+mouse_force_pass_scroll_events = false
+script = ExtResource("20_jc7xg")
+
+[node name="BulletBill" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Enemies/MarginContainer/GridContainer/BulletBills" groups=["Selectors"] instance=ExtResource("8_wkmjk")]
+layout_mode = 0
+offset_right = 16.0
+offset_bottom = 16.0
 tile_name = "ENEMY_BULLETBILL"
 type = 1
 icon_texture = ExtResource("46_kk6ga")
 icon_region_override = Rect2(0, 0, 16, 16)
 entity_scene = ExtResource("47_6kfoe")
+
+[node name="HomingBill" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Enemies/MarginContainer/GridContainer/BulletBills" groups=["Selectors"] instance=ExtResource("8_wkmjk")]
+layout_mode = 0
+offset_right = 16.0
+offset_bottom = 16.0
+tile_name = "ENEMY_HOMING_BULLET"
+type = 1
+icon_texture = ExtResource("77_da0p4")
+icon_region_override = Rect2(0, 0, 16, 16)
+entity_scene = ExtResource("77_8urte")
+tile_offset = Vector2i(0, 0)
+
+[node name="TextureRect" type="TextureRect" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Enemies/MarginContainer/GridContainer/BulletBills"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("22_3cjpb")
+expand_mode = 1
+stretch_mode = 3
 
 [node name="Podoboo" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Enemies/MarginContainer/GridContainer" groups=["Selectors"] instance=ExtResource("8_wkmjk")]
 layout_mode = 2
@@ -3423,6 +3458,15 @@ icon_region_override = Rect2(0, 0, 16, 16)
 entity_scene = ExtResource("107_76wn1")
 metadata/can_be_stored = true
 metadata/cannon_ammo = false
+
+[node name="AngrySun" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Enemies/MarginContainer/GridContainer" groups=["Selectors"] instance=ExtResource("8_wkmjk")]
+layout_mode = 2
+tile_name = "ENEMY_SUN"
+type = 1
+icon_texture = ExtResource("113_0x514")
+icon_region_override = Rect2(8, 8, 16, 16)
+entity_scene = ExtResource("114_1y4xk")
+tile_offset = Vector2i(0, 0)
 
 [node name="Blocks" type="VBoxContainer" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer"]
 layout_mode = 2
@@ -5540,7 +5584,8 @@ metadata/_custom_type_script = "uid://dt2p68xl462v2"
 [connection signal="tile_selected" from="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Enemies/MarginContainer/GridContainer/Bowsers/Bowser" to="." method="on_tile_selected"]
 [connection signal="tile_selected" from="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Enemies/MarginContainer/GridContainer/Bowsers/BowserBro" to="." method="on_tile_selected"]
 [connection signal="tile_selected" from="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Enemies/MarginContainer/GridContainer/Pokey" to="." method="on_tile_selected"]
-[connection signal="tile_selected" from="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Enemies/MarginContainer/GridContainer/BulletBill" to="." method="on_tile_selected"]
+[connection signal="tile_selected" from="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Enemies/MarginContainer/GridContainer/BulletBills/BulletBill" to="." method="on_tile_selected"]
+[connection signal="tile_selected" from="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Enemies/MarginContainer/GridContainer/BulletBills/HomingBill" to="." method="on_tile_selected"]
 [connection signal="tile_selected" from="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Enemies/MarginContainer/GridContainer/Boos/Boo" to="." method="on_tile_selected"]
 [connection signal="tile_selected" from="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Enemies/MarginContainer/GridContainer/Boos/BooBuddies" to="." method="on_tile_selected"]
 [connection signal="tile_selected" from="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Enemies/MarginContainer/GridContainer/Muncher" to="." method="on_tile_selected"]

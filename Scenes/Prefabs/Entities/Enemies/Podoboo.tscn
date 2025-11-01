@@ -54,7 +54,6 @@ shape = SubResource("RectangleShape2D_i2k1r")
 
 [node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
 rect = Rect2(-10, -9999, 20, 100000000)
-show_rect = false
 
 [node name="EditorPropertyExposer" type="Node" parent="."]
 script = ExtResource("6_31csk")
