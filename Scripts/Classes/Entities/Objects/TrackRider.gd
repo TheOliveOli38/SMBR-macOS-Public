@@ -6,6 +6,8 @@ extends Node2D
 @export_range(1, 8, 1) var speed := 2
 @export_enum("Forward", "Backward") var direction := 0
 
+@export var auto_move := true
+
 var velocity := Vector2.ZERO
 var last_position := Vector2.ZERO
 var direction_vector := Vector2i.ZERO
@@ -14,6 +16,8 @@ var current_track: Track = null
 var track_idx := -1
 var can_attach := true
 var travelling_on_rail := false
+
+var can_move := true
 
 func _ready() -> void:
 	start()
@@ -24,6 +28,8 @@ func _ready() -> void:
 func start() -> void:
 	current_track = null
 	track_idx = -1
+	if auto_move == false:
+		can_move = false
 
 func check_for_entities() -> void:
 	for i in $Hitbox.get_overlapping_bodies():
@@ -79,7 +85,7 @@ func check_for_rail() -> void:
 				track_idx = clamp(track_idx, 0, current_track.path.size() - 1)
 	if travelling_on_rail:
 		direction_vector = current_track.path[track_idx] * [1, -1][direction]
-		if current_track != null:
+		if current_track != null and can_move:
 			move_tween(Vector2(direction_vector))
 
 func move_tween(new_direction := Vector2.ZERO) -> void:

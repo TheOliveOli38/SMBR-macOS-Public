@@ -11,7 +11,7 @@ extends Node2D
 @export var has_floor := true
 var points := []
 
-var floor := 0.0
+var floor := -4.0
 
 @export var texture: Texture = null
 

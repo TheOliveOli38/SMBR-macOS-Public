@@ -18,7 +18,7 @@ var floor := 0.0
 
 func _ready() -> void:
 	$Enemy.add_collision_exception_with($Post)
-	$Timer.start()
+	$Enemy/Timer.start()
 
 func _physics_process(delta: float) -> void:
 	if can_move:
@@ -59,4 +59,8 @@ func lunge() -> void:
 	can_move = true
 	$Rope.has_floor = true
 	enemy.velocity.y = -100
-	$Timer.start()
+	$Enemy/Timer.start()
+
+func enemy_killed(_dir := 0) -> void:
+	set_physics_process(false)
+	$Rope.queue_free()

@@ -61,6 +61,7 @@ func dispense_item() -> void:
 		if get_parent().get_parent() is TrackRider:
 			parent = get_parent().get_parent().get_parent()
 		parent.add_child(node)
+		node.reset_physics_interpolation()
 		parent.move_child(node, get_index() - 1)
 		print("FUCK: " + str(item.resource_path))
 		if NO_SFX_ITEMS.has(item.resource_path) == false:

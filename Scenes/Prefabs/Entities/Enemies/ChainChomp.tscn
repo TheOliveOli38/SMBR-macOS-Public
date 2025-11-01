@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://cmu6ii610jyfx"]
+[gd_scene load_steps=24 format=3 uid="uid://cmu6ii610jyfx"]
 
 [ext_resource type="Script" uid="uid://bpydbpyjk1mt4" path="res://Scripts/Classes/Entities/Enemy.gd" id="1_50rwk"]
 [ext_resource type="Script" uid="uid://bpx2wod4fnuts" path="res://Scripts/Classes/Entities/Enemies/ChainChomp.gd" id="1_eahip"]
@@ -11,6 +11,12 @@
 [ext_resource type="JSON" path="res://Assets/Sprites/Enemies/ChainChompChain.json" id="6_xko1t"]
 [ext_resource type="Script" uid="uid://cbal8ms2oe1ik" path="res://Scripts/Classes/Components/ResourceSetterNew.gd" id="8_tts7t"]
 [ext_resource type="JSON" path="res://Assets/Sprites/Enemies/ChainChomp.json" id="9_xko1t"]
+[ext_resource type="Script" uid="uid://bbww34oiexbx2" path="res://Scripts/Classes/Components/ShellDetection.gd" id="12_yv2hs"]
+[ext_resource type="Script" uid="uid://dri2d5jtu0fbq" path="res://Scripts/Classes/Components/FireballDetection.gd" id="13_yygs4"]
+[ext_resource type="Script" uid="uid://chj8hu207lrh" path="res://Scripts/Classes/Components/EnemyPlayerDetection.gd" id="14_bokto"]
+[ext_resource type="Script" uid="uid://c3gg32ivrlq8n" path="res://Scripts/Classes/Components/GibSpawner.gd" id="15_yygs4"]
+[ext_resource type="Script" uid="uid://dq860i312isk" path="res://Scripts/Classes/Components/IcicleDetection.gd" id="16_11y13"]
+[ext_resource type="Script" uid="uid://ba18grqjixded" path="res://Scripts/Classes/Components/ExplosionDetection.gd" id="17_7dmm8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_48u40"]
 size = Vector2(16, 16)
@@ -40,10 +46,14 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_eahip"]
 size = Vector2(10, 10)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_11y13"]
+size = Vector2(10, 10)
+
 [node name="ChainChomp" type="Node2D"]
 script = ExtResource("1_eahip")
 
 [node name="Post" type="StaticBody2D" parent="."]
+z_index = -1
 position = Vector2(0, -8)
 collision_layer = 2
 collision_mask = 0
@@ -67,7 +77,7 @@ metadata/_custom_type_script = "uid://cbal8ms2oe1ik"
 script = ExtResource("5_48u40")
 left = NodePath("../Post")
 right = NodePath("../Enemy")
-length = 48
+length = 24
 texture = ExtResource("6_eahip")
 
 [node name="ResourceSetterNew" type="Node" parent="Rope" node_paths=PackedStringArray("node_to_affect")]
@@ -79,7 +89,7 @@ resource_json = ExtResource("6_xko1t")
 metadata/_custom_type_script = "uid://cbal8ms2oe1ik"
 
 [node name="Enemy" type="CharacterBody2D" parent="."]
-position = Vector2(19, -13)
+position = Vector2(0, -8)
 collision_layer = 16
 collision_mask = 18
 script = ExtResource("1_50rwk")
@@ -106,8 +116,54 @@ metadata/_custom_type_script = "uid://cbal8ms2oe1ik"
 position = Vector2(0, 3)
 shape = SubResource("RectangleShape2D_eahip")
 
-[node name="Timer" type="Timer" parent="."]
+[node name="Hitbox" type="Area2D" parent="Enemy"]
+
+[node name="Shape" type="CollisionShape2D" parent="Enemy/Hitbox"]
+position = Vector2(0, 1)
+shape = SubResource("RectangleShape2D_11y13")
+
+[node name="ShellDetection" type="Node" parent="Enemy" node_paths=PackedStringArray("hitbox")]
+script = ExtResource("12_yv2hs")
+hitbox = NodePath("../Hitbox")
+metadata/_custom_type_script = "uid://bbww34oiexbx2"
+
+[node name="FireballDetection" type="Node" parent="Enemy" node_paths=PackedStringArray("hitbox")]
+script = ExtResource("13_yygs4")
+hitbox = NodePath("../Hitbox")
+play_sfx_on_hit = true
+metadata/_custom_type_script = "uid://dri2d5jtu0fbq"
+
+[node name="EnemyPlayerDetection" type="Node" parent="Enemy" node_paths=PackedStringArray("hitbox")]
+script = ExtResource("14_bokto")
+hitbox = NodePath("../Hitbox")
+metadata/_custom_type_script = "uid://chj8hu207lrh"
+
+[node name="Timer" type="Timer" parent="Enemy"]
 wait_time = 3.0
 one_shot = true
 
-[connection signal="timeout" from="Timer" to="." method="lunge"]
+[node name="GibSpawner" type="Node" parent="Enemy" node_paths=PackedStringArray("visuals")]
+script = ExtResource("15_yygs4")
+visuals = NodePath("../Sprite")
+metadata/_custom_type_script = "uid://c3gg32ivrlq8n"
+
+[node name="IcicleDetection" type="Node" parent="Enemy" node_paths=PackedStringArray("hitbox")]
+script = ExtResource("16_11y13")
+hitbox = NodePath("../Hitbox")
+metadata/_custom_type_script = "uid://dq860i312isk"
+
+[node name="ExplosionDetection" type="Node" parent="Enemy" node_paths=PackedStringArray("hitbox")]
+script = ExtResource("17_7dmm8")
+hitbox = NodePath("../Hitbox")
+metadata/_custom_type_script = "uid://ba18grqjixded"
+
+[connection signal="killed" from="Enemy" to="." method="enemy_killed"]
+[connection signal="killed" from="Enemy" to="Enemy/GibSpawner" method="summon_gib"]
+[connection signal="moving_shell_entered" from="Enemy/ShellDetection" to="Enemy" method="die_from_object"]
+[connection signal="hammer_player_hit" from="Enemy/EnemyPlayerDetection" to="Enemy" method="die_from_hammer"]
+[connection signal="invincible_player_hit" from="Enemy/EnemyPlayerDetection" to="Enemy" method="die_from_object"]
+[connection signal="player_hit" from="Enemy/EnemyPlayerDetection" to="Enemy" method="damage_player"]
+[connection signal="player_stomped_on" from="Enemy/EnemyPlayerDetection" to="Enemy" method="damage_player"]
+[connection signal="timeout" from="Enemy/Timer" to="." method="lunge"]
+[connection signal="icicle_detected" from="Enemy/IcicleDetection" to="Enemy" method="die_from_object"]
+[connection signal="explosion_entered" from="Enemy/ExplosionDetection" to="Enemy" method="die_from_object"]
