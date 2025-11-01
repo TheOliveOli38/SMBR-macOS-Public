@@ -27,7 +27,7 @@ unicode = 100
 [sub_resource type="Shortcut" id="Shortcut_3k2al"]
 events = [SubResource("InputEventKey_saph6")]
 
-[sub_resource type="SVGTexture" id="SVGTexture_nkf6h"]
+[sub_resource type="DPITexture" id="DPITexture_nkf6h"]
 _source = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\"><path fill=\"#ff5d5d\" d=\"M2 1v8.586l1.293-1.293a1 1 0 0 1 1.414 0L7 10.587l2.293-2.293a1 1 0 0 1 1.414 0L13 10.586l1-1V6H9V1H2zm8 0v4h4zm-6 9.414-2 2V15h12v-2.586l-.293.293a1 1 0 0 1-1.414 0L10 10.414l-2.293 2.293a1 1 0 0 1-1.414 0L4 10.414z\"/></svg>
 "
 
@@ -106,7 +106,7 @@ toggle_mode = true
 button_pressed = true
 button_group = SubResource("ButtonGroup_aon7c")
 shortcut = SubResource("Shortcut_3k2al")
-icon = SubResource("SVGTexture_nkf6h")
+icon = SubResource("DPITexture_nkf6h")
 flat = true
 
 [node name="Line" type="Button" parent="VBox/Toolbar"]
@@ -115,7 +115,7 @@ tooltip_text = "Draw line"
 toggle_mode = true
 button_group = SubResource("ButtonGroup_aon7c")
 shortcut = SubResource("Shortcut_wc6bu")
-icon = SubResource("SVGTexture_nkf6h")
+icon = SubResource("DPITexture_nkf6h")
 flat = true
 
 [node name="Rectangle" type="Button" parent="VBox/Toolbar"]
@@ -124,7 +124,7 @@ tooltip_text = "Fill a rectangle of terrain"
 toggle_mode = true
 button_group = SubResource("ButtonGroup_aon7c")
 shortcut = SubResource("Shortcut_tcjet")
-icon = SubResource("SVGTexture_nkf6h")
+icon = SubResource("DPITexture_nkf6h")
 flat = true
 
 [node name="Fill" type="Button" parent="VBox/Toolbar"]
@@ -133,7 +133,7 @@ tooltip_text = "Bucket fill terrain"
 toggle_mode = true
 button_group = SubResource("ButtonGroup_aon7c")
 shortcut = SubResource("Shortcut_46fac")
-icon = SubResource("SVGTexture_nkf6h")
+icon = SubResource("DPITexture_nkf6h")
 flat = true
 
 [node name="Replace" type="Button" parent="VBox/Toolbar"]
@@ -151,7 +151,7 @@ layout_mode = 2
 tooltip_text = "Select"
 toggle_mode = true
 button_group = SubResource("ButtonGroup_3wrxn")
-icon = SubResource("SVGTexture_nkf6h")
+icon = SubResource("DPITexture_nkf6h")
 flat = true
 
 [node name="PaintType" type="Button" parent="VBox/Toolbar"]
@@ -223,7 +223,6 @@ layout_mode = 2
 
 [node name="Sources" type="PopupMenu" parent="VBox/Toolbar/Sources"]
 auto_translate_mode = 2
-auto_translate = false
 hide_on_item_selection = false
 hide_on_checkable_item_selection = false
 
@@ -249,27 +248,27 @@ layout_mode = 2
 [node name="LayerUp" type="Button" parent="VBox/Toolbar"]
 layout_mode = 2
 tooltip_text = "Select previous layer"
-icon = SubResource("SVGTexture_nkf6h")
+icon = SubResource("DPITexture_nkf6h")
 flat = true
 
 [node name="LayerDown" type="Button" parent="VBox/Toolbar"]
 layout_mode = 2
 tooltip_text = "Select next layer"
-icon = SubResource("SVGTexture_nkf6h")
+icon = SubResource("DPITexture_nkf6h")
 flat = true
 
 [node name="LayerHighlight" type="Button" parent="VBox/Toolbar"]
 layout_mode = 2
 tooltip_text = "Highlight selected layer"
 toggle_mode = true
-icon = SubResource("SVGTexture_nkf6h")
+icon = SubResource("DPITexture_nkf6h")
 flat = true
 
 [node name="LayerGrid" type="Button" parent="VBox/Toolbar"]
 layout_mode = 2
 tooltip_text = "Toggle grid visibility"
 toggle_mode = true
-icon = SubResource("SVGTexture_nkf6h")
+icon = SubResource("DPITexture_nkf6h")
 flat = true
 
 [node name="HSplit" type="HSplitContainer" parent="VBox"]
@@ -301,7 +300,7 @@ layout_mode = 2
 layout_mode = 2
 tooltip_text = "Toggle grid view"
 toggle_mode = true
-icon = SubResource("SVGTexture_nkf6h")
+icon = SubResource("DPITexture_nkf6h")
 flat = true
 
 [node name="QuickMode" type="Button" parent="VBox/HSplit/Terrains/LowerToolbar"]
@@ -309,7 +308,7 @@ auto_translate_mode = 1
 layout_mode = 2
 tooltip_text = "Toggle quick mode. Only shows paintable terrain types."
 toggle_mode = true
-icon = SubResource("SVGTexture_nkf6h")
+icon = SubResource("DPITexture_nkf6h")
 flat = true
 
 [node name="VSeparator" type="VSeparator" parent="VBox/HSplit/Terrains/LowerToolbar"]
@@ -323,38 +322,38 @@ alignment = 2
 [node name="AddTerrain" type="Button" parent="VBox/HSplit/Terrains/LowerToolbar/EditTools"]
 layout_mode = 2
 tooltip_text = "Add terrain type"
-icon = SubResource("SVGTexture_nkf6h")
+icon = SubResource("DPITexture_nkf6h")
 flat = true
 
 [node name="EditTerrain" type="Button" parent="VBox/HSplit/Terrains/LowerToolbar/EditTools"]
 layout_mode = 2
 tooltip_text = "Edit terrain type"
-icon = SubResource("SVGTexture_nkf6h")
+icon = SubResource("DPITexture_nkf6h")
 flat = true
 
 [node name="PickIcon" type="Button" parent="VBox/HSplit/Terrains/LowerToolbar/EditTools"]
 layout_mode = 2
 tooltip_text = "Pick terrain icon from tileset"
 toggle_mode = true
-icon = SubResource("SVGTexture_nkf6h")
+icon = SubResource("DPITexture_nkf6h")
 flat = true
 
 [node name="MoveUp" type="Button" parent="VBox/HSplit/Terrains/LowerToolbar/EditTools"]
 layout_mode = 2
 tooltip_text = "Move selected terrain up"
-icon = SubResource("SVGTexture_nkf6h")
+icon = SubResource("DPITexture_nkf6h")
 flat = true
 
 [node name="MoveDown" type="Button" parent="VBox/HSplit/Terrains/LowerToolbar/EditTools"]
 layout_mode = 2
 tooltip_text = "Move selected terrain down"
-icon = SubResource("SVGTexture_nkf6h")
+icon = SubResource("DPITexture_nkf6h")
 flat = true
 
 [node name="RemoveTerrain" type="Button" parent="VBox/HSplit/Terrains/LowerToolbar/EditTools"]
 layout_mode = 2
 tooltip_text = "Remove selected terrain type(s)"
-icon = SubResource("SVGTexture_nkf6h")
+icon = SubResource("DPITexture_nkf6h")
 flat = true
 
 [node name="Panel" type="Panel" parent="VBox/HSplit"]

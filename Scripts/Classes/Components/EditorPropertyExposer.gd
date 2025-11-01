@@ -14,6 +14,9 @@ signal modifier_applied
 
 func _ready() -> void:
 	name = "EditorPropertyExposer"
+	get_entity_map()
+
+func get_entity_map() -> void:
 	if entity_map.is_empty():
 		entity_map = JSON.parse_string(FileAccess.open(EntityIDMapper.MAP_PATH, FileAccess.READ).get_as_text())
 
@@ -45,6 +48,7 @@ func get_string() -> String:
 	return string
 
 func apply_string(entity_string := "") -> void:
+	get_entity_map()
 	var idx := 2
 	var slice = entity_string.split(",")
 	for i in properties:
@@ -62,6 +66,10 @@ func apply_string(entity_string := "") -> void:
 			var scene = entity_map.get(value)
 			if scene != null:
 				owner.set(i, load(entity_map.get(value)[0]))
+			elif value != "!!":
+				print([value, entity_map.get(value)])
+				print(entity_map)
+				Global.log_error("error getting item! : " + i + str(value))
 		elif owner.get(i) is int:
 			var num = value
 			if value.length() > 1:

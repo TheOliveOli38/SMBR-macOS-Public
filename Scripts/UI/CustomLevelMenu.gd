@@ -22,11 +22,14 @@ func _ready() -> void:
 	Global.world_num = 1
 	Global.level_num = 1
 	Global.reset_values()
+	Global.clear_saved_values()
 	Checkpoint.sublevel_id = 0
 	Global.current_campaign = "SMB1"
 	AudioManager.stop_all_music()
 	Global.second_quest = false
 	%LevelList.open(true)
+	for i in 5:
+		NewLevelBuilder.sub_levels[i] = null
 	await get_tree().process_frame
 	if last_played_container != null:
 		print(saved_search_values)

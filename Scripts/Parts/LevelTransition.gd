@@ -40,6 +40,7 @@ func _ready() -> void:
 	Level.in_vine_level = false
 	Global.p_switch_active = false
 	Lakitu.present = false
+	Door.exiting_door_id = -1
 	Global.p_switch_timer = -1
 	if Checkpoint.passed_checkpoints.is_empty() == false:
 		Door.unlocked_doors = Checkpoint.unlocked_doors.duplicate()
@@ -60,7 +61,6 @@ func _ready() -> void:
 		SpeedrunHandler.timer = 0
 	get_tree().call_group("PlayerGhosts", "delete")
 	get_tree().paused = false
-	$Timer.start()
 	AudioManager.stop_music_override(AudioManager.MUSIC_OVERRIDES.NONE, true)
 	AudioManager.music_player.stop()
 	PipeArea.exiting_pipe_id = -1
@@ -96,7 +96,25 @@ func _ready() -> void:
 		%CustomLevelName.text = LevelEditor.level_name
 		
 	await get_tree().create_timer(0.1, false).timeout
+	if Global.current_game_mode != Global.GameMode.CUSTOM_LEVEL:
+		can_transition = true
+		$Timer.start()
+	else:
+		if NewLevelBuilder.sub_levels == [null, null, null, null, null]:
+			Global.clear_saved_values()
+			Global.reset_values()
+			wait_for_build_completion()
+			%Loading.show()
+			await get_tree().create_timer(0.1, false).timeout
+			NewLevelBuilder.load_level(LevelEditor.level_file)
+		else:
+			await get_tree().create_timer(0.1, false).timeout
+			can_transition = true
+
+func wait_for_build_completion() -> void:
+	await NewLevelBuilder.level_building_complete
 	can_transition = true
+	%Loading.hide()
 
 func handle_challenge_mode_transition() -> void:
 	$BG/Control/LivesCount.hide()
@@ -124,8 +142,10 @@ func transition() -> void:
 			Global.transition_to_scene(PIPE_CUTSCENE_OVERRIDE[Global.current_campaign][[Global.world_num, Global.level_num]])
 		else:
 			Global.transition_to_scene("res://Scenes/Levels/PipeCutscene.tscn")
-	else:
+	elif Global.current_game_mode != Global.GameMode.CUSTOM_LEVEL:
 		Global.transition_to_scene(level_to_transition_to)
+	else:
+		Global.transition_to_scene(NewLevelBuilder.sub_levels[Checkpoint.sublevel_id])
 
 func show_best_time() -> void:
 	var best_time = SpeedrunHandler.best_time

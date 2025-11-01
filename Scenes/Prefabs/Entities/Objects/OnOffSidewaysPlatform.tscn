@@ -31,7 +31,6 @@ script = ExtResource("4_mdd6r")
 metadata/_custom_type_script = "uid://364rywt44hy6"
 
 [node name="Collision" parent="AnimatableBody2D" index="1"]
-visible = true
 shape = SubResource("RectangleShape2D_mdd6r")
 
 [node name="LevelEditorVisibleNode" parent="." index="2"]

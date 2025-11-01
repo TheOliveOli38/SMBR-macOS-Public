@@ -15,7 +15,6 @@ offset_right = 12.0
 texture = ExtResource("2_f01e0")
 
 [node name="Collision" parent="." index="1"]
-position = Vector2(0, 4)
 shape = SubResource("RectangleShape2D_f01e0")
 
 [node name="SecondQuestReplacer" parent="." index="2"]

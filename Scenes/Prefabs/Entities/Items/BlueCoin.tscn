@@ -19,5 +19,3 @@ resource_json = ExtResource("2_r2p65")
 
 [node name="PSwitcher" parent="." index="4"]
 new_scene = "uid://rjs2k335jmb5"
-
-[connection signal="area_entered" from="Hitbox" to="." method="area_entered"]

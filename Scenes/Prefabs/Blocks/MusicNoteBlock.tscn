@@ -63,7 +63,7 @@ script = SubResource("GDScript_lw6l2")
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." index="7"]
 
-[node name="TrackJoint" type="Node" parent="." index="8"]
+[node name="TrackJoint2" type="Node" parent="." index="8"]
 script = ExtResource("6_gpide")
 offset = Vector2(0, 0)
 metadata/_custom_type_script = "uid://d4a7yp6e55u8t"

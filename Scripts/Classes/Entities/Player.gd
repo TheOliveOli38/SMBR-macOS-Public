@@ -238,8 +238,10 @@ func _ready() -> void:
 	handle_power_up_states(0)
 	set_power_state_frame()
 	handle_invincible_palette()
-	if Global.level_editor == null:
+	if [Global.GameMode.LEVEL_EDITOR, Global.GameMode.CUSTOM_LEVEL].has(Global.current_game_mode):
 		recenter_camera()
+	if Global.current_game_mode == Global.GameMode.CUSTOM_LEVEL:
+		editor_level_start()
 
 func apply_character_physics(apply: bool) -> void:
 	var path = "res://Assets/Sprites/Players/" + character + "/CharacterInfo.json"
@@ -832,7 +834,7 @@ func enter_pipe(pipe: PipeArea, warp_to_level := true) -> void:
 		await get_tree().create_timer(1, false).timeout
 		if Global.current_game_mode == Global.GameMode.LEVEL_EDITOR or Global.current_game_mode == Global.GameMode.CUSTOM_LEVEL:
 			LevelEditor.play_pipe_transition = true
-			owner.transition_to_sublevel(pipe.target_sub_level)
+			Global.transition_to_scene(NewLevelBuilder.sub_levels[pipe.target_sub_level])
 		else:
 			Global.transition_to_scene(pipe.target_level)
 

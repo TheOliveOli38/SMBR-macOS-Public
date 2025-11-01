@@ -1,11 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://ctw1isl6cmayh"]
+[gd_scene load_steps=8 format=3 uid="uid://ctw1isl6cmayh"]
 
 [ext_resource type="Script" uid="uid://d0tcqr0x101j" path="res://Scripts/UI/SelectableOptionLabel.gd" id="1_o5udk"]
 [ext_resource type="Texture2D" uid="uid://3p2l7rec0gh5" path="res://Assets/Sprites/UI/Cursor.png" id="2_o5udk"]
 [ext_resource type="Script" uid="uid://cbal8ms2oe1ik" path="res://Scripts/Classes/Components/ResourceSetterNew.gd" id="3_7ee3v"]
 [ext_resource type="JSON" path="res://Assets/Sprites/UI/Cursor.json" id="4_a8eby"]
 [ext_resource type="Script" uid="uid://co6tjg3w6qpd8" path="res://Scripts/Parts/LabelFontChanger.gd" id="5_7ee3v"]
-[ext_resource type="Resource" uid="uid://8dcuxbc3h2u2" path="res://Resources/ThemedResources/Font.tres" id="6_a8eby"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bg4p8"]
 
@@ -54,7 +53,6 @@ uppercase = true
 [node name="LabelFontChanger" type="Node" parent="." node_paths=PackedStringArray("labels")]
 script = ExtResource("5_7ee3v")
 labels = [NodePath("../Title"), NodePath("../Value")]
-resource = ExtResource("6_a8eby")
 metadata/_custom_type_script = "uid://co6tjg3w6qpd8"
 
 [connection signal="focus_entered" from="." to="." method="set_selected" binds= [true]]

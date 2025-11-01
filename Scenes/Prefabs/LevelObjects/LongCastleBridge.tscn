@@ -67,6 +67,3 @@ position = Vector2(-999, 0)
 [node name="CastleBridgeSegment13" parent="Bridge" index="15"]
 visible = false
 position = Vector2(-999, 0)
-
-[node name="Axe" parent="." index="1"]
-process_mode = 1

@@ -1,8 +1,9 @@
 [gd_scene load_steps=2 format=3 uid="uid://cpll5clcnemyj"]
 
-[ext_resource type="Script" path="res://addons/mod_tool/interface/hook_gen/hook_gen.gd" id="1_lrahv"]
+[ext_resource type="Script" uid="uid://j06uud1328hl" path="res://addons/mod_tool/interface/hook_gen/hook_gen.gd" id="1_lrahv"]
 
 [node name="HookGen" type="Window"]
+oversampling_override = 1.0
 title = "Mod Dev Tool"
 initial_position = 1
 size = Vector2i(640, 375)

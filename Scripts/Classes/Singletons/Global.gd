@@ -334,6 +334,7 @@ func reset_values() -> void:
 	Checkpoint.sublevel_id = 0
 	Global.total_deaths = 0
 	Door.unlocked_doors = []
+	Door.exiting_door_id = -1
 	Checkpoint.unlocked_doors = []
 	KeyItem.total_collected = 0
 	Checkpoint.keys_collected = 0
@@ -353,7 +354,7 @@ func clear_saved_values() -> void:
 	lives = 3
 	player_power_states = "0000"
 
-func transition_to_scene(scene_path := "") -> void:
+func transition_to_scene(scene_path = "") -> void:
 	Global.fade_transition = bool(Settings.file.visuals.transition_animation)
 	if transitioning_scene:
 		return
@@ -366,7 +367,10 @@ func transition_to_scene(scene_path := "") -> void:
 		%TransitionBlock.modulate.a = 1
 		$Transition.show()
 		await get_tree().create_timer(0.1, true).timeout
-	get_tree().change_scene_to_file(scene_path)
+	if scene_path is String:
+		get_tree().change_scene_to_file(scene_path)
+	elif scene_path is PackedScene:
+		get_tree().change_scene_to_packed(scene_path)
 	await get_tree().scene_changed
 	await get_tree().create_timer(0.15, true).timeout
 	if fade_transition:

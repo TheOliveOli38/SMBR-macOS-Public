@@ -175,12 +175,10 @@ physics_interpolation_mode = 2
 
 [node name="Flame" type="AnimatedSprite2D" parent="RotationJoint"]
 unique_name_in_owner = true
-visible = false
 position = Vector2(0, -32)
 sprite_frames = SubResource("SpriteFrames_8axu6")
-animation = &"Rise"
-frame = 5
-frame_progress = 1.0
+animation = &"Loop"
+frame_progress = 0.19739561
 
 [node name="ResourceSetterNew" type="Node" parent="RotationJoint/Flame" node_paths=PackedStringArray("node_to_affect")]
 script = ExtResource("3_fsldu")
@@ -243,6 +241,9 @@ script = ExtResource("10_oeevx")
 offset = Vector2(0, 0)
 disable_physics = false
 metadata/_custom_type_script = "uid://d4a7yp6e55u8t"
+
+[node name="OnScreen" type="VisibleOnScreenNotifier2D" parent="."]
+rect = Rect2(-64, -64, 128, 128)
 
 [connection signal="player_hit" from="RotationJoint/EnemyPlayerDetection" to="." method="damage_player"]
 [connection signal="player_stomped_on" from="RotationJoint/EnemyPlayerDetection" to="." method="damage_player"]

@@ -20,8 +20,8 @@ func _ready() -> void:
 	$Platform/ScoreNoteSpawner.owner = $Platform
 
 func _process(_delta: float) -> void:
-	if not dropped:
-		$Rope.size.y = platform.global_position.y - rope_top
+	if not dropped and is_instance_valid($Rope):
+		$Rope.size.y = $Platform.global_position.y - rope_top
 		$Rope.global_position.y = rope_top
 
 func _physics_process(delta: float) -> void:

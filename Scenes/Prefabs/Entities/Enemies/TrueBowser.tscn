@@ -13,5 +13,3 @@ resource_json = ExtResource("4_ryqkh")
 [node name="GibSpawner" parent="." index="8" node_paths=PackedStringArray("visuals")]
 visuals = NodePath("../SpriteScaleJoint/Sprite")
 gib_type = 1
-
-[connection signal="fireball_hit" from="FireballDetection" to="." method="fireball_hit" unbinds=1]

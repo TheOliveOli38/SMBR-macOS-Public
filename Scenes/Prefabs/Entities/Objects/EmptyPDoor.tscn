@@ -44,7 +44,7 @@ property_name = "sprite_frames"
 resource_json = ExtResource("3_7tad6")
 metadata/_custom_type_script = "uid://cbal8ms2oe1ik"
 
-[node name="PropertyExposer" type="Node" parent="."]
+[node name="EditorPropertyExposer" type="Node" parent="."]
 script = ExtResource("4_hj3mh")
 properties = ["door_id", "sublevel_id"]
 properties_force_selector = Dictionary[String, PackedScene]({

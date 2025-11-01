@@ -152,6 +152,7 @@ disabled = true
 [node name="CameraRightLimit" type="Node2D" parent="."]
 position = Vector2(128, -80)
 script = ExtResource("4_griru")
+set_on_load = false
 metadata/_custom_type_script = "uid://bdq0373j5n5o0"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CameraRightLimit"]
