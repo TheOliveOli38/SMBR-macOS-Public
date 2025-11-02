@@ -54,11 +54,13 @@ animations = [{
 radius = 8.0
 
 [node name="AngrySun" type="CharacterBody2D"]
+visibility_layer = 2
 script = ExtResource("1_b44wu")
 metadata/_custom_type_script = "uid://bpydbpyjk1mt4"
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
 unique_name_in_owner = true
+visibility_layer = 2
 sprite_frames = SubResource("SpriteFrames_cjcmn")
 animation = &"Charge"
 autoplay = "Idle"

@@ -41,6 +41,7 @@ func dispense_item() -> void:
 	DiscoLevel.combo_meter += combo_meter_amount
 	var item_to_dispense = player_mushroom_check(get_tree().get_first_node_in_group("Players"))
 	var node = item_to_dispense.instantiate()
+	node.set_meta("block_item", true)
 	if node is PowerUpItem or node.has_meta("is_item"):
 		for i in get_tree().get_nodes_in_group("Players"):
 			node.position = position + Vector2(0, -1)
