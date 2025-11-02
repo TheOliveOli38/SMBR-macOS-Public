@@ -8,7 +8,7 @@ func _ready() -> void:
 
 func fireball_entered(ball: Node2D) -> void:
 	ball.hit()
-	melt()
+	call_deferred("melt")
 
 func melt() -> void:
 	var node = melted_scene.instantiate()

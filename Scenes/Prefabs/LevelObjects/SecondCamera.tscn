@@ -1,0 +1,53 @@
+[gd_scene load_steps=7 format=3 uid="uid://b7l1or6o4absh"]
+
+[ext_resource type="Texture2D" uid="uid://ejdm7k30661p" path="res://Assets/Sprites/Editor/SecondCamera.png" id="1_54xm2"]
+[ext_resource type="Script" uid="uid://hs44d1hdb3uf" path="res://Scripts/Classes/Entities/Objects/SecondCamera.gd" id="1_gxl3e"]
+[ext_resource type="Script" uid="uid://b8vmbtoaaq5nc" path="res://Scripts/Parts/EditorToggleDetection.gd" id="2_1iuxi"]
+[ext_resource type="Script" uid="uid://d4a7yp6e55u8t" path="res://Scripts/Classes/Components/TrackJoint.gd" id="3_1iuxi"]
+[ext_resource type="Texture2D" uid="uid://5p3ab5rs3rfq" path="res://Assets/Sprites/Editor/ScreenBorder.png" id="5_1mpv3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_54xm2"]
+size = Vector2(24, 24)
+
+[node name="SecondCamera" type="AnimatableBody2D"]
+collision_layer = 32769
+sync_to_physics = false
+script = ExtResource("1_gxl3e")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+top_level = true
+process_callback = 0
+limit_left = -256
+limit_bottom = 32
+position_smoothing_speed = 8.0
+
+[node name="Sprite2D" type="Sprite2D" parent="Camera2D"]
+texture = ExtResource("1_54xm2")
+
+[node name="LevelEditorToggleDetection" type="Node" parent="."]
+script = ExtResource("2_1iuxi")
+metadata/_custom_type_script = "uid://b8vmbtoaaq5nc"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_54xm2")
+
+[node name="TrackJoint" type="Node" parent="."]
+script = ExtResource("3_1iuxi")
+offset = Vector2(0, 0)
+disable_physics = false
+metadata/_custom_type_script = "uid://d4a7yp6e55u8t"
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+offset_right = 24.0
+offset_bottom = 24.0
+texture = ExtResource("5_1mpv3")
+patch_margin_left = 2
+patch_margin_top = 2
+patch_margin_right = 2
+patch_margin_bottom = 2
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[connection signal="level_start" from="LevelEditorToggleDetection" to="." method="activate"]
+[connection signal="bounced" from="TrackJoint" to="TrackJoint" method="detach"]
+[connection signal="bounced" from="TrackJoint" to="." method="ended"]

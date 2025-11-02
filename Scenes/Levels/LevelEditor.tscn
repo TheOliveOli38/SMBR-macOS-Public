@@ -1,4 +1,4 @@
-[gd_scene load_steps=325 format=3 uid="uid://gbcmqonky63j"]
+[gd_scene load_steps=329 format=3 uid="uid://gbcmqonky63j"]
 
 [ext_resource type="Script" uid="uid://c2lnc7vnq3xth" path="res://Scripts/Classes/Editor/LevelEditor.gd" id="1_0qbyu"]
 [ext_resource type="PackedScene" uid="uid://bksxgpygrdjl7" path="res://Scenes/Prefabs/LevelBG.tscn" id="1_ujeu4"]
@@ -269,7 +269,9 @@
 [ext_resource type="JSON" path="res://Assets/Sprites/Items/BlueCoin.json" id="206_ofliq"]
 [ext_resource type="PackedScene" uid="uid://rjs2k335jmb5" path="res://Scenes/Prefabs/Entities/Items/BlueCoinInactive.tscn" id="207_2blp1"]
 [ext_resource type="JSON" path="res://Assets/Sprites/Tilesets/PDoors.json" id="207_sucb6"]
+[ext_resource type="Texture2D" uid="uid://ejdm7k30661p" path="res://Assets/Sprites/Editor/SecondCamera.png" id="208_ji0c6"]
 [ext_resource type="PackedScene" uid="uid://c4wvocqpy0w66" path="res://Scenes/Prefabs/Entities/Objects/EmptyPDoor.tscn" id="208_mbniv"]
+[ext_resource type="PackedScene" uid="uid://b7l1or6o4absh" path="res://Scenes/Prefabs/LevelObjects/SecondCamera.tscn" id="209_2h5td"]
 [ext_resource type="PackedScene" uid="uid://d25r3nxm3p463" path="res://Scenes/Prefabs/UI/EditorKeybindsView.tscn" id="209_dl3il"]
 [ext_resource type="PackedScene" uid="uid://ck0spcws71sg5" path="res://Scenes/Prefabs/Entities/Items/WingItem.tscn" id="210_kr3hc"]
 [ext_resource type="JSON" path="res://Assets/Sprites/Items/Hachisuke.json" id="211_fe6cg"]
@@ -281,6 +283,8 @@
 [ext_resource type="PackedScene" uid="uid://ny5glffi0suh" path="res://Scenes/Prefabs/Entities/Items/KeyItem.tscn" id="230_gk37f"]
 [ext_resource type="Script" uid="uid://codql1f5eca56" path="res://Scripts/Classes/Editor/OptionButtonThatIsntFuckingBlurry.gd" id="241_8au2b"]
 [ext_resource type="Script" uid="uid://dt2p68xl462v2" path="res://Scripts/Parts/TextShadowColourChanger.gd" id="249_mdu03"]
+[ext_resource type="JSON" path="res://Assets/Sprites/Items/SuperballFlower.json" id="254_75p8d"]
+[ext_resource type="PackedScene" uid="uid://ildroacg1kui" path="res://Scenes/Prefabs/Entities/Items/SuperballFlower.tscn" id="255_cc46g"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5mw2n"]
 atlas = ExtResource("12_i2jbr")
@@ -4405,6 +4409,15 @@ icon_region_override = Rect2(0, 0, 16, 16)
 entity_scene = ExtResource("135_q440o")
 tile_offset = Vector2i(-8, 0)
 
+[node name="SecondCamera" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Objects/MarginContainer/GridContainer" groups=["Selectors"] instance=ExtResource("8_wkmjk")]
+layout_mode = 2
+tile_name = "OBJ_CAMERA"
+type = 1
+icon_texture = ExtResource("208_ji0c6")
+icon_region_override = Rect2(0, 0, 16, 16)
+entity_scene = ExtResource("209_2h5td")
+tile_offset = Vector2i(8, 0)
+
 [node name="CastleBridge" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Objects/MarginContainer/GridContainer" groups=["Selectors"] instance=ExtResource("8_wkmjk")]
 layout_mode = 2
 tile_name = "OBJ_CASTLE_BRIDGE"
@@ -4754,8 +4767,16 @@ texture = ExtResource("22_3cjpb")
 expand_mode = 1
 stretch_mode = 3
 
-[node name="FireFlower" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Items/MarginContainer/GridContainer" groups=["Selectors"] instance=ExtResource("8_wkmjk")]
+[node name="Flowers" type="Control" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Items/MarginContainer/GridContainer"]
+custom_minimum_size = Vector2(16, 16)
 layout_mode = 2
+mouse_force_pass_scroll_events = false
+script = ExtResource("20_jc7xg")
+
+[node name="FireFlower" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Items/MarginContainer/GridContainer/Flowers" groups=["Selectors"] instance=ExtResource("8_wkmjk")]
+layout_mode = 0
+offset_right = 16.0
+offset_bottom = 16.0
 tile_name = "ITEM_FIRE_FLOWER"
 type = 1
 icon_texture = ExtResource("62_8a610")
@@ -4766,6 +4787,33 @@ metadata/can_note_store = false
 metadata/cannon_ammo = false
 metadata/can_lakitu_throw = false
 metadata/can_pipe_gen = false
+
+[node name="SuperballFlower" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Items/MarginContainer/GridContainer/Flowers" groups=["Selectors"] instance=ExtResource("8_wkmjk")]
+layout_mode = 0
+offset_right = 16.0
+offset_bottom = 16.0
+tile_name = "ITEM_SUPERBALL_FLOWER"
+type = 1
+icon_texture = ExtResource("254_75p8d")
+icon_region_override = Rect2(0, 0, 16, 16)
+entity_scene = ExtResource("255_cc46g")
+metadata/can_be_stored = true
+metadata/can_note_store = false
+metadata/cannon_ammo = false
+metadata/can_lakitu_throw = false
+metadata/can_pipe_gen = false
+
+[node name="TextureRect" type="TextureRect" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Items/MarginContainer/GridContainer/Flowers"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("22_3cjpb")
+expand_mode = 1
+stretch_mode = 3
 
 [node name="Coin" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Items/MarginContainer/GridContainer" groups=["Selectors"] instance=ExtResource("8_wkmjk")]
 layout_mode = 2

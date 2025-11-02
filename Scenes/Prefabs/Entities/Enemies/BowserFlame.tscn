@@ -55,6 +55,7 @@ resource_json = ExtResource("5_0e5kh")
 metadata/_custom_type_script = "uid://cbal8ms2oe1ik"
 
 [node name="Hitbox" type="Area2D" parent="."]
+collision_layer = 1025
 
 [node name="Shape" type="CollisionShape2D" parent="Hitbox"]
 shape = SubResource("RectangleShape2D_ohhuu")

@@ -1,0 +1,58 @@
+[gd_scene load_steps=8 format=3 uid="uid://ca2sgs2pk06hb"]
+
+[ext_resource type="Script" uid="uid://cbgvvngr0s1cc" path="res://Scripts/Classes/Entities/Items/SuperballProjectile.gd" id="1_e4hr8"]
+[ext_resource type="Script" uid="uid://cbal8ms2oe1ik" path="res://Scripts/Classes/Components/ResourceSetterNew.gd" id="2_tvbh4"]
+[ext_resource type="JSON" path="res://Assets/Sprites/Items/SuperballProjectile.json" id="3_e4hr8"]
+[ext_resource type="Texture2D" uid="uid://bcoolcay4n53n" path="res://Assets/Sprites/Particles/SuperballTrail.png" id="4_tvbh4"]
+
+[sub_resource type="Gradient" id="Gradient_n5h2d"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ajyso"]
+size = Vector2(8, 8)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_dhdpv"]
+radius = 8.0
+
+[node name="Superball" type="CharacterBody2D"]
+collision_layer = 0
+collision_mask = 2
+slide_on_ceiling = false
+script = ExtResource("1_e4hr8")
+MOVE_SPEED = 150
+
+[node name="Sprite" type="AnimatedSprite2D" parent="."]
+z_index = 2
+
+[node name="Trail" type="CPUParticles2D" parent="Sprite"]
+show_behind_parent = true
+texture = ExtResource("4_tvbh4")
+lifetime = 0.25
+gravity = Vector2(0, 0)
+color_ramp = SubResource("Gradient_n5h2d")
+
+[node name="ResourceSetter" type="Node" parent="Sprite" node_paths=PackedStringArray("node_to_affect")]
+script = ExtResource("2_tvbh4")
+node_to_affect = NodePath("..")
+property_name = "sprite_frames"
+resource_json = ExtResource("3_e4hr8")
+metadata/_custom_type_script = "uid://cbal8ms2oe1ik"
+
+[node name="Collision" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_ajyso")
+
+[node name="Hitbox" type="Area2D" parent="."]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+shape = SubResource("CircleShape2D_dhdpv")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+autostart = true
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="queue_free"]
+[connection signal="timeout" from="Timer" to="." method="summon_explosion"]

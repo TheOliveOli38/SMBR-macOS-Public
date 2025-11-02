@@ -96,7 +96,7 @@ var is_posing := false
 
 const COMBO_VALS := [100, 200, 400, 500, 800, 1000, 2000, 4000, 5000, 8000, null]
 
-@export_enum("Small", "Big", "Fire") var starting_power_state := 0
+@export_enum("Small", "Big", "Fire", "Superball") var starting_power_state := 0
 @onready var state_machine: StateMachine = $States
 @onready var normal_state: Node = $States/Normal
 @export var auto_death_pit := true
@@ -124,7 +124,7 @@ var can_uncrouch := false
 var can_air_turn := false
 
 static var CHARACTERS := ["Mario", "Luigi", "Toad", "Toadette"]
-const POWER_STATES := ["Small", "Big", "Fire"]
+const POWER_STATES := ["Small", "Big", "Fire", "Superball"]
 
 signal moved
 signal dead
@@ -238,8 +238,7 @@ func _ready() -> void:
 	handle_power_up_states(0)
 	set_power_state_frame()
 	handle_invincible_palette()
-	if [Global.GameMode.LEVEL_EDITOR, Global.GameMode.CUSTOM_LEVEL].has(Global.current_game_mode):
-		recenter_camera()
+	recenter_camera()
 	if Global.current_game_mode == Global.GameMode.CUSTOM_LEVEL:
 		editor_level_start()
 

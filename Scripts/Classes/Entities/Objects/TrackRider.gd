@@ -98,6 +98,7 @@ func move_tween(new_direction := Vector2.ZERO) -> void:
 	if track_idx >= current_track.length and direction == 0:
 		track_idx = current_track.length - 1
 		if current_track.end_point == 0:
+			bounce()
 			direction = 1
 		else:
 			detach_from_rail()
@@ -105,11 +106,16 @@ func move_tween(new_direction := Vector2.ZERO) -> void:
 	if track_idx < 0 and direction == 1:
 		track_idx = 0
 		if current_track.start_point == 0:
+			bounce()
 			direction = 0
 		else:
 			detach_from_rail()
 			return
 	check_for_rail()
+
+func bounce() -> void:
+	var joint = attached_entity.get_node("TrackJoint")
+	joint.bounced.emit()
 
 func detach_from_rail() -> void:
 	can_attach = false

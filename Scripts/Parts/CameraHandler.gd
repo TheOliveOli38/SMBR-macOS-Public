@@ -41,7 +41,6 @@ func _physics_process(delta: float) -> void:
 	last_position = global_position
 
 func handle_camera(delta: float) -> void:
-	
 	can_scroll_left = camera_position.x + camera_offset.x > -255
 	can_scroll_right = camera_position.x + camera_offset.x < camera_right_limit - 1
 	

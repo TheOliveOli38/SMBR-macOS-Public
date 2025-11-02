@@ -13,15 +13,14 @@ signal podoboo_hit(podoboo: Node2D)
 
 func _ready() -> void:
 	if hitbox != null:
-		hitbox = hitbox.duplicate()
-		await owner.ready
-		add_sibling(hitbox)
+		if owner.is_node_ready() == false:
+			await owner.ready
 		hitbox.area_entered.connect(area_entered)
-		hitbox.set_collision_mask_value(1, false)
 		hitbox.set_collision_mask_value(11, true)
 
 func area_entered(area: Area2D) -> void:
 	var node = area.owner
+	if area.get_collision_layer_value(11) == false: return
 	fiery_object_hit.emit(node)
 	if node is FireBall or node is PlantFireball:
 		fireball_hit.emit(node)

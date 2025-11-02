@@ -25,7 +25,7 @@ func _physics_process(delta: float) -> void:
 
 func handle_movement(delta: float) -> void:
 	target_player = get_tree().get_first_node_in_group("Players")
-	direction_vector = lerp(direction_vector, ((target_player.global_position + Vector2(0, -8)) - global_position), delta / 10).normalized()
+	direction_vector = lerp(direction_vector, ((target_player.global_position + Vector2(0, -8)) - global_position), delta / 15).normalized()
 	if abs(direction_vector.x) > 0:
 		direction = sign(direction_vector.x)
 	velocity = SPEED * direction_vector

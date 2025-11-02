@@ -45,5 +45,5 @@ script = ExtResource("6_5eljv")
 hitbox = NodePath("../Hitbox")
 
 [connection signal="area_entered" from="Hitbox" to="." method="area_entered"]
-[connection signal="fiery_object_hit" from="FireDetection" to="." method="melt" flags=6 unbinds=1]
+[connection signal="fiery_object_hit" from="FireDetection" to="." method="melt" flags=7 unbinds=1]
 [connection signal="fireball_hit" from="FireDetection" to="." method="fireball_entered" flags=6]

@@ -3,6 +3,8 @@ extends Node
 
 signal attached
 
+signal bounced
+
 @export var offset := Vector2(0, 8)
 @export var movement_node: Node = null
 @export var disable_physics := true

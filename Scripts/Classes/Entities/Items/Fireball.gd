@@ -8,7 +8,7 @@ var character := "Mario"
 var direction := 1
 const FIREBALL_EXPLOSION = preload("res://Scenes/Prefabs/Particles/FireballExplosion.tscn")
 
-const MOVE_SPEED := 220
+@export var MOVE_SPEED := 220
 
 func _physics_process(delta: float) -> void:
 	$Sprite.scale.x = direction
