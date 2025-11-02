@@ -42,7 +42,7 @@ animations = [{
 size = Vector2(12, 12)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qm5my"]
-size = Vector2(14, 14)
+size = Vector2(14, 15)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_eg68x"]
 animations = [{
@@ -94,8 +94,10 @@ shape = SubResource("RectangleShape2D_e62ic")
 
 [node name="Hitbox" type="Area2D" parent="."]
 position = Vector2(0, -8)
+collision_layer = 1025
 
 [node name="Shape" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(0, 0.5)
 shape = SubResource("RectangleShape2D_qm5my")
 
 [node name="EnemyPlayerDetection" type="Node" parent="." node_paths=PackedStringArray("hitbox")]

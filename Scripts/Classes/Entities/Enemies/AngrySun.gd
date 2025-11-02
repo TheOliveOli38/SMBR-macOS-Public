@@ -1,3 +1,4 @@
+class_name AngrySun
 extends Enemy
 
 enum States{IDLE, CHARGING, DIVING}

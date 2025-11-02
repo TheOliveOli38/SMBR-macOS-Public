@@ -1,3 +1,4 @@
+class_name Burner
 extends AnimatableBody2D
 
 @export_enum("Up", "Down", "Left", "Right") var direction := 0

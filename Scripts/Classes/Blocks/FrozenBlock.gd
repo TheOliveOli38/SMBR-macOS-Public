@@ -6,10 +6,9 @@ const SMOKE_PARTICLE = preload("uid://d08nv4qtfouv1")
 func _ready() -> void:
 	pass
 
-func area_entered(area: Area2D) -> void:
-	if area.owner is FireBall or area.owner is PlantFireball:
-		area.owner.hit()
-		melt()
+func fireball_entered(ball: Node2D) -> void:
+	ball.hit()
+	melt()
 
 func melt() -> void:
 	var node = melted_scene.instantiate()

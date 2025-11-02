@@ -513,6 +513,7 @@ locale/locale_filter_mode=1
 2d_physics/layer_8="Lava"
 2d_physics/layer_9="Poison"
 2d_physics/layer_10="Ice Physics"
+2d_physics/layer_11="Fire Objects"
 
 [physics]
 

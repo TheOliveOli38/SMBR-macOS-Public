@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://bk5iue67nh4f3"]
+[gd_scene load_steps=9 format=3 uid="uid://bk5iue67nh4f3"]
 
 [ext_resource type="Script" uid="uid://bbrnvyt4tpk6t" path="res://Scripts/Classes/Blocks/FrozenBlock.gd" id="1_d6n84"]
 [ext_resource type="Script" uid="uid://cbal8ms2oe1ik" path="res://Scripts/Classes/Components/ResourceSetterNew.gd" id="1_mkugf"]
 [ext_resource type="JSON" path="res://Assets/Sprites/Blocks/FrozenBrickBlock.json" id="2_d6n84"]
 [ext_resource type="PackedScene" uid="uid://dsa8lpl7n8ge0" path="res://Scenes/Prefabs/Blocks/BrickBlocks/BrickBlock.tscn" id="2_p4aqe"]
 [ext_resource type="Script" uid="uid://bul1nbd2in1gn" path="res://Scripts/Classes/Components/PSwitcher.gd" id="5_44co0"]
+[ext_resource type="Script" uid="uid://da45dj0tx6jfd" path="res://Scripts/Classes/Components/FireDetection.gd" id="6_5eljv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mkugf"]
 size = Vector2(16, 16)
@@ -39,4 +40,10 @@ script = ExtResource("5_44co0")
 new_scene = "uid://gwruwvbe6duy"
 metadata/_custom_type_script = "uid://bul1nbd2in1gn"
 
+[node name="FireDetection" type="Node" parent="." node_paths=PackedStringArray("hitbox")]
+script = ExtResource("6_5eljv")
+hitbox = NodePath("../Hitbox")
+
 [connection signal="area_entered" from="Hitbox" to="." method="area_entered"]
+[connection signal="fiery_object_hit" from="FireDetection" to="." method="melt" flags=6 unbinds=1]
+[connection signal="fireball_hit" from="FireDetection" to="." method="fireball_entered" flags=6]

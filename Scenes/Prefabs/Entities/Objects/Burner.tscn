@@ -175,6 +175,7 @@ physics_interpolation_mode = 2
 
 [node name="Flame" type="AnimatedSprite2D" parent="RotationJoint"]
 unique_name_in_owner = true
+visible = false
 position = Vector2(0, -32)
 sprite_frames = SubResource("SpriteFrames_8axu6")
 animation = &"Loop"
@@ -204,6 +205,7 @@ resource_json = ExtResource("5_w52fl")
 metadata/_custom_type_script = "uid://cbal8ms2oe1ik"
 
 [node name="Hitbox" type="Area2D" parent="RotationJoint"]
+collision_layer = 1025
 
 [node name="Shape" type="CollisionShape2D" parent="RotationJoint/Hitbox"]
 unique_name_in_owner = true

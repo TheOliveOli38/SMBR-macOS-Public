@@ -659,6 +659,14 @@ hitbox_size = "Big"
 damage_state = NodePath("../Big")
 metadata/_custom_type_script = "uid://c8xvkkv34fjr4"
 
+[node name="Superball" type="Node" parent="PowerStates" node_paths=PackedStringArray("damage_state")]
+script = ExtResource("6_7nbqp")
+state_name = "Superball"
+power_tier = 2
+hitbox_size = "Big"
+damage_state = NodePath("../Big")
+metadata/_custom_type_script = "uid://c8xvkkv34fjr4"
+
 [node name="Camera" type="Camera2D" parent="."]
 process_mode = 3
 top_level = true

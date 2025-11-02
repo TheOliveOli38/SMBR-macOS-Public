@@ -1,3 +1,4 @@
+class_name Podoboo
 extends Node2D
 
 var velocity := 5.0
