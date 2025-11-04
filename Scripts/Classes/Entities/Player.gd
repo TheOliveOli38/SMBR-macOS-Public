@@ -207,8 +207,11 @@ const ANIMATION_FALLBACKS := {
 	"RunJumpFall": "JumpFall",
 	"RunJumpBump": "JumpBump",
 	"SpringJump": "Jump",
+	"SpringJumpBump": "JumpBump",
 	"StarJump": "Jump",
 	"StarFall": "JumpFall",
+	"StarJumpFall": "StarFall", # SkyanUltra: Legacy fallback for >1.0.2.
+	"StarJumpBump": "JumpBump",
 
 	# --- Movement/Interaction States ---
 	"Walk": "Move",

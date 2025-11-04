@@ -215,14 +215,20 @@ func get_animation_name() -> String:
 	var pushing := player.input_direction != 0 and on_wall
 	var running := vel_x >= player.RUN_SPEED - 10
 
-	var anim_context := ""
-	if player.in_water:
-		anim_context = "Water"
-	elif has_flight:
-		anim_context = "Wing"
+	var state_context := ""
+	if player.in_water: state_context = "Water"
+	elif has_flight: state_context = "Wing"
 
 	var state = func(anim_name: String) -> String:
-		return anim_context + anim_name
+		return state_context + anim_name
+
+	var jump_context := ""
+	if player.has_spring_jumped: jump_context = "Spring"
+	elif player.is_invincible: jump_context = "Star"
+	elif run_jump: jump_context = "Run"
+	
+	var jump = func(anim_name: String) -> String:
+		return jump_context + anim_name
 
 	# --- Attack Animations ---
 	if player.attacking:
@@ -268,7 +274,7 @@ func get_animation_name() -> String:
 		if pushing and player.can_push_anim:
 			return state.call("Push")
 		if moving:
-			if anim_context != "":
+			if state_context != "":
 				return state.call("Move")
 			return "Run" if running else "Walk"
 		# Idle States
@@ -293,19 +299,11 @@ func get_animation_name() -> String:
 
 	if player.has_jumped:
 		if player.bumping and player.can_bump_jump_anim:
-			return "RunJumpBump" if run_jump else "JumpBump"
+			return jump.call("JumpBump")
 		if vel_y < 0:
-			if player.has_spring_jumped:
-				return "SpringJump"
-			if player.is_invincible:
-				return "StarJump"
-			return "RunJump" if run_jump else "Jump"
+			return jump.call("Jump")
 		else:
-			if player.has_spring_jumped and player.can_spring_fall_anim:
-				return "SpringFall"
-			if player.is_invincible:
-				return "StarFall"
-			return "RunJumpFall" if run_jump else "JumpFall"
+			return jump.call("JumpFall")
 	else:
 		# guzlad: Fixes characters with fall anims not playing them, but also prevents old characters without that anim not being accurate
 		if not player.sprite.sprite_frames.has_animation("Fall"):
