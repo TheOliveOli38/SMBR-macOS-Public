@@ -53,6 +53,7 @@ func grounded(delta: float) -> void:
 	player.jump_cancelled = false
 	if player.velocity.y >= 0:
 		player.has_jumped = false
+		player.has_spring_jumped = false
 	if Global.player_action_just_pressed("jump", player.player_id):
 		player.handle_water_detection()
 		if player.in_water or player.flight_meter > 0:
@@ -210,6 +211,7 @@ func get_animation_name() -> String:
 	var airborne := not on_floor
 	var has_flight := player.flight_meter > 0
 	var moving := vel_x >= 5 and not on_wall
+	var run_jump: bool = abs(player.velocity_x_jump_stored) >= player.RUN_SPEED - 10
 	var pushing := player.input_direction != 0 and on_wall
 	var running := vel_x >= player.RUN_SPEED - 10
 
@@ -219,7 +221,7 @@ func get_animation_name() -> String:
 	elif has_flight:
 		anim_context = "Wing"
 
-	var ctx = func(anim_name: String) -> String:
+	var state = func(anim_name: String) -> String:
 		return anim_context + anim_name
 
 	# --- Attack Animations ---
@@ -245,57 +247,62 @@ func get_animation_name() -> String:
 
 	# --- Kick Animation ---
 	if player.kicking and player.can_kick_anim:
-		return ctx.call("Kick")
+		return state.call("Kick")
 
 	# --- Crouch Animations ---
 	if player.crouching and not wall_pushing:
-		if player.bumping and player.can_bump_crouch:
+		if player.bumping and player.can_bump_crouch_anim:
 			return "CrouchBump"
 		if airborne:
 			return "CrouchFall" if vel_y >= 0 else "CrouchJump"
 		if moving:
-			return ctx.call("CrouchMove")
-		return ctx.call("Crouch")
-
+			return state.call("CrouchMove")
+		return state.call("Crouch")
+		
 	# --- Grounded Animations ---
 	if on_floor:
+		if player.spring_bouncing and player.can_spring_land_anim:
+			return "SpringLand"
 		if player.skidding:
 			return "Skid"
 		if pushing and player.can_push_anim:
-			return ctx.call("Push")
+			return state.call("Push")
 		if moving:
 			if anim_context != "":
-				return ctx.call("Move")
+				return state.call("Move")
 			return "Run" if running else "Walk"
 		# Idle States
 		if player.looking_up:
-			return ctx.call("LookUp")
-		return ctx.call("Idle")
+			return state.call("LookUp")
+		return state.call("Idle")
 
 	# --- Airborne Animations ---
 	if player.in_water:
 		if swim_up_meter > 0:
-			if player.bumping and player.can_bump_swim:
+			if player.bumping and player.can_bump_swim_anim:
 				return "SwimBump"
 			return "SwimUp"
 		return "SwimIdle"
 
 	if has_flight:
 		if swim_up_meter > 0:
-			if player.bumping and player.can_bump_fly:
+			if player.bumping and player.can_bump_fly_anim:
 				return "FlyBump"
 			return "FlyUp"
 		return "FlyIdle"
 
 	if player.has_jumped:
-		var run_jump: bool = abs(player.velocity_x_jump_stored) >= player.RUN_SPEED - 10
-		if player.bumping and player.can_bump_jump:
+		if player.bumping and player.can_bump_jump_anim:
 			return "RunJumpBump" if run_jump else "JumpBump"
 		if vel_y < 0:
+			if player.has_spring_jumped:
+				return "SpringJump"
 			if player.is_invincible:
 				return "StarJump"
 			return "RunJump" if run_jump else "Jump"
 		else:
+			if player.has_spring_jumped and player.can_spring_fall_anim:
+				return "SpringFall"
 			if player.is_invincible:
 				return "StarFall"
 			return "RunJumpFall" if run_jump else "JumpFall"

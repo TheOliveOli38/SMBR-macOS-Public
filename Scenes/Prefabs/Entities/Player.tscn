@@ -741,20 +741,20 @@ debug_color = Color(1, 0, 0, 0.419608)
 script = ExtResource("21_jl70t")
 offset = Vector2(0, -13)
 
-[node name="LavaPoisonDetect" type="Area2D" parent="."]
+[node name="LavaDetect" type="Area2D" parent="."]
 visible = false
 position = Vector2(0, -13)
 collision_layer = 0
-collision_mask = 384
+collision_mask = 128
 
-[node name="SmallShape" type="CollisionShape2D" parent="LavaPoisonDetect" groups=["SmallCollisions"]]
+[node name="SmallShape" type="CollisionShape2D" parent="LavaDetect" groups=["SmallCollisions"]]
 position = Vector2(0, 5.75)
 shape = SubResource("RectangleShape2D_uwhl4")
 debug_color = Color(1, 0, 0, 0.419608)
 script = ExtResource("21_jl70t")
 offset = Vector2(0, -14)
 
-[node name="BigShape" type="CollisionShape2D" parent="LavaPoisonDetect" groups=["BigCollisions"]]
+[node name="BigShape" type="CollisionShape2D" parent="LavaDetect" groups=["BigCollisions"]]
 position = Vector2(0, -1.25)
 shape = SubResource("RectangleShape2D_o70e0")
 disabled = true
@@ -762,7 +762,36 @@ debug_color = Color(1, 0, 0, 0.419608)
 script = ExtResource("21_jl70t")
 offset = Vector2(0, -14)
 
-[node name="FireShape" type="CollisionShape2D" parent="LavaPoisonDetect" groups=["FireCollisions"]]
+[node name="FireShape" type="CollisionShape2D" parent="LavaDetect" groups=["FireCollisions"]]
+position = Vector2(0, -1.25)
+shape = SubResource("RectangleShape2D_o70e0")
+disabled = true
+debug_color = Color(1, 0, 0, 0.419608)
+script = ExtResource("21_jl70t")
+offset = Vector2(0, -14)
+
+[node name="PoisonDetect" type="Area2D" parent="."]
+visible = false
+position = Vector2(0, -13)
+collision_layer = 0
+collision_mask = 256
+
+[node name="SmallShape" type="CollisionShape2D" parent="PoisonDetect" groups=["SmallCollisions"]]
+position = Vector2(0, 5.75)
+shape = SubResource("RectangleShape2D_uwhl4")
+debug_color = Color(1, 0, 0, 0.419608)
+script = ExtResource("21_jl70t")
+offset = Vector2(0, -14)
+
+[node name="BigShape" type="CollisionShape2D" parent="PoisonDetect" groups=["BigCollisions"]]
+position = Vector2(0, -1.25)
+shape = SubResource("RectangleShape2D_o70e0")
+disabled = true
+debug_color = Color(1, 0, 0, 0.419608)
+script = ExtResource("21_jl70t")
+offset = Vector2(0, -14)
+
+[node name="FireShape" type="CollisionShape2D" parent="PoisonDetect" groups=["FireCollisions"]]
 position = Vector2(0, -1.25)
 shape = SubResource("RectangleShape2D_o70e0")
 disabled = true
@@ -1197,6 +1226,7 @@ anim_speed_max = 1.0
 [connection signal="sprite_frames_changed" from="SpriteScaleJoint/Sprite" to="SpriteScaleJoint/Sprite" method="on_frame_changed"]
 [connection signal="area_entered" from="Hitbox" to="." method="on_area_entered"]
 [connection signal="area_exited" from="Hitbox" to="." method="on_area_exited"]
-[connection signal="body_entered" from="LavaPoisonDetect" to="." method="die" unbinds=1]
+[connection signal="body_entered" from="LavaDetect" to="." method="fire_die" unbinds=1]
+[connection signal="body_entered" from="PoisonDetect" to="." method="die" unbinds=1]
 [connection signal="timeout" from="StarTimer" to="." method="on_timeout"]
 [connection signal="timeout" from="HammerTimer" to="." method="on_hammer_timeout"]

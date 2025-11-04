@@ -36,13 +36,26 @@ var SWIM_HEIGHT := 100.0                # The strength of the player's swim, mea
 var SWIM_GRAVITY := 2.5                 # The player's gravity while swimming, measured in px/frame
 var MAX_SWIM_FALL_SPEED := 200.0        # The player's maximum fall speed while swimming, measured in px/sec
 
-var DEATH_COLLISION := false            # Determines whether the player will still collide with the level.
-var DEATH_HANG_TIMER := 0.5             # The amount of time the player will freeze in the air for during the death animation in seconds
-var DEATH_X_VELOCITY := 0               # The horizontal velocity the player gets sent at when dying, measured in ps/sec
-var DEATH_DECEL := 3.0                  # The player's deceleration during death, measured in px/frame
-var DEATH_JUMP_HEIGHT := 300.0          # The strength of the player's "jump" during the death animation, measured in px/sec
-var DEATH_FALL_GRAVITY := 11.0          # The player's gravity while falling during death, measured in px/frame
-var MAX_DEATH_FALL_SPEED := 280.0       # The player's maximum fall speed during death, measured in px/sec
+var DEATH_PARAMETERS := {               # SkyanUltra: Moved death parameters into a dictionary for easy future-proofing to allow for additional death types.
+	"": {
+		"collision": false,             # Determines whether the player will still collide with the level.
+		"hang_timer": 0.5,              # The amount of time the player will freeze in the air for during the death animation in seconds
+		"x_velocity": 0,                # The horizontal velocity the player gets sent at when dying, measured in px/sec
+		"decel": 3.0,                   # The player's deceleration during death, measured in px/frame
+		"jump_height": 300.0,           # The strength of the player's "jump" during the death animation, measured in px/sec
+		"fall_gravity": 11.0,           # The player's gravity while falling during death, measured in px/frame
+		"max_fall_speed": 280.0         # The player's maximum fall speed during death, measured in px/sec
+	},
+	"Fire": {
+		"collision": true,             # Determines whether the player will still collide with the level.
+		"hang_timer": 0.0,              # The amount of time the player will freeze in the air for during the death animation in seconds
+		"x_velocity": 0,                # The horizontal velocity the player gets sent at when dying, measured in px/sec
+		"decel": 3.0,                   # The player's deceleration during death, measured in px/frame
+		"jump_height": 300.0,           # The strength of the player's "jump" during the death animation, measured in px/sec
+		"fall_gravity": 11.0,           # The player's gravity while falling during death, measured in px/frame
+		"max_fall_speed": 280.0         # The player's maximum fall speed during death, measured in px/sec
+	}
+}
 #endregion
 
 var disable_rainbow_on_powerup := false # Determines whether or not the player will play the rainbow effect upon picking up a Fire Flower or equivalent power-up.
@@ -55,6 +68,7 @@ var can_break_bricks := []              # Determines which hitbox forms can brea
 @onready var score_note_spawner: ScoreNoteSpawner = $ScoreNoteSpawner
 
 var has_jumped := false
+var has_spring_jumped := false
 
 var direction := 1
 var input_direction := 0
@@ -86,16 +100,8 @@ var bumping := false
 var can_bump_sfx := true
 var just_landed := false
 var can_land_sfx := false
-var can_bump_jump = false
-var can_bump_crouch = false
-var can_bump_swim = false
-var can_bump_fly = false
-
-var can_big_grow = false
 
 var kicking = false
-var can_kick_anim = false
-var can_push_anim = false
 
 @export var player_id := 0
 const ONE_UP_NOTE = preload("uid://dopxwjj37gu0l")
@@ -108,9 +114,20 @@ var stomp_combo := 0
 
 var is_invincible := false
 var in_cutscene := false
-var can_pose := false
-var can_pose_castle := false
+
+var can_pose_anim := false
+var can_pose_castle_anim := false
 var is_posing := false
+
+var can_big_grow_anim = false
+var can_bump_jump_anim = false
+var can_bump_crouch_anim = false
+var can_bump_swim_anim = false
+var can_bump_fly_anim = false
+var can_kick_anim = false
+var can_push_anim = false
+var can_spring_land_anim = false
+var can_spring_fall_anim = false
 
 const COMBO_VALS := [100, 200, 400, 500, 800, 1000, 2000, 4000, 5000, 8000, null]
 
@@ -148,6 +165,7 @@ signal moved
 signal dead
 
 var is_dead := false
+var last_damage_source := ""
 
 static var CHARACTER_NAMES := ["CHAR_MARIO", "CHAR_LUIGI", "CHAR_TOAD", "CHAR_TOADETTE"]
 
@@ -188,6 +206,7 @@ const ANIMATION_FALLBACKS := {
 	"RunJump": "Jump",
 	"RunJumpFall": "JumpFall",
 	"RunJumpBump": "JumpBump",
+	"SpringJump": "Jump",
 	"StarJump": "Jump",
 	"StarFall": "JumpFall",
 
@@ -230,6 +249,11 @@ const ANIMATION_FALLBACKS := {
 	"DieMove": "DieIdle",
 	"DieRise": "DieFall",
 	"DieFall": "Die", # SkyanUltra: Legacy fallback for death animations in 1.0.2.
+	"FireDieFreeze": "DieFreeze",
+	"FireDieIdle": "DieIdle",
+	"FireDieMove": "DieMove",
+	"FireDieRise": "DieRise",
+	"FireDieFall": "DieFall",
 }
 #endregion
 
@@ -645,7 +669,8 @@ func handle_wing_flight(delta: float) -> void:
 	else:
 		%Wings.get_node("AnimationPlayer").play("RESET")
 
-func damage() -> void:
+func damage(type: String = "") -> void:
+	last_damage_source = type
 	if can_hurt == false or is_invincible:
 		return
 	times_hit += 1
@@ -693,9 +718,10 @@ func do_i_frames() -> void:
 	can_hurt = true
 	refresh_hitbox()
 
-func die(pit := false) -> void:
+func die(pit: bool = false, type: String = "") -> void:
 	if ["Dead", "Pipe", "LevelExit"].has(state_machine.state.name):
 		return
+	if type != "": last_damage_source = type
 	is_dead = true
 	visible = not pit
 	flight_meter = 0
@@ -718,6 +744,8 @@ func die(pit := false) -> void:
 		await get_tree().create_timer(5).timeout
 
 	death_load()
+
+func fire_die() -> void: die(false, "Fire")
 
 func death_load() -> void:
 	power_state = get_node("PowerStates/Small")
@@ -785,15 +813,17 @@ func set_power_state_frame() -> void:
 		$ResourceSetterNew.update_resource()
 	var frames = %Sprite.sprite_frames
 	if frames:
-		can_pose = frames.has_animation("PoseDoor")
-		can_pose_castle = can_pose or frames.has_animation("PoseToad") or frames.has_animation("PosePeach")
-		can_big_grow = frames.has_animation("BigGrow")
-		can_bump_jump = frames.has_animation("JumpBump")
-		can_bump_crouch = frames.has_animation("CrouchBump")
-		can_bump_swim = frames.has_animation("SwimBump")
-		can_bump_fly = frames.has_animation("FlyBump")
+		can_pose_anim = frames.has_animation("PoseDoor")
+		can_pose_castle_anim = can_pose_anim or frames.has_animation("PoseToad") or frames.has_animation("PosePeach")
+		can_big_grow_anim = frames.has_animation("BigGrow")
+		can_bump_jump_anim = frames.has_animation("JumpBump")
+		can_bump_crouch_anim = frames.has_animation("CrouchBump")
+		can_bump_swim_anim = frames.has_animation("SwimBump")
+		can_bump_fly_anim = frames.has_animation("FlyBump")
 		can_kick_anim = frames.has_animation("Kick")
 		can_push_anim = frames.has_animation("Push")
+		can_spring_land_anim = frames.has_animation("SpringLand")
+		can_spring_fall_anim = frames.has_animation("SpringFall")
 
 func get_power_up(power_name := "", give_points := true) -> void:
 	if is_dead:
@@ -842,7 +872,7 @@ func power_up_animation(new_power_state := "") -> void:
 
 	var anim_name := ""
 	if old_state.state_name != "Small" and new_power_state != "Small":
-		if can_big_grow: # SkyanUltra: Optional check for animations for going from Big to Fire-equivalent power states.
+		if can_big_grow_anim: # SkyanUltra: Optional check for animations for going from Big to Fire-equivalent power states.
 			anim_name = "BigShrink" if shrinking else "BigGrow"
 		else: anim_name = ""
 	else:

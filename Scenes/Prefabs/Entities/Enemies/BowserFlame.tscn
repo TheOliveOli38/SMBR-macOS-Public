@@ -34,6 +34,8 @@ size = Vector2(12, 4)
 
 [node name="BowserFlame" type="CharacterBody2D" groups=["Enemies"]]
 script = ExtResource("1_dq7qg")
+mode = null
+damage_type = "Fire"
 metadata/_custom_type_script = "uid://bpydbpyjk1mt4"
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]

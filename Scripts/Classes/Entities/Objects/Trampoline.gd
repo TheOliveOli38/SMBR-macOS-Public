@@ -28,6 +28,7 @@ func bounce_players() -> void:
 			player.velocity.y = bounce_height
 			player.gravity = player.JUMP_GRAVITY
 			player.has_jumped = true
+			player.has_spring_jumped = true
 		else:
 			player.velocity.y = -300
 	if high_bounce:

@@ -39,7 +39,7 @@ func do_jump() -> void:
 	can_jump = true
 
 func damage_player(player: Player) -> void:
-	player.damage()
+	player.damage("Fire")
 
 func calculate_jump_height() -> float:
 	global_position.y = BASE_LINE

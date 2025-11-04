@@ -32,8 +32,8 @@ func begin() -> void:
 func _physics_process(_delta: float) -> void:
 	var pose_type := "PosePeach" if play_end_music else "PoseToad"
 	for i: Player in get_tree().get_nodes_in_group("Players"):
-		if i.in_cutscene and i.can_pose_castle and i.is_actually_on_wall():
-			i.is_posing = true; i.can_pose_castle = false
+		if i.in_cutscene and i.can_pose_castle_anim and i.is_actually_on_wall():
+			i.is_posing = true; i.can_pose_castle_anim = false
 			i.play_animation(pose_type)
 
 func exit_level() -> void:
