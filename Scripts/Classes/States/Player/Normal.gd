@@ -99,7 +99,7 @@ func grounded(delta: float) -> void:
 func handle_ground_movement(delta: float) -> void:
 	if player.skidding:
 		ground_skid(delta)
-	elif (player.input_direction != player.velocity_direction) and player.input_direction != 0 and abs(player.velocity.x) > player.SKID_THRESHOLD and not player.crouching:
+	elif (player.input_direction != player.velocity_direction) and player.input_direction != 0 and abs(player.velocity.x) > player.physics_params("SKID_THRESHOLD") and not player.crouching:
 		print([player.input_direction, player.velocity_direction])
 		player.skidding = true
 	elif player.input_direction != 0 and not player.crouching:
@@ -108,26 +108,26 @@ func handle_ground_movement(delta: float) -> void:
 		deceleration(delta)
 
 func ground_acceleration(delta: float) -> void:
-	var target_move_speed := player.WALK_SPEED
+	var target_move_speed: float = player.physics_params("WALK_SPEED")
 	if player.in_water or player.flight_meter > 0:
-		target_move_speed = player.SWIM_GROUND_SPEED
-	var target_accel := player.GROUND_WALK_ACCEL
-	if (Global.player_action_pressed("run", player.player_id) and abs(player.velocity.x) >= player.WALK_SPEED) and (not player.in_water and player.flight_meter <= 0) and player.can_run:
-		target_move_speed = player.RUN_SPEED
-		target_accel = player.GROUND_RUN_ACCEL
+		target_move_speed = player.physics_params("SWIM_GROUND_SPEED")
+	var target_accel: float = player.physics_params("GROUND_WALK_ACCEL")
+	if (Global.player_action_pressed("run", player.player_id) and abs(player.velocity.x) >= player.physics_params("WALK_SPEED")) and (not player.in_water and player.flight_meter <= 0) and player.can_run:
+		target_move_speed = player.physics_params("RUN_SPEED")
+		target_accel = player.physics_params("GROUND_RUN_ACCEL")
 	if player.input_direction != player.velocity_direction:
 		if Global.player_action_pressed("run", player.player_id) and player.can_run:
-			target_accel = player.RUN_SKID
+			target_accel = player.physics_params("RUN_SKID")
 		else:
-			target_accel = player.WALK_SKID
+			target_accel = player.physics_params("WALK_SKID")
 	player.velocity.x = move_toward(player.velocity.x, target_move_speed * player.input_direction, (target_accel / delta) * delta)
 
 func deceleration(delta: float, airborne := false) -> void:
-	var decel_type = player.DECEL if not airborne else player.AIR_DECEL
+	var decel_type = player.physics_params("DECEL") if not airborne else player.physics_params("AIR_DECEL")
 	player.velocity.x = move_toward(player.velocity.x, 0, (decel_type / delta) * delta)
 
 func ground_skid(delta: float) -> void:
-	var target_skid := player.RUN_SKID
+	var target_skid: float = player.physics_params("RUN_SKID")
 	player.skid_frames += 1
 	player.velocity.x = move_toward(player.velocity.x, 1 * player.input_direction, (target_skid / delta) * delta)
 	if abs(player.velocity.x) < 10 or player.input_direction == player.velocity_direction or player.input_direction == 0:
@@ -153,17 +153,17 @@ func handle_air_movement(delta: float) -> void:
 	if Global.player_action_pressed("jump", player.player_id) == false and player.has_jumped and not player.jump_cancelled:
 		player.jump_cancelled = true
 		if sign(player.gravity_vector.y * player.velocity.y) < 0.0:
-			player.velocity.y /= player.JUMP_CANCEL_DIVIDE
-			player.gravity = player.FALL_GRAVITY
+			player.velocity.y /= player.physics_params("JUMP_CANCEL_DIVIDE")
+			player.gravity = player.physics_params("FALL_GRAVITY")
 
 func air_acceleration(delta: float) -> void:
-	var target_speed = player.WALK_SPEED
-	if abs(player.velocity.x) >= player.WALK_SPEED and Global.player_action_pressed("run", player.player_id) and player.can_run:
-		target_speed = player.RUN_SPEED
-	player.velocity.x = move_toward(player.velocity.x, target_speed * player.input_direction, (player.AIR_ACCEL / delta) * delta)
+	var target_speed = player.physics_params("WALK_SPEED")
+	if abs(player.velocity.x) >= player.physics_params("WALK_SPEED") and Global.player_action_pressed("run", player.player_id) and player.can_run:
+		target_speed = player.physics_params("RUN_SPEED")
+	player.velocity.x = move_toward(player.velocity.x, target_speed * player.input_direction, (player.physics_params("AIR_ACCEL") / delta) * delta)
 
 func air_skid(delta: float) -> void:
-	player.velocity.x = move_toward(player.velocity.x, 1 * player.input_direction, (player.AIR_SKID / delta) * delta)
+	player.velocity.x = move_toward(player.velocity.x, 1 * player.input_direction, (player.physics_params("AIR_SKID") / delta) * delta)
 
 func handle_swimming(delta: float) -> void:
 	bubble_meter += delta
@@ -180,18 +180,18 @@ func handle_swimming(delta: float) -> void:
 		deceleration(delta)
 
 func swim_acceleration(delta: float) -> void:
-	player.velocity.x = move_toward(player.velocity.x, player.SWIM_SPEED * player.input_direction, (player.GROUND_WALK_ACCEL / delta) * delta)
+	player.velocity.x = move_toward(player.velocity.x, player.physics_params("SWIM_SPEED") * player.input_direction, (player.physics_params("GROUND_WALK_ACCEL") / delta) * delta)
 
 func swim_up() -> void:
 	if player.swim_stroke:
 		player.play_animation("SwimIdle")
-	player.velocity.y = -player.SWIM_HEIGHT * player.gravity_vector.y
+	player.velocity.y = -player.physics_params("SWIM_HEIGHT") * player.gravity_vector.y
 	AudioManager.play_sfx("swim", player.global_position)
 	swim_up_meter = 0.5
 	player.crouching = false
 
 func handle_animations() -> void:
-	if (player.is_actually_on_floor() or player.in_water or player.flight_meter > 0 or player.can_air_turn) and player.input_direction != 0 and not player.crouching:
+	if (player.is_actually_on_floor() or player.in_water or player.flight_meter > 0 or player.physics_params("CAN_AIR_TURN")) and player.input_direction != 0 and not player.crouching:
 		player.direction = player.input_direction
 	var animation = get_animation_name()
 	player.sprite.speed_scale = 1
@@ -211,9 +211,9 @@ func get_animation_name() -> String:
 	var airborne := not on_floor
 	var has_flight := player.flight_meter > 0
 	var moving := vel_x >= 5 and not on_wall
-	var run_jump: bool = abs(player.velocity_x_jump_stored) >= player.RUN_SPEED - 10
 	var pushing := player.input_direction != 0 and on_wall
-	var running := vel_x >= player.RUN_SPEED - 10
+	var running: float = vel_x >= player.physics_params("RUN_SPEED") - 10
+	var run_jump: bool = abs(player.velocity_x_jump_stored) >= player.physics_params("RUN_SPEED") - 10
 
 	var state_context := ""
 	if player.in_water: state_context = "Water"

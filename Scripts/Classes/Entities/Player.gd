@@ -1,65 +1,86 @@
 class_name Player
 extends CharacterBody2D
 
-#region Physics properies, these can be changed within a custom character's CharacterInfo.json
-var JUMP_GRAVITY := 11.0                # The player's gravity while jumping, measured in px/frame
-var JUMP_HEIGHT := 300.0                # The strength of the player's jump, measured in px/sec
-var JUMP_INCR := 8.0                    # How much the player's X velocity affects their jump speed
-var JUMP_CANCEL_DIVIDE := 1.5           # When the player cancels their jump, their Y velocity gets divided by this value
-var JUMP_HOLD_SPEED_THRESHOLD := 0.0    # When the player's Y velocity goes past this value while jumping, their gravity switches to FALL_GRAVITY
+#region Intended modifiable properties, can be changed in a character's CharacterInfo.json
+# SkyanUltra: Moved physics/death parameters into their own dictionaries.
+# This makes it possible to modify character physics 
+var PHYSICS_PARAMETERS: Dictionary = {
+	"Default": { # Fallback parameters. Additional entries can be added through CharacterInfo.json.
+		"HITBOX_SCALE": [1.0, 1.0],       # The player's hitbox scale.
+		"CROUCH_SCALE": 0.5,              # The player's hitbox scale when crouched.
+		"CAN_AIR_TURN": false,            # Determines if the player can turn in mid-air.
+		"CAN_BREAK_BRICKS" : true,        # Determines if the player can break bricks in their current form.
+		
+		"JUMP_GRAVITY": 11.0,             # The player's gravity while jumping, measured in px/frame
+		"JUMP_HEIGHT": 300.0,             # The strength of the player's jump, measured in px/sec
+		"JUMP_INCR": 8.0,                 # How much the player's X velocity affects their jump speed
+		"JUMP_CANCEL_DIVIDE": 1.5,        # When the player cancels their jump, their Y velocity gets divided by this value
+		"JUMP_HOLD_SPEED_THRESHOLD": 0.0, # When the player's Y velocity goes past this value while jumping, their gravity switches to FALL_GRAVITY
 
-var BOUNCE_HEIGHT := 200.0              # The strength at which the player bounces off enemies, measured in px/sec 
-var BOUNCE_JUMP_HEIGHT := 300.0         # The strength at which the player bounces off enemies while holding jump, measured in px/sec 
+		"BOUNCE_HEIGHT": 200.0,           # The strength at which the player bounces off enemies, measured in px/sec 
+		"BOUNCE_JUMP_HEIGHT": 300.0,      # The strength at which the player bounces off enemies while holding jump, measured in px/sec 
 
-var FALL_GRAVITY := 25.0                # The player's gravity while falling, measured in px/frame
-var MAX_FALL_SPEED := 280.0             # The player's maximum fall speed, measured in px/sec
-var CEILING_BUMP_SPEED := 45.0          # The speed at which the player falls after hitting a ceiling, measured in px/sec
+		"FALL_GRAVITY": 25.0,             # The player's gravity while falling, measured in px/frame
+		"MAX_FALL_SPEED": 280.0,          # The player's maximum fall speed, measured in px/sec
+		"CEILING_BUMP_SPEED": 45.0,       # The speed at which the player falls after hitting a ceiling, measured in px/sec
 
-var WALK_SPEED := 96.0                  # The player's speed while walking, measured in px/sec
-var GROUND_WALK_ACCEL := 4.0            # The player's acceleration while walking, measured in px/frame
-var WALK_SKID := 8.0                    # The player's turning deceleration while running, measured in px/frame
+		"WALK_SPEED": 96.0,               # The player's speed while walking, measured in px/sec
+		"GROUND_WALK_ACCEL": 4.0,         # The player's acceleration while walking, measured in px/frame
+		"WALK_SKID": 8.0,                 # The player's turning deceleration while running, measured in px/frame
 
-var RUN_SPEED := 160.0                  # The player's speed while running, measured in px/sec
-var GROUND_RUN_ACCEL := 1.25            # The player's acceleration while running, measured in px/frame
-var RUN_SKID := 8.0                     # The player's turning deceleration while running, measured in px/frame
+		"RUN_SPEED": 160.0,               # The player's speed while running, measured in px/sec
+		"GROUND_RUN_ACCEL": 1.25,         # The player's acceleration while running, measured in px/frame
+		"RUN_SKID": 8.0,                  # The player's turning deceleration while running, measured in px/frame
 
-var SKID_THRESHOLD := 100.0             # The horizontal speed required, to be able to start skidding.
+		"SKID_THRESHOLD": 100.0,          # The horizontal speed required, to be able to start skidding.
 
-var DECEL := 3.0                        # The player's deceleration while no buttons are pressed, measured in px/frame
-var AIR_DECEL := 0.0                    # The player's airborne deceleration while no buttons are pressed, measured in px/frame
-var AIR_ACCEL := 3.0                    # The player's acceleration while in midair, measured in px/frame
-var AIR_SKID := 1.5                     # The player's turning deceleration while in midair, measured in px/frame
+		"DECEL": 3.0,                     # The player's deceleration while no buttons are pressed, measured in px/frame
+		"AIR_DECEL": 0.0,                 # The player's airborne deceleration while no buttons are pressed, measured in px/frame
+		"AIR_ACCEL": 3.0,                 # The player's acceleration while in midair, measured in px/frame
+		"AIR_SKID": 1.5,                  # The player's turning deceleration while in midair, measured in px/frame
 
-var SWIM_SPEED := 95.0                  # The player's horizontal speed while swimming, measured in px/sec
-var SWIM_GROUND_SPEED := 45.0           # The player's horizontal speed while grounded underwater, measured in px/sec
-var SWIM_HEIGHT := 100.0                # The strength of the player's swim, measured in px/sec
-var SWIM_GRAVITY := 2.5                 # The player's gravity while swimming, measured in px/frame
-var MAX_SWIM_FALL_SPEED := 200.0        # The player's maximum fall speed while swimming, measured in px/sec
-
-var DEATH_PARAMETERS := {               # SkyanUltra: Moved death parameters into a dictionary for easy future-proofing to allow for additional death types.
-	"": {
-		"collision": false,             # Determines whether the player will still collide with the level.
-		"hang_timer": 0.5,              # The amount of time the player will freeze in the air for during the death animation in seconds
-		"x_velocity": 0,                # The horizontal velocity the player gets sent at when dying, measured in px/sec
-		"decel": 3.0,                   # The player's deceleration during death, measured in px/frame
-		"jump_height": 300.0,           # The strength of the player's "jump" during the death animation, measured in px/sec
-		"fall_gravity": 11.0,           # The player's gravity while falling during death, measured in px/frame
-		"max_fall_speed": 280.0         # The player's maximum fall speed during death, measured in px/sec
+		"SWIM_SPEED": 95.0,               # The player's horizontal speed while swimming, measured in px/sec
+		"SWIM_GROUND_SPEED": 45.0,        # The player's horizontal speed while grounded underwater, measured in px/sec
+		"SWIM_HEIGHT": 100.0,             # The strength of the player's swim, measured in px/sec
+		"SWIM_GRAVITY": 2.5,              # The player's gravity while swimming, measured in px/frame
+		"MAX_SWIM_FALL_SPEED": 200.0,     # The player's maximum fall speed while swimming, measured in px/sec
 	},
-	"Fire": {
-		"collision": true,             # Determines whether the player will still collide with the level.
-		"hang_timer": 0.0,              # The amount of time the player will freeze in the air for during the death animation in seconds
-		"x_velocity": 0,                # The horizontal velocity the player gets sent at when dying, measured in px/sec
-		"decel": 3.0,                   # The player's deceleration during death, measured in px/frame
-		"jump_height": 300.0,           # The strength of the player's "jump" during the death animation, measured in px/sec
-		"fall_gravity": 11.0,           # The player's gravity while falling during death, measured in px/frame
-		"max_fall_speed": 280.0         # The player's maximum fall speed during death, measured in px/sec
-	}
+	"Small": {
+		"CROUCH_SCALE": 0.75,
+		"CAN_BREAK_BRICKS" : false,
+	},
+	"Big": {},
+	"Fire": {},
 }
+var DEATH_PARAMETERS: Dictionary = {
+	"Default": {
+		"COLLISION": false,               # Determines whether the player will still collide with the level.
+		"HANG_TIMER": 0.5,                # The amount of time the player will freeze in the air for during the death animation in seconds
+		"X_VELOCITY": 0,                  # The horizontal velocity the player gets sent at when dying, measured in px/sec
+		"DECEL": 3.0,                     # The player's deceleration during death, measured in px/frame
+		"JUMP_HEIGHT": 300.0,             # The strength of the player's "jump" during the death animation, measured in px/sec
+		"FALL_GRAVITY": 11.0,             # The player's gravity while falling during death, measured in px/frame
+		"MAX_FALL_SPEED": 280.0,          # The player's maximum fall speed during death, measured in px/sec
+	},
+	"Fire": {},
+}
+var COSMETIC_PARAMETERS: Dictionary = {
+	"Default": { # Fallback parameters. Additional entries can be added through CharacterInfo.json.
+		"WING_OFFSET": [0.0, 0.0],        # The visual offset of the wings which appear with the Wing power-up.
+		"HAMMER_OFFSET": [0.0, 0.0],      # The visual offset of the hammer which appears with the Hammer power-up.
+		"RAINBOW_POWERUP_FX": true,       # Determines whether or not the player will play the rainbow effect when powering up.
+		"GROUNDED_MOVE_SFX": true,        # Determines if walk/run sounds will only play when on the ground.
+	},
+	"Small": {
+		"WING_OFFSET": [0.0, 10.0],
+		"RAINBOW_POWERUP_FX": false,
+	},
+	"Big": {
+		"RAINBOW_POWERUP_FX": false,
+	},
+	"Fire": {},
+} 
 #endregion
-
-var disable_rainbow_on_powerup := false # Determines whether or not the player will play the rainbow effect upon picking up a Fire Flower or equivalent power-up.
-var can_break_bricks := []              # Determines which hitbox forms can break bricks.
 
 @onready var camera_center_joint: Node2D = $CameraCenterJoint
 
@@ -105,7 +126,7 @@ var kicking = false
 
 @export var player_id := 0
 const ONE_UP_NOTE = preload("uid://dopxwjj37gu0l")
-var gravity := FALL_GRAVITY
+var gravity: float = physics_params("FALL_GRAVITY")
 
 var attacking := false
 var pipe_enter_direction := Vector2.ZERO#
@@ -155,8 +176,6 @@ var camera_pan_amount := 24
 var animating_camera := false
 
 var can_uncrouch := false
-
-var can_air_turn := false
 
 static var CHARACTERS := ["Mario", "Luigi", "Toad", "Toadette"]
 const POWER_STATES := ["Small", "Big", "Fire"]
@@ -225,7 +244,7 @@ const ANIMATION_FALLBACKS := {
 
 	# --- Size Transformations ---
 	"Shrink": "Grow",
-	"BigShrink": "BigGrow",
+	"FireShrink": "FireGrow", # SkyanUltra: Future power-ups will need to be added here.
 
 	# --- Attack States ---
 	"IdleAttack": "MoveAttack",
@@ -309,6 +328,21 @@ func _ready() -> void:
 	if Global.level_editor == null:
 		recenter_camera()
 
+# SkyanUltra: Helper function for getting physics params.
+func physics_params(type: String, params_dict: Dictionary = PHYSICS_PARAMETERS, key: String = "") -> Variant:
+	if power_state != null:
+		if key == "": key = power_state.state_name
+		if key in params_dict:
+			var state_dict = params_dict[key]
+			if type in state_dict:
+				return state_dict[type]
+	if "Default" in params_dict:
+		var default_dict = params_dict["Default"]
+		if type in default_dict:
+			return default_dict[type]
+	push_error("Physics parameter '%s' not found in any state!" % type)
+	return null
+
 func apply_character_physics(apply: bool) -> void:
 	var path = "res://Assets/Sprites/Players/" + character + "/CharacterInfo.json"
 	if int(Global.player_characters[player_id]) > 3:
@@ -317,35 +351,20 @@ func apply_character_physics(apply: bool) -> void:
 	var json = JSON.parse_string(FileAccess.open(path, FileAccess.READ).get_as_text())
 	
 	# SkyanUltra: This section controls all CHARACTER PHYSICS values. This should be
-	# checking for if apply is TRUE, otherwise it will ignore the changes to prevent
-	# potential cheating in modes like You VS. Boo and Marathon mode.
-	if apply:
-		for i in json.physics:
-			set(i, json.physics[i])
+	# preventing physics changes to stop potential cheating in modes like You VS. Boo
+	# and Marathon mode.
 	
-	for i in ["Small", "Big", "Fire"]:
-		var hitbox_scale = json.get(i.to_snake_case() + "_hitbox_scale", [1, 1]) if apply else [1, 1]
-		var hitbox_crouch = i.to_snake_case() + "_crouch_scale"
-		var break_bricks = i.to_snake_case() + "_can_break_bricks"
-		
+	for i in json.physics:
+		if i in ["PHYSICS_PARAMETERS"]:
+			if apply: set(i, json.physics[i])
+		else: set(i, json.physics[i])
+			
+	for i in POWER_STATES:
+		var hitbox_scale = physics_params("HITBOX_SCALE", PHYSICS_PARAMETERS, i)
+		var hitbox_crouch = physics_params("CROUCH_SCALE", PHYSICS_PARAMETERS, i)
 		for o in get_tree().get_nodes_in_group(i + "Collisions"):
-			if i == "Small":
-				o.hitbox = Vector3(hitbox_scale[0], hitbox_scale[1] if o.get_meta("scalable", true) else 1, json.get(hitbox_crouch, 0.75) if apply else 0.75)
-			else:
-				o.hitbox = Vector3(hitbox_scale[0], hitbox_scale[1] if o.get_meta("scalable", true) else 1, json.get(hitbox_crouch, 0.5) if apply else 0.5)
+			o.hitbox = Vector3(hitbox_scale[0], hitbox_scale[1] if o.get_meta("scalable", true) else 1, hitbox_crouch)
 			o._physics_process(0)
-		break_bricks = json.get(break_bricks, false if i == "Small" else true) if apply else false if i == "Small" else true
-		if break_bricks: can_break_bricks.append(i)
-	
-	# SkyanUltra: This section controls all CHARACTER COSMETIC values. These have no need
-	# to be checked for apply, as they do not affect gameplay in a significant way.
-	disable_rainbow_on_powerup = json.get("disable_rainbow_on_powerup", false)
-	var hammer_offset = json.get("hammer_offset", [0, 0])
-	%HammerSprite.offset = Vector2(hammer_offset[0], hammer_offset[1])
-	for wing_type in ["SmallWing", "BigWing", "FireWing"]:
-		var key = wing_type.to_snake_case() + "_offset"
-		key = json.get(key, [0, 0])
-		get_node("SpriteScaleJoint/Sprite/Wings/" + wing_type).offset = Vector2(key[0], key[1])
 
 func apply_classic_physics() -> void:
 	var json = JSON.parse_string(FileAccess.open("res://Resources/ClassicPhysics.json", FileAccess.READ).get_as_text())
@@ -409,13 +428,7 @@ func _physics_process(delta: float) -> void:
 	if not is_actually_on_floor() and not just_landed:
 		can_land_sfx = true
 	handle_water_detection()
-	%SkidParticles.visible = Settings.file.visuals.extra_particles == 1
-	%SkidParticles.emitting = ((skidding and skid_frames > 2) or crouching) and is_on_floor() and abs(velocity.x) > 25 and Settings.file.visuals.extra_particles == 1
-	if $SkidSFX.playing:
-		if (is_actually_on_floor() and skidding) == false:
-			$SkidSFX.stop()
-	elif is_actually_on_floor() and skidding and Settings.file.audio.skid_sfx == 1:
-		$SkidSFX.play()
+	handle_move_fx()
 
 const BUBBLE_PARTICLE = preload("uid://bwjae1h1airtr")
 
@@ -425,6 +438,31 @@ func handle_water_detection() -> void:
 		in_water = $Hitbox.get_overlapping_areas().any(func(area: Area2D): return area is WaterArea) or $WaterDetect.get_overlapping_bodies().is_empty() == false
 	if old_water != in_water and in_water == false and flight_meter <= 0:
 		water_exited()
+
+func handle_move_fx() -> void:
+	var grounded: bool = not physics_params("GROUNDED_MOVE_SFX", COSMETIC_PARAMETERS)
+	var moving: bool = abs(velocity.x) >= 5 and not is_actually_on_wall()
+	var running: bool = abs(velocity.x) >= physics_params("RUN_SPEED") - 10
+	# Walking
+	if AudioManager.active_sfxs.has("walk"):
+		if (is_actually_on_floor() or grounded) and moving and not running == false:
+			AudioManager.kill_sfx("walk")
+	elif (is_actually_on_floor() or grounded) and moving and not running and Settings.file.audio.extra_sfx == 1:
+		AudioManager.play_sfx("walk", global_position, 1.0, false)
+	# Running
+	if AudioManager.active_sfxs.has("run"):
+		if (is_actually_on_floor() or grounded) and running == false:
+			AudioManager.kill_sfx("run")
+	elif (is_actually_on_floor() or grounded) and running and Settings.file.audio.extra_sfx == 1:
+		AudioManager.play_sfx("run", global_position, 1.0, false)
+	# Skidding
+	%SkidParticles.visible = Settings.file.visuals.extra_particles == 1
+	%SkidParticles.emitting = ((skidding and skid_frames > 2) or crouching) and is_on_floor() and abs(velocity.x) > 25 and Settings.file.visuals.extra_particles == 1
+	if AudioManager.active_sfxs.has("skid"):
+		if (is_actually_on_floor() and skidding) == false:
+			AudioManager.kill_sfx("skid")
+	elif is_actually_on_floor() and skidding and Settings.file.audio.skid_sfx == 1:
+		AudioManager.play_sfx("skid", global_position, 1.0, false)
 
 func summon_bubble() -> void:
 	var bubble = BUBBLE_PARTICLE.instantiate()
@@ -438,17 +476,20 @@ func _process(delta: float) -> void:
 		DiscoLevel.combo_meter = 100
 	%HammerSprite.visible = has_hammer
 	%HammerHitbox.collision_layer = has_hammer
+	if has_hammer:
+		var hammer_offset = physics_params("HAMMER_OFFSET", COSMETIC_PARAMETERS)
+		%HammerSprite.offset = Vector2(hammer_offset[0], hammer_offset[1])
 
 func apply_gravity(delta: float) -> void:
 	if in_water or flight_meter > 0:
-		gravity = SWIM_GRAVITY
+		gravity = physics_params("SWIM_GRAVITY")
 	else:
-		if sign(gravity_vector.y) * velocity.y + JUMP_HOLD_SPEED_THRESHOLD > 0.0:
-			gravity = FALL_GRAVITY
+		if sign(gravity_vector.y) * velocity.y + physics_params("JUMP_HOLD_SPEED_THRESHOLD") > 0.0:
+			gravity = physics_params("FALL_GRAVITY")
 	velocity += (gravity_vector * ((gravity / (1.5 if low_gravity else 1.0)) / delta)) * delta
-	var target_fall: float = MAX_FALL_SPEED
+	var target_fall: float = physics_params("MAX_FALL_SPEED")
 	if in_water:
-		target_fall = MAX_SWIM_FALL_SPEED
+		target_fall = physics_params("MAX_SWIM_FALL_SPEED")
 	if gravity_vector.y > 0:
 		velocity.y = clamp(velocity.y, -INF, (target_fall / (1.2 if low_gravity else 1.0)))
 	else:
@@ -536,11 +577,11 @@ func enemy_bounce_off(add_combo := true, award_score := true) -> void:
 	jump_cancelled = not Global.player_action_pressed("jump", player_id)
 	await get_tree().physics_frame
 	if Global.player_action_pressed("jump", player_id):
-		velocity.y = sign(gravity_vector.y) * -BOUNCE_JUMP_HEIGHT
-		gravity = JUMP_GRAVITY
+		velocity.y = sign(gravity_vector.y) * -physics_params("BOUNCE_JUMP_HEIGHT")
+		gravity = physics_params("JUMP_GRAVITY")
 		has_jumped = true
 	else:
-		velocity.y = sign(gravity_vector.y) * -BOUNCE_HEIGHT
+		velocity.y = sign(gravity_vector.y) * -physics_params("BOUNCE_HEIGHT")
 
 func add_stomp_combo(award_score := true) -> void:
 	if stomp_combo >= 10:
@@ -568,7 +609,7 @@ func land_on_ground() -> void:
 
 func bump_ceiling() -> void:
 	AudioManager.play_sfx("bump", global_position)
-	velocity.y = CEILING_BUMP_SPEED
+	velocity.y = physics_params("CEILING_BUMP_SPEED")
 	can_bump_sfx = false
 	bumping = true
 	await get_tree().create_timer(0.1).timeout
@@ -620,7 +661,7 @@ func handle_block_collision_detection() -> void:
 			points.sort_custom(func(a, b): return a.y < b.y)
 			$BlockCollision.position.y = points.front().y * $FireCollision.scale.y
 			%Hammer.position.x = -8 * (1 - $FireCollision.scale.x)
-	if velocity.y <= FALL_GRAVITY:
+	if velocity.y <= physics_params("FALL_GRAVITY"):
 		for i in $BlockCollision.get_overlapping_bodies():
 			if i is Block:
 				if is_on_ceiling():
@@ -655,18 +696,16 @@ func handle_wing_flight(delta: float) -> void:
 	flight_meter -= delta
 	if flight_meter <= 0 && %Wings.visible:
 		AudioManager.stop_music_override(AudioManager.MUSIC_OVERRIDES.WING)
-		gravity = FALL_GRAVITY
+		gravity = physics_params("FALL_GRAVITY")
 	%Wings.visible = flight_meter >= 0
+	var wing_offset = physics_params("WING_OFFSET", COSMETIC_PARAMETERS)
+	%Wing.offset = Vector2(wing_offset[0], wing_offset[1])
 	if flight_meter < 0:
 		return
-	%FireWing.visible = power_state.hitbox_size == "Fire"
-	%BigWing.visible = power_state.hitbox_size == "Big"
-	%SmallWing.visible = power_state.hitbox_size == "Small"
-	for i in [%SmallWing, %BigWing]:
-		if velocity.y < 0:
-			i.play("Flap")
-		else:
-			i.play("Idle")
+	if velocity.y < 0:
+		%Wing.play("Flap")
+	else:
+		%Wing.play("Idle")
 	if flight_meter <= 3:
 		%Wings.get_node("AnimationPlayer").play("Flash")
 	else:
@@ -818,7 +857,6 @@ func set_power_state_frame() -> void:
 	if frames:
 		can_pose_anim = frames.has_animation("PoseDoor")
 		can_pose_castle_anim = can_pose_anim or frames.has_animation("PoseToad") or frames.has_animation("PosePeach")
-		can_big_grow_anim = frames.has_animation("BigGrow")
 		can_bump_jump_anim = frames.has_animation("JumpBump")
 		can_bump_crouch_anim = frames.has_animation("CrouchBump")
 		can_bump_swim_anim = frames.has_animation("SwimBump")
@@ -875,8 +913,8 @@ func power_up_animation(new_power_state := "") -> void:
 
 	var anim_name := ""
 	if old_state.state_name != "Small" and new_power_state != "Small":
-		if can_big_grow_anim: # SkyanUltra: Optional check for animations for going from Big to Fire-equivalent power states.
-			anim_name = "BigShrink" if shrinking else "BigGrow"
+		if %Sprite.sprite_frames.has_animation(new_power_state + "Grow"): # SkyanUltra: Optional check for animations for going from Big to Fire-equivalent power states.
+			anim_name = new_power_state + "Shrink" if shrinking else new_power_state + "Grow"
 		else: anim_name = ""
 	else:
 		anim_name = "Shrink" if shrinking else "Grow"
@@ -885,7 +923,7 @@ func power_up_animation(new_power_state := "") -> void:
 			sprite.speed_scale = 3
 			play_animation(anim_name)
 			
-			var rainbow = not disable_rainbow_on_powerup and (new_state.power_tier > 1 or old_state.power_tier > 1)
+			var rainbow = physics_params("RAINBOW_POWERUP_FX", COSMETIC_PARAMETERS, new_power_state) or physics_params("RAINBOW_POWERUP_FX", COSMETIC_PARAMETERS, old_state.state_name)
 			if rainbow:
 				transforming = true
 				sprite.material.set_shader_parameter("enabled", true)
@@ -919,12 +957,16 @@ func power_up_animation(new_power_state := "") -> void:
 				sprite.sprite_frames = old_frames
 				await get_tree().create_timer(0.05).timeout
 		else:
+			var rainbow = physics_params("RAINBOW_POWERUP_FX", COSMETIC_PARAMETERS, new_power_state) or physics_params("RAINBOW_POWERUP_FX", COSMETIC_PARAMETERS, old_state.state_name)
+			if rainbow:
+				transforming = true
+				sprite.material.set_shader_parameter("enabled", true)
 			handle_invincible_palette()
 			sprite.stop()
-			sprite.material.set_shader_parameter("enabled", true)
-			transforming = true
 			await get_tree().create_timer(0.6).timeout
 			transforming = false
+			if rainbow:
+				sprite.material.set_shader_parameter("enabled", false)
 
 	get_tree().paused = false
 	sprite.process_mode = Node.PROCESS_MODE_INHERIT
@@ -1001,14 +1043,14 @@ func jump() -> void:
 		return
 	velocity.y = calculate_jump_height() * gravity_vector.y
 	velocity_x_jump_stored = velocity.x
-	gravity = JUMP_GRAVITY
+	gravity = physics_params("JUMP_GRAVITY")
 	AudioManager.play_sfx("small_jump" if power_state.hitbox_size == "Small" else "big_jump", global_position)
 	has_jumped = true
 	await get_tree().physics_frame
 	has_jumped = true
 
 func calculate_jump_height() -> float: # Thanks wye love you xxx
-	return -(JUMP_HEIGHT + JUMP_INCR * int(abs(velocity.x) / 25))
+	return -(physics_params("JUMP_HEIGHT") + physics_params("JUMP_INCR") * int(abs(velocity.x) / 25))
 
 const SMOKE_PARTICLE = preload("res://Scenes/Prefabs/Particles/SmokeParticle.tscn")
 
@@ -1070,9 +1112,9 @@ func water_exited() -> void:
 		velocity.y = -250.0 if velocity.y < -50.0 or Global.player_action_pressed("move_up", player_id) else velocity.y
 	has_jumped = true
 	if Global.player_action_pressed("move_up", player_id):
-		gravity = JUMP_GRAVITY
+		gravity = physics_params("JUMP_GRAVITY")
 	else:
-		gravity = FALL_GRAVITY
+		gravity = physics_params("FALL_GRAVITY")
 
 func reset_camera_to_center() -> void:
 	animating_camera = true

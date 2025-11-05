@@ -5,6 +5,8 @@ const DEFAULT_SFX_LIBRARY := {
 	"big_jump": ("res://Assets/Audio/SFX/BigJump.wav"),
 	"coin": ("res://Assets/Audio/SFX/Coin.wav"),
 	"bump": ("res://Assets/Audio/SFX/Bump.wav"),
+	"walk": ("res://Assets/Audio/BGM/Silence.mp3"),
+	"run": ("res://Assets/Audio/BGM/Silence.mp3"),
 	"skid": ("res://Assets/Audio/SFX/Skid.wav"),
 	"pipe": ("res://Assets/Audio/SFX/Pipe.wav"),
 	"damage": ("res://Assets/Audio/SFX/Damage.wav"),
@@ -103,8 +105,10 @@ var character_sfx_map := {}
 var audio_override_queue := []
 #var audio_override_queue: Array[Dictionary] = []
 
-func play_sfx(stream_name = "", position := Vector2.ZERO, pitch := 1.0) -> void:
+func play_sfx(stream_name = "", position := Vector2.ZERO, pitch := 1.0, can_overlap := true) -> void:
 	if sfx_library.has(stream_name): # SkyanUltra: Simple check that allows for custom optional sounds.
+		if not can_overlap and active_sfxs.has(stream_name):
+			return
 		if queued_sfxs.has(stream_name):
 			return
 		queued_sfxs.append(stream_name)
