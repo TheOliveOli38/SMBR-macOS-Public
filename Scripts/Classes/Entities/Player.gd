@@ -52,24 +52,39 @@ var PHYSICS_PARAMETERS: Dictionary = {
 	"Big": {},
 	"Fire": {},
 }
+var ENDING_PARAMETERS: Dictionary = {
+	"Default": {
+		"FLAG_SKIP_GRAB": false,           # Determines if the player skips grabbing the flag entirely.
+		"FLAG_HANG_TIMER": 1.5,            # How long the player will stick on the flagpole.
+		"FLAG_SLIDE_SPEED": 125.0,         # How fast the player slides down the flagpole.
+		
+		"FLAG_INITIAL_X_VELOCITY": 0.0,    # Determines the player's initial X velocity after letting go of the flagpole.
+		"FLAG_JUMP_HEIGHT": 0.0,           # How high the player will initially jump after letting go of the flagpole.
+		"FLAG_JUMP_INCR": 8.0,             # How much the player's X velocity will influence the player's jump height.
+	},
+	"Small": {},
+	"Big": {},
+	"Fire": {},
+}
 var DEATH_PARAMETERS: Dictionary = {
 	"Default": {
-		"COLLISION": false,               # Determines whether the player will still collide with the level.
-		"HANG_TIMER": 0.5,                # The amount of time the player will freeze in the air for during the death animation in seconds
-		"X_VELOCITY": 0,                  # The horizontal velocity the player gets sent at when dying, measured in px/sec
-		"DECEL": 3.0,                     # The player's deceleration during death, measured in px/frame
-		"JUMP_HEIGHT": 300.0,             # The strength of the player's "jump" during the death animation, measured in px/sec
-		"FALL_GRAVITY": 11.0,             # The player's gravity while falling during death, measured in px/frame
-		"MAX_FALL_SPEED": 280.0,          # The player's maximum fall speed during death, measured in px/sec
+		"DEATH_COLLISION": false,          # Determines whether the player will still collide with the level.
+		"DEATH_HANG_TIMER": 0.5,           # The amount of time the player will freeze in the air for during the death animation in seconds
+		"DEATH_X_VELOCITY": 0,             # The horizontal velocity the player gets sent at when dying, measured in px/sec
+		"DEATH_DECEL": 3.0,                # The player's deceleration during death, measured in px/frame
+		"DEATH_JUMP_HEIGHT": 300.0,        # The strength of the player's "jump" during the death animation, measured in px/sec
+		"DEATH_FALL_GRAVITY": 11.0,        # The player's gravity while falling during death, measured in px/frame
+		"DEATH_MAX_FALL_SPEED": 280.0,     # The player's maximum fall speed during death, measured in px/sec
 	},
 	"Fire": {},
 }
 var COSMETIC_PARAMETERS: Dictionary = {
 	"Default": { # Fallback parameters. Additional entries can be added through CharacterInfo.json.
-		"WING_OFFSET": [0.0, 0.0],        # The visual offset of the wings which appear with the Wing power-up.
-		"HAMMER_OFFSET": [0.0, 0.0],      # The visual offset of the hammer which appears with the Hammer power-up.
-		"RAINBOW_POWERUP_FX": true,       # Determines whether or not the player will play the rainbow effect when powering up.
-		"GROUNDED_MOVE_SFX": true,        # Determines if walk/run sounds will only play when on the ground.
+		"WING_OFFSET": [0.0, 0.0],         # The visual offset of the wings which appear with the Wing power-up.
+		"HAMMER_OFFSET": [0.0, 0.0],       # The visual offset of the hammer which appears with the Hammer power-up.
+		"RAINBOW_POWERUP_FX": true,        # Determines whether or not the player will play the rainbow effect when powering up.
+		"GROUNDED_WALK_SFX": true,         # Forces walk sounds to only play when on the ground.
+		"GROUNDED_RUN_SFX": true,          # Forces run sounds to only play when on the ground.
 	},
 	"Small": {
 		"WING_OFFSET": [0.0, 10.0],
@@ -355,7 +370,7 @@ func apply_character_physics(apply: bool) -> void:
 	# and Marathon mode.
 	
 	for i in json.physics:
-		if i in ["PHYSICS_PARAMETERS"]:
+		if i in ["PHYSICS_PARAMETERS", "ENDING_PARAMETERS"]:
 			if apply: set(i, json.physics[i])
 		else: set(i, json.physics[i])
 			
@@ -440,20 +455,21 @@ func handle_water_detection() -> void:
 		water_exited()
 
 func handle_move_fx() -> void:
-	var grounded: bool = not physics_params("GROUNDED_MOVE_SFX", COSMETIC_PARAMETERS)
+	var grounded_walk_sfx: bool = not physics_params("GROUNDED_WALK_SFX", COSMETIC_PARAMETERS)
+	var grounded_run_sfx: bool = not physics_params("GROUNDED_RUN_SFX", COSMETIC_PARAMETERS)
 	var moving: bool = abs(velocity.x) >= 5 and not is_actually_on_wall()
 	var running: bool = abs(velocity.x) >= physics_params("RUN_SPEED") - 10
 	# Walking
 	if AudioManager.active_sfxs.has("walk"):
-		if (is_actually_on_floor() or grounded) and moving and not running == false:
+		if (is_actually_on_floor() or grounded_walk_sfx) and moving and not running == false:
 			AudioManager.kill_sfx("walk")
-	elif (is_actually_on_floor() or grounded) and moving and not running and Settings.file.audio.extra_sfx == 1:
+	elif (is_actually_on_floor() or grounded_walk_sfx) and moving and not running and Settings.file.audio.extra_sfx == 1:
 		AudioManager.play_sfx("walk", global_position, 1.0, false)
 	# Running
 	if AudioManager.active_sfxs.has("run"):
-		if (is_actually_on_floor() or grounded) and running == false:
+		if (is_actually_on_floor() or grounded_run_sfx) and running == false:
 			AudioManager.kill_sfx("run")
-	elif (is_actually_on_floor() or grounded) and running and Settings.file.audio.extra_sfx == 1:
+	elif (is_actually_on_floor() or grounded_run_sfx) and running and Settings.file.audio.extra_sfx == 1:
 		AudioManager.play_sfx("run", global_position, 1.0, false)
 	# Skidding
 	%SkidParticles.visible = Settings.file.visuals.extra_particles == 1
@@ -1049,8 +1065,8 @@ func jump() -> void:
 	await get_tree().physics_frame
 	has_jumped = true
 
-func calculate_jump_height() -> float: # Thanks wye love you xxx
-	return -(physics_params("JUMP_HEIGHT") + physics_params("JUMP_INCR") * int(abs(velocity.x) / 25))
+func calculate_jump_height(jump_height = physics_params("JUMP_HEIGHT"), jump_incr = physics_params("JUMP_INCR")) -> float: # Thanks wye love you xxx
+	return -(jump_height + jump_incr * int(abs(velocity.x) / 25))
 
 const SMOKE_PARTICLE = preload("res://Scenes/Prefabs/Particles/SmokeParticle.tscn")
 

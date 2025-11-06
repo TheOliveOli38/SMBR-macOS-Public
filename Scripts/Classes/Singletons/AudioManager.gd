@@ -19,6 +19,7 @@ const DEFAULT_SFX_LIBRARY := {
 	"1_up": ("res://Assets/Audio/SFX/1up.wav"),
 	"cannon": ("res://Assets/Audio/SFX/Cannon.wav"),
 	"checkpoint": ("res://Assets/Audio/SFX/Checkpoint.wav"),
+	"flag_slide": ("res://Assets/Audio/SFX/FlagSlide.json"),
 	"magic": ("res://Assets/Audio/SFX/Magic.wav"),
 	"beep": ("res://Assets/Audio/SFX/Score.wav"),
 	"switch": ("res://Assets/Audio/SFX/Switch.wav"),
@@ -79,7 +80,7 @@ var queued_sfxs := []
 
 var current_music_override: MUSIC_OVERRIDES
 
-enum MUSIC_OVERRIDES{NONE=-1, STAR=0, DEATH, PSWITCH, BOWSER, TIME_WARNING, LEVEL_COMPLETE, CASTLE_COMPLETE, ENDING, FLAG_POLE, HAMMER, RACE_LOSE, RACE_WIN, WING, COIN_HEAVEN_BONUS}
+enum MUSIC_OVERRIDES{NONE=-1, STAR=0, DEATH, PSWITCH, BOWSER, TIME_WARNING, LEVEL_COMPLETE, CASTLE_COMPLETE, ENDING, FLAG_POLE, HAMMER, RACE_LOSE, RACE_WIN, WING, COIN_HEAVEN_BONUS, SILENCE}
 
 const OVERRIDE_STREAMS := [
 	("res://Assets/Audio/BGM/StarMan.json"),
@@ -90,12 +91,13 @@ const OVERRIDE_STREAMS := [
 	"res://Assets/Audio/BGM/LevelFinish.json",
 	"res://Assets/Audio/BGM/CastleFinish.json",
 	"res://Assets/Audio/BGM/Ending.json",
-	"res://Assets/Audio/SFX/FlagSlide.wav",
+	"res://Assets/Audio/SFX/FlagSlide.json",
 	("res://Assets/Audio/BGM/Hammer.json"),
 	("res://Assets/Audio/BGM/LoseRace.json"),
 	("res://Assets/Audio/BGM/WinRace.json"),
 	"res://Assets/Audio/BGM/Wing.json",
-	"res://Assets/Audio/BGM/PerfectCoinHeaven.mp3"
+	"res://Assets/Audio/BGM/PerfectCoinHeaven.mp3",
+	"res://Assets/Audio/BGM/Silence.json"
 ]
 
 const MUSIC_BASE = preload("uid://da4vqkrpqnma0")
@@ -137,7 +139,7 @@ func play_sfx(stream_name = "", position := Vector2.ZERO, pitch := 1.0, can_over
 		active_sfxs.erase(stream_name)
 		player.queue_free()
 
-func play_global_sfx(stream_name := "") -> void:
+func play_global_sfx(stream_name = "") -> void:
 	if get_viewport().get_camera_2d() == null:
 		return
 	play_sfx(stream_name, get_viewport().get_camera_2d().get_screen_center_position())
@@ -291,20 +293,22 @@ func generate_interactive_stream(bgm_file := {}) -> AudioStreamInteractive:
 func import_stream(file_path := "", loop_point := -1.0) -> AudioStream:
 	var path = file_path
 	var stream = null
-	if path.contains("res://"):
+	if path.begins_with("res://"):
 		stream = load(path)
-	elif path.contains(".mp3"):
+	elif path.ends_with(".mp3"):
 		stream = AudioStreamMP3.load_from_file(ResourceSetter.get_pure_resource_path(file_path))
-	elif path.contains(".ogg"):
+	elif path.ends_with(".ogg"):
 		stream = AudioStreamOggVorbis.load_from_file(ResourceSetter.get_pure_resource_path(file_path))
-	elif path.contains(".wav"):
+	elif path.ends_with(".wav"):
 		stream = AudioStreamWAV.load_from_file(path)
 		#print([path, stream])
-	if path.contains(".mp3"):
+	if path.ends_with(".mp3"):
 		stream.set_loop(loop_point >= 0)
 		stream.set_loop_offset(loop_point)
-	elif path.contains(".ogg"):
+	elif path.ends_with(".ogg"):
 		stream.set_loop(loop_point >= 0)
 		stream.set_loop_offset(loop_point)
+	if path.ends_with(".json"):
+		stream = create_stream_from_json(path)
 	return stream
 	
