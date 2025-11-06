@@ -589,6 +589,11 @@ func place_tile(tile_position := Vector2i.ZERO, use_copy := false) -> void:
 			node.global_position = (tile_position * 16) + (Vector2i(8, 8) + offset)
 		else:
 			node = current_entity_scene.instantiate()
+			if node.has_node("AmountLimiter"):
+				if node.get_node("AmountLimiter").run_check(get_tree()):
+					node.queue_free()
+					Global.log_error("Only one of these is allowed in a room at a time!", false)
+					return
 			node.global_position = (tile_position * 16) + (Vector2i(8, 8) + current_spawn_offset)
 		node.set_meta("tile_position", tile_position)
 		node.set_meta("tile_offset", current_spawn_offset)

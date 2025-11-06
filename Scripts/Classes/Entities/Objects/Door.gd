@@ -126,7 +126,10 @@ func player_enter(player: Player) -> void:
 			i.run_door_check()
 	else:
 		same_scene_exiting_door = null
-		Global.transition_to_scene(NewLevelBuilder.sub_levels[sublevel_id])
+		if Global.level_editor != null:
+			Global.level_editor.transition_to_sublevel(sublevel_id)
+		else:
+			Global.transition_to_scene(NewLevelBuilder.sub_levels[sublevel_id])
 	can_enter = true
 
 func freeze_player(player: Player) -> void:

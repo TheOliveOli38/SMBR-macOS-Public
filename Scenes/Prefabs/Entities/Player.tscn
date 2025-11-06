@@ -683,6 +683,7 @@ editor_draw_limits = true
 editor_draw_drag_margin = true
 
 [node name="Hitbox" type="Area2D" parent="."]
+visible = false
 position = Vector2(0, -10)
 collision_mask = 5
 
@@ -1066,15 +1067,18 @@ one_way_collision = true
 script = ExtResource("35_nbkfn")
 
 [node name="BigCollision" type="CollisionPolygon2D" parent="." groups=["BigCollisions"]]
+visible = false
 polygon = PackedVector2Array(-4, -2, -2, 0, 2, 0, 4, -2, 4, -23, 1, -28, -1, -28, -4, -23)
 one_way_collision = true
 script = ExtResource("35_nbkfn")
 
 [node name="FootL" type="CollisionShape2D" parent="." groups=["StepCollision"]]
+visible = false
 position = Vector2(-6, -4)
 shape = SubResource("SeparationRayShape2D_6ws8x")
 
 [node name="FootR" type="CollisionShape2D" parent="." groups=["StepCollision"]]
+visible = false
 position = Vector2(6, -4)
 shape = SubResource("SeparationRayShape2D_6ws8x")
 
@@ -1108,6 +1112,7 @@ collision_mask = 3
 hit_from_inside = true
 
 [node name="BlockCollision" type="Area2D" parent="."]
+visible = false
 collision_layer = 0
 collision_mask = 4
 

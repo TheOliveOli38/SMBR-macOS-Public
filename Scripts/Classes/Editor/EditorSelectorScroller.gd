@@ -5,10 +5,21 @@ extends Control
 
 var selectors: Array[Control] = []
 
+var duped_selectors: Array[Control] = []
+
+var expanded := false
+
 func _ready() -> void:
 	for i in get_children():
 		if i is EditorTileSelector:
 			selectors.append(i)
+			duped_selectors.append(i.duplicate())
+	add_expanded()
+
+func add_expanded() -> void:
+	for i in duped_selectors:
+		add_sibling(i)
+		i.hide()
 
 func _process(_delta: float) -> void:
 	handle_inputs()
@@ -24,6 +35,11 @@ func handle_inputs() -> void:
 			break
 	if not hovered:
 		return
+	if Input.is_action_just_pressed("mb_right"):
+		expanded = !expanded
+		for i in duped_selectors:
+			i.visible = expanded
+		visible = not expanded
 	if Input.is_action_just_pressed("scroll_up"):
 		selected_index += 1
 		warp_mouse(get_local_mouse_position())

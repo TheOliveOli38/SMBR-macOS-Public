@@ -2,9 +2,13 @@ class_name CoinHeavenWarpPoint
 extends Node2D
 
 @export_file("*.tscn") var heaven_scene := ""
+@export_enum("Room 0", "Room 1", "Room 2", "Room 3", "Room 4") var target_subarea := 0
+
+static var subarea_to_warp_to := -1
 
 func _ready() -> void:
 	Level.vine_warp_level = heaven_scene
+	subarea_to_warp_to = target_subarea
 	if Level.in_vine_level:
 		Level.in_vine_level = false
 		if PipeArea.exiting_pipe_id == -1:

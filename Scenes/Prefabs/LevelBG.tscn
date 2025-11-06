@@ -32,7 +32,6 @@
 [ext_resource type="JSON" path="res://Assets/Sprites/Particles/Leaves.json" id="28_ugdi7"]
 [ext_resource type="Texture2D" uid="uid://cgiahmwr41yvd" path="res://Assets/Sprites/Backgrounds/SecondaryMushrooms/Mushrooms.png" id="29_7urbp"]
 [ext_resource type="Texture2D" uid="uid://ufcdaihxe85c" path="res://Assets/Sprites/Backgrounds/Lighting.png" id="31_78nlv"]
-[ext_resource type="Texture2D" uid="uid://lvw7a4ckko5x" path="res://Assets/Sprites/Backgrounds/FGs/Default.png" id="31_aw4cr"]
 [ext_resource type="Script" uid="uid://dwtrmo82e12ud" path="res://Scripts/Parts/ColourPaletteSampler.gd" id="31_dmpyo"]
 [ext_resource type="JSON" path="res://Assets/Sprites/Backgrounds/FGs/FGLayer.json" id="31_ugdi7"]
 [ext_resource type="JSON" path="res://Assets/Sprites/Backgrounds/SecondaryMushrooms/Mushrooms.json" id="32_nfso6"]
@@ -274,6 +273,8 @@ metadata/_snap_count = 3
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_78nlv"]
 gradient = SubResource("Gradient_dmpyo")
 width = 3
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ugdi7"]
 
 [sub_resource type="Gradient" id="Gradient_qkl8a"]
 offsets = PackedFloat32Array(0)
@@ -759,18 +760,19 @@ scroll_offset = Vector2(0, 32)
 repeat_size = Vector2(512, 512)
 repeat_times = 4
 
-[node name="Sprite" type="Sprite2D" parent="FGLayer"]
+[node name="Sprite" type="AnimatedSprite2D" parent="FGLayer"]
 process_mode = 1
-texture = ExtResource("31_aw4cr")
+sprite_frames = SubResource("SpriteFrames_ugdi7")
 centered = false
+script = ExtResource("7_y7xk0")
+do_offset = false
+metadata/_custom_type_script = "uid://caq1qiwmy0mox"
 
-[node name="ResourceSetterNew" type="Node" parent="FGLayer/Sprite" node_paths=PackedStringArray("node_to_affect", "property_node")]
+[node name="ResourceSetterNew" type="Node" parent="FGLayer/Sprite" node_paths=PackedStringArray("property_node")]
 process_mode = 1
 script = ExtResource("10_lvidp")
-node_to_affect = NodePath("..")
 property_node = NodePath("../../..")
-property_name = "texture"
-mode = 1
+property_name = "sprite_frames"
 resource_json = ExtResource("31_ugdi7")
 metadata/_custom_type_script = "uid://cbal8ms2oe1ik"
 

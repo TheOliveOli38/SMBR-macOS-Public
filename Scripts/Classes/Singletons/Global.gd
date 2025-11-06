@@ -436,16 +436,27 @@ func version_got(_result, response_code, _headers, body) -> void:
 	else:
 		server_version = -2
 
-func log_error(msg := "") -> void:
+var error_log_cooldown := false
+
+func log_error(msg := "", can_spam := true) -> void:
+	if error_log_cooldown and not can_spam:
+		return
 	var error_message = $CanvasLayer/VBoxContainer/ErrorMessage.duplicate()
 	error_message.text = "Error - " + msg
 	error_message.visible = true
+	if can_spam == false:
+		do_cooldown()
 	$CanvasLayer/VBoxContainer.add_child(error_message)
 	await get_tree().create_timer(10, false).timeout
 	error_message.queue_free()
 
+func do_cooldown() -> void:
+	error_log_cooldown = true
+	await get_tree().create_timer(1, false).timeout
+	error_log_cooldown = false
+
 func log_warning(msg := "") -> void:
-	var error_message = $CanvasLayer/VBoxContainer/Warning.duplicate()
+	var error_message: Label = $CanvasLayer/VBoxContainer/Warning.duplicate()
 	error_message.text = "Warning - " + msg
 	error_message.visible = true
 	$CanvasLayer/VBoxContainer.add_child(error_message)

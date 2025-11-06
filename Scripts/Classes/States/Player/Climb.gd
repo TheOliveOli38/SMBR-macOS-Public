@@ -32,3 +32,4 @@ func physics_update(_delta: float) -> void:
 	if Global.player_action_just_pressed("jump", player.player_id) and not cutscene:
 		state_machine.transition_to("Normal")
 		player.jump()
+		player.velocity.x = 30 * player.input_direction

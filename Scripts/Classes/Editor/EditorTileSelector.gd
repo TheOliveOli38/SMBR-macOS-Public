@@ -23,7 +23,7 @@ extends Control
 var texture_rect_region := Rect2(0, 0, 0, 0)
 
 signal tile_selected(selector: EditorTileSelector)
-
+signal right_clicked
 
 var mouse_hovered := false
 

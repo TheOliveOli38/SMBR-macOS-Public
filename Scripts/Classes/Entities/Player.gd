@@ -41,6 +41,8 @@ var MAX_SWIM_FALL_SPEED := 200.0       # The player's maximum fall speed while s
 var DEATH_JUMP_HEIGHT := 300.0         # The strength of the player's "jump" during the death animation, measured in px/sec
 #endregion
 
+var force_size := -1
+
 @onready var camera_center_joint: Node2D = $CameraCenterJoint
 
 @onready var sprite: AnimatedSprite2D = %Sprite
@@ -208,6 +210,8 @@ static var classic_physics := false
 var swim_stroke := false
 
 var skid_frames := 0
+
+var shoot_height := 16
 
 var simulated_velocity := Vector2.ZERO
 
@@ -519,15 +523,15 @@ func handle_invincible_palette() -> void:
 
 func handle_block_collision_detection() -> void:
 	if ["Pipe"].has(state_machine.state.name): return
-	match power_state.hitbox_size:
-		"Small":
-			var points: Array = $SmallCollision.polygon
-			points.sort_custom(func(a, b): return a.y < b.y)
-			$BlockCollision.position.y = points.front().y * $SmallCollision.scale.y
-		"Big":
-			var points: Array = $BigCollision.polygon
-			points.sort_custom(func(a, b): return a.y < b.y)
-			$BlockCollision.position.y = points.front().y * $BigCollision.scale.y
+	var is_big = power_state.hitbox_size == "Big" or force_size == 1
+	if is_big == false:
+		var points: Array = $SmallCollision.polygon
+		points.sort_custom(func(a, b): return a.y < b.y)
+		$BlockCollision.position.y = points.front().y * $SmallCollision.scale.y
+	else:
+		var points: Array = $BigCollision.polygon
+		points.sort_custom(func(a, b): return a.y < b.y)
+		$BlockCollision.position.y = points.front().y * $BigCollision.scale.y
 	if velocity.y <= FALL_GRAVITY:
 		for i in $BlockCollision.get_overlapping_bodies():
 			if i is Block:
@@ -544,12 +548,15 @@ func handle_directions() -> void:
 var use_big_collision := false
 
 func handle_power_up_states(delta) -> void:
+	var is_big := power_state.hitbox_size == "Big"
+	if force_size != -1:
+		is_big = force_size == 1
 	for i in get_tree().get_nodes_in_group("SmallCollisions"):
-		i.disabled = power_state.hitbox_size != "Small"
+		i.disabled = is_big
 		i.visible = not i.disabled
 		i.crouching = crouching
 	for i in get_tree().get_nodes_in_group("BigCollisions"):
-		i.disabled = power_state.hitbox_size != "Big"
+		i.disabled = !is_big
 		i.visible = not i.disabled
 		i.crouching = crouching
 	$Checkpoint.position.y = -24 if power_state.hitbox_size == "Small" else -40
@@ -874,6 +881,7 @@ func jump() -> void:
 		return
 	velocity.y = calculate_jump_height() * gravity_vector.y
 	velocity_x_jump_stored = velocity.x
+	jump_cancelled = false
 	gravity = JUMP_GRAVITY
 	AudioManager.play_sfx("small_jump" if power_state.hitbox_size == "Small" else "big_jump", global_position)
 	has_jumped = true
