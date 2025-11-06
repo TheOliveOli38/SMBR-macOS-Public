@@ -156,7 +156,7 @@ var in_title_screen := false
 var game_paused := false
 var can_pause := true
 
-var fade_transition := true
+var fade_transition := false
 
 enum GameMode{NONE, CAMPAIGN, BOO_RACE, CHALLENGE, MARATHON, MARATHON_PRACTICE, LEVEL_EDITOR, CUSTOM_LEVEL, DISCO}
 
@@ -472,6 +472,8 @@ func log_comment(msg := "") -> void:
 	error_message.queue_free()
 
 func level_editor_is_playtesting() -> bool:
+	if Global.level_editor == null:
+		return false
 	if Global.current_game_mode == Global.GameMode.LEVEL_EDITOR:
 		if Global.level_editor.current_state == LevelEditor.EditorState.PLAYTESTING:
 			return true

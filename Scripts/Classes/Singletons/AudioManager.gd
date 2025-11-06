@@ -139,7 +139,8 @@ func play_global_sfx(stream_name := "") -> void:
 	play_sfx(stream_name, get_viewport().get_camera_2d().get_screen_center_position())
 
 func _process(_delta: float) -> void:
-	handle_music()
+	if Global.level_editor_is_playtesting() or Global.level_editor == null:
+		handle_music()
 
 func on_beat(idx := 0) -> void:
 	music_beat.emit(idx)

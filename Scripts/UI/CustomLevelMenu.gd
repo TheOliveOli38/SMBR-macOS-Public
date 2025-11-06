@@ -22,6 +22,7 @@ func _ready() -> void:
 	Global.world_num = 1
 	Global.level_num = 1
 	Global.reset_values()
+	LevelEditor.sub_areas = [null, null, null, null, null]
 	Global.clear_saved_values()
 	Checkpoint.sublevel_id = 0
 	Global.current_campaign = "SMB1"
@@ -77,6 +78,11 @@ func edit_level() -> void:
 	clear_saved_stuff()
 	Global.current_game_mode = Global.GameMode.LEVEL_EDITOR
 	LevelEditor.load_play = false
+	NewLevelBuilder.load_level(LevelEditor.level_file)
+	var idx := 0
+	for i in NewLevelBuilder.sub_levels:
+		LevelEditor.sub_areas[idx] = NewLevelBuilder.sub_levels[idx].instantiate()
+		idx += 1
 	Global.transition_to_scene("res://Scenes/Levels/LevelEditor.tscn")
 
 func play_level() -> void:

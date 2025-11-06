@@ -190,18 +190,22 @@ func _process(_delta: float) -> void:
 		const OFFSETS = [Vector2.ZERO, Vector2(0, -16), Vector2(-16, 0), Vector2(16, 0)]
 		$\"../RotationJoint\".global_rotation_degrees = [0, 180, 90, -90][owner.pipe_direction]
 		$\"../RotationJoint\".position = OFFSETS[owner.pipe_direction]
+
+func get_string() -> String:
+	print(\"Name\")
+	return \"\"
 "
 
-[node name="PirannhaPlant" type="CharacterBody2D" node_paths=PackedStringArray("on_screen_enabler", "score_note_adder") groups=["Enemies"]]
+[node name="PirannhaPlant" type="CharacterBody2D" unique_id=877679531 node_paths=PackedStringArray("on_screen_enabler", "score_note_adder") groups=["Enemies"]]
 z_index = -5
 script = ExtResource("1_jbk0f")
 on_screen_enabler = NodePath("VisibleOnScreenEnabler2D")
 score_note_adder = NodePath("ScoreNoteSpawner")
 metadata/_custom_type_script = "uid://bpydbpyjk1mt4"
 
-[node name="RotationJoint" type="Node2D" parent="."]
+[node name="RotationJoint" type="Node2D" parent="." unique_id=336969112]
 
-[node name="Sprite" type="AnimatedSprite2D" parent="RotationJoint"]
+[node name="Sprite" type="AnimatedSprite2D" parent="RotationJoint" unique_id=348969962]
 visible = false
 position = Vector2(0, -12)
 sprite_frames = SubResource("SpriteFrames_q2sci")
@@ -209,99 +213,99 @@ autoplay = "default"
 frame_progress = 0.985799
 offset = Vector2(0, 1)
 
-[node name="Hitbox" type="Area2D" parent="RotationJoint/Sprite"]
+[node name="Hitbox" type="Area2D" parent="RotationJoint/Sprite" unique_id=1954145116]
 position = Vector2(0, 12)
 monitoring = false
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="RotationJoint/Sprite/Hitbox"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RotationJoint/Sprite/Hitbox" unique_id=509760375]
 position = Vector2(0, -6)
 shape = SubResource("RectangleShape2D_k3xt6")
 
-[node name="UpsideDownExtension" type="CollisionShape2D" parent="RotationJoint/Sprite/Hitbox"]
+[node name="UpsideDownExtension" type="CollisionShape2D" parent="RotationJoint/Sprite/Hitbox" unique_id=1122243323]
 unique_name_in_owner = true
 position = Vector2(0, -14)
 shape = SubResource("RectangleShape2D_k3xt6")
 debug_color = Color(0, 0.6, 0, 0.419608)
 
-[node name="ResourceSetterNew" type="Node" parent="RotationJoint/Sprite" node_paths=PackedStringArray("node_to_affect")]
+[node name="ResourceSetterNew" type="Node" parent="RotationJoint/Sprite" unique_id=521545349 node_paths=PackedStringArray("node_to_affect")]
 script = ExtResource("3_471w1")
 node_to_affect = NodePath("..")
 property_name = "sprite_frames"
 resource_json = ExtResource("4_xp8sq")
 metadata/_custom_type_script = "uid://cbal8ms2oe1ik"
 
-[node name="LevelEditorVisibleNode" type="Node2D" parent="RotationJoint"]
+[node name="LevelEditorVisibleNode" type="Node2D" parent="RotationJoint" unique_id=1604134623]
 script = ExtResource("9_tmwyr")
 metadata/_custom_type_script = "uid://cpwloakvp672a"
 
-[node name="Sprite" type="AnimatedSprite2D" parent="RotationJoint/LevelEditorVisibleNode"]
+[node name="Sprite" type="AnimatedSprite2D" parent="RotationJoint/LevelEditorVisibleNode" unique_id=1987337681]
 position = Vector2(0, -12)
 sprite_frames = SubResource("SpriteFrames_q2sci")
 autoplay = "default"
 frame_progress = 0.985799
 offset = Vector2(0, 1)
 
-[node name="ResourceSetterNew" type="Node" parent="RotationJoint/LevelEditorVisibleNode/Sprite" node_paths=PackedStringArray("node_to_affect")]
+[node name="ResourceSetterNew" type="Node" parent="RotationJoint/LevelEditorVisibleNode/Sprite" unique_id=650595291 node_paths=PackedStringArray("node_to_affect")]
 script = ExtResource("3_471w1")
 node_to_affect = NodePath("..")
 property_name = "sprite_frames"
 resource_json = ExtResource("4_xp8sq")
 metadata/_custom_type_script = "uid://cbal8ms2oe1ik"
 
-[node name="Animation" type="AnimationPlayer" parent="."]
+[node name="Animation" type="AnimationPlayer" parent="." unique_id=986670327]
 libraries = {
 &"": SubResource("AnimationLibrary_471w1")
 }
-autoplay = "Hide"
+autoplay = &"Hide"
 
-[node name="Timer" type="Timer" parent="."]
+[node name="Timer" type="Timer" parent="." unique_id=476338756]
 wait_time = 0.5
 autostart = true
 
-[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
+[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="." unique_id=65639598]
 self_modulate = Color(1, 1, 1, 0)
 position = Vector2(0, -5)
 scale = Vector2(1, 2.9)
 
-[node name="EnemyPlayerDetection" type="Node" parent="." node_paths=PackedStringArray("hitbox")]
+[node name="EnemyPlayerDetection" type="Node" parent="." unique_id=1014865789 node_paths=PackedStringArray("hitbox")]
 script = ExtResource("6_471w1")
 hitbox = NodePath("../RotationJoint/Sprite/Hitbox")
 metadata/_custom_type_script = "uid://chj8hu207lrh"
 
-[node name="FireballDetection" type="Node" parent="." node_paths=PackedStringArray("hitbox")]
+[node name="FireballDetection" type="Node" parent="." unique_id=227777435 node_paths=PackedStringArray("hitbox")]
 script = ExtResource("7_471w1")
 hitbox = NodePath("../RotationJoint/Sprite/Hitbox")
 metadata/_custom_type_script = "uid://dri2d5jtu0fbq"
 
-[node name="ScoreNoteSpawner" type="Node" parent="."]
+[node name="ADWADWADWADWADWADWADWADW" type="Node" parent="." unique_id=1717263626]
+process_mode = 3
+script = SubResource("GDScript_ofvpu")
+
+[node name="ScoreNoteSpawner" type="Node" parent="." unique_id=1773217460]
 script = ExtResource("8_xp8sq")
 add_score = true
 play_sfx = true
 metadata/_custom_type_script = "uid://5octqlf4ohel"
 
-[node name="ShellDetection" type="Node" parent="." node_paths=PackedStringArray("hitbox")]
+[node name="ShellDetection" type="Node" parent="." unique_id=135530297 node_paths=PackedStringArray("hitbox")]
 script = ExtResource("10_uohcg")
 hitbox = NodePath("../RotationJoint/Sprite/Hitbox")
 metadata/_custom_type_script = "uid://bbww34oiexbx2"
 
-[node name="SecondQuestReplacer" type="Node" parent="."]
+[node name="SecondQuestReplacer" type="Node" parent="." unique_id=1246270471]
 script = ExtResource("10_xreuf")
 new_scene = "uid://kj5pw3xhq8f7"
 metadata/_custom_type_script = "uid://d0mqkvopasu8k"
 
-[node name="ExplosionDetection" type="Node" parent="." node_paths=PackedStringArray("hitbox")]
+[node name="ExplosionDetection" type="Node" parent="." unique_id=884962848 node_paths=PackedStringArray("hitbox")]
 script = ExtResource("11_8y1e5")
 hitbox = NodePath("../RotationJoint/Sprite/Hitbox")
 metadata/_custom_type_script = "uid://ba18grqjixded"
 
-[node name="EditorPropertyExposer" type="Node" parent="."]
+[node name="EditorPropertyExposer" type="Node" parent="." unique_id=787949986]
 script = ExtResource("12_ofvpu")
 properties = Array[String](["pipe_direction"])
 metadata/_custom_type_script = "uid://ctfbuoxtnnl0q"
-
-[node name="Node" type="Node" parent="."]
-process_mode = 3
-script = SubResource("GDScript_ofvpu")
 
 [connection signal="timeout" from="Timer" to="." method="on_timeout"]
 [connection signal="hammer_player_hit" from="EnemyPlayerDetection" to="." method="die_from_hammer"]

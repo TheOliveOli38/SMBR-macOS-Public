@@ -1,12 +1,8 @@
-[gd_scene load_steps=333 format=3 uid="uid://gbcmqonky63j"]
+[gd_scene load_steps=327 format=3 uid="uid://gbcmqonky63j"]
 
 [ext_resource type="Script" uid="uid://c2lnc7vnq3xth" path="res://Scripts/Classes/Editor/LevelEditor.gd" id="1_0qbyu"]
-[ext_resource type="PackedScene" uid="uid://bksxgpygrdjl7" path="res://Scenes/Prefabs/LevelBG.tscn" id="1_ujeu4"]
 [ext_resource type="Texture2D" uid="uid://cbha2l6hg1kfo" path="res://Assets/Sprites/UI/EditorGrid.png" id="2_8q7yr"]
-[ext_resource type="Script" uid="uid://bcqr1v25ygedb" path="res://Scripts/Classes/LevelClass.gd" id="3_cubdv"]
-[ext_resource type="PackedScene" uid="uid://ct5rrpa7uehkk" path="res://Scenes/Parts/Tiles.tscn" id="5_cubdv"]
 [ext_resource type="Texture2D" uid="uid://bxciugu0dg7e8" path="res://Assets/Sprites/Editor/ChunkDisplay.png" id="5_o024b"]
-[ext_resource type="PackedScene" uid="uid://cinr6kcbmo6gr" path="res://Scenes/Parts/DropShadowRenderer.tscn" id="7_qrvw3"]
 [ext_resource type="PackedScene" uid="uid://kag5i607liua" path="res://Scenes/Prefabs/UI/TileModifierMenu.tscn" id="8_bovjk"]
 [ext_resource type="PackedScene" uid="uid://knfs0rx7n1ry" path="res://Scenes/Prefabs/Editor/EditorTileSelector.tscn" id="8_wkmjk"]
 [ext_resource type="JSON" path="res://Assets/Sprites/Tilesets/Terrain/TerrainTiles.json" id="10_vhlvp"]
@@ -18,7 +14,6 @@
 [ext_resource type="Texture2D" uid="uid://bgjdnv8n8l1hb" path="res://Assets/Sprites/UI/TabSelected.png" id="12_qebwb"]
 [ext_resource type="PackedScene" uid="uid://dnx48rakxib6u" path="res://Scenes/Prefabs/Entities/Enemies/Goomba.tscn" id="12_vhlvp"]
 [ext_resource type="JSON" path="res://Assets/Sprites/Enemies/GreenKoopaTroopa.json" id="13_qrvw3"]
-[ext_resource type="PackedScene" uid="uid://cuh62hlq8errh" path="res://Scenes/Prefabs/Entities/Player.tscn" id="13_v6u3q"]
 [ext_resource type="Texture2D" uid="uid://c7p1x61ip4ckt" path="res://Assets/Sprites/Editor/TerrainIcon.png" id="14_o024b"]
 [ext_resource type="PackedScene" uid="uid://r6dlmokkdyar" path="res://Scenes/Prefabs/Entities/Enemies/GreenKoopaTroopa.tscn" id="14_xt6nv"]
 [ext_resource type="PackedScene" uid="uid://4fwln7wo5cja" path="res://Scenes/Prefabs/Entities/Enemies/GreenKoopaParaTroopa.tscn" id="15_083dx"]
@@ -140,12 +135,10 @@
 [ext_resource type="PackedScene" uid="uid://da31n0jwfyjo0" path="res://Scenes/Prefabs/LevelObjects/PipeGenerator.tscn" id="87_awwgo"]
 [ext_resource type="Texture2D" uid="uid://ln7uey6c4mf" path="res://Assets/Sprites/Blocks/PSwitchBlock.png" id="87_gjfvx"]
 [ext_resource type="PackedScene" uid="uid://dh2fvaypdfgsl" path="res://Scenes/Prefabs/Blocks/DeathBlock.tscn" id="87_k1rrh"]
-[ext_resource type="Script" uid="uid://b77kpu65i243a" path="res://Scripts/Parts/LevelSaver.gd" id="87_looxg"]
 [ext_resource type="JSON" path="res://Assets/Sprites/Blocks/DonutBlock.json" id="88_0kinh"]
 [ext_resource type="JSON" path="res://Assets/Sprites/Items/CheckpointFlag.json" id="88_2umvb"]
 [ext_resource type="Script" uid="uid://c08y0c8163fec" path="res://Scripts/Parts/EntityIdMapper.gd" id="88_biei1"]
 [ext_resource type="PackedScene" uid="uid://cn7wwtug5xman" path="res://Scenes/Prefabs/Blocks/EmptyPSwitchBlock.tscn" id="88_ydoon"]
-[ext_resource type="Script" uid="uid://clsnunmd42u6d" path="res://Scripts/Parts/LevelLoader.gd" id="89_dkfdw"]
 [ext_resource type="PackedScene" uid="uid://cassl51oehlb6" path="res://Scenes/Prefabs/LevelObjects/CheckpointFlag.tscn" id="89_e20nl"]
 [ext_resource type="PackedScene" uid="uid://q3aaukgw01nw" path="res://Scenes/Prefabs/Blocks/PSwitchBlock.tscn" id="89_f34j3"]
 [ext_resource type="PackedScene" uid="uid://bv38ynjkpisyk" path="res://Scenes/Prefabs/Blocks/DonutBlock.tscn" id="89_ov686"]
@@ -289,6 +282,7 @@
 [ext_resource type="PackedScene" uid="uid://ildroacg1kui" path="res://Scenes/Prefabs/Entities/Items/SuperballFlower.tscn" id="255_cc46g"]
 [ext_resource type="JSON" path="res://Assets/Sprites/Items/Vine.json" id="276_fvohb"]
 [ext_resource type="PackedScene" uid="uid://dkxkrqflg46b2" path="res://Scenes/Prefabs/Entities/Items/Vine.tscn" id="277_1esy2"]
+[ext_resource type="Script" uid="uid://b77kpu65i243a" path="res://Scripts/Parts/LevelSaver.gd" id="280_75p8d"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5mw2n"]
 atlas = ExtResource("12_i2jbr")
@@ -511,93 +505,10 @@ func gen() -> void:
 process_mode = 3
 script = ExtResource("1_0qbyu")
 
-[node name="Level" type="Node" parent="." unique_id=185288493]
-process_mode = 1
-script = ExtResource("3_cubdv")
-metadata/_custom_type_script = "uid://bcqr1v25ygedb"
-
-[node name="LevelBG" parent="Level" unique_id=1956122927 instance=ExtResource("1_ujeu4")]
-z_index = -99
-
-[node name="Camera" type="Camera2D" parent="Level" unique_id=1361571552]
+[node name="Camera" type="Camera2D" parent="." unique_id=1361571552]
 unique_name_in_owner = true
 position = Vector2(-232, -16)
 process_callback = 0
-
-[node name="Grid" type="Parallax2D" parent="Level" unique_id=466111830]
-unique_name_in_owner = true
-visible = false
-visibility_layer = 2
-z_index = 4096
-z_as_relative = false
-repeat_size = Vector2(512, 512)
-repeat_times = 8
-
-[node name="TextureRect" type="TextureRect" parent="Level/Grid" unique_id=819597101]
-modulate = Color(0.356863, 0.356863, 0.356863, 0.407843)
-offset_right = 512.0
-offset_bottom = 512.0
-texture = ExtResource("2_8q7yr")
-stretch_mode = 1
-metadata/_edit_use_anchors_ = true
-
-[node name="ChunkGrid" type="Parallax2D" parent="Level/Grid" unique_id=1780023524]
-unique_name_in_owner = true
-visible = false
-visibility_layer = 2
-z_index = 4096
-z_as_relative = false
-scroll_offset = Vector2(0, 32)
-repeat_size = Vector2(512, 512)
-repeat_times = 8
-
-[node name="TextureRect" type="TextureRect" parent="Level/Grid/ChunkGrid" unique_id=675676350]
-offset_right = 512.0
-offset_bottom = 512.0
-texture = ExtResource("5_o024b")
-metadata/_edit_use_anchors_ = true
-
-[node name="TileLayer5" parent="Level" unique_id=923626577 instance=ExtResource("5_cubdv")]
-unique_name_in_owner = true
-
-[node name="TileLayer4" parent="Level" unique_id=964479702 instance=ExtResource("5_cubdv")]
-unique_name_in_owner = true
-
-[node name="TileLayer3" parent="Level" unique_id=241165134 instance=ExtResource("5_cubdv")]
-unique_name_in_owner = true
-
-[node name="TileLayer2" parent="Level" unique_id=974141901 instance=ExtResource("5_cubdv")]
-unique_name_in_owner = true
-
-[node name="TileLayer1" parent="Level" unique_id=141958573 instance=ExtResource("5_cubdv")]
-unique_name_in_owner = true
-
-[node name="EntityLayer5" type="Node2D" parent="Level" unique_id=949463086]
-unique_name_in_owner = true
-process_mode = 4
-
-[node name="EntityLayer4" type="Node2D" parent="Level" unique_id=676578315]
-unique_name_in_owner = true
-process_mode = 4
-
-[node name="EntityLayer3" type="Node2D" parent="Level" unique_id=1794352551]
-unique_name_in_owner = true
-process_mode = 4
-
-[node name="EntityLayer2" type="Node2D" parent="Level" unique_id=727788457]
-unique_name_in_owner = true
-process_mode = 4
-
-[node name="EntityLayer1" type="Node2D" parent="Level" unique_id=529983925]
-unique_name_in_owner = true
-process_mode = 4
-
-[node name="Player" parent="Level/EntityLayer1" unique_id=1039283362 instance=ExtResource("13_v6u3q")]
-position = Vector2(-232, 0)
-metadata/tile_position = Vector2i(-15, -1)
-metadata/no_save = false
-
-[node name="DropShadow" parent="Level" unique_id=1060550302 instance=ExtResource("7_qrvw3")]
 
 [node name="TileCursor" type="Node2D" parent="." unique_id=180827398]
 unique_name_in_owner = true
@@ -5613,15 +5524,13 @@ libraries = {
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1300473587]
 
-[node name="LevelSaver" type="Node" parent="." unique_id=1523905284]
-script = ExtResource("87_looxg")
-
 [node name="EntityIDMapper" type="Node" parent="." unique_id=925788475]
 script = ExtResource("88_biei1")
 auto_update = false
 
-[node name="LevelLoader" type="Node" parent="." unique_id=694243319]
-script = ExtResource("89_dkfdw")
+[node name="LevelSaver" type="Node" parent="." unique_id=1157843990]
+script = ExtResource("280_75p8d")
+metadata/_custom_type_script = "uid://b77kpu65i243a"
 
 [node name="EntitySelectorKeyGen" type="Node" parent="." unique_id=1766620346]
 script = SubResource("GDScript_wb48v")
@@ -5631,7 +5540,39 @@ script = ExtResource("249_mdu03")
 labels = [NodePath("../Info/Label"), NodePath("../Info/LayerDisplay/LayerLabel")]
 metadata/_custom_type_script = "uid://dt2p68xl462v2"
 
-[connection signal="tree_exited" from="Level/EntityLayer1" to="." method="on_tree_exited"]
+[node name="Grid" type="Parallax2D" parent="." unique_id=466111830]
+unique_name_in_owner = true
+visible = false
+visibility_layer = 2
+z_index = 4096
+z_as_relative = false
+repeat_size = Vector2(512, 512)
+repeat_times = 8
+
+[node name="TextureRect" type="TextureRect" parent="Grid" unique_id=819597101]
+modulate = Color(0.356863, 0.356863, 0.356863, 0.407843)
+offset_right = 512.0
+offset_bottom = 512.0
+texture = ExtResource("2_8q7yr")
+stretch_mode = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="ChunkGrid" type="Parallax2D" parent="Grid" unique_id=1780023524]
+unique_name_in_owner = true
+visible = false
+visibility_layer = 2
+z_index = 4096
+z_as_relative = false
+scroll_offset = Vector2(0, 32)
+repeat_size = Vector2(512, 512)
+repeat_times = 8
+
+[node name="TextureRect" type="TextureRect" parent="Grid/ChunkGrid" unique_id=675676350]
+offset_right = 512.0
+offset_bottom = 512.0
+texture = ExtResource("5_o024b")
+metadata/_edit_use_anchors_ = true
+
 [connection signal="open_scene_ref_tile_menu" from="CanvasLayer/TileModifierMenu" to="." method="open_tile_selection_menu_scene_ref"]
 [connection signal="pressed" from="TileMenu/MarginContainer/VBoxContainer/TabButtons/Bindings" to="." method="open_bindings_menu"]
 [connection signal="pressed" from="TileMenu/MarginContainer/VBoxContainer/TabButtons/Save" to="." method="open_save_dialog"]
@@ -5695,14 +5636,6 @@ metadata/_custom_type_script = "uid://dt2p68xl462v2"
 [connection signal="toggled" from="TileMenu/MarginContainer/VBoxContainer/PanelContainer/LEVEL/ScrollContainer/VBoxContainer/HBoxContainer3/BackScroll" to="." method="backscroll_toggled"]
 [connection signal="value_changed" from="TileMenu/MarginContainer/VBoxContainer/PanelContainer/LEVEL/ScrollContainer/VBoxContainer/HBoxContainer4/HeightLimit" to="." method="height_limit_changed"]
 [connection signal="value_changed" from="TileMenu/MarginContainer/VBoxContainer/PanelContainer/LEVEL/ScrollContainer/VBoxContainer/HBoxContainer6/TimeLimit" to="." method="time_limit_changed"]
-[connection signal="item_selected" from="TileMenu/MarginContainer/VBoxContainer/PanelContainer/BG/ScrollContainer/VBoxContainer/HBoxContainer/PrimaryLayer" to="Level/LevelBG" method="set_value" binds= ["primary_layer"]]
-[connection signal="item_selected" from="TileMenu/MarginContainer/VBoxContainer/PanelContainer/BG/ScrollContainer/VBoxContainer/HBoxContainer2/SecondLayer" to="Level/LevelBG" method="set_value" binds= ["second_layer"]]
-[connection signal="item_selected" from="TileMenu/MarginContainer/VBoxContainer/PanelContainer/BG/ScrollContainer/VBoxContainer/HBoxContainer7/SecondLayerOrder" to="Level/LevelBG" method="set_value" binds= ["second_layer_order"]]
-[connection signal="item_selected" from="TileMenu/MarginContainer/VBoxContainer/PanelContainer/BG/ScrollContainer/VBoxContainer/HBoxContainer8/TimeOfDay" to="Level/LevelBG" method="set_value" binds= ["second_layer_order"]]
-[connection signal="value_changed" from="TileMenu/MarginContainer/VBoxContainer/PanelContainer/BG/ScrollContainer/VBoxContainer/HBoxContainer4/SecondLayerOffset" to="Level/LevelBG" method="set_second_y_offset"]
-[connection signal="item_selected" from="TileMenu/MarginContainer/VBoxContainer/PanelContainer/BG/ScrollContainer/VBoxContainer/HBoxContainer5/Particles" to="Level/LevelBG" method="set_value" binds= ["particles"]]
-[connection signal="item_selected" from="TileMenu/MarginContainer/VBoxContainer/PanelContainer/BG/ScrollContainer/VBoxContainer/HBoxContainer6/LiquidLayer" to="Level/LevelBG" method="set_value" binds= ["liquid_layer"]]
-[connection signal="toggled" from="TileMenu/MarginContainer/VBoxContainer/PanelContainer/BG/ScrollContainer/VBoxContainer/HBoxContainer3/OverlayClouds" to="Level/LevelBG" method="set_value" binds= ["overlay_clouds"]]
 [connection signal="pressed" from="Info/QuitDialog/Yes" to="." method="save_level_before_exit"]
 [connection signal="pressed" from="Info/QuitDialog/No" to="." method="go_back_to_menu"]
 [connection signal="pressed" from="Info/QuitDialog/Cancel" to="Info/QuitDialog" method="hide"]

@@ -63,7 +63,7 @@ func handle_camera(delta: float) -> void:
 	update_camera_barriers()
 
 func update_camera_barriers() -> void:
-	if get_viewport() != null:
+	if get_viewport() != null and get_viewport().get_camera_2d() != null:
 		camera_center_joint.global_position = get_viewport().get_camera_2d().get_screen_center_position()
 		camera_center_joint.get_node("LeftWall").position.x = -(get_viewport_rect().size.x / 2)
 		camera_center_joint.get_node("RightWall").position.x = (get_viewport_rect().size.x / 2)

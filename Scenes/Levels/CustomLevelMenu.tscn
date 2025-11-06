@@ -87,10 +87,10 @@ region = Rect2(12, 0, 12, 12)
 [sub_resource type="StyleBoxLine" id="StyleBoxLine_obbrw"]
 color = Color(1, 1, 1, 1)
 
-[node name="CustomLevelMenu" type="Node"]
+[node name="CustomLevelMenu" type="Node" unique_id=1151792999]
 script = ExtResource("1_2wr4s")
 
-[node name="BG" type="NinePatchRect" parent="."]
+[node name="BG" type="NinePatchRect" parent="." unique_id=437782379]
 texture_repeat = 2
 anchors_preset = 15
 anchor_right = 1.0
@@ -105,7 +105,7 @@ axis_stretch_vertical = 1
 script = ExtResource("4_rx7vd")
 metadata/_custom_type_script = "uid://xem6lai3ufyj"
 
-[node name="Border" type="NinePatchRect" parent="BG"]
+[node name="Border" type="NinePatchRect" parent="BG" unique_id=2147282935]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.05
@@ -123,7 +123,7 @@ axis_stretch_horizontal = 2
 axis_stretch_vertical = 2
 script = ExtResource("4_rx7vd")
 
-[node name="BG" type="TextureRect" parent="BG/Border"]
+[node name="BG" type="TextureRect" parent="BG/Border" unique_id=137738265]
 show_behind_parent = true
 material = SubResource("ShaderMaterial_lfefu")
 layout_mode = 1
@@ -137,7 +137,7 @@ stretch_mode = 1
 script = ExtResource("7_ruj08")
 metadata/_custom_type_script = "uid://ca3bew33g45eq"
 
-[node name="Levels" type="MarginContainer" parent="BG/Border"]
+[node name="Levels" type="MarginContainer" parent="BG/Border" unique_id=335581734]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -149,17 +149,17 @@ theme_override_constants/margin_top = 12
 theme_override_constants/margin_right = 24
 theme_override_constants/margin_bottom = 16
 
-[node name="VBoxContainer" type="VBoxContainer" parent="BG/Border/Levels"]
+[node name="VBoxContainer" type="VBoxContainer" parent="BG/Border/Levels" unique_id=798909362]
 layout_mode = 2
 
-[node name="Title" type="Label" parent="BG/Border/Levels/VBoxContainer"]
+[node name="Title" type="Label" parent="BG/Border/Levels/VBoxContainer" unique_id=1905396441]
 custom_minimum_size = Vector2(0, 19)
 layout_mode = 2
 size_flags_horizontal = 4
 text = "CUSTOM_LEVELS"
 uppercase = true
 
-[node name="HSeparator" type="HSeparator" parent="BG/Border/Levels/VBoxContainer/Title"]
+[node name="HSeparator" type="HSeparator" parent="BG/Border/Levels/VBoxContainer/Title" unique_id=1060029401]
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
@@ -168,17 +168,17 @@ offset_bottom = 16.0
 grow_horizontal = 2
 theme_override_styles/separator = SubResource("StyleBoxLine_wdbts")
 
-[node name="LevelList" type="VBoxContainer" parent="BG/Border/Levels/VBoxContainer"]
+[node name="LevelList" type="VBoxContainer" parent="BG/Border/Levels/VBoxContainer" unique_id=773970306]
 unique_name_in_owner = true
 visible = false
 layout_mode = 2
 size_flags_vertical = 3
 script = ExtResource("9_r5ajm")
 
-[node name="TopBit" type="HBoxContainer" parent="BG/Border/Levels/VBoxContainer/LevelList"]
+[node name="TopBit" type="HBoxContainer" parent="BG/Border/Levels/VBoxContainer/LevelList" unique_id=294956479]
 layout_mode = 2
 
-[node name="Button" type="Button" parent="BG/Border/Levels/VBoxContainer/LevelList/TopBit"]
+[node name="Button" type="Button" parent="BG/Border/Levels/VBoxContainer/LevelList/TopBit" unique_id=1521656330]
 custom_minimum_size = Vector2(0, 42)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -190,7 +190,7 @@ theme_override_styles/hover = ExtResource("9_61olo")
 theme_override_styles/disabled = ExtResource("8_psbt7")
 theme_override_styles/focus = ExtResource("9_61olo")
 
-[node name="MarginContainer" type="MarginContainer" parent="BG/Border/Levels/VBoxContainer/LevelList/TopBit/Button"]
+[node name="MarginContainer" type="MarginContainer" parent="BG/Border/Levels/VBoxContainer/LevelList/TopBit/Button" unique_id=287435426]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -202,19 +202,19 @@ theme_override_constants/margin_top = 4
 theme_override_constants/margin_right = 4
 theme_override_constants/margin_bottom = 4
 
-[node name="HBoxContainer" type="HBoxContainer" parent="BG/Border/Levels/VBoxContainer/LevelList/TopBit/Button/MarginContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="BG/Border/Levels/VBoxContainer/LevelList/TopBit/Button/MarginContainer" unique_id=504328433]
 layout_mode = 2
 
-[node name="HSplitContainer" type="HBoxContainer" parent="BG/Border/Levels/VBoxContainer/LevelList/TopBit/Button/MarginContainer/HBoxContainer"]
+[node name="HSplitContainer" type="HBoxContainer" parent="BG/Border/Levels/VBoxContainer/LevelList/TopBit/Button/MarginContainer/HBoxContainer" unique_id=68477410]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 0
 
-[node name="LeftHalf" type="HBoxContainer" parent="BG/Border/Levels/VBoxContainer/LevelList/TopBit/Button/MarginContainer/HBoxContainer/HSplitContainer"]
+[node name="LeftHalf" type="HBoxContainer" parent="BG/Border/Levels/VBoxContainer/LevelList/TopBit/Button/MarginContainer/HBoxContainer/HSplitContainer" unique_id=1290892477]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="LevelIcon" type="NinePatchRect" parent="BG/Border/Levels/VBoxContainer/LevelList/TopBit/Button/MarginContainer/HBoxContainer/HSplitContainer/LeftHalf"]
+[node name="LevelIcon" type="NinePatchRect" parent="BG/Border/Levels/VBoxContainer/LevelList/TopBit/Button/MarginContainer/HBoxContainer/HSplitContainer/LeftHalf" unique_id=361124988]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
@@ -223,45 +223,45 @@ size_flags_vertical = 4
 texture = ExtResource("10_psbt7")
 region_rect = Rect2(64, 96, 32, 32)
 
-[node name="LevelInfo" type="VBoxContainer" parent="BG/Border/Levels/VBoxContainer/LevelList/TopBit/Button/MarginContainer/HBoxContainer/HSplitContainer/LeftHalf"]
+[node name="LevelInfo" type="VBoxContainer" parent="BG/Border/Levels/VBoxContainer/LevelList/TopBit/Button/MarginContainer/HBoxContainer/HSplitContainer/LeftHalf" unique_id=1168959976]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = -4
 
-[node name="ScrollContainer" type="ScrollContainer" parent="BG/Border/Levels/VBoxContainer/LevelList/TopBit/Button/MarginContainer/HBoxContainer/HSplitContainer/LeftHalf/LevelInfo"]
+[node name="ScrollContainer" type="ScrollContainer" parent="BG/Border/Levels/VBoxContainer/LevelList/TopBit/Button/MarginContainer/HBoxContainer/HSplitContainer/LeftHalf/LevelInfo" unique_id=765379550]
 custom_minimum_size = Vector2(0, 16)
 layout_mode = 2
 horizontal_scroll_mode = 3
 vertical_scroll_mode = 3
 
-[node name="LevelName" type="Label" parent="BG/Border/Levels/VBoxContainer/LevelList/TopBit/Button/MarginContainer/HBoxContainer/HSplitContainer/LeftHalf/LevelInfo/ScrollContainer"]
+[node name="LevelName" type="Label" parent="BG/Border/Levels/VBoxContainer/LevelList/TopBit/Button/MarginContainer/HBoxContainer/HSplitContainer/LeftHalf/LevelInfo/ScrollContainer" unique_id=350923788]
 unique_name_in_owner = true
 layout_mode = 2
 text = "EDITOR_MAIN_CREATE_0"
 uppercase = true
 
-[node name="Container" type="BoxContainer" parent="BG/Border/Levels/VBoxContainer/LevelList/TopBit/Button/MarginContainer/HBoxContainer/HSplitContainer/LeftHalf/LevelInfo" node_paths=PackedStringArray("test_node", "dummy_node")]
+[node name="Container" type="BoxContainer" parent="BG/Border/Levels/VBoxContainer/LevelList/TopBit/Button/MarginContainer/HBoxContainer/HSplitContainer/LeftHalf/LevelInfo" unique_id=1421742656 node_paths=PackedStringArray("test_node", "dummy_node")]
 layout_mode = 2
 size_flags_vertical = 3
 script = ExtResource("12_qptw5")
 test_node = NodePath("Label")
 dummy_node = NodePath("TextureRect")
 
-[node name="TextureRect" type="TextureRect" parent="BG/Border/Levels/VBoxContainer/LevelList/TopBit/Button/MarginContainer/HBoxContainer/HSplitContainer/LeftHalf/LevelInfo/Container"]
+[node name="TextureRect" type="TextureRect" parent="BG/Border/Levels/VBoxContainer/LevelList/TopBit/Button/MarginContainer/HBoxContainer/HSplitContainer/LeftHalf/LevelInfo/Container" unique_id=557088124]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 texture = SubResource("AtlasTexture_psbt7")
 stretch_mode = 3
 
-[node name="Label" type="Label" parent="BG/Border/Levels/VBoxContainer/LevelList/TopBit/Button/MarginContainer/HBoxContainer/HSplitContainer/LeftHalf/LevelInfo/Container"]
+[node name="Label" type="Label" parent="BG/Border/Levels/VBoxContainer/LevelList/TopBit/Button/MarginContainer/HBoxContainer/HSplitContainer/LeftHalf/LevelInfo/Container" unique_id=1077979773]
 visible = false
 modulate = Color(0.38928655, 0.38928664, 0.38928658, 1)
 layout_mode = 2
 text = "EDITOR_MAIN_CREATE_1"
 uppercase = true
 
-[node name="TextureRect" type="TextureRect" parent="BG/Border/Levels/VBoxContainer/LevelList/TopBit/Button"]
+[node name="TextureRect" type="TextureRect" parent="BG/Border/Levels/VBoxContainer/LevelList/TopBit/Button" unique_id=596551789]
 visible = false
 layout_mode = 1
 anchors_preset = -1
@@ -272,7 +272,7 @@ offset_top = -4.0
 offset_bottom = 4.0
 grow_vertical = 2
 
-[node name="ResourceSetterNew" type="Node" parent="BG/Border/Levels/VBoxContainer/LevelList/TopBit/Button/TextureRect" node_paths=PackedStringArray("node_to_affect")]
+[node name="ResourceSetterNew" type="Node" parent="BG/Border/Levels/VBoxContainer/LevelList/TopBit/Button/TextureRect" unique_id=1958571745 node_paths=PackedStringArray("node_to_affect")]
 script = ExtResource("14_tjro6")
 node_to_affect = NodePath("..")
 property_name = "texture"
@@ -280,42 +280,42 @@ mode = 1
 resource_json = ExtResource("15_7mmoe")
 metadata/_custom_type_script = "uid://cbal8ms2oe1ik"
 
-[node name="VBoxContainer" type="VBoxContainer" parent="BG/Border/Levels/VBoxContainer/LevelList/TopBit"]
+[node name="VBoxContainer" type="VBoxContainer" parent="BG/Border/Levels/VBoxContainer/LevelList/TopBit" unique_id=692691816]
 layout_mode = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="BG/Border/Levels/VBoxContainer/LevelList/TopBit"]
+[node name="MarginContainer" type="MarginContainer" parent="BG/Border/Levels/VBoxContainer/LevelList/TopBit" unique_id=1620726841]
 layout_mode = 2
 theme_override_constants/margin_right = -4
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="BG/Border/Levels/VBoxContainer/LevelList/TopBit/MarginContainer"]
+[node name="VBoxContainer2" type="VBoxContainer" parent="BG/Border/Levels/VBoxContainer/LevelList/TopBit/MarginContainer" unique_id=214196102]
 layout_mode = 2
 
-[node name="SelectableLabel" parent="BG/Border/Levels/VBoxContainer/LevelList/TopBit/MarginContainer/VBoxContainer2" instance=ExtResource("12_psbt7")]
+[node name="SelectableLabel" parent="BG/Border/Levels/VBoxContainer/LevelList/TopBit/MarginContainer/VBoxContainer2" unique_id=1424008125 instance=ExtResource("12_psbt7")]
 layout_mode = 2
 text = "EDITOR_MAIN_OPEN_FOLDER"
 
-[node name="SelectableLabel2" parent="BG/Border/Levels/VBoxContainer/LevelList/TopBit/MarginContainer/VBoxContainer2" instance=ExtResource("12_psbt7")]
+[node name="SelectableLabel2" parent="BG/Border/Levels/VBoxContainer/LevelList/TopBit/MarginContainer/VBoxContainer2" unique_id=265241081 instance=ExtResource("12_psbt7")]
 layout_mode = 2
 text = "EDITOR_MAIN_REFRESH"
 
-[node name="SelectableLabel3" parent="BG/Border/Levels/VBoxContainer/LevelList/TopBit/MarginContainer/VBoxContainer2" instance=ExtResource("12_psbt7")]
+[node name="SelectableLabel3" parent="BG/Border/Levels/VBoxContainer/LevelList/TopBit/MarginContainer/VBoxContainer2" unique_id=849967971 instance=ExtResource("12_psbt7")]
 layout_mode = 2
 text = "EDITOR_MAIN_LSS"
 
-[node name="HSeparator" type="HSeparator" parent="BG/Border/Levels/VBoxContainer/LevelList"]
+[node name="HSeparator" type="HSeparator" parent="BG/Border/Levels/VBoxContainer/LevelList" unique_id=1815239064]
 layout_mode = 2
 theme_override_styles/separator = SubResource("StyleBoxLine_wgcm7")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="BG/Border/Levels/VBoxContainer/LevelList"]
+[node name="HBoxContainer" type="HBoxContainer" parent="BG/Border/Levels/VBoxContainer/LevelList" unique_id=497006057]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="MarginContainer" type="MarginContainer" parent="BG/Border/Levels/VBoxContainer/LevelList/HBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="BG/Border/Levels/VBoxContainer/LevelList/HBoxContainer" unique_id=241367372]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/margin_left = -8
 
-[node name="ScrollContainer" type="ScrollContainer" parent="BG/Border/Levels/VBoxContainer/LevelList/HBoxContainer/MarginContainer"]
+[node name="ScrollContainer" type="ScrollContainer" parent="BG/Border/Levels/VBoxContainer/LevelList/HBoxContainer/MarginContainer" unique_id=797672064]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 128)
 layout_mode = 2
@@ -325,30 +325,30 @@ follow_focus = true
 horizontal_scroll_mode = 0
 vertical_scroll_mode = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="BG/Border/Levels/VBoxContainer/LevelList/HBoxContainer/MarginContainer/ScrollContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="BG/Border/Levels/VBoxContainer/LevelList/HBoxContainer/MarginContainer/ScrollContainer" unique_id=1867212789]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_constants/margin_left = 8
 
-[node name="LevelContainers" type="VBoxContainer" parent="BG/Border/Levels/VBoxContainer/LevelList/HBoxContainer/MarginContainer/ScrollContainer/MarginContainer"]
+[node name="LevelContainers" type="VBoxContainer" parent="BG/Border/Levels/VBoxContainer/LevelList/HBoxContainer/MarginContainer/ScrollContainer/MarginContainer" unique_id=1496221430]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 alignment = 1
 
-[node name="Label" type="Label" parent="BG/Border/Levels/VBoxContainer/LevelList/HBoxContainer/MarginContainer/ScrollContainer/MarginContainer/LevelContainers"]
+[node name="Label" type="Label" parent="BG/Border/Levels/VBoxContainer/LevelList/HBoxContainer/MarginContainer/ScrollContainer/MarginContainer/LevelContainers" unique_id=1597753620]
 layout_mode = 2
 text = "No levels found!"
 horizontal_alignment = 1
 uppercase = true
 
-[node name="HSeparator2" type="HSeparator" parent="BG/Border/Levels/VBoxContainer/LevelList"]
+[node name="HSeparator2" type="HSeparator" parent="BG/Border/Levels/VBoxContainer/LevelList" unique_id=478083324]
 layout_mode = 2
 theme_override_styles/separator = SubResource("StyleBoxLine_wgcm7")
 
-[node name="LevelInfo" type="VBoxContainer" parent="BG/Border/Levels/VBoxContainer"]
+[node name="LevelInfo" type="VBoxContainer" parent="BG/Border/Levels/VBoxContainer" unique_id=687439964]
 unique_name_in_owner = true
 visible = false
 layout_mode = 2
@@ -356,28 +356,28 @@ size_flags_vertical = 3
 theme_override_constants/separation = 4
 script = ExtResource("19_ruj08")
 
-[node name="SelectedLevel" parent="BG/Border/Levels/VBoxContainer/LevelInfo" instance=ExtResource("18_7mmoe")]
+[node name="SelectedLevel" parent="BG/Border/Levels/VBoxContainer/LevelInfo" unique_id=1573298747 instance=ExtResource("18_7mmoe")]
 unique_name_in_owner = true
 layout_mode = 2
 focus_mode = 0
 
 [node name="ScrollContainer" parent="BG/Border/Levels/VBoxContainer/LevelInfo/SelectedLevel/MarginContainer/HBoxContainer/HSplitContainer/LeftHalf/LevelInfo" index="0"]
-scroll_horizontal = 202
+scroll_horizontal = 209
 is_active = true
 
 [node name="ScrollContainer2" parent="BG/Border/Levels/VBoxContainer/LevelInfo/SelectedLevel/MarginContainer/HBoxContainer/HSplitContainer/LeftHalf/LevelInfo" index="1"]
-scroll_horizontal = 5
+scroll_horizontal = 37
 is_active = true
 
-[node name="Panel" type="PanelContainer" parent="BG/Border/Levels/VBoxContainer/LevelInfo"]
+[node name="Panel" type="PanelContainer" parent="BG/Border/Levels/VBoxContainer/LevelInfo" unique_id=2125756912]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_styles/panel = ExtResource("8_psbt7")
 
-[node name="AutoScrollContainer" type="ScrollContainer" parent="BG/Border/Levels/VBoxContainer/LevelInfo/Panel"]
+[node name="AutoScrollContainer" type="ScrollContainer" parent="BG/Border/Levels/VBoxContainer/LevelInfo/Panel" unique_id=975980634]
 layout_mode = 2
 mouse_filter = 2
-scroll_vertical = 13
+scroll_vertical = 100
 horizontal_scroll_mode = 3
 vertical_scroll_mode = 3
 script = ExtResource("24_wf6nb")
@@ -386,7 +386,7 @@ is_active = true
 auto_connect_focus = false
 metadata/_custom_type_script = "uid://d63p6qr5a748"
 
-[node name="Description" type="Label" parent="BG/Border/Levels/VBoxContainer/LevelInfo/Panel/AutoScrollContainer"]
+[node name="Description" type="Label" parent="BG/Border/Levels/VBoxContainer/LevelInfo/Panel/AutoScrollContainer" unique_id=1353123268]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
@@ -395,11 +395,11 @@ text = "this is text, isnt it so cool. WOWOWOWOWOWW"
 autowrap_mode = 2
 uppercase = true
 
-[node name="HBoxContainer" type="HBoxContainer" parent="BG/Border/Levels/VBoxContainer/LevelInfo"]
+[node name="HBoxContainer" type="HBoxContainer" parent="BG/Border/Levels/VBoxContainer/LevelInfo" unique_id=306824213]
 layout_mode = 2
 alignment = 1
 
-[node name="Play" parent="BG/Border/Levels/VBoxContainer/LevelInfo/HBoxContainer" instance=ExtResource("19_hvf3u")]
+[node name="Play" parent="BG/Border/Levels/VBoxContainer/LevelInfo/HBoxContainer" unique_id=1811287982 instance=ExtResource("19_hvf3u")]
 unique_name_in_owner = true
 layout_mode = 2
 focus_neighbor_right = NodePath("../Edit")
@@ -407,7 +407,7 @@ focus_neighbor_right = NodePath("../Edit")
 [node name="Label" parent="BG/Border/Levels/VBoxContainer/LevelInfo/HBoxContainer/Play" index="2"]
 text = "EDITOR_MAIN_LEVEL_PLAY"
 
-[node name="Edit" parent="BG/Border/Levels/VBoxContainer/LevelInfo/HBoxContainer" instance=ExtResource("19_hvf3u")]
+[node name="Edit" parent="BG/Border/Levels/VBoxContainer/LevelInfo/HBoxContainer" unique_id=722726036 instance=ExtResource("19_hvf3u")]
 unique_name_in_owner = true
 layout_mode = 2
 focus_neighbor_right = NodePath("../Delete")
@@ -422,7 +422,7 @@ texture = SubResource("AtlasTexture_hvf3u")
 [node name="Label" parent="BG/Border/Levels/VBoxContainer/LevelInfo/HBoxContainer/Edit" index="2"]
 text = "EDITOR_MAIN_LEVEL_EDIT"
 
-[node name="Delete" parent="BG/Border/Levels/VBoxContainer/LevelInfo/HBoxContainer" instance=ExtResource("19_hvf3u")]
+[node name="Delete" parent="BG/Border/Levels/VBoxContainer/LevelInfo/HBoxContainer" unique_id=1897618213 instance=ExtResource("19_hvf3u")]
 unique_name_in_owner = true
 layout_mode = 2
 focus_neighbor_left = NodePath("../Edit")
@@ -437,7 +437,7 @@ texture = SubResource("AtlasTexture_otk5o")
 [node name="Label" parent="BG/Border/Levels/VBoxContainer/LevelInfo/HBoxContainer/Delete" index="2"]
 text = "EDITOR_MAIN_LEVEL_DELETE"
 
-[node name="DeleteConfirm" parent="BG/Border/Levels/VBoxContainer/LevelInfo/HBoxContainer" instance=ExtResource("19_hvf3u")]
+[node name="DeleteConfirm" parent="BG/Border/Levels/VBoxContainer/LevelInfo/HBoxContainer" unique_id=1029580246 instance=ExtResource("19_hvf3u")]
 visible = false
 layout_mode = 2
 focus_neighbor_left = NodePath("../Edit")
@@ -453,49 +453,49 @@ texture = SubResource("AtlasTexture_otk5o")
 [node name="Label" parent="BG/Border/Levels/VBoxContainer/LevelInfo/HBoxContainer/DeleteConfirm" index="2"]
 text = "EDITOR_MAIN_LEVEL_CONFIRM"
 
-[node name="LSSBrowser" type="VBoxContainer" parent="BG/Border/Levels/VBoxContainer"]
+[node name="LSSBrowser" type="VBoxContainer" parent="BG/Border/Levels/VBoxContainer" unique_id=1228715031]
 unique_name_in_owner = true
 visible = false
 layout_mode = 2
 size_flags_vertical = 3
 script = ExtResource("21_obbrw")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="BG/Border/Levels/VBoxContainer/LSSBrowser"]
+[node name="VBoxContainer" type="VBoxContainer" parent="BG/Border/Levels/VBoxContainer/LSSBrowser" unique_id=49895387]
 layout_mode = 2
 theme_override_constants/separation = 0
 
-[node name="RefreshList" parent="BG/Border/Levels/VBoxContainer/LSSBrowser/VBoxContainer" instance=ExtResource("12_psbt7")]
+[node name="RefreshList" parent="BG/Border/Levels/VBoxContainer/LSSBrowser/VBoxContainer" unique_id=1060934210 instance=ExtResource("12_psbt7")]
 unique_name_in_owner = true
 layout_mode = 2
 text = "EDITOR_MAIN_REFRESH"
 
-[node name="Sort" parent="BG/Border/Levels/VBoxContainer/LSSBrowser/VBoxContainer" instance=ExtResource("22_13and")]
+[node name="Sort" parent="BG/Border/Levels/VBoxContainer/LSSBrowser/VBoxContainer" unique_id=638628928 instance=ExtResource("22_13and")]
 unique_name_in_owner = true
 layout_mode = 2
 title = "EDITOR_LSS_SORT"
 values = Array[String](["EDITOR_LSS_SORT_FEATURED", "EDITOR_LSS_SORT_RECENT", "EDITOR_LSS_SORT_DOWNLOADS", "EDITOR_LSS_SORT_RATING"])
 add_colon = false
 
-[node name="Order" parent="BG/Border/Levels/VBoxContainer/LSSBrowser/VBoxContainer" instance=ExtResource("22_13and")]
+[node name="Order" parent="BG/Border/Levels/VBoxContainer/LSSBrowser/VBoxContainer" unique_id=515114127 instance=ExtResource("22_13and")]
 unique_name_in_owner = true
 layout_mode = 2
 title = "EDITOR_LSS_ORDER"
 values = Array[String](["EDITOR_LSS_ORDER_ASC", "EDITOR_LSS_ORDER_DEC"])
 add_colon = false
 
-[node name="Page" parent="BG/Border/Levels/VBoxContainer/LSSBrowser/VBoxContainer" instance=ExtResource("22_13and")]
+[node name="Page" parent="BG/Border/Levels/VBoxContainer/LSSBrowser/VBoxContainer" unique_id=744654404 instance=ExtResource("22_13and")]
 unique_name_in_owner = true
 layout_mode = 2
 title = "Page"
 values = Array[String](["1"])
 
-[node name="HTTPRequest" type="HTTPRequest" parent="BG/Border/Levels/VBoxContainer/LSSBrowser"]
+[node name="HTTPRequest" type="HTTPRequest" parent="BG/Border/Levels/VBoxContainer/LSSBrowser" unique_id=1685268887]
 
-[node name="HSeparator" type="HSeparator" parent="BG/Border/Levels/VBoxContainer/LSSBrowser"]
+[node name="HSeparator" type="HSeparator" parent="BG/Border/Levels/VBoxContainer/LSSBrowser" unique_id=1791057379]
 layout_mode = 2
 theme_override_styles/separator = SubResource("StyleBoxLine_obbrw")
 
-[node name="LoadingMSG" type="Label" parent="BG/Border/Levels/VBoxContainer/LSSBrowser"]
+[node name="LoadingMSG" type="Label" parent="BG/Border/Levels/VBoxContainer/LSSBrowser" unique_id=754692837]
 unique_name_in_owner = true
 visible = false
 layout_mode = 2
@@ -504,7 +504,7 @@ text = "Grabbing levels..."
 horizontal_alignment = 1
 uppercase = true
 
-[node name="OverloadMSG" type="Label" parent="BG/Border/Levels/VBoxContainer/LSSBrowser"]
+[node name="OverloadMSG" type="Label" parent="BG/Border/Levels/VBoxContainer/LSSBrowser" unique_id=1848997599]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 6
@@ -513,7 +513,7 @@ horizontal_alignment = 1
 autowrap_mode = 2
 uppercase = true
 
-[node name="ErrorMSG" type="Label" parent="BG/Border/Levels/VBoxContainer/LSSBrowser"]
+[node name="ErrorMSG" type="Label" parent="BG/Border/Levels/VBoxContainer/LSSBrowser" unique_id=1917067527]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 6
@@ -522,35 +522,35 @@ horizontal_alignment = 1
 autowrap_mode = 2
 uppercase = true
 
-[node name="ScrollContainer" type="ScrollContainer" parent="BG/Border/Levels/VBoxContainer/LSSBrowser"]
+[node name="ScrollContainer" type="ScrollContainer" parent="BG/Border/Levels/VBoxContainer/LSSBrowser" unique_id=1018129781]
 layout_mode = 2
 size_flags_vertical = 3
 follow_focus = true
 horizontal_scroll_mode = 0
 
-[node name="MarginContainer" type="MarginContainer" parent="BG/Border/Levels/VBoxContainer/LSSBrowser/ScrollContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="BG/Border/Levels/VBoxContainer/LSSBrowser/ScrollContainer" unique_id=606750476]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_constants/margin_left = 8
 theme_override_constants/margin_top = 4
 
-[node name="OnlineLevelList" type="VBoxContainer" parent="BG/Border/Levels/VBoxContainer/LSSBrowser/ScrollContainer/MarginContainer"]
+[node name="OnlineLevelList" type="VBoxContainer" parent="BG/Border/Levels/VBoxContainer/LSSBrowser/ScrollContainer/MarginContainer" unique_id=215346287]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="HSeparator2" type="HSeparator" parent="BG/Border/Levels/VBoxContainer/LSSBrowser"]
+[node name="HSeparator2" type="HSeparator" parent="BG/Border/Levels/VBoxContainer/LSSBrowser" unique_id=1420947842]
 layout_mode = 2
 theme_override_styles/separator = SubResource("StyleBoxLine_obbrw")
 
-[node name="Sprite2D" type="Sprite2D" parent="BG/Border/Levels/VBoxContainer/LSSBrowser"]
+[node name="Sprite2D" type="Sprite2D" parent="BG/Border/Levels/VBoxContainer/LSSBrowser" unique_id=1384106417]
 visible = false
 position = Vector2(171.2, 33)
 texture = ExtResource("23_8jgx6")
 
-[node name="LSSLevelInfo" type="VBoxContainer" parent="BG/Border/Levels/VBoxContainer"]
+[node name="LSSLevelInfo" type="VBoxContainer" parent="BG/Border/Levels/VBoxContainer" unique_id=677163044]
 unique_name_in_owner = true
 visible = false
 layout_mode = 2
@@ -559,30 +559,34 @@ mouse_filter = 2
 theme_override_constants/separation = 4
 script = ExtResource("23_u8fen")
 
-[node name="SelectedOnlineLevel" parent="BG/Border/Levels/VBoxContainer/LSSLevelInfo" instance=ExtResource("26_r5ajm")]
+[node name="SelectedOnlineLevel" parent="BG/Border/Levels/VBoxContainer/LSSLevelInfo" unique_id=561241708 instance=ExtResource("26_r5ajm")]
 unique_name_in_owner = true
 layout_mode = 2
 focus_mode = 0
 
+[node name="AnimationPlayer" parent="BG/Border/Levels/VBoxContainer/LSSLevelInfo/SelectedOnlineLevel/MarginContainer/HBoxContainer/HSplitContainer/LeftHalf/LevelIcon/Label" index="0"]
+autoplay = &"Load"
+
 [node name="ScrollContainer" parent="BG/Border/Levels/VBoxContainer/LSSLevelInfo/SelectedOnlineLevel/MarginContainer/HBoxContainer/HSplitContainer/LeftHalf/LevelInfo" index="0"]
+scroll_horizontal = 60
 is_active = true
 auto_connect_focus = false
 
 [node name="ScrollContainer2" parent="BG/Border/Levels/VBoxContainer/LSSLevelInfo/SelectedOnlineLevel/MarginContainer/HBoxContainer/HSplitContainer/LeftHalf/LevelInfo" index="1"]
-scroll_horizontal = 5
+scroll_horizontal = 37
 is_active = true
 auto_connect_focus = false
 
-[node name="Panel" type="PanelContainer" parent="BG/Border/Levels/VBoxContainer/LSSLevelInfo"]
+[node name="Panel" type="PanelContainer" parent="BG/Border/Levels/VBoxContainer/LSSLevelInfo" unique_id=911678100]
 layout_mode = 2
 size_flags_vertical = 3
 mouse_filter = 2
 theme_override_styles/panel = ExtResource("8_psbt7")
 
-[node name="AutoScrollContainer" type="ScrollContainer" parent="BG/Border/Levels/VBoxContainer/LSSLevelInfo/Panel"]
+[node name="AutoScrollContainer" type="ScrollContainer" parent="BG/Border/Levels/VBoxContainer/LSSLevelInfo/Panel" unique_id=1801631913]
 layout_mode = 2
 mouse_filter = 0
-scroll_vertical = 13
+scroll_vertical = 100
 horizontal_scroll_mode = 3
 script = ExtResource("24_wf6nb")
 direction = 1
@@ -590,7 +594,7 @@ is_active = true
 auto_connect_focus = false
 metadata/_custom_type_script = "uid://d63p6qr5a748"
 
-[node name="LSSDescription" type="Label" parent="BG/Border/Levels/VBoxContainer/LSSLevelInfo/Panel/AutoScrollContainer"]
+[node name="LSSDescription" type="Label" parent="BG/Border/Levels/VBoxContainer/LSSLevelInfo/Panel/AutoScrollContainer" unique_id=1867600170]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
@@ -599,11 +603,11 @@ text = "this is text, isnt it so cool. WOWOWOWOWOWW"
 autowrap_mode = 2
 uppercase = true
 
-[node name="HBoxContainer" type="HBoxContainer" parent="BG/Border/Levels/VBoxContainer/LSSLevelInfo"]
+[node name="HBoxContainer" type="HBoxContainer" parent="BG/Border/Levels/VBoxContainer/LSSLevelInfo" unique_id=2115326902]
 layout_mode = 2
 alignment = 1
 
-[node name="Download" type="Button" parent="BG/Border/Levels/VBoxContainer/LSSLevelInfo/HBoxContainer"]
+[node name="Download" type="Button" parent="BG/Border/Levels/VBoxContainer/LSSLevelInfo/HBoxContainer" unique_id=978859466]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
@@ -613,7 +617,7 @@ theme_override_styles/hover = ExtResource("9_61olo")
 theme_override_styles/focus = ExtResource("9_61olo")
 text = "EDITOR_LSS_DOWNLOAD"
 
-[node name="OnlinePlay" type="Button" parent="BG/Border/Levels/VBoxContainer/LSSLevelInfo/HBoxContainer"]
+[node name="OnlinePlay" type="Button" parent="BG/Border/Levels/VBoxContainer/LSSLevelInfo/HBoxContainer" unique_id=2146704487]
 unique_name_in_owner = true
 visible = false
 layout_mode = 2
@@ -624,7 +628,7 @@ theme_override_styles/hover = ExtResource("9_61olo")
 theme_override_styles/focus = ExtResource("9_61olo")
 text = "PLAY"
 
-[node name="ViewOnLSS" type="Button" parent="BG/Border/Levels/VBoxContainer/LSSLevelInfo/HBoxContainer"]
+[node name="ViewOnLSS" type="Button" parent="BG/Border/Levels/VBoxContainer/LSSLevelInfo/HBoxContainer" unique_id=567610598]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
@@ -634,20 +638,20 @@ theme_override_styles/hover = ExtResource("9_61olo")
 theme_override_styles/focus = ExtResource("9_61olo")
 text = "EDITOR_LSS_OPEN_PAGE"
 
-[node name="Description" type="HTTPRequest" parent="BG/Border/Levels/VBoxContainer/LSSLevelInfo"]
+[node name="Description" type="HTTPRequest" parent="BG/Border/Levels/VBoxContainer/LSSLevelInfo" unique_id=1751974054]
 
-[node name="DownloadLevel" type="HTTPRequest" parent="BG/Border/Levels/VBoxContainer/LSSLevelInfo"]
+[node name="DownloadLevel" type="HTTPRequest" parent="BG/Border/Levels/VBoxContainer/LSSLevelInfo" unique_id=98924763]
 
-[node name="LabelFontChanger" type="Node" parent="." node_paths=PackedStringArray("labels")]
+[node name="LabelFontChanger" type="Node" parent="." unique_id=762005581 node_paths=PackedStringArray("labels")]
 script = ExtResource("21_hpawg")
 labels = [NodePath("../BG/Border/Levels/VBoxContainer/Title"), NodePath("../BG/Border/Levels/VBoxContainer/LevelList/TopBit/Button/MarginContainer/HBoxContainer/HSplitContainer/LeftHalf/LevelInfo/ScrollContainer/LevelName"), NodePath("../BG/Border/Levels/VBoxContainer/LevelList/TopBit/Button/MarginContainer/HBoxContainer/HSplitContainer/LeftHalf/LevelInfo/Container/Label"), NodePath("../BG/Border/Levels/VBoxContainer/LevelList/TopBit/MarginContainer/VBoxContainer2/SelectableLabel"), NodePath("../BG/Border/Levels/VBoxContainer/LevelList/TopBit/MarginContainer/VBoxContainer2/SelectableLabel2"), NodePath("../BG/Border/Levels/VBoxContainer/LevelList/HBoxContainer/MarginContainer/ScrollContainer/MarginContainer/LevelContainers/Label"), NodePath("../BG/Border/Levels/VBoxContainer/LevelInfo/SelectedLevel/MarginContainer/HBoxContainer/HSplitContainer/LeftHalf/LevelInfo/ScrollContainer/LevelName"), NodePath("../BG/Border/Levels/VBoxContainer/LevelInfo/SelectedLevel/MarginContainer/HBoxContainer/HSplitContainer/LeftHalf/LevelInfo/ScrollContainer2/LevelAuthor"), NodePath("../BG/Border/Levels/VBoxContainer/LevelInfo/Panel/AutoScrollContainer/Description"), NodePath("../BG/Border/Levels/VBoxContainer/LevelInfo/HBoxContainer/Play/Label"), NodePath("../BG/Border/Levels/VBoxContainer/LevelInfo/HBoxContainer/Edit/Label"), NodePath("../BG/Border/Levels/VBoxContainer/LevelInfo/HBoxContainer/Delete/Label"), NodePath("../BG/Border/Levels/VBoxContainer/LevelInfo/HBoxContainer/DeleteConfirm/Label"), NodePath("../BG/Border/Levels/VBoxContainer/LevelList/TopBit/MarginContainer/VBoxContainer2/SelectableLabel3"), NodePath("../BG/Border/Levels/VBoxContainer/LSSBrowser/VBoxContainer/RefreshList"), NodePath("../BG/Border/Levels/VBoxContainer/LSSBrowser/LoadingMSG"), NodePath("../BG/Border/Levels/VBoxContainer/LSSBrowser/OverloadMSG"), null]
 metadata/_custom_type_script = "uid://co6tjg3w6qpd8"
 
-[node name="BGM" type="AudioStreamPlayer" parent="."]
+[node name="BGM" type="AudioStreamPlayer" parent="." unique_id=1413540263]
 stream = ExtResource("23_22hnx")
 bus = &"Music"
 
-[node name="ResourceSetterNew" type="Node" parent="BGM" node_paths=PackedStringArray("node_to_affect")]
+[node name="ResourceSetterNew" type="Node" parent="BGM" unique_id=1054115827 node_paths=PackedStringArray("node_to_affect")]
 script = ExtResource("14_tjro6")
 node_to_affect = NodePath("..")
 property_name = "stream"
@@ -655,11 +659,11 @@ mode = 2
 resource_json = ExtResource("29_r5ajm")
 metadata/_custom_type_script = "uid://cbal8ms2oe1ik"
 
-[node name="CharacterSelect" parent="." instance=ExtResource("28_u8fen")]
+[node name="CharacterSelect" parent="." unique_id=1584069562 instance=ExtResource("28_u8fen")]
 visible = false
 focus_mode = 2
 
-[node name="LSSCharacterSelect" parent="." instance=ExtResource("28_u8fen")]
+[node name="LSSCharacterSelect" parent="." unique_id=1347798513 instance=ExtResource("28_u8fen")]
 visible = false
 focus_mode = 2
 

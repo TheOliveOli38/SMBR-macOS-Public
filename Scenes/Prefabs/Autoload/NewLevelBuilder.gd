@@ -21,6 +21,7 @@ func _ready() -> void:
 	load_entity_map()
 
 func load_level(level_file := {}) -> void:
+	sub_levels = [null, null, null, null, null]
 	building = true
 	for i in 5:
 		sub_levels[i] = build_sublevel(i, level_file)

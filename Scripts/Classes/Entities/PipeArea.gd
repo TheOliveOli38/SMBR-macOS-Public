@@ -35,7 +35,7 @@ static var exiting_pipe_id := -1
 
 func _ready() -> void:
 	update_visuals()
-	if Engine.is_editor_hint() == false and Global.current_game_mode != Global.GameMode.LEVEL_EDITOR:
+	if Engine.is_editor_hint() == false:
 		run_pipe_check()
 
 func run_pipe_check() -> void:
@@ -70,9 +70,11 @@ func exit_pipe() -> void:
 		if i.is_node_ready() == false:
 			await i.ready
 		i.go_to_exit_pipe(self)
+	await get_tree().create_timer(0.5, false).timeout
 	for i in get_tree().get_nodes_in_group("Players"):
-		await get_tree().create_timer(0.5, false).timeout
+		if is_instance_valid(i) == false: continue
 		await i.exit_pipe(self)
+		await get_tree().create_timer(0.5, false).timeout
 	exiting_pipe_id = -1
 	can_enter = true
 

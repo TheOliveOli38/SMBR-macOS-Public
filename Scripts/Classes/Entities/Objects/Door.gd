@@ -115,8 +115,6 @@ func player_enter(player: Player) -> void:
 	var level_id = -1
 	if Global.current_level is CustomLevel:
 		level_id = Global.current_level.sublevel_id
-	elif Global.level_editor != null:
-		level_id = Global.level_editor.sub_level_id
 	if level_id == sublevel_id:
 		Global.do_fake_transition()
 		if Global.fade_transition:

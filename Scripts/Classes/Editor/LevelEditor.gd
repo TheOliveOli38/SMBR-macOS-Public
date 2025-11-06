@@ -28,6 +28,8 @@ var tile_offsets := {}
 
 signal level_start
 
+var level: Level = null
+
 var selected_tile_index := 0
 
 var can_move_cam := true
@@ -47,6 +49,8 @@ signal close_confirm(save: bool)
 
 var sub_level_id := 0
 
+static var sub_areas: Array = [null, null, null, null, null]
+
 const BLANK_FILE := {"Info": {}, "Levels": [{}, {}, {}, {}, {}]}
 
 static var level_file = {"Info": {}, "Levels": [{}, {}, {}, {}, {}]}
@@ -54,7 +58,6 @@ static var level_file = {"Info": {}, "Levels": [{}, {}, {}, {}, {}]}
 var current_layer := 0
 @onready var tile_layer_nodes: Array[TileMapLayer] = [%TileLayer1, %TileLayer2, %TileLayer3, %TileLayer4, %TileLayer5]
 @onready var entity_layer_nodes := [%EntityLayer1, %EntityLayer2, %EntityLayer3, %EntityLayer4, %EntityLayer5]
-var saved_entity_layers := [null, null, null, null, null]
 
 var copied_node: Node = null
 var copied_tile_offset := Vector2.ZERO
@@ -118,27 +121,15 @@ func _ready() -> void:
 		if i == "": continue
 		$%LevelMusic.add_item(tr(music_track_names[idx]).to_upper())
 		idx += 1
+	load_level(0)
 	await get_tree().process_frame
 	Level.start_level_path = scene_file_path
 	var layer_idx := 0
 	for i in entity_layer_nodes:
 		for x in i.get_children():
 			entity_tiles[layer_idx][x.get_meta("tile_position")] = x
-	if level_file != {}:
-		Level.can_set_time = true
-		$LevelLoader.load_level(Checkpoint.sublevel_id)
-		if Global.current_game_mode == Global.GameMode.CUSTOM_LEVEL:
-			$Info.hide()
-			%Grid.hide()
-			play_level()
-			_physics_process(0)
-			set_physics_process(false)
-			for i in [$TileMenu]:
-				i.queue_free()
-		else:
-			Global.current_game_mode = Global.GameMode.LEVEL_EDITOR
-	else:
-		Global.current_game_mode = Global.GameMode.LEVEL_EDITOR
+		layer_idx += 1
+	Global.current_game_mode = Global.GameMode.LEVEL_EDITOR
 	for i: Player in get_tree().get_nodes_in_group("Players"):
 		i.recenter_camera()
 	%LevelName.text = level_name
@@ -252,17 +243,17 @@ func cleanup() -> void:
 	Global.get_node("GameHUD").visible = playing_level
 	Global.p_switch_active = false
 	if Global.current_game_mode == Global.GameMode.LEVEL_EDITOR:
-		Global.time = $Level.time_limit
+		Global.time = level.time_limit
 	elif Level.can_set_time and playing_level:
-		Global.time = $Level.time_limit
+		Global.time = level.time_limit
 	Global.can_time_tick = playing_level
 	print(Global.can_time_tick)
 
 func update_music() -> void:
 	if music_track_list[bgm_id] != "":
-		$Level.music = load(music_track_list[bgm_id].replace(".remap", ""))
+		level.music = load(music_track_list[bgm_id].replace(".remap", ""))
 	else:
-		$Level.music = null
+		level.music = null
 
 func play_level() -> void:
 	$TileMenu.hide()
@@ -272,64 +263,32 @@ func play_level() -> void:
 	%Camera.enabled = false
 	level_start.emit()
 	get_tree().call_group("Players", "editor_level_start")
-	parse_tiles()
-	if Global.current_game_mode != Global.GameMode.CUSTOM_LEVEL:
-		level_file = await $LevelSaver.save_level(level_name, level_author, level_desc, difficulty)
+	save_current_level()
 	current_state = EditorState.PLAYTESTING
+	level.process_mode = Node.PROCESS_MODE_PAUSABLE
 	handle_hud()
-
-func parse_tiles() -> void:
-	saved_entity_layers = [null, null, null, null, null]
-	var idx := 0
-	for i in entity_layer_nodes:
-		if is_instance_valid(i) == false:
-			continue
-		if load_play == false:
-			saved_entity_layers[idx] = i.duplicate(DUPLICATE_USE_INSTANTIATION)
-		if i is Player:
-			i.direction = 1
-			i.velocity = Vector2.ZERO
-			i.global_position = i.global_position.snapped(Vector2(8, 8))
-		i.ready.emit()
-		i.set_process_mode(Node.PROCESS_MODE_INHERIT)
-		idx += 1
 
 func return_to_editor() -> void:
 	AudioManager.stop_all_music()
-	$Level.music = null
+	level.music = null
 	%Camera.global_position = get_viewport().get_camera_2d().get_screen_center_position()
 	%Camera.reset_physics_interpolation()
-	return_editor_tiles()
+	load_level(sub_level_id)
 	%Camera.enabled = true
 	%Camera.make_current()
 	KeyItem.total_collected = 0
 	Door.unlocked_doors.clear()
+	Global.reset_values()
 	editor_start.emit()
 	current_state = EditorState.IDLE
+	level.process_mode = Node.PROCESS_MODE_DISABLED
 	handle_hud()
 
-func return_editor_tiles() -> void:
-	for i in entity_layer_nodes:
-		i.queue_free()
-	var idx := 0
-	for i in entity_tiles:
-		i.clear()
-		$Level.add_child(saved_entity_layers[idx])
-		entity_layer_nodes[idx] = saved_entity_layers[idx]
-		idx += 1
-	var layer_idx = 0
-	for x in entity_layer_nodes:
-		x.process_mode = PROCESS_MODE_DISABLED
-		for i in x.get_children():
-			i.owner = self
-			var _tile_position = (Vector2i(i.global_position) - Vector2i(8, 8)) / 16
-			entity_tiles[layer_idx].set(i.get_meta("tile_position", Vector2i.ZERO), i)
-		layer_idx += 1
 
 func handle_camera(delta: float) -> void:
 	var input_vector = Input.get_vector("editor_cam_left", "editor_cam_right", "editor_cam_up", "editor_cam_down")
 	%Camera.global_position += input_vector * (CAM_MOVE_SPEED_FAST if Input.is_action_pressed("editor_cam_fast") else CAM_MOVE_SPEED_SLOW) * delta
-	%Camera.global_position.y = clamp(%Camera.global_position.y, $Level.vertical_height + (get_viewport().get_visible_rect().size.y / 2), 32 - (get_viewport().get_visible_rect().size.y / 2))
+	%Camera.global_position.y = clamp(%Camera.global_position.y, level.vertical_height + (get_viewport().get_visible_rect().size.y / 2), 32 - (get_viewport().get_visible_rect().size.y / 2))
 	%Camera.global_position.x = clamp(%Camera.global_position.x, -256 + (get_viewport().get_visible_rect().size.x / 2), INF)
 
 func handle_layers() -> void:
@@ -356,6 +315,7 @@ func save_level() -> void:
 	var file_name = level_name.to_pascal_case() + ".lvl"
 	%SaveLevelDialog.hide()
 	menu_open = false
+	save_current_level()
 	level_file = $LevelSaver.save_level(level_name, level_author, level_desc, difficulty)
 	$LevelSaver.write_file(level_file, file_name)
 	%SaveDialog.text = str("'") +  file_name + "'" + " Saved." 
@@ -519,6 +479,7 @@ func open_tile_selection_menu_scene_ref(selector: TilePropertySceneRef) -> void:
 	selector.set_scene(current_entity_selector)
 	close_tile_menu()
 	current_state = EditorState.MODIFYING_TILE
+
 func on_tile_selected(selector: EditorTileSelector) -> void:
 	mode = selector.type
 	current_entity_selector = selector
@@ -633,9 +594,9 @@ func theme_selected(theme_idx := 0) -> void:
 func time_selected(time_idx := 0) -> void:
 	ResourceSetterNew.cache.clear()
 	AudioManager.current_level_theme = ""
-	$Level.theme_time = ["Day", "Night"][time_idx]
+	level.theme_time = ["Day", "Night"][time_idx]
 	Global.theme_time = ["Day", "Night"][time_idx]
-	$Level/LevelBG.time_of_day = time_idx
+	level.get_node("LevelBG").time_of_day = time_idx
 	Global.level_theme_changed.emit()
 
 func music_selected(music_idx := 0) -> void:
@@ -644,17 +605,17 @@ func music_selected(music_idx := 0) -> void:
 func campaign_selected(campaign_idx := 0) -> void:
 	ResourceSetterNew.cache.clear()
 	Global.current_campaign = ["SMB1", "SMBLL", "SMBS", "SMBANN"][campaign_idx]
-	$Level.campaign = Global.current_campaign
+	level.campaign = Global.current_campaign
 	Global.level_theme_changed.emit()
 
 func backscroll_toggled(new_value := false) -> void:
-	$Level.can_backscroll = new_value
+	level.can_backscroll = new_value
 
 func height_limit_changed(new_value := 0) -> void:
-	$Level.vertical_height = -new_value
+	level.vertical_height = -new_value
 
 func time_limit_changed(new_value := 0) -> void:
-	$Level.time_limit = new_value
+	level.time_limit = new_value
 
 func low_gravity_toggled(new_value := false) -> void:
 	Global.entity_gravity = 10 if new_value == false else 5
@@ -663,25 +624,12 @@ func low_gravity_toggled(new_value := false) -> void:
 
 func transition_to_sublevel(sub_lvl_idx := 0) -> void:
 	Global.can_pause = false
-	var play_transition = playing_level
-	if play_transition:
-		await Global.do_fake_transition()
+	if Global.level_editor_is_playtesting():
+		Global.do_fake_transition()
 	else:
-		level_file = $LevelSaver.save_level(level_name, level_author, level_desc, difficulty)
-		LevelPersistance.reset_states()
-	sub_level_id = sub_lvl_idx
-	await $LevelLoader.load_level(sub_lvl_idx)
-	if Settings.file.visuals.transition_animation == 0:
-		Global.do_fake_transition(0.1)
-	await get_tree().physics_frame
-	if (play_pipe_transition or play_door_transition) and play_transition:
-		parse_tiles()
-		if play_pipe_transition:
-			get_tree().call_group("Pipes", "run_pipe_check")
-		if play_door_transition:
-			get_tree().call_group("Doors", "run_door_check")
-		update_music()
-	PipeArea.exiting_pipe_id = -1
+		save_current_level()
+		PipeArea.exiting_pipe_id = -1
+	load_level(sub_lvl_idx)
 	Global.can_pause = true
 
 func _input(event: InputEvent) -> void:
@@ -703,6 +651,62 @@ func get_tile_properties(tile: Node) -> Array:
 			properties.append(i)
 	return properties
 
+const CUSTOM_LEVEL_BASE = ("res://Scenes/Levels/CustomLevelBase.tscn")
+
+func save_current_level() -> void:
+	sub_areas[sub_level_id] = level.duplicate()
+
+func load_level(level_id := 0) -> void:
+	var node = sub_areas[level_id]
+	if node == null:
+		node = load(CUSTOM_LEVEL_BASE).instantiate()
+		node.sublevel_id = level_id
+	elif node is PackedScene:
+		node = node.instantiate()
+	else:
+		node = node.duplicate()
+	if level != null:
+		level.queue_free()
+	add_child(node)
+	level = node
+	sub_level_id = level_id
+	update_references()
+	reload_entity_tiles()
+	if Global.level_editor_is_playtesting() == false:
+		node.music = null
+		node.process_mode = ProcessMode.PROCESS_MODE_DISABLED
+	else:
+		node.process_mode = ProcessMode.PROCESS_MODE_PAUSABLE
+
+func convert_scenes_to_nodes() -> void:
+	pass
+
+func reload_entity_tiles() -> void:
+	entity_tiles = [{}, {}, {}, {}, {}]
+	var layer_idx := 0
+	for layer in entity_layer_nodes:
+		for child in layer.get_children():
+			entity_tiles[layer_idx][child.get_meta("tile_position")] = child
+		layer_idx += 1
+
+func update_references() -> void:
+	entity_layer_nodes = [level.get_node("EntityLayer1"), level.get_node("EntityLayer2"), level.get_node("EntityLayer3"), level.get_node("EntityLayer4"), level.get_node("EntityLayer5")]
+	tile_layer_nodes = [level.get_node("TileLayer1"), level.get_node("TileLayer2"), level.get_node("TileLayer3"), level.get_node("TileLayer4"), level.get_node("TileLayer5")]
+	update_menu_values()
+	if level.music != null:
+		bgm_id = music_track_list.find(level.music.resource_path)
+
+func update_menu_values() -> void:
+	%ThemeTime.selected = ["Day", "Night"].find(level.theme_time)
+	if level.music != null:
+		%LevelMusic.selected = music_track_list.find(level.music.resource_path)
+	else:
+		%LevelMusic.selected = 0
+	%Campaign.selected = Global.CAMPAIGNS.find(level.campaign)
+	%BackScroll.set_pressed_no_signal(level.can_backscroll)
+	%HeightLimit.value = abs(level.vertical_height)
+	%TimeLimit.value = level.time_limit
+	%SubLevelID.selected = sub_level_id
 
 func on_tree_exited() -> void:
 	pass # Replace with function body.

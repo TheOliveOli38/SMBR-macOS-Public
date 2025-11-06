@@ -237,13 +237,11 @@ func _ready() -> void:
 	if Global.current_level.first_load and Global.current_game_mode == Global.GameMode.MARATHON_PRACTICE:
 		Global.player_power_states[player_id] = "0"
 	power_state = $PowerStates.get_node(POWER_STATES[int(Global.player_power_states[player_id])])
-	if Global.current_game_mode == Global.GameMode.LEVEL_EDITOR:
-		camera.enabled = false
 	handle_power_up_states(0)
 	set_power_state_frame()
 	handle_invincible_palette()
 	recenter_camera()
-	if Global.current_game_mode == Global.GameMode.CUSTOM_LEVEL:
+	if Global.current_level is CustomLevel:
 		editor_level_start()
 
 func apply_character_physics(apply: bool) -> void:
@@ -677,7 +675,7 @@ func death_load() -> void:
 			Global.transition_to_scene("res://Scenes/Levels/LevelTransition.tscn"),
 
 		Global.GameMode.LEVEL_EDITOR: func():
-			owner.stop_testing(),
+			Global.level_editor.stop_testing(),
 			
 
 		Global.GameMode.CHALLENGE: func():
@@ -838,9 +836,10 @@ func enter_pipe(pipe: PipeArea, warp_to_level := true) -> void:
 	hide_pipe_animation()
 	if warp_to_level:
 		await get_tree().create_timer(1, false).timeout
-		if Global.current_game_mode == Global.GameMode.LEVEL_EDITOR or Global.current_game_mode == Global.GameMode.CUSTOM_LEVEL:
-			LevelEditor.play_pipe_transition = true
+		if Global.current_game_mode == Global.GameMode.CUSTOM_LEVEL:
 			Global.transition_to_scene(NewLevelBuilder.sub_levels[pipe.target_sub_level])
+		elif Global.level_editor != null:
+			Global.level_editor.transition_to_sublevel(pipe.target_sub_level)
 		else:
 			Global.transition_to_scene(pipe.target_level)
 

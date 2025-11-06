@@ -10,8 +10,6 @@ static var level_file := {"Info": {}, "Levels": [{}, {}, {}, {}, {}]}
 const chunk_template := {"Tiles": "", "Entities": ""}
 
 const base64_charset := "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/"
-@onready var level: Level = $"../Level"
-@onready var level_bg: LevelBG = $"../Level/LevelBG"
 
 var entity_map := {}
 
@@ -21,17 +19,25 @@ func _ready() -> void:
 	load_entity_map()
 
 func save_level(level_name := "Unnamed Level", level_author := "You", level_desc := "No Desc", difficulty := 0) -> Dictionary:
-	level_file = editor.level_file
-	sub_level_file = {"Layers": [{}, {}, {}, {}, {}], "Data": "", "BG": ""}
-	get_tiles()
-	get_entities()
+	level_file = LevelEditor.BLANK_FILE.duplicate_deep()
 	
-	save_bg_data()
-	save_level_data()
-	level_file["Levels"][editor.sub_level_id] = sub_level_file.duplicate()
+	var idx := 0
+	for i in LevelEditor.sub_areas:
+		if i != null:
+			level_file["Levels"][idx] = save_subarea(i)
+		idx += 1
 	level_file["Info"] = {"Name": level_name, "Author": level_author, "Description": level_desc, "Difficulty": difficulty}
 	level_file["Version"] = Global.version_number
 	return level_file
+
+func save_subarea(level: CustomLevel = null) -> Dictionary:
+	sub_level_file = {"Layers": [{}, {}, {}, {}, {}], "Data": "", "BG": ""}
+	get_tiles(level)
+	get_entities(level)
+	
+	save_bg_data(level)
+	save_level_data(level)
+	return sub_level_file
 
 func write_file(json := {}, lvl_file_name := "") -> void:
 	for i in "<>:?!/":
@@ -44,19 +50,20 @@ func write_file(json := {}, lvl_file_name := "") -> void:
 func load_entity_map() -> void:
 	entity_map = JSON.parse_string(FileAccess.open(EntityIDMapper.MAP_PATH, FileAccess.READ).get_as_text())
 
-func get_tiles() -> void:
+func get_tiles(level: CustomLevel = null) -> void:
 	for layer in 5:
-		for tile in editor.tile_layer_nodes[layer].get_used_cells():
-			if tile_blacklist.has(editor.tile_layer_nodes[layer].get_cell_atlas_coords(tile)) or editor.tile_layer_nodes[layer].get_cell_source_id(tile) == 6:
+		var layer_node = level.get_node("TileLayer" + str(layer + 1))
+		for tile in layer_node.get_used_cells():
+			if tile_blacklist.has(layer_node.get_cell_atlas_coords(tile)) or layer_node.get_cell_source_id(tile) == 6:
 				continue
 			var tile_string := ""
 			var chunk_tile = Vector2i(wrap(tile.x, 0, 32), wrap(tile.y + 30, -1, 32))
 			tile_string += base64_charset[chunk_tile.x]
 			tile_string += base64_charset[chunk_tile.y]
 			tile_string += ""
-			tile_string += base64_charset[editor.tile_layer_nodes[layer].get_cell_atlas_coords(tile).x]
-			tile_string += base64_charset[editor.tile_layer_nodes[layer].get_cell_atlas_coords(tile).y]
-			tile_string += base64_charset[editor.tile_layer_nodes[layer].get_cell_source_id(tile)]
+			tile_string += base64_charset[layer_node.get_cell_atlas_coords(tile).x]
+			tile_string += base64_charset[layer_node.get_cell_atlas_coords(tile).y]
+			tile_string += base64_charset[layer_node.get_cell_source_id(tile)]
 			var tile_chunk_idx = tile_to_chunk_idx(tile)
 			var tile_chunk := {}
 			if sub_level_file["Layers"][layer].has(tile_chunk_idx):
@@ -86,9 +93,10 @@ static func decompress_string(buffer := "") -> String:
 	var ret = decompressed.get_string_from_ascii()
 	return ret
 
-func get_entities() -> void:
+func get_entities(level: CustomLevel) -> void:
 	for layer in 5:
-		for entity in editor.entity_layer_nodes[layer].get_children():
+		var layer_node = level.get_node("EntityLayer" + str(layer + 1))
+		for entity in layer_node.get_children():
 			if entity.has_meta("tile_position") == false:
 				continue
 			var entity_string := ""
@@ -121,7 +129,7 @@ func encode_to_base64_2char(value: int) -> String:
 
 	return char1 + char2
 
-func save_level_data() -> void:
+func save_level_data(level: CustomLevel) -> void:
 	var string := ""
 	for i in [Level.THEME_IDXS.find(level.theme), ["Day", "Night"].find(level.theme_time), editor.bgm_id, ["SMB1", "SMBLL", "SMBS", "SMBANN"].find(level.campaign), level.can_backscroll, abs(level.vertical_height), level.time_limit]:
 		var key := ""
@@ -132,8 +140,9 @@ func save_level_data() -> void:
 		string += key + "="
 	sub_level_file["Data"] = string
 
-func save_bg_data() -> void:
+func save_bg_data(level: Level) -> void:
 	var string := ""
+	var level_bg = level.get_node("LevelBG")
 	for i in [level_bg.primary_layer, level_bg.second_layer, level_bg.second_layer_offset.y, level_bg.time_of_day, level_bg.particles, level_bg.liquid_layer, level_bg.overlay_clouds]:
 		var key := ""
 		i = int(i)

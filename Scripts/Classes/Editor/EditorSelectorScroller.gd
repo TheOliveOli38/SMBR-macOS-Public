@@ -17,6 +17,7 @@ func _ready() -> void:
 	add_expanded()
 
 func add_expanded() -> void:
+	return
 	for i in duped_selectors:
 		add_sibling(i)
 		i.hide()
