@@ -44,6 +44,7 @@ func _ready() -> void:
 		for i in get_tree().get_nodes_in_group("Players"):
 			i.global_position = self.global_position
 			i.reset_physics_interpolation()
+			await get_tree().physics_frame
 			i.recenter_camera()
 		KeyItem.total_collected = keys_collected
 		respawned.emit()

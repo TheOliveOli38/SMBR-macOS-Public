@@ -184,6 +184,9 @@ func handle_animations() -> void:
 	player.sprite.speed_scale = 1
 	if ["Walk", "Move", "Run"].has(animation):
 		player.sprite.speed_scale = abs(player.velocity.x) / 40
+	if player.direction == -1:
+		if player.sprite.sprite_frames.has_animation("Left" + animation):
+			animation = "Left" + animation
 	player.play_animation(animation)
 	if player.sprite.animation == "Move":
 		walk_frame = player.sprite.frame

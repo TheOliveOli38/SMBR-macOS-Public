@@ -1,4 +1,4 @@
-[gd_scene load_steps=327 format=3 uid="uid://gbcmqonky63j"]
+[gd_scene load_steps=329 format=3 uid="uid://gbcmqonky63j"]
 
 [ext_resource type="Script" uid="uid://c2lnc7vnq3xth" path="res://Scripts/Classes/Editor/LevelEditor.gd" id="1_0qbyu"]
 [ext_resource type="Texture2D" uid="uid://cbha2l6hg1kfo" path="res://Assets/Sprites/UI/EditorGrid.png" id="2_8q7yr"]
@@ -173,6 +173,8 @@
 [ext_resource type="JSON" path="res://Assets/Sprites/Blocks/OnOffBlockRed.json" id="107_mbniv"]
 [ext_resource type="Texture2D" uid="uid://h2ceiq5q4i15" path="res://Assets/Sprites/Editor/PlatformIcons/SideToSideHori.png" id="108_73mr2"]
 [ext_resource type="Texture2D" uid="uid://dg3rrr0n878nm" path="res://Assets/Sprites/Blocks/SuperTrampoline.png" id="108_adqgr"]
+[ext_resource type="JSON" path="res://Assets/Sprites/Enemies/SpikeTop.json" id="108_ji0c6"]
+[ext_resource type="PackedScene" uid="uid://epltraxjntji" path="res://Scenes/Prefabs/Entities/Enemies/SpikeTop.tscn" id="109_2h5td"]
 [ext_resource type="JSON" path="res://Assets/Sprites/Blocks/BlueOnOffBlock.json" id="109_c84f5"]
 [ext_resource type="PackedScene" uid="uid://qaldmcid6jm5" path="res://Scenes/Prefabs/Entities/Objects/SuperTrampoline.tscn" id="109_k5kal"]
 [ext_resource type="PackedScene" uid="uid://b3or4h5ke6lni" path="res://Scenes/Prefabs/Entities/Objects/SmallSidewaysPlatform.tscn" id="109_l8k11"]
@@ -3388,6 +3390,14 @@ icon_texture = ExtResource("113_0x514")
 icon_region_override = Rect2(8, 8, 16, 16)
 entity_scene = ExtResource("114_1y4xk")
 tile_offset = Vector2i(0, 0)
+
+[node name="SpikeTop" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Enemies/MarginContainer/GridContainer" unique_id=937752968 groups=["Selectors"] instance=ExtResource("8_wkmjk")]
+layout_mode = 2
+tile_name = "ENEMY_SPIKETOP"
+type = 1
+icon_texture = ExtResource("108_ji0c6")
+icon_region_override = Rect2(0, 0, 16, 16)
+entity_scene = ExtResource("109_2h5td")
 
 [node name="Blocks" type="VBoxContainer" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer" unique_id=1676242659]
 layout_mode = 2

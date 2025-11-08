@@ -23,7 +23,7 @@ func area_entered(area: Area2D) -> void:
 func player_entered(player: Player) -> void:
 	if player.is_invincible:
 		invincible_player_hit.emit(player)
-	elif (player.velocity.y >= 15 or (player.global_position.y + height < owner.global_position.y)) and player.in_water == false:
+	elif ((player.velocity.y * player.gravity_vector.y) >= 15 or (player.global_position.y + (height * player.gravity_vector.y) < owner.global_position.y and player.velocity.y < 0)) and player.in_water == false:
 		player_stomped_on.emit(player)
 	else:
 		player_hit.emit(player)
