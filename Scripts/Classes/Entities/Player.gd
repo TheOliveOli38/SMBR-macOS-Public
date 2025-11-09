@@ -9,8 +9,9 @@ var PHYSICS_PARAMETERS: Dictionary = {
 		"HITBOX_SCALE": [1.0, 1.0],       # The player's hitbox scale.
 		"CROUCH_SCALE": 0.5,              # The player's hitbox scale when crouched.
 		"CAN_AIR_TURN": false,            # Determines if the player can turn in mid-air.
-		"CAN_BREAK_BRICKS" : true,        # Determines if the player can break bricks in their current form.
-		
+		"CAN_BREAK_BRICKS": true,         # Determines if the player can break bricks in their current form.
+		"CAN_BE_WALL_EJECTED": true,      # Determines if the player gets pushed out of blocks if inside of them.
+
 		"JUMP_GRAVITY": 11.0,             # The player's gravity while jumping, measured in px/frame
 		"JUMP_HEIGHT": 300.0,             # The strength of the player's jump, measured in px/sec
 		"JUMP_INCR": 8.0,                 # How much the player's X velocity affects their jump speed
@@ -47,7 +48,8 @@ var PHYSICS_PARAMETERS: Dictionary = {
 	},
 	"Small": {
 		"CROUCH_SCALE": 0.75,
-		"CAN_BREAK_BRICKS" : false,
+		"CAN_BREAK_BRICKS": false,
+		"CAN_BE_WALL_EJECTED": false,
 	},
 	"Big": {},
 	"Fire": {},
@@ -61,6 +63,17 @@ var ENDING_PARAMETERS: Dictionary = {
 		"FLAG_INITIAL_X_VELOCITY": 0.0,    # Determines the player's initial X velocity after letting go of the flagpole.
 		"FLAG_JUMP_HEIGHT": 0.0,           # How high the player will initially jump after letting go of the flagpole.
 		"FLAG_JUMP_INCR": 8.0,             # How much the player's X velocity will influence the player's jump height.
+		
+		"FLAG_SPEED_MULT": 1.0,            # The multiplier applied onto the player's max speed when walking to the flag.
+		"FLAG_ACCEL_MULT": 1.0,            # The multiplier applied onto the player's max acceleration when walking to the flag.
+		"TOAD_SPEED_MULT": 1.0,            # The multiplier applied onto the player's max speed when walking to a Toad.
+		"TOAD_ACCEL_MULT": 1.0,            # The multiplier applied onto the player's max acceleration when walking to a Toad.
+		"PEACH_SPEED_MULT": 1.0,            # The multiplier applied onto the player's max speed when walking to Peach.
+		"PEACH_ACCEL_MULT": 1.0,            # The multiplier applied onto the player's max acceleration when walking to Peach.
+		
+		"DOOR_POSE_OFFSET": 0.0,           # The offset of where the player performs their PoseDoor animation, if applicable.
+		"TOAD_POSE_OFFSET": -12.0,         # The offset of where the player performs their PoseToad animation, if applicable.
+		"PEACH_POSE_OFFSET": -12.0,        # The offset of where the player performs their PosePeach animation, if applicable.
 	},
 	"Small": {},
 	"Big": {},
@@ -113,6 +126,8 @@ var flight_meter := 0.0
 
 var velocity_direction := 1
 var velocity_x_jump_stored := 0
+var speed_mult := 1.0
+var accel_mult := 1.0
 
 var total_keys := 0
 
@@ -227,7 +242,6 @@ const ANIMATION_FALLBACKS := {
 	"WingCrouch": "WaterCrouch",
 	
 	# --- Cutscene States ---
-	"PoseToad": "PoseDoor",
 	"PosePeach": "PoseToad",
 
 	# --- Jump & Fall States ---
@@ -345,18 +359,43 @@ func _ready() -> void:
 
 # SkyanUltra: Helper function for getting physics params.
 func physics_params(type: String, params_dict: Dictionary = PHYSICS_PARAMETERS, key: String = "") -> Variant:
+	var mult_applied = 1.0
+	var is_movement = false
+	for tag in ["WALK", "RUN", "AIR", "SWIM"]:
+		if tag in type:
+			is_movement = true
+			break
+	if "MULT" not in type and is_movement:
+		if "ACCEL" in type or "SKID" in type:
+			mult_applied = accel_mult
+		elif "SPEED" in type:
+			mult_applied = speed_mult
 	if power_state != null:
 		if key == "": key = power_state.state_name
 		if key in params_dict:
 			var state_dict = params_dict[key]
 			if type in state_dict:
-				return state_dict[type]
+				var value = state_dict[type]
+				if (value is int or value is float) and not (value is bool):
+					return value * mult_applied
+				return value
 	if "Default" in params_dict:
 		var default_dict = params_dict["Default"]
 		if type in default_dict:
-			return default_dict[type]
-	push_error("Physics parameter '%s' not found in any state!" % type)
+			var value = default_dict[type]
+			if (value is int or value is float) and not (value is bool):
+				return value * mult_applied
+			return value
+	print("NULL PARAMETER! Looking up: type='%s', key='%s'\nparams_dict='%s'" % [type, key, params_dict["Default"]])
 	return null
+
+func merge_dict(target: Dictionary, source: Dictionary) -> void:
+	# SkyanUltra: Used to properly merge dictionaries in CharacterInfo rather than out right overwriting entries.
+	for key in source.keys():
+		if target.has(key) and target[key] is Dictionary and source[key] is Dictionary:
+			merge_dict(target[key], source[key])
+		else:
+			target[key] = source[key]
 
 func apply_character_physics(apply: bool) -> void:
 	var path = "res://Assets/Sprites/Players/" + character + "/CharacterInfo.json"
@@ -368,12 +407,19 @@ func apply_character_physics(apply: bool) -> void:
 	# SkyanUltra: This section controls all CHARACTER PHYSICS values. This should be
 	# preventing physics changes to stop potential cheating in modes like You VS. Boo
 	# and Marathon mode.
+	for key in json.physics:
+		if key in ["PHYSICS_PARAMETERS", "ENDING_PARAMETERS"]:
+			if apply:
+				if get(key) is Dictionary and json.physics[key] is Dictionary:
+					merge_dict(get(key), json.physics[key])
+				else:
+					set(key, json.physics[key])
+		else:
+			if get(key) is Dictionary and json.physics[key] is Dictionary:
+				merge_dict(get(key), json.physics[key])
+			else:
+				set(key, json.physics[key])
 	
-	for i in json.physics:
-		if i in ["PHYSICS_PARAMETERS", "ENDING_PARAMETERS"]:
-			if apply: set(i, json.physics[i])
-		else: set(i, json.physics[i])
-			
 	for i in POWER_STATES:
 		var hitbox_scale = physics_params("HITBOX_SCALE", PHYSICS_PARAMETERS, i)
 		var hitbox_crouch = physics_params("CROUCH_SCALE", PHYSICS_PARAMETERS, i)
@@ -872,7 +918,7 @@ func set_power_state_frame() -> void:
 	var frames = %Sprite.sprite_frames
 	if frames:
 		can_pose_anim = frames.has_animation("PoseDoor")
-		can_pose_castle_anim = can_pose_anim or frames.has_animation("PoseToad") or frames.has_animation("PosePeach")
+		can_pose_castle_anim = frames.has_animation("PoseToad") or frames.has_animation("PosePeach")
 		can_bump_jump_anim = frames.has_animation("JumpBump")
 		can_bump_crouch_anim = frames.has_animation("CrouchBump")
 		can_bump_swim_anim = frames.has_animation("SwimBump")

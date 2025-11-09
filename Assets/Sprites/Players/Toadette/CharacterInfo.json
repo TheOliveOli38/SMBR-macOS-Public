@@ -7,6 +7,7 @@
 				"CROUCH_SCALE": 0.5,
 				"CAN_AIR_TURN": false,
 				"CAN_BREAK_BRICKS": true,
+				"CAN_BE_WALL_EJECTED": true,
 				
 				"JUMP_GRAVITY": 11.0,
 				"JUMP_HEIGHT": 300.0,
@@ -45,7 +46,33 @@
 			"Small": {
 				"CROUCH_SCALE": 0.75,
 				"CAN_BREAK_BRICKS": false,
+				"CAN_BE_WALL_EJECTED": false,
 			},
+			"Big": {},
+			"Fire": {},
+		},
+		"ENDING_PARAMETERS": {
+			"Default": {
+				"FLAG_SKIP_GRAB": false,
+				"FLAG_HANG_TIMER": 1.5,
+				"FLAG_SLIDE_SPEED": 125.0,
+				
+				"FLAG_INITIAL_X_VELOCITY": 0.0,
+				"FLAG_JUMP_HEIGHT": 0.0,
+				"FLAG_JUMP_INCR": 8.0,
+				
+				"FLAG_SPEED_MULT": 1.0,
+				"FLAG_ACCEL_MULT": 1.0,
+				"TOAD_SPEED_MULT": 1.0,
+				"TOAD_ACCEL_MULT": 1.0,
+				"PEACH_SPEED_MULT": 1.0,
+				"PEACH_ACCEL_MULT": 1.0,
+				
+				"DOOR_POSE_OFFSET": 0.0,
+				"TOAD_POSE_OFFSET": -12.0,
+				"PEACH_POSE_OFFSET": -12.0,
+			},
+			"Small": {},
 			"Big": {},
 			"Fire": {},
 		},

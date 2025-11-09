@@ -71,7 +71,7 @@ func grounded(delta: float) -> void:
 			AudioManager.play_sfx("crouch", player.global_position)
 			AudioManager.kill_sfx("uncrouch")
 	else:
-		can_wall_push = player.test_move(player.global_transform, Vector2.UP * 8 * player.gravity_vector.y) and player.power_state.hitbox_size != "Small"
+		can_wall_push = player.test_move(player.global_transform, Vector2.UP * 8 * player.gravity_vector.y) and player.physics_params("CAN_BE_WALL_EJECTED")
 		if Global.player_action_pressed("move_down", player.player_id) == false:
 			if can_wall_push:
 				wall_pushing = true
