@@ -25,7 +25,7 @@ func _physics_process(_delta: float) -> void:
 			player.speed_mult = player.physics_params("FLAG_SPEED_MULT", player.ENDING_PARAMETERS)
 			player.accel_mult = player.physics_params("FLAG_ACCEL_MULT", player.ENDING_PARAMETERS)
 			var pose_position = i.global_position + Vector2(player.physics_params("DOOR_POSE_OFFSET", player.ENDING_PARAMETERS), 0)
-			if player.in_cutscene and player.can_pose_anim and player.global_position >= pose_position and player.sprite.sprite_frames.has_animation("PoseDoor"):
+			if (player.global_position >= pose_position and player.global_position <= pose_position + Vector2(24, 0)) and player.can_pose_anim and player.sprite.sprite_frames.has_animation("PoseDoor"):
 				player.is_posing = true; player.can_pose_anim = false
 				player.global_position = pose_position
 				player.play_animation("PoseDoor")
@@ -42,12 +42,12 @@ func _physics_process(_delta: float) -> void:
 				player.speed_mult = player.physics_params("TOAD_SPEED_MULT", player.ENDING_PARAMETERS)
 				player.accel_mult = player.physics_params("TOAD_ACCEL_MULT", player.ENDING_PARAMETERS)
 			var pose_position = i.global_position + pose_offset
-			if player.global_position >= pose_position and not player.is_posing:
+			if (player.global_position >= pose_position and player.global_position <= pose_position + Vector2(24, 0)) and not player.is_posing:
 				player.velocity.x = 0
 				player.global_position = pose_position
 				player.is_posing = true
 				player.normal_state.handle_animations()
-			if player.in_cutscene and player.can_pose_castle_anim:
+			if player.can_pose_castle_anim:
 				player.can_pose_castle_anim = false
 				player.play_animation(pose_type)
 

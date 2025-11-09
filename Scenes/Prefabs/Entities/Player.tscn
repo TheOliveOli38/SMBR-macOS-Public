@@ -512,7 +512,6 @@ metadata/_custom_type_script = "uid://caq1qiwmy0mox"
 
 [node name="Hammer" type="Node2D" parent="SpriteScaleJoint/Sprite"]
 unique_name_in_owner = true
-visible = false
 
 [node name="HammerSprite" type="Sprite2D" parent="SpriteScaleJoint/Sprite/Hammer"]
 unique_name_in_owner = true

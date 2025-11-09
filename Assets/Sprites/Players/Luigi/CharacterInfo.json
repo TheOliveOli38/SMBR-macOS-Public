@@ -91,7 +91,7 @@
 		"COSMETIC_PARAMETERS": {
 			"Default": {
 				"WING_OFFSET": [0.0, 0.0],
-				"HAMMER_OFFSET": [0.0, 0.0],
+				"HAMMER_OFFSET": [0.0, -8.0],
 				"RAINBOW_POWERUP_FX": true,
 				"GROUNDED_WALK_SFX": true,
 				"GROUNDED_RUN_SFX": true,

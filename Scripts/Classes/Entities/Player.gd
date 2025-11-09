@@ -94,7 +94,7 @@ var DEATH_PARAMETERS: Dictionary = {
 var COSMETIC_PARAMETERS: Dictionary = {
 	"Default": { # Fallback parameters. Additional entries can be added through CharacterInfo.json.
 		"WING_OFFSET": [0.0, 0.0],         # The visual offset of the wings which appear with the Wing power-up.
-		"HAMMER_OFFSET": [0.0, 0.0],       # The visual offset of the hammer which appears with the Hammer power-up.
+		"HAMMER_OFFSET": [0.0, -8.0],      # The visual offset of the hammer which appears with the Hammer power-up.
 		"RAINBOW_POWERUP_FX": true,        # Determines whether or not the player will play the rainbow effect when powering up.
 		"GROUNDED_WALK_SFX": true,         # Forces walk sounds to only play when on the ground.
 		"GROUNDED_RUN_SFX": true,          # Forces run sounds to only play when on the ground.
