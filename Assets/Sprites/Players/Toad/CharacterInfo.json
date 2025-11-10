@@ -51,6 +51,40 @@
 			"Big": {},
 			"Fire": {},
 		},
+		"POWER_PARAMETERS": {
+			"Default": {
+				"PROJ_TYPE": "",
+				"PROJ_PARTICLE": "",
+
+				"PROJ_SFX_THROW": "fireball",
+				"PROJ_SFX_COLLIDE": "bump",
+				"PROJ_SFX_HIT": "kick",
+				
+				"MAX_PROJ_COUNT": 2,
+				"PROJ_COLLISION": true,
+				"PROJ_DESTROY_ON_HIT": true,
+				"PROJ_GROUND_BOUNCE": true,
+				"PROJ_WALL_BOUNCE": false,
+				"PROJ_CEIL_BOUNCE": false,
+				"PROJ_COLLECT_COINS": false,
+				
+				"PROJ_LIFETIME": -1,
+				"PROJ_OFFSET": [-4.0, 16.0],
+				"PROJ_SPEED": [220.0, -100.0],
+				"PROJ_SPEED_SCALING": true,
+				
+				"PROJ_DECEL": 0.0,
+				"PROJ_GRAVITY": 15.0,
+				"PROJ_BOUNCE_HEIGHT": 125.0,
+				"PROJ_MAX_FALL_SPEED": 150.0,
+			},
+			"Small": {},
+			"Big": {},
+			"Fire": {
+				"PROJ_TYPE": "Entities/Items/Fireball",
+				"PROJ_PARTICLE": "Particles/FireballExplosion",
+			},
+		},
 		"ENDING_PARAMETERS": {
 			"Default": {
 				"FLAG_SKIP_GRAB": false,

@@ -1,4 +1,4 @@
-[gd_scene load_steps=83 format=3 uid="uid://cuh62hlq8errh"]
+[gd_scene load_steps=82 format=3 uid="uid://cuh62hlq8errh"]
 
 [ext_resource type="Script" uid="uid://dt4rosa5o35xr" path="res://Scripts/Classes/Entities/Player.gd" id="1_f6bau"]
 [ext_resource type="Script" uid="uid://uribh0f1jttq" path="res://Scripts/Classes/States/StateMachine.gd" id="2_1y62l"]
@@ -11,7 +11,6 @@
 [ext_resource type="Script" uid="uid://dvbib1gtmmvui" path="res://Scripts/Classes/States/Player/Pipe.gd" id="5_hodem"]
 [ext_resource type="Script" uid="uid://c8xvkkv34fjr4" path="res://Scripts/Classes/PowerStates/PowerUpState.gd" id="5_rs3l8"]
 [ext_resource type="Script" uid="uid://caq1qiwmy0mox" path="res://Scripts/Parts/BetterAnimatedSprite.gd" id="5_x2idl"]
-[ext_resource type="Script" uid="uid://d0hnf0d6tudgj" path="res://Scripts/Classes/PowerStates/Fire.gd" id="6_7nbqp"]
 [ext_resource type="Script" uid="uid://cnjpqn05bfm57" path="res://Scripts/Classes/States/Player/PlayerState.gd" id="6_8f1du"]
 [ext_resource type="JSON" path="res://Assets/Sprites/Items/HammerItem.json" id="7_2mfvl"]
 [ext_resource type="Script" uid="uid://ri1g4nllpkfj" path="res://Scripts/Classes/States/Player/FlagPole.gd" id="7_8f1du"]
@@ -630,7 +629,7 @@ damage_state = NodePath("../Small")
 metadata/_custom_type_script = "uid://c8xvkkv34fjr4"
 
 [node name="Fire" type="Node" parent="PowerStates" node_paths=PackedStringArray("damage_state")]
-script = ExtResource("6_7nbqp")
+script = ExtResource("5_rs3l8")
 state_name = "Fire"
 power_tier = 2
 hitbox_size = "Fire"
