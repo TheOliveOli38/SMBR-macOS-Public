@@ -71,7 +71,7 @@
 				"PROJ_LIFETIME": -1,
 				"PROJ_OFFSET": [-4.0, 16.0],
 				"PROJ_SPEED": [220.0, -100.0],
-				"PROJ_SPEED_SCALING": true,
+				"PROJ_SPEED_SCALING": false,
 				
 				"PROJ_DECEL": 0.0,
 				"PROJ_GRAVITY": 15.0,

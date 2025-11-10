@@ -69,18 +69,18 @@ var POWER_PARAMETERS: Dictionary = {
 		"MAX_PROJ_COUNT": 2,               # How many projectiles can be fired at once. -1 and below count as infinite.
 		"PROJ_COLLISION": true,            # Determines if the projectile can interact with collidable surfaces.
 		"PROJ_DESTROY_ON_HIT": true,       # Determines if the projectile will be destroyed after hitting an enemy.
-		"PROJ_GROUND_BOUNCE": true,       # Determines if the projectile can bounce off the ground.
-		"PROJ_WALL_BOUNCE": false,          # Determines if the projectile can bounce off of wals.
+		"PROJ_GROUND_BOUNCE": true,        # Determines if the projectile can bounce off the ground.
+		"PROJ_WALL_BOUNCE": false,         # Determines if the projectile can bounce off of wals.
 		"PROJ_CEIL_BOUNCE": false,         # Determines if the projectile can bounce off of ceilings.
 		"PROJ_COLLECT_COINS": false,       # Determines if the projectile can collect coins.
 		
-		"PROJ_LIFETIME": -1,                # Determines how long the projectile will last for. -1 and below count as infinite.
+		"PROJ_LIFETIME": -1,               # Determines how long the projectile will last for. -1 and below count as infinite.
 		"PROJ_OFFSET": [-4.0, 16.0],       # Determines the offset for where the projectile will spawn.
-		"PROJ_SPEED": [220.0, -100.0],        # Determines the initial velocity of the projectile.
-		"PROJ_SPEED_SCALING": true,        # Determines if the projectile will have its initial speed scale with the player's movement.
+		"PROJ_SPEED": [220.0, -100.0],     # Determines the initial velocity of the projectile.
+		"PROJ_SPEED_SCALING": false,       # Determines if the projectile will have its initial speed scale with the player's movement.
 		
 		"PROJ_DECEL": 0.0,                 # The projectile's deceleration, measured in px/frame
-		"PROJ_GRAVITY": 15.0,               # The projectile's gravity, measured in px/frame
+		"PROJ_GRAVITY": 15.0,              # The projectile's gravity, measured in px/frame
 		"PROJ_BOUNCE_HEIGHT": 125.0,       # The projectile's bounce velocity upon landing on the ground.
 		"PROJ_MAX_FALL_SPEED": 150.0,      # The projectile's maximum fall speed, measured in px/sec
 	},

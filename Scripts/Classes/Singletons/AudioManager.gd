@@ -302,13 +302,13 @@ func import_stream(file_path := "", loop_point := -1.0) -> AudioStream:
 	elif path.ends_with(".wav"):
 		stream = AudioStreamWAV.load_from_file(path)
 		#print([path, stream])
+	elif path.ends_with(".json"):
+		stream = create_stream_from_json(path)
 	if path.ends_with(".mp3"):
 		stream.set_loop(loop_point >= 0)
 		stream.set_loop_offset(loop_point)
 	elif path.ends_with(".ogg"):
 		stream.set_loop(loop_point >= 0)
 		stream.set_loop_offset(loop_point)
-	if path.ends_with(".json"):
-		stream = create_stream_from_json(path)
 	return stream
 	
