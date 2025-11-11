@@ -4,7 +4,10 @@ extends CharacterBody2D
 #region Intended modifiable properties, can be changed in a character's CharacterInfo.json
 # SkyanUltra: Moved physics/death parameters into their own dictionaries.
 # This makes it possible to modify character physics 
-var PHYSICS_PARAMETERS: Dictionary = {
+## Determines various important values of the player character.
+@export_group("Player Parameters")
+## Determines the physics properties of the player character, such as general movement values, hitboxes, and other typical behavior.
+@export var PHYSICS_PARAMETERS: Dictionary = {
 	"Default": { # Fallback parameters. Additional entries can be added through CharacterInfo.json.
 		"HITBOX_SCALE": [1.0, 1.0],        # The player's hitbox scale.
 		"CROUCH_SCALE": 0.5,               # The player's hitbox scale when crouched.
@@ -54,14 +57,15 @@ var PHYSICS_PARAMETERS: Dictionary = {
 	"Big": {},
 	"Fire": {},
 }
-
-var POWER_PARAMETERS: Dictionary = {
+## Determines parameters typically involved with power-up behavior, mainly projectiles fired by the player.
+@export var POWER_PARAMETERS: Dictionary = {
 	"Default": {
 		"PROJ_TYPE": "",
 		"PROJ_PARTICLE": "",
 		# Determines what projectile/particle scene is used, starting from
 		# "res://Scenes/Prefabs/". Leaving this blank disables firing
 		# projectiles and displaying particles respectively.
+		"PROJ_PARTICLE_ON_CONTACT": true,  # Defines if the particle will play when making contact without being destroyed.
 		"PROJ_SFX_THROW": "fireball",      # Defines the sound effect that plays when this projectile is fired.
 		"PROJ_SFX_COLLIDE": "bump",        # Defines the sound effect that plays when this projectile collides.
 		#"PROJ_SFX_HIT": "kick",           # Defines the sound effect that plays when this projectile damages an enemy.
@@ -79,7 +83,8 @@ var POWER_PARAMETERS: Dictionary = {
 		"PROJ_SPEED": [220.0, -100.0],     # Determines the initial velocity of the projectile.
 		"PROJ_SPEED_SCALING": false,       # Determines if the projectile will have its initial speed scale with the player's movement.
 		
-		"PROJ_DECEL": 0.0,                 # The projectile's deceleration, measured in px/frame
+		"PROJ_GROUND_DECEL": 0.0,          # The projectile's deceleration on the ground, measured in px/frame
+		"PROJ_AIR_DECEL": 0.0,             # The projectile's deceleration in the air, measured in px/frame
 		"PROJ_GRAVITY": 15.0,              # The projectile's gravity, measured in px/frame
 		"PROJ_BOUNCE_HEIGHT": 125.0,       # The projectile's bounce velocity upon landing on the ground.
 		"PROJ_MAX_FALL_SPEED": 150.0,      # The projectile's maximum fall speed, measured in px/sec
@@ -91,8 +96,8 @@ var POWER_PARAMETERS: Dictionary = {
 		"PROJ_PARTICLE": "Particles/FireballExplosion",
 	},
 }
-
-var ENDING_PARAMETERS: Dictionary = {
+## Determines values involving various ending sequences, such as grabbing the flagpole and walking to an NPC at the end of a level.
+@export var ENDING_PARAMETERS: Dictionary = {
 	"Default": {
 		"FLAG_SKIP_GRAB": false,           # Determines if the player skips grabbing the flag entirely.
 		"FLAG_HANG_TIMER": 1.5,            # How long the player will stick on the flagpole.
@@ -117,7 +122,8 @@ var ENDING_PARAMETERS: Dictionary = {
 	"Big": {},
 	"Fire": {},
 }
-var DEATH_PARAMETERS: Dictionary = {
+## Determines values involving death, unique separated by damage types rather than power states.
+@export var DEATH_PARAMETERS: Dictionary = {
 	"Default": {
 		"DEATH_COLLISION": false,          # Determines whether the player will still collide with the level.
 		"DEATH_HANG_TIMER": 0.5,           # The amount of time the player will freeze in the air for during the death animation in seconds
@@ -129,7 +135,8 @@ var DEATH_PARAMETERS: Dictionary = {
 	},
 	"Fire": {},
 }
-var COSMETIC_PARAMETERS: Dictionary = {
+## Determines values involving purely cosmetic changes, including offsets for the wing and hammer sprites and configuration for various visual and audio effects.
+@export var COSMETIC_PARAMETERS: Dictionary = {
 	"Default": { # Fallback parameters. Additional entries can be added through CharacterInfo.json.
 		"WING_OFFSET": [0.0, 0.0],         # The visual offset of the wings which appear with the Wing power-up.
 		"HAMMER_OFFSET": [0.0, -8.0],      # The visual offset of the hammer which appears with the Hammer power-up.
@@ -147,6 +154,7 @@ var COSMETIC_PARAMETERS: Dictionary = {
 	"Fire": {},
 } 
 #endregion
+@export_group("")
 
 @onready var camera_center_joint: Node2D = $CameraCenterJoint
 
@@ -780,6 +788,7 @@ func handle_directions() -> void:
 var projectile_amount = 0
 var projectile_type = load("res://Scenes/Prefabs/Entities/Items/Fireball.tscn")
 const POWER_PARAM_LIST = {
+	"PARTICLE_ON_CONTACT": "PROJ_PARTICLE_ON_CONTACT",
 	"SFX_COLLIDE": "PROJ_SFX_COLLIDE",
 	"HAS_COLLISION": "PROJ_COLLISION",
 	"DESTROY_ON_HIT": "PROJ_DESTROY_ON_HIT",
@@ -788,7 +797,8 @@ const POWER_PARAM_LIST = {
 	"CEIL_BOUNCE": "PROJ_CEIL_BOUNCE",
 	"COLLECT_COINS": "PROJ_COLLECT_COINS",
 	"LIFETIME": "PROJ_LIFETIME",
-	"DECEL": "PROJ_DECEL",
+	"GROUND_DECEL": "PROJ_GROUND_DECEL",
+	"AIR_DECEL": "PROJ_AIR_DECEL",
 	"GRAVITY": "PROJ_GRAVITY",
 	"BOUNCE_HEIGHT": "PROJ_BOUNCE_HEIGHT",
 	"MAX_FALL_SPEED": "PROJ_MAX_FALL_SPEED"
@@ -816,7 +826,7 @@ func throw_projectile() -> void:
 		node.is_friendly = true
 		if "character" in node:
 			node.character = character
-		if physics_params("PROJ_PARTICLE", POWER_PARAMETERS) != "": node.PARTICLE = load("res://Scenes/Prefabs/" + physics_params("PROJ_PARTICLE", POWER_PARAMETERS) + ".tscn")
+		node.PARTICLE = load("res://Scenes/Prefabs/" + physics_params("PROJ_PARTICLE", POWER_PARAMETERS) + ".tscn")
 		for param in POWER_PARAM_LIST:
 			node[param] = physics_params(POWER_PARAM_LIST[param], POWER_PARAMETERS)
 		node.MOVE_SPEED = speed[0] + speed_scaling

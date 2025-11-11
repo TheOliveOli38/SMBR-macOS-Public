@@ -1,23 +1,39 @@
 class_name Projectile
 extends Enemy
 
+## Determines if this projectile deals damage to the player or not.
 @export var is_friendly := false
+## Which particle scene to load.
 @export var PARTICLE := load("") 
+## Determines if the projectile will display a particle upon making contact with something, but hasn't been destroyed.
+@export var PARTICLE_ON_CONTACT := false
+## Determines what sound will play when the projectile makes contact with something.
 @export var SFX_COLLIDE := "bump"
+## Determines if the projectile will be destroyed after damaging an entity.
 @export var DESTROY_ON_HIT := false
-
+## Controls if the projectile will make contact with the environment.
 @export var HAS_COLLISION := false
+## Controls if the projectile will bounce on the ground rather than being destroyed.
 @export var GROUND_BOUNCE := false
+## Controls if the projectile will bounce off of walls rather than being destroyed.
 @export var WALL_BOUNCE := false
+## Controls if the projectile will bounce off the ceiling rather than being destroyed.
 @export var CEIL_BOUNCE := false
-
+## Controls if the projectile will collect coins when it comes in contact with them.
 @export var COLLECT_COINS := false
-
+## Controls how long the projectile will exist for in seconds.
 @export var LIFETIME := -1
+## Controls the horizontal speed of the projectile.
 @export var MOVE_SPEED := 0
-@export var DECEL := 0
+## Controls the amount of deceleration the projectile will experience on the ground.
+@export var GROUND_DECEL := 0
+## Controls the amount of deceleration the projectile will experience in the air.
+@export var AIR_DECEL := 0
+## Controls the value of gravity the projectile will experience.
 @export var GRAVITY := 0
+## Controls the velocity the projectile will gain when bouncing off of the floor or ceiling.
 @export var BOUNCE_HEIGHT := 0
+## Controls the maximum speed the projectile can fall at.
 @export var MAX_FALL_SPEED := 280.0
 
 func _ready() -> void:
@@ -33,6 +49,7 @@ func _physics_process(delta: float) -> void:
 
 func handle_movement(delta: float) -> void:
 	var CUR_GRAVITY = GRAVITY * (Global.entity_gravity * 0.1)
+	var DECEL_TYPE = GROUND_DECEL if is_on_floor() else AIR_DECEL
 	velocity.y += (CUR_GRAVITY / delta) * delta
 	velocity.y = clamp(velocity.y, -INF, MAX_FALL_SPEED)
 	if is_on_floor():
@@ -45,7 +62,7 @@ func handle_movement(delta: float) -> void:
 		if WALL_BOUNCE:
 			direction *= -1
 		else: hit()
-	MOVE_SPEED = move_toward(MOVE_SPEED, 0, (DECEL / delta) * delta)
+	MOVE_SPEED = move_toward(MOVE_SPEED, 0, (DECEL_TYPE / delta) * delta)
 	velocity.x = MOVE_SPEED * direction
 	move_and_slide()
 

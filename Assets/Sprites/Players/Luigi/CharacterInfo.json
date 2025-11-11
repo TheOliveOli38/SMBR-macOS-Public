@@ -56,6 +56,7 @@
 				"PROJ_TYPE": "",
 				"PROJ_PARTICLE": "",
 
+				"PROJ_PARTICLE_ON_CONTACT": true,
 				"PROJ_SFX_THROW": "fireball",
 				"PROJ_SFX_COLLIDE": "bump",
 				"PROJ_SFX_HIT": "kick",
@@ -73,7 +74,8 @@
 				"PROJ_SPEED": [220.0, -100.0],
 				"PROJ_SPEED_SCALING": false,
 				
-				"PROJ_DECEL": 0.0,
+				"PROJ_GROUND_DECEL": 0.0,
+				"PROJ_AIR_DECEL": 0.0,
 				"PROJ_GRAVITY": 15.0,
 				"PROJ_BOUNCE_HEIGHT": 125.0,
 				"PROJ_MAX_FALL_SPEED": 150.0,
