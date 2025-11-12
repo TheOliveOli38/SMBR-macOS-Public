@@ -5,8 +5,8 @@ const DEFAULT_SFX_LIBRARY := {
 	"big_jump": ("res://Assets/Audio/SFX/BigJump.wav"),
 	"coin": ("res://Assets/Audio/SFX/Coin.wav"),
 	"bump": ("res://Assets/Audio/SFX/Bump.wav"),
-	"walk": ("res://Assets/Audio/BGM/Silence.mp3"),
-	"run": ("res://Assets/Audio/BGM/Silence.mp3"),
+	"walk": ("res://Assets/Audio/BGM/Silence.json"),
+	"run": ("res://Assets/Audio/BGM/Silence.json"),
 	"skid": ("res://Assets/Audio/SFX/Skid.wav"),
 	"pipe": ("res://Assets/Audio/SFX/Pipe.wav"),
 	"damage": ("res://Assets/Audio/SFX/Damage.wav"),
@@ -135,6 +135,7 @@ func play_sfx(stream_name = "", position := Vector2.ZERO, pitch := 1.0, can_over
 		add_child(player)
 		active_sfxs[stream_name] = player
 		queued_sfxs.erase(stream_name)
+		print(active_sfxs)
 		await player.finished
 		active_sfxs.erase(stream_name)
 		player.queue_free()
@@ -256,7 +257,7 @@ func handle_music_override() -> void:
 
 func create_stream_from_json(json_path := "") -> AudioStream:
 	var path := ""
-	if json_path.contains(".json") == false:
+	if json_path.ends_with(".json") == false:
 		path = ResourceSetter.get_pure_resource_path(json_path)
 		if path.contains(Global.config_path):
 			match json_path.get_slice(".", 1):
@@ -271,14 +272,14 @@ func create_stream_from_json(json_path := "") -> AudioStream:
 	var bgm_file = $ResourceSetterNew.get_variation_json(JSON.parse_string(FileAccess.open(ResourceSetter.get_pure_resource_path(json_path), FileAccess.READ).get_as_text()).variations).source
 	path = ResourceSetter.get_pure_resource_path(json_path.replace(json_path.get_file(), bgm_file))
 	var stream = null
-	if path.get_file().contains(".bgm"):
+	if path.get_file().ends_with(".bgm"):
 		stream = generate_interactive_stream(JSON.parse_string(FileAccess.open(path, FileAccess.READ).get_as_text()))
 	else:
-		if path.contains("res://"):
+		if path.begins_with("res://"):
 			stream = load(path)
-		elif path.contains(".mp3"):
+		elif path.ends_with(".mp3"):
 			stream = AudioStreamMP3.load_from_file(path)
-		elif path.contains(".ogg"):
+		elif path.ends_with(".ogg"):
 			stream = AudioStreamOggVorbis.load_from_file(path)
 	return stream
 
