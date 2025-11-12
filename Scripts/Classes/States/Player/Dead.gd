@@ -15,7 +15,7 @@ func enter(msg := {}) -> void:
 	can_fall = true
 	player.gravity = death_params("DEATH_FALL_GRAVITY")
 	if msg["Pit"] == false: 
-		player.velocity = Vector2(death_params("DEATH_X_VELOCITY"), -death_params("DEATH_JUMP_HEIGHT") * player.gravity_vector.y) # nabbup : Flip death gravity when upside down
+		player.velocity = Vector2(death_params("DEATH_X_VELOCITY"), -death_params("DEATH_JUMP_SPEED") * player.gravity_vector.y) # nabbup : Flip death gravity when upside down
 
 func physics_update(delta: float) -> void:
 	player.sprite.speed_scale = 1

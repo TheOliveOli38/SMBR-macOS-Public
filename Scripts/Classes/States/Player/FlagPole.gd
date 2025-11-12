@@ -10,8 +10,8 @@ func enter(_msg := {}) -> void:
 	player.stop_all_timers()
 	if not ending_params("FLAG_SKIP_GRAB"):
 		await Global.level_complete_begin
-		if ending_params("FLAG_JUMP_HEIGHT") > 0 and player.is_actually_on_floor():
-			player.velocity.y = player.calculate_jump_height(ending_params("FLAG_JUMP_HEIGHT"), ending_params("FLAG_JUMP_INCR")) * player.gravity_vector.y
+		if ending_params("FLAG_JUMP_SPEED") > 0 and player.is_actually_on_floor():
+			player.velocity.y = player.calculate_jump_height(ending_params("FLAG_JUMP_SPEED"), ending_params("FLAG_JUMP_INCR")) * player.gravity_vector.y
 	player.velocity.x = ending_params("FLAG_INITIAL_X_VELOCITY")
 	state_machine.transition_to("LevelExit")
 

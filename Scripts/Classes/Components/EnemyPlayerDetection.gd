@@ -21,9 +21,10 @@ func area_entered(area: Area2D) -> void:
 			player_entered(area.owner)
 
 func player_entered(player: Player) -> void:
+	var is_below_player = player.global_position.y + height < owner.global_position.y if player.gravity_vector.y >= 0 else player.global_position.y - height > owner.global_position.y
 	if player.is_invincible:
 		invincible_player_hit.emit(player)
-	elif (player.velocity.y >= 15 or (player.global_position.y + height < owner.global_position.y)) and player.in_water == false:
+	elif (player.actual_velocity_y() >= 15 or is_below_player) and player.in_water == false:
 		player_stomped_on.emit(player)
 	else:
 		player_hit.emit(player)

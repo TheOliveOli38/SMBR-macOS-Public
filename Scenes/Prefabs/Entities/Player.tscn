@@ -1,4 +1,4 @@
-[gd_scene load_steps=82 format=3 uid="uid://cuh62hlq8errh"]
+[gd_scene load_steps=83 format=3 uid="uid://cuh62hlq8errh"]
 
 [ext_resource type="Script" uid="uid://dt4rosa5o35xr" path="res://Scripts/Classes/Entities/Player.gd" id="1_f6bau"]
 [ext_resource type="Script" uid="uid://uribh0f1jttq" path="res://Scripts/Classes/States/StateMachine.gd" id="2_1y62l"]
@@ -52,6 +52,7 @@ uniform float palette_size = 3;
 uniform sampler2D player_palette: filter_nearest;
 uniform int palette_idx = 0;
 uniform sampler2D invincible_palette: filter_nearest;
+uniform int invincible_palette_size = 3;
 uniform float dist_1 = 0.0;
 
 vec4 mode_0(vec4 colour)
@@ -67,7 +68,7 @@ vec4 mode_0(vec4 colour)
 vec4 mode_1(vec4 colour)
 {
     // Determine invincible palette row (1–3)
-    int invincible_palette_idx = int(TIME * speed) % 3;
+    int invincible_palette_idx = int(TIME * speed) % invincible_palette_size;
 
     vec4 closest = colour;
     float closest_distance = 99999.9;
@@ -77,7 +78,7 @@ vec4 mode_1(vec4 colour)
     for (int i = 0; i < palette_count; i++)
 {
     float x_coord = (float(i) + 0.5) / palette_size;
-    float y_coord = (float(palette_idx) + 0.5) / float(3);
+    float y_coord = (float(palette_idx) + 0.5) / float(invincible_palette_size);
 
     vec4 sampled = texture(player_palette, vec2(x_coord, y_coord));
 
@@ -85,7 +86,7 @@ vec4 mode_1(vec4 colour)
     if (d < 0.01 && d <= closest_distance)
     {
         float inv_x_coord = (float(i) + 0.5) / palette_size;
-        float inv_y_coord = (float(invincible_palette_idx) + 0.5) / float(3);
+        float inv_y_coord = (float(invincible_palette_idx) + 0.5) / float(invincible_palette_size);
 
         closest = texture(invincible_palette, vec2(inv_x_coord, inv_y_coord));
         closest_distance = d;
@@ -121,6 +122,7 @@ shader_parameter/palette_size = 3.0
 shader_parameter/player_palette = ExtResource("3_x2idl")
 shader_parameter/palette_idx = 0
 shader_parameter/invincible_palette = ExtResource("2_fqdtv")
+shader_parameter/invincible_palette_size = 3
 shader_parameter/dist_1 = 0.0
 
 [sub_resource type="Animation" id="Animation_bc3q3"]
@@ -162,6 +164,9 @@ _data = {
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a1d2e"]
+size = Vector2(16, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xy8gq"]
 size = Vector2(16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jl70t"]
@@ -545,6 +550,10 @@ collision_mask = 0
 position = Vector2(16, -8)
 shape = SubResource("RectangleShape2D_a1d2e")
 
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="SpriteScaleJoint/Sprite/Hammer/HammerHitbox"]
+position = Vector2(8, -16)
+shape = SubResource("RectangleShape2D_xy8gq")
+
 [node name="Wings" type="Node2D" parent="SpriteScaleJoint/Sprite"]
 unique_name_in_owner = true
 visible = false
@@ -793,11 +802,6 @@ texture = ExtResource("20_34tqy")
 script = ExtResource("8_4ojwh")
 metadata/_custom_type_script = "uid://5octqlf4ohel"
 
-[node name="StarTimer" type="Timer" parent="."]
-process_mode = 1
-wait_time = 10.0
-one_shot = true
-
 [node name="Checkpoint" type="Sprite2D" parent="."]
 process_mode = 3
 physics_interpolation_mode = 2
@@ -831,11 +835,6 @@ node_to_affect = NodePath("..")
 property_name = "texture"
 themed_resource = SubResource("Resource_2mfvl")
 metadata/_custom_type_script = "uid://cq6f682453q6o"
-
-[node name="HammerTimer" type="Timer" parent="."]
-process_mode = 1
-wait_time = 10.0
-one_shot = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 process_mode = 3
@@ -977,11 +976,12 @@ region_enabled = true
 region_rect = Rect2(0, 8, 56, 8)
 script = ExtResource("30_o70e0")
 max_value = 10.0
-value_name = "time_left"
-object = 2
-timer = NodePath("../../../../../../StarTimer")
+value_name = "star_meter"
+object = 1
+timer = NodePath("")
 warn_sfx = NodePath("../../../../../../TimerWarn")
-warn_threshold = 0.8500000000058208
+threshold_type = 1
+warn_threshold = 0.0
 metadata/_custom_type_script = "uid://dn5efttgugwvb"
 
 [node name="WingTimer" type="Control" parent="CanvasLayer/Control2/MarginContainer/Timers"]
@@ -1001,7 +1001,8 @@ max_value = 10.0
 value_name = "flight_meter"
 object = 1
 warn_sfx = NodePath("../../../../../../TimerWarn")
-warn_threshold = 0.8500000000058208
+threshold_type = 1
+warn_threshold = 1.5
 metadata/_custom_type_script = "uid://dn5efttgugwvb"
 
 [node name="HammerTimer" type="Control" parent="CanvasLayer/Control2/MarginContainer/Timers"]
@@ -1018,11 +1019,12 @@ region_enabled = true
 region_rect = Rect2(0, 24, 56, 8)
 script = ExtResource("30_o70e0")
 max_value = 10.0
-value_name = "time_left"
-object = 2
-timer = NodePath("../../../../../../HammerTimer")
+value_name = "hammer_meter"
+object = 1
+timer = NodePath("")
 warn_sfx = NodePath("../../../../../../TimerWarn")
-warn_threshold = 0.8500000000058208
+threshold_type = 1
+warn_threshold = 1.5
 metadata/_custom_type_script = "uid://dn5efttgugwvb"
 
 [node name="ThemedToJSONConverter" type="Node" parent="."]
@@ -1179,5 +1181,3 @@ anim_speed_max = 1.0
 [connection signal="area_exited" from="Hitbox" to="." method="on_area_exited"]
 [connection signal="body_entered" from="LavaDetect" to="." method="fire_die" unbinds=1]
 [connection signal="body_entered" from="PoisonDetect" to="." method="die" unbinds=1]
-[connection signal="timeout" from="StarTimer" to="." method="on_timeout"]
-[connection signal="timeout" from="HammerTimer" to="." method="on_hammer_timeout"]

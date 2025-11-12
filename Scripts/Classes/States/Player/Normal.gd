@@ -205,7 +205,7 @@ func handle_animations() -> void:
 func get_animation_name() -> String:
 	# SkyanUltra: Simplified animation table and optimized nesting.
 	var vel_x: float = abs(player.velocity.x)
-	var vel_y := player.velocity.y
+	var vel_y : float = player.actual_velocity_y()
 	var on_floor := player.is_actually_on_floor()
 	var on_wall := player.is_actually_on_wall()
 	var airborne := not on_floor

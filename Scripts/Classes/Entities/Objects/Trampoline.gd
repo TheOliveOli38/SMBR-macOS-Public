@@ -1,6 +1,6 @@
 extends AnimatableBody2D
 
-@export var bounce_height := -500
+@export var trampoline_type := "TRAMPOLINE"
 
 var players := []
 
@@ -25,12 +25,12 @@ func bounce_players() -> void:
 	for player in players:
 		if Global.player_action_pressed("jump", player.player_id):
 			high_bounce = true
-			player.velocity.y = bounce_height
+			player.velocity.y = -player.physics_params(trampoline_type + "_SPEED")
 			player.gravity = player.physics_params("JUMP_GRAVITY")
 			player.has_jumped = true
 			player.has_spring_jumped = true
 		else:
-			player.velocity.y = -300
+			player.velocity.y = -player.physics_params("JUMP_SPEED")
 	if high_bounce:
 		AudioManager.play_sfx("spring", global_position)
 	else:

@@ -14,38 +14,43 @@ extends CharacterBody2D
 		"CAN_AIR_TURN": false,             # Determines if the player can turn in mid-air.
 		"CAN_BREAK_BRICKS": true,          # Determines if the player can break bricks in their current form.
 		"CAN_BE_WALL_EJECTED": true,       # Determines if the player gets pushed out of blocks if inside of them.
-
-		"JUMP_GRAVITY": 11.0,              # The player's gravity while jumping, measured in px/frame
-		"JUMP_HEIGHT": 300.0,              # The strength of the player's jump, measured in px/sec
-		"JUMP_INCR": 8.0,                  # How much the player's X velocity affects their jump speed
-		"JUMP_CANCEL_DIVIDE": 1.5,         # When the player cancels their jump, their Y velocity gets divided by this value
-		"JUMP_HOLD_SPEED_THRESHOLD": 0.0,  # When the player's Y velocity goes past this value while jumping, their gravity switches to FALL_GRAVITY
-
+		
+		"JUMP_GRAVITY": 11.0,              # The player's gravity while jumping, measured in px/frame.
+		"JUMP_SPEED": 300.0,               # The strength of the player's jump, measured in px/sec.
+		"JUMP_INCR": 8.0,                  # How much the player's X velocity affects their jump speed.
+		"JUMP_CANCEL_DIVIDE": 1.5,         # When the player cancels their jump, their Y velocity gets divided by this value.
+		"JUMP_HOLD_SPEED_THRESHOLD": 0.0,  # When the player's Y velocity goes past this value while jumping, their gravity switches to FALL_GRAVITY.
+		
 		"BOUNCE_HEIGHT": 200.0,            # The strength at which the player bounces off enemies, measured in px/sec 
-		"BOUNCE_JUMP_HEIGHT": 300.0,       # The strength at which the player bounces off enemies while holding jump, measured in px/sec 
-
+		"BOUNCE_JUMP_SPEED": 300.0,       # The strength at which the player bounces off enemies while holding jump, measured in px/sec 
+		
 		"FALL_GRAVITY": 25.0,              # The player's gravity while falling, measured in px/frame
 		"MAX_FALL_SPEED": 280.0,           # The player's maximum fall speed, measured in px/sec
 		"CEILING_BUMP_SPEED": 45.0,        # The speed at which the player falls after hitting a ceiling, measured in px/sec
-
+		
 		"WALK_SPEED": 96.0,                # The player's speed while walking, measured in px/sec
 		"GROUND_WALK_ACCEL": 4.0,          # The player's acceleration while walking, measured in px/frame
 		"WALK_SKID": 8.0,                  # The player's turning deceleration while running, measured in px/frame
-
+		
 		"RUN_SPEED": 160.0,                # The player's speed while running, measured in px/sec
 		"GROUND_RUN_ACCEL": 1.25,          # The player's acceleration while running, measured in px/frame
 		"RUN_SKID": 8.0,                   # The player's turning deceleration while running, measured in px/frame
-
+		
 		"SKID_THRESHOLD": 100.0,           # The horizontal speed required, to be able to start skidding.
-
+		
 		"DECEL": 3.0,                      # The player's deceleration while no buttons are pressed, measured in px/frame
 		"AIR_DECEL": 0.0,                  # The player's airborne deceleration while no buttons are pressed, measured in px/frame
 		"AIR_ACCEL": 3.0,                  # The player's acceleration while in midair, measured in px/frame
 		"AIR_SKID": 1.5,                   # The player's turning deceleration while in midair, measured in px/frame
-
+		
+		"CLIMB_SPEED": 50.0,               # The player's speed while climbing, measured in px/sec.
+		"TRAMPOLINE_SPEED": 500.0,         # The strength of a jump on a trampoline, measured in px/sec.
+		"SUPER_TRAMPOLINE_SPEED": 1200.0,  # The strength of a jump on a super trampoline, measured in px/sec.
+		
 		"SWIM_SPEED": 95.0,                # The player's horizontal speed while swimming, measured in px/sec
 		"SWIM_GROUND_SPEED": 45.0,         # The player's horizontal speed while grounded underwater, measured in px/sec
 		"SWIM_HEIGHT": 100.0,              # The strength of the player's swim, measured in px/sec
+		"SWIM_EXIT_SPEED": 250.0,          # The strength of the player's jump out of water, measured in px/sec
 		"SWIM_GRAVITY": 2.5,               # The player's gravity while swimming, measured in px/frame
 		"MAX_SWIM_FALL_SPEED": 200.0,      # The player's maximum fall speed while swimming, measured in px/sec
 	},
@@ -60,6 +65,10 @@ extends CharacterBody2D
 ## Determines parameters typically involved with power-up behavior, mainly projectiles fired by the player.
 @export var POWER_PARAMETERS: Dictionary = {
 	"Default": {
+		"STAR_TIME": 12.0,                 # Determines how long a Star will last for.
+		"WING_TIME": 10.0,                 # Determines how long Wings will last for.
+		"HAMMER_TIME": 10.0,               # Determines how long a Hammer will last for.
+		
 		"PROJ_TYPE": "",
 		"PROJ_PARTICLE": "",
 		# Determines what projectile/particle scene is used, starting from
@@ -104,7 +113,7 @@ extends CharacterBody2D
 		"FLAG_SLIDE_SPEED": 125.0,         # How fast the player slides down the flagpole.
 		
 		"FLAG_INITIAL_X_VELOCITY": 0.0,    # Determines the player's initial X velocity after letting go of the flagpole.
-		"FLAG_JUMP_HEIGHT": 0.0,           # How high the player will initially jump after letting go of the flagpole.
+		"FLAG_JUMP_SPEED": 0.0,           # How high the player will initially jump after letting go of the flagpole.
 		"FLAG_JUMP_INCR": 8.0,             # How much the player's X velocity will influence the player's jump height.
 		
 		"FLAG_SPEED_MULT": 1.0,            # The multiplier applied onto the player's max speed when walking to the flag.
@@ -129,7 +138,7 @@ extends CharacterBody2D
 		"DEATH_HANG_TIMER": 0.5,           # The amount of time the player will freeze in the air for during the death animation in seconds
 		"DEATH_X_VELOCITY": 0,             # The horizontal velocity the player gets sent at when dying, measured in px/sec
 		"DEATH_DECEL": 3.0,                # The player's deceleration during death, measured in px/frame
-		"DEATH_JUMP_HEIGHT": 300.0,        # The strength of the player's "jump" during the death animation, measured in px/sec
+		"DEATH_JUMP_SPEED": 300.0,        # The strength of the player's "jump" during the death animation, measured in px/sec
 		"DEATH_FALL_GRAVITY": 11.0,        # The player's gravity while falling during death, measured in px/frame
 		"DEATH_MAX_FALL_SPEED": 280.0,     # The player's maximum fall speed during death, measured in px/sec
 	},
@@ -140,7 +149,12 @@ extends CharacterBody2D
 	"Default": { # Fallback parameters. Additional entries can be added through CharacterInfo.json.
 		"WING_OFFSET": [0.0, 0.0],         # The visual offset of the wings which appear with the Wing power-up.
 		"HAMMER_OFFSET": [0.0, -8.0],      # The visual offset of the hammer which appears with the Hammer power-up.
+		
+		"RAINBOW_STAR_FX_SPEED": 15.0,     # Determines the speed of the rainbow effect under the effects of a star, measured in cycles/sec
+		"RAINBOW_STAR_SLOW_FX_SPEED": 7.5, # Determines the speed of the rainbow effect nearing the end of a star's duration, measured in cycles/sec
 		"RAINBOW_POWERUP_FX": true,        # Determines whether or not the player will play the rainbow effect when powering up.
+		"RAINBOW_FX_SPEED": 15.0,          # Determines the speed of the rainbow effect in other scenarios, measured in cycles/sec
+		
 		"GROUNDED_WALK_SFX": true,         # Forces walk sounds to only play when on the ground.
 		"GROUNDED_RUN_SFX": true,          # Forces run sounds to only play when on the ground.
 	},
@@ -168,7 +182,9 @@ var has_spring_jumped := false
 var direction := 1
 var input_direction := 0
 
+var star_meter := 0.0
 var flight_meter := 0.0
+var hammer_meter := 0.0
 
 var velocity_direction := 1
 var velocity_x_jump_stored := 0
@@ -237,6 +253,8 @@ var can_hurt := true
 
 var in_water := false
 
+var has_star := false
+var has_wings := false
 var has_hammer := false
 
 var spring_bouncing := false
@@ -485,6 +503,12 @@ func recenter_camera() -> void:
 func reparent_camera() -> void:
 	return
 
+func actual_velocity_y():
+	if gravity_vector.y >= 0:
+		return velocity.y
+	else:
+		return -velocity.y
+
 func editor_level_start() -> void:
 	if PipeArea.exiting_pipe_id == -1:
 		power_state = get_node("PowerStates").get_child(starting_power_state)
@@ -517,6 +541,8 @@ func _physics_process(delta: float) -> void:
 	handle_directions()
 	handle_projectile_firing(delta)
 	handle_block_collision_detection()
+	handle_star(delta)
+	handle_hammer(delta)
 	handle_wing_flight(delta)
 	air_frames = (air_frames + 1 if is_on_floor() == false else 0)
 	for i in get_tree().get_nodes_in_group("StepCollision"):
@@ -524,14 +550,14 @@ func _physics_process(delta: float) -> void:
 		for x in [$StepWallChecks/LWall, $StepWallChecks/RWall]:
 			if x.is_colliding():
 				on_wall = true
-		var step_enabled = (not on_wall and air_frames < 4 and velocity.y >= 0)
+		var step_enabled = (not on_wall and air_frames < 4 and actual_velocity_y() >= 0)
 		i.set_deferred("disabled", not step_enabled)
 	if is_actually_on_ceiling() and can_bump_sfx:
 		bump_ceiling()
 	elif is_actually_on_floor() and not is_invincible:
 		land_on_ground()
 		stomp_combo = 0
-	elif velocity.y > 15:
+	elif actual_velocity_y() > 15:
 		can_bump_sfx = true
 	if not is_actually_on_floor() and not just_landed:
 		can_land_sfx = true
@@ -583,11 +609,6 @@ func _process(delta: float) -> void:
 	handle_invincible_palette()
 	if is_invincible:
 		DiscoLevel.combo_meter = 100
-	%HammerSprite.visible = has_hammer
-	%HammerHitbox.collision_layer = has_hammer
-	if has_hammer:
-		var hammer_offset = physics_params("HAMMER_OFFSET", COSMETIC_PARAMETERS)
-		%HammerSprite.offset = Vector2(hammer_offset[0], hammer_offset[1])
 
 func apply_gravity(delta: float) -> void:
 	if in_water or flight_meter > 0:
@@ -599,7 +620,7 @@ func apply_gravity(delta: float) -> void:
 	var target_fall: float = physics_params("MAX_FALL_SPEED")
 	if in_water:
 		target_fall = physics_params("MAX_SWIM_FALL_SPEED")
-	if gravity_vector.y > 0:
+	if gravity_vector.y >= 0:
 		velocity.y = clamp(velocity.y, -INF, (target_fall / (1.2 if low_gravity else 1.0)))
 	else:
 		velocity.y = clamp(velocity.y, -(target_fall / (1.2 if low_gravity else 1.0)), INF)
@@ -686,7 +707,7 @@ func enemy_bounce_off(add_combo := true, award_score := true) -> void:
 	jump_cancelled = not Global.player_action_pressed("jump", player_id)
 	await get_tree().physics_frame
 	if Global.player_action_pressed("jump", player_id):
-		velocity.y = sign(gravity_vector.y) * -physics_params("BOUNCE_JUMP_HEIGHT")
+		velocity.y = sign(gravity_vector.y) * -physics_params("BOUNCE_JUMP_SPEED")
 		gravity = physics_params("JUMP_GRAVITY")
 		has_jumped = true
 	else:
@@ -718,7 +739,7 @@ func land_on_ground() -> void:
 
 func bump_ceiling() -> void:
 	AudioManager.play_sfx("bump", global_position)
-	velocity.y = physics_params("CEILING_BUMP_SPEED")
+	velocity.y = sign(gravity_vector.y) * physics_params("CEILING_BUMP_SPEED")
 	can_bump_sfx = false
 	bumping = true
 	await get_tree().create_timer(0.1).timeout
@@ -732,25 +753,20 @@ func kick_anim() -> void:
 	await get_tree().create_timer(0.2).timeout
 	kicking = false
 
-func super_star() -> void:
-	DiscoLevel.combo_meter += 1
-	is_invincible = true
-	$StarTimer.start()
-
 var colour_palette: Texture = null
 
 func stop_all_timers() -> void:
-	flight_meter = -1
-	for i in [$StarTimer, $HammerTimer]:
-		i.stop()
+	for i in [star_meter, flight_meter, hammer_meter]:
+		i = 0
 
 func handle_invincible_palette() -> void:
 	sprite.material.set_shader_parameter("mode", !Settings.file.visuals.rainbow_style)
 	sprite.material.set_shader_parameter("player_palette", $PlayerPalette.texture)
 	sprite.material.set_shader_parameter("palette_size", colour_palette.get_width())
 	sprite.material.set_shader_parameter("invincible_palette", $InvinciblePalette.texture)
+	sprite.material.set_shader_parameter("invincible_palette_size", $InvinciblePalette.texture.get_height())
 	sprite.material.set_shader_parameter("palette_idx", POWER_STATES.find(power_state.state_name))
-	sprite.material.set_shader_parameter("enabled", (is_invincible or (palette_transform and transforming)))
+	sprite.material.set_shader_parameter("enabled", (has_star or (palette_transform and transforming)))
 
 func handle_block_collision_detection() -> void:
 	if ["Pipe"].has(state_machine.state.name): return
@@ -770,7 +786,7 @@ func handle_block_collision_detection() -> void:
 			points.sort_custom(func(a, b): return a.y < b.y)
 			$BlockCollision.position.y = points.front().y * $FireCollision.scale.y
 			%Hammer.position.x = -8 * (1 - $FireCollision.scale.x)
-	if velocity.y <= physics_params("FALL_GRAVITY"):
+	if actual_velocity_y() <= physics_params("FALL_GRAVITY"):
 		for i in $BlockCollision.get_overlapping_bodies():
 			if i is Block:
 				if is_on_ceiling():
@@ -854,17 +870,34 @@ func handle_power_up_states(delta) -> void:
 	$Checkpoint.position.y = -24 if power_state.hitbox_size == "Small" else -40
 	power_state.update(delta)
 
+func handle_star(delta:float) -> void:
+	star_meter -= delta
+	if star_meter <= 0 and has_star:
+		on_star_timeout()
+	
+func handle_hammer(delta:float) -> void:
+	hammer_meter -= delta
+	if hammer_meter <= 0 and has_hammer:
+		has_hammer = false
+		AudioManager.stop_music_override(AudioManager.MUSIC_OVERRIDES.HAMMER)
+	%HammerSprite.visible = has_hammer
+	%HammerHitbox.collision_layer = has_hammer
+	if has_hammer:
+		var hammer_offset = physics_params("HAMMER_OFFSET", COSMETIC_PARAMETERS)
+		%HammerSprite.offset = Vector2(hammer_offset[0], hammer_offset[1])
+
 func handle_wing_flight(delta: float) -> void:
 	flight_meter -= delta
-	if flight_meter <= 0 && %Wings.visible:
+	if flight_meter <= 0 and has_wings:
+		has_wings = false
 		AudioManager.stop_music_override(AudioManager.MUSIC_OVERRIDES.WING)
 		gravity = physics_params("FALL_GRAVITY")
 	%Wings.visible = flight_meter >= 0
 	var wing_offset = physics_params("WING_OFFSET", COSMETIC_PARAMETERS)
 	%Wing.offset = Vector2(wing_offset[0], wing_offset[1])
-	if flight_meter < 0:
+	if flight_meter <= 0:
 		return
-	if velocity.y < 0:
+	if actual_velocity_y() < 0:
 		%Wing.play("Flap")
 	else:
 		%Wing.play("Idle")
@@ -928,7 +961,6 @@ func die(pit: bool = false, type: String = "") -> void:
 	if type != "": last_damage_source = type
 	is_dead = true
 	visible = not pit
-	flight_meter = 0
 	dead.emit()
 	Global.p_switch_active = false
 	Global.p_switch_timer = 0
@@ -1211,7 +1243,7 @@ func jump() -> void:
 	await get_tree().physics_frame
 	has_jumped = true
 
-func calculate_jump_height(jump_height = physics_params("JUMP_HEIGHT"), jump_incr = physics_params("JUMP_INCR")) -> float: # Thanks wye love you xxx
+func calculate_jump_height(jump_height = physics_params("JUMP_SPEED"), jump_incr = physics_params("JUMP_INCR")) -> float: # Thanks wye love you xxx
 	return -(jump_height + jump_incr * int(abs(velocity.x) / 25))
 
 const SMOKE_PARTICLE = preload("res://Scenes/Prefabs/Particles/SmokeParticle.tscn")
@@ -1239,39 +1271,57 @@ func do_smoke_effect() -> void:
 			break
 	AudioManager.play_sfx("magic", global_position)
 
-func on_timeout() -> void:
-	AudioManager.stop_music_override(AudioManager.MUSIC_OVERRIDES.STAR)
-	await get_tree().create_timer(1, false).timeout
-	if $StarTimer.is_stopped():
-		is_invincible = false
-
-
 func on_area_entered(area: Area2D) -> void:
 	if area.owner is Player and area.owner != self:
 		if area.owner.velocity.y > 0 and area.owner.is_actually_on_floor() == false:
 			area.owner.enemy_bounce_off(false)
-			velocity.y = 50
+			velocity.y = sign(gravity_vector.y) * 50
 			AudioManager.play_sfx("bump", global_position)
 
+func super_star() -> void:
+	if physics_params("STAR_TIME", POWER_PARAMETERS) <= 0:
+		return
+	is_invincible = true
+	has_star = true
+	sprite.material.set_shader_parameter("speed", physics_params("RAINBOW_STAR_FX_SPEED", COSMETIC_PARAMETERS))
+	star_meter = clamp(physics_params("STAR_TIME", POWER_PARAMETERS) - 2, 0, INF)
+	DiscoLevel.combo_meter += 1
+	AudioManager.set_music_override(AudioManager.MUSIC_OVERRIDES.STAR, 1, false)
+
 func hammer_get() -> void:
+	if physics_params("HAMMER_TIME", POWER_PARAMETERS) <= 0:
+		return
 	has_hammer = true
-	$HammerTimer.start()
+	hammer_meter = physics_params("HAMMER_TIME", POWER_PARAMETERS)
+	DiscoLevel.combo_meter += 1
 	AudioManager.set_music_override(AudioManager.MUSIC_OVERRIDES.HAMMER, 0, false)
 
 func wing_get() -> void:
+	if physics_params("WING_TIME", POWER_PARAMETERS) <= 0:
+		return
+	has_wings = true
+	flight_meter = physics_params("WING_TIME", POWER_PARAMETERS)
+	DiscoLevel.combo_meter += 1
 	AudioManager.set_music_override(AudioManager.MUSIC_OVERRIDES.WING, 0, false, false)
-	flight_meter = 10
 
-func on_hammer_timeout() -> void:
-	has_hammer = false
-	AudioManager.stop_music_override(AudioManager.MUSIC_OVERRIDES.HAMMER)
+func on_star_timeout() -> void:
+	var time = clamp(physics_params("STAR_TIME", POWER_PARAMETERS), 0, 2) * 0.5
+	sprite.material.set_shader_parameter("speed", physics_params("RAINBOW_STAR_SLOW_FX_SPEED", COSMETIC_PARAMETERS))
+	await get_tree().create_timer(time, false).timeout
+	AudioManager.stop_music_override(AudioManager.MUSIC_OVERRIDES.STAR)
+	await get_tree().create_timer(time, false).timeout
+	sprite.material.set_shader_parameter("speed", physics_params("RAINBOW_FX_SPEED", COSMETIC_PARAMETERS))
+	if star_meter <= 0:
+		has_star = false
+		is_invincible = false
 
 func water_exited() -> void:
 	await get_tree().physics_frame
 	if in_water: return
 	normal_state.swim_up_meter = 0
-	if velocity.y < 0:
-		velocity.y = -250.0 if velocity.y < -50.0 or Global.player_action_pressed("move_up", player_id) else velocity.y
+	if actual_velocity_y() < 0:
+		var holding_up = Global.player_action_pressed("move_up", player_id) if gravity_vector.y >= 0 else Global.player_action_pressed("move_down", player_id)
+		velocity.y = sign(gravity_vector.y) * -physics_params("SWIM_EXIT_SPEED") if actual_velocity_y() < -50.0 or holding_up else velocity.y
 	has_jumped = true
 	if Global.player_action_pressed("move_up", player_id):
 		gravity = physics_params("JUMP_GRAVITY")
