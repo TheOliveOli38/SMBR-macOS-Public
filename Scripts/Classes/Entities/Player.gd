@@ -14,9 +14,16 @@ extends CharacterBody2D
 		"CAN_AIR_TURN": false,             # Determines if the player can turn in mid-air.
 		"CAN_BREAK_BRICKS": true,          # Determines if the player can break bricks in their current form.
 		"CAN_BE_WALL_EJECTED": true,       # Determines if the player gets pushed out of blocks if inside of them.
+		#"USE_CLASSIC_PARAMS": false,       # Determines whether or not to use classic physics params.
 		
 		"JUMP_GRAVITY": 11.0,              # The player's gravity while jumping, measured in px/frame.
+		#"CLASSIC_JUMP_GRAVITY_IDLE": 0.0,  # TODO: Implement this parameter.
+		#"CLASSIC_JUMP_GRAVITY_WALK": 0.0,  # TODO: Implement this parameter.
+		#"CLASSIC_JUMP_GRAVITY_RUN": 0.0,   # TODO: Implement this parameter.
 		"JUMP_SPEED": 300.0,               # The strength of the player's jump, measured in px/sec.
+		#"CLASSIC_JUMP_SPEED_IDLE": 0.0,    # TODO: Implement this parameter.
+		#"CLASSIC_JUMP_SPEED_WALK": 0.0,    # TODO: Implement this parameter.
+		#"CLASSIC_JUMP_SPEED_RUN": 0.0,     # TODO: Implement this parameter.
 		"JUMP_INCR": 8.0,                  # How much the player's X velocity affects their jump speed.
 		"JUMP_CANCEL_DIVIDE": 1.5,         # When the player cancels their jump, their Y velocity gets divided by this value.
 		"JUMP_HOLD_SPEED_THRESHOLD": 0.0,  # When the player's Y velocity goes past this value while jumping, their gravity switches to FALL_GRAVITY.
@@ -25,6 +32,9 @@ extends CharacterBody2D
 		"BOUNCE_JUMP_SPEED": 300.0,       # The strength at which the player bounces off enemies while holding jump, measured in px/sec 
 		
 		"FALL_GRAVITY": 25.0,              # The player's gravity while falling, measured in px/frame
+		#"CLASSIC_FALL_GRAVITY_IDLE": 0.0,  # TODO: Implement this parameter.
+		#"CLASSIC_FALL_GRAVITY_WALK": 0.0,  # TODO: Implement this parameter.
+		#"CLASSIC_FALL_GRAVITY_RUN": 0.0,   # TODO: Implement this parameter.
 		"MAX_FALL_SPEED": 280.0,           # The player's maximum fall speed, measured in px/sec
 		"CEILING_BUMP_SPEED": 45.0,        # The speed at which the player falls after hitting a ceiling, measured in px/sec
 		
@@ -36,6 +46,7 @@ extends CharacterBody2D
 		"GROUND_RUN_ACCEL": 1.25,          # The player's acceleration while running, measured in px/frame
 		"RUN_SKID": 8.0,                   # The player's turning deceleration while running, measured in px/frame
 		
+		#"INSTANT_TURN_THRESHOLD": 0.0,     # TODO: Implement this parameter.
 		"SKID_THRESHOLD": 100.0,           # The horizontal speed required, to be able to start skidding.
 		
 		"DECEL": 3.0,                      # The player's deceleration while no buttons are pressed, measured in px/frame
@@ -155,12 +166,14 @@ extends CharacterBody2D
 		"RAINBOW_POWERUP_FX": true,        # Determines whether or not the player will play the rainbow effect when powering up.
 		"RAINBOW_FX_SPEED": 15.0,          # Determines the speed of the rainbow effect in other scenarios, measured in cycles/sec
 		
+		"JUMP_SFX": "big_jump",            # Determines which sound effect to play when jumping.
 		"GROUNDED_WALK_SFX": true,         # Forces walk sounds to only play when on the ground.
 		"GROUNDED_RUN_SFX": true,          # Forces run sounds to only play when on the ground.
 	},
 	"Small": {
 		"WING_OFFSET": [0.0, 10.0],
 		"RAINBOW_POWERUP_FX": false,
+		"JUMP_SFX": "small_jump",
 	},
 	"Big": {
 		"RAINBOW_POWERUP_FX": false,
@@ -716,12 +729,12 @@ func enemy_bounce_off(add_combo := true, award_score := true) -> void:
 func add_stomp_combo(award_score := true) -> void:
 	if stomp_combo >= 10:
 		if award_score:
-			if [Global.GameMode.CHALLENGE, Global.GameMode.BOO_RACE].has(Global.current_gamemode) or Settings.file.difficulty.inf_lives:
+			if [Global.GameMode.CHALLENGE, Global.GameMode.BOO_RACE].has(Global.current_game_mode) or Settings.file.difficulty.inf_lives:
 				Global.score += 10000
 				score_note_spawner.spawn_note(10000)
 			else:
-				Global.lives += 1
 				AudioManager.play_global_sfx("1_up")
+				Global.lives += 1
 				score_note_spawner.spawn_one_up_note()
 	else:
 		if award_score:
@@ -743,8 +756,7 @@ func bump_ceiling() -> void:
 	can_bump_sfx = false
 	bumping = true
 	await get_tree().create_timer(0.1).timeout
-	AudioManager.kill_sfx("small_jump")
-	AudioManager.kill_sfx("big_jump")
+	AudioManager.kill_sfx(physics_params("JUMP_SFX", COSMETIC_PARAMETERS))
 	await get_tree().create_timer(0.1).timeout
 	bumping = false
 
@@ -1238,7 +1250,7 @@ func jump() -> void:
 	velocity.y = calculate_jump_height() * gravity_vector.y
 	velocity_x_jump_stored = velocity.x
 	gravity = physics_params("JUMP_GRAVITY")
-	AudioManager.play_sfx("small_jump" if power_state.hitbox_size == "Small" else "big_jump", global_position)
+	AudioManager.play_sfx(physics_params("JUMP_SFX", COSMETIC_PARAMETERS), global_position)
 	has_jumped = true
 	await get_tree().physics_frame
 	has_jumped = true

@@ -143,12 +143,14 @@
 				"RAINBOW_POWERUP_FX": true,
 				"RAINBOW_FX_SPEED": 15.0,
 				
+				"JUMP_SFX": "big_jump",
 				"GROUNDED_WALK_SFX": true,
 				"GROUNDED_RUN_SFX": true,
 			},
 			"Small": {
 				"WING_OFFSET": [0.0, 10.0],
 				"RAINBOW_POWERUP_FX": false,
+				"JUMP_SFX": "small_jump",
 			},
 			"Big": {
 				"RAINBOW_POWERUP_FX": false,

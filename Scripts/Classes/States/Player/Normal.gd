@@ -99,7 +99,7 @@ func grounded(delta: float) -> void:
 func handle_ground_movement(delta: float) -> void:
 	if player.skidding:
 		ground_skid(delta)
-	elif (player.input_direction != player.velocity_direction) and player.input_direction != 0 and abs(player.velocity.x) > player.physics_params("SKID_THRESHOLD") and not player.crouching:
+	elif sign(player.input_direction * player.velocity_direction) < 0.0 and abs(player.velocity.x) > player.physics_params("SKID_THRESHOLD") and not player.crouching:
 		print([player.input_direction, player.velocity_direction])
 		player.skidding = true
 	elif player.input_direction != 0 and not player.crouching:
@@ -209,7 +209,7 @@ func get_animation_name() -> String:
 	var on_floor := player.is_actually_on_floor()
 	var on_wall := player.is_actually_on_wall()
 	var airborne := not on_floor
-	var has_flight := player.flight_meter > 0
+	var has_flight := player.has_wings
 	var moving := vel_x >= 5 and not on_wall
 	var pushing := player.input_direction != 0 and on_wall
 	var running: float = vel_x >= player.physics_params("RUN_SPEED") - 10

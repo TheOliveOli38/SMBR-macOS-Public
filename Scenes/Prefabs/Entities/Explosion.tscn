@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://clbvyne1cr8gp"]
+[gd_scene load_steps=26 format=3 uid="uid://clbvyne1cr8gp"]
 
 [ext_resource type="Script" uid="uid://ritdlvkpyjd4" path="res://Scripts/Classes/Entities/Objects/Explosion.gd" id="1_aklik"]
 [ext_resource type="Texture2D" uid="uid://brjkrkihadwnj" path="res://Assets/Sprites/Particles/FireballExplosion.png" id="2_4aiuq"]
@@ -241,6 +241,9 @@ _data = {
 &"RESET": SubResource("Animation_anr6o")
 }
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hjivi"]
+size = Vector2(14, 14)
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_6tdk1"]
 radius = 24.0
 
@@ -313,6 +316,9 @@ autoplay = true
 max_distance = 256.0
 bus = &"SFX"
 
+[node name="Collision" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_hjivi")
+
 [node name="Hitbox" type="Area2D" parent="."]
 collision_mask = 255
 
@@ -325,4 +331,5 @@ hitbox = NodePath("../Hitbox")
 
 [connection signal="body_entered" from="Hitbox" to="." method="on_body_entered"]
 [connection signal="player_hit" from="EnemyPlayerDetection" to="." method="damage_player"]
+[connection signal="player_stomped_below" from="EnemyPlayerDetection" to="." method="damage_player"]
 [connection signal="player_stomped_on" from="EnemyPlayerDetection" to="." method="damage_player"]

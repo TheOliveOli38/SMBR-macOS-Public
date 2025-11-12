@@ -7,6 +7,7 @@ extends Node
 
 signal player_hit(player: Player)
 signal player_stomped_on(player: Player)
+signal player_stomped_below(player: Player)
 signal invincible_player_hit(player: Player)
 signal hammer_player_hit(player: Player)
 
@@ -25,7 +26,10 @@ func player_entered(player: Player) -> void:
 	if player.is_invincible:
 		invincible_player_hit.emit(player)
 	elif (player.actual_velocity_y() >= 15 or is_below_player) and player.in_water == false:
-		player_stomped_on.emit(player)
+		if player.gravity_vector.y >= 0:
+			player_stomped_on.emit(player)
+		else:
+			player_stomped_below.emit(player)
 	else:
 		player_hit.emit(player)
 
