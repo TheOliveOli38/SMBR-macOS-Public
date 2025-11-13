@@ -224,7 +224,7 @@ func get_animation_name() -> String:
 
 	var jump_context := ""
 	if player.has_spring_jumped: jump_context = "Spring"
-	elif player.is_invincible: jump_context = "Star"
+	elif player.has_star: jump_context = "Star"
 	elif run_jump: jump_context = "Run"
 	
 	var jump = func(anim_name: String) -> String:

@@ -76,6 +76,8 @@ extends CharacterBody2D
 ## Determines parameters typically involved with power-up behavior, mainly projectiles fired by the player.
 @export var POWER_PARAMETERS: Dictionary = {
 	"Default": {
+		"POWER_STATE_RANGE": [0, 2],       # Determines the range of available power-up tiers to the player.
+		"STARTING_POWER_STATE": "Small",   # Determines the default starting power state.
 		"STAR_TIME": 12.0,                 # Determines how long a Star will last for.
 		"WING_TIME": 10.0,                 # Determines how long Wings will last for.
 		"HAMMER_TIME": 10.0,               # Determines how long a Hammer will last for.
@@ -425,7 +427,10 @@ func _ready() -> void:
 	Global.level_theme_changed.connect(set_power_state_frame)
 	if Global.current_level.first_load and Global.current_game_mode == Global.GameMode.MARATHON_PRACTICE:
 		Global.player_power_states[player_id] = "0"
-	power_state = $PowerStates.get_node(POWER_STATES[int(Global.player_power_states[player_id])])
+	var cur_power_state = int(Global.player_power_states[player_id])
+	var power_state_range = physics_params("POWER_STATE_RANGE", POWER_PARAMETERS)
+	power_state = get_node("PowerStates/" + physics_params("STARTING_POWER_STATE", POWER_PARAMETERS))
+	power_state = $PowerStates.get_node(POWER_STATES[clamp(cur_power_state, power_state.power_tier, power_state_range[1])])
 	if Global.current_game_mode == Global.GameMode.LEVEL_EDITOR:
 		camera.enabled = false
 	handle_power_up_states(0)
@@ -924,9 +929,9 @@ func damage(type: String = "") -> void:
 		return
 	times_hit += 1
 	var damage_state = power_state.damage_state
-	if damage_state != null:
+	if damage_state != null and power_state.power_tier > physics_params("POWER_STATE_RANGE", POWER_PARAMETERS)[0]:
 		if Settings.file.difficulty.damage_style == 0:
-			damage_state = get_node("PowerStates/Small")
+			damage_state = get_node("PowerStates/" +  POWER_STATES[physics_params("POWER_STATE_RANGE", POWER_PARAMETERS)[0]])
 		DiscoLevel.combo_meter -= 50
 		AudioManager.play_sfx("damage", global_position)
 		await power_up_animation(damage_state.state_name)
@@ -996,8 +1001,8 @@ func die(pit: bool = false, type: String = "") -> void:
 func fire_die() -> void: die(false, "Fire")
 
 func death_load() -> void:
-	power_state = get_node("PowerStates/Small")
-	Global.player_power_states = "0000"
+	power_state = get_node("PowerStates/" + physics_params("STARTING_POWER_STATE", POWER_PARAMETERS))
+	Global.player_power_states = str(power_state.power_tier).repeat(4)
 
 	if Global.death_load:
 		return
@@ -1084,7 +1089,7 @@ func get_power_up(power_name := "", give_points := true) -> void:
 		if power_name != "Big" and power_state.state_name != "Big":
 			power_name = "Big"
 	var new_power_state = get_node("PowerStates/" + power_name)
-	if new_power_state.power_tier >= power_state.power_tier and new_power_state != power_state:
+	if power_state.power_tier <= new_power_state.power_tier <= physics_params("POWER_STATE_RANGE", POWER_PARAMETERS)[1] and new_power_state != power_state:
 		can_hurt = false
 		await power_up_animation(power_name)
 	else:

@@ -967,7 +967,7 @@ layout_mode = 2
 size_flags_horizontal = 8
 mouse_filter = 2
 
-[node name="TimerSprite" type="Sprite2D" parent="CanvasLayer/Control2/MarginContainer/Timers/StarTimer" node_paths=PackedStringArray("timer", "warn_sfx")]
+[node name="TimerSprite" type="Sprite2D" parent="CanvasLayer/Control2/MarginContainer/Timers/StarTimer" node_paths=PackedStringArray("warn_sfx")]
 texture = ExtResource("29_uwhl4")
 centered = false
 hframes = 7
@@ -978,7 +978,6 @@ script = ExtResource("30_o70e0")
 max_value = 10.0
 value_name = "star_meter"
 object = 1
-timer = NodePath("")
 warn_sfx = NodePath("../../../../../../TimerWarn")
 threshold_type = 1
 warn_threshold = 0.0
@@ -1011,7 +1010,7 @@ layout_mode = 2
 size_flags_horizontal = 8
 mouse_filter = 2
 
-[node name="TimerSprite" type="Sprite2D" parent="CanvasLayer/Control2/MarginContainer/Timers/HammerTimer" node_paths=PackedStringArray("timer", "warn_sfx")]
+[node name="TimerSprite" type="Sprite2D" parent="CanvasLayer/Control2/MarginContainer/Timers/HammerTimer" node_paths=PackedStringArray("warn_sfx")]
 texture = ExtResource("29_uwhl4")
 centered = false
 hframes = 7
@@ -1021,7 +1020,6 @@ script = ExtResource("30_o70e0")
 max_value = 10.0
 value_name = "hammer_meter"
 object = 1
-timer = NodePath("")
 warn_sfx = NodePath("../../../../../../TimerWarn")
 threshold_type = 1
 warn_threshold = 1.5

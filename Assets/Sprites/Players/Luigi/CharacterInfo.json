@@ -58,6 +58,8 @@
 		},
 		"POWER_PARAMETERS": {
 			"Default": {
+				"POWER_STATE_RANGE": [0, 2],
+				"STARTING_POWER_STATE": "Small",
 				"STAR_TIME": 12.0,
 				"WING_TIME": 10.0,
 				"HAMMER_TIME": 10.0,
