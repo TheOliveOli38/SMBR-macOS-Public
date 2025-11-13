@@ -1089,7 +1089,7 @@ func get_power_up(power_name := "", give_points := true) -> void:
 		if power_name != "Big" and power_state.state_name != "Big":
 			power_name = "Big"
 	var new_power_state = get_node("PowerStates/" + power_name)
-	if power_state.power_tier <= new_power_state.power_tier <= physics_params("POWER_STATE_RANGE", POWER_PARAMETERS)[1] and new_power_state != power_state:
+	if power_state.power_tier <= new_power_state.power_tier and new_power_state.power_tier <= physics_params("POWER_STATE_RANGE", POWER_PARAMETERS)[1] and new_power_state != power_state:
 		can_hurt = false
 		await power_up_animation(power_name)
 	else:
