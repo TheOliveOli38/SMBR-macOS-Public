@@ -116,8 +116,8 @@
 				"PEACH_ACCEL_MULT": 1.0,
 				
 				"DOOR_POSE_OFFSET": 0.0,
-				"TOAD_POSE_OFFSET": -12.0,
-				"PEACH_POSE_OFFSET": -12.0,
+				"TOAD_POSE_OFFSET": -16.0,
+				"PEACH_POSE_OFFSET": -16.0,
 			},
 			"Small": {},
 			"Big": {},
