@@ -41,10 +41,11 @@ func refresh() -> void:
 		if i is CustomLevelContainer:
 			i.queue_free()
 	containers.clear()
-	get_levels(Global.config_path.path_join("custom_levels"))
-	get_levels(Global.config_path.path_join("custom_levels/downloaded"))
+	get_levels(Global.config_path.path_join("custom_levels"), CustomLevelContainer.Type.SAVED)
+	get_level_packs()
+	get_levels(Global.config_path.path_join("custom_levels/downloaded"), CustomLevelContainer.Type.DOWNLOADED)
 
-func get_levels(path : String = "") -> void:
+func get_levels(path : String = "", type := CustomLevelContainer.Type.ALL) -> void:
 	if path == "":
 		path = Global.config_path.path_join("custom_levels")
 	var idx := 0
@@ -66,17 +67,40 @@ func get_levels(path : String = "") -> void:
 		container.level_author = info["Author"]
 		container.level_desc = info["Description"]
 		container.idx = idx
+		container.current_type = type
 		container.file_path = file_path
 		container.level_theme = Level.THEME_IDXS[base64_charset.find(data[0])]
 		container.level_time = base64_charset.find(data[1])
 		container.game_style = Global.CAMPAIGNS[base64_charset.find(data[3])]
 		container.selected.connect(container_selected)
 		containers.append(container)
-		print(data)
+		[%SavedLevels, %DownloadedLevels][type - 1].show()
 		if info.has("Difficulty"):
 			container.difficulty = info["Difficulty"]
 		%LevelContainers.add_child(container)
+		%LevelContainers.move_child(container, [%SavedLevels, %DownloadedLevels][type - 1].get_index() + 1)
 		idx += 1
+		
+const LEVEL_PACK_CONTAINER = preload("uid://buj10cxh15fnd")
+
+func get_level_packs() -> void:
+	for i in DirAccess.get_directories_at(Global.config_path.path_join("level_packs")):
+		var container = LEVEL_PACK_CONTAINER.instantiate()
+		var json = JSON.parse_string(FileAccess.open(Global.config_path.path_join("level_packs").path_join(i).path_join("pack_info.json"), FileAccess.READ).get_as_text())
+		container.json = json
+		containers.append(container)
+		container.pack_folder_name = i
+		%LevelPacks.show()
+		%LevelContainers.add_child(container)
+		%LevelContainers.move_child(container, %LevelPacks.get_index() + 1)
+
+func update_show(new_type := 0) -> void:
+	for i in containers:
+		i.visible = i.current_type == new_type or new_type == 0
+	%SavedLevels.visible = new_type == CustomLevelContainer.Type.SAVED or new_type == 0
+	%DownloadedLevels.visible = new_type == CustomLevelContainer.Type.DOWNLOADED or new_type == 0
+	%LevelPacks.visible = new_type == CustomLevelContainer.Type.LEVEL_PACK or new_type == 0
+
 
 func container_selected(container: CustomLevelContainer) -> void:
 	level_selected.emit(container)

@@ -64,6 +64,10 @@ var time_tween = null
 
 var total_deaths := 0
 
+var portable_mode := false
+var checked_portable := false
+
+
 var score := 0:
 	set(value):
 		if disco_mode == true:
@@ -174,6 +178,9 @@ var p_switch_timer_paused := false
 
 var debug_mode := false
 
+var current_level_pack := {}
+var level_pack_name := ""
+
 func _ready() -> void:
 	current_version = get_version_number()
 	get_server_version()
@@ -190,7 +197,8 @@ func setup_config_dirs() -> void:
 		"marathon_recordings",
 		"resource_packs",
 		"saves",
-		"screenshots"
+		"screenshots",
+		"level_packs"
 	]
 
 	for d in dirs:

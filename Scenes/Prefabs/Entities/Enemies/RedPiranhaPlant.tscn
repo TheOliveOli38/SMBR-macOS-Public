@@ -3,14 +3,17 @@
 [ext_resource type="PackedScene" uid="uid://1rxw4k4wq3ni" path="res://Scenes/Prefabs/Entities/Enemies/PiranhaPlant.tscn" id="1_6wd2m"]
 [ext_resource type="JSON" path="res://Assets/Sprites/Enemies/RedPiranhaPlant.json" id="2_potth"]
 
-[node name="RedPirannhaPlant" instance=ExtResource("1_6wd2m")]
+[node name="RedPirannhaPlant" unique_id=1152883749 instance=ExtResource("1_6wd2m")]
 player_range = 16
 
-[node name="ResourceSetterNew" parent="RotationJoint/Sprite" index="1"]
+[node name="ResourceSetterNew" parent="RotationJoint/Sprite" parent_id_path=PackedInt32Array(348969962) index="1" unique_id=521545349]
 resource_json = ExtResource("2_potth")
 
-[node name="Animation" parent="." index="1"]
+[node name="ResourceSetterNew" parent="RotationJoint/LevelEditorVisibleNode/Sprite" parent_id_path=PackedInt32Array(1987337681) index="0" unique_id=650595291]
+resource_json = ExtResource("2_potth")
+
+[node name="Animation" parent="." index="1" unique_id=986670327]
 speed_scale = 2.0
 
-[node name="SecondQuestReplacer" parent="." index="8"]
+[node name="SecondQuestReplacer" parent="." index="9" unique_id=1246270471]
 new_scene = ""
