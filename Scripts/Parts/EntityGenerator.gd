@@ -28,6 +28,7 @@ func deactivate_all_generators() -> void:
 	for i in get_tree().get_nodes_in_group("EntityGenerators"):
 		i.active = false
 		i.deactivate()
+	get_tree().call_group("Enemies", "start_retreat") # Lakitus
 
 func deactivate() -> void:
 	pass

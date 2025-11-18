@@ -14,7 +14,6 @@ var can_fall := true
 
 func _ready() -> void:
 	can_turn = false
-	direction = [-1, 1].pick_random()
 	await get_tree().create_timer(0.1, false).timeout
 	can_turn = true
 

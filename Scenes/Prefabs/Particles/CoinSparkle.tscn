@@ -10,9 +10,10 @@ particles_anim_h_frames = 8
 particles_anim_v_frames = 1
 particles_anim_loop = false
 
-[node name="CoinSparkle" type="CPUParticles2D"]
+[node name="CoinSparkle" type="CPUParticles2D" unique_id=95346280]
 z_as_relative = false
 material = SubResource("CanvasItemMaterial_0guw6")
+emitting = false
 amount = 3
 texture = ExtResource("1_4p5kk")
 lifetime = 0.5
@@ -25,7 +26,7 @@ gravity = Vector2(0, 0)
 anim_speed_min = 2.0
 anim_speed_max = 2.0
 
-[node name="ResourceSetterNew" type="Node" parent="." node_paths=PackedStringArray("node_to_affect", "property_node")]
+[node name="ResourceSetterNew" type="Node" parent="." unique_id=1336243642 node_paths=PackedStringArray("node_to_affect", "property_node")]
 script = ExtResource("2_wdqt2")
 node_to_affect = NodePath("..")
 property_node = NodePath("..")

@@ -708,5 +708,9 @@ func update_menu_values() -> void:
 	%TimeLimit.value = level.time_limit
 	%SubLevelID.selected = sub_level_id
 
+func set_bg_value(value := 0, value_name := "") -> void:
+	level.get_node("LevelBG").set(value_name, value)
+	level.get_node("LevelBG").update_visuals()
+
 func on_tree_exited() -> void:
 	pass # Replace with function body.

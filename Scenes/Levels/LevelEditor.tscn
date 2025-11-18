@@ -1,4 +1,4 @@
-[gd_scene load_steps=329 format=3 uid="uid://gbcmqonky63j"]
+[gd_scene load_steps=331 format=3 uid="uid://gbcmqonky63j"]
 
 [ext_resource type="Script" uid="uid://c2lnc7vnq3xth" path="res://Scripts/Classes/Editor/LevelEditor.gd" id="1_0qbyu"]
 [ext_resource type="Texture2D" uid="uid://cbha2l6hg1kfo" path="res://Assets/Sprites/UI/EditorGrid.png" id="2_8q7yr"]
@@ -167,13 +167,16 @@
 [ext_resource type="JSON" path="res://Assets/Sprites/Tilesets/Platform.json" id="104_111c4"]
 [ext_resource type="Texture2D" uid="uid://b6llxbiv825av" path="res://Assets/Sprites/Editor/PlatformIcons/SideToSideVerrt.png" id="105_ipwxy"]
 [ext_resource type="PackedScene" uid="uid://cjkmd2yf3f84v" path="res://Scenes/Prefabs/Entities/Objects/SmallVerticalPlatform.tscn" id="106_g86mr"]
+[ext_resource type="JSON" path="res://Assets/Sprites/Enemies/AngrySun.json" id="106_ji0c6"]
 [ext_resource type="JSON" path="res://Assets/Sprites/Enemies/ChainChomp.json" id="107_0p3ev"]
 [ext_resource type="PackedScene" uid="uid://cmu6ii610jyfx" path="res://Scenes/Prefabs/Entities/Enemies/ChainChomp.tscn" id="107_76wn1"]
 [ext_resource type="PackedScene" uid="uid://c6x7gv2lqeu1x" path="res://Scenes/Prefabs/Entities/Objects/VerticalPlatform.tscn" id="107_bdir0"]
 [ext_resource type="JSON" path="res://Assets/Sprites/Blocks/OnOffBlockRed.json" id="107_mbniv"]
 [ext_resource type="Texture2D" uid="uid://h2ceiq5q4i15" path="res://Assets/Sprites/Editor/PlatformIcons/SideToSideHori.png" id="108_73mr2"]
 [ext_resource type="Texture2D" uid="uid://dg3rrr0n878nm" path="res://Assets/Sprites/Blocks/SuperTrampoline.png" id="108_adqgr"]
+[ext_resource type="JSON" path="res://Assets/Sprites/Enemies/HappyMoon.json" id="108_fvohb"]
 [ext_resource type="JSON" path="res://Assets/Sprites/Enemies/SpikeTop.json" id="108_ji0c6"]
+[ext_resource type="PackedScene" uid="uid://b6sqq06q4dhnc" path="res://Scenes/Prefabs/Entities/Enemies/HappyMoon.tscn" id="109_1esy2"]
 [ext_resource type="PackedScene" uid="uid://epltraxjntji" path="res://Scenes/Prefabs/Entities/Enemies/SpikeTop.tscn" id="109_2h5td"]
 [ext_resource type="JSON" path="res://Assets/Sprites/Blocks/BlueOnOffBlock.json" id="109_c84f5"]
 [ext_resource type="PackedScene" uid="uid://qaldmcid6jm5" path="res://Scenes/Prefabs/Entities/Objects/SuperTrampoline.tscn" id="109_k5kal"]
@@ -182,7 +185,6 @@
 [ext_resource type="Texture2D" uid="uid://cke2nve5v64am" path="res://Assets/Sprites/Editor/PlatformIcons/Falling.png" id="111_4b5os"]
 [ext_resource type="PackedScene" uid="uid://bm8obwlkm56wb" path="res://Scenes/Prefabs/Entities/Objects/FallingPlatform.tscn" id="112_3t8j1"]
 [ext_resource type="PackedScene" uid="uid://0q874wkbxcrr" path="res://Scenes/Prefabs/Blocks/SwitchSpikeBlockAlt.tscn" id="112_xde7w"]
-[ext_resource type="Texture2D" uid="uid://dki2sbbbcsje0" path="res://Assets/Sprites/Enemies/AngrySun.png" id="113_0x514"]
 [ext_resource type="PackedScene" uid="uid://dn3cblgvf2ba1" path="res://Scenes/Prefabs/Entities/Objects/LargeFallingPlatform.tscn" id="113_3t8j1"]
 [ext_resource type="PackedScene" uid="uid://13vxk381k4gt" path="res://Scenes/Prefabs/Entities/Enemies/AngrySun.tscn" id="114_1y4xk"]
 [ext_resource type="Script" uid="uid://dja6281w30iv0" path="res://Scripts/UI/TextValidator.gd" id="114_cjvlm"]
@@ -3382,21 +3384,52 @@ entity_scene = ExtResource("107_76wn1")
 metadata/can_be_stored = true
 metadata/cannon_ammo = false
 
-[node name="AngrySun" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Enemies/MarginContainer/GridContainer" unique_id=1931018219 groups=["Selectors"] instance=ExtResource("8_wkmjk")]
+[node name="SunMoon" type="Control" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Enemies/MarginContainer/GridContainer" unique_id=1875700773]
+custom_minimum_size = Vector2(16, 16)
 layout_mode = 2
+mouse_force_pass_scroll_events = false
+script = ExtResource("20_jc7xg")
+
+[node name="AngrySun" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Enemies/MarginContainer/GridContainer/SunMoon" unique_id=1931018219 groups=["Selectors"] instance=ExtResource("8_wkmjk")]
+layout_mode = 0
+offset_right = 16.0
+offset_bottom = 16.0
 tile_name = "ENEMY_SUN"
 type = 1
-icon_texture = ExtResource("113_0x514")
+icon_texture = ExtResource("106_ji0c6")
 icon_region_override = Rect2(8, 8, 16, 16)
 entity_scene = ExtResource("114_1y4xk")
 tile_offset = Vector2i(0, 0)
 
-[node name="SpikeTop" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Enemies/MarginContainer/GridContainer" unique_id=937752968 groups=["Selectors"] instance=ExtResource("8_wkmjk")]
+[node name="HappyMoon" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Enemies/MarginContainer/GridContainer/SunMoon" unique_id=937752968 groups=["Selectors"] instance=ExtResource("8_wkmjk")]
+layout_mode = 0
+offset_right = 16.0
+offset_bottom = 16.0
+tile_name = "ENEMY_MOON"
+type = 1
+icon_texture = ExtResource("108_fvohb")
+icon_region_override = Rect2(8, 8, 16, 16)
+entity_scene = ExtResource("109_1esy2")
+tile_offset = Vector2i(0, 0)
+
+[node name="TextureRect" type="TextureRect" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Enemies/MarginContainer/GridContainer/SunMoon" unique_id=771652234]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("22_3cjpb")
+expand_mode = 1
+stretch_mode = 3
+
+[node name="SpikeTop" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Enemies/MarginContainer/GridContainer" unique_id=1300024031 groups=["Selectors"] instance=ExtResource("8_wkmjk")]
 layout_mode = 2
 tile_name = "ENEMY_SPIKETOP"
 type = 1
 icon_texture = ExtResource("108_ji0c6")
-icon_region_override = Rect2(0, 0, 16, 16)
+icon_region_override = Rect2(4, 4, 16, 16)
 entity_scene = ExtResource("109_2h5td")
 
 [node name="Blocks" type="VBoxContainer" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer" unique_id=1676242659]
@@ -5646,6 +5679,9 @@ metadata/_edit_use_anchors_ = true
 [connection signal="toggled" from="TileMenu/MarginContainer/VBoxContainer/PanelContainer/LEVEL/ScrollContainer/VBoxContainer/HBoxContainer3/BackScroll" to="." method="backscroll_toggled"]
 [connection signal="value_changed" from="TileMenu/MarginContainer/VBoxContainer/PanelContainer/LEVEL/ScrollContainer/VBoxContainer/HBoxContainer4/HeightLimit" to="." method="height_limit_changed"]
 [connection signal="value_changed" from="TileMenu/MarginContainer/VBoxContainer/PanelContainer/LEVEL/ScrollContainer/VBoxContainer/HBoxContainer6/TimeLimit" to="." method="time_limit_changed"]
+[connection signal="item_selected" from="TileMenu/MarginContainer/VBoxContainer/PanelContainer/BG/ScrollContainer/VBoxContainer/HBoxContainer/PrimaryLayer" to="." method="set_bg_value" binds= ["primary_layer"]]
+[connection signal="item_selected" from="TileMenu/MarginContainer/VBoxContainer/PanelContainer/BG/ScrollContainer/VBoxContainer/HBoxContainer2/SecondLayer" to="." method="set_bg_value" binds= ["second_layer"]]
+[connection signal="item_selected" from="TileMenu/MarginContainer/VBoxContainer/PanelContainer/BG/ScrollContainer/VBoxContainer/HBoxContainer7/SecondLayerOrder" to="." method="set_bg_value" binds= ["second_layer_order"]]
 [connection signal="pressed" from="Info/QuitDialog/Yes" to="." method="save_level_before_exit"]
 [connection signal="pressed" from="Info/QuitDialog/No" to="." method="go_back_to_menu"]
 [connection signal="pressed" from="Info/QuitDialog/Cancel" to="Info/QuitDialog" method="hide"]

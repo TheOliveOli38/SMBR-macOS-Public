@@ -11,7 +11,8 @@ signal invincible_player_hit(player: Player)
 signal hammer_player_hit(player: Player)
 
 func _ready() -> void:
-	hitbox.area_entered.connect(area_entered)
+	if hitbox != null:
+		hitbox.area_entered.connect(area_entered)
 
 func area_entered(area: Area2D) -> void:
 	if area.owner is Player:

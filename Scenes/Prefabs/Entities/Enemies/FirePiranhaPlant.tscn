@@ -1,19 +1,10 @@
-[gd_scene load_steps=29 format=3 uid="uid://bonyk2org08"]
+[gd_scene load_steps=14 format=3 uid="uid://bonyk2org08"]
 
-[ext_resource type="Script" uid="uid://d23hoj2qc2whq" path="res://Scripts/Classes/Entities/Enemies/PiranhaPlant.gd" id="1_pkk74"]
+[ext_resource type="PackedScene" uid="uid://bksfxqm6v1a4j" path="res://Scenes/Prefabs/Entities/Enemies/PipePlantBase.tscn" id="1_t5jdg"]
 [ext_resource type="Texture2D" uid="uid://dxl5qcchx0ymx" path="res://Assets/Sprites/Enemies/FirePiranhaPlant.png" id="2_pkk74"]
 [ext_resource type="Script" uid="uid://cbal8ms2oe1ik" path="res://Scripts/Classes/Components/ResourceSetterNew.gd" id="3_pknrj"]
 [ext_resource type="JSON" path="res://Assets/Sprites/Enemies/FirePiranhaPlant.json" id="4_uchv3"]
-[ext_resource type="Script" uid="uid://chj8hu207lrh" path="res://Scripts/Classes/Components/EnemyPlayerDetection.gd" id="5_8ftaj"]
-[ext_resource type="Script" uid="uid://dri2d5jtu0fbq" path="res://Scripts/Classes/Components/FireballDetection.gd" id="6_k81gu"]
-[ext_resource type="Script" uid="uid://5octqlf4ohel" path="res://Scripts/Classes/Components/ScoreNoteSpawner.gd" id="7_7vy37"]
-[ext_resource type="Script" uid="uid://bbww34oiexbx2" path="res://Scripts/Classes/Components/ShellDetection.gd" id="8_gqmo8"]
 [ext_resource type="Script" uid="uid://cpwloakvp672a" path="res://Scripts/Parts/EditorVisibleNode.gd" id="9_wpeij"]
-[ext_resource type="Script" uid="uid://d0mqkvopasu8k" path="res://Scripts/Classes/Components/SecondQuestReplaceComponent.gd" id="10_2rla4"]
-[ext_resource type="Script" uid="uid://ba18grqjixded" path="res://Scripts/Classes/Components/ExplosionDetection.gd" id="11_efili"]
-[ext_resource type="Script" uid="uid://ctfbuoxtnnl0q" path="res://Scripts/Classes/Components/EditorPropertyExposer.gd" id="12_61806"]
-[ext_resource type="Script" uid="uid://cqif1li7otvpl" path="res://Scripts/Parts/SpriteFramesToJsonConverter.gd" id="14_crnmk"]
-[ext_resource type="Script" uid="uid://cmvlgsjmsk0v5" path="res://Scripts/Classes/Resources/ThemedResource.gd" id="15_8ftaj"]
 [ext_resource type="Script" uid="uid://dw25p2gplfkx0" path="res://Scripts/Classes/Entities/Enemies/FirePiranha.gd" id="16_8ftaj"]
 [ext_resource type="PackedScene" uid="uid://c32pui3x8p0hx" path="res://Scenes/Prefabs/Entities/Objects/PlantFireball.tscn" id="16_k81gu"]
 
@@ -33,7 +24,7 @@ region = Rect2(0, 32, 32, 32)
 atlas = ExtResource("2_pkk74")
 region = Rect2(0, 0, 32, 32)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_q2sci"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_ltyw1"]
 animations = [{
 "frames": [{
 "duration": 1.0,
@@ -68,314 +59,61 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_k3xt6"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f4y8b"]
 size = Vector2(6, 13)
 
-[sub_resource type="Animation" id="Animation_471w1"]
-resource_name = "Hide"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("RotationJoint/Sprite:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, 12)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("RotationJoint/Sprite:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("RotationJoint/Sprite/Hitbox:monitoring")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
+[node name="PirannhaPlant" unique_id=877679531 instance=ExtResource("1_t5jdg")]
+rise_animation = "RiseLong"
 
-[sub_resource type="Animation" id="Animation_6l0c7"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("RotationJoint/Sprite:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, -12)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("RotationJoint/Sprite:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("RotationJoint/Sprite/Hitbox:monitoring")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-
-[sub_resource type="Animation" id="Animation_t8k64"]
-resource_name = "Rise"
-length = 5.5
-step = 0.1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("RotationJoint/Sprite:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5, 4, 4.5),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [Vector2(0, 12), Vector2(0, -16), Vector2(0, -16), Vector2(0, 12)]
-}
-tracks/1/type = "method"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Timer")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 5.5),
-"transitions": PackedFloat32Array(1, 1),
-"values": [{
-"args": [],
-"method": &"stop"
-}, {
-"args": [-1],
-"method": &"start"
-}]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("RotationJoint/Sprite:visible")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 4.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("RotationJoint/Sprite/Hitbox:monitoring")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 3.8),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
-}
-tracks/4/type = "method"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("FirePiranhaStuff")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(2.5),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"shoot"
-}]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_471w1"]
-_data = {
-&"Hide": SubResource("Animation_471w1"),
-&"RESET": SubResource("Animation_6l0c7"),
-&"Rise": SubResource("Animation_t8k64")
-}
-
-[sub_resource type="Resource" id="Resource_k81gu"]
-script = ExtResource("15_8ftaj")
-Overworld = SubResource("SpriteFrames_q2sci")
-metadata/_custom_type_script = "uid://cmvlgsjmsk0v5"
-
-[sub_resource type="GDScript" id="GDScript_8ftaj"]
-script/source = "extends Node
-
-func _process(_delta: float) -> void:
-	const OFFSETS = [Vector2.ZERO, Vector2(0, -16), Vector2(-16, 0), Vector2(16, 0)]
-	$\"../RotationJoint\".global_rotation_degrees = [0, 180, 90, -90][owner.pipe_direction]
-	$\"../RotationJoint\".position = OFFSETS[owner.pipe_direction]
-"
-
-[node name="PirannhaPlant" type="CharacterBody2D" node_paths=PackedStringArray("on_screen_enabler", "score_note_adder") groups=["Enemies"]]
-z_index = -5
-script = ExtResource("1_pkk74")
-on_screen_enabler = NodePath("VisibleOnScreenEnabler2D")
-score_note_adder = NodePath("ScoreNoteSpawner")
-metadata/_custom_type_script = "uid://bpydbpyjk1mt4"
-
-[node name="RotationJoint" type="Node2D" parent="."]
-unique_name_in_owner = true
-
-[node name="Sprite" type="AnimatedSprite2D" parent="RotationJoint"]
+[node name="Sprite2" type="AnimatedSprite2D" parent="RotationJoint" parent_id_path=PackedInt32Array(533885688) index="0" unique_id=1136724381]
 unique_name_in_owner = true
 visible = false
 position = Vector2(0, -12)
-sprite_frames = SubResource("SpriteFrames_q2sci")
+sprite_frames = SubResource("SpriteFrames_ltyw1")
 animation = &"ShootDown"
 autoplay = "AimUp"
 offset = Vector2(0, 1)
 flip_h = true
 
-[node name="Hitbox" type="Area2D" parent="RotationJoint/Sprite"]
+[node name="Hitbox" type="Area2D" parent="RotationJoint/Sprite2" index="0" unique_id=2141988578]
 position = Vector2(0, 12)
 monitoring = false
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="RotationJoint/Sprite/Hitbox"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RotationJoint/Sprite2/Hitbox" index="0" unique_id=826761124]
 position = Vector2(0, -6)
-shape = SubResource("RectangleShape2D_k3xt6")
+shape = SubResource("RectangleShape2D_f4y8b")
 
-[node name="UpsideDownExtension" type="CollisionShape2D" parent="RotationJoint/Sprite/Hitbox"]
+[node name="UpsideDownExtension" type="CollisionShape2D" parent="RotationJoint/Sprite2/Hitbox" index="1" unique_id=603548844]
 unique_name_in_owner = true
 position = Vector2(0, -14)
-shape = SubResource("RectangleShape2D_k3xt6")
+shape = SubResource("RectangleShape2D_f4y8b")
 debug_color = Color(0, 0.6, 0, 0.419608)
 
-[node name="ResourceSetterNew" type="Node" parent="RotationJoint/Sprite" node_paths=PackedStringArray("node_to_affect")]
+[node name="ResourceSetterNew" type="Node" parent="RotationJoint/Sprite2" index="1" unique_id=105208793 node_paths=PackedStringArray("node_to_affect")]
 script = ExtResource("3_pknrj")
 node_to_affect = NodePath("..")
 property_name = "sprite_frames"
 resource_json = ExtResource("4_uchv3")
 metadata/_custom_type_script = "uid://cbal8ms2oe1ik"
 
-[node name="LevelEditorVisibleNode" type="Node2D" parent="RotationJoint"]
+[node name="LevelEditorVisibleNode2" type="Node2D" parent="RotationJoint" parent_id_path=PackedInt32Array(533885688) index="1" unique_id=1994188927]
 script = ExtResource("9_wpeij")
 metadata/_custom_type_script = "uid://cpwloakvp672a"
 
-[node name="Sprite" type="AnimatedSprite2D" parent="RotationJoint/LevelEditorVisibleNode"]
+[node name="Sprite" type="AnimatedSprite2D" parent="RotationJoint/LevelEditorVisibleNode2" index="0" unique_id=291179805]
 position = Vector2(0, -17)
-sprite_frames = SubResource("SpriteFrames_q2sci")
+sprite_frames = SubResource("SpriteFrames_ltyw1")
 animation = &"AimUp"
 autoplay = "AimUp"
 offset = Vector2(0, 1)
 
-[node name="ResourceSetterNew" type="Node" parent="RotationJoint/LevelEditorVisibleNode/Sprite" node_paths=PackedStringArray("node_to_affect")]
+[node name="ResourceSetterNew" type="Node" parent="RotationJoint/LevelEditorVisibleNode2/Sprite" index="0" unique_id=1806799454 node_paths=PackedStringArray("node_to_affect")]
 script = ExtResource("3_pknrj")
 node_to_affect = NodePath("..")
 property_name = "sprite_frames"
 resource_json = ExtResource("4_uchv3")
 metadata/_custom_type_script = "uid://cbal8ms2oe1ik"
 
-[node name="Animation" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_471w1")
-}
-autoplay = "Hide"
-
-[node name="Timer" type="Timer" parent="."]
-autostart = true
-
-[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
-self_modulate = Color(1, 1, 1, 0)
-position = Vector2(0, -5)
-scale = Vector2(1, 2.9)
-
-[node name="EnemyPlayerDetection" type="Node" parent="." node_paths=PackedStringArray("hitbox")]
-script = ExtResource("5_8ftaj")
-hitbox = NodePath("../RotationJoint/Sprite/Hitbox")
-metadata/_custom_type_script = "uid://chj8hu207lrh"
-
-[node name="FireballDetection" type="Node" parent="." node_paths=PackedStringArray("hitbox")]
-script = ExtResource("6_k81gu")
-hitbox = NodePath("../RotationJoint/Sprite/Hitbox")
-metadata/_custom_type_script = "uid://dri2d5jtu0fbq"
-
-[node name="ScoreNoteSpawner" type="Node" parent="."]
-script = ExtResource("7_7vy37")
-add_score = true
-play_sfx = true
-metadata/_custom_type_script = "uid://5octqlf4ohel"
-
-[node name="ShellDetection" type="Node" parent="." node_paths=PackedStringArray("hitbox")]
-script = ExtResource("8_gqmo8")
-hitbox = NodePath("../RotationJoint/Sprite/Hitbox")
-metadata/_custom_type_script = "uid://bbww34oiexbx2"
-
-[node name="SecondQuestReplacer" type="Node" parent="."]
-script = ExtResource("10_2rla4")
-new_scene = "uid://kj5pw3xhq8f7"
-metadata/_custom_type_script = "uid://d0mqkvopasu8k"
-
-[node name="ExplosionDetection" type="Node" parent="." node_paths=PackedStringArray("hitbox")]
-script = ExtResource("11_efili")
-hitbox = NodePath("../RotationJoint/Sprite/Hitbox")
-metadata/_custom_type_script = "uid://ba18grqjixded"
-
-[node name="EditorPropertyExposer" type="Node" parent="."]
-script = ExtResource("12_61806")
-properties = Array[String](["pipe_direction"])
-metadata/_custom_type_script = "uid://ctfbuoxtnnl0q"
-
-[node name="ThemedToJSONConverter" type="Node" parent="."]
-script = ExtResource("14_crnmk")
-resource = SubResource("Resource_k81gu")
-json_file_path = "res://Assets/Sprites/Enemies/FirePiranhaPlant.json"
-metadata/_custom_type_script = "uid://cqif1li7otvpl"
-
-[node name="FirePiranhaStuff" type="Node" parent="."]
-process_mode = 1
+[node name="FirePiranhaPlant" type="Node" parent="." index="6" unique_id=1906789849]
 script = ExtResource("16_8ftaj")
 fireball_scene = ExtResource("16_k81gu")
-
-[node name="Node" type="Node" parent="."]
-process_mode = 3
-script = SubResource("GDScript_8ftaj")
-
-[connection signal="timeout" from="Timer" to="." method="on_timeout"]
-[connection signal="hammer_player_hit" from="EnemyPlayerDetection" to="." method="die_from_hammer"]
-[connection signal="hammer_player_hit" from="EnemyPlayerDetection" to="ScoreNoteSpawner" method="spawn_note" binds= [200]]
-[connection signal="invincible_player_hit" from="EnemyPlayerDetection" to="." method="die_from_object"]
-[connection signal="invincible_player_hit" from="EnemyPlayerDetection" to="ScoreNoteSpawner" method="spawn_note" binds= [200]]
-[connection signal="player_hit" from="EnemyPlayerDetection" to="." method="damage_player"]
-[connection signal="player_stomped_on" from="EnemyPlayerDetection" to="." method="damage_player"]
-[connection signal="fireball_hit" from="FireballDetection" to="." method="die_from_object"]
-[connection signal="fireball_hit" from="FireballDetection" to="ScoreNoteSpawner" method="spawn_note" binds= [200]]
-[connection signal="moving_shell_entered" from="ShellDetection" to="." method="die_from_object"]
-[connection signal="moving_shell_entered" from="ShellDetection" to="ScoreNoteSpawner" method="play_death_sfx" unbinds=1]
-[connection signal="explosion_entered" from="ExplosionDetection" to="." method="die_from_object"]
-[connection signal="explosion_entered" from="ExplosionDetection" to="ScoreNoteSpawner" method="spawn_note" binds= [200]]

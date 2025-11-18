@@ -33,12 +33,10 @@ func start() -> void:
 
 func check_for_entities() -> void:
 	for i in $Hitbox.get_overlapping_bodies():
-		print(i)
 		if i.has_node("TrackJoint"):
 			attach_to_joint(i)
 			return
 	for i in $Hitbox.get_overlapping_areas():
-		print(i)
 		if i.owner.has_node("TrackJoint"):
 			attach_to_joint(i.owner)
 			return
@@ -114,6 +112,8 @@ func move_tween(new_direction := Vector2.ZERO) -> void:
 	check_for_rail()
 
 func bounce() -> void:
+	if is_instance_valid(attached_entity) == false:
+		return
 	var joint = attached_entity.get_node("TrackJoint")
 	joint.bounced.emit()
 

@@ -1,16 +1,36 @@
-[gd_scene load_steps=14 format=3 uid="uid://bksfxqm6v1a4j"]
+[gd_scene load_steps=11 format=3 uid="uid://bksfxqm6v1a4j"]
 
 [ext_resource type="Script" uid="uid://d23hoj2qc2whq" path="res://Scripts/Classes/Entities/Enemies/PiranhaPlant.gd" id="1_ruec0"]
-[ext_resource type="Script" uid="uid://chj8hu207lrh" path="res://Scripts/Classes/Components/EnemyPlayerDetection.gd" id="2_q18dl"]
-[ext_resource type="Script" uid="uid://dri2d5jtu0fbq" path="res://Scripts/Classes/Components/FireballDetection.gd" id="3_4mglm"]
-[ext_resource type="Script" uid="uid://5octqlf4ohel" path="res://Scripts/Classes/Components/ScoreNoteSpawner.gd" id="4_rumb0"]
-[ext_resource type="Script" uid="uid://bbww34oiexbx2" path="res://Scripts/Classes/Components/ShellDetection.gd" id="5_65efl"]
+[ext_resource type="PackedScene" uid="uid://cwqicj07wkd0n" path="res://Scenes/Parts/PiranhaPlantVisuals.tscn" id="2_fs2ml"]
 [ext_resource type="Script" uid="uid://d0mqkvopasu8k" path="res://Scripts/Classes/Components/SecondQuestReplaceComponent.gd" id="6_h4okp"]
-[ext_resource type="Script" uid="uid://ba18grqjixded" path="res://Scripts/Classes/Components/ExplosionDetection.gd" id="7_xep55"]
 [ext_resource type="Script" uid="uid://ctfbuoxtnnl0q" path="res://Scripts/Classes/Components/EditorPropertyExposer.gd" id="8_kckl7"]
 
 [sub_resource type="Animation" id="Animation_471w1"]
 resource_name = "Hide"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("RotationJoint:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("RotationJoint:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 24)]
+}
 
 [sub_resource type="Animation" id="Animation_6l0c7"]
 length = 0.001
@@ -25,6 +45,30 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(0, 24)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("RotationJoint/Hitbox:monitoring")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("RotationJoint:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
 }
 
 [sub_resource type="Animation" id="Animation_t8k64"]
@@ -60,44 +104,167 @@ tracks/1/keys = {
 "update": 0,
 "values": [Vector2(0, 24), Vector2(0, 0), Vector2(0, 0), Vector2(0, 24)]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("RotationJoint/Hitbox:monitoring")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("RotationJoint:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_471w1"]
+[sub_resource type="Animation" id="Animation_ruec0"]
+resource_name = "RiseLong"
+length = 4.5
+step = 0.5
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Timer")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 4.5),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"stop"
+}, {
+"args": [-1],
+"method": &"start"
+}]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("RotationJoint:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5, 3.5, 4),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 24), Vector2(0, 0), Vector2(0, 0), Vector2(0, 24)]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("FirePiranhaPlant")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(2.5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"shoot"
+}]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("RotationJoint:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 3.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_fs2ml"]
+resource_name = "RiseRed"
+length = 4.5
+step = 0.5
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Timer")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 4.5),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"stop"
+}, {
+"args": [-1],
+"method": &"start"
+}]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("RotationJoint:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5, 3, 3.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 24), Vector2(0, 0), Vector2(0, 0), Vector2(0, 24)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("RotationJoint/Hitbox:monitoring")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("RotationJoint:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_hjrfx"]
 _data = {
 &"Hide": SubResource("Animation_471w1"),
 &"RESET": SubResource("Animation_6l0c7"),
-&"Rise": SubResource("Animation_t8k64")
+&"Rise": SubResource("Animation_t8k64"),
+&"RiseLong": SubResource("Animation_ruec0"),
+&"RiseRed": SubResource("Animation_fs2ml")
 }
 
-[sub_resource type="GDScript" id="GDScript_ofvpu"]
-script/source = "extends Node
-
-
-func _process(_delta: float) -> void:
-	if Global.level_editor != null:
-		const OFFSETS = [Vector2.ZERO, Vector2(0, -16), Vector2(-16, 0), Vector2(16, 0)]
-		$\"../RotationJoint\".global_rotation_degrees = [0, 180, 90, -90][owner.pipe_direction]
-		$\"../RotationJoint\".position = OFFSETS[owner.pipe_direction]
-
-func get_string() -> String:
-	print(\"Name\")
-	return \"\"
-"
-
-[node name="PirannhaPlant" type="CharacterBody2D" unique_id=877679531 node_paths=PackedStringArray("on_screen_enabler", "score_note_adder") groups=["Enemies"]]
+[node name="PirannhaPlant" type="CharacterBody2D" unique_id=877679531 node_paths=PackedStringArray("on_screen_enabler") groups=["Enemies"]]
 z_index = -5
 script = ExtResource("1_ruec0")
 on_screen_enabler = NodePath("VisibleOnScreenEnabler2D")
-score_note_adder = NodePath("ScoreNoteSpawner")
 metadata/_custom_type_script = "uid://bpydbpyjk1mt4"
 
-[node name="RotationJoint" type="Node2D" parent="." unique_id=336969112]
+[node name="RotationJoint" parent="." unique_id=533885688 instance=ExtResource("2_fs2ml")]
+visible = false
 position = Vector2(0, 24)
-
-[node name="Animation" type="AnimationPlayer" parent="." unique_id=986670327]
-libraries = {
-&"": SubResource("AnimationLibrary_471w1")
-}
-autoplay = &"Hide"
 
 [node name="Timer" type="Timer" parent="." unique_id=476338756]
 wait_time = 0.5
@@ -108,56 +275,20 @@ self_modulate = Color(1, 1, 1, 0)
 position = Vector2(0, -5)
 scale = Vector2(1, 2.9)
 
-[node name="EnemyPlayerDetection" type="Node" parent="." unique_id=1014865789 node_paths=PackedStringArray("hitbox")]
-script = ExtResource("2_q18dl")
-hitbox = NodePath("")
-metadata/_custom_type_script = "uid://chj8hu207lrh"
-
-[node name="FireballDetection" type="Node" parent="." unique_id=227777435 node_paths=PackedStringArray("hitbox")]
-script = ExtResource("3_4mglm")
-hitbox = NodePath("")
-metadata/_custom_type_script = "uid://dri2d5jtu0fbq"
-
-[node name="PlantRotation" type="Node" parent="." unique_id=1717263626]
-process_mode = 3
-script = SubResource("GDScript_ofvpu")
-
-[node name="ScoreNoteSpawner" type="Node" parent="." unique_id=1773217460]
-script = ExtResource("4_rumb0")
-add_score = true
-play_sfx = true
-metadata/_custom_type_script = "uid://5octqlf4ohel"
-
-[node name="ShellDetection" type="Node" parent="." unique_id=135530297 node_paths=PackedStringArray("hitbox")]
-script = ExtResource("5_65efl")
-hitbox = NodePath("")
-metadata/_custom_type_script = "uid://bbww34oiexbx2"
-
-[node name="SecondQuestReplacer" type="Node" parent="." unique_id=1246270471]
-script = ExtResource("6_h4okp")
-new_scene = "uid://kj5pw3xhq8f7"
-metadata/_custom_type_script = "uid://d0mqkvopasu8k"
-
-[node name="ExplosionDetection" type="Node" parent="." unique_id=884962848 node_paths=PackedStringArray("hitbox")]
-script = ExtResource("7_xep55")
-hitbox = NodePath("")
-metadata/_custom_type_script = "uid://ba18grqjixded"
-
 [node name="EditorPropertyExposer" type="Node" parent="." unique_id=787949986]
 script = ExtResource("8_kckl7")
 properties = Array[String](["pipe_direction"])
 metadata/_custom_type_script = "uid://ctfbuoxtnnl0q"
 
+[node name="Animation" type="AnimationPlayer" parent="." unique_id=1714542832]
+libraries = {
+&"": SubResource("AnimationLibrary_hjrfx")
+}
+autoplay = &"Hide"
+
+[node name="SecondQuestReplacer" type="Node" parent="." unique_id=1574329925]
+script = ExtResource("6_h4okp")
+new_scene = "uid://kj5pw3xhq8f7"
+metadata/_custom_type_script = "uid://d0mqkvopasu8k"
+
 [connection signal="timeout" from="Timer" to="." method="on_timeout"]
-[connection signal="hammer_player_hit" from="EnemyPlayerDetection" to="." method="die_from_hammer"]
-[connection signal="hammer_player_hit" from="EnemyPlayerDetection" to="ScoreNoteSpawner" method="spawn_note" binds= [200]]
-[connection signal="invincible_player_hit" from="EnemyPlayerDetection" to="." method="die_from_object"]
-[connection signal="invincible_player_hit" from="EnemyPlayerDetection" to="ScoreNoteSpawner" method="spawn_note" binds= [200]]
-[connection signal="player_hit" from="EnemyPlayerDetection" to="." method="damage_player"]
-[connection signal="player_stomped_on" from="EnemyPlayerDetection" to="." method="damage_player"]
-[connection signal="fireball_hit" from="FireballDetection" to="." method="die_from_object"]
-[connection signal="fireball_hit" from="FireballDetection" to="ScoreNoteSpawner" method="spawn_note" binds= [200]]
-[connection signal="moving_shell_entered" from="ShellDetection" to="." method="die_from_object"]
-[connection signal="moving_shell_entered" from="ShellDetection" to="ScoreNoteSpawner" method="play_death_sfx" unbinds=1]
-[connection signal="explosion_entered" from="ExplosionDetection" to="." method="die_from_object"]
-[connection signal="explosion_entered" from="ExplosionDetection" to="ScoreNoteSpawner" method="spawn_note" binds= [200]]

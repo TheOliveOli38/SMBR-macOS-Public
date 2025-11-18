@@ -72,3 +72,13 @@ func handle_wave(delta: float) -> void:
 	if wave >= 1:
 		screen_direction *= -1
 		start_charging()
+		
+const MOON_SPARKLE = preload("uid://biq4hwvm6q8qr")
+
+func moon_wipe() -> void:
+	AudioManager.play_global_sfx("moon_wipe")
+	for i in get_tree().get_nodes_in_group("Enemies"):
+		var sparkle = MOON_SPARKLE.instantiate()
+		sparkle.global_position = i.global_position + Vector2(0, -8)
+		add_sibling(sparkle)
+		i.flag_die()

@@ -241,7 +241,7 @@ func _ready() -> void:
 	set_power_state_frame()
 	handle_invincible_palette()
 	recenter_camera()
-	if Global.current_level is CustomLevel:
+	if Global.current_level is CustomLevel and Global.level_editor_is_playtesting():
 		editor_level_start()
 
 func apply_character_physics(apply: bool) -> void:

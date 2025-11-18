@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://barofu3g8jf00"
-path="res://.godot/imported/InvisibleTracks.png-12f7f9b9efd8f163751c8f409f1f0ff1.ctex"
+uid="uid://4ogsitn8cl5r"
+path="res://.godot/imported/MoonSparkle.png-25fddee1f1e20f7e42d03fd77e7e0d88.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/Tilesets/InvisibleTracks.png"
-dest_files=["res://.godot/imported/InvisibleTracks.png-12f7f9b9efd8f163751c8f409f1f0ff1.ctex"]
+source_file="res://Assets/Sprites/Particles/MoonSparkle.png"
+dest_files=["res://.godot/imported/MoonSparkle.png-25fddee1f1e20f7e42d03fd77e7e0d88.ctex"]
 
 [params]
 

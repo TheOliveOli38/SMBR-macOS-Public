@@ -36,7 +36,8 @@ func _physics_process(delta: float) -> void:
 	handle_movement(delta)
 
 func handle_movement(_delta: float) -> void:
-	retreat = get_viewport().get_camera_2d().get_screen_center_position().x >= retreat_x
+	if get_viewport().get_camera_2d().get_screen_center_position().x >= retreat_x:
+		retreat = true
 	var player_x = player.global_position.x + ((player.velocity.x))
 	var distance = abs(global_position.x - player_x)
 	get_direction(player_x)
@@ -46,6 +47,9 @@ func handle_movement(_delta: float) -> void:
 		velocity.x = -48
 	$Cloud.scale.x = direction
 	move_and_slide()
+
+func start_retreat() -> void:
+	retreat = true
 
 func get_direction(player_x := 0.0) -> void:
 	if retreat:

@@ -9,6 +9,9 @@ signal killed(direction: int)
 
 var direction := -1
 
+func _enter_tree() -> void:
+	add_to_group("Enemies")
+
 func damage_player(player: Player) -> void:
 	player.damage()
 

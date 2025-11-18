@@ -29,6 +29,8 @@ func _ready() -> void:
 		global_position.y -= 1
 
 func do_cutscene() -> void:
+	$SFX.play()
+	can_grow = true
 	for i in get_tree().get_nodes_in_group("Players"):
 		i.global_position = global_position + Vector2(0, 24)
 		i.hide()
