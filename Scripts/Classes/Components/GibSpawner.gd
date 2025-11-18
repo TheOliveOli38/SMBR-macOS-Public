@@ -24,7 +24,7 @@ func summon_gib(direction := 1, play_sfx := play_death_sfx, override_gib_type :=
 	node.visuals.set_process(false)
 	node.global_position = visuals.global_position
 	node.visuals.position = Vector2.ZERO
-	node.visuals.offset = Vector2.ZERO
+	node.visuals.set("offset", Vector2.ZERO)
 	node.gib_type = override_gib_type
 	node.direction = direction
 	owner.add_sibling(node)

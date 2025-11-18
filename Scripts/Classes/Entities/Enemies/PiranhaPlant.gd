@@ -23,3 +23,9 @@ func on_timeout() -> void:
 			$Animation.play(rise_animation)
 	elif (abs(player.global_position.y - global_position.y) >= player_range and abs(player.global_position.x - global_position.x) >= player_range * 2):
 			$Animation.play(rise_animation)
+
+
+func on_killed(gib_direction: int) -> void:
+	if Settings.file.visuals.extra_particles == 1:
+		$GibSpawner.gib_type = 2
+	$GibSpawner.summon_gib(gib_direction)

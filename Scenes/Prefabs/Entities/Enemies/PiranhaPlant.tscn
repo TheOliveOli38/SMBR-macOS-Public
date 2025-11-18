@@ -1,146 +1,34 @@
-[gd_scene load_steps=8 format=3 uid="uid://1rxw4k4wq3ni"]
+[gd_scene load_steps=3 format=3 uid="uid://1rxw4k4wq3ni"]
 
-[ext_resource type="Script" uid="uid://crox634s2k3sc" path="res://Scripts/Classes/Entities/Enemies/PipePiranhaPlant.gd" id="1_74mxh"]
+[ext_resource type="PackedScene" uid="uid://bksfxqm6v1a4j" path="res://Scenes/Prefabs/Entities/Enemies/PipePlantBase.tscn" id="1_74mxh"]
 [ext_resource type="PackedScene" uid="uid://cwqicj07wkd0n" path="res://Scenes/Parts/PiranhaPlantVisuals.tscn" id="2_nvpp7"]
-[ext_resource type="Script" uid="uid://c3gg32ivrlq8n" path="res://Scripts/Classes/Components/GibSpawner.gd" id="3_nvpp7"]
 
-[sub_resource type="Animation" id="Animation_hjrfx"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("RotationJoint:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, 24)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("RotationJoint/Hitbox:monitoring")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
+[node name="PirannhaPlant" unique_id=877679531 node_paths=PackedStringArray("upside_down_hitbox", "score_note_adder") instance=ExtResource("1_74mxh")]
+upside_down_hitbox = NodePath("RotationJoint/Visuals/Hitbox/UpsideDownExtension")
+score_note_adder = NodePath("RotationJoint/Visuals/Sprite/ScoreNoteSpawner")
 
-[sub_resource type="Animation" id="Animation_kbf78"]
-resource_name = "Rise"
-length = 2.0
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("RotationJoint:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5, 1.5000001, 2),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [Vector2(0, 24), Vector2(0, 0), Vector2(0, 0), Vector2(0, 24)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("RotationJoint/Hitbox:monitoring")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 2),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
-}
+[node name="Visuals" parent="RotationJoint" parent_id_path=PackedInt32Array(1388609852) index="0" unique_id=533885688 instance=ExtResource("2_nvpp7")]
 
-[sub_resource type="Animation" id="Animation_nvpp7"]
-resource_name = "RiseRed"
-length = 4.0
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("RotationJoint:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5, 3, 3.5),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [Vector2(0, 24), Vector2(0, 0), Vector2(0, 0), Vector2(0, 24)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("RotationJoint/Hitbox:monitoring")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 3.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_6owec"]
-_data = {
-&"RESET": SubResource("Animation_hjrfx"),
-&"Rise": SubResource("Animation_kbf78"),
-&"RiseRed": SubResource("Animation_nvpp7")
-}
-
-[node name="PipePiranhaPlant" type="CharacterBody2D" unique_id=233252226 node_paths=PackedStringArray("upside_down_hitbox", "on_screen_enabler", "score_note_adder")]
-z_index = -5
-script = ExtResource("1_74mxh")
-upside_down_hitbox = NodePath("RotationJoint/Hitbox/UpsideDownExtension")
-on_screen_enabler = NodePath("VisibleOnScreenEnabler2D")
-score_note_adder = NodePath("RotationJoint/Sprite/ScoreNoteSpawner")
-metadata/_custom_type_script = "uid://bpydbpyjk1mt4"
-
-[node name="RotationJoint" parent="." unique_id=533885688 instance=ExtResource("2_nvpp7")]
-position = Vector2(0, 24)
-
-[node name="LevelEditorVisibleNode" parent="RotationJoint" index="1" unique_id=1057828930]
-position = Vector2(0, -24)
-
-[node name="Hitbox" parent="RotationJoint" index="2" unique_id=537098004]
+[node name="Hitbox" parent="RotationJoint/Visuals" index="2" unique_id=537098004]
 monitoring = false
 
-[node name="Animations" type="AnimationPlayer" parent="." unique_id=969499376]
-unique_name_in_owner = true
-libraries = {
-&"": SubResource("AnimationLibrary_6owec")
-}
-
-[node name="Timer" type="Timer" parent="." unique_id=527523181]
-wait_time = 2.0
-one_shot = true
-
-[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="." unique_id=2023673400]
-rect = Rect2(-10, -40, 20, 50)
-
-[node name="GibSpawner" type="Node" parent="." unique_id=1106401423 node_paths=PackedStringArray("visuals")]
-script = ExtResource("3_nvpp7")
-visuals = NodePath("../Node")
-gib_type = 2
-metadata/_custom_type_script = "uid://c3gg32ivrlq8n"
-
-[node name="Node" type="Node2D" parent="." unique_id=949766839]
+[node name="SmokeJoint" type="Node2D" parent="RotationJoint/Visuals" index="3" unique_id=270022033]
 position = Vector2(0, -8)
 
-[connection signal="killed" from="." to="GibSpawner" method="summon_gib"]
-[connection signal="hammer_player_hit" from="RotationJoint/Sprite/EnemyPlayerDetection" to="." method="die_from_hammer"]
-[connection signal="invincible_player_hit" from="RotationJoint/Sprite/EnemyPlayerDetection" to="." method="die_from_object"]
-[connection signal="player_hit" from="RotationJoint/Sprite/EnemyPlayerDetection" to="." method="damage_player"]
-[connection signal="player_stomped_on" from="RotationJoint/Sprite/EnemyPlayerDetection" to="." method="damage_player"]
-[connection signal="fireball_hit" from="RotationJoint/Sprite/FireballDetection" to="." method="die_from_object"]
-[connection signal="moving_shell_entered" from="RotationJoint/Sprite/ShellDetection" to="." method="die_from_object"]
-[connection signal="explosion_entered" from="RotationJoint/Sprite/ExplosionDetection" to="." method="die_from_object"]
-[connection signal="timeout" from="Timer" to="." method="rise_up"]
+[node name="GibSpawner" parent="." index="6" unique_id=1065734456 node_paths=PackedStringArray("visuals")]
+visuals = NodePath("../RotationJoint/Visuals/SmokeJoint")
+gib_type = 1
 
-[editable path="RotationJoint"]
+[connection signal="killed" from="." to="." method="on_killed"]
+[connection signal="hammer_player_hit" from="RotationJoint/Visuals/Sprite/EnemyPlayerDetection" to="." method="die_from_hammer"]
+[connection signal="invincible_player_hit" from="RotationJoint/Visuals/Sprite/EnemyPlayerDetection" to="." method="die_from_object"]
+[connection signal="invincible_player_hit" from="RotationJoint/Visuals/Sprite/EnemyPlayerDetection" to="RotationJoint/Visuals/Sprite/ScoreNoteSpawner" method="spawn_note" binds= [200]]
+[connection signal="player_hit" from="RotationJoint/Visuals/Sprite/EnemyPlayerDetection" to="." method="damage_player"]
+[connection signal="player_stomped_on" from="RotationJoint/Visuals/Sprite/EnemyPlayerDetection" to="." method="damage_player" flags=3]
+[connection signal="fireball_hit" from="RotationJoint/Visuals/Sprite/FireballDetection" to="." method="die_from_object"]
+[connection signal="fireball_hit" from="RotationJoint/Visuals/Sprite/FireballDetection" to="RotationJoint/Visuals/Sprite/ScoreNoteSpawner" method="spawn_note" binds= [200]]
+[connection signal="moving_shell_entered" from="RotationJoint/Visuals/Sprite/ShellDetection" to="." method="die_from_object"]
+[connection signal="explosion_entered" from="RotationJoint/Visuals/Sprite/ExplosionDetection" to="." method="die_from_hammer"]
+[connection signal="explosion_entered" from="RotationJoint/Visuals/Sprite/ExplosionDetection" to="RotationJoint/Visuals/Sprite/ScoreNoteSpawner" method="spawn_note" binds= [200]]
+
+[editable path="RotationJoint/Visuals"]

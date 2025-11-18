@@ -6,6 +6,7 @@ var target_player: Player = null
 
 var shooting := false
 
+@export var shoot_amount := 1
 @export var fireball_scene: PackedScene = null
 
 func _physics_process(_delta: float) -> void:
@@ -39,7 +40,7 @@ func handle_aiming() -> void:
 
 func shoot() -> void:
 	shooting = true
-	for i in get_meta("shoot_amount", 1):
+	for i in shoot_amount:
 		handle_aiming()
 		spawn_fireball()
 		await get_tree().create_timer(0.25, false).timeout
