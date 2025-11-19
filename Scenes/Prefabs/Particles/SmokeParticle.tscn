@@ -45,14 +45,15 @@ animations = [{
 "speed": 15.0
 }]
 
-[node name="SmokeParticle" type="AnimatedSprite2D"]
+[node name="SmokeParticle" type="AnimatedSprite2D" unique_id=31523499]
+z_index = 1
 sprite_frames = SubResource("SpriteFrames_6nxch")
 autoplay = "default"
 frame = 4
 frame_progress = 1.0
 offset = Vector2(0, -8)
 
-[node name="Timer" type="Timer" parent="."]
+[node name="Timer" type="Timer" parent="." unique_id=871202933]
 one_shot = true
 autostart = true
 

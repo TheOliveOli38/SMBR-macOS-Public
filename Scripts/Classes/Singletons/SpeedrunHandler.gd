@@ -153,20 +153,21 @@ func _physics_process(delta: float) -> void:
 	if timer_active:
 		if Global.game_paused and Global.current_game_mode != Global.GameMode.MARATHON:
 			paused_time += delta
-		else:
+		else: 
 			timer = (abs(start_time - Time.get_ticks_msec()) / 1000) - paused_time
-		if enable_recording:
-			if get_tree().get_first_node_in_group("Players") != null:
-				record_frame(get_tree().get_first_node_in_group("Players"))
+			if enable_recording:
+				if get_tree().get_first_node_in_group("Players") != null:
+					record_frame(get_tree().get_first_node_in_group("Players"))
 	else:
 		paused_time = 0
-	Global.player_ghost.visible = ghost_visible
-	if ghost_active and ghost_enabled:
+	if ghost_active and ghost_enabled and (Global.game_paused == false):
 		ghost_idx += 1
 		if ghost_idx >= ghost_path.size():
 			ghost_active = false
 			return
 		Global.player_ghost.apply_data(ghost_path[ghost_idx])
+	else:
+		Global.player_ghost.hide()
 
 func start_timer() -> void:
 	timer = 0

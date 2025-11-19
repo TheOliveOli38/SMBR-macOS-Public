@@ -25,6 +25,7 @@ func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("ui_accept"):
 		selected.emit()
 		SpeedrunHandler.ghost_enabled = bool(selected_index)
+		SpeedrunHandler.ghost_visible = bool(selected_index)
 		close()
 	elif Input.is_action_just_pressed("ui_back"):
 		close()

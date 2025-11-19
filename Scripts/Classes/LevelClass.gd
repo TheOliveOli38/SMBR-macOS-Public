@@ -117,6 +117,10 @@ func spawn_in_extra_players() -> void:
 	return
 
 func update_theme() -> void:
+	if self is CoinHeaven:
+		Global.current_room = Global.Room.COIN_HEAVEN
+	else:
+		Global.current_room = get_room_type()
 	if auto_set_theme:
 		theme = WORLD_THEMES[Global.current_campaign][Global.world_num]
 		campaign = Global.current_campaign
@@ -127,10 +131,6 @@ func update_theme() -> void:
 		if Global.current_campaign == "SMBANN":
 			theme_time = "Night"
 		ResourceSetterNew.cache.clear()
-	if self is CoinHeaven:
-		Global.current_room = Global.Room.COIN_HEAVEN
-	else:
-		Global.current_room = get_room_type()
 	Global.current_campaign = campaign
 	Global.level_theme = theme
 	Global.theme_time = theme_time

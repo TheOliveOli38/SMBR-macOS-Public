@@ -24,6 +24,7 @@ func area_entered(area: Area2D) -> void:
 	fiery_object_hit.emit(node)
 	if node is FireBall or node is PlantFireball:
 		fireball_hit.emit(node)
+		node.hit()
 	elif node is Burner:
 		burner_hit.emit(node)
 	elif node is AngrySun:
