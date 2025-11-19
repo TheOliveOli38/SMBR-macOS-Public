@@ -8,6 +8,7 @@ var shooting := false
 
 @export var shoot_amount := 1
 @export var fireball_scene: PackedScene = null
+@export var plant: Node2D = null
 
 func _physics_process(_delta: float) -> void:
 	if not shooting:
@@ -17,9 +18,9 @@ func handle_aiming() -> void:
 	target_player = get_tree().get_first_node_in_group("Players")
 	if target_player == null: return
 	var sprite = %Sprite
-	var sign_x = sign(target_player.global_position.x - owner.global_position.x)
-	var sign_y = sign(target_player.global_position.y + 4 - owner.global_position.y)
-	match owner.pipe_direction:
+	var sign_x = sign(target_player.global_position.x - plant.global_position.x)
+	var sign_y = sign(target_player.global_position.y + 4 - plant.global_position.y)
+	match plant.pipe_direction:
 		0:
 			direction.x = sign_x
 			direction.y = sign_y
@@ -52,4 +53,4 @@ func spawn_fireball() -> void:
 	node.global_position = %Sprite.global_position
 	var shoot_direction = node.global_position.direction_to(target_player.global_position)
 	node.direction = shoot_direction
-	owner.add_sibling(node)
+	plant.add_sibling(node)

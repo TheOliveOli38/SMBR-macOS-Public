@@ -1,19 +1,21 @@
 [gd_scene load_steps=3 format=3 uid="uid://fmdmd42h1knv"]
 
-[ext_resource type="PackedScene" uid="uid://bonyk2org08" path="res://Scenes/Prefabs/Entities/Enemies/FirePiranhaPlant.tscn" id="1_7a84y"]
-[ext_resource type="JSON" path="res://Assets/Sprites/Enemies/RedFirePiranhaPlant.json" id="2_f36hp"]
+[ext_resource type="PackedScene" uid="uid://bonyk2org08" path="res://Scenes/Prefabs/Entities/Enemies/FirePiranhaPlant.tscn" id="1_f36hp"]
+[ext_resource type="JSON" path="res://Assets/Sprites/Enemies/RedFirePiranhaPlant.json" id="2_gqu5k"]
 
-[node name="PirannhaPlant" instance=ExtResource("1_7a84y")]
+[node name="PirannhaPlant" unique_id=877679531 instance=ExtResource("1_f36hp")]
 player_range = 16
 
-[node name="ResourceSetterNew" parent="RotationJoint/Sprite" index="1"]
-resource_json = ExtResource("2_f36hp")
+[node name="ResourceSetterNew" parent="RotationJoint/Visuals/Sprite" parent_id_path=PackedInt32Array(533885688, 211744012) index="0" unique_id=1028226469]
+resource_json = ExtResource("2_gqu5k")
 
-[node name="ResourceSetterNew" parent="RotationJoint/LevelEditorVisibleNode/Sprite" index="0"]
-resource_json = ExtResource("2_f36hp")
+[node name="FirePiranhaPlant" parent="RotationJoint/Visuals" parent_id_path=PackedInt32Array(533885688) index="2" unique_id=122564629]
+shoot_amount = 3
 
-[node name="Animation" parent="." index="1"]
+[node name="Animation" parent="." index="4" unique_id=1714542832]
 speed_scale = 2.0
 
-[node name="FirePiranhaStuff" parent="." index="13"]
-metadata/shoot_amount = 3
+[node name="ResourceSetterNew" parent="EditorVisibleNode/BetterAnimatedSprite2D" parent_id_path=PackedInt32Array(468538896) index="0" unique_id=1174629990]
+resource_json = ExtResource("2_gqu5k")
+
+[editable path="RotationJoint/Visuals"]

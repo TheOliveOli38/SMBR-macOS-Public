@@ -6,13 +6,13 @@
 [node name="PirannhaPlant" unique_id=877679531 instance=ExtResource("1_potth")]
 rise_animation = "RiseRed"
 
-[node name="ResourceSetterNew" parent="RotationJoint/Visuals/Sprite" parent_id_path=PackedInt32Array(533885688, 211744012) index="0" unique_id=1028226469]
+[node name="ResourceSetterNew" parent="RotationJoint/PositionJoint/Visuals/Sprite" parent_id_path=PackedInt32Array(533885688, 211744012) index="0" unique_id=1028226469]
 resource_json = ExtResource("2_6sjmx")
 
-[node name="ResourceSetterNew" parent="RotationJoint/Visuals/LevelEditorVisibleNode/Sprite" parent_id_path=PackedInt32Array(533885688, 1148999073) index="0" unique_id=1097508873]
+[node name="ResourceSetterNew" parent="RotationJoint/LevelEditorVisibleNode/Sprite" parent_id_path=PackedInt32Array(280669304) index="0" unique_id=2135118533]
 resource_json = ExtResource("2_6sjmx")
 
 [node name="Animation" parent="." index="4" unique_id=1714542832]
 speed_scale = 2.0
 
-[editable path="RotationJoint/Visuals"]
+[editable path="RotationJoint/PositionJoint/Visuals"]

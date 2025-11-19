@@ -232,7 +232,7 @@ func _ready() -> void:
 		apply_character_physics(false)
 	apply_character_sfx_map()
 	Global.level_theme_changed.connect(apply_character_sfx_map)
-	Global.level_theme_changed.connect(apply_character_physics)
+	Global.level_theme_changed.connect(apply_character_physics.bind(true))
 	Global.level_theme_changed.connect(set_power_state_frame)
 	if Global.current_level.first_load and Global.current_game_mode == Global.GameMode.MARATHON_PRACTICE:
 		Global.player_power_states[player_id] = "0"

@@ -1,119 +1,43 @@
-[gd_scene load_steps=14 format=3 uid="uid://bonyk2org08"]
+[gd_scene load_steps=8 format=3 uid="uid://bonyk2org08"]
 
-[ext_resource type="PackedScene" uid="uid://bksfxqm6v1a4j" path="res://Scenes/Prefabs/Entities/Enemies/PipePlantBase.tscn" id="1_t5jdg"]
-[ext_resource type="Texture2D" uid="uid://dxl5qcchx0ymx" path="res://Assets/Sprites/Enemies/FirePiranhaPlant.png" id="2_pkk74"]
-[ext_resource type="Script" uid="uid://cbal8ms2oe1ik" path="res://Scripts/Classes/Components/ResourceSetterNew.gd" id="3_pknrj"]
-[ext_resource type="JSON" path="res://Assets/Sprites/Enemies/FirePiranhaPlant.json" id="4_uchv3"]
-[ext_resource type="Script" uid="uid://cpwloakvp672a" path="res://Scripts/Parts/EditorVisibleNode.gd" id="9_wpeij"]
-[ext_resource type="Script" uid="uid://dw25p2gplfkx0" path="res://Scripts/Classes/Entities/Enemies/FirePiranha.gd" id="16_8ftaj"]
-[ext_resource type="PackedScene" uid="uid://c32pui3x8p0hx" path="res://Scenes/Prefabs/Entities/Objects/PlantFireball.tscn" id="16_k81gu"]
+[ext_resource type="PackedScene" uid="uid://bksfxqm6v1a4j" path="res://Scenes/Prefabs/Entities/Enemies/PipePlantBase.tscn" id="1_fn518"]
+[ext_resource type="PackedScene" uid="uid://i18ohs6q5xbh" path="res://Scenes/Parts/FirePiranhaVisuals.tscn" id="2_t5jdg"]
+[ext_resource type="Script" uid="uid://cpwloakvp672a" path="res://Scripts/Parts/EditorVisibleNode.gd" id="3_ltyw1"]
+[ext_resource type="PackedScene" uid="uid://c32pui3x8p0hx" path="res://Scenes/Prefabs/Entities/Objects/PlantFireball.tscn" id="3_t5jdg"]
+[ext_resource type="Script" uid="uid://caq1qiwmy0mox" path="res://Scripts/Parts/BetterAnimatedSprite.gd" id="4_f4y8b"]
+[ext_resource type="Script" uid="uid://cbal8ms2oe1ik" path="res://Scripts/Classes/Components/ResourceSetterNew.gd" id="5_i834i"]
+[ext_resource type="JSON" path="res://Assets/Sprites/Enemies/FirePiranhaPlant.json" id="6_autuf"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_pkk74"]
-atlas = ExtResource("2_pkk74")
-region = Rect2(32, 32, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_pknrj"]
-atlas = ExtResource("2_pkk74")
-region = Rect2(32, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_uchv3"]
-atlas = ExtResource("2_pkk74")
-region = Rect2(0, 32, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_crnmk"]
-atlas = ExtResource("2_pkk74")
-region = Rect2(0, 0, 32, 32)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_ltyw1"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_pkk74")
-}],
-"loop": true,
-"name": &"AimDown",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_pknrj")
-}],
-"loop": true,
-"name": &"AimUp",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_uchv3")
-}],
-"loop": true,
-"name": &"ShootDown",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_crnmk")
-}],
-"loop": true,
-"name": &"ShootUp",
-"speed": 5.0
-}]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_f4y8b"]
-size = Vector2(6, 13)
-
-[node name="PirannhaPlant" unique_id=877679531 instance=ExtResource("1_t5jdg")]
+[node name="PirannhaPlant" unique_id=877679531 node_paths=PackedStringArray("upside_down_hitbox") instance=ExtResource("1_fn518")]
 rise_animation = "RiseLong"
+upside_down_hitbox = NodePath("RotationJoint/Visuals/Hitbox/UpsideDownExtension")
 
-[node name="Sprite2" type="AnimatedSprite2D" parent="RotationJoint" parent_id_path=PackedInt32Array(533885688) index="0" unique_id=1136724381]
-unique_name_in_owner = true
-visible = false
-position = Vector2(0, -12)
-sprite_frames = SubResource("SpriteFrames_ltyw1")
-animation = &"ShootDown"
-autoplay = "AimUp"
-offset = Vector2(0, 1)
+[node name="Visuals" parent="RotationJoint" parent_id_path=PackedInt32Array(1388609852) index="0" unique_id=533885688 instance=ExtResource("2_t5jdg")]
+
+[node name="Sprite" parent="RotationJoint/Visuals" index="0" unique_id=211744012]
+scale = Vector2(-1, 1)
 flip_h = true
 
-[node name="Hitbox" type="Area2D" parent="RotationJoint/Sprite2" index="0" unique_id=2141988578]
-position = Vector2(0, 12)
+[node name="Hitbox" parent="RotationJoint/Visuals" index="1" unique_id=537098004]
 monitoring = false
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="RotationJoint/Sprite2/Hitbox" index="0" unique_id=826761124]
-position = Vector2(0, -6)
-shape = SubResource("RectangleShape2D_f4y8b")
+[node name="FirePiranhaPlant" parent="RotationJoint/Visuals" index="2" unique_id=122564629 node_paths=PackedStringArray("plant")]
+fireball_scene = ExtResource("3_t5jdg")
+plant = NodePath("../../..")
 
-[node name="UpsideDownExtension" type="CollisionShape2D" parent="RotationJoint/Sprite2/Hitbox" index="1" unique_id=603548844]
-unique_name_in_owner = true
-position = Vector2(0, -14)
-shape = SubResource("RectangleShape2D_f4y8b")
-debug_color = Color(0, 0.6, 0, 0.419608)
+[node name="EditorVisibleNode" type="Node2D" parent="." index="7" unique_id=1557828344]
+position = Vector2(0, -15)
+script = ExtResource("3_ltyw1")
 
-[node name="ResourceSetterNew" type="Node" parent="RotationJoint/Sprite2" index="1" unique_id=105208793 node_paths=PackedStringArray("node_to_affect")]
-script = ExtResource("3_pknrj")
+[node name="BetterAnimatedSprite2D" type="AnimatedSprite2D" parent="EditorVisibleNode" index="0" unique_id=468538896]
+script = ExtResource("4_f4y8b")
+metadata/_custom_type_script = "uid://caq1qiwmy0mox"
+
+[node name="ResourceSetterNew" type="Node" parent="EditorVisibleNode/BetterAnimatedSprite2D" index="0" unique_id=1174629990 node_paths=PackedStringArray("node_to_affect")]
+script = ExtResource("5_i834i")
 node_to_affect = NodePath("..")
 property_name = "sprite_frames"
-resource_json = ExtResource("4_uchv3")
+resource_json = ExtResource("6_autuf")
 metadata/_custom_type_script = "uid://cbal8ms2oe1ik"
 
-[node name="LevelEditorVisibleNode2" type="Node2D" parent="RotationJoint" parent_id_path=PackedInt32Array(533885688) index="1" unique_id=1994188927]
-script = ExtResource("9_wpeij")
-metadata/_custom_type_script = "uid://cpwloakvp672a"
-
-[node name="Sprite" type="AnimatedSprite2D" parent="RotationJoint/LevelEditorVisibleNode2" index="0" unique_id=291179805]
-position = Vector2(0, -17)
-sprite_frames = SubResource("SpriteFrames_ltyw1")
-animation = &"AimUp"
-autoplay = "AimUp"
-offset = Vector2(0, 1)
-
-[node name="ResourceSetterNew" type="Node" parent="RotationJoint/LevelEditorVisibleNode2/Sprite" index="0" unique_id=1806799454 node_paths=PackedStringArray("node_to_affect")]
-script = ExtResource("3_pknrj")
-node_to_affect = NodePath("..")
-property_name = "sprite_frames"
-resource_json = ExtResource("4_uchv3")
-metadata/_custom_type_script = "uid://cbal8ms2oe1ik"
-
-[node name="FirePiranhaPlant" type="Node" parent="." index="6" unique_id=1906789849]
-script = ExtResource("16_8ftaj")
-fireball_scene = ExtResource("16_k81gu")
+[editable path="RotationJoint/Visuals"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://cwqicj07wkd0n"]
+[gd_scene load_steps=14 format=3 uid="uid://cwqicj07wkd0n"]
 
 [ext_resource type="Texture2D" uid="uid://dbq6cn2hp6ijx" path="res://Assets/Sprites/Enemies/PiranhaPlant.png" id="1_x4w6w"]
 [ext_resource type="Script" uid="uid://cbal8ms2oe1ik" path="res://Scripts/Classes/Components/ResourceSetterNew.gd" id="2_w2s1w"]
@@ -9,7 +9,6 @@
 [ext_resource type="Script" uid="uid://cg3bquehids7s" path="res://Scripts/Classes/Components/PlantRotation.gd" id="6_x4w6w"]
 [ext_resource type="Script" uid="uid://bbww34oiexbx2" path="res://Scripts/Classes/Components/ShellDetection.gd" id="7_mp4cd"]
 [ext_resource type="Script" uid="uid://ba18grqjixded" path="res://Scripts/Classes/Components/ExplosionDetection.gd" id="9_bx4e2"]
-[ext_resource type="Script" uid="uid://cpwloakvp672a" path="res://Scripts/Parts/EditorVisibleNode.gd" id="10_x6t3p"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xp8sq"]
 atlas = ExtResource("1_x4w6w")
@@ -32,8 +31,6 @@ animations = [{
 "name": &"default",
 "speed": 5.0
 }]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_xojev"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pbvsw"]
 size = Vector2(6, 13)
@@ -84,25 +81,6 @@ metadata/_custom_type_script = "uid://bbww34oiexbx2"
 script = ExtResource("9_bx4e2")
 hitbox = NodePath("../../Hitbox")
 metadata/_custom_type_script = "uid://ba18grqjixded"
-
-[node name="LevelEditorVisibleNode" type="Node2D" parent="." unique_id=1057828930]
-visibility_layer = 2
-script = ExtResource("10_x6t3p")
-metadata/_custom_type_script = "uid://cpwloakvp672a"
-
-[node name="Sprite" type="AnimatedSprite2D" parent="LevelEditorVisibleNode" unique_id=1148999073]
-material = SubResource("ShaderMaterial_xojev")
-position = Vector2(0, -12)
-sprite_frames = SubResource("SpriteFrames_xwv3o")
-autoplay = "default"
-offset = Vector2(0, 1)
-
-[node name="ResourceSetterNew" type="Node" parent="LevelEditorVisibleNode/Sprite" unique_id=1097508873 node_paths=PackedStringArray("node_to_affect")]
-script = ExtResource("2_w2s1w")
-node_to_affect = NodePath("..")
-property_name = "sprite_frames"
-resource_json = ExtResource("3_xojev")
-metadata/_custom_type_script = "uid://cbal8ms2oe1ik"
 
 [node name="Hitbox" type="Area2D" parent="." unique_id=537098004]
 

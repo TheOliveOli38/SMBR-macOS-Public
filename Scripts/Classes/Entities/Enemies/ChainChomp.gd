@@ -51,7 +51,7 @@ func lunge() -> void:
 	await get_tree().create_timer(1, false).timeout
 	aiming = false
 	$Rope.has_floor = false
-	var tween = create_tween().tween_property($Enemy, "position", $Enemy.global_position.direction_to(target_player.global_position + Vector2(0, -32)) * LUNGE_AMOUNT, 0.35).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_IN)
+	var tween = create_tween().tween_property($Enemy, "position", global_position.direction_to(target_player.global_position + Vector2(0, -32)) * LUNGE_AMOUNT, 0.35).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_IN)
 	await get_tree().create_timer(1.5, false).timeout
 	enemy.move_and_slide()
 	tween = create_tween().tween_property($Enemy, "position", Vector2(0, -8), 0.35).set_trans(Tween.TRANS_BACK)
