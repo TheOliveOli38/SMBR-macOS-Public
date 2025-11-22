@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://dutrlpq47wguf"]
+[gd_scene load_steps=10 format=3 uid="uid://dutrlpq47wguf"]
 
 [ext_resource type="Script" uid="uid://yh4pop7sm56c" path="res://Scripts/Classes/Entities/Items/Fireball.gd" id="1_00jom"]
 [ext_resource type="Script" uid="uid://cbal8ms2oe1ik" path="res://Scripts/Classes/Components/ResourceSetterNew.gd" id="2_gfqet"]
 [ext_resource type="JSON" path="res://Assets/Sprites/Items/PlayerFireball.json" id="3_an01s"]
+[ext_resource type="Script" uid="uid://b01jg87w7sltl" path="res://Scripts/Classes/Components/LightBearer.gd" id="4_an01s"]
 
 [sub_resource type="Animation" id="Animation_gfqet"]
 length = 0.001
@@ -82,5 +83,10 @@ collision_layer = 1025
 shape = SubResource("CircleShape2D_dhdpv")
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=2098505260]
+
+[node name="LightBarer" type="Node2D" parent="." unique_id=1545833082]
+script = ExtResource("4_an01s")
+size = 0.25
+metadata/_custom_type_script = "uid://b01jg87w7sltl"
 
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="queue_free"]

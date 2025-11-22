@@ -68,3 +68,12 @@ func dispense_item(direction := -1) -> void:
 	node.set("velocity", Vector2(0, (100 if direction == 1 else -150)))
 	add_sibling(node)
 	AudioManager.play_sfx("item_appear", global_position)
+
+const SMOKE_PARTICLE = preload("uid://d08nv4qtfouv1")
+
+func summon_puff() -> void:
+	$Particles.reparent(get_parent())
+	var node = SMOKE_PARTICLE.instantiate()
+	node.global_position = global_position + Vector2(0, 8)
+	add_sibling(node)
+	queue_free()

@@ -50,7 +50,7 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mkj8t"]
 size = Vector2(16, 16)
 
-[node name="QuestionBlock" type="AnimatableBody2D" node_paths=PackedStringArray("visuals") groups=["Blocks"]]
+[node name="QuestionBlock" type="AnimatableBody2D" unique_id=1913240466 node_paths=PackedStringArray("visuals") groups=["Blocks"]]
 collision_layer = 6
 collision_mask = 0
 sync_to_physics = false
@@ -60,37 +60,37 @@ item = ExtResource("2_ntyfr")
 destruction_particle_scene = ExtResource("3_mvk7u")
 combo_meter_amount = 30
 
-[node name="Sprite" type="AnimatedSprite2D" parent="."]
+[node name="Sprite" type="AnimatedSprite2D" parent="." unique_id=1322431434]
 sprite_frames = SubResource("SpriteFrames_qf42s")
 autoplay = "default"
 frame_progress = 0.2849915
 
-[node name="ResourceSetterNew" type="Node" parent="Sprite" node_paths=PackedStringArray("node_to_affect")]
+[node name="ResourceSetterNew" type="Node" parent="Sprite" unique_id=1093026474 node_paths=PackedStringArray("node_to_affect")]
 script = ExtResource("4_qf42s")
 node_to_affect = NodePath("..")
 property_name = "sprite_frames"
 resource_json = ExtResource("5_mkj8t")
 metadata/_custom_type_script = "uid://cbal8ms2oe1ik"
 
-[node name="Collision" type="CollisionShape2D" parent="."]
+[node name="Collision" type="CollisionShape2D" parent="." unique_id=1652996612]
 visible = false
 shape = SubResource("RectangleShape2D_mkj8t")
 
-[node name="BlockAnimations" parent="." instance=ExtResource("3_ntyfr")]
+[node name="BlockAnimations" parent="." unique_id=325575679 instance=ExtResource("3_ntyfr")]
 
-[node name="EditorPropertyExposer" type="Node" parent="."]
+[node name="EditorPropertyExposer" type="Node" parent="." unique_id=1848329715]
 script = ExtResource("7_aekuo")
 properties = Array[String](["item", "item_amount", "mushroom_if_small"])
 filters = Dictionary[String, String]({
 "item": "can_be_stored"
 })
 
-[node name="TrackJoint" type="Node" parent="."]
+[node name="TrackJoint" type="Node" parent="." unique_id=760300484]
 script = ExtResource("8_ov42f")
 offset = Vector2(0, 0)
 metadata/_custom_type_script = "uid://d4a7yp6e55u8t"
 
-[node name="LevelPersistance" type="Node" parent="."]
+[node name="LevelPersistance" type="Node" parent="." unique_id=2098111272]
 script = ExtResource("9_j1txv")
 metadata/_custom_type_script = "uid://maqpreddu5kg"
 

@@ -30,7 +30,7 @@ size = Vector2(16, 16)
 
 [sub_resource type="Animation" id="Animation_4015b"]
 resource_name = "BounceDown"
-length = 0.24
+length = 0.2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -96,7 +96,7 @@ _data = {
 &"RESET": SubResource("Animation_jg54v")
 }
 
-[node name="NoteBlock" type="AnimatableBody2D" node_paths=PackedStringArray("visuals")]
+[node name="NoteBlock" type="AnimatableBody2D" unique_id=883449581 node_paths=PackedStringArray("visuals")]
 collision_layer = 6
 sync_to_physics = false
 script = ExtResource("1_lhrvd")
@@ -104,45 +104,45 @@ visuals = NodePath("Sprite")
 destructable = false
 metadata/_custom_type_script = "uid://b5ejlbl0vp1gm"
 
-[node name="Sprite" type="AnimatedSprite2D" parent="."]
+[node name="Sprite" type="AnimatedSprite2D" parent="." unique_id=147779313]
 sprite_frames = SubResource("SpriteFrames_26wi5")
 autoplay = "default"
 
-[node name="ResourceSetterNew" type="Node" parent="Sprite" node_paths=PackedStringArray("node_to_affect")]
+[node name="ResourceSetterNew" type="Node" parent="Sprite" unique_id=1722141441 node_paths=PackedStringArray("node_to_affect")]
 script = ExtResource("2_jg54v")
 node_to_affect = NodePath("..")
 property_name = "sprite_frames"
 resource_json = ExtResource("4_lhrvd")
 metadata/_custom_type_script = "uid://cbal8ms2oe1ik"
 
-[node name="Area" type="Area2D" parent="Sprite"]
+[node name="Area" type="Area2D" parent="Sprite" unique_id=1634110345]
 unique_name_in_owner = true
 priority = -1
 
-[node name="Shape" type="CollisionShape2D" parent="Sprite/Area"]
+[node name="Shape" type="CollisionShape2D" parent="Sprite/Area" unique_id=292258920]
 position = Vector2(0, -12.25)
 shape = SubResource("RectangleShape2D_jg54v")
 
-[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Sprite"]
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Sprite" unique_id=1380533423]
 remote_path = NodePath("../../Collision")
 
-[node name="Collision" type="CollisionShape2D" parent="."]
+[node name="Collision" type="CollisionShape2D" parent="." unique_id=1483888239]
 shape = SubResource("RectangleShape2D_4015b")
 
-[node name="Animations" type="AnimationPlayer" parent="."]
+[node name="Animations" type="AnimationPlayer" parent="." unique_id=1715730946]
 unique_name_in_owner = true
 libraries = {
 &"": SubResource("AnimationLibrary_pp28j")
 }
 
-[node name="EditorPropertyExposer" type="Node" parent="."]
+[node name="EditorPropertyExposer" type="Node" parent="." unique_id=1570804738]
 script = ExtResource("6_jg54v")
 properties = Array[String](["item", "item_amount"])
 filters = Dictionary[String, String]({
 "item": "can_note_store"
 })
 
-[node name="TrackJoint" type="Node" parent="."]
+[node name="TrackJoint" type="Node" parent="." unique_id=2136886396]
 script = ExtResource("6_4015b")
 offset = Vector2(0, 0)
 disable_physics = false

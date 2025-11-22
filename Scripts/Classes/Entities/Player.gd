@@ -283,7 +283,8 @@ func editor_level_start() -> void:
 	set_power_state_frame()
 	camera_make_current()
 	recenter_camera()
-	state_machine.transition_to("Normal")
+	if get_tree().get_first_node_in_group("WarpVine") == null:
+		state_machine.transition_to("Normal")
 	if camera_right_limit <= global_position.x:
 		camera_right_limit = 99999999
 	await get_tree().create_timer(0.1, false).timeout

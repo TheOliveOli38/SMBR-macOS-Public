@@ -56,6 +56,7 @@ func turn(new_normal := Vector2.UP, new_point := Vector2.ZERO) -> void:
 	var duration = abs(rad_to_deg(angle_difference(start_angle, new_angle))) / 180
 	if duration < 0.35:
 		can_move = true
+		can_turn = true
 	else:
 		move_to_collision_point(new_point, duration)
 	var tween = create_tween().tween_method(func(t): %RotationJoint.global_rotation = lerp_angle(start_angle, new_angle, t), 0.0, 1.0, duration)
