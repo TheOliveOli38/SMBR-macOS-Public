@@ -9,8 +9,12 @@ extends Enemy
 @export var PARTICLE_ON_CONTACT := false
 ## Determines what sound will play when the projectile makes contact with something.
 @export var SFX_COLLIDE := "bump"
-## Determines if the projectile will be destroyed after damaging an entity.
-@export var DESTROY_ON_HIT := false
+## Determines how many entities a projectile can hit before being destroyed. Negative values are considered infinite.
+@export var PIERCE_COUNT: int = -1
+## Determines how much time must pass in seconds before the projectile can hit the same enemy it is currently intersecting with again. Negative values are considered infinite.
+@export var PIERCE_HITRATE := -1
+## Determines how many times a projectile can bounce on tiles before being destroyed. Negative values are considered infinite.
+@export var BOUNCE_COUNT: int = -1
 ## Controls if the projectile will make contact with the environment.
 @export var HAS_COLLISION := false
 ## Controls if the projectile will bounce on the ground rather than being destroyed.
@@ -25,6 +29,8 @@ extends Enemy
 @export var LIFETIME := -1
 ## Controls the horizontal speed of the projectile.
 @export var MOVE_SPEED := 0
+## Controls the horizontal speed of the projectile.
+@export var MOVE_SPEED_CAP := [-INF, INF]
 ## Controls the amount of deceleration the projectile will experience on the ground.
 @export var GROUND_DECEL := 0
 ## Controls the amount of deceleration the projectile will experience in the air.
@@ -37,7 +43,8 @@ extends Enemy
 @export var MAX_FALL_SPEED := 280.0
 
 func _ready() -> void:
-	if not HAS_COLLISION: $Collision.disabled = true
+	var collision = get_node_or_null("Collision")
+	if not HAS_COLLISION and collision != null: collision.disabled = true
 	if LIFETIME >= 0:
 		await get_tree().create_timer(LIFETIME).timeout
 		hit(true, true)
@@ -53,30 +60,43 @@ func handle_movement(delta: float) -> void:
 	velocity.y += (CUR_GRAVITY / delta) * delta
 	velocity.y = clamp(velocity.y, -INF, MAX_FALL_SPEED)
 	if is_on_floor():
-		if GROUND_BOUNCE: velocity.y = -BOUNCE_HEIGHT
-		else: hit()
+		if GROUND_BOUNCE and BOUNCE_COUNT != 0:
+			BOUNCE_COUNT -= 1
+			velocity.y = -BOUNCE_HEIGHT
+		else: hit(true, true)
 	if is_on_ceiling():
-		if CEIL_BOUNCE: velocity.y = BOUNCE_HEIGHT
-		else: hit()
+		if CEIL_BOUNCE and BOUNCE_COUNT != 0:
+			BOUNCE_COUNT -= 1
+			velocity.y = BOUNCE_HEIGHT
+		else: hit(true, true)
 	if is_on_wall():
-		if WALL_BOUNCE:
+		if WALL_BOUNCE and BOUNCE_COUNT != 0:
+			BOUNCE_COUNT -= 1
 			direction *= -1
-		else: hit()
-	MOVE_SPEED = move_toward(MOVE_SPEED, 0, (DECEL_TYPE / delta) * delta)
+		else: hit(true, true)
+	MOVE_SPEED = clamp(move_toward(MOVE_SPEED, 0, (DECEL_TYPE / delta) * delta), MOVE_SPEED_CAP[0], MOVE_SPEED_CAP[1])
 	velocity.x = MOVE_SPEED * direction
 	move_and_slide()
-
 
 func damage_player(player: Player) -> void:
 	if !is_friendly:
 		player.damage(damage_type if damage_type != "Normal" else "")
+		hit()
 
 func hit(play_sfx := true, force_destroy := false) -> void:
 	if play_sfx and SFX_COLLIDE != "":
 		AudioManager.play_sfx(SFX_COLLIDE, global_position)
-	summon_explosion()
-	if DESTROY_ON_HIT or force_destroy:
+	if PIERCE_COUNT == 0 or BOUNCE_COUNT == 0 or force_destroy:
+		summon_explosion()
 		queue_free()
+	else:
+		var hitbox = get_node_or_null("Hitbox")
+		PIERCE_COUNT -= 1
+		if PARTICLE_ON_CONTACT: summon_explosion()
+		if PIERCE_HITRATE >= 0 and hitbox != null:
+			hitbox.monitoring = false
+			await get_tree().create_timer(PIERCE_HITRATE, false).timeout
+			hitbox.monitoring = true
 
 func summon_explosion() -> void:
 	if PARTICLE is PackedScene and PARTICLE.can_instantiate():

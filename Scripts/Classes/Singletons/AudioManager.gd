@@ -135,7 +135,7 @@ func play_sfx(stream_name = "", position := Vector2.ZERO, pitch := 1.0, can_over
 		add_child(player)
 		active_sfxs[stream_name] = player
 		queued_sfxs.erase(stream_name)
-		print(active_sfxs)
+		#print(active_sfxs)
 		await player.finished
 		active_sfxs.erase(stream_name)
 		player.queue_free()

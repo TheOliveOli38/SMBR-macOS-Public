@@ -23,7 +23,8 @@ func physics_update(_delta: float) -> void:
 	if vine.can_tele and player.global_position.y - 64 < vine.top_point and climb_direction == -1:
 		climb_direction = -1
 		auto_climb = true
-	player.velocity.y = player.physics_params("CLIMB_SPEED") * climb_direction
+	var climb_speed = player.physics_params("CLIMB_DOWN_SPEED") if climb_direction >= 1 else player.physics_params("CLIMB_UP_SPEED")
+	player.velocity.y = climb_speed * climb_direction
 	player.sprite.play("Climb")
 	player.sprite.speed_scale = abs(climb_direction * 1.5)
 	player.move_and_slide()

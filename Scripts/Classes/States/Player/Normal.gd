@@ -100,7 +100,6 @@ func handle_ground_movement(delta: float) -> void:
 	if player.skidding:
 		ground_skid(delta)
 	elif sign(player.input_direction * player.velocity_direction) < 0.0 and abs(player.velocity.x) > player.physics_params("SKID_THRESHOLD") and not player.crouching:
-		print([player.input_direction, player.velocity_direction])
 		player.skidding = true
 	elif player.input_direction != 0 and not player.crouching:
 		ground_acceleration(delta)
@@ -123,16 +122,19 @@ func ground_acceleration(delta: float) -> void:
 	player.velocity.x = move_toward(player.velocity.x, target_move_speed * player.input_direction, (target_accel / delta) * delta)
 
 func deceleration(delta: float, airborne := false) -> void:
-	var decel_type = player.physics_params("DECEL") if not airborne else player.physics_params("AIR_DECEL")
+	var decel_type = player.physics_params("GROUND_DECEL") if not airborne else player.physics_params("AIR_DECEL")
+	if player.in_water: decel_type = player.physics_params("SWIM_DECEL")
 	player.velocity.x = move_toward(player.velocity.x, 0, (decel_type / delta) * delta)
 
 func ground_skid(delta: float) -> void:
-	var target_skid: float = player.physics_params("RUN_SKID")
+	var target_skid: float = player.physics_params("RUN_SKID") if Global.player_action_pressed("run", player.player_id) and player.can_run else player.physics_params("WALK_SKID")
 	player.skid_frames += 1
 	player.velocity.x = move_toward(player.velocity.x, 1 * player.input_direction, (target_skid / delta) * delta)
-	if abs(player.velocity.x) < 10 or player.input_direction == player.velocity_direction or player.input_direction == 0:
+	if abs(player.velocity.x) < player.physics_params("SKID_STOP_THRESHOLD") or sign(player.input_direction * player.velocity_direction) > 0:
 		player.skidding = false
 		player.skid_frames = 0
+	if abs(player.velocity.x) < player.physics_params("SKID_STOP_THRESHOLD") and player.physics_params("CAN_INSTANT_STOP_SKID"):
+		player.velocity.x = 0
 
 func in_air() -> void:
 	if Global.player_action_just_pressed("jump", player.player_id):
@@ -154,13 +156,20 @@ func handle_air_movement(delta: float) -> void:
 		player.jump_cancelled = true
 		if sign(player.gravity_vector.y * player.velocity.y) < 0.0:
 			player.velocity.y /= player.physics_params("JUMP_CANCEL_DIVIDE")
-			player.gravity = player.physics_params("FALL_GRAVITY")
+			player.gravity = player.calculate_speed_param("FALL_GRAVITY")
 
 func air_acceleration(delta: float) -> void:
+	var backwards_accel = player.physics_params("AIR_BACKWARDS_ACCEL_MULT") if sign(player.velocity.x * player.direction) < 0.0 else 1
 	var target_speed = player.physics_params("WALK_SPEED")
-	if abs(player.velocity.x) >= player.physics_params("WALK_SPEED") and Global.player_action_pressed("run", player.player_id) and player.can_run:
+	var target_accel = player.physics_params("AIR_WALK_ACCEL") * backwards_accel
+	var lock_air_speed = (abs(player.velocity.x) > player.physics_params("WALK_SPEED") or player.has_spring_jumped) if player.physics_params("LOCK_AIR_ACCEL") else abs(player.velocity.x) >= player.physics_params("WALK_SPEED")
+	if lock_air_speed and Global.player_action_pressed("run", player.player_id) and player.can_run:
 		target_speed = player.physics_params("RUN_SPEED")
-	player.velocity.x = move_toward(player.velocity.x, target_speed * player.input_direction, (player.physics_params("AIR_ACCEL") / delta) * delta)
+		target_accel = player.physics_params("AIR_RUN_ACCEL") * backwards_accel
+		if not player.physics_params("CAN_BACKWARDS_ACCEL_RUN") and sign(player.velocity.x * player.direction) < 0.0:
+			target_accel = player.physics_params("AIR_WALK_ACCEL") * backwards_accel
+	print([target_speed, target_accel, player.physics_params("CAN_BACKWARDS_ACCEL_RUN")])
+	player.velocity.x = move_toward(player.velocity.x, target_speed * player.input_direction, (target_accel / delta) * delta)
 
 func air_skid(delta: float) -> void:
 	player.velocity.x = move_toward(player.velocity.x, 1 * player.input_direction, (player.physics_params("AIR_SKID") / delta) * delta)
@@ -196,7 +205,7 @@ func handle_animations() -> void:
 	var animation = get_animation_name()
 	player.sprite.speed_scale = 1
 	if ["Walk", "Move", "Run"].has(animation):
-		player.sprite.speed_scale = abs(player.velocity.x) / 40
+		player.sprite.speed_scale = abs(player.velocity.x) / player.physics_params("MOVE_ANIM_SPEED_DIV", player.COSMETIC_PARAMETERS)
 	player.play_animation(animation)
 	if player.sprite.animation == "Move":
 		walk_frame = player.sprite.frame
