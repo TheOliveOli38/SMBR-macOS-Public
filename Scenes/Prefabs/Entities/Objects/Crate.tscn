@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://drxot73c7kksb"]
+[gd_scene load_steps=17 format=3 uid="uid://drxot73c7kksb"]
 
 [ext_resource type="Script" uid="uid://bmmtdr6wiweyh" path="res://Scripts/Classes/Entities/Objects/Crate.gd" id="1_a5r2x"]
 [ext_resource type="Script" uid="uid://cbal8ms2oe1ik" path="res://Scripts/Classes/Components/ResourceSetterNew.gd" id="2_2yyer"]
@@ -21,7 +21,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_jo3g1"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_550b4"]
 size = Vector2(15, 15)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a5r2x"]
@@ -35,15 +35,17 @@ size = Vector2(16, 16)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ahjun"]
 size = Vector2(12, 20)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jo3g1"]
+size = Vector2(15, 4)
+
 [node name="Crate" type="CharacterBody2D" unique_id=1168061937]
-collision_layer = 4
+collision_layer = 2
 collision_mask = 4098
 script = ExtResource("1_a5r2x")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="." unique_id=2017983629]
 position = Vector2(0, -8)
 sprite_frames = SubResource("SpriteFrames_2era1")
-offset = Vector2(0, 1)
 
 [node name="ResourceSetterNew" type="Node" parent="Sprite" unique_id=1653462153 node_paths=PackedStringArray("node_to_affect")]
 script = ExtResource("2_2yyer")
@@ -53,8 +55,8 @@ resource_json = ExtResource("3_a5r2x")
 metadata/_custom_type_script = "uid://cbal8ms2oe1ik"
 
 [node name="Collision" type="CollisionShape2D" parent="." unique_id=416127186]
-position = Vector2(0, -7.5)
-shape = SubResource("RectangleShape2D_jo3g1")
+position = Vector2(0, -8)
+shape = SubResource("RectangleShape2D_550b4")
 
 [node name="Hitbox" type="Area2D" parent="." unique_id=1828896169]
 
@@ -103,8 +105,9 @@ hitbox = NodePath("../ShellHitbox")
 add_combo = false
 metadata/_custom_type_script = "uid://bbww34oiexbx2"
 
-[node name="ExplosionDetection" type="Node" parent="." unique_id=1011396860]
+[node name="ExplosionDetection" type="Node" parent="." unique_id=1011396860 node_paths=PackedStringArray("hitbox")]
 script = ExtResource("9_550b4")
+hitbox = NodePath("../Hitbox")
 metadata/_custom_type_script = "uid://ba18grqjixded"
 
 [node name="AnimatableBody2D" type="AnimatableBody2D" parent="." unique_id=1218186697]
@@ -113,7 +116,7 @@ collision_mask = 0
 sync_to_physics = false
 
 [node name="Collision" type="CollisionShape2D" parent="AnimatableBody2D" unique_id=2068932905]
-position = Vector2(0, -7.5)
+position = Vector2(0, -14)
 shape = SubResource("RectangleShape2D_jo3g1")
 one_way_collision = true
 
