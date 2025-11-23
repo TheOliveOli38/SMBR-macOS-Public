@@ -1,9 +1,15 @@
-[gd_scene load_steps=13 format=3 uid="uid://djve7q2o304w1"]
+[gd_scene load_steps=14 format=3 uid="uid://djve7q2o304w1"]
 
 [ext_resource type="Texture2D" uid="uid://bb3ix82j6drgo" path="res://Assets/Sprites/Items/10Coin.png" id="1_ff54g"]
+[ext_resource type="Script" uid="uid://bta0sm58oe0ft" path="res://Scripts/Classes/Entities/Items/SPCoin.gd" id="1_yu3cn"]
 [ext_resource type="Script" uid="uid://caq1qiwmy0mox" path="res://Scripts/Parts/BetterAnimatedSprite.gd" id="2_qjhmb"]
 [ext_resource type="Script" uid="uid://cbal8ms2oe1ik" path="res://Scripts/Classes/Components/ResourceSetterNew.gd" id="3_6rbve"]
 [ext_resource type="JSON" path="res://Assets/Sprites/Items/10Coin.json" id="4_qjhmb"]
+[ext_resource type="Script" uid="uid://5octqlf4ohel" path="res://Scripts/Classes/Components/ScoreNoteSpawner.gd" id="6_d14m4"]
+[ext_resource type="Script" uid="uid://cnheej0sxmoxg" path="res://Scripts/Parts/PlayerDetection.gd" id="7_d14m4"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_d14m4"]
+radius = 16.492422
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_yu3cn"]
 atlas = ExtResource("1_ff54g")
@@ -58,62 +64,36 @@ animations = [{
 "speed": 20.0
 }]
 
-[sub_resource type="Animation" id="Animation_qjhmb"]
-resource_name = "Collected"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Node2D:position")
-tracks/0/interp = 2
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.6, 1),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector2(0, 0), Vector2(0, -16), Vector2(0, -8)]
-}
-
-[sub_resource type="Animation" id="Animation_6rbve"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Node2D:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, 0)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_yu3cn"]
-_data = {
-&"Collected": SubResource("Animation_qjhmb"),
-&"RESET": SubResource("Animation_6rbve")
-}
-
 [node name="10Coin" type="Node2D" unique_id=1133717281]
+script = ExtResource("1_yu3cn")
 
-[node name="Node2D" type="Node2D" parent="." unique_id=1763590088]
+[node name="ScoreNoteSpawner" type="Node" parent="." unique_id=698094264]
+script = ExtResource("6_d14m4")
+metadata/_custom_type_script = "uid://5octqlf4ohel"
 
-[node name="Sprite" type="AnimatedSprite2D" parent="Node2D" unique_id=1158279776]
+[node name="PlayerDetection" type="Area2D" parent="." unique_id=936255597]
+position = Vector2(0, -12)
+script = ExtResource("7_d14m4")
+metadata/_custom_type_script = "uid://cnheej0sxmoxg"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetection" unique_id=949358362]
+shape = SubResource("CircleShape2D_d14m4")
+
+[node name="Sprite" type="AnimatedSprite2D" parent="." unique_id=1158279776]
 position = Vector2(0, -16)
 sprite_frames = SubResource("SpriteFrames_7hwy1")
 animation = &"Idle"
-frame_progress = 0.27860278
+autoplay = "Idle"
+frame_progress = 0.64174795
 script = ExtResource("2_qjhmb")
 metadata/_custom_type_script = "uid://caq1qiwmy0mox"
 
-[node name="ResourceSetterNew" type="Node" parent="Node2D/Sprite" unique_id=465438140 node_paths=PackedStringArray("node_to_affect")]
+[node name="ResourceSetterNew" type="Node" parent="Sprite" unique_id=465438140 node_paths=PackedStringArray("node_to_affect")]
 script = ExtResource("3_6rbve")
 node_to_affect = NodePath("..")
 property_name = "sprite_frames"
 resource_json = ExtResource("4_qjhmb")
 metadata/_custom_type_script = "uid://cbal8ms2oe1ik"
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1814855712]
-libraries = {
-&"": SubResource("AnimationLibrary_yu3cn")
-}
+[connection signal="collected" from="." to="ScoreNoteSpawner" method="spawn_note" binds= [100]]
+[connection signal="player_entered" from="PlayerDetection" to="." method="collect" flags=6 unbinds=1]
