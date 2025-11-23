@@ -218,7 +218,7 @@ _data = {
 &"RiseRed": SubResource("Animation_fs2ml")
 }
 
-[node name="PirannhaPlant" type="CharacterBody2D" unique_id=877679531 node_paths=PackedStringArray("on_screen_enabler") groups=["Enemies"]]
+[node name="PirannhaPlant" type="CharacterBody2D" unique_id=877679531 node_paths=PackedStringArray("on_screen_enabler") groups=["Enemies", "PiranhaPlants"]]
 z_index = -5
 script = ExtResource("1_ruec0")
 on_screen_enabler = NodePath("VisibleOnScreenEnabler2D")

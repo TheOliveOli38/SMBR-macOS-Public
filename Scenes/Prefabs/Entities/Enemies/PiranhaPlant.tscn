@@ -36,6 +36,9 @@ upside_down_hitbox = NodePath("RotationJoint/PositionJoint/Visuals/Hitbox/Upside
 
 [node name="Visuals" parent="RotationJoint/PositionJoint" parent_id_path=PackedInt32Array(531941041) index="0" unique_id=533885688 instance=ExtResource("2_nvpp7")]
 
+[node name="Hitbox" parent="RotationJoint/PositionJoint/Visuals" index="1" unique_id=537098004]
+monitoring = false
+
 [node name="SmokePoint" type="Node2D" parent="RotationJoint/PositionJoint" parent_id_path=PackedInt32Array(531941041) index="1" unique_id=270022033]
 position = Vector2(0, -8)
 

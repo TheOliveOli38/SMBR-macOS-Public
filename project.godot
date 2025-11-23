@@ -112,6 +112,7 @@ AmountLimiters=""
 WarpVine=""
 PitWarps=""
 Lights=""
+PiranhaPlants=""
 
 [gui]
 

@@ -43,6 +43,8 @@ func bounce_down(body: PhysicsBody2D) -> void:
 
 func bounce_bodies() -> void:
 	for i in bodies:
+		if is_instance_valid(i) == false:
+			continue
 		if i is Player:
 			i.spring_bouncing = false
 			if Global.player_action_pressed("jump", i.player_id):

@@ -8,10 +8,9 @@ extends Enemy
 
 @export var upside_down_hitbox: Node2D = null
 
-func _enter_tree() -> void:
-	$Animation.play("Hide")
-
 func _ready() -> void:
+	$Animation.play("RESET")
+	$Animation.play("Hide")
 	upside_down_hitbox.set_deferred("disabled", is_equal_approx(abs(global_rotation_degrees), 180) == false)
 	$Timer.start()
 

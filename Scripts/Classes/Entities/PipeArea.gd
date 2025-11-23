@@ -29,7 +29,7 @@ signal pipe_exited
 		exit_only = value
 		update_visuals()
 
-var can_enter := true
+static var can_enter := true
 
 static var exiting_pipe_id := -1
 
@@ -74,7 +74,8 @@ func exit_pipe() -> void:
 	for i in get_tree().get_nodes_in_group("Players"):
 		if is_instance_valid(i) == false: continue
 		await i.exit_pipe(self)
-		await get_tree().create_timer(0.5, false).timeout
+		if get_tree().get_nodes_in_group("Players").size() > 1:
+			await get_tree().create_timer(0.5, false).timeout
 	exiting_pipe_id = -1
 	can_enter = true
 
