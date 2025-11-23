@@ -81,6 +81,8 @@ var current_music_override: MUSIC_OVERRIDES
 
 enum MUSIC_OVERRIDES{NONE=-1, STAR=0, DEATH, PSWITCH, BOWSER, TIME_WARNING, LEVEL_COMPLETE, CASTLE_COMPLETE, ENDING, FLAG_POLE, HAMMER, RACE_LOSE, RACE_WIN, WING, COIN_HEAVEN_BONUS}
 
+var gotten_resource: Resource
+
 const OVERRIDE_STREAMS := [
 	("res://Assets/Audio/BGM/StarMan.json"),
 	("res://Assets/Audio/BGM/PlayerDie.json"),
@@ -119,7 +121,13 @@ func play_sfx(stream_name = "", position := Vector2.ZERO, pitch := 1.0) -> void:
 	var is_custom = false
 	if stream_name is String:
 		is_custom = sfx_library[stream_name].contains(Global.config_path.path_join("custom_characters"))
-		stream = import_stream(sfx_library[stream_name])
+		var true_path = $ResourceGetter.get_resource_path(sfx_library[stream_name])
+		var json_path = get_sfx_json(true_path)
+		if json_path != "":
+			$ResourceSetterNew.resource_json = load(json_path)
+			stream = gotten_resource
+		else:
+			stream = import_stream(sfx_library[stream_name])
 	if is_custom == false:
 		player.stream = ResourceSetter.get_resource(stream, player)
 	else:
@@ -134,6 +142,14 @@ func play_sfx(stream_name = "", position := Vector2.ZERO, pitch := 1.0) -> void:
 	await player.finished
 	active_sfxs.erase(stream_name)
 	player.queue_free()
+
+func get_sfx_json(path := "") -> String:
+	var json_path := ""
+	var test := path.replace(path.get_extension(), "json")
+	print(test)
+	if FileAccess.file_exists(test):
+		json_path = test
+	return json_path
 
 func play_global_sfx(stream_name := "") -> void:
 	if get_viewport().get_camera_2d() == null:
@@ -254,19 +270,19 @@ func handle_music_override() -> void:
 func create_stream_from_json(json_path := "") -> AudioStream:
 	var path := ""
 	if json_path.contains(".json") == false:
-		path = ResourceSetter.get_pure_resource_path(json_path)
+		path = $ResourceGetter.get_resource_path(json_path)
 		if path.contains(Global.config_path):
 			match json_path.get_slice(".", 1):
 				"wav":
-					return AudioStreamWAV.load_from_file(ResourceSetter.get_pure_resource_path(json_path))
+					return AudioStreamWAV.load_from_file(path)
 				"mp3":
-					return AudioStreamMP3.load_from_file(ResourceSetter.get_pure_resource_path(json_path))
+					return AudioStreamMP3.load_from_file(path)
 				"ogg":
-					return AudioStreamOggVorbis.load_from_file(ResourceSetter.get_pure_resource_path(json_path))
+					return AudioStreamOggVorbis.load_from_file(path)
 		elif path.contains("res://"):
 			return load(path)
-	var bgm_file = $ResourceSetterNew.get_variation_json(JSON.parse_string(FileAccess.open(ResourceSetter.get_pure_resource_path(json_path), FileAccess.READ).get_as_text()).variations).source
-	path = ResourceSetter.get_pure_resource_path(json_path.replace(json_path.get_file(), bgm_file))
+	var bgm_file = $ResourceSetterNew.get_variation_json(JSON.parse_string(FileAccess.open($ResourceGetter.get_resource_path(json_path), FileAccess.READ).get_as_text()).variations).source
+	path = $ResourceGetter.get_resource_path(json_path.replace(json_path.get_file(), bgm_file))
 	var stream = null
 	if path.get_file().contains(".bgm"):
 		stream = generate_interactive_stream(JSON.parse_string(FileAccess.open(path, FileAccess.READ).get_as_text()))
@@ -281,8 +297,8 @@ func create_stream_from_json(json_path := "") -> AudioStream:
 
 func generate_interactive_stream(bgm_file := {}) -> AudioStreamInteractive:
 	var stream = MUSIC_BASE.duplicate()
-	var normal_path = ResourceSetter.get_pure_resource_path("res://Assets/Audio/BGM/" + bgm_file.Normal.source)
-	var hurry_path = ResourceSetter.get_pure_resource_path("res://Assets/Audio/BGM/" + bgm_file.Hurry.source)
+	var normal_path = $ResourceGetter.get_resource_path("res://Assets/Audio/BGM/" + bgm_file.Normal.source)
+	var hurry_path = $ResourceGetter.get_resource_path("res://Assets/Audio/BGM/" + bgm_file.Hurry.source)
 	stream.set_clip_stream(0, import_stream(normal_path, bgm_file.Normal.loop))
 	stream.set_clip_stream(1, import_stream(hurry_path, bgm_file.Hurry.loop))
 	return stream
@@ -293,9 +309,9 @@ func import_stream(file_path := "", loop_point := -1.0) -> AudioStream:
 	if path.contains("res://"):
 		stream = load(path)
 	elif path.contains(".mp3"):
-		stream = AudioStreamMP3.load_from_file(ResourceSetter.get_pure_resource_path(file_path))
+		stream = AudioStreamMP3.load_from_file(file_path)
 	elif path.contains(".ogg"):
-		stream = AudioStreamOggVorbis.load_from_file(ResourceSetter.get_pure_resource_path(file_path))
+		stream = AudioStreamOggVorbis.load_from_file(file_path)
 	elif path.contains(".wav"):
 		stream = AudioStreamWAV.load_from_file(path)
 		print([path, stream])
