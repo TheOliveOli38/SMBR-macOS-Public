@@ -6,6 +6,8 @@ var jump_queued := false
 
 var jump_buffer := 0
 
+var run_buffer := 0
+
 var walk_frame := 0
 
 var bubble_meter := 0.0
@@ -34,8 +36,11 @@ func handle_death_pits() -> void:
 
 func handle_movement(delta: float) -> void:
 	jump_buffer -= 1
+	run_buffer -= 1
 	if jump_buffer <= 0:
 		jump_queued = false
+	if Global.player_action_pressed("run", player.player_id):
+		run_buffer = player.physics_params("RUN_STOP_BUFFER") / delta
 	player.apply_gravity(delta)
 	if player.is_actually_on_floor():
 		var player_transform = player.global_transform
@@ -97,10 +102,11 @@ func grounded(delta: float) -> void:
 			AudioManager.kill_sfx("look_up")
 
 func handle_ground_movement(delta: float) -> void:
+	var skid_conditions = sign(player.input_direction * player.velocity_direction) < 0.0 and abs(player.velocity.x) > player.physics_params("SKID_THRESHOLD") if not player.physics_params("CLASSIC_SKID_CONDITIONS") else sign(player.direction * player.velocity_direction) < 0.0
 	if player.skidding:
 		ground_skid(delta)
-	elif sign(player.input_direction * player.velocity_direction) < 0.0 and abs(player.velocity.x) > player.physics_params("SKID_THRESHOLD") and not player.crouching:
-		player.skidding = true
+	elif not player.crouching and skid_conditions:
+		player.skidding = true # TODO: player skids regardless of current input direction, add it as a param
 	elif player.input_direction != 0 and not player.crouching:
 		ground_acceleration(delta)
 	else:
@@ -111,7 +117,8 @@ func ground_acceleration(delta: float) -> void:
 	if player.in_water or player.flight_meter > 0:
 		target_move_speed = player.physics_params("SWIM_GROUND_SPEED")
 	var target_accel: float = player.physics_params("GROUND_WALK_ACCEL")
-	if (Global.player_action_pressed("run", player.player_id) and abs(player.velocity.x) >= player.physics_params("WALK_SPEED")) and (not player.in_water and player.flight_meter <= 0) and player.can_run:
+	var walk_speed_requirement = abs(player.velocity.x) >= player.physics_params("WALK_SPEED") if not player.physics_params("CAN_RUN_ACCEL_EARLY") else true
+	if ((Global.player_action_pressed("run", player.player_id) or run_buffer > 0) and walk_speed_requirement) and (not player.in_water and player.flight_meter <= 0) and player.can_run:
 		target_move_speed = player.physics_params("RUN_SPEED")
 		target_accel = player.physics_params("GROUND_RUN_ACCEL")
 	if player.input_direction != player.velocity_direction:
@@ -119,7 +126,10 @@ func ground_acceleration(delta: float) -> void:
 			target_accel = player.physics_params("RUN_SKID")
 		else:
 			target_accel = player.physics_params("WALK_SKID")
-	player.velocity.x = move_toward(player.velocity.x, target_move_speed * player.input_direction, (target_accel / delta) * delta)
+	var clamp_values = [-target_move_speed, target_move_speed] if player.physics_params("CLAMP_GROUND_SPEED") else [-INF, INF]
+	player.velocity.x = clamp(move_toward(player.velocity.x, target_move_speed * player.input_direction, (target_accel / delta) * delta), clamp_values[0], clamp_values[1])
+	if abs(player.velocity.x) < player.physics_params("MINIMUM_SPEED"):
+		player.velocity.x = player.physics_params("MINIMUM_SPEED") * player.input_direction
 
 func deceleration(delta: float, airborne := false) -> void:
 	var decel_type = player.physics_params("GROUND_DECEL") if not airborne else player.physics_params("AIR_DECEL")
@@ -147,7 +157,7 @@ func in_air() -> void:
 func handle_air_movement(delta: float) -> void:
 	if player.input_direction != 0 and player.velocity_direction != player.input_direction:
 		air_skid(delta)
-	if player.input_direction != 0:
+	elif player.input_direction != 0:
 		air_acceleration(delta)
 	else:
 		deceleration(delta, true)
@@ -159,20 +169,38 @@ func handle_air_movement(delta: float) -> void:
 			player.gravity = player.calculate_speed_param("FALL_GRAVITY")
 
 func air_acceleration(delta: float) -> void:
-	var backwards_accel = player.physics_params("AIR_BACKWARDS_ACCEL_MULT") if sign(player.velocity.x * player.direction) < 0.0 else 1
+	var backwards_accel = 1
+	if sign(player.velocity.x * player.direction) < 0.0:
+		backwards_accel = player.physics_params("AIR_BACKWARDS_ACCEL_MULT")
+	elif sign(player.input_direction * player.direction) < 0.0:
+		backwards_accel = 1 / player.physics_params("AIR_BACKWARDS_ACCEL_MULT")
 	var target_speed = player.physics_params("WALK_SPEED")
 	var target_accel = player.physics_params("AIR_WALK_ACCEL") * backwards_accel
 	var lock_air_speed = (abs(player.velocity.x) > player.physics_params("WALK_SPEED") or player.has_spring_jumped) if player.physics_params("LOCK_AIR_ACCEL") else abs(player.velocity.x) >= player.physics_params("WALK_SPEED")
-	if lock_air_speed and Global.player_action_pressed("run", player.player_id) and player.can_run:
+	var air_accel_control = Global.player_action_pressed("run", player.player_id) and player.can_run if player.physics_params("CONTROL_RUN_AIR_ACCEL") else true
+	if lock_air_speed and air_accel_control:
 		target_speed = player.physics_params("RUN_SPEED")
 		target_accel = player.physics_params("AIR_RUN_ACCEL") * backwards_accel
 		if not player.physics_params("CAN_BACKWARDS_ACCEL_RUN") and sign(player.velocity.x * player.direction) < 0.0:
 			target_accel = player.physics_params("AIR_WALK_ACCEL") * backwards_accel
-	print([target_speed, target_accel, player.physics_params("CAN_BACKWARDS_ACCEL_RUN")])
 	player.velocity.x = move_toward(player.velocity.x, target_speed * player.input_direction, (target_accel / delta) * delta)
 
 func air_skid(delta: float) -> void:
-	player.velocity.x = move_toward(player.velocity.x, 1 * player.input_direction, (player.physics_params("AIR_SKID") / delta) * delta)
+	var backwards_accel = 1
+	if sign(player.velocity.x * player.direction) < 0.0:
+		backwards_accel = player.physics_params("AIR_BACKWARDS_ACCEL_MULT")
+	elif sign(player.input_direction * player.direction) < 0.0:
+		backwards_accel = 1 / player.physics_params("AIR_BACKWARDS_ACCEL_MULT")
+	var target_speed = player.physics_params("WALK_SPEED")
+	var target_accel = player.physics_params("AIR_SKID") * backwards_accel
+	var lock_air_speed = (abs(player.velocity.x) > player.physics_params("WALK_SPEED") or player.has_spring_jumped) if player.physics_params("LOCK_AIR_ACCEL") else abs(player.velocity.x) >= player.physics_params("WALK_SPEED")
+	var air_accel_control = Global.player_action_pressed("run", player.player_id) and player.can_run if player.physics_params("CONTROL_RUN_AIR_ACCEL") else true
+	if lock_air_speed and air_accel_control:
+		target_speed = player.physics_params("RUN_SPEED")
+		target_accel = player.physics_params("AIR_SKID") * backwards_accel
+		if not player.physics_params("CAN_BACKWARDS_ACCEL_RUN") and sign(player.velocity.x * player.direction) < 0.0:
+			target_accel = player.physics_params("AIR_SKID") * backwards_accel
+	player.velocity.x = move_toward(player.velocity.x, target_speed * player.input_direction, (target_accel / delta) * delta)
 
 func handle_swimming(delta: float) -> void:
 	bubble_meter += delta

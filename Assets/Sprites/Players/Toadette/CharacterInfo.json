@@ -32,20 +32,26 @@
 				"MAX_FALL_SPEED": 280.0,
 				"CEILING_BUMP_SPEED": 45.0,
 				
+				"CLAMP_GROUND_SPEED": false,
+				"MINIMUM_SPEED": 0.0,
 				"WALK_SPEED": 96.0,
 				"GROUND_WALK_ACCEL": 4.0,
 				"WALK_SKID": 8.0,
 				
+				"CAN_RUN_ACCEL_EARLY": false,
+				"RUN_STOP_BUFFER": 0.0,
 				"RUN_SPEED": 160.0,
 				"GROUND_RUN_ACCEL": 1.25,
 				"RUN_SKID": 8.0,
 				
+				"CLASSIC_SKID_CONDITIONS": false,
 				"SKID_THRESHOLD": 100.0,
 				"SKID_STOP_THRESHOLD": 10.0,
 				"CAN_INSTANT_STOP_SKID": false,
 				
 				"GROUND_DECEL": 3.0,
 				"LOCK_AIR_ACCEL": false,
+				"CONTROL_RUN_AIR_ACCEL": true,
 				"AIR_WALK_ACCEL": 3.0,
 				"AIR_RUN_ACCEL": 3.0,
 				"AIR_DECEL": 0.0,
@@ -97,7 +103,7 @@
 				
 				"CLASSIC_BOUNCE_BEHAVIOR": true,
 				"BOUNCE_SPEED": 248.0,
-				"BOUNCE_JUMP_SPEED": 248.0,
+				"BOUNCE_JUMP_SPEED": 310.0,
 				
 				"FALL_GRAVITY_IDLE": 26.25,
 				"FALL_GRAVITY_WALK": 22.5,
@@ -105,20 +111,26 @@
 				"MAX_FALL_SPEED": 255.0,
 				"CEILING_BUMP_SPEED": 45.0,
 				
+				"CLAMP_GROUND_SPEED": true,
+				"MINIMUM_SPEED": 4.46,
 				"WALK_SPEED": 90.0,
 				"GROUND_WALK_ACCEL": 2.23,
 				"WALK_SKID": 6.1,
 				
+				"CAN_RUN_ACCEL_EARLY": true,
+				"RUN_STOP_BUFFER": 0.167,
 				"RUN_SPEED": 150.0,
 				"GROUND_RUN_ACCEL": 3.34,
 				"RUN_SKID": 6.1,
 				
+				"CLASSIC_SKID_CONDITIONS": true,
 				"SKID_THRESHOLD": 100.0,
 				"SKID_STOP_THRESHOLD": 33.75,
 				"CAN_INSTANT_STOP_SKID": true,
 				
-				"GROUND_DECEL": 3.05,
+				"GROUND_DECEL": 2.23,
 				"LOCK_AIR_ACCEL": true,
+				"CONTROL_RUN_AIR_ACCEL": false,
 				"AIR_WALK_ACCEL": 2.23,
 				"AIR_RUN_ACCEL": 3.34,
 				"AIR_DECEL": 0.0,

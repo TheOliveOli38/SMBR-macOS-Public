@@ -40,20 +40,26 @@ extends CharacterBody2D
 		"MAX_FALL_SPEED": 280.0,           # The player's maximum fall speed, measured in px/sec.
 		"CEILING_BUMP_SPEED": 45.0,        # The speed at which the player falls after hitting a ceiling, measured in px/sec.
 		
+		"CLAMP_GROUND_SPEED": false,       # Determines if the player's speed will get clamped while moving on the ground, emulating snappier movement.
+		"MINIMUM_SPEED": 0.0,             # The player's minimum speed while actively moving.
 		"WALK_SPEED": 96.0,                # The player's speed while walking, measured in px/sec.
 		"GROUND_WALK_ACCEL": 4.0,          # The player's acceleration while walking, measured in px/frame.
 		"WALK_SKID": 8.0,                  # The player's turning deceleration while running, measured in px/frame.
 		
+		"CAN_RUN_ACCEL_EARLY": false,      # Determines if the player can hold run before reaching walk speed to begin running.
+		"RUN_STOP_BUFFER": 0.0,            # Determines the amount of time in seconds before running will stop once its initiated.
 		"RUN_SPEED": 160.0,                # The player's speed while running, measured in px/sec.
 		"GROUND_RUN_ACCEL": 1.25,          # The player's acceleration while running, measured in px/frame.
 		"RUN_SKID": 8.0,                   # The player's turning deceleration while running, measured in px/frame.
 		
+		"CLASSIC_SKID_CONDITIONS": false,  # Determines if the player's speed must be over SKID_THRESHOLD to begin skidding.
 		"SKID_THRESHOLD": 100.0,           # The horizontal speed required, to be able to start skidding.
 		"SKID_STOP_THRESHOLD": 10.0,       # The maximum velocity required before the player will stop skidding.
 		"CAN_INSTANT_STOP_SKID": false,    # Determines if the player will instantly stop upon reaching the skid threshold.
 		
 		"GROUND_DECEL": 3.0,               # The player's grounded deceleration while no buttons are pressed, measured in px/frame.
 		"LOCK_AIR_ACCEL": false,           # Determines if the player can surpass their walk speed while in the air, aside from on trampolines.
+		"CONTROL_RUN_AIR_ACCEL": true,     # Determines if the player must be holding the run button to allow for running speed in the air.
 		"AIR_WALK_ACCEL": 3.0,             # The player's acceleration while in midair, measured in px/frame.
 		"AIR_RUN_ACCEL": 3.0,              # The player's acceleration while in midair, measured in px/frame.
 		"AIR_DECEL": 0.0,                  # The player's airborne deceleration while no buttons are pressed, measured in px/frame.
@@ -106,7 +112,7 @@ extends CharacterBody2D
 		
 		"CLASSIC_BOUNCE_BEHAVIOR": true,   # Determines if the player can only get extra height from a bounce with upward velocity, as opposed to holding jump.
 		"BOUNCE_SPEED": 248.0,             # The strength at which the player bounces off enemies without any extra input, measured in px/sec.
-		"BOUNCE_JUMP_SPEED": 248.0,        # The strength at which the player bounces off enemies while holding jump, measured in px/sec.
+		"BOUNCE_JUMP_SPEED": 310.0,        # The strength at which the player bounces off enemies while holding jump, measured in px/sec.
 		
 		"FALL_GRAVITY_IDLE": 26.25,        # The player's gravity while falling from an idle state, measured in px/frame.
 		"FALL_GRAVITY_WALK": 22.5,         # The player's gravity while falling from a walking state, measured in px/frame.
@@ -114,20 +120,26 @@ extends CharacterBody2D
 		"MAX_FALL_SPEED": 255.0,           # The player's maximum fall speed, measured in px/sec.
 		"CEILING_BUMP_SPEED": 45.0,        # The speed at which the player falls after hitting a ceiling, measured in px/sec.
 		
+		"CLAMP_GROUND_SPEED": true,        # Determines if the player's speed will get clamped while moving on the ground, emulating snappier movement.
+		"MINIMUM_SPEED": 4.46,             # The player's minimum speed while actively moving.
 		"WALK_SPEED": 90.0,                # The player's speed while walking, measured in px/sec.
 		"GROUND_WALK_ACCEL": 2.23,         # The player's acceleration while walking, measured in px/frame.
 		"WALK_SKID": 6.1,                  # The player's turning deceleration while running, measured in px/frame.
 		
+		"CAN_RUN_ACCEL_EARLY": true,       # Determines if the player can hold run before reaching walk speed to begin running.
+		"RUN_STOP_BUFFER": 0.167,          # Determines the amount of time in seconds before running will stop once its initiated.
 		"RUN_SPEED": 150.0,                # The player's speed while running, measured in px/sec.
 		"GROUND_RUN_ACCEL": 3.34,          # The player's acceleration while running, measured in px/frame.
 		"RUN_SKID": 6.1,                   # The player's turning deceleration while running, measured in px/frame.
 		
+		"CLASSIC_SKID_CONDITIONS": true,   # Determines if the player's speed must be over SKID_THRESHOLD to begin skidding.
 		"SKID_THRESHOLD": 100.0,           # The horizontal speed required, to be able to start skidding.
 		"SKID_STOP_THRESHOLD": 33.75,      # The maximum velocity required before the player will stop skidding.
 		"CAN_INSTANT_STOP_SKID": true,     # Determines if the player will instantly stop upon reaching the skid threshold.
 		
-		"GROUND_DECEL": 3.05,              # The player's grounded deceleration while no buttons are pressed, measured in px/frame.
+		"GROUND_DECEL": 2.23,              # The player's grounded deceleration while no buttons are pressed, measured in px/frame.
 		"LOCK_AIR_ACCEL": true,            # Determines if the player can surpass their walk speed while in the air, aside from on trampolines.
+		"CONTROL_RUN_AIR_ACCEL": false,    # Determines if the player must be holding the run button to allow for running speed in the air.
 		"AIR_WALK_ACCEL": 2.23,            # The player's acceleration while in midair, measured in px/frame.
 		"AIR_RUN_ACCEL": 3.34,             # The player's acceleration while in midair, measured in px/frame.
 		"AIR_DECEL": 0.0,                  # The player's airborne deceleration while no buttons are pressed, measured in px/frame.
@@ -202,8 +214,8 @@ extends CharacterBody2D
 	},
 	"Big": {},
 	"Fire": {
-		"PROJ_TYPE": "Entities/Items/Fireball",
-		"PROJ_PARTICLE": "Particles/FireballExplosion",
+		"PROJ_TYPE": "res://Scenes/Prefabs/Entities/Items/Fireball",
+		"PROJ_PARTICLE": "res://Scenes/Prefabs/Particles/FireballExplosion",
 	},
 }
 ## Determines values involving various ending sequences, such as grabbing the flagpole and walking to an NPC at the end of a level.
@@ -503,7 +515,6 @@ func _ready() -> void:
 	$Checkpoint/Label.modulate = [Color("5050FF"), Color("F73910"), Color("1A912E"), Color("FFB762")][player_id]
 	$Checkpoint/Label.visible = Global.connected_players > 1
 	character = CHARACTERS[int(Global.player_characters[player_id])]
-	
 	apply_character_physics()
 	apply_character_sfx_map()
 	Global.can_pause = true
@@ -673,7 +684,6 @@ func _physics_process(delta: float) -> void:
 	if not is_actually_on_floor() and not just_landed:
 		can_land_sfx = true
 	handle_water_detection()
-	handle_move_fx()
 
 const BUBBLE_PARTICLE = preload("uid://bwjae1h1airtr")
 
@@ -718,6 +728,7 @@ func summon_bubble() -> void:
 func _process(delta: float) -> void:
 	handle_power_up_states(delta)
 	handle_invincible_palette()
+	handle_move_fx()
 	if is_invincible:
 		DiscoLevel.combo_meter = 100
 

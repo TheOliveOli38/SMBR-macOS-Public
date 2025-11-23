@@ -109,9 +109,7 @@ var audio_override_queue := []
 
 func play_sfx(stream_name = "", position := Vector2.ZERO, pitch := 1.0, can_overlap := true) -> void:
 	if sfx_library.has(stream_name): # SkyanUltra: Simple check that allows for custom optional sounds.
-		if not can_overlap and active_sfxs.has(stream_name):
-			return
-		if queued_sfxs.has(stream_name):
+		if (not can_overlap and active_sfxs.has(stream_name)) or queued_sfxs.has(stream_name):
 			return
 		queued_sfxs.append(stream_name)
 		if stream_name is String:
@@ -135,7 +133,6 @@ func play_sfx(stream_name = "", position := Vector2.ZERO, pitch := 1.0, can_over
 		add_child(player)
 		active_sfxs[stream_name] = player
 		queued_sfxs.erase(stream_name)
-		#print(active_sfxs)
 		await player.finished
 		active_sfxs.erase(stream_name)
 		player.queue_free()
