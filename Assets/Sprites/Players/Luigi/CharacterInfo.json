@@ -179,51 +179,6 @@
 			"Big": {},
 			"Fire": {},
 		},
-		"POWER_PARAMETERS": {
-			"Default": {
-				"POWER_TIER_RANGE": [0, 2],
-				"STARTING_POWER_STATE": "Small",
-				"STAR_TIME": 12.0,
-				"WING_TIME": 10.0,
-				"HAMMER_TIME": 10.0,
-				
-				"PROJ_TYPE": "",
-				"PROJ_PARTICLE": "",
-				"PROJ_PARTICLE_ON_CONTACT": false,
-				"PROJ_SFX_THROW": "fireball",
-				"PROJ_SFX_COLLIDE": "bump",
-				
-				"MAX_PROJ_COUNT": 2,
-				"PROJ_COLLISION": true,
-				"PROJ_PIERCE_COUNT": 0,
-				"PROJ_PIERCE_HITRATE": -1,
-				"PROJ_BOUNCE_COUNT": -1,
-				"PROJ_GROUND_BOUNCE": true,
-				"PROJ_WALL_BOUNCE": false,
-				"PROJ_CEIL_BOUNCE": false,
-				"PROJ_COLLECT_COINS": false,
-				
-				"PROJ_LIFETIME": -1,
-				"PROJ_OFFSET": [-4.0, 16.0],
-				"PROJ_SPEED": [220.0, -100.0],
-				"PROJ_SPEED_CAP": [-220.0, 220.0],
-				"PROJ_SPEED_SCALING": false,
-				
-				"PROJ_GROUND_DECEL": 0.0,
-				"PROJ_AIR_DECEL": 0.0,
-				"PROJ_GRAVITY": 15.0,
-				"PROJ_BOUNCE_HEIGHT": 125.0,
-				"PROJ_MAX_FALL_SPEED": 150.0,
-			},
-			"Small": {
-				"PROJ_OFFSET": [-4.0, 8.0],
-			},
-			"Big": {},
-			"Fire": {
-				"PROJ_TYPE": "res://Scenes/Prefabs/Entities/Items/Fireball",
-				"PROJ_PARTICLE": "res://Scenes/Prefabs/Particles/FireballExplosion",
-			},
-		},
 		"ENDING_PARAMETERS": {
 			"Default": {
 				"FLAG_SKIP_GRAB": false,
