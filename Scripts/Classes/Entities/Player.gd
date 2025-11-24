@@ -63,11 +63,11 @@ extends CharacterBody2D
 		
 		"AIR_DECEL": 0.0,                  # The player's airborne deceleration while no buttons are pressed, measured in px/frame.
 		"AIR_WALK_ACCEL": 3.0,             # The player's usual acceleration while in midair, measured in px/frame.
-		"AIR_WALK_SKID_ACCEL": 1.5,        # The player's usual skid acceleration while in midair, measured in px/frame.
+		"AIR_WALK_SKID_ACCEL": 4.5,        # The player's usual skid acceleration while in midair, measured in px/frame.
 		"AIR_RUN_ACCEL": 3.0,              # The player's running acceleration while in midair, measured in px/frame.
-		"AIR_RUN_SKID_ACCEL": 1.5,         # The player's running skid acceleration while in midair, measured in px/frame.
+		"AIR_RUN_SKID_ACCEL": 4.5,         # The player's running skid acceleration while in midair, measured in px/frame.
 		"AIR_BACKWARDS_ACCEL": 3.0,        # The player's backwards acceleration while in midair, measured in px/frame.
-		"AIR_BACKWARDS_SKID_ACCEL": 1.5,   # The player's backwards skid acceleration while in midair, measured in px/frame.
+		"AIR_BACKWARDS_SKID_ACCEL": 4.5,   # The player's backwards skid acceleration while in midair, measured in px/frame.
 		"AIR_SKID_JUMP_SPEED_MINIMUM": 0.0,          # The minimum jump speed required to use 'skid' params instead of 'accel' params for air control.
 
 		"LOCK_AIR_SPEED": false,           # Determines if the player can surpass their walk speed while in the air, aside from on trampolines.
