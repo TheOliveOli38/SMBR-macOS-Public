@@ -4,7 +4,7 @@ extends Enemy
 ## Determines if this projectile deals damage to the player or not.
 @export var is_friendly := false
 ## Which particle scene to load.
-@export var PARTICLE := load("") 
+@export var PARTICLE: Resource = null
 ## Determines if the projectile will display a particle upon making contact with something, but hasn't been destroyed.
 @export var PARTICLE_ON_CONTACT := false
 ## Determines what sound will play when the projectile makes contact with something.

@@ -2,13 +2,13 @@
 
 importer="wav"
 type="AudioStreamWAV"
-uid="uid://cxreskgod6f6c"
-path="res://.godot/imported/Spring.wav-869a7d27e51d6005d453b1a9793808ab.sample"
+uid="uid://cbxnq518x3jqe"
+path="res://.godot/imported/SkidBig.wav-020809628006af5dae07753006382773.sample"
 
 [deps]
 
-source_file="res://Assets/Audio/SFX/Spring.wav"
-dest_files=["res://.godot/imported/Spring.wav-869a7d27e51d6005d453b1a9793808ab.sample"]
+source_file="res://Assets/Audio/SFX/SkidBig.wav"
+dest_files=["res://.godot/imported/SkidBig.wav-020809628006af5dae07753006382773.sample"]
 
 [params]
 

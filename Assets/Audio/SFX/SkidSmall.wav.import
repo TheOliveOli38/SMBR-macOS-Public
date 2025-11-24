@@ -2,13 +2,13 @@
 
 importer="wav"
 type="AudioStreamWAV"
-uid="uid://cbxnq518x3jqe"
-path="res://.godot/imported/Skid.wav-4c16b7e4daf40757c875355e36a0bc53.sample"
+uid="uid://bjt8q3rveex4v"
+path="res://.godot/imported/SkidSmall.wav-6d2ba395d047b660296a377e844e4cb0.sample"
 
 [deps]
 
-source_file="res://Assets/Audio/SFX/Skid.wav"
-dest_files=["res://.godot/imported/Skid.wav-4c16b7e4daf40757c875355e36a0bc53.sample"]
+source_file="res://Assets/Audio/SFX/SkidSmall.wav"
+dest_files=["res://.godot/imported/SkidSmall.wav-6d2ba395d047b660296a377e844e4cb0.sample"]
 
 [params]
 

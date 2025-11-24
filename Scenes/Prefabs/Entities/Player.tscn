@@ -1,4 +1,4 @@
-[gd_scene load_steps=83 format=3 uid="uid://cuh62hlq8errh"]
+[gd_scene load_steps=84 format=3 uid="uid://cuh62hlq8errh"]
 
 [ext_resource type="Script" uid="uid://dt4rosa5o35xr" path="res://Scripts/Classes/Entities/Player.gd" id="1_f6bau"]
 [ext_resource type="Script" uid="uid://uribh0f1jttq" path="res://Scripts/Classes/States/StateMachine.gd" id="2_1y62l"]
@@ -41,6 +41,7 @@
 [ext_resource type="Script" uid="uid://dn5efttgugwvb" path="res://Scripts/Classes/Components/TimerSprite.gd" id="30_o70e0"]
 [ext_resource type="Script" uid="uid://cwti0ks5sfov3" path="res://Scripts/Classes/Components/ScalableCollisionPolygon.gd" id="35_nbkfn"]
 [ext_resource type="AudioStream" uid="uid://oghj2q665pfj" path="res://Assets/Audio/SFX/TimerRunningLow.wav" id="40_o70e0"]
+[ext_resource type="Script" uid="uid://dl6pv24h16rgb" path="res://Scripts/Classes/Components/PlayerMoveEffects.gd" id="42_fqdtv"]
 
 [sub_resource type="Shader" id="Shader_7nbqp"]
 code = "shader_type canvas_item;
@@ -1172,6 +1173,11 @@ lifetime = 0.25
 gravity = Vector2(0, 0)
 anim_speed_min = 1.0
 anim_speed_max = 1.0
+
+[node name="MoveEffects" type="Node" parent="."]
+unique_name_in_owner = true
+process_mode = 3
+script = ExtResource("42_fqdtv")
 
 [connection signal="frame_changed" from="SpriteScaleJoint/Sprite" to="SpriteScaleJoint/Sprite" method="on_frame_changed"]
 [connection signal="sprite_frames_changed" from="SpriteScaleJoint/Sprite" to="SpriteScaleJoint/Sprite" method="on_frame_changed"]

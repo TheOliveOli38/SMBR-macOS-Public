@@ -34,6 +34,7 @@ extends CharacterBody2D
 		"BOUNCE_SPEED": 200.0,             # The strength at which the player bounces off enemies without any extra input, measured in px/sec.
 		"BOUNCE_JUMP_SPEED": 300.0,        # The strength at which the player bounces off enemies while holding jump, measured in px/sec.
 		
+		"FALL_GRAVITY_PREDETERMINED": false,         # Determines if the player's gravity is determined by their last X velocity from leaving the ground rather than their current X velocity.
 		"FALL_GRAVITY_IDLE": 25.0,         # The player's gravity while falling from an idle state, measured in px/frame.
 		"FALL_GRAVITY_WALK": 25.0,         # The player's gravity while falling from a walking state, measured in px/frame.
 		"FALL_GRAVITY_RUN": 25.0,          # The player's gravity while falling from a running state, measured in px/frame.
@@ -41,7 +42,8 @@ extends CharacterBody2D
 		"CEILING_BUMP_SPEED": 45.0,        # The speed at which the player falls after hitting a ceiling, measured in px/sec.
 		
 		"CLAMP_GROUND_SPEED": false,       # Determines if the player's speed will get clamped while moving on the ground, emulating snappier movement.
-		"MINIMUM_SPEED": 0.0,             # The player's minimum speed while actively moving.
+		"MINIMUM_SPEED": 0.0,              # The player's minimum speed while actively moving.
+		
 		"WALK_SPEED": 96.0,                # The player's speed while walking, measured in px/sec.
 		"GROUND_WALK_ACCEL": 4.0,          # The player's acceleration while walking, measured in px/frame.
 		"WALK_SKID": 8.0,                  # The player's turning deceleration while running, measured in px/frame.
@@ -53,22 +55,30 @@ extends CharacterBody2D
 		"RUN_SKID": 8.0,                   # The player's turning deceleration while running, measured in px/frame.
 		
 		"CLASSIC_SKID_CONDITIONS": false,  # Determines if the player's speed must be over SKID_THRESHOLD to begin skidding.
+		"CAN_INSTANT_STOP_SKID": false,    # Determines if the player will instantly stop upon reaching the skid threshold.
 		"SKID_THRESHOLD": 100.0,           # The horizontal speed required, to be able to start skidding.
 		"SKID_STOP_THRESHOLD": 10.0,       # The maximum velocity required before the player will stop skidding.
-		"CAN_INSTANT_STOP_SKID": false,    # Determines if the player will instantly stop upon reaching the skid threshold.
 		
-		"GROUND_DECEL": 3.0,               # The player's grounded deceleration while no buttons are pressed, measured in px/frame.
-		"LOCK_AIR_ACCEL": false,           # Determines if the player can surpass their walk speed while in the air, aside from on trampolines.
-		"CONTROL_RUN_AIR_ACCEL": true,     # Determines if the player must be holding the run button to allow for running speed in the air.
-		"AIR_WALK_ACCEL": 3.0,             # The player's acceleration while in midair, measured in px/frame.
-		"AIR_RUN_ACCEL": 3.0,              # The player's acceleration while in midair, measured in px/frame.
+		"GROUND_DECEL": 3.0,              # The player's grounded deceleration while no buttons are pressed, measured in px/frame.
+		
 		"AIR_DECEL": 0.0,                  # The player's airborne deceleration while no buttons are pressed, measured in px/frame.
-		"AIR_SKID": 1.5,                   # The player's turning deceleration while in midair, measured in px/frame.
-		"CAN_BACKWARDS_ACCEL_RUN": true,   # Determines if the player can experience running acceleration when moving backwards in the air.
-		"AIR_BACKWARDS_ACCEL_MULT": 1.0,   # Determines a multiplier to the player's acceleration when moving backwards in the air.
+		"AIR_WALK_ACCEL": 3.0,             # The player's usual acceleration while in midair, measured in px/frame.
+		"AIR_WALK_SKID_ACCEL": 1.5,        # The player's usual skid acceleration while in midair, measured in px/frame.
+		"AIR_RUN_ACCEL": 3.0,              # The player's running acceleration while in midair, measured in px/frame.
+		"AIR_RUN_SKID_ACCEL": 1.5,         # The player's running skid acceleration while in midair, measured in px/frame.
+		"AIR_BACKWARDS_ACCEL": 3.0,        # The player's backwards acceleration while in midair, measured in px/frame.
+		"AIR_BACKWARDS_SKID_ACCEL": 1.5,   # The player's backwards skid acceleration while in midair, measured in px/frame.
+		"AIR_SKID_JUMP_SPEED_MINIMUM": 0.0,          # The minimum jump speed required to use 'skid' params instead of 'accel' params for air control.
+
+		"LOCK_AIR_SPEED": false,           # Determines if the player can surpass their walk speed while in the air, aside from on trampolines.
+		"USE_BACKWARDS_ACCEL": false,      # Determines if the player will use backwards acceleration while travelling backwards.
+		"CAN_AIR_RUN_WITHOUT_RUN_BUTTON": false,     # Determines if the player must be holding the run button to allow for running speed in the air.
+		"CAN_AIR_SKID_ALWAYS": true,       # Determines if the player uses 'skid' params instead of 'accel' params if jump started below a certain speed.
+		"CAN_AIR_RUN_EARLY": false,        # Determines a multiplier to the player's acceleration when moving backwards in the air.
 		
 		"CLIMB_UP_SPEED": 50.0,            # The player's speed while climbing upwards, measured in px/sec.
-		"CLIMB_DOWN_SPEED": 120.0,          # The player's speed while climbing downwards, measured in px/sec.
+		"CLIMB_DOWN_SPEED": 120.0,         # The player's speed while climbing downwards, measured in px/sec.
+
 		"TRAMPOLINE_SPEED": 500.0,         # The strength of a jump on a trampoline, measured in px/sec.
 		"SUPER_TRAMPOLINE_SPEED": 1200.0,  # The strength of a jump on a super trampoline, measured in px/sec.
 		
@@ -114,6 +124,7 @@ extends CharacterBody2D
 		"BOUNCE_SPEED": 248.0,             # The strength at which the player bounces off enemies without any extra input, measured in px/sec.
 		"BOUNCE_JUMP_SPEED": 310.0,        # The strength at which the player bounces off enemies while holding jump, measured in px/sec.
 		
+		"FALL_GRAVITY_PREDETERMINED": true,          # Determines if the player's gravity is determined by their last X velocity from leaving the ground rather than their current X velocity.
 		"FALL_GRAVITY_IDLE": 26.25,        # The player's gravity while falling from an idle state, measured in px/frame.
 		"FALL_GRAVITY_WALK": 22.5,         # The player's gravity while falling from a walking state, measured in px/frame.
 		"FALL_GRAVITY_RUN": 33.75,         # The player's gravity while falling from a running state, measured in px/frame.
@@ -122,6 +133,7 @@ extends CharacterBody2D
 		
 		"CLAMP_GROUND_SPEED": true,        # Determines if the player's speed will get clamped while moving on the ground, emulating snappier movement.
 		"MINIMUM_SPEED": 4.46,             # The player's minimum speed while actively moving.
+		
 		"WALK_SPEED": 90.0,                # The player's speed while walking, measured in px/sec.
 		"GROUND_WALK_ACCEL": 2.23,         # The player's acceleration while walking, measured in px/frame.
 		"WALK_SKID": 6.1,                  # The player's turning deceleration while running, measured in px/frame.
@@ -133,22 +145,30 @@ extends CharacterBody2D
 		"RUN_SKID": 6.1,                   # The player's turning deceleration while running, measured in px/frame.
 		
 		"CLASSIC_SKID_CONDITIONS": true,   # Determines if the player's speed must be over SKID_THRESHOLD to begin skidding.
+		"CAN_INSTANT_STOP_SKID": true,     # Determines if the player will instantly stop upon reaching the skid threshold.
 		"SKID_THRESHOLD": 100.0,           # The horizontal speed required, to be able to start skidding.
 		"SKID_STOP_THRESHOLD": 33.75,      # The maximum velocity required before the player will stop skidding.
-		"CAN_INSTANT_STOP_SKID": true,     # Determines if the player will instantly stop upon reaching the skid threshold.
 		
 		"GROUND_DECEL": 2.23,              # The player's grounded deceleration while no buttons are pressed, measured in px/frame.
-		"LOCK_AIR_ACCEL": true,            # Determines if the player can surpass their walk speed while in the air, aside from on trampolines.
-		"CONTROL_RUN_AIR_ACCEL": false,    # Determines if the player must be holding the run button to allow for running speed in the air.
-		"AIR_WALK_ACCEL": 2.23,            # The player's acceleration while in midair, measured in px/frame.
-		"AIR_RUN_ACCEL": 3.34,             # The player's acceleration while in midair, measured in px/frame.
+		
 		"AIR_DECEL": 0.0,                  # The player's airborne deceleration while no buttons are pressed, measured in px/frame.
-		"AIR_SKID": 6.1,                   # The player's turning deceleration while in midair, measured in px/frame.
-		"CAN_BACKWARDS_ACCEL_RUN": false,  # Determines if the player can experience running acceleration when moving backwards in the air.
-		"AIR_BACKWARDS_ACCEL_MULT": 2.0,   # Determines a multiplier to the player's acceleration when moving backwards in the air.
+		"AIR_WALK_ACCEL": 2.23,            # The player's usual acceleration while in midair, measured in px/frame.
+		"AIR_WALK_SKID_ACCEL": 3.04,       # The player's usual skid acceleration while in midair, measured in px/frame.
+		"AIR_RUN_ACCEL": 3.34,             # The player's running acceleration while in midair, measured in px/frame.
+		"AIR_RUN_SKID_ACCEL": 3.34,        # The player's running skid acceleration while in midair, measured in px/frame.
+		"AIR_BACKWARDS_ACCEL": 4.46,       # The player's backwards acceleration while in midair, measured in px/frame.
+		"AIR_BACKWARDS_SKID_ACCEL": 4.46,  # The player's backwards skid acceleration while in midair, measured in px/frame.
+		"AIR_SKID_JUMP_SPEED_MINIMUM": 105.0,        # The minimum jump speed required to use 'skid' params instead of 'accel' params for air control.
+
+		"LOCK_AIR_SPEED": true,            # Determines if the player can surpass their walk speed while in the air, aside from on trampolines.
+		"USE_BACKWARDS_ACCEL": true,       # Determines if the player will use backwards acceleration while travelling backwards.
+		"CAN_AIR_RUN_WITHOUT_RUN_BUTTON": true,      # Determines if the player must be holding the run button to allow for running speed in the air.
+		"CAN_AIR_SKID_ALWAYS": false,      # Determines if the player uses 'skid' params instead of 'accel' params if jump started below a certain speed.
+		"CAN_AIR_RUN_EARLY": false,        # Determines a multiplier to the player's acceleration when moving backwards in the air.
 		
 		"CLIMB_UP_SPEED": 50.0,            # The player's speed while climbing upwards, measured in px/sec.
 		"CLIMB_DOWN_SPEED": 50.0,          # The player's speed while climbing downwards, measured in px/sec.
+
 		"TRAMPOLINE_SPEED": 500.0,         # The strength of a jump on a trampoline, measured in px/sec.
 		"SUPER_TRAMPOLINE_SPEED": 1200.0,  # The strength of a jump on a super trampoline, measured in px/sec.
 		
@@ -270,14 +290,22 @@ extends CharacterBody2D
 		"RAINBOW_POWERUP_FX": true,        # Determines whether or not the player will play the rainbow effect when powering up.
 		"RAINBOW_FX_SPEED": 15.0,          # Determines the speed of the rainbow effect in other scenarios, measured in cycles/sec
 		
+		"WALK_SFX": "walk",                # Determines which sound effect to play when walking.
+		"RUN_SFX": "run",                  # Determines which sound effect to play when running.
+		"SKID_SFX": "big_skid",            # Determines which sound effect to play when skidding.
 		"JUMP_SFX": "big_jump",            # Determines which sound effect to play when jumping.
+		"TRAMPOLINE_SFX": "big_trampoline",          # Determines which sound effect to play when bouncing on a trampoline.
+		"TRAMPOLINE_USE_SFX": "big_used_trampoline", # Determines which sound effect to play when actively using a trampoline.
 		"GROUNDED_WALK_SFX": true,         # Forces walk sounds to only play when on the ground.
 		"GROUNDED_RUN_SFX": true,          # Forces run sounds to only play when on the ground.
 	},
 	"Small": {
 		"WING_OFFSET": [0.0, 10.0],
 		"RAINBOW_POWERUP_FX": false,
+		"SKID_SFX": "small_skid",
 		"JUMP_SFX": "small_jump",
+		"TRAMPOLINE_SFX": "small_trampoline",
+		"TRAMPOLINE_USED_SFX": "small_used_trampoline",
 	},
 	"Big": {
 		"RAINBOW_POWERUP_FX": false,
@@ -337,7 +365,7 @@ var kicking = false
 
 @export var player_id := 0
 const ONE_UP_NOTE = preload("uid://dopxwjj37gu0l")
-var gravity: float = calculate_speed_param("FALL_GRAVITY")
+var gravity: float = calculate_speed_param("FALL_GRAVITY", velocity_x_jump_stored)
 
 var attacking := false
 var pipe_enter_direction := Vector2.ZERO#
@@ -694,32 +722,6 @@ func handle_water_detection() -> void:
 	if old_water != in_water and in_water == false and flight_meter <= 0:
 		water_exited()
 
-func handle_move_fx() -> void:
-	var grounded_walk_sfx: bool = not physics_params("GROUNDED_WALK_SFX", COSMETIC_PARAMETERS)
-	var grounded_run_sfx: bool = not physics_params("GROUNDED_RUN_SFX", COSMETIC_PARAMETERS)
-	var moving: bool = abs(velocity.x) >= 5 and not is_actually_on_wall()
-	var running: bool = abs(velocity.x) >= physics_params("RUN_SPEED") - 10
-	# Walking
-	if AudioManager.active_sfxs.has("walk"):
-		if (is_actually_on_floor() or grounded_walk_sfx) and moving and not running == false:
-			AudioManager.kill_sfx("walk")
-	elif (is_actually_on_floor() or grounded_walk_sfx) and moving and not running and Settings.file.audio.extra_sfx == 1:
-		AudioManager.play_sfx("walk", global_position, 1.0, false)
-	# Running
-	if AudioManager.active_sfxs.has("run"):
-		if (is_actually_on_floor() or grounded_run_sfx) and running == false:
-			AudioManager.kill_sfx("run")
-	elif (is_actually_on_floor() or grounded_run_sfx) and running and Settings.file.audio.extra_sfx == 1:
-		AudioManager.play_sfx("run", global_position, 1.0, false)
-	# Skidding
-	%SkidParticles.visible = Settings.file.visuals.extra_particles == 1
-	%SkidParticles.emitting = ((skidding and skid_frames > 2) or crouching) and is_on_floor() and abs(velocity.x) > 25 and Settings.file.visuals.extra_particles == 1
-	if AudioManager.active_sfxs.has("skid"):
-		if (is_actually_on_floor() and skidding) == false:
-			AudioManager.kill_sfx("skid")
-	elif is_actually_on_floor() and skidding and Settings.file.audio.skid_sfx == 1:
-		AudioManager.play_sfx("skid", global_position, 1.0, false)
-
 func summon_bubble() -> void:
 	var bubble = BUBBLE_PARTICLE.instantiate()
 	bubble.global_position = global_position + Vector2(0, -16 if power_state.hitbox_size == "Small" else -32)
@@ -728,7 +730,6 @@ func summon_bubble() -> void:
 func _process(delta: float) -> void:
 	handle_power_up_states(delta)
 	handle_invincible_palette()
-	handle_move_fx()
 	if is_invincible:
 		DiscoLevel.combo_meter = 100
 
@@ -737,7 +738,7 @@ func apply_gravity(delta: float) -> void:
 		gravity = physics_params("SWIM_GRAVITY")
 	else:
 		if sign(gravity_vector.y) * velocity.y + physics_params("JUMP_HOLD_SPEED_THRESHOLD") > 0.0:
-			gravity = calculate_speed_param("FALL_GRAVITY")
+			gravity = calculate_speed_param("FALL_GRAVITY", velocity_x_jump_stored)
 	velocity += (gravity_vector * ((gravity / (1.5 if low_gravity else 1.0)) / delta)) * delta
 	var target_fall: float = physics_params("MAX_FALL_SPEED")
 	if in_water:
@@ -832,7 +833,7 @@ func enemy_bounce_off(add_combo := true, award_score := true) -> void:
 		velocity.y = sign(gravity_vector.y) * -physics_params("BOUNCE_JUMP_SPEED")
 		if physics_params("CLASSIC_BOUNCE_BEHAVIOR"):
 			if jump_cancelled:
-				gravity = calculate_speed_param("FALL_GRAVITY")
+				gravity = calculate_speed_param("FALL_GRAVITY", velocity_x_jump_stored)
 		else:
 			gravity = calculate_speed_param("JUMP_GRAVITY")
 		has_jumped = true
@@ -911,7 +912,7 @@ func handle_block_collision_detection() -> void:
 			points.sort_custom(func(a, b): return a.y < b.y)
 			$BlockCollision.position.y = points.front().y * $FireCollision.scale.y
 			%Hammer.position.x = -8 * (1 - $FireCollision.scale.x)
-	if actual_velocity_y() <= calculate_speed_param("FALL_GRAVITY"):
+	if actual_velocity_y() <= calculate_speed_param("FALL_GRAVITY", velocity_x_jump_stored):
 		for i in $BlockCollision.get_overlapping_bodies():
 			if i is Block:
 				if is_on_ceiling():
@@ -1019,7 +1020,7 @@ func handle_wing_flight(delta: float) -> void:
 	if flight_meter <= 0 and has_wings:
 		has_wings = false
 		AudioManager.stop_music_override(AudioManager.MUSIC_OVERRIDES.WING)
-		gravity = calculate_speed_param("FALL_GRAVITY")
+		gravity = calculate_speed_param("FALL_GRAVITY", velocity_x_jump_stored)
 	%Wings.visible = flight_meter >= 0
 	var wing_offset = physics_params("WING_OFFSET", COSMETIC_PARAMETERS)
 	%Wing.offset = Vector2(wing_offset[0], wing_offset[1])
@@ -1229,7 +1230,7 @@ func power_up_animation(new_power_state := "") -> void:
 	sprite.process_mode = Node.PROCESS_MODE_ALWAYS
 	sprite.show()
 	get_tree().paused = true
-
+	
 	var hitbox_changed = new_state.power_tier != old_state.power_tier
 	var shrinking = hitbox_changed and (new_state.power_tier < old_state.power_tier)
 
@@ -1371,10 +1372,11 @@ func jump() -> void:
 	await get_tree().physics_frame
 	has_jumped = true
 
-func calculate_speed_param(param = ""):
-	if abs(velocity.x) < physics_params("JUMP_WALK_THRESHOLD"):
+func calculate_speed_param(param = "", speed = velocity.x):
+	if not physics_params("FALL_GRAVITY_PREDETERMINED"): speed = velocity.x
+	if abs(speed) < physics_params("JUMP_WALK_THRESHOLD"):
 		param += "_IDLE"
-	elif abs(velocity.x) < physics_params("JUMP_RUN_THRESHOLD"):
+	elif abs(speed) < physics_params("JUMP_RUN_THRESHOLD"):
 		param += "_WALK"
 	else:
 		param += "_RUN"
@@ -1463,7 +1465,7 @@ func water_exited() -> void:
 	if Global.player_action_pressed("move_up", player_id):
 		gravity = calculate_speed_param("JUMP_GRAVITY")
 	else:
-		gravity = calculate_speed_param("FALL_GRAVITY")
+		gravity = calculate_speed_param("FALL_GRAVITY", velocity_x_jump_stored)
 
 func reset_camera_to_center() -> void:
 	animating_camera = true

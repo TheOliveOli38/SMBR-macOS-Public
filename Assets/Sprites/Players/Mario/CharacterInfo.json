@@ -26,6 +26,7 @@
 				"BOUNCE_SPEED": 200.0,
 				"BOUNCE_JUMP_SPEED": 300.0,
 				
+				"FALL_GRAVITY_PREDETERMINED": false,
 				"FALL_GRAVITY_IDLE": 25.0,
 				"FALL_GRAVITY_WALK": 25.0,
 				"FALL_GRAVITY_RUN": 25.0,
@@ -34,6 +35,7 @@
 				
 				"CLAMP_GROUND_SPEED": false,
 				"MINIMUM_SPEED": 0.0,
+				
 				"WALK_SPEED": 96.0,
 				"GROUND_WALK_ACCEL": 4.0,
 				"WALK_SKID": 8.0,
@@ -45,22 +47,30 @@
 				"RUN_SKID": 8.0,
 				
 				"CLASSIC_SKID_CONDITIONS": false,
+				"CAN_INSTANT_STOP_SKID": false,
 				"SKID_THRESHOLD": 100.0,
 				"SKID_STOP_THRESHOLD": 10.0,
-				"CAN_INSTANT_STOP_SKID": false,
 				
 				"GROUND_DECEL": 3.0,
-				"LOCK_AIR_ACCEL": false,
-				"CONTROL_RUN_AIR_ACCEL": true,
-				"AIR_WALK_ACCEL": 3.0,
-				"AIR_RUN_ACCEL": 3.0,
+				
 				"AIR_DECEL": 0.0,
-				"AIR_SKID": 1.5,
-				"CAN_BACKWARDS_ACCEL_RUN": true,
-				"AIR_BACKWARDS_ACCEL_MULT": 1.0,
+				"AIR_WALK_ACCEL": 3.0,
+				"AIR_WALK_SKID_ACCEL": 1.5,
+				"AIR_RUN_ACCEL": 3.0,
+				"AIR_RUN_SKID_ACCEL": 1.5,
+				"AIR_BACKWARDS_ACCEL": 3.0,
+				"AIR_BACKWARDS_SKID_ACCEL": 1.5,
+				"AIR_SKID_JUMP_SPEED_MINIMUM": 0.0,
+
+				"LOCK_AIR_SPEED": false,
+				"USE_BACKWARDS_ACCEL": false,
+				"CAN_AIR_RUN_WITHOUT_RUN_BUTTON": false,
+				"CAN_AIR_SKID_ALWAYS": true,
+				"CAN_AIR_RUN_EARLY": false,
 				
 				"CLIMB_UP_SPEED": 50.0,
 				"CLIMB_DOWN_SPEED": 120.0,
+
 				"TRAMPOLINE_SPEED": 500.0,
 				"SUPER_TRAMPOLINE_SPEED": 1200.0,
 				
@@ -105,6 +115,7 @@
 				"BOUNCE_SPEED": 248.0,
 				"BOUNCE_JUMP_SPEED": 310.0,
 				
+				"FALL_GRAVITY_PREDETERMINED": true,
 				"FALL_GRAVITY_IDLE": 26.25,
 				"FALL_GRAVITY_WALK": 22.5,
 				"FALL_GRAVITY_RUN": 33.75,
@@ -113,6 +124,7 @@
 				
 				"CLAMP_GROUND_SPEED": true,
 				"MINIMUM_SPEED": 4.46,
+				
 				"WALK_SPEED": 90.0,
 				"GROUND_WALK_ACCEL": 2.23,
 				"WALK_SKID": 6.1,
@@ -124,22 +136,30 @@
 				"RUN_SKID": 6.1,
 				
 				"CLASSIC_SKID_CONDITIONS": true,
+				"CAN_INSTANT_STOP_SKID": true,
 				"SKID_THRESHOLD": 100.0,
 				"SKID_STOP_THRESHOLD": 33.75,
-				"CAN_INSTANT_STOP_SKID": true,
 				
 				"GROUND_DECEL": 2.23,
-				"LOCK_AIR_ACCEL": true,
-				"CONTROL_RUN_AIR_ACCEL": false,
-				"AIR_WALK_ACCEL": 2.23,
-				"AIR_RUN_ACCEL": 3.34,
+				
 				"AIR_DECEL": 0.0,
-				"AIR_SKID": 6.1,
-				"CAN_BACKWARDS_ACCEL_RUN": false,
-				"AIR_BACKWARDS_ACCEL_MULT": 2.0,
+				"AIR_WALK_ACCEL": 2.23,
+				"AIR_WALK_SKID_ACCEL": 3.04,
+				"AIR_RUN_ACCEL": 3.34,
+				"AIR_RUN_SKID_ACCEL": 3.34,
+				"AIR_BACKWARDS_ACCEL": 4.46,
+				"AIR_BACKWARDS_SKID_ACCEL": 4.46,
+				"AIR_SKID_JUMP_SPEED_MINIMUM": 105.0,
+
+				"LOCK_AIR_SPEED": true,
+				"USE_BACKWARDS_ACCEL": true,
+				"CAN_AIR_RUN_WITHOUT_RUN_BUTTON": true,
+				"CAN_AIR_SKID_ALWAYS": false,
+				"CAN_AIR_RUN_EARLY": false,
 				
 				"CLIMB_UP_SPEED": 50.0,
-				"CLIMB_DOWN_SPEED": 120.0,
+				"CLIMB_DOWN_SPEED": 50.0,
+
 				"TRAMPOLINE_SPEED": 500.0,
 				"SUPER_TRAMPOLINE_SPEED": 1200.0,
 				
@@ -169,11 +189,9 @@
 				
 				"PROJ_TYPE": "",
 				"PROJ_PARTICLE": "",
-				
 				"PROJ_PARTICLE_ON_CONTACT": false,
 				"PROJ_SFX_THROW": "fireball",
 				"PROJ_SFX_COLLIDE": "bump",
-				"PROJ_SFX_HIT": "kick",
 				
 				"MAX_PROJ_COUNT": 2,
 				"PROJ_COLLISION": true,
@@ -250,24 +268,32 @@
 				
 				"MOVE_ANIM_SPEED_DIV": 32,
 				
-				"JUMP_SFX": "big_jump",
-				"GROUNDED_WALK_SFX": true,
-				"GROUNDED_RUN_SFX": true,
-				
 				"RAINBOW_STAR_FX_SPEED": 15.0,
 				"RAINBOW_STAR_SLOW_FX_SPEED": 7.5,
 				"RAINBOW_POWERUP_FX": true,
 				"RAINBOW_FX_SPEED": 15.0,
+				
+				"WALK_SFX": "walk",
+				"RUN_SFX": "run",
+				"SKID_SFX": "big_skid",
+				"JUMP_SFX": "big_jump",
+				"TRAMPOLINE_SFX": "big_trampoline",
+				"TRAMPOLINE_USE_SFX": "big_used_trampoline",
+				"GROUNDED_WALK_SFX": true,
+				"GROUNDED_RUN_SFX": true,
 			},
 			"Small": {
 				"WING_OFFSET": [0.0, 10.0],
-				"JUMP_SFX": "small_jump",
 				"RAINBOW_POWERUP_FX": false,
+				"SKID_SFX": "small_skid",
+				"JUMP_SFX": "small_jump",
+				"TRAMPOLINE_SFX": "small_trampoline",
+				"TRAMPOLINE_USED_SFX": "small_used_trampoline",
 			},
 			"Big": {
 				"RAINBOW_POWERUP_FX": false,
 			},
 			"Fire": {},
-		} 
+		},
 	},
 }
