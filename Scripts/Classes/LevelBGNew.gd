@@ -66,10 +66,6 @@ var sky_scroll_speed := -4.0
 
 const disco_sfx_threshold := [0.05, 0.5, 0.8]
 
-var primary_layer_size = Vector2(512, 512)
-var secondary_layer_size = Vector2(512, 512)
-var sky_layer_size = Vector2(512, 512)
-
 func set_second_y_offset(value := 0.0) -> void:
 	second_layer_offset.y = -value
 
@@ -191,9 +187,16 @@ func update_visuals() -> void:
 	$SecondaryLayer/Mushrooms.get_node("Tint").visible = can_mushroom_tint
 	$SecondaryLayer/Trees.get_node("Tint").visible = can_tree_tint
 	
-	$PrimaryLayer.repeat_size = primary_layer_size
-	$SecondaryLayer.repeat_size = secondary_layer_size
-	$SkyLayer.repeat_size = sky_layer_size
+	if primary_layer != 3:
+		var current_primary_layer: AnimatedSprite2D = [$PrimaryLayer/Hills, $PrimaryLayer/Bush, null][primary_layer]
+		if current_primary_layer != null:
+			$PrimaryLayer.repeat_size = current_primary_layer.sprite_frames.get_frame_texture(current_primary_layer.animation, current_primary_layer.frame).get_size()
+	
+	var current_secondary_layer: AnimatedSprite2D = [null, $SecondaryLayer/Trees, $SecondaryLayer/Mushrooms][second_layer]
+	if current_secondary_layer != null:
+		$SecondaryLayer.repeat_size = current_secondary_layer.sprite_frames.get_frame_texture(current_secondary_layer.animation, current_secondary_layer.frame).get_size()
+	
+	$SkyLayer.repeat_size = $SkyLayer/Sky.sprite_frames.get_frame_texture($SkyLayer/Sky.animation, $SkyLayer/Sky.frame).get_size()
 	
 	var tree_tint_amount = inverse_lerp(1, 0, parallax_amount)
 	var mushroom_tint_amount = tree_tint_amount

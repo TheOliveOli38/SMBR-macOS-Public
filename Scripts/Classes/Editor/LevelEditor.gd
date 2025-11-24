@@ -473,6 +473,7 @@ func handle_multi_selecting(tile_position := Vector2i.ZERO) -> void:
 			multi_selecting = false
 
 func mass_place(top_corner := Vector2i.ZERO, select_start := Vector2i.ZERO, select_end := Vector2i.ZERO, layer_num := current_layer, thing_to_place = null, info := [], save_action := true) -> void:
+	var area = save_area(top_corner, select_start, select_end, layer_num)
 	var position := Vector2i.ZERO
 	for x in abs(select_end.x - select_start.x) + 1:
 		for y in abs(select_end.y - select_start.y) + 1:
@@ -481,7 +482,7 @@ func mass_place(top_corner := Vector2i.ZERO, select_start := Vector2i.ZERO, sele
 	if save_action:
 		undo_redo.create_action("Mass Place")
 		undo_redo.add_do_method(mass_place.bind(top_corner, select_start, select_end, layer_num, thing_to_place, info, false))
-		undo_redo.add_undo_method(mass_remove.bind(top_corner, select_start, select_end, layer_num, false))
+		undo_redo.add_undo_method(replace_area.bind(top_corner, layer_num, area))
 		undo_redo.commit_action(false)
 
 func mass_remove(top_corner := Vector2i.ZERO, select_start := Vector2i.ZERO, select_end := Vector2i.ZERO, layer_num := current_layer, save_action := true) -> void:
@@ -506,9 +507,11 @@ func replace_area(top_corner := Vector2i.ZERO, layer_num := current_layer, area 
 			var position = top_corner + Vector2i(x_pos, y_pos)
 			if y != null:
 				if y is Array:
-					place_tile(position, layer_num, y[0], [y[1]], false)
+					place_tile(position, layer_num, y[1], [y[0]], false)
 				else:
 					place_tile(position, layer_num, y.duplicate(), [], false)
+			else:
+				remove_tile(position, layer_num, false)
 			y_pos += 1
 		x_pos += 1
 
@@ -591,14 +594,14 @@ func place_tile(tile_position := Vector2i.ZERO, layer_num := current_layer, tile
 		var atlas = tile_to_place
 		if tile_layer_nodes[layer_num].get_cell_source_id(tile_position) == source and tile_layer_nodes[layer_num].get_cell_atlas_coords(tile_position) == atlas:
 			return
-		remove_tile(tile_position)
+		remove_tile(tile_position, layer_num, save_action)
 		check_connect_boundary_tiles(tile_position, layer_num)
 		tile_layer_nodes[layer_num].set_cell(tile_position, source, atlas, alt_tile)
 	elif tile_to_place is int:
 		var terrain_id = tile_to_place
 		if BetterTerrain.get_cell(tile_layer_nodes[layer_num], tile_position) == terrain_id:
 			return
-		remove_tile(tile_position)
+		remove_tile(tile_position, layer_num, save_action)
 		check_connect_boundary_tiles(tile_position, layer_num)
 		BetterTerrain.set_cell(tile_layer_nodes[layer_num], tile_position, terrain_id)
 	elif tile_to_place is String:
@@ -609,7 +612,7 @@ func place_tile(tile_position := Vector2i.ZERO, layer_num := current_layer, tile
 			overlapping_tile = entity_tiles[layer_num][tile_position]
 			if overlapping_tile.get_meta("ID", "") == tile_to_place:
 				return
-			remove_tile(tile_position)
+		remove_tile(tile_position, layer_num, save_action)
 		node = current_entity_scene.instantiate()
 		if node.has_node("AmountLimiter"):
 			if node.get_node("AmountLimiter").run_check(get_tree()):
@@ -631,7 +634,7 @@ func place_tile(tile_position := Vector2i.ZERO, layer_num := current_layer, tile
 			var overlapping_tile = entity_tiles[layer_num][tile_position]
 			if overlapping_tile.get_meta("ID", "") == tile_to_place.get_meta("ID", ""):
 				return
-			remove_tile(tile_position)
+			remove_tile(tile_position, layer_num, save_action)
 		entity_layer_nodes[layer_num].add_child(tile_to_place)
 		entity_tiles[layer_num].set(tile_position, tile_to_place)
 	
