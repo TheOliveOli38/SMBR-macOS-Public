@@ -443,17 +443,31 @@ func handle_multi_selecting(tile_position := Vector2i.ZERO) -> void:
 	if multi_selecting:
 		Input.set_custom_mouse_cursor(CURSOR_RULER)
 		if Input.is_action_just_released("mb_left"): 
-			for x in abs(select_end.x - select_start.x) + 1:
-				for y in abs(select_end.y - select_start.y) + 1:
-					var position = top_corner + Vector2i(x, y)
-					place_tile(position)
+			mass_place(top_corner, select_start, select_end)
 			multi_selecting = false
 		if Input.is_action_just_released("mb_right"): 
-			for x in abs(select_end.x - select_start.x) + 1:
-				for y in abs(select_end.y - select_start.y) + 1:
-					var position = top_corner + Vector2i(x, y)
-					remove_tile(position)
+			mass_remove(top_corner, select_start, select_end)
 			multi_selecting = false
+
+func mass_place(top_corner := Vector2i.ZERO, select_start := Vector2i.ZERO, select_end := Vector2i.ZERO) -> void:
+	for x in abs(select_end.x - select_start.x) + 1:
+		for y in abs(select_end.y - select_start.y) + 1:
+			var position = top_corner + Vector2i(x, y)
+			place_tile(position, false, mode, current_entity_scene, false)
+	undo_redo.create_action("Mass Place")
+	undo_redo.add_do_method(mass_place.bind(top_corner, select_start, select_end))
+	undo_redo.add_undo_method(mass_remove.bind(top_corner, select_start, select_end))
+	undo_redo.commit_action(false)
+
+func mass_remove(top_corner := Vector2i.ZERO, select_start := Vector2i.ZERO, select_end := Vector2i.ZERO) -> void:
+	for x in abs(select_end.x - select_start.x) + 1:
+		for y in abs(select_end.y - select_start.y) + 1:
+			var position = top_corner + Vector2i(x, y)
+			remove_tile(position)
+	undo_redo.create_action("Mass Remove")
+	undo_redo.add_do_method(mass_remove.bind(top_corner, select_start, select_end))
+	undo_redo.add_undo_method(mass_place.bind(top_corner, select_start, select_end))
+	undo_redo.commit_action(false)
 
 func show_scroll_preview() -> void:
 	$TileCursor/Previews.show()
@@ -504,9 +518,8 @@ func reset_values_for_play() -> void:
 	Global.coins = 0
 	cleanup()
 
-func place_tile(tile_position := Vector2i.ZERO, use_copy := false) -> void:
+func place_tile(tile_position := Vector2i.ZERO, use_copy := false, mode_to_use := mode, entity_scene: PackedScene = current_entity_scene, save_action := true) -> void:
 	$TileCursor/Previews.hide()
-	var mode_to_use = mode
 	if use_copy:
 		if copied_node != null:
 			mode_to_use = 1
@@ -551,7 +564,7 @@ func place_tile(tile_position := Vector2i.ZERO, use_copy := false) -> void:
 
 			node.global_position = (tile_position * 16) + (Vector2i(8, 8) + offset)
 		else:
-			node = current_entity_scene.instantiate()
+			node = entity_scene.instantiate()
 			if node.has_node("AmountLimiter"):
 				if node.get_node("AmountLimiter").run_check(get_tree()):
 					node.queue_free()
@@ -563,6 +576,13 @@ func place_tile(tile_position := Vector2i.ZERO, use_copy := false) -> void:
 		entity_layer_nodes[current_layer].add_child(node)
 		node.reset_physics_interpolation()
 		entity_tiles[current_layer].set(tile_position, node)
+	
+	if save_action:
+		undo_redo.create_action("Place Tile")
+		undo_redo.add_do_method(place_tile.bind(tile_position, use_copy, entity_scene))
+		undo_redo.add_undo_method(remove_tile.bind(tile_position))
+		undo_redo.commit_action(false)
+
 	BetterTerrain.update_terrain_cell(tile_layer_nodes[current_layer], tile_position, true)
 
 func check_connect_boundary_tiles(tile_position := Vector2i.ZERO, layer := 0) -> void:
@@ -573,7 +593,7 @@ func check_connect_boundary_tiles(tile_position := Vector2i.ZERO, layer := 0) ->
 	if tile_position.y > 0 and tile_position.x <= -16:
 		tile_layer_nodes[layer].set_cell(tile_position + Vector2i.LEFT + Vector2i.DOWN, 6, BOUNDARY_CONNECT_TILE)
 
-func remove_tile(tile_position := Vector2i.ZERO) -> void:
+func remove_tile(tile_position := Vector2i.ZERO, save_action := true) -> void:
 	$TileCursor/Previews.hide()
 	tile_layer_nodes[current_layer].set_cell(tile_position, -1)
 	if entity_tiles[current_layer].get(tile_position) != null:
@@ -581,6 +601,13 @@ func remove_tile(tile_position := Vector2i.ZERO) -> void:
 			return
 		entity_tiles[current_layer].get(tile_position).queue_free()
 	entity_tiles[current_layer].erase(tile_position)
+	
+	if save_action:
+		undo_redo.create_action("Remove Tile")
+		undo_redo.add_do_method(remove_tile.bind(tile_position, save_action))
+		undo_redo.add_undo_method(place_tile.bind(tile_position))
+		undo_redo.commit_action(false)
+	
 	BetterTerrain.update_terrain_cell(tile_layer_nodes[current_layer], tile_position, true)
 
 func global_position_to_tile_position(position := Vector2.ZERO) -> Vector2i:
@@ -723,6 +750,11 @@ var cursor_in_toolbar := false
 func on_mouse_entered() -> void:
 	cursor_in_toolbar = true
 
+func undo() -> void:
+	undo_redo.undo()
+
+func redo() -> void:
+	undo_redo.redo()
 
 func on_mouse_exited() -> void:
 	cursor_in_toolbar = false
