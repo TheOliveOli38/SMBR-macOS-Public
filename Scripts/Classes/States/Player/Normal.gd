@@ -191,7 +191,7 @@ func air_acceleration(delta: float) -> void:
 			)
 		)
 	# Set running speed target, opt. allowing maintaining speed without run button.
-	if abs(player.velocity.x) > player.physics_params("WALK_SPEED") and (run_pressed or player.physics_params("CAN_AIR_RUN_WITHOUT_RUN_BUTTON")):
+	if (abs(player.velocity.x) > player.physics_params("WALK_SPEED") or player.has_spring_jumped) and (run_pressed or player.physics_params("CAN_AIR_RUN_WITHOUT_RUN_BUTTON")):
 		target_speed = player.physics_params("RUN_SPEED")
 		use_run_accel = true
 	elif abs(player.velocity.x) == player.physics_params("WALK_SPEED") and run_pressed:
