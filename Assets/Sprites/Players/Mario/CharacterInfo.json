@@ -278,7 +278,7 @@
 				"SKID_SFX": "big_skid",
 				"JUMP_SFX": "big_jump",
 				"TRAMPOLINE_SFX": "big_trampoline",
-				"TRAMPOLINE_USE_SFX": "big_used_trampoline",
+				"TRAMPOLINE_USED_SFX": "big_used_trampoline",
 				"GROUNDED_WALK_SFX": true,
 				"GROUNDED_RUN_SFX": true,
 			},
