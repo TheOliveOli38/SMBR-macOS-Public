@@ -548,6 +548,7 @@ theme_override_styles/panel = ExtResource("139_ydoon")
 
 [node name="Tools" type="PanelContainer" parent="CanvasLayer" unique_id=1977421295]
 unique_name_in_owner = true
+visible = false
 offset_left = 3.0
 offset_top = 3.0
 offset_right = 23.0
@@ -650,7 +651,6 @@ mouse_filter = 2
 
 [node name="ToolsName" type="Label" parent="CanvasLayer" unique_id=2064910133]
 unique_name_in_owner = true
-visible = false
 offset_left = 3.0
 offset_top = 27.0
 offset_right = 4.0

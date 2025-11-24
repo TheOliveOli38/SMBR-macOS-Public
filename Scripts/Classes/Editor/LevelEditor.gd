@@ -84,7 +84,7 @@ var inspect_menu_open := false
 var current_inspect_tile: Node = null
 
 var selection_filter := ""
-var current_tile_type := TileType.TILE
+var current_tile_type := TileType.TERRAIN
 
 static var level_author := ""
 static var level_desc := ""
@@ -360,11 +360,11 @@ func handle_tile_cursor() -> void:
 			multi_selecting = false
 			match current_tile_type:
 				TileType.TILE:
-					place_tile(tile_position, current_tile_coords, [current_tile_source])
+					place_tile(tile_position, current_layer, current_tile_coords, [current_tile_source])
 				TileType.ENTITY:
-					place_tile(tile_position, current_entity_id)
+					place_tile(tile_position, current_layer, current_entity_id)
 				TileType.TERRAIN:
-					place_tile(tile_position, current_terrain_id)
+					place_tile(tile_position, current_layer, current_terrain_id)
 			target_mouse_icon = (CURSOR_PENCIL)
 		
 	if Input.is_action_pressed("mb_right"):
@@ -460,22 +460,74 @@ func handle_multi_selecting(tile_position := Vector2i.ZERO) -> void:
 	if multi_selecting:
 		Input.set_custom_mouse_cursor(CURSOR_RULER)
 		if Input.is_action_just_released("mb_left"): 
-			mass_place(top_corner, select_start, select_end)
+			match current_tile_type:
+				TileType.TILE:
+					mass_place(top_corner, select_start, select_end, current_layer, current_tile_coords, [current_tile_source])
+				TileType.ENTITY:
+					mass_place(top_corner, select_start, select_end, current_layer, current_entity_id)
+				TileType.TERRAIN:
+					mass_place(top_corner, select_start, select_end, current_layer, current_terrain_id)
 			multi_selecting = false
 		if Input.is_action_just_released("mb_right"): 
 			mass_remove(top_corner, select_start, select_end)
 			multi_selecting = false
 
-func mass_place(top_corner := Vector2i.ZERO, select_start := Vector2i.ZERO, select_end := Vector2i.ZERO) -> void:
+func mass_place(top_corner := Vector2i.ZERO, select_start := Vector2i.ZERO, select_end := Vector2i.ZERO, layer_num := current_layer, thing_to_place = null, info := [], save_action := true) -> void:
+	var position := Vector2i.ZERO
 	for x in abs(select_end.x - select_start.x) + 1:
 		for y in abs(select_end.y - select_start.y) + 1:
-			var position = top_corner + Vector2i(x, y)
+			position = top_corner + Vector2i(x, y)
+			place_tile(position, layer_num, thing_to_place, info, false)
+	if save_action:
+		undo_redo.create_action("Mass Place")
+		undo_redo.add_do_method(mass_place.bind(top_corner, select_start, select_end, layer_num, thing_to_place, info, false))
+		undo_redo.add_undo_method(mass_remove.bind(top_corner, select_start, select_end, layer_num, false))
+		undo_redo.commit_action(false)
 
-func mass_remove(top_corner := Vector2i.ZERO, select_start := Vector2i.ZERO, select_end := Vector2i.ZERO) -> void:
+func mass_remove(top_corner := Vector2i.ZERO, select_start := Vector2i.ZERO, select_end := Vector2i.ZERO, layer_num := current_layer, save_action := true) -> void:
+	var area := []
+	if save_action:
+		area = save_area(top_corner, select_start, select_end, layer_num)
 	for x in abs(select_end.x - select_start.x) + 1:
 		for y in abs(select_end.y - select_start.y) + 1:
 			var position = top_corner + Vector2i(x, y)
-			remove_tile(position)
+			remove_tile(position, layer_num, false)
+	if save_action:
+		undo_redo.create_action("Mass Remove")
+		undo_redo.add_do_method(mass_remove.bind(top_corner, select_start, select_end, layer_num, false))
+		undo_redo.add_undo_method(replace_area.bind(top_corner, layer_num, area))
+		undo_redo.commit_action(false)
+
+func replace_area(top_corner := Vector2i.ZERO, layer_num := current_layer, area := []) -> void:
+	var x_pos := 0
+	for x in area:
+		var y_pos := 0
+		for y in x:
+			var position = top_corner + Vector2i(x_pos, y_pos)
+			if y != null:
+				if y is Array:
+					place_tile(position, layer_num, y[0], [y[1]], false)
+				else:
+					place_tile(position, layer_num, y.duplicate(), [], false)
+			y_pos += 1
+		x_pos += 1
+
+func save_area(top_corner := Vector2i.ZERO, select_start := Vector2i.ZERO, select_end := Vector2i.ZERO, layer_num := current_layer) -> Array:
+	var x_arr := []
+	for x in abs(select_end.x - select_start.x) + 1:
+		var y_arr := []
+		for y in abs(select_end.y - select_start.y) + 1:
+			var position = top_corner + Vector2i(x, y)
+			var tile = null
+			if entity_tiles[layer_num].get(position, null) != null:
+				y_arr.append(entity_tiles[layer_num].get(position).duplicate())
+			elif tile_layer_nodes[layer_num].get_used_cells().has(position):
+				y_arr.append([tile_layer_nodes[layer_num].get_cell_source_id(position), tile_layer_nodes[layer_num].get_cell_atlas_coords(position)])
+			else:
+				y_arr.append(null)
+		x_arr.append(y_arr)
+	
+	return x_arr
 
 func show_scroll_preview() -> void:
 	$TileCursor/Previews.show()
@@ -497,10 +549,12 @@ func open_tile_selection_menu_scene_ref(selector: TilePropertySceneRef) -> void:
 	for i in get_tree().get_nodes_in_group("Selectors"):
 		i.disabled = !i.has_meta(selection_filter)
 		i.update_visuals()
+	var old_scene = current_entity_scene
 	await tile_selected
 	if is_instance_valid(selector) == false:
 		return
 	selector.set_scene(current_entity_selector)
+	current_entity_scene = old_scene
 	close_tile_menu()
 	current_state = EditorState.MODIFYING_TILE
 
@@ -525,7 +579,7 @@ func reset_values_for_play() -> void:
 	Global.coins = 0
 	cleanup()
 
-func place_tile(tile_position := Vector2i.ZERO, tile_to_place = null, info := [], save_action := true) -> void:
+func place_tile(tile_position := Vector2i.ZERO, layer_num := current_layer, tile_to_place = null, info := [], save_action := true) -> void:
 	$TileCursor/Previews.hide()
 	if tile_to_place is Vector2i:
 		var alt_tile := 0
@@ -535,23 +589,24 @@ func place_tile(tile_position := Vector2i.ZERO, tile_to_place = null, info := []
 			alt_tile += TileSetAtlasSource.TRANSFORM_FLIP_V
 		var source = info[0]
 		var atlas = tile_to_place
-		if tile_layer_nodes[current_layer].get_cell_source_id(tile_position) == source and tile_layer_nodes[current_layer].get_cell_atlas_coords(tile_position) == atlas:
+		if tile_layer_nodes[layer_num].get_cell_source_id(tile_position) == source and tile_layer_nodes[layer_num].get_cell_atlas_coords(tile_position) == atlas:
 			return
 		remove_tile(tile_position)
-		check_connect_boundary_tiles(tile_position, current_layer)
-		tile_layer_nodes[current_layer].set_cell(tile_position, source, atlas, alt_tile)
+		check_connect_boundary_tiles(tile_position, layer_num)
+		tile_layer_nodes[layer_num].set_cell(tile_position, source, atlas, alt_tile)
 	elif tile_to_place is int:
 		var terrain_id = tile_to_place
-		if BetterTerrain.get_cell(tile_layer_nodes[current_layer], tile_position) == terrain_id:
+		if BetterTerrain.get_cell(tile_layer_nodes[layer_num], tile_position) == terrain_id:
 			return
 		remove_tile(tile_position)
-		check_connect_boundary_tiles(tile_position, current_layer)
-		BetterTerrain.set_cell(tile_layer_nodes[current_layer], tile_position, terrain_id)
+		check_connect_boundary_tiles(tile_position, layer_num)
+		BetterTerrain.set_cell(tile_layer_nodes[layer_num], tile_position, terrain_id)
 	elif tile_to_place is String:
 		var overlapping_tile = null
 		var node: Node = null
-		if entity_tiles[current_layer].get(tile_position) != null:
-			overlapping_tile = entity_tiles[current_layer][tile_position]
+		current_entity_scene = load(entity_id_map[tile_to_place][0])
+		if entity_tiles[layer_num].get(tile_position) != null:
+			overlapping_tile = entity_tiles[layer_num][tile_position]
 			if overlapping_tile.get_meta("ID", "") == tile_to_place:
 				return
 			remove_tile(tile_position)
@@ -567,17 +622,26 @@ func place_tile(tile_position := Vector2i.ZERO, tile_to_place = null, info := []
 		node.global_position = (tile_position * 16) + (Vector2i(8, 8) + spawn_offset)
 		node.set_meta("tile_position", tile_position)
 		node.set_meta("ID", tile_to_place)
-		entity_layer_nodes[current_layer].add_child(node)
+		entity_layer_nodes[layer_num].add_child(node)
 		node.reset_physics_interpolation()
-		entity_tiles[current_layer].set(tile_position, node)
+		entity_tiles[layer_num].set(tile_position, node)
+	elif tile_to_place is Node:
+		tile_to_place = tile_to_place.duplicate()
+		if entity_tiles[layer_num].get(tile_position) != null:
+			var overlapping_tile = entity_tiles[layer_num][tile_position]
+			if overlapping_tile.get_meta("ID", "") == tile_to_place.get_meta("ID", ""):
+				return
+			remove_tile(tile_position)
+		entity_layer_nodes[layer_num].add_child(tile_to_place)
+		entity_tiles[layer_num].set(tile_position, tile_to_place)
 	
 	if save_action:
 		undo_redo.create_action("Place Tile")
-		undo_redo.add_do_method(place_tile.bind(tile_position, tile_to_place, info, false))
-		undo_redo.add_undo_method(remove_tile.bind(tile_position, false))
+		undo_redo.add_do_method(place_tile.bind(tile_position, layer_num, tile_to_place, info, false))
+		undo_redo.add_undo_method(remove_tile.bind(tile_position, layer_num, false))
 		undo_redo.commit_action(false)
 
-	BetterTerrain.update_terrain_cell(tile_layer_nodes[current_layer], tile_position, true)
+	BetterTerrain.update_terrain_cell(tile_layer_nodes[layer_num], tile_position, true)
 
 func check_connect_boundary_tiles(tile_position := Vector2i.ZERO, layer := 0) -> void:
 	if tile_position.y > 0:
@@ -587,16 +651,28 @@ func check_connect_boundary_tiles(tile_position := Vector2i.ZERO, layer := 0) ->
 	if tile_position.y > 0 and tile_position.x <= -16:
 		tile_layer_nodes[layer].set_cell(tile_position + Vector2i.LEFT + Vector2i.DOWN, 6, BOUNDARY_CONNECT_TILE)
 
-func remove_tile(tile_position := Vector2i.ZERO, save_action := true) -> void:
+func remove_tile(tile_position := Vector2i.ZERO, layer_num := current_layer, save_action := true) -> void:
 	$TileCursor/Previews.hide()
-	tile_layer_nodes[current_layer].set_cell(tile_position, -1)
-	if entity_tiles[current_layer].get(tile_position) != null:
-		if entity_tiles[current_layer].get(tile_position) is Player:
+	tile_layer_nodes[layer_num].set_cell(tile_position, -1)
+	var old_node: Node = null
+	BetterTerrain.update_terrain_cell(tile_layer_nodes[layer_num], tile_position, true)
+	if entity_tiles[layer_num].get(tile_position) != null:
+		if entity_tiles[layer_num].get(tile_position) is Player:
 			return
-		entity_tiles[current_layer].get(tile_position).queue_free()
-	entity_tiles[current_layer].erase(tile_position)
+		if save_action:
+			old_node = entity_tiles[layer_num].get(tile_position).duplicate()
+			print("Node Saved: ", old_node)
+		entity_tiles[layer_num].get(tile_position).queue_free()
+	else:
+		entity_tiles[layer_num].erase(tile_position)
+		return
+	entity_tiles[layer_num].erase(tile_position)
 	
-	BetterTerrain.update_terrain_cell(tile_layer_nodes[current_layer], tile_position, true)
+	if save_action:
+		undo_redo.create_action("Remove Tile")
+		undo_redo.add_do_method(remove_tile.bind(tile_position, layer_num, false))
+		undo_redo.add_undo_method(place_tile.bind(tile_position, layer_num, old_node, [], false))
+		undo_redo.commit_action(false)
 
 func global_position_to_tile_position(position := Vector2.ZERO) -> Vector2i:
 	return Vector2i(position / 16)
@@ -640,6 +716,7 @@ func low_gravity_toggled(new_value := false) -> void:
 		i.low_gravity = new_value
 
 func transition_to_sublevel(sub_lvl_idx := 0) -> void:
+	undo_redo.clear_history()
 	Global.can_pause = false
 	if Global.level_editor_is_playtesting():
 		Global.do_fake_transition()
