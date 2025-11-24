@@ -1,4 +1,52 @@
 {
+	"A+": [
+		"res://Scenes/Prefabs/Entities/Objects/PSwitch.tscn",
+		"0,8"
+	],
+	"A/": [
+		"res://Scenes/Prefabs/Entities/Enemies/Thwomp.tscn",
+		"8,8"
+	],
+	"A0": [
+		"res://Scenes/Prefabs/Entities/Objects/SmallVerticalPlatform.tscn",
+		"8,-8"
+	],
+	"A1": [
+		"res://Scenes/Prefabs/Entities/Objects/VerticalPlatform.tscn",
+		"0,-8"
+	],
+	"A2": [
+		"res://Scenes/Prefabs/Entities/Objects/SmallSidewaysPlatform.tscn",
+		"8,-8"
+	],
+	"A3": [
+		"res://Scenes/Prefabs/Entities/Objects/SidewaysPlatform.tscn",
+		"0,-8"
+	],
+	"A4": [
+		"res://Scenes/Prefabs/Entities/Objects/FallingPlatform.tscn",
+		"8,-8"
+	],
+	"A5": [
+		"res://Scenes/Prefabs/Entities/Objects/LargeFallingPlatform.tscn",
+		"0,-8"
+	],
+	"A6": [
+		"res://Scenes/Prefabs/Entities/Items/SpinningCoin.tscn",
+		"0,8"
+	],
+	"A7": [
+		"res://Scenes/Parts/PlayerStartMarker.tscn",
+		"0,8"
+	],
+	"A8": [
+		"res://Scenes/Prefabs/Entities/Player.tscn",
+		"0,8"
+	],
+	"A9": [
+		"res://Scenes/Prefabs/Entities/Enemies/Pokey.tscn",
+		"0,8"
+	],
 	"AA": [
 		"res://Scenes/Prefabs/Blocks/DecoBlock.tscn",
 		"0,0"
@@ -207,53 +255,53 @@
 		"res://Scenes/Prefabs/Blocks/DonutBlock.tscn",
 		"0,0"
 	],
-	"A0": [
-		"res://Scenes/Prefabs/Entities/Objects/SmallVerticalPlatform.tscn",
-		"8,-8"
-	],
-	"A1": [
-		"res://Scenes/Prefabs/Entities/Objects/VerticalPlatform.tscn",
-		"0,-8"
-	],
-	"A2": [
-		"res://Scenes/Prefabs/Entities/Objects/SmallSidewaysPlatform.tscn",
-		"8,-8"
-	],
-	"A3": [
-		"res://Scenes/Prefabs/Entities/Objects/SidewaysPlatform.tscn",
-		"0,-8"
-	],
-	"A4": [
-		"res://Scenes/Prefabs/Entities/Objects/FallingPlatform.tscn",
-		"8,-8"
-	],
-	"A5": [
-		"res://Scenes/Prefabs/Entities/Objects/LargeFallingPlatform.tscn",
-		"0,-8"
-	],
-	"A6": [
-		"res://Scenes/Prefabs/Entities/Items/SpinningCoin.tscn",
+	"B+": [
+		"res://Scenes/Prefabs/Entities/Enemies/StaticPiranhaPlant.tscn",
 		"0,8"
 	],
-	"A7": [
-		"res://Scenes/Parts/PlayerStartMarker.tscn",
+	"B/": [
+		"res://Scenes/Prefabs/Entities/Enemies/StaticRedPiranhaPlant.tscn",
 		"0,8"
 	],
-	"A8": [
-		"res://Scenes/Prefabs/Entities/Player.tscn",
+	"B0": [
+		"res://Scenes/Prefabs/Entities/Items/WingItem.tscn",
 		"0,8"
 	],
-	"A9": [
-		"res://Scenes/Prefabs/Entities/Enemies/Pokey.tscn",
+	"B1": [
+		"res://Scenes/Prefabs/Entities/Objects/Bumper.tscn",
+		"0,0"
+	],
+	"B2": [
+		"res://Scenes/Prefabs/Entities/Objects/Door.tscn",
 		"0,8"
 	],
-	"A+": [
-		"res://Scenes/Prefabs/Entities/Objects/PSwitch.tscn",
+	"B3": [
+		"res://Scenes/Prefabs/Entities/Items/KeyItem.tscn",
 		"0,8"
 	],
-	"A/": [
-		"res://Scenes/Prefabs/Entities/Enemies/Thwomp.tscn",
-		"8,8"
+	"B4": [
+		"res://Scenes/Prefabs/Entities/Objects/LockedDoor.tscn",
+		"0,8"
+	],
+	"B5": [
+		"res://Scenes/Prefabs/Entities/Objects/EmptyPDoor.tscn",
+		"0,8"
+	],
+	"B6": [
+		"res://Scenes/Prefabs/LevelObjects/GravityInverter.tscn",
+		"0,0"
+	],
+	"B7": [
+		"res://Scenes/Prefabs/LevelObjects/MoonGravityObj.tscn",
+		"0,0"
+	],
+	"B8": [
+		"res://Scenes/Prefabs/Entities/Enemies/Sigebou.tscn",
+		"0,8"
+	],
+	"B9": [
+		"res://Scenes/Prefabs/Entities/Enemies/BowsersBro.tscn",
+		"0,8"
 	],
 	"BA": [
 		"res://Scenes/Prefabs/Blocks/EmptyPSwitchBlock.tscn",
@@ -274,6 +322,10 @@
 	"BE": [
 		"res://Scenes/Prefabs/Blocks/MusicNoteBlock.tscn",
 		"0,0"
+	],
+	"BF": [
+		"res://Scenes/Prefabs/Entities/Items/PoisonMushroom.tscn",
+		"0,8"
 	],
 	"BG": [
 		"res://Scenes/Prefabs/Entities/Enemies/SideStepper.tscn",
@@ -315,17 +367,13 @@
 		"res://Scenes/Prefabs/Blocks/SpikeBlock.tscn",
 		"0,0"
 	],
-	"BR": [
-		"res://Scenes/Prefabs/LevelObjects/EntityGeneratorStopper.tscn",
-		"0,0"
-	],
-	"BF": [
-		"res://Scenes/Prefabs/Entities/Items/PoisonMushroom.tscn",
-		"0,8"
-	],
 	"BQ": [
 		"res://Scenes/Prefabs/Entities/Items/ClockItem.tscn",
 		"0,8"
+	],
+	"BR": [
+		"res://Scenes/Prefabs/LevelObjects/EntityGeneratorStopper.tscn",
+		"0,0"
 	],
 	"BS": [
 		"res://Scenes/Prefabs/Entities/Enemies/Barrel.tscn",
@@ -419,16 +467,16 @@
 		"res://Scenes/Prefabs/Blocks/EmptyBlock.tscn",
 		"0,0"
 	],
+	"Bp": [
+		"res://Scenes/Prefabs/Entities/Items/LuckyStar.tscn",
+		"0,8"
+	],
 	"Bq": [
 		"res://Scenes/Prefabs/LevelObjects/EditorLinkedElevator.tscn",
 		"0, 0"
 	],
 	"Br": [
 		"res://Scenes/Prefabs/Entities/Items/Hachisuke.tscn",
-		"0,8"
-	],
-	"Bp": [
-		"res://Scenes/Prefabs/Entities/Items/LuckyStar.tscn",
 		"0,8"
 	],
 	"Bs": [
@@ -463,52 +511,124 @@
 		"res://Scenes/Prefabs/Entities/Items/BlueCoinInactive.tscn",
 		"0,0"
 	],
-	"B0": [
-		"res://Scenes/Prefabs/Entities/Items/WingItem.tscn",
+	"CA": [
+		"res://Scenes/Prefabs/Entities/Enemies/FirePiranhaPlant.tscn",
 		"0,8"
 	],
-	"B1": [
-		"res://Scenes/Prefabs/Entities/Objects/Bumper.tscn",
-		"0,0"
-	],
-	"B2": [
-		"res://Scenes/Prefabs/Entities/Objects/Door.tscn",
+	"CB": [
+		"res://Scenes/Prefabs/Entities/Enemies/FireRedPiranhaPlant.tscn",
 		"0,8"
 	],
-	"B3": [
-		"res://Scenes/Prefabs/Entities/Items/KeyItem.tscn",
+	"CC": [
+		"res://Scenes/Prefabs/Entities/Enemies/StaticFirePiranhaPlant.tscn",
 		"0,8"
 	],
-	"B4": [
-		"res://Scenes/Prefabs/Entities/Objects/LockedDoor.tscn",
+	"CD": [
+		"res://Scenes/Prefabs/Entities/Enemies/StaticRedFirePiranhaPlant.tscn",
 		"0,8"
 	],
-	"B5": [
-		"res://Scenes/Prefabs/Entities/Objects/EmptyPDoor.tscn",
+	"CE": [
+		"res://Scenes/Prefabs/Entities/Enemies/HomingBill.tscn",
 		"0,8"
 	],
-	"B6": [
-		"res://Scenes/Prefabs/LevelObjects/GravityInverter.tscn",
-		"0,0"
-	],
-	"B7": [
-		"res://Scenes/Prefabs/LevelObjects/MoonGravityObj.tscn",
-		"0,0"
-	],
-	"B8": [
-		"res://Scenes/Prefabs/Entities/Enemies/Sigebou.tscn",
+	"CF": [
+		"res://Scenes/Prefabs/Blocks/FrozenMuncher.tscn",
 		"0,8"
 	],
-	"B9": [
-		"res://Scenes/Prefabs/Entities/Enemies/BowsersBro.tscn",
+	"CG": [
+		"res://Scenes/Prefabs/Entities/Enemies/Wiggler.tscn",
 		"0,8"
 	],
-	"B+": [
-		"res://Scenes/Prefabs/Entities/Enemies/StaticPiranhaPlant.tscn",
+	"CH": [
+		"res://Scenes/Prefabs/Entities/Enemies/ChainChomp.tscn",
 		"0,8"
 	],
-	"B/": [
-		"res://Scenes/Prefabs/Entities/Enemies/StaticRedPiranhaPlant.tscn",
+	"CI": [
+		"res://Scenes/Prefabs/Entities/Enemies/AngrySun.tscn",
+		"0,8"
+	],
+	"CJ": [
+		"res://Scenes/Prefabs/Entities/Enemies/HappyMoon.tscn",
+		"0,8"
+	],
+	"CK": [
+		"res://Scenes/Prefabs/Entities/Enemies/SpikeTop.tscn",
+		"0,8"
+	],
+	"CL": [
+		"res://Scenes/Prefabs/Blocks/FrozenBrickBlock.tscn",
+		"0,8"
+	],
+	"CM": [
+		"res://Scenes/Prefabs/Blocks/FrozenCoin.tscn",
+		"0,8"
+	],
+	"CN": [
+		"res://Scenes/Prefabs/Blocks/FrozenTurnBlock.tscn",
+		"0,8"
+	],
+	"CO": [
+		"res://Scenes/Prefabs/Blocks/BubbleNoteBlock.tscn",
+		"0,8"
+	],
+	"CP": [
+		"res://Scenes/Prefabs/Entities/Objects/Crate.tscn",
+		"0,8"
+	],
+	"CQ": [
+		"res://Scenes/Prefabs/LevelObjects/SecondCamera.tscn",
+		"0,8"
+	],
+	"CR": [
+		"res://Scenes/Prefabs/LevelObjects/TextLabel.tscn",
+		"0,8"
+	],
+	"CS": [
+		"res://Scenes/Prefabs/LevelObjects/CoinHeavenWarpPoint.tscn",
+		"0,8"
+	],
+	"CT": [
+		"res://Scenes/Prefabs/LevelObjects/DarknessEffect.tscn",
+		"0,8"
+	],
+	"CU": [
+		"res://Scenes/Prefabs/LevelObjects/PitWarp.tscn",
+		"0,8"
+	],
+	"CV": [
+		"res://Scenes/Prefabs/LevelObjects/PitWarpReturn.tscn",
+		"0,8"
+	],
+	"CW": [
+		"res://Scenes/Prefabs/LevelObjects/OneWayPanel.tscn",
+		"0,8"
+	],
+	"CX": [
+		"res://Scenes/Prefabs/LevelObjects/SmallOneWayPlatform.tscn",
+		"0,8"
+	],
+	"CY": [
+		"res://Scenes/Prefabs/Entities/Items/SuperballFlower.tscn",
+		"0,8"
+	],
+	"CZ": [
+		"res://Scenes/Prefabs/Entities/Items/10Coin.tscn",
+		"0,8"
+	],
+	"Ca": [
+		"res://Scenes/Prefabs/Entities/Items/30Coin.tscn",
+		"0,8"
+	],
+	"Cb": [
+		"res://Scenes/Prefabs/Entities/Items/50Coin.tscn",
+		"0,8"
+	],
+	"Cc": [
+		"res://Scenes/Prefabs/Entities/Items/Vine.tscn",
+		"0,8"
+	],
+	"Cd": [
+		"res://Scenes/Prefabs/LevelObjects/WarpVine.tscn",
 		"0,8"
 	]
 }

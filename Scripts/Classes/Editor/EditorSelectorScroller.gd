@@ -36,11 +36,6 @@ func handle_inputs() -> void:
 			break
 	if not hovered:
 		return
-	if Input.is_action_just_pressed("mb_right"):
-		expanded = !expanded
-		for i in duped_selectors:
-			i.visible = expanded
-		visible = not expanded
 	if Input.is_action_just_pressed("scroll_up"):
 		selected_index += 1
 		warp_mouse(get_local_mouse_position())

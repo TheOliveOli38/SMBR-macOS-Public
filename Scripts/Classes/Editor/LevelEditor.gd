@@ -10,11 +10,13 @@ const CURSOR_OFFSET := Vector2(-8, -8)
 
 var mode := 0
 var current_entity_selector: EditorTileSelector = null
+var current_entity_id := ""
 var current_entity_scene: PackedScene = null
-var current_spawn_offset := Vector2i.ZERO
 var current_tile_source := 0
 var current_tile_coords := Vector2i.ZERO
 var current_tile_flip := Vector2.ZERO ## 1 = true, 0 = false, x = hori, y = vert
+
+var last_placed_position := Vector2i.ZERO
 
 var menu_open := false
 var testing_level := false
@@ -37,8 +39,11 @@ var can_move_cam := true
 static var music_track_list: Array[String] = [ "res://Assets/Audio/BGM/Silence.json","res://Assets/Audio/BGM/Athletic.json", "res://Assets/Audio/BGM/Autumn.json", "res://Assets/Audio/BGM/Beach.json", "res://Assets/Audio/BGM/Bonus.json", "res://Assets/Audio/BGM/Bowser.json", "res://Assets/Audio/BGM/FinalBowser.json", "res://Assets/Audio/BGM/Castle.json", "res://Assets/Audio/BGM/CoinHeaven.json", "res://Assets/Audio/BGM/Desert.json", "res://Assets/Audio/BGM/Garden.json", "res://Assets/Audio/BGM/GhostHouse.json", "res://Assets/Audio/BGM/Jungle.json", "res://Assets/Audio/BGM/Mountain.json", "res://Assets/Audio/BGM/Overworld.json", "res://Assets/Audio/BGM/Pipeland.json", "res://Assets/Audio/BGM/BooRace.json", "res://Assets/Audio/BGM/Sky.json", "res://Assets/Audio/BGM/Snow.json", "res://Assets/Audio/BGM/Space.json", "res://Assets/Audio/BGM/Underground.json", "res://Assets/Audio/BGM/Underwater.json", "res://Assets/Audio/BGM/Volcano.json", "res://Assets/Audio/BGM/Airship.json"]
 var music_track_names: Array[String] = ["BGM_NONE", "BGM_ATHLETIC", "BGM_AUTUMN", "BGM_BEACH", "BGM_BONUS", "BGM_BOWSER", "BGM_FINALBOWSER", "BGM_CASTLE", "BGM_COINHEAVEN", "BGM_DESERT", "BGM_GARDEN", "BGM_GHOSTHOUSE", "BGM_JUNGLE", "BGM_MOUNTAIN", "BGM_OVERWORLD", "BGM_PIPELAND", "BGM_RACE", "BGM_SKY", "BGM_SNOW", "BGM_SPACE", "BGM_UNDERGROUND", "BGM_UNDERWATER", "BGM_VOLCANO", "BGM_AIRSHIP"]
 
+enum TileType{TILE, ENTITY, TERRAIN}
 
 var bgm_id := 0
+
+var entity_id_map := {}
 
 const MUSIC_TRACK_DIR := "res://Assets/Audio/BGM/"
 
@@ -79,6 +84,7 @@ var inspect_menu_open := false
 var current_inspect_tile: Node = null
 
 var selection_filter := ""
+var current_tile_type := TileType.TILE
 
 static var level_author := ""
 static var level_desc := ""
@@ -108,6 +114,7 @@ var undo_redo = UndoRedo.new()
 
 func _ready() -> void:
 	$TileMenu.hide()
+	entity_id_map = JSON.parse_string(FileAccess.open("res://EntityIDMap.json", FileAccess.READ).get_as_text())
 	DiscordManager.set_discord_status("In The Level Editor...")
 	Global.level_editor = self
 	playing_level = false
@@ -351,7 +358,13 @@ func handle_tile_cursor() -> void:
 			multi_select_start(tile_position)
 		elif Input.is_action_pressed("editor_select") == false:
 			multi_selecting = false
-			place_tile(tile_position)
+			match current_tile_type:
+				TileType.TILE:
+					place_tile(tile_position, current_tile_coords, [current_tile_source])
+				TileType.ENTITY:
+					place_tile(tile_position, current_entity_id)
+				TileType.TERRAIN:
+					place_tile(tile_position, current_terrain_id)
 			target_mouse_icon = (CURSOR_PENCIL)
 		
 	if Input.is_action_pressed("mb_right"):
@@ -379,6 +392,12 @@ func handle_tile_cursor() -> void:
 		if Input.is_action_just_pressed("pick_tile"):
 			pick_tile(tile_position)
 	
+		if Input.is_action_just_pressed("ui_undo"):
+			undo()
+		
+		if Input.is_action_just_pressed("ui_redo"):
+			redo()
+	
 	handle_multi_selecting(tile_position)
 	if old_index != selected_tile_index:
 		selected_tile_index = wrap(selected_tile_index, 0, tile_list.size())
@@ -399,8 +418,6 @@ func pick_tile(tile_position := Vector2i.ZERO) -> void:
 		current_tile_coords = tile_layer_nodes[current_layer].get_cell_atlas_coords(tile_position)
 	elif entity_tiles[current_layer].has(tile_position) and entity_tiles[current_layer][tile_position] is not Player:
 		mode = 1
-		current_entity_scene = load(entity_tiles[current_layer][tile_position].scene_file_path)
-		current_spawn_offset = entity_tiles[current_layer][tile_position].get_meta("tile_offset")
 
 func handle_inspection(tile_position := Vector2i.ZERO) -> void:
 	Input.set_custom_mouse_cursor(CURSOR_INSPECT)
@@ -453,21 +470,12 @@ func mass_place(top_corner := Vector2i.ZERO, select_start := Vector2i.ZERO, sele
 	for x in abs(select_end.x - select_start.x) + 1:
 		for y in abs(select_end.y - select_start.y) + 1:
 			var position = top_corner + Vector2i(x, y)
-			place_tile(position, false, mode, current_entity_scene, false)
-	undo_redo.create_action("Mass Place")
-	undo_redo.add_do_method(mass_place.bind(top_corner, select_start, select_end))
-	undo_redo.add_undo_method(mass_remove.bind(top_corner, select_start, select_end))
-	undo_redo.commit_action(false)
 
 func mass_remove(top_corner := Vector2i.ZERO, select_start := Vector2i.ZERO, select_end := Vector2i.ZERO) -> void:
 	for x in abs(select_end.x - select_start.x) + 1:
 		for y in abs(select_end.y - select_start.y) + 1:
 			var position = top_corner + Vector2i(x, y)
 			remove_tile(position)
-	undo_redo.create_action("Mass Remove")
-	undo_redo.add_do_method(mass_remove.bind(top_corner, select_start, select_end))
-	undo_redo.add_undo_method(mass_place.bind(top_corner, select_start, select_end))
-	undo_redo.commit_action(false)
 
 func show_scroll_preview() -> void:
 	$TileCursor/Previews.show()
@@ -497,13 +505,12 @@ func open_tile_selection_menu_scene_ref(selector: TilePropertySceneRef) -> void:
 	current_state = EditorState.MODIFYING_TILE
 
 func on_tile_selected(selector: EditorTileSelector) -> void:
-	mode = selector.type
+	current_tile_type = selector.type
 	current_entity_selector = selector
 	selected_tile_index = tile_list.find(selector)
-	print(selected_tile_index)
 	if selector.type == 1:
-		current_entity_scene = selector.entity_scene
-		current_spawn_offset = selector.tile_offset
+		current_entity_id = selector.entity_id
+		current_entity_scene = load(entity_id_map[current_entity_id][0])
 	elif selector.type == 2:
 		current_terrain_id = selector.terrain_id
 	else:
@@ -518,69 +525,56 @@ func reset_values_for_play() -> void:
 	Global.coins = 0
 	cleanup()
 
-func place_tile(tile_position := Vector2i.ZERO, use_copy := false, mode_to_use := mode, entity_scene: PackedScene = current_entity_scene, save_action := true) -> void:
+func place_tile(tile_position := Vector2i.ZERO, tile_to_place = null, info := [], save_action := true) -> void:
 	$TileCursor/Previews.hide()
-	if use_copy:
-		if copied_node != null:
-			mode_to_use = 1
-		elif copied_tile_terrain_id != -1:
-			mode_to_use = 2
-		else:
-			mode_to_use = 0
-	if mode_to_use == 0:
+	if tile_to_place is Vector2i:
 		var alt_tile := 0
 		if current_tile_flip.x != 0:
 			alt_tile += TileSetAtlasSource.TRANSFORM_FLIP_H
 		if current_tile_flip.y != 0:
 			alt_tile += TileSetAtlasSource.TRANSFORM_FLIP_V
+		var source = info[0]
+		var atlas = tile_to_place
+		if tile_layer_nodes[current_layer].get_cell_source_id(tile_position) == source and tile_layer_nodes[current_layer].get_cell_atlas_coords(tile_position) == atlas:
+			return
 		remove_tile(tile_position)
 		check_connect_boundary_tiles(tile_position, current_layer)
-		var source = current_tile_source
-		var atlas = current_tile_coords
-		if use_copy:
-			source = copied_tile_source_id
-			atlas = copied_tile_atlas_coors
 		tile_layer_nodes[current_layer].set_cell(tile_position, source, atlas, alt_tile)
-	elif mode_to_use == 2:
-		var terrain_id = current_terrain_id
-		if use_copy:
-			terrain_id = copied_tile_terrain_id
+	elif tile_to_place is int:
+		var terrain_id = tile_to_place
+		if BetterTerrain.get_cell(tile_layer_nodes[current_layer], tile_position) == terrain_id:
+			return
 		remove_tile(tile_position)
 		check_connect_boundary_tiles(tile_position, current_layer)
 		BetterTerrain.set_cell(tile_layer_nodes[current_layer], tile_position, terrain_id)
-	else:
+	elif tile_to_place is String:
 		var overlapping_tile = null
-		if entity_tiles[current_layer].get(tile_position) != null and current_entity_scene != null:
-			overlapping_tile = entity_tiles[current_layer][tile_position]
-			if overlapping_tile.scene_file_path == current_entity_scene.resource_path:
-				return
-		remove_tile(tile_position)
 		var node: Node = null
-		if use_copy and copied_node != null:
-			node = copied_node.duplicate()
-			var offset := Vector2i.ZERO
-			var off_string = EntityIDMapper.map[EntityIDMapper.get_map_id(copied_node.scene_file_path)][1].split(",")
-			offset = Vector2i(int(off_string[0]), int(off_string[1]))
-
-			node.global_position = (tile_position * 16) + (Vector2i(8, 8) + offset)
-		else:
-			node = entity_scene.instantiate()
-			if node.has_node("AmountLimiter"):
-				if node.get_node("AmountLimiter").run_check(get_tree()):
-					node.queue_free()
-					Global.log_error("Only one of these is allowed in a room at a time!", false)
-					return
-			node.global_position = (tile_position * 16) + (Vector2i(8, 8) + current_spawn_offset)
+		if entity_tiles[current_layer].get(tile_position) != null:
+			overlapping_tile = entity_tiles[current_layer][tile_position]
+			if overlapping_tile.get_meta("ID", "") == tile_to_place:
+				return
+			remove_tile(tile_position)
+		node = current_entity_scene.instantiate()
+		if node.has_node("AmountLimiter"):
+			if node.get_node("AmountLimiter").run_check(get_tree()):
+				node.queue_free()
+				Global.log_error("Only one of these is allowed in a room at a time!", false)
+				return
+		var spawn_offset := Vector2i.ZERO
+		var split = entity_id_map[tile_to_place][1].split(",")
+		spawn_offset = Vector2i(int(split[0]), int(split[1]))
+		node.global_position = (tile_position * 16) + (Vector2i(8, 8) + spawn_offset)
 		node.set_meta("tile_position", tile_position)
-		node.set_meta("tile_offset", current_spawn_offset)
+		node.set_meta("ID", tile_to_place)
 		entity_layer_nodes[current_layer].add_child(node)
 		node.reset_physics_interpolation()
 		entity_tiles[current_layer].set(tile_position, node)
 	
 	if save_action:
 		undo_redo.create_action("Place Tile")
-		undo_redo.add_do_method(place_tile.bind(tile_position, use_copy, entity_scene))
-		undo_redo.add_undo_method(remove_tile.bind(tile_position))
+		undo_redo.add_do_method(place_tile.bind(tile_position, tile_to_place, info, false))
+		undo_redo.add_undo_method(remove_tile.bind(tile_position, false))
 		undo_redo.commit_action(false)
 
 	BetterTerrain.update_terrain_cell(tile_layer_nodes[current_layer], tile_position, true)
@@ -601,12 +595,6 @@ func remove_tile(tile_position := Vector2i.ZERO, save_action := true) -> void:
 			return
 		entity_tiles[current_layer].get(tile_position).queue_free()
 	entity_tiles[current_layer].erase(tile_position)
-	
-	if save_action:
-		undo_redo.create_action("Remove Tile")
-		undo_redo.add_do_method(remove_tile.bind(tile_position, save_action))
-		undo_redo.add_undo_method(place_tile.bind(tile_position))
-		undo_redo.commit_action(false)
 	
 	BetterTerrain.update_terrain_cell(tile_layer_nodes[current_layer], tile_position, true)
 

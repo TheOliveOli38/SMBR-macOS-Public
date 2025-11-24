@@ -14,7 +14,7 @@ func open_tile_selection_menu() -> void:
 	open_tile_menu.emit(self)
 
 func set_scene(selector: EditorTileSelector) -> void:
-	scene = selector.entity_scene
+	scene = load(Global.level_editor.entity_id_map[selector.entity_id][0])
 	if replace_scenes.has(scene.resource_path):
 		scene = load(replace_scenes[scene.resource_path])
 	%SceneName.text = get_scene_path(scene)

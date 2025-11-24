@@ -10,8 +10,7 @@ extends Control
 @export var secondary_icon_region_override := Rect2(0, 0, 0, 0)
 
 @export_category("Entity")
-@export var entity_scene: PackedScene = null
-@export var tile_offset := Vector2i(0, 8)
+@export var entity_id := ""
 
 @export_category("Tile")
 @export var source_id := 0
@@ -28,6 +27,10 @@ signal right_clicked
 var mouse_hovered := false
 
 var disabled := false
+
+static var entity_id_map := {}
+
+const BASE64 = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/"
 
 func _ready() -> void:
 	set_icon_texture()
@@ -84,6 +87,29 @@ func set_mouse_hovered(hovered := false) -> void:
 func on_mouse_entered() -> void:
 	set_mouse_hovered(true)
 
+func get_id() -> void:
+	return
+	#if entity_id_map == {}:
+		#entity_id_map = JSON.parse_string(FileAccess.open("res://EntityIDMap.json", FileAccess.READ).get_as_text())
+	#for i in entity_id_map.keys():
+		#if entity_id_map[i][0] == entity_scene.resource_path:
+			#entity_id = i
+			#return
+	#
+	#var new_id = encode_to_base64_2char(entity_id_map.size())
+	#entity_id_map[new_id] = [entity_scene.resource_path, str(tile_offset.x) + "," + str(tile_offset.y)]
+	#FileAccess.open("res://EntityIDMap.json", FileAccess.WRITE).store_string(JSON.stringify(entity_id_map, "\t"))
+	#entity_id = new_id
+
+func encode_to_base64_2char(value: int) -> String:
+	if value < 0 or value >= 4096:
+		push_error("Value out of range for 2-char base64 encoding.")
+		return ""
+
+	var char1 = BASE64[(value >> 6) & 0b111111]  # Top 6 bits
+	var char2 = BASE64[value & 0b111111]         # Bottom 6 bits
+
+	return char1 + char2
 
 func on_mouse_exited() -> void:
 	set_mouse_hovered(false)
