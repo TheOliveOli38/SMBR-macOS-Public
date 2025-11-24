@@ -1,4 +1,4 @@
-[gd_scene load_steps=91 format=3 uid="uid://bgeh6ex0lbqfq"]
+[gd_scene load_steps=93 format=3 uid="uid://bgeh6ex0lbqfq"]
 
 [ext_resource type="Script" uid="uid://b3stoe2kp1nv1" path="res://Scripts/UI/Credits.gd" id="1_db8c5"]
 [ext_resource type="AudioStream" uid="uid://cdhsj02wqdt7y" path="res://Assets/Audio/BGM/Credits.mp3" id="1_k57dj"]
@@ -269,6 +269,10 @@ region = Rect2(16, 96, 16, 16)
 atlas = ExtResource("4_g2gtw")
 region = Rect2(96, 80, 16, 16)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_da2e7"]
+atlas = ExtResource("4_g2gtw")
+region = Rect2(32, 112, 16, 16)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_o2gfq"]
 atlas = ExtResource("4_g2gtw")
 region = Rect2(0, 0, 16, 16)
@@ -276,6 +280,10 @@ region = Rect2(0, 0, 16, 16)
 [sub_resource type="AtlasTexture" id="AtlasTexture_wkf2d"]
 atlas = ExtResource("4_g2gtw")
 region = Rect2(80, 48, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_edser"]
+atlas = ExtResource("4_g2gtw")
+region = Rect2(48, 112, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_i07m6"]
 atlas = ExtResource("4_g2gtw")
@@ -362,6 +370,7 @@ uppercase = true
 metadata/time = 2
 
 [node name="TileArtists" type="Control" parent="Labels" unique_id=694282089]
+visible = false
 layout_mode = 3
 anchors_preset = 5
 anchor_left = 0.5
@@ -2354,6 +2363,7 @@ anchor_right = 1.0
 offset_right = 16.0
 offset_bottom = 16.0
 grow_horizontal = 0
+texture = SubResource("AtlasTexture_da2e7")
 stretch_mode = 2
 script = ExtResource("11_d4vu4")
 metadata/_custom_type_script = "uid://ca3bew33g45eq"
@@ -2369,7 +2379,6 @@ script = ExtResource("11_d4vu4")
 metadata/_custom_type_script = "uid://ca3bew33g45eq"
 
 [node name="Github" type="Control" parent="Labels" unique_id=1714294472]
-visible = false
 layout_mode = 3
 anchors_preset = 5
 anchor_left = 0.5
@@ -2480,7 +2489,6 @@ text = "KirbyKid256"
 uppercase = true
 
 [node name="TextureRect" type="TextureRect" parent="Labels/Github/Label3/Label5" unique_id=850056292]
-visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 1.0
@@ -2488,7 +2496,7 @@ anchor_right = 1.0
 offset_right = 16.0
 offset_bottom = 16.0
 grow_horizontal = 0
-texture = SubResource("AtlasTexture_wkf2d")
+texture = SubResource("AtlasTexture_edser")
 stretch_mode = 2
 script = ExtResource("11_d4vu4")
 metadata/_custom_type_script = "uid://ca3bew33g45eq"
@@ -2540,9 +2548,9 @@ metadata/_custom_type_script = "uid://ca3bew33g45eq"
 
 [node name="Label8" type="Label" parent="Labels/Github/Label3" unique_id=486365366]
 layout_mode = 0
-offset_left = 128.0
+offset_left = 144.0
 offset_top = 56.0
-offset_right = 176.0
+offset_right = 192.0
 offset_bottom = 72.0
 text = "jeodc"
 uppercase = true

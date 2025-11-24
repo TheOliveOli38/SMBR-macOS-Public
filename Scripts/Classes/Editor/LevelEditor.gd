@@ -138,7 +138,8 @@ func _ready() -> void:
 
 
 func _physics_process(delta: float) -> void:
-	if current_state == EditorState.IDLE:
+	%TileCursor.hide()
+	if current_state == EditorState.IDLE and not cursor_in_toolbar:
 		handle_tile_cursor()
 	if [EditorState.IDLE, EditorState.TRACK_EDITING].has(current_state):
 		handle_camera(delta)
@@ -159,9 +160,9 @@ func _physics_process(delta: float) -> void:
 	handle_layers()
 
 func handle_hud() -> void:
-	$TileCursor.visible = current_state == EditorState.IDLE
 	$Info.visible = not playing_level
-	%Grid.visible = not playing_level
+	%Grid.modulate.a = int(not playing_level)
+	%Tools.visible = not playing_level
 
 func quit_editor() -> void:
 	%QuitDialog.show()
@@ -330,6 +331,7 @@ func close_save_menu() -> void:
 	current_state = EditorState.TILE_MENU
 
 func handle_tile_cursor() -> void:
+	%TileCursor.show()
 	var target_mouse_icon = null
 	var snapped_position = ((%TileCursor.get_global_mouse_position() - CURSOR_OFFSET).snapped(Vector2(16, 16))) + CURSOR_OFFSET
 	%TileCursor.global_position = (snapped_position)
@@ -714,3 +716,21 @@ func set_bg_value(value := 0, value_name := "") -> void:
 
 func on_tree_exited() -> void:
 	pass # Replace with function body.
+
+
+var cursor_in_toolbar := false
+
+func on_mouse_entered() -> void:
+	cursor_in_toolbar = true
+
+
+func on_mouse_exited() -> void:
+	cursor_in_toolbar = false
+
+func set_toolbar_tooltip(text := "") -> void:
+	%ToolsName.show()
+	%ToolsName.text = text
+
+func clear_toolbar_tooltip(text := "") -> void:
+	if %ToolsName.text == text:
+		%ToolsName.hide()

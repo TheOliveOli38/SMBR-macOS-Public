@@ -1,7 +1,8 @@
-[gd_scene load_steps=351 format=3 uid="uid://gbcmqonky63j"]
+[gd_scene load_steps=366 format=3 uid="uid://gbcmqonky63j"]
 
 [ext_resource type="Script" uid="uid://c2lnc7vnq3xth" path="res://Scripts/Classes/Editor/LevelEditor.gd" id="1_0qbyu"]
 [ext_resource type="Texture2D" uid="uid://cbha2l6hg1kfo" path="res://Assets/Sprites/UI/EditorGrid.png" id="2_8q7yr"]
+[ext_resource type="Texture2D" uid="uid://bwldw4ekgbwa7" path="res://Assets/Sprites/UI/EditorShortcutIcons.png" id="4_thawd"]
 [ext_resource type="Texture2D" uid="uid://bxciugu0dg7e8" path="res://Assets/Sprites/Editor/ChunkDisplay.png" id="5_o024b"]
 [ext_resource type="PackedScene" uid="uid://kag5i607liua" path="res://Scenes/Prefabs/UI/TileModifierMenu.tscn" id="8_bovjk"]
 [ext_resource type="PackedScene" uid="uid://knfs0rx7n1ry" path="res://Scenes/Prefabs/Editor/EditorTileSelector.tscn" id="8_wkmjk"]
@@ -308,6 +309,60 @@
 [ext_resource type="JSON" path="res://Assets/Sprites/Items/50Coin.json" id="279_i4hak"]
 [ext_resource type="Script" uid="uid://b77kpu65i243a" path="res://Scripts/Parts/LevelSaver.gd" id="280_75p8d"]
 [ext_resource type="PackedScene" uid="uid://scmc7t038jl4" path="res://Scenes/Prefabs/Entities/Items/50Coin.tscn" id="280_jdin3"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i4hak"]
+atlas = ExtResource("4_thawd")
+region = Rect2(0, 0, 12, 12)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_thawd"]
+texture = ExtResource("4_thawd")
+region_rect = Rect2(12, 12, 12, 12)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_i4hak"]
+texture = ExtResource("4_thawd")
+region_rect = Rect2(12, 0, 12, 12)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jdin3"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_jdin3"]
+texture = ExtResource("4_thawd")
+region_rect = Rect2(24, 12, 12, 12)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_g6h01"]
+texture = ExtResource("4_thawd")
+region_rect = Rect2(24, 0, 12, 12)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_8e1u8"]
+texture = ExtResource("4_thawd")
+region_rect = Rect2(36, 12, 12, 12)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_xw16o"]
+texture = ExtResource("4_thawd")
+region_rect = Rect2(36, 0, 12, 12)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ittpp"]
+texture = ExtResource("4_thawd")
+region_rect = Rect2(48, 12, 12, 12)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_5xpwl"]
+texture = ExtResource("4_thawd")
+region_rect = Rect2(48, 0, 12, 12)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_23rw0"]
+texture = ExtResource("4_thawd")
+region_rect = Rect2(60, 12, 12, 12)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_f6fd5"]
+texture = ExtResource("4_thawd")
+region_rect = Rect2(60, 0, 12, 12)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_tsu3a"]
+texture = ExtResource("4_thawd")
+region_rect = Rect2(72, 12, 12, 12)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_h8f07"]
+texture = ExtResource("4_thawd")
+region_rect = Rect2(72, 0, 12, 12)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5mw2n"]
 atlas = ExtResource("12_i2jbr")
@@ -639,7 +694,129 @@ z_index = 4096
 z_as_relative = false
 theme_override_styles/panel = ExtResource("139_ydoon")
 
+[node name="Tools" type="PanelContainer" parent="CanvasLayer" unique_id=1977421295]
+unique_name_in_owner = true
+offset_left = 3.0
+offset_top = 3.0
+offset_right = 23.0
+offset_bottom = 23.0
+mouse_filter = 1
+theme_override_styles/panel = ExtResource("139_ydoon")
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Tools" unique_id=761964944]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = -8
+theme_override_constants/margin_top = -8
+theme_override_constants/margin_right = -8
+theme_override_constants/margin_bottom = -8
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Tools/MarginContainer" unique_id=62736358]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 0
+
+[node name="Button" type="Button" parent="CanvasLayer/Tools/MarginContainer/HBoxContainer" unique_id=1404220159]
+layout_mode = 2
+mouse_filter = 1
+mouse_default_cursor_shape = 2
+toggle_mode = true
+icon = SubResource("AtlasTexture_i4hak")
+flat = true
+
+[node name="TheRest" type="HBoxContainer" parent="CanvasLayer/Tools/MarginContainer/HBoxContainer" unique_id=1760480136]
+visible = false
+layout_mode = 2
+mouse_filter = 2
+
+[node name="Undo" type="Button" parent="CanvasLayer/Tools/MarginContainer/HBoxContainer/TheRest" unique_id=1262735947]
+custom_minimum_size = Vector2(12, 12)
+layout_mode = 2
+size_flags_vertical = 4
+mouse_filter = 1
+theme_override_styles/normal = SubResource("StyleBoxTexture_thawd")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_i4hak")
+theme_override_styles/hover = SubResource("StyleBoxTexture_i4hak")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_jdin3")
+
+[node name="Redo" type="Button" parent="CanvasLayer/Tools/MarginContainer/HBoxContainer/TheRest" unique_id=523147498]
+custom_minimum_size = Vector2(12, 12)
+layout_mode = 2
+size_flags_vertical = 4
+mouse_filter = 1
+theme_override_styles/normal = SubResource("StyleBoxTexture_jdin3")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_g6h01")
+theme_override_styles/hover = SubResource("StyleBoxTexture_g6h01")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_jdin3")
+
+[node name="ShowTrail" type="Button" parent="CanvasLayer/Tools/MarginContainer/HBoxContainer/TheRest" unique_id=571477578]
+custom_minimum_size = Vector2(12, 12)
+layout_mode = 2
+size_flags_vertical = 4
+mouse_filter = 1
+theme_override_styles/normal = SubResource("StyleBoxTexture_8e1u8")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_xw16o")
+theme_override_styles/hover = SubResource("StyleBoxTexture_xw16o")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_jdin3")
+toggle_mode = true
+
+[node name="ShowGrid" type="Button" parent="CanvasLayer/Tools/MarginContainer/HBoxContainer/TheRest" unique_id=1217643034]
+custom_minimum_size = Vector2(12, 12)
+layout_mode = 2
+size_flags_vertical = 4
+mouse_filter = 1
+theme_override_styles/normal = SubResource("StyleBoxTexture_ittpp")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_5xpwl")
+theme_override_styles/hover = SubResource("StyleBoxTexture_5xpwl")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_jdin3")
+toggle_mode = true
+button_pressed = true
+
+[node name="Snapshot" type="Button" parent="CanvasLayer/Tools/MarginContainer/HBoxContainer/TheRest" unique_id=5428952]
+custom_minimum_size = Vector2(12, 12)
+layout_mode = 2
+size_flags_vertical = 4
+mouse_filter = 1
+theme_override_styles/normal = SubResource("StyleBoxTexture_23rw0")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_f6fd5")
+theme_override_styles/hover = SubResource("StyleBoxTexture_f6fd5")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_jdin3")
+
+[node name="ResetLevel" type="Button" parent="CanvasLayer/Tools/MarginContainer/HBoxContainer/TheRest" unique_id=253086116]
+custom_minimum_size = Vector2(12, 12)
+layout_mode = 2
+size_flags_vertical = 4
+mouse_filter = 1
+theme_override_styles/normal = SubResource("StyleBoxTexture_tsu3a")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_h8f07")
+theme_override_styles/hover = SubResource("StyleBoxTexture_h8f07")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_jdin3")
+
+[node name="Control" type="Control" parent="CanvasLayer/Tools/MarginContainer/HBoxContainer/TheRest" unique_id=2113839306]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="ToolsName" type="Label" parent="CanvasLayer" unique_id=2064910133]
+unique_name_in_owner = true
+visible = false
+offset_left = 3.0
+offset_top = 27.0
+offset_right = 4.0
+offset_bottom = 43.0
+uppercase = true
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/ToolsName" unique_id=830651063]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
 [node name="TileMenu" type="CanvasLayer" parent="." unique_id=683279179]
+visible = false
 
 [node name="Panel" type="ColorRect" parent="TileMenu" unique_id=625984302]
 texture_filter = 1
@@ -4977,6 +5154,8 @@ stretch_mode = 3
 
 [node name="10Coin" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Items/MarginContainer/GridContainer/SPCoins" unique_id=638113197 groups=["Selectors"] instance=ExtResource("8_wkmjk")]
 layout_mode = 0
+offset_right = 16.0
+offset_bottom = 16.0
 tile_name = "ITEM_10COIN"
 type = 1
 icon_texture = ExtResource("275_dxhti")
@@ -4987,6 +5166,8 @@ metadata/can_be_stored = true
 
 [node name="30Coin" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Items/MarginContainer/GridContainer/SPCoins" unique_id=545896495 groups=["Selectors"] instance=ExtResource("8_wkmjk")]
 layout_mode = 0
+offset_right = 16.0
+offset_bottom = 16.0
 tile_name = "ITEM_30COIN"
 type = 1
 icon_texture = ExtResource("277_ggvb3")
@@ -4997,6 +5178,8 @@ metadata/can_be_stored = true
 
 [node name="50Coin" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Items/MarginContainer/GridContainer/SPCoins" unique_id=706535261 groups=["Selectors"] instance=ExtResource("8_wkmjk")]
 layout_mode = 0
+offset_right = 16.0
+offset_bottom = 16.0
 tile_name = "ITEM_50COIN"
 type = 1
 icon_texture = ExtResource("279_i4hak")
@@ -5497,6 +5680,7 @@ visible = false
 visible = false
 
 [node name="Info" type="CanvasLayer" parent="." unique_id=1889936080]
+visible = false
 
 [node name="Label" type="Label" parent="Info" unique_id=479473848]
 anchors_preset = 2
@@ -5805,7 +5989,6 @@ metadata/_custom_type_script = "uid://dt2p68xl462v2"
 
 [node name="Grid" type="Parallax2D" parent="." unique_id=466111830]
 unique_name_in_owner = true
-visible = false
 visibility_layer = 2
 z_index = 4096
 z_as_relative = false
@@ -5816,6 +5999,7 @@ repeat_times = 8
 modulate = Color(0.356863, 0.356863, 0.356863, 0.407843)
 offset_right = 512.0
 offset_bottom = 512.0
+mouse_filter = 2
 texture = ExtResource("2_8q7yr")
 stretch_mode = 1
 metadata/_edit_use_anchors_ = true
@@ -5833,10 +6017,27 @@ repeat_times = 8
 [node name="TextureRect" type="TextureRect" parent="Grid/ChunkGrid" unique_id=675676350]
 offset_right = 512.0
 offset_bottom = 512.0
+mouse_filter = 2
 texture = ExtResource("5_o024b")
 metadata/_edit_use_anchors_ = true
 
 [connection signal="open_scene_ref_tile_menu" from="CanvasLayer/TileModifierMenu" to="." method="open_tile_selection_menu_scene_ref"]
+[connection signal="mouse_entered" from="CanvasLayer/Tools" to="." method="on_mouse_entered"]
+[connection signal="mouse_exited" from="CanvasLayer/Tools" to="." method="on_mouse_exited"]
+[connection signal="toggled" from="CanvasLayer/Tools/MarginContainer/HBoxContainer/Button" to="CanvasLayer/Tools/MarginContainer/HBoxContainer/TheRest" method="set_visible"]
+[connection signal="mouse_entered" from="CanvasLayer/Tools/MarginContainer/HBoxContainer/TheRest/Undo" to="." method="set_toolbar_tooltip" binds= ["Undo"]]
+[connection signal="mouse_exited" from="CanvasLayer/Tools/MarginContainer/HBoxContainer/TheRest/Undo" to="." method="clear_toolbar_tooltip" binds= ["Undo"]]
+[connection signal="mouse_entered" from="CanvasLayer/Tools/MarginContainer/HBoxContainer/TheRest/Redo" to="." method="set_toolbar_tooltip" binds= ["Redo"]]
+[connection signal="mouse_exited" from="CanvasLayer/Tools/MarginContainer/HBoxContainer/TheRest/Redo" to="." method="clear_toolbar_tooltip" binds= ["Redo"]]
+[connection signal="mouse_entered" from="CanvasLayer/Tools/MarginContainer/HBoxContainer/TheRest/ShowTrail" to="." method="set_toolbar_tooltip" binds= ["Show Trail"]]
+[connection signal="mouse_exited" from="CanvasLayer/Tools/MarginContainer/HBoxContainer/TheRest/ShowTrail" to="." method="clear_toolbar_tooltip" binds= ["Show Trail"]]
+[connection signal="mouse_entered" from="CanvasLayer/Tools/MarginContainer/HBoxContainer/TheRest/ShowGrid" to="." method="set_toolbar_tooltip" binds= ["Show Grid"]]
+[connection signal="mouse_exited" from="CanvasLayer/Tools/MarginContainer/HBoxContainer/TheRest/ShowGrid" to="." method="clear_toolbar_tooltip" binds= ["Show Grid"]]
+[connection signal="toggled" from="CanvasLayer/Tools/MarginContainer/HBoxContainer/TheRest/ShowGrid" to="Grid" method="set_visible"]
+[connection signal="mouse_entered" from="CanvasLayer/Tools/MarginContainer/HBoxContainer/TheRest/Snapshot" to="." method="set_toolbar_tooltip" binds= ["Snapshot"]]
+[connection signal="mouse_exited" from="CanvasLayer/Tools/MarginContainer/HBoxContainer/TheRest/Snapshot" to="." method="clear_toolbar_tooltip" binds= ["Snapshot"]]
+[connection signal="mouse_entered" from="CanvasLayer/Tools/MarginContainer/HBoxContainer/TheRest/ResetLevel" to="." method="set_toolbar_tooltip" binds= ["Reset Level"]]
+[connection signal="mouse_exited" from="CanvasLayer/Tools/MarginContainer/HBoxContainer/TheRest/ResetLevel" to="." method="clear_toolbar_tooltip" binds= ["Reset Level"]]
 [connection signal="pressed" from="TileMenu/MarginContainer/VBoxContainer/TabButtons/Bindings" to="." method="open_bindings_menu"]
 [connection signal="pressed" from="TileMenu/MarginContainer/VBoxContainer/TabButtons/Save" to="." method="open_save_dialog"]
 [connection signal="pressed" from="TileMenu/MarginContainer/VBoxContainer/TabButtons/Exit" to="." method="quit_editor"]
