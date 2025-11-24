@@ -143,6 +143,7 @@ func _ready() -> void:
 	%LevelAuthor.text = level_author
 	%Description.text = level_desc
 
+var last_recorded_frame := Vector2.ZERO
 
 func _physics_process(delta: float) -> void:
 	%TileCursor.hide()
@@ -164,7 +165,18 @@ func _physics_process(delta: float) -> void:
 			stop_testing()
 		else:
 			play_level()
+	handle_player_trail()
 	handle_layers()
+
+func handle_player_trail() -> void:
+	$PlayerTrail.modulate.a = int(current_state != EditorState.PLAYTESTING)
+	if current_state == EditorState.PLAYTESTING:
+		var target_player = get_tree().get_first_node_in_group("Players")
+		if target_player == null:
+			return
+		var distance = last_placed_position.distance_to(target_player.global_position)
+		if distance >= 32:
+			record_player_frame()
 
 func handle_hud() -> void:
 	$Info.visible = not playing_level
@@ -264,6 +276,7 @@ func update_music() -> void:
 		level.music = null
 
 func play_level() -> void:
+	clear_trail()
 	$TileMenu.hide()
 	menu_open = false
 	update_music()
@@ -275,6 +288,7 @@ func play_level() -> void:
 	current_state = EditorState.PLAYTESTING
 	level.process_mode = Node.PROCESS_MODE_PAUSABLE
 	handle_hud()
+	$TrailTimer.start()
 
 func return_to_editor() -> void:
 	AudioManager.stop_all_music()
@@ -719,6 +733,7 @@ func low_gravity_toggled(new_value := false) -> void:
 		i.low_gravity = new_value
 
 func transition_to_sublevel(sub_lvl_idx := 0) -> void:
+	clear_trail()
 	undo_redo.clear_history()
 	Global.can_pause = false
 	if Global.level_editor_is_playtesting():
@@ -834,3 +849,24 @@ func set_toolbar_tooltip(text := "") -> void:
 func clear_toolbar_tooltip(text := "") -> void:
 	if %ToolsName.text == text:
 		%ToolsName.hide()
+
+func clear_trail() -> void:
+	for i in $PlayerTrail.get_children():
+		i.queue_free()
+
+func record_player_frame () -> void:
+	var target_player = get_tree().get_first_node_in_group("Players")
+	if target_player == null:
+		return
+	last_placed_position = target_player.global_position
+	var frame = target_player.sprite.sprite_frames.get_frame_texture(target_player.sprite.animation, target_player.sprite.frame)
+	var sprite = Sprite2D.new()
+	sprite.texture = frame
+	sprite.global_transform = target_player.sprite.global_transform
+	sprite.modulate.a = 0.5
+	$PlayerTrail.add_child(sprite)
+
+func clear_level() -> void:
+	sub_areas = [null, null, null, null, null]
+	level_file = BLANK_FILE.duplicate_deep()
+	load_level(0)

@@ -612,6 +612,7 @@ theme_override_styles/pressed = SubResource("StyleBoxTexture_xw16o")
 theme_override_styles/hover = SubResource("StyleBoxTexture_xw16o")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_jdin3")
 toggle_mode = true
+button_pressed = true
 
 [node name="ShowGrid" type="Button" parent="CanvasLayer/Tools/MarginContainer/HBoxContainer/TheRest" unique_id=1217643034]
 custom_minimum_size = Vector2(12, 12)
@@ -651,6 +652,7 @@ mouse_filter = 2
 
 [node name="ToolsName" type="Label" parent="CanvasLayer" unique_id=2064910133]
 unique_name_in_owner = true
+visible = false
 offset_left = 3.0
 offset_top = 27.0
 offset_right = 4.0
@@ -666,6 +668,52 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
+
+[node name="DeletionWarning" type="PanelContainer" parent="CanvasLayer" unique_id=142209284]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -79.0
+offset_top = -62.0
+offset_right = 79.0
+offset_bottom = 62.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = ExtResource("139_ydoon")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/DeletionWarning" unique_id=1663373953]
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="CanvasLayer/DeletionWarning/VBoxContainer" unique_id=1415277210]
+modulate = Color(1, 0, 0, 1)
+layout_mode = 2
+text = "WARNING!!!"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/DeletionWarning/VBoxContainer" unique_id=1594128819]
+layout_mode = 2
+text = "THIS WILL PERMANENTLY WIPE YOUR LEVEL!
+
+ARE YOU SURE YOU WANT TO PROCEED?"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/DeletionWarning/VBoxContainer" unique_id=444943834]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="CanvasLayer/DeletionWarning/VBoxContainer/HBoxContainer" unique_id=53645459]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "YES"
+
+[node name="Button2" type="Button" parent="CanvasLayer/DeletionWarning/VBoxContainer/HBoxContainer" unique_id=1768782632]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "NO"
 
 [node name="TileMenu" type="CanvasLayer" parent="." unique_id=683279179]
 visible = false
@@ -1011,6 +1059,7 @@ tile_name = "TILE_DECO"
 type = 1
 icon_texture = ExtResource("10_vhlvp")
 icon_region_override = Rect2(64, 32, 16, 16)
+entity_id = "AA"
 tile_coords = Vector2i(4, 2)
 
 [node name="IceBlock" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Tiles/MarginContainer/GridContainer" unique_id=1116472353 groups=["Selectors"] instance=ExtResource("8_wkmjk")]
@@ -1019,6 +1068,7 @@ tile_name = "TILE_ICE"
 type = 1
 icon_texture = ExtResource("22_cnvg7")
 icon_region_override = Rect2(0, 0, 16, 16)
+entity_id = "Ce"
 tile_coords = Vector2i(4, 2)
 
 [node name="EmptyBlock" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Tiles/MarginContainer/GridContainer" unique_id=596787586 groups=["Selectors"] instance=ExtResource("8_wkmjk")]
@@ -1026,6 +1076,7 @@ layout_mode = 2
 tile_name = "TILE_EMPTY"
 type = 1
 icon_texture = ExtResource("22_ulh3l")
+entity_id = "Bo"
 
 [node name="TreeTop" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Tiles/MarginContainer/GridContainer" unique_id=1721671802 groups=["Selectors"] instance=ExtResource("8_wkmjk")]
 layout_mode = 2
@@ -5762,13 +5813,38 @@ mouse_filter = 2
 texture = ExtResource("5_o024b")
 metadata/_edit_use_anchors_ = true
 
+[node name="TrailTimer" type="Timer" parent="." unique_id=166762357]
+process_callback = 0
+wait_time = 0.25
+
+[node name="PlayerTrail" type="Node2D" parent="." unique_id=2144528200]
+
 [connection signal="open_scene_ref_tile_menu" from="CanvasLayer/TileModifierMenu" to="." method="open_tile_selection_menu_scene_ref"]
 [connection signal="mouse_entered" from="CanvasLayer/Tools" to="." method="on_mouse_entered"]
 [connection signal="mouse_exited" from="CanvasLayer/Tools" to="." method="on_mouse_exited"]
 [connection signal="toggled" from="CanvasLayer/Tools/MarginContainer/HBoxContainer/Button" to="CanvasLayer/Tools/MarginContainer/HBoxContainer/TheRest" method="set_visible"]
+[connection signal="mouse_entered" from="CanvasLayer/Tools/MarginContainer/HBoxContainer/TheRest/Undo" to="." method="set_toolbar_tooltip" binds= ["Undo"]]
+[connection signal="mouse_exited" from="CanvasLayer/Tools/MarginContainer/HBoxContainer/TheRest/Undo" to="." method="clear_toolbar_tooltip" binds= ["Undo"]]
 [connection signal="pressed" from="CanvasLayer/Tools/MarginContainer/HBoxContainer/TheRest/Undo" to="." method="undo"]
+[connection signal="mouse_entered" from="CanvasLayer/Tools/MarginContainer/HBoxContainer/TheRest/Redo" to="." method="set_toolbar_tooltip" binds= ["Redo"]]
+[connection signal="mouse_exited" from="CanvasLayer/Tools/MarginContainer/HBoxContainer/TheRest/Redo" to="." method="clear_toolbar_tooltip" binds= ["Redo"]]
 [connection signal="pressed" from="CanvasLayer/Tools/MarginContainer/HBoxContainer/TheRest/Redo" to="." method="redo"]
+[connection signal="mouse_entered" from="CanvasLayer/Tools/MarginContainer/HBoxContainer/TheRest/ShowTrail" to="." method="set_toolbar_tooltip" binds= ["Toggle Trail"]]
+[connection signal="mouse_exited" from="CanvasLayer/Tools/MarginContainer/HBoxContainer/TheRest/ShowTrail" to="." method="clear_toolbar_tooltip" binds= ["Toggle Trail"]]
+[connection signal="toggled" from="CanvasLayer/Tools/MarginContainer/HBoxContainer/TheRest/ShowTrail" to="PlayerTrail" method="set_visible"]
+[connection signal="mouse_entered" from="CanvasLayer/Tools/MarginContainer/HBoxContainer/TheRest/ShowGrid" to="." method="set_toolbar_tooltip" binds= ["Toggle Grid"]]
+[connection signal="mouse_exited" from="CanvasLayer/Tools/MarginContainer/HBoxContainer/TheRest/ShowGrid" to="." method="clear_toolbar_tooltip" binds= ["Toggle Grid"]]
 [connection signal="toggled" from="CanvasLayer/Tools/MarginContainer/HBoxContainer/TheRest/ShowGrid" to="Grid" method="set_visible"]
+[connection signal="mouse_entered" from="CanvasLayer/Tools/MarginContainer/HBoxContainer/TheRest/Snapshot" to="." method="set_toolbar_tooltip" binds= ["Screenshot"]]
+[connection signal="mouse_exited" from="CanvasLayer/Tools/MarginContainer/HBoxContainer/TheRest/Snapshot" to="." method="clear_toolbar_tooltip" binds= ["Screenshot"]]
+[connection signal="mouse_entered" from="CanvasLayer/Tools/MarginContainer/HBoxContainer/TheRest/ResetLevel" to="." method="set_toolbar_tooltip" binds= ["Reset Level"]]
+[connection signal="mouse_exited" from="CanvasLayer/Tools/MarginContainer/HBoxContainer/TheRest/ResetLevel" to="." method="clear_toolbar_tooltip" binds= ["Reset Level"]]
+[connection signal="pressed" from="CanvasLayer/Tools/MarginContainer/HBoxContainer/TheRest/ResetLevel" to="CanvasLayer/DeletionWarning" method="show"]
+[connection signal="mouse_entered" from="CanvasLayer/DeletionWarning" to="." method="on_mouse_entered"]
+[connection signal="mouse_exited" from="CanvasLayer/DeletionWarning" to="." method="on_mouse_exited"]
+[connection signal="pressed" from="CanvasLayer/DeletionWarning/VBoxContainer/HBoxContainer/Button" to="." method="clear_level"]
+[connection signal="pressed" from="CanvasLayer/DeletionWarning/VBoxContainer/HBoxContainer/Button" to="CanvasLayer/DeletionWarning" method="hide"]
+[connection signal="pressed" from="CanvasLayer/DeletionWarning/VBoxContainer/HBoxContainer/Button2" to="CanvasLayer/DeletionWarning" method="hide"]
 [connection signal="pressed" from="TileMenu/MarginContainer/VBoxContainer/TabButtons/Bindings" to="." method="open_bindings_menu"]
 [connection signal="pressed" from="TileMenu/MarginContainer/VBoxContainer/TabButtons/Save" to="." method="open_save_dialog"]
 [connection signal="pressed" from="TileMenu/MarginContainer/VBoxContainer/TabButtons/Exit" to="." method="quit_editor"]

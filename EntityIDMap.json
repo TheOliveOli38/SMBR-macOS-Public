@@ -533,7 +533,7 @@
 	],
 	"CF": [
 		"res://Scenes/Prefabs/Blocks/FrozenMuncher.tscn",
-		"0,8"
+		"0,0"
 	],
 	"CG": [
 		"res://Scenes/Prefabs/Entities/Enemies/Wiggler.tscn",
@@ -545,11 +545,11 @@
 	],
 	"CI": [
 		"res://Scenes/Prefabs/Entities/Enemies/AngrySun.tscn",
-		"0,8"
+		"0,0"
 	],
 	"CJ": [
 		"res://Scenes/Prefabs/Entities/Enemies/HappyMoon.tscn",
-		"0,8"
+		"0,0"
 	],
 	"CK": [
 		"res://Scenes/Prefabs/Entities/Enemies/SpikeTop.tscn",
@@ -557,55 +557,55 @@
 	],
 	"CL": [
 		"res://Scenes/Prefabs/Blocks/FrozenBrickBlock.tscn",
-		"0,8"
+		"0,0"
 	],
 	"CM": [
 		"res://Scenes/Prefabs/Blocks/FrozenCoin.tscn",
-		"0,8"
+		"0,0"
 	],
 	"CN": [
 		"res://Scenes/Prefabs/Blocks/FrozenTurnBlock.tscn",
-		"0,8"
+		"0,0"
 	],
 	"CO": [
 		"res://Scenes/Prefabs/Blocks/BubbleNoteBlock.tscn",
-		"0,8"
+		"0,0"
 	],
 	"CP": [
 		"res://Scenes/Prefabs/Entities/Objects/Crate.tscn",
-		"0,8"
+		"0,0"
 	],
 	"CQ": [
 		"res://Scenes/Prefabs/LevelObjects/SecondCamera.tscn",
-		"0,8"
+		"0,0"
 	],
 	"CR": [
 		"res://Scenes/Prefabs/LevelObjects/TextLabel.tscn",
-		"0,8"
+		"0,0"
 	],
 	"CS": [
 		"res://Scenes/Prefabs/LevelObjects/CoinHeavenWarpPoint.tscn",
-		"0,8"
+		"0,0"
 	],
 	"CT": [
 		"res://Scenes/Prefabs/LevelObjects/DarknessEffect.tscn",
-		"0,8"
+		"0,0"
 	],
 	"CU": [
 		"res://Scenes/Prefabs/LevelObjects/PitWarp.tscn",
-		"0,8"
+		"0,0"
 	],
 	"CV": [
 		"res://Scenes/Prefabs/LevelObjects/PitWarpReturn.tscn",
-		"0,8"
+		"0,0"
 	],
 	"CW": [
 		"res://Scenes/Prefabs/LevelObjects/OneWayPanel.tscn",
-		"0,8"
+		"8,8"
 	],
 	"CX": [
 		"res://Scenes/Prefabs/LevelObjects/SmallOneWayPlatform.tscn",
-		"0,8"
+		"0,0"
 	],
 	"CY": [
 		"res://Scenes/Prefabs/Entities/Items/SuperballFlower.tscn",
@@ -613,15 +613,15 @@
 	],
 	"CZ": [
 		"res://Scenes/Prefabs/Entities/Items/10Coin.tscn",
-		"0,8"
+		"8,8"
 	],
 	"Ca": [
 		"res://Scenes/Prefabs/Entities/Items/30Coin.tscn",
-		"0,8"
+		"8,8"
 	],
 	"Cb": [
 		"res://Scenes/Prefabs/Entities/Items/50Coin.tscn",
-		"0,8"
+		"8,8"
 	],
 	"Cc": [
 		"res://Scenes/Prefabs/Entities/Items/Vine.tscn",
@@ -630,5 +630,9 @@
 	"Cd": [
 		"res://Scenes/Prefabs/LevelObjects/WarpVine.tscn",
 		"0,8"
+	],
+	"Ce": [
+		"res://Scenes/Prefabs/Blocks/IceBlock.tscn",
+		"0,0"
 	]
 }
