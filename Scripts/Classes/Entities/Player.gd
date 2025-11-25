@@ -1090,6 +1090,7 @@ func die(pit: bool = false, type: String = "") -> void:
 	is_dead = true
 	visible = not pit
 	dead.emit()
+	AudioManager.play_sfx("die_sting", global_position)
 	Global.p_switch_active = false
 	Global.p_switch_timer = 0
 	stop_all_timers()
@@ -1100,11 +1101,13 @@ func die(pit: bool = false, type: String = "") -> void:
 	get_tree().paused = true
 	Level.can_set_time = true
 	Level.first_load = true
+	AudioManager.set_music_override(AudioManager.MUSIC_OVERRIDES.SILENCE, 999, false)
+	await get_tree().create_timer(physics_params("DEATH_HANG_TIMER", DEATH_PARAMETERS)).timeout
 	if Global.current_game_mode != Global.GameMode.BOO_RACE:
-		AudioManager.set_music_override(AudioManager.MUSIC_OVERRIDES.DEATH, 999, false)
+		AudioManager.set_music_override(AudioManager.MUSIC_OVERRIDES.DEATH, 9999, false)
 		await get_tree().create_timer(3).timeout
 	else:
-		AudioManager.set_music_override(AudioManager.MUSIC_OVERRIDES.RACE_LOSE, 999, false)
+		AudioManager.set_music_override(AudioManager.MUSIC_OVERRIDES.RACE_LOSE, 9999, false)
 		await get_tree().create_timer(5).timeout
 
 	death_load()

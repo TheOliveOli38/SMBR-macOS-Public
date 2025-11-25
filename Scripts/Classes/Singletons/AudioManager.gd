@@ -17,7 +17,11 @@ const DEFAULT_SFX_LIBRARY := {
 	"kick": ("res://Assets/Audio/SFX/Kick.wav"),
 	"fireball": ("res://Assets/Audio/SFX/Fireball.wav"),
 	"1_up": ("res://Assets/Audio/SFX/1up.wav"),
+	"die_sting": ("res://Assets/Audio/SFX/DieSting.wav"),
 	"cannon": ("res://Assets/Audio/SFX/Cannon.wav"),
+	"explode": ("res://Assets/Audio/SFX/Cannon.wav"),
+	"pswitch_pressed": ("res://Assets/Audio/SFX/Cannon.wav"),
+	"thwomp_land": ("res://Assets/Audio/SFX/Cannon.wav"),
 	"checkpoint": ("res://Assets/Audio/SFX/Checkpoint.wav"),
 	"flag_slide": ("res://Assets/Audio/SFX/FlagSlide.json"),
 	"magic": ("res://Assets/Audio/SFX/Magic.wav"),
@@ -178,7 +182,7 @@ func set_music_override(stream: MUSIC_OVERRIDES, priority := 0, stop_on_finish :
 	else:
 		audio_override_queue.append(stream)
 	current_music_override = stream
-	print(OVERRIDE_STREAMS[stream])
+	#print(OVERRIDE_STREAMS[stream])
 	music_override_player.stream = create_stream_from_json(OVERRIDE_STREAMS[stream])
 	music_override_player.bus = "Music" if stream != MUSIC_OVERRIDES.FLAG_POLE else "SFX"
 	music_override_player.play()
