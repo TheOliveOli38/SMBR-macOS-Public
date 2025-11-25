@@ -230,7 +230,7 @@
 				
 				"WALK_SFX": "walk",
 				"RUN_SFX": "run",
-				"SKID_SFX": "big_skid",
+				"SKID_SFX": "skid",
 				"JUMP_SFX": "big_jump",
 				"TRAMPOLINE_SFX": "big_trampoline",
 				"TRAMPOLINE_USED_SFX": "big_used_trampoline",
@@ -240,7 +240,6 @@
 			"Small": {
 				"WING_OFFSET": [0.0, 10.0],
 				"RAINBOW_POWERUP_FX": false,
-				"SKID_SFX": "small_skid",
 				"JUMP_SFX": "small_jump",
 				"TRAMPOLINE_SFX": "small_trampoline",
 				"TRAMPOLINE_USED_SFX": "small_used_trampoline",

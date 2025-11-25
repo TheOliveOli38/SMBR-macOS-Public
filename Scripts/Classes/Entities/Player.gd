@@ -292,7 +292,7 @@ extends CharacterBody2D
 		
 		"WALK_SFX": "walk",                # Determines which sound effect to play when walking.
 		"RUN_SFX": "run",                  # Determines which sound effect to play when running.
-		"SKID_SFX": "big_skid",            # Determines which sound effect to play when skidding.
+		"SKID_SFX": "skid",            # Determines which sound effect to play when skidding.
 		"JUMP_SFX": "big_jump",            # Determines which sound effect to play when jumping.
 		"TRAMPOLINE_SFX": "big_trampoline",          # Determines which sound effect to play when bouncing on a trampoline.
 		"TRAMPOLINE_USE_SFX": "big_used_trampoline", # Determines which sound effect to play when actively using a trampoline.
@@ -302,7 +302,6 @@ extends CharacterBody2D
 	"Small": {
 		"WING_OFFSET": [0.0, 10.0],
 		"RAINBOW_POWERUP_FX": false,
-		"SKID_SFX": "small_skid",
 		"JUMP_SFX": "small_jump",
 		"TRAMPOLINE_SFX": "small_trampoline",
 		"TRAMPOLINE_USED_SFX": "small_used_trampoline",

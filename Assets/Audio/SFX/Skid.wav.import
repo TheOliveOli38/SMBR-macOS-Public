@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://cbxnq518x3jqe"
-path="res://.godot/imported/SkidBig.wav-020809628006af5dae07753006382773.sample"
+path="res://.godot/imported/Skid.wav-4c16b7e4daf40757c875355e36a0bc53.sample"
 
 [deps]
 
-source_file="res://Assets/Audio/SFX/SkidBig.wav"
-dest_files=["res://.godot/imported/SkidBig.wav-020809628006af5dae07753006382773.sample"]
+source_file="res://Assets/Audio/SFX/Skid.wav"
+dest_files=["res://.godot/imported/Skid.wav-4c16b7e4daf40757c875355e36a0bc53.sample"]
 
 [params]
 
