@@ -137,7 +137,6 @@ func deceleration(delta: float, airborne := false) -> void:
 		decel_type = player.physics_params("GROUND_DECEL")
 	elif player.in_water or player.has_wings:
 		decel_type = player.physics_params("SWIM_DECEL")
-	print(decel_type)
 	player.velocity.x = move_toward(player.velocity.x, 0, (decel_type / delta) * delta)
 
 func ground_skid(delta: float) -> void:
