@@ -1,7 +1,7 @@
 class_name SnakeBlock
 extends Node2D
 
-@export var path: Array[Vector2i] = [Vector2i.RIGHT, Vector2i.RIGHT, Vector2i.RIGHT, Vector2i.RIGHT, Vector2i.RIGHT, Vector2i.RIGHT, Vector2i.RIGHT, Vector2i.RIGHT, Vector2i.RIGHT, Vector2i.RIGHT, Vector2i.RIGHT, Vector2i.RIGHT,]
+@export var path := []
 @export_range(4, 12) var length := 6
 @export_range(1, 4) var speed := 1
 
@@ -22,6 +22,8 @@ var last_direction := Vector2i.RIGHT
 func _ready() -> void:
 	for i in get_tree().get_nodes_in_group("SnakePieces"):
 		i.get_node("PlayerDetection").player_entered.connect(start_travelling.unbind(1))
+	print(path)
+	update_pieces()
 
 func update_pieces() -> void:
 	var pos := Vector2i.ZERO
@@ -64,6 +66,8 @@ func handle_editor_stuff() -> void:
 func remove_last_piece() -> void:
 	if path.size() >= 1:
 		path.pop_back()
+	if path.size() <= 0:
+		last_direction = Vector2i.ZERO
 	update_pieces()
 
 func add_piece(new_direction := Vector2i.ZERO) -> void:
@@ -82,11 +86,11 @@ func is_mouse_in_area(area_idx := 0) -> bool:
 func _draw() -> void:
 	if $PathPreview.visible == false:
 		return
-	var pos := Vector2i(-4, -4)
+	var pos := Vector2i(-8, -8)
 	for i in path:
-		draw_texture_rect_region($PlacePreview/N.texture,Rect2i(pos, Vector2i(8, 8)),Rect2i(Vector2i(8 * DIRECTIONS.find(i), 0), Vector2i(8, 8)))
+		draw_texture_rect_region($PlacePreview/N.texture,Rect2i(pos, Vector2i(16, 16)),Rect2i(Vector2i(16 * DIRECTIONS.find(i), 0), Vector2i(16, 16)), Color(1, 1, 1, 0.98))
 		pos += i * 16
-	draw_texture_rect_region($PlacePreview/N.texture,Rect2i(pos, Vector2i(8, 8)),Rect2i(Vector2i(8 * DIRECTIONS.find(last_direction), 0), Vector2i(8, 8)))
+	draw_texture_rect_region($PlacePreview/N.texture,Rect2i(pos, Vector2i(16, 16)),Rect2i(Vector2i(64, 0), Vector2i(16, 16)), Color(1, 1, 1, 0.98))
 
 func start_travelling() -> void:
 	if moving:
@@ -96,11 +100,11 @@ func start_travelling() -> void:
 	var move_speed = 1.0 / (speed * 2)
 	for i in get_tree().get_nodes_in_group("SnakePieces"):
 		i.get_node("Sprite").play("Moving")
-	for i in (path.size()) - length:
+	for i in (path.size()) - (length - 1):
 		var head_dir = path[idx + length - 1]
 		var tail_dir = path[idx]
-		var head_tween = create_tween().tween_property($Head, "position", $Head.position + Vector2(head_dir * 16), move_speed)
-		var tail_tween = create_tween().tween_property($Tail, "position", $Tail.position + Vector2(tail_dir * 16), move_speed)
+		var head_tween = $Tweens.create_tween().tween_property($Head, "position", $Head.position + Vector2(head_dir * 16), move_speed)
+		var tail_tween = $Tweens.create_tween().tween_property($Tail, "position", $Tail.position + Vector2(tail_dir * 16), move_speed)
 		await tail_tween.finished
 		$Pieces.get_child(idx % (length - 1)).position = $Head.position
 		idx += 1

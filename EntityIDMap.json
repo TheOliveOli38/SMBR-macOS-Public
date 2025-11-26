@@ -573,7 +573,7 @@
 	],
 	"CP": [
 		"res://Scenes/Prefabs/Entities/Objects/Crate.tscn",
-		"0,0"
+		"0,8"
 	],
 	"CQ": [
 		"res://Scenes/Prefabs/LevelObjects/SecondCamera.tscn",

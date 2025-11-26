@@ -28,6 +28,11 @@ func get_string() -> String:
 			if owner.get(i) is Array:
 				for x in owner.get(i):
 					string += base64_charset[(Track.DIRECTIONS.find(x))]
+		if owner is SnakeBlock:
+			if owner.get(i) is Array:
+				for x in owner.get(i):
+					string += base64_charset[(SnakeBlock.DIRECTIONS.find(x))]
+				print(string)
 		if owner.get(i) is String:
 			string += owner.get(i).replace(",", "&")
 		elif owner.get(i) is PackedScene:
@@ -60,6 +65,11 @@ func apply_string(entity_string := "") -> void:
 				for x in value:
 					owner.get(i).append(Track.DIRECTIONS[base64_charset.find(x)])
 				owner._ready()
+		if owner is SnakeBlock:
+			if owner.get(i) is Array:
+				for x in value:
+					print(value)
+					owner.get(i).append(SnakeBlock.DIRECTIONS[base64_charset.find(x)])
 		if owner.get(i) is String:
 			owner.set(i, value.replace("&", ","))
 		if owner.get(i) is PackedScene or (owner.get(i) == null and i == "item"):
@@ -105,3 +115,9 @@ func decode_from_base64_2char(encoded: String) -> int:
 		return -1
 
 	return (char1_val << 6) | char2_val
+
+func do_animation() -> void:
+	if owner is Node2D:
+		var old_scale = owner.scale
+		owner.scale += Vector2(0.2, 0.2)
+		create_tween().set_trans(Tween.TRANS_CUBIC).tween_property(owner, "scale", old_scale, 0.1)

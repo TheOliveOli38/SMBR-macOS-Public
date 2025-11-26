@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://br1hsfo0ihtxu" path="res://Scenes/Parts/SnakeBlockSegment.tscn" id="2_fuc5y"]
 [ext_resource type="Script" uid="uid://ctfbuoxtnnl0q" path="res://Scripts/Classes/Components/EditorPropertyExposer.gd" id="3_fuc5y"]
 [ext_resource type="PackedScene" uid="uid://byv4sv3cayrmo" path="res://Scenes/Prefabs/Editor/EditorProperties/TilePropertyTrackPath.tscn" id="4_7bkk4"]
-[ext_resource type="Texture2D" uid="uid://bvk73b3nx4xla" path="res://Assets/Sprites/UI/SnakeBlockArrows.png" id="5_qfmav"]
+[ext_resource type="Texture2D" uid="uid://bid7njjtqgb26" path="res://Assets/Sprites/Editor/SnakeBlockPath.png" id="5_51wbc"]
 [ext_resource type="Script" uid="uid://cpwloakvp672a" path="res://Scripts/Parts/EditorVisibleNode.gd" id="6_51wbc"]
 
 [sub_resource type="GDScript" id="GDScript_r8seh"]
@@ -81,7 +81,7 @@ physics_interpolation_mode = 2
 process_mode = 3
 script = SubResource("GDScript_r8seh")
 
-[node name="PropertyExposer" type="Node" parent="." unique_id=1694400623]
+[node name="EditorPropertyExposer" type="Node" parent="." unique_id=1694400623]
 script = ExtResource("3_fuc5y")
 properties = Array[String](["length", "speed", "path"])
 properties_force_selector = Dictionary[String, PackedScene]({
@@ -90,14 +90,13 @@ properties_force_selector = Dictionary[String, PackedScene]({
 metadata/_custom_type_script = "uid://ctfbuoxtnnl0q"
 
 [node name="PlacePreview" type="Node2D" parent="." unique_id=104556352]
-visible = false
 z_index = 1
 
 [node name="N" type="Sprite2D" parent="PlacePreview" unique_id=337392482]
 self_modulate = Color(1, 1, 0, 1)
 position = Vector2(0, -16)
-texture = ExtResource("5_qfmav")
-hframes = 4
+texture = ExtResource("5_51wbc")
+hframes = 5
 region_rect = Rect2(32, 16, 32, 16)
 
 [node name="MouseArea" type="Area2D" parent="PlacePreview/N" unique_id=1172058114]
@@ -108,8 +107,8 @@ shape = SubResource("RectangleShape2D_51wbc")
 [node name="E" type="Sprite2D" parent="PlacePreview" unique_id=1836196850]
 self_modulate = Color(1, 1, 0, 1)
 position = Vector2(16, 0)
-texture = ExtResource("5_qfmav")
-hframes = 4
+texture = ExtResource("5_51wbc")
+hframes = 5
 frame = 1
 region_rect = Rect2(32, 16, 32, 16)
 
@@ -121,8 +120,8 @@ shape = SubResource("RectangleShape2D_51wbc")
 [node name="S" type="Sprite2D" parent="PlacePreview" unique_id=1730609624]
 self_modulate = Color(1, 1, 0, 1)
 position = Vector2(0, 16)
-texture = ExtResource("5_qfmav")
-hframes = 4
+texture = ExtResource("5_51wbc")
+hframes = 5
 frame = 2
 region_rect = Rect2(32, 16, 32, 16)
 
@@ -134,8 +133,8 @@ shape = SubResource("RectangleShape2D_51wbc")
 [node name="W" type="Sprite2D" parent="PlacePreview" unique_id=1156398372]
 self_modulate = Color(1, 1, 0, 1)
 position = Vector2(-16, 0)
-texture = ExtResource("5_qfmav")
-hframes = 4
+texture = ExtResource("5_51wbc")
+hframes = 5
 frame = 3
 region_rect = Rect2(32, 16, 32, 16)
 
@@ -146,6 +145,9 @@ shape = SubResource("RectangleShape2D_51wbc")
 
 [node name="PathPreview" type="Node2D" parent="." unique_id=982752610]
 script = ExtResource("6_51wbc")
+
+[node name="Tweens" type="Node2D" parent="." unique_id=1871003237]
+process_mode = 1
 
 [connection signal="mouse_entered" from="PlacePreview/N/MouseArea" to="." method="on_mouse_entered" binds= [0]]
 [connection signal="mouse_exited" from="PlacePreview/N/MouseArea" to="." method="on_mouse_exited" binds= [0]]

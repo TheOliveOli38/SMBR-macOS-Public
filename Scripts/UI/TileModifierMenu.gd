@@ -99,6 +99,8 @@ func open_scene_ref(scene_ref: TilePropertySceneRef) -> void:
 func value_changed(property, new_value) -> void:
 	can_exit = true
 	editing_node.set(property.tile_property_name, new_value)
+	do_animation()
+	
 
 func close() -> void:
 	hide()
@@ -108,4 +110,13 @@ func close() -> void:
 	closed.emit()
 	for i in %Container.get_children():
 		i.queue_free()
-	
+
+var old_scale = Vector2.ONE
+
+func do_animation() -> void:
+	if editing_node is Node2D:
+		if editing_node.scale != old_scale:
+			editing_node.scale = old_scale
+		old_scale = editing_node.scale
+		editing_node.scale += Vector2(0.5, 0.5)
+		create_tween().set_trans(Tween.TRANS_CUBIC).tween_property(editing_node, "scale", old_scale, 0.1)
