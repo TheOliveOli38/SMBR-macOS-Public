@@ -98,9 +98,18 @@ func open_scene_ref(scene_ref: TilePropertySceneRef) -> void:
 
 func value_changed(property, new_value) -> void:
 	can_exit = true
-	editing_node.set(property.tile_property_name, new_value)
-	do_animation()
-	
+	var old_value = editing_node.get(property.tile_property_name)
+	var undo_redo = Global.level_editor.undo_redo
+	undo_redo.create_action("Edited Node")
+	undo_redo.add_do_method(set_value.bind(editing_node, property.tile_property_name, new_value))
+	undo_redo.add_undo_method(set_value.bind(editing_node, property.tile_property_name, old_value))
+	undo_redo.commit_action(true)
+
+func set_value(node: Node, value_name := "", value = null) -> void:
+	if is_instance_valid(node) == false:
+		return
+	node.set(value_name, value)
+	do_animation(node)
 
 func close() -> void:
 	hide()
@@ -113,10 +122,15 @@ func close() -> void:
 
 var old_scale = Vector2.ONE
 
-func do_animation() -> void:
-	if editing_node is Node2D:
-		if editing_node.scale != old_scale:
-			editing_node.scale = old_scale
-		old_scale = editing_node.scale
-		editing_node.scale += Vector2(0.5, 0.5)
-		create_tween().set_trans(Tween.TRANS_CUBIC).tween_property(editing_node, "scale", old_scale, 0.1)
+func do_animation(node: Node) -> void:
+	if node is Node2D:
+		if node.scale != old_scale:
+			node.scale = old_scale
+		old_scale = node.scale
+		node.scale += Vector2(0.5, 0.5)
+		create_tween().set_trans(Tween.TRANS_CUBIC).tween_property(node, "scale", old_scale, 0.1)
+		var sparkle = preload("uid://btuv0dcfc8u7x").instantiate()
+		sparkle.global_position = node.get_meta("tile_position") * 16
+		print([sparkle.global_position, node.global_position])
+		add_sibling(sparkle)
+		sparkle.animation_finished.connect(sparkle.queue_free)

@@ -43,13 +43,10 @@ unique_name_in_owner = true
 physics_interpolation_mode = 2
 
 [node name="SnakeBlockSegment1" parent="Pieces" unique_id=21493935 groups=["SnakePieces"] instance=ExtResource("2_fuc5y")]
-position = Vector2(16, 0)
 
 [node name="SnakeBlockSegment2" parent="Pieces" unique_id=1333507145 groups=["SnakePieces"] instance=ExtResource("2_fuc5y")]
-position = Vector2(32, 0)
 
 [node name="SnakeBlockSegment3" parent="Pieces" unique_id=772127062 groups=["SnakePieces"] instance=ExtResource("2_fuc5y")]
-position = Vector2(48, 0)
 
 [node name="SnakeBlockSegment4" parent="Pieces" unique_id=629280051 groups=["SnakePieces"] instance=ExtResource("2_fuc5y")]
 
@@ -72,7 +69,6 @@ position = Vector2(48, 0)
 [node name="Head" parent="." unique_id=761830843 groups=["SnakePieces"] instance=ExtResource("2_fuc5y")]
 unique_name_in_owner = true
 physics_interpolation_mode = 2
-position = Vector2(48, 0)
 
 [node name="Tail" parent="." unique_id=1645613948 groups=["SnakePieces"] instance=ExtResource("2_fuc5y")]
 physics_interpolation_mode = 2
@@ -90,6 +86,7 @@ properties_force_selector = Dictionary[String, PackedScene]({
 metadata/_custom_type_script = "uid://ctfbuoxtnnl0q"
 
 [node name="PlacePreview" type="Node2D" parent="." unique_id=104556352]
+visible = false
 z_index = 1
 
 [node name="N" type="Sprite2D" parent="PlacePreview" unique_id=337392482]
