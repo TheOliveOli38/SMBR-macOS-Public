@@ -42,12 +42,11 @@ func _physics_process(_delta: float) -> void:
 				player.speed_mult = player.physics_params("TOAD_SPEED_MULT", player.ENDING_PARAMETERS)
 				player.accel_mult = player.physics_params("TOAD_ACCEL_MULT", player.ENDING_PARAMETERS)
 			var pose_position = i.global_position + pose_offset
-			if (player.global_position >= pose_position and player.global_position <= pose_position + Vector2(24, 0)) and not player.is_posing:
-				player.velocity.x = 0
-				player.global_position = pose_position
+			print([player.global_position, pose_position])
+			if (player.global_position[0] >= pose_position[0] and player.global_position[0] <= pose_position[0] + 24):
 				player.is_posing = true
-				player.normal_state.handle_animations()
-			if player.can_pose_castle_anim:
+				player.global_position = pose_position
+			if player.is_posing and player.can_pose_castle_anim and player.sprite.sprite_frames.has_animation("PoseToad"):
 				player.can_pose_castle_anim = false
 				player.play_animation(pose_type)
 
