@@ -1,3 +1,4 @@
+@tool
 class_name EditorTileSelector
 extends Control
 
@@ -11,6 +12,11 @@ extends Control
 
 @export_category("Entity")
 @export var entity_id := ""
+
+@export_group("ID Generation")
+@export var entity_scene: PackedScene = null
+@export var tile_offset := Vector2i.ZERO
+@export_tool_button("Gen ID") var but = get_id
 
 @export_category("Tile")
 @export var source_id := 0
@@ -88,18 +94,17 @@ func on_mouse_entered() -> void:
 	set_mouse_hovered(true)
 
 func get_id() -> void:
-	return
-	#if entity_id_map == {}:
-		#entity_id_map = JSON.parse_string(FileAccess.open("res://EntityIDMap.json", FileAccess.READ).get_as_text())
-	#for i in entity_id_map.keys():
-		#if entity_id_map[i][0] == entity_scene.resource_path:
-			#entity_id = i
-			#return
-	#
-	#var new_id = encode_to_base64_2char(entity_id_map.size())
-	#entity_id_map[new_id] = [entity_scene.resource_path, str(tile_offset.x) + "," + str(tile_offset.y)]
-	#FileAccess.open("res://EntityIDMap.json", FileAccess.WRITE).store_string(JSON.stringify(entity_id_map, "\t"))
-	#entity_id = new_id
+	if entity_id_map == {}:
+		entity_id_map = JSON.parse_string(FileAccess.open("res://EntityIDMap.json", FileAccess.READ).get_as_text())
+	for i in entity_id_map.keys():
+		if entity_id_map[i][0] == entity_scene.resource_path:
+			entity_id = i
+			return
+	
+	var new_id = encode_to_base64_2char(entity_id_map.size())
+	entity_id_map[new_id] = [entity_scene.resource_path, str(tile_offset.x) + "," + str(tile_offset.y)]
+	FileAccess.open("res://EntityIDMap.json", FileAccess.WRITE).store_string(JSON.stringify(entity_id_map, "\t"))
+	entity_id = new_id
 
 func encode_to_base64_2char(value: int) -> String:
 	if value < 0 or value >= 4096:

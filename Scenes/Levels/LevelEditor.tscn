@@ -1,4 +1,4 @@
-[gd_scene load_steps=218 format=3 uid="uid://gbcmqonky63j"]
+[gd_scene load_steps=220 format=3 uid="uid://gbcmqonky63j"]
 
 [ext_resource type="Script" uid="uid://c2lnc7vnq3xth" path="res://Scripts/Classes/Editor/LevelEditor.gd" id="1_0qbyu"]
 [ext_resource type="Texture2D" uid="uid://cbha2l6hg1kfo" path="res://Assets/Sprites/UI/EditorGrid.png" id="2_8q7yr"]
@@ -79,6 +79,8 @@
 [ext_resource type="JSON" path="res://Assets/Sprites/Enemies/RockyWrench.json" id="90_606p5"]
 [ext_resource type="JSON" path="res://Assets/Sprites/Blocks/NoteBlock.json" id="90_lw341"]
 [ext_resource type="JSON" path="res://Assets/Sprites/Items/PSwitch.json" id="92_5n4dw"]
+[ext_resource type="JSON" path="res://Assets/Sprites/Blocks/SnakeBlockHead.json" id="93_aglcy"]
+[ext_resource type="PackedScene" uid="uid://biupk6yel683f" path="res://Scenes/Prefabs/Entities/Objects/SnakeBlock.tscn" id="94_jmysq"]
 [ext_resource type="JSON" path="res://Assets/Sprites/Tilesets/Flag.json" id="94_t6g4q"]
 [ext_resource type="JSON" path="res://Assets/Sprites/Tilesets/Terrain/BrickBlock.json" id="95_eby78"]
 [ext_resource type="Texture2D" uid="uid://boj5qawy6b6t2" path="res://Assets/Sprites/Editor/SmallCastle.png" id="96_lm8lu"]
@@ -4014,6 +4016,16 @@ icon_region_override = Rect2(0, 0, 16, 16)
 entity_id = "CP"
 metadata/_edit_group_ = true
 
+[node name="SnakeBlock" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Blocks/MarginContainer/GridContainer" unique_id=120532549 groups=["Selectors"] instance=ExtResource("8_wkmjk")]
+layout_mode = 2
+tile_name = "BLOCK_SNAKE"
+type = 1
+icon_texture = ExtResource("93_aglcy")
+icon_region_override = Rect2(0, 0, 16, 16)
+entity_id = "Cf"
+entity_scene = ExtResource("94_jmysq")
+metadata/_edit_group_ = true
+
 [node name="Objects" type="VBoxContainer" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer" unique_id=1913042751]
 layout_mode = 2
 
@@ -5900,6 +5912,7 @@ wait_time = 0.25
 [connection signal="tile_selected" from="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Blocks/MarginContainer/GridContainer/OnOffFans/OnOffBlue" to="." method="on_tile_selected"]
 [connection signal="tile_selected" from="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Blocks/MarginContainer/GridContainer/Burner" to="." method="on_tile_selected"]
 [connection signal="tile_selected" from="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Blocks/MarginContainer/GridContainer/Crate" to="." method="on_tile_selected"]
+[connection signal="tile_selected" from="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Blocks/MarginContainer/GridContainer/SnakeBlock" to="." method="on_tile_selected"]
 [connection signal="pressed" from="TileMenu/MarginContainer/VBoxContainer/PanelContainer/LEVEL/ScrollContainer/VBoxContainer/HBoxContainer/HBoxContainer/Button" to="TileMenu/ThemeSelect" method="open"]
 [connection signal="item_selected" from="TileMenu/MarginContainer/VBoxContainer/PanelContainer/LEVEL/ScrollContainer/VBoxContainer/HBoxContainer8/SubLevelID" to="." method="transition_to_sublevel"]
 [connection signal="item_selected" from="TileMenu/MarginContainer/VBoxContainer/PanelContainer/LEVEL/ScrollContainer/VBoxContainer/HBoxContainer7/ThemeTime" to="." method="time_selected"]

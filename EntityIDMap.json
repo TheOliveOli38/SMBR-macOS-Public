@@ -634,5 +634,9 @@
 	"Ce": [
 		"res://Scenes/Prefabs/Blocks/IceBlock.tscn",
 		"0,0"
+	],
+	"Cf": [
+		"res://Scenes/Prefabs/Entities/Objects/SnakeBlock.tscn",
+		"0,0"
 	]
 }

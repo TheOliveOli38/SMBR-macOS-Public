@@ -969,3 +969,6 @@ func reset_camera_to_center() -> void:
 func on_area_exited(area: Area2D) -> void:
 	if area is WaterArea:
 		water_exited()
+
+func hide_platform() -> void:
+	$PitPlatform.global_position = Vector2(-9999, 99999)
