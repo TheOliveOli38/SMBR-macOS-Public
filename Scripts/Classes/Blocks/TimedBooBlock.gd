@@ -27,7 +27,7 @@ func on_timeout() -> void:
 	else:
 		$Sprite.play("Off" + str(time))
 
-func block_hit() -> void:
+func on_block_hit() -> void:
 	if not can_hit:
 		return
 	can_hit = false

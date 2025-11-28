@@ -23,6 +23,7 @@ const NO_SFX_ITEMS := ["res://Scenes/Prefabs/Entities/Items/SpinningRedCoin.tscn
 
 @export var start_z := -1
 signal item_changed
+signal block_hit
 signal block_emptied
 signal block_destroyed
 

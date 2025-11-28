@@ -52,6 +52,8 @@ var select_end := Vector2i.ZERO
 
 signal close_confirm(save: bool)
 
+signal connection_node_found(new_node: Node)
+
 var sub_level_id := 0
 
 static var sub_areas: Array = [null, null, null, null, null]
@@ -101,7 +103,7 @@ var tile_menu_open := false
 
 signal editor_start
 
-enum EditorState{IDLE, TILE_MENU, MODIFYING_TILE, SAVE_MENU, SELECTING_TILE_SCENE, QUITTING, PLAYTESTING, TRACK_EDITING}
+enum EditorState{IDLE, TILE_MENU, MODIFYING_TILE, SAVE_MENU, SELECTING_TILE_SCENE, QUITTING, PLAYTESTING, TRACK_EDITING, CONNECTING}
 
 var current_state := EditorState.IDLE
 
@@ -147,9 +149,9 @@ var last_recorded_frame := Vector2.ZERO
 
 func _physics_process(delta: float) -> void:
 	%TileCursor.hide()
-	if current_state == EditorState.IDLE and not cursor_in_toolbar:
+	if [EditorState.IDLE, EditorState.CONNECTING].has(current_state) and not cursor_in_toolbar:
 		handle_tile_cursor()
-	if [EditorState.IDLE, EditorState.TRACK_EDITING].has(current_state):
+	if [EditorState.IDLE, EditorState.TRACK_EDITING, EditorState.CONNECTING].has(current_state):
 		handle_camera(delta)
 	if is_instance_valid(%ThemeName):
 		%ThemeName.text = Global.level_theme
@@ -367,30 +369,30 @@ func handle_tile_cursor() -> void:
 		handle_inspection(tile_position)
 		return
 	
-	if Input.is_action_pressed("mb_left"):
-		if Input.is_action_pressed("editor_select") and not multi_selecting:
-			multi_select_start(tile_position)
-		elif Input.is_action_pressed("editor_select") == false:
-			multi_selecting = false
-			match current_tile_type:
-				TileType.TILE:
-					place_tile(tile_position, current_layer, current_tile_coords, [current_tile_source])
-				TileType.ENTITY:
-					place_tile(tile_position, current_layer, current_entity_id)
-				TileType.TERRAIN:
-					place_tile(tile_position, current_layer, current_terrain_id)
-			target_mouse_icon = (CURSOR_PENCIL)
-		
-	if Input.is_action_pressed("mb_right"):
-		if Input.is_action_pressed("editor_select") and not multi_selecting:
-			multi_select_start(tile_position)
-			target_mouse_icon = (CURSOR_RULER)
-		elif Input.is_action_pressed("editor_select") == false:
-			multi_selecting = false
-			remove_tile(tile_position)
-			target_mouse_icon = (CURSOR_ERASOR)
-	
 	if current_state == EditorState.IDLE:
+		if Input.is_action_pressed("mb_left"):
+			if Input.is_action_pressed("editor_select") and not multi_selecting:
+				multi_select_start(tile_position)
+			elif Input.is_action_pressed("editor_select") == false:
+				multi_selecting = false
+				match current_tile_type:
+					TileType.TILE:
+						place_tile(tile_position, current_layer, current_tile_coords, [current_tile_source])
+					TileType.ENTITY:
+						place_tile(tile_position, current_layer, current_entity_id)
+					TileType.TERRAIN:
+						place_tile(tile_position, current_layer, current_terrain_id)
+				target_mouse_icon = (CURSOR_PENCIL)
+			
+		if Input.is_action_pressed("mb_right"):
+			if Input.is_action_pressed("editor_select") and not multi_selecting:
+				multi_select_start(tile_position)
+				target_mouse_icon = (CURSOR_RULER)
+			elif Input.is_action_pressed("editor_select") == false:
+				multi_selecting = false
+				remove_tile(tile_position)
+				target_mouse_icon = (CURSOR_ERASOR)
+		
 		if Input.is_action_just_pressed("scroll_up"):
 			selected_tile_index -= 1
 		if Input.is_action_just_pressed("scroll_down"):
@@ -411,6 +413,13 @@ func handle_tile_cursor() -> void:
 		
 		if Input.is_action_just_pressed("ui_redo"):
 			redo()
+	
+	if current_state == EditorState.CONNECTING:
+		if Input.is_action_just_pressed("mb_left"):
+			if entity_tiles[current_layer].has(tile_position):
+				if entity_tiles[current_layer][tile_position].get_node_or_null("SignalExposer") != null:
+					connection_node_found.emit(entity_tiles[current_layer][tile_position])
+					current_state = EditorState.MODIFYING_TILE
 	
 	handle_multi_selecting(tile_position)
 	if old_index != selected_tile_index:
@@ -441,12 +450,15 @@ func handle_inspection(tile_position := Vector2i.ZERO) -> void:
 
 func open_tile_properties(tile: Node2D) -> void:
 	var properties = get_tile_properties(tile)
-	if properties.is_empty():
+	var has_connection = tile_has_signal(tile)
+	if has_connection == false and properties.is_empty():
 		return
 	
 	current_inspect_tile = tile
-	%TileModifierMenu.override_scenes = tile.get_node("EditorPropertyExposer").properties_force_selector
-	%TileModifierMenu.properties = properties
+	if properties.is_empty() == false:
+		%TileModifierMenu.override_scenes = tile.get_node("EditorPropertyExposer").properties_force_selector
+		%TileModifierMenu.properties = properties
+	%TileModifierMenu.has_connection = has_connection
 	%TileModifierMenu.editing_node = current_inspect_tile
 	%TileModifierMenu.open()
 	current_state = EditorState.MODIFYING_TILE
@@ -558,13 +570,13 @@ func show_scroll_preview() -> void:
 	$TileCursor/Timer.start()
 	await $TileCursor/Timer.timeout
 	$TileCursor/Previews.hide()
-	
+
 func open_tile_selection_menu_scene_ref(selector: TilePropertySceneRef) -> void:
 	open_tile_menu()
 	current_state = EditorState.SELECTING_TILE_SCENE
 	selection_filter = selector.editing_node.get_node("EditorPropertyExposer").filters[selector.tile_property_name]
 	for i in get_tree().get_nodes_in_group("Selectors"):
-		i.disabled = !i.has_meta(selection_filter)
+		i.disabled = !i.has_meta(selection_filter) and selection_filter != ""
 		i.update_visuals()
 	var old_scene = current_entity_scene
 	await tile_selected
@@ -574,6 +586,9 @@ func open_tile_selection_menu_scene_ref(selector: TilePropertySceneRef) -> void:
 	current_entity_scene = old_scene
 	close_tile_menu()
 	current_state = EditorState.MODIFYING_TILE
+
+func start_signal_connection(node: Node, signal_name := "") -> void:
+	current_state = LevelEditor.EditorState.CONNECTING
 
 func on_tile_selected(selector: EditorTileSelector) -> void:
 	current_tile_type = selector.type
@@ -639,6 +654,7 @@ func place_tile(tile_position := Vector2i.ZERO, layer_num := current_layer, tile
 		node.global_position = (tile_position * 16) + (Vector2i(8, 8) + spawn_offset)
 		node.set_meta("tile_position", tile_position)
 		node.set_meta("ID", tile_to_place)
+		node.set_meta("layer", layer_num)
 		entity_layer_nodes[layer_num].add_child(node)
 		node.reset_physics_interpolation()
 		entity_tiles[layer_num].set(tile_position, node)
@@ -762,6 +778,9 @@ func get_tile_properties(tile: Node) -> Array:
 		if property_exposer.properties.has(i.name):
 			properties.append(i)
 	return properties
+
+func tile_has_signal(tile: Node) -> bool:
+	return tile.get_node_or_null("SignalExposer") != null
 
 const CUSTOM_LEVEL_BASE = ("res://Scenes/Levels/CustomLevelBase.tscn")
 

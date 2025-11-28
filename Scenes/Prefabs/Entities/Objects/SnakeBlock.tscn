@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://biupk6yel683f"]
+[gd_scene load_steps=10 format=3 uid="uid://biupk6yel683f"]
 
 [ext_resource type="Script" uid="uid://c7qf2r1yve6nl" path="res://Scripts/Classes/Entities/Objects/SnakeBlock.gd" id="1_r8seh"]
 [ext_resource type="PackedScene" uid="uid://br1hsfo0ihtxu" path="res://Scenes/Parts/SnakeBlockSegment.tscn" id="2_fuc5y"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://byv4sv3cayrmo" path="res://Scenes/Prefabs/Editor/EditorProperties/TilePropertyTrackPath.tscn" id="4_7bkk4"]
 [ext_resource type="Texture2D" uid="uid://bid7njjtqgb26" path="res://Assets/Sprites/Editor/SnakeBlockPath.png" id="5_51wbc"]
 [ext_resource type="Script" uid="uid://cpwloakvp672a" path="res://Scripts/Parts/EditorVisibleNode.gd" id="6_51wbc"]
+[ext_resource type="Texture2D" uid="uid://dlldh5aks0wff" path="res://Assets/Sprites/Editor/GhostTile.png" id="7_yol8k"]
 
 [sub_resource type="GDScript" id="GDScript_r8seh"]
 script/source = "extends Node
@@ -142,6 +143,9 @@ shape = SubResource("RectangleShape2D_51wbc")
 
 [node name="PathPreview" type="Node2D" parent="." unique_id=982752610]
 script = ExtResource("6_51wbc")
+
+[node name="Sprite2D" type="Sprite2D" parent="PathPreview" unique_id=133025973]
+texture = ExtResource("7_yol8k")
 
 [node name="Tweens" type="Node2D" parent="." unique_id=1871003237]
 process_mode = 1

@@ -9,7 +9,6 @@ func _process(_delta: float) -> void:
 	owner.visuals.z_index = z_index
 
 func bounce_block() -> void:
-	
 	set_process(true)
 	owner.visuals.show()
 	owner.visuals.z_index = 3

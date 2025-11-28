@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://crmu32j38j4y0"]
+
+[ext_resource type="PackedScene" uid="uid://b2r255cb4tt7t" path="res://Scenes/Prefabs/Gizmos/Inputs/BaseInput.tscn" id="1_kux4u"]
+[ext_resource type="Texture2D" uid="uid://bu83phly7km01" path="res://Assets/Sprites/Editor/Gizmos/PlayerDetection.png" id="2_1x2ni"]
+[ext_resource type="Script" uid="uid://cnheej0sxmoxg" path="res://Scripts/Parts/PlayerDetection.gd" id="3_1x2ni"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_00yji"]
+size = Vector2(16, 16)
+
+[node name="PlayerDetection" unique_id=515746201 instance=ExtResource("1_kux4u")]
+script = null
+
+[node name="Sprite2D" parent="." index="0" unique_id=1224179792]
+texture = ExtResource("2_1x2ni")
+
+[node name="PlayerDetection" type="Area2D" parent="." index="2" unique_id=1285879126]
+script = ExtResource("3_1x2ni")
+metadata/_custom_type_script = "uid://cnheej0sxmoxg"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetection" index="0" unique_id=1374569313]
+shape = SubResource("RectangleShape2D_00yji")
+
+[connection signal="player_entered" from="PlayerDetection" to="SignalExposer" method="turn_on" unbinds=1]
+[connection signal="player_exited" from="PlayerDetection" to="SignalExposer" method="turn_off" unbinds=1]

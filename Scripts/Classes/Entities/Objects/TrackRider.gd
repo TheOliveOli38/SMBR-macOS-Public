@@ -32,6 +32,7 @@ func start() -> void:
 		can_move = false
 
 func check_for_entities() -> void:
+	global_position += Vector2.DOWN * 0.1
 	for i in $Hitbox.get_overlapping_bodies():
 		if i.has_node("TrackJoint"):
 			attach_to_joint(i)

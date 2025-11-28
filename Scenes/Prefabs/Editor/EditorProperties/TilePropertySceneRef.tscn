@@ -13,24 +13,24 @@ texture_margin_bottom = 2.0
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_p4kuk"]
 
-[node name="TilePropertySCENE" type="HBoxContainer"]
+[node name="TilePropertySCENE" type="HBoxContainer" unique_id=65833277]
 script = ExtResource("1_p4kuk")
 
-[node name="Label" type="Label" parent="."]
+[node name="Label" type="Label" parent="." unique_id=1118507093]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 0
 text = "PROPERTY_NAME:"
 uppercase = true
 
-[node name="SceneName" type="Label" parent="."]
+[node name="SceneName" type="Label" parent="." unique_id=1130959688]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 0
 text = "PROPERTY_NAME:"
 uppercase = true
 
-[node name="Button" type="Button" parent="."]
+[node name="Button" type="Button" parent="." unique_id=88220805]
 custom_minimum_size = Vector2(16, 0)
 layout_mode = 2
 size_flags_horizontal = 10
@@ -42,7 +42,7 @@ theme_override_styles/disabled = SubResource("StyleBoxTexture_v8h6y")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_p4kuk")
 text = "+"
 
-[node name="ResourceSetterNew" type="Node" parent="."]
+[node name="ResourceSetterNew" type="Node" parent="." unique_id=1351860746]
 script = ExtResource("3_v8h6y")
 property_name = "texture"
 mode = 1

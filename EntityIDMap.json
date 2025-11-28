@@ -638,5 +638,57 @@
 	"Cf": [
 		"res://Scenes/Prefabs/Entities/Objects/SnakeBlock.tscn",
 		"0,0"
+	],
+	"Cg": [
+		"res://Scenes/Prefabs/Gizmos/Inputs/BaseInput.tscn",
+		"0,0"
+	],
+	"Ch": [
+		"res://Scenes/Prefabs/Gizmos/Outputs/BaseOutput.tscn",
+		"0,0"
+	],
+	"Ci": [
+		"res://Scenes/Prefabs/Gizmos/Inputs/PlayerDetection.tscn",
+		"0,0"
+	],
+	"Cj": [
+		"res://Scenes/Prefabs/Gizmos/Outputs/Lamp.tscn",
+		"0,0"
+	],
+	"Ck": [
+		"res://Scenes/Prefabs/Gizmos/Outputs/Switch.tscn",
+		"0,0"
+	],
+	"Cl": [
+		"res://Scenes/Prefabs/Gizmos/Outputs/Counter.tscn",
+		"0,0"
+	],
+	"Cm": [
+		"res://Scenes/Prefabs/Gizmos/Outputs/Timer.tscn",
+		"0,0"
+	],
+	"Cn": [
+		"res://Scenes/Prefabs/Gizmos/Outputs/ANDGate.tscn",
+		"0,0"
+	],
+	"Co": [
+		"res://Scenes/Prefabs/Gizmos/Outputs/ORGate.tscn",
+		"0,0"
+	],
+	"Cp": [
+		"res://Scenes/Prefabs/Gizmos/Outputs/NOTGate.tscn",
+		"0,0"
+	],
+	"Cq": [
+		"res://Scenes/Prefabs/Gizmos/Outputs/XORGate.tscn",
+		"0,0"
+	],
+	"Cr": [
+		"res://Scenes/Prefabs/Gizmos/Outputs/BlockDestroyer.tscn",
+		"0,0"
+	],
+	"Cs": [
+		"res://Scenes/Prefabs/Gizmos/Outputs/TilePlacer.tscn",
+		"0,0"
 	]
 }

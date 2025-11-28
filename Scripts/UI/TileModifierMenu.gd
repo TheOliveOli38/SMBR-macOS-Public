@@ -3,6 +3,7 @@ extends PanelContainer
 var editing_node: Node = null
 
 var properties := []
+var has_connection := false
 
 var override_scenes := {}
 
@@ -17,6 +18,12 @@ var active := false
 signal closed
 signal open_scene_ref_tile_menu(scene_ref: TilePropertySceneRef)
 signal edit_track_path(track_path: TilePropertyTrackPath)
+signal begin_connect(node: Node, signal_name: String)
+
+var property_nodes := []
+var signal_nodes := []
+
+var signal_to_connect := ""
 
 var can_exit := true:
 	set(value):
@@ -34,11 +41,17 @@ func _process(_delta: float) -> void:
 
 func open() -> void:
 	active = true
-	size = Vector2.ZERO
+	clear_nodes()
+	%Properties.visible = properties.size() > 0
+	%SignalDisplay.visible = has_connection
 	add_properties()
 	show()
 	editing_node.tree_exiting.connect(close)
 
+func clear_nodes() -> void:
+	for i in property_nodes:
+		i.queue_free()
+	property_nodes.clear()
 
 func add_properties() -> void:
 	for i in properties:
@@ -75,7 +88,8 @@ func add_properties() -> void:
 		if property != null:
 			property.exit_changed.connect(set_can_exit)
 			property.tile_property_name = i["name"]
-			%Container.add_child(property)
+			%Properties.add_child(property)
+			property_nodes.append(property)
 			property.owner = self
 			property.set_starting_value(editing_node.get(property.tile_property_name))
 			property.value_changed.connect(value_changed)
@@ -83,7 +97,7 @@ func add_properties() -> void:
 			if property is TilePropertySceneRef:
 				property.open_tile_menu.connect(open_scene_ref)
 	await get_tree().physics_frame
-	$Container.update_minimum_size()
+	%Properties.update_minimum_size()
 	update_minimum_size()
 
 func set_can_exit(new_value := false) -> void:
@@ -95,6 +109,13 @@ func set_can_exit(new_value := false) -> void:
 func open_scene_ref(scene_ref: TilePropertySceneRef) -> void:
 	open_scene_ref_tile_menu.emit(scene_ref)
 	can_exit = false
+
+func begin_signal_connection() -> void:
+	begin_connect.emit(editing_node)
+	can_exit = false
+	editing_node.get_node("SignalExposer").begin_connecting()
+	hide()
+	Global.level_editor.start_signal_connection(editing_node)
 
 func value_changed(property, new_value) -> void:
 	can_exit = true
@@ -115,12 +136,17 @@ func close() -> void:
 	hide()
 	active = false
 	if get_tree() == null: return
+	clear_nodes()
 	await get_tree().create_timer(0.1).timeout
 	closed.emit()
-	for i in %Container.get_children():
-		i.queue_free()
 
 var old_scale = Vector2.ONE
+
+func connect_signal(new_node: Node) -> void:
+	editing_node.get_node("SignalExposer").connect_to_node([Global.level_editor.current_layer, new_node.get_index()])
+	can_exit = true
+	print("Connected!")
+	show()
 
 func do_animation(node: Node) -> void:
 	if node is Node2D:

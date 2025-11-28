@@ -471,7 +471,7 @@ func enemy_bounce_off(add_combo := true, award_score := true) -> void:
 func add_stomp_combo(award_score := true) -> void:
 	if stomp_combo >= 10:
 		if award_score:
-			if [Global.GameMode.CHALLENGE, Global.GameMode.BOO_RACE].has(Global.current_gamemode) or Settings.file.difficulty.inf_lives:
+			if [Global.GameMode.CHALLENGE, Global.GameMode.BOO_RACE].has(Global.current_game_mode) or Settings.file.difficulty.inf_lives:
 				Global.score += 10000
 				score_note_spawner.spawn_note(10000)
 			else:
@@ -536,6 +536,7 @@ func handle_block_collision_detection() -> void:
 			if i is Block:
 				if is_on_ceiling():
 					i.player_block_hit.emit(self)
+					i.block_hit.emit()
 func handle_directions() -> void:
 	input_direction = 0
 	if Global.player_action_pressed("move_right", player_id):
