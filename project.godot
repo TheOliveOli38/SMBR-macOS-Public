@@ -112,6 +112,8 @@ PitWarps=""
 Lights=""
 PiranhaPlants=""
 Gizmos=""
+SignalExposers=""
+Broadcasters=""
 
 [gui]
 

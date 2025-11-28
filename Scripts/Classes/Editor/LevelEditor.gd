@@ -254,6 +254,7 @@ func stop_testing() -> void:
 	
 
 func cleanup() -> void:
+	Global.reset_values()
 	get_tree().paused = false
 	Global.p_switch_timer = 0
 	Global.cancel_score_tally()
@@ -285,6 +286,8 @@ func play_level() -> void:
 	reset_values_for_play()
 	%Camera.enabled = false
 	level_start.emit()
+	if gizmos_visible == false:
+		get_tree().call_group("Gizmos", "hide")
 	get_tree().call_group("Players", "editor_level_start")
 	save_current_level()
 	current_state = EditorState.PLAYTESTING
@@ -298,11 +301,9 @@ func return_to_editor() -> void:
 	%Camera.global_position = get_viewport().get_camera_2d().get_screen_center_position()
 	%Camera.reset_physics_interpolation()
 	load_level(sub_level_id)
+	get_tree().call_group("Gizmos", "show")
 	%Camera.enabled = true
 	%Camera.make_current()
-	KeyItem.total_collected = 0
-	Door.unlocked_doors.clear()
-	Global.reset_values()
 	editor_start.emit()
 	current_state = EditorState.IDLE
 	level.process_mode = Node.PROCESS_MODE_DISABLED
@@ -462,6 +463,8 @@ func open_tile_properties(tile: Node2D) -> void:
 	%TileModifierMenu.editing_node = current_inspect_tile
 	%TileModifierMenu.open()
 	current_state = EditorState.MODIFYING_TILE
+	await get_tree().process_frame
+	%TileModifierMenu.update_minimum_size()
 	%TileModifierMenu.position = tile.get_global_transform_with_canvas().origin
 	%TileModifierMenu.position.x = clamp(%TileModifierMenu.position.x, 0, get_viewport().get_visible_rect().size.x - %TileModifierMenu.size.x - 2)
 	%TileModifierMenu.position.y = clamp(%TileModifierMenu.position.y, 0, get_viewport().get_visible_rect().size.y - %TileModifierMenu.size.y - 2)
@@ -794,8 +797,6 @@ func load_level(level_id := 0) -> void:
 		node.sublevel_id = level_id
 	elif node is PackedScene:
 		node = node.instantiate()
-	else:
-		node = node.duplicate()
 	if level != null:
 		level.queue_free()
 	add_child(node)
@@ -868,6 +869,11 @@ func set_toolbar_tooltip(text := "") -> void:
 func clear_toolbar_tooltip(text := "") -> void:
 	if %ToolsName.text == text:
 		%ToolsName.hide()
+
+var gizmos_visible := false
+
+func toggle_gizmos(toggled := false) -> void:
+	gizmos_visible = toggled
 
 func clear_trail() -> void:
 	for i in $PlayerTrail.get_children():

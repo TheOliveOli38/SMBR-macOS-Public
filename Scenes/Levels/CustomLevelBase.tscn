@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://broeyye3effot"]
 
-[ext_resource type="Script" path="res://Scripts/Classes/CustomLevel.gd" id="1_8pu80"]
+[ext_resource type="Script" uid="uid://c0kflqgd1w6sg" path="res://Scripts/Classes/CustomLevel.gd" id="1_8pu80"]
 [ext_resource type="PackedScene" uid="uid://bksxgpygrdjl7" path="res://Scenes/Prefabs/LevelBG.tscn" id="2_f32q3"]
 [ext_resource type="PackedScene" uid="uid://ct5rrpa7uehkk" path="res://Scenes/Parts/Tiles.tscn" id="5_6gaxc"]
 [ext_resource type="PackedScene" uid="uid://cuh62hlq8errh" path="res://Scenes/Prefabs/Entities/Player.tscn" id="6_13qah"]

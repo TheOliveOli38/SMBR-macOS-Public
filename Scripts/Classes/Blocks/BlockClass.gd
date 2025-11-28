@@ -77,6 +77,9 @@ func dispense_item() -> void:
 	if item_amount <= 0:
 		spawn_empty_block()
 
+func hit_block() -> void:
+	shell_block_hit.emit(null)
+
 func player_mushroom_check(player: Player = null) -> PackedScene:
 	if player.power_state.hitbox_size == "Small" and mushroom_if_small:
 		return load(SUPER_MUSHROOM)

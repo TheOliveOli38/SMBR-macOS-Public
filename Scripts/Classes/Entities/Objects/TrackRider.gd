@@ -17,6 +17,8 @@ var track_idx := -1
 var can_attach := true
 var travelling_on_rail := false
 
+signal started
+
 var can_move := true
 
 func _ready() -> void:
@@ -26,6 +28,8 @@ func _ready() -> void:
 		attach_to_joint(attached_entity)
 
 func start() -> void:
+	if $SignalExposer.total_inputs > 0:
+		can_move = false
 	current_track = null
 	track_idx = -1
 	if auto_move == false:
@@ -84,7 +88,9 @@ func check_for_rail() -> void:
 				track_idx = clamp(track_idx, 0, current_track.path.size() - 1)
 	if travelling_on_rail:
 		direction_vector = current_track.path[track_idx] * [1, -1][direction]
-		if current_track != null and can_move:
+		if current_track != null:
+			if can_move == false:
+				await started
 			move_tween(Vector2(direction_vector))
 
 func move_tween(new_direction := Vector2.ZERO) -> void:
@@ -116,7 +122,8 @@ func bounce() -> void:
 	if is_instance_valid(attached_entity) == false:
 		return
 	var joint = attached_entity.get_node("TrackJoint")
-	joint.bounced.emit()
+	if joint != null:
+		joint.bounced.emit()
 
 func detach_from_rail() -> void:
 	can_attach = false
@@ -125,3 +132,7 @@ func detach_from_rail() -> void:
 	velocity = direction_vector * speed * 48
 	await get_tree().create_timer(0.1, false).timeout
 	can_attach = true
+
+func start_moving() -> void:
+	started.emit()
+	can_move = true

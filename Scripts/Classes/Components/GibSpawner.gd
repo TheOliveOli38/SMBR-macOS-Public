@@ -41,6 +41,7 @@ func summon_poof() -> void:
 
 func stomp_die(player: Player, add_combo := true) -> void:
 	DiscoLevel.combo_amount += 1
+	owner.killed.emit("Hello")
 	AudioManager.play_sfx("enemy_stomp", owner.global_position)
 	player.enemy_bounce_off(add_combo)
 	summon_gib(1, false, 1)

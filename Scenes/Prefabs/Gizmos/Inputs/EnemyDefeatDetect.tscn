@@ -1,0 +1,19 @@
+[gd_scene load_steps=5 format=3 uid="uid://dr5lmraq8gwtm"]
+
+[ext_resource type="PackedScene" uid="uid://b2r255cb4tt7t" path="res://Scenes/Prefabs/Gizmos/Inputs/BaseInput.tscn" id="1_2801w"]
+[ext_resource type="Script" uid="uid://beoyxnqswcvyy" path="res://Scripts/Classes/Gizmos/EnemyDefeatDetect.gd" id="2_n6x6h"]
+[ext_resource type="Texture2D" uid="uid://wbsdfjs21yf0" path="res://Assets/Sprites/Editor/Gizmos/EnemyDefeatDetect.png" id="3_prtro"]
+[ext_resource type="Script" uid="uid://b8vmbtoaaq5nc" path="res://Scripts/Parts/EditorToggleDetection.gd" id="4_n6x6h"]
+
+[node name="EnemyDefeatDetect" unique_id=515746201 instance=ExtResource("1_2801w")]
+script = ExtResource("2_n6x6h")
+
+[node name="Sprite2D" parent="." index="0" unique_id=1224179792]
+texture = ExtResource("3_prtro")
+
+[node name="LevelEditorToggleDetection" type="Node" parent="." index="2" unique_id=161844256]
+script = ExtResource("4_n6x6h")
+metadata/_custom_type_script = "uid://b8vmbtoaaq5nc"
+
+[connection signal="enemy_killed" from="." to="SignalExposer" method="emit_pulse"]
+[connection signal="level_start" from="LevelEditorToggleDetection" to="." method="get_enemies"]

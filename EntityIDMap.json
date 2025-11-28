@@ -690,5 +690,25 @@
 	"Cs": [
 		"res://Scenes/Prefabs/Gizmos/Outputs/TilePlacer.tscn",
 		"0,0"
+	],
+	"Ct": [
+		"res://Scenes/Prefabs/Gizmos/Outputs/Teleporter.tscn",
+		"0,0"
+	],
+	"Cu": [
+		"res://Scenes/Prefabs/Gizmos/Inputs/EnemyDefeatDetect.tscn",
+		"0,0"
+	],
+	"Cv": [
+		"res://Scenes/Prefabs/Gizmos/Inputs/Broadcaster.tscn",
+		"0,0"
+	],
+	"Cw": [
+		"res://Scenes/Prefabs/Gizmos/Outputs/Repeater.tscn",
+		"0,0"
+	],
+	"Cx": [
+		"res://Scenes/Prefabs/Gizmos/Outputs/Fuse.tscn",
+		"0,0"
 	]
 }

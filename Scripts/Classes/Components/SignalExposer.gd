@@ -11,6 +11,8 @@ signal recieved_pulse
 signal recieved_power
 signal lost_power
 
+var turned_on := false
+
 enum ConnectorType{INPUT, OUTPUT, IN_OUTPUT}
 @export var type := ConnectorType.INPUT
 
@@ -25,14 +27,17 @@ var total_inputs := 0
 
 var wire_node: Node2D = null
 
+
 func _ready() -> void:
+	set_visibility_layer_bit(0, false)
+	set_visibility_layer_bit(1, true)
+	add_to_group("SignalExposers")
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	show_behind_parent = true
 	owner.z_index = -5
 	z_index = -10
 	top_level = true
 	global_position = owner.global_position
-	add_child(wire_node)
 	await get_tree().create_timer(0.1).timeout
 	connect_pre_existing_signals()
 	queue_redraw()
@@ -43,28 +48,56 @@ func _process(_delta: float) -> void:
 
 func _draw() -> void:
 	if editing:
-		draw_line(Vector2.ZERO, get_local_mouse_position(), Color.RED, 2, true)
+		draw_square_line(Vector2.ZERO, get_local_mouse_position())
 	for x in connections:
-		var target_node = get_node_from_index(x[0], x[1])
-		draw_line(Vector2.ZERO, to_local(target_node.global_position), Color.RED, 1, true)
+		var target_node = get_node_from_tile(x[0], x[1])
+		draw_square_line(Vector2.ZERO, to_local(target_node.global_position))
+
+func draw_square_line(from := Vector2.ZERO, to := Vector2.ZERO) -> void:
+	var colour = Color.RED
+	if turned_on:
+		colour = Color.GREEN
+	from = from.snapped(Vector2(16, 16))
+	to = to.snapped(Vector2(16, 16))
+	var dist_x = abs(from.x - to.x)
+	var dist_y = abs(from.y - to.y)
+	if dist_x == dist_y and dist_x > 16:
+		draw_dashed_line(from, to, colour, 1.5, 2.0, false)
+	elif dist_x > dist_y:
+		draw_dashed_line(from, Vector2(to.x, from.y), colour, 1)
+		draw_dashed_line(Vector2(to.x, from.y), to, colour, 1)
+	else:
+		draw_dashed_line(from, Vector2(from.x, to.y), colour, 1)
+		draw_dashed_line(Vector2(from.x, to.y), to, colour, 1)
 
 func begin_connecting() -> void:
+	update_animation(1.0, 1.2)
 	editing = true
 	await signal_connected
 	editing = false
+	update_animation(1.2, 1.0)
 	queue_redraw()
 
 func turn_on() -> void:
 	update_animation(1.0, 1.2)
 	powered_on.emit()
+	turned_on = true
+	queue_redraw()
 
 func turn_off() -> void:
 	update_animation(1.2, 1.0)
 	powered_off.emit()
+	turned_on = false
+	queue_redraw()
 
 func emit_pulse() -> void:
 	update_animation(1.2, 1.0)
 	pulse_emitted.emit()
+	turned_on = true
+	queue_redraw()
+	await get_tree().create_timer(0.1, false).timeout
+	turned_on = false
+	queue_redraw()
 
 func connect_pre_existing_signals() -> void:
 	for i in connections:
@@ -72,7 +105,7 @@ func connect_pre_existing_signals() -> void:
 
 func connect_to_node(node_to_recieve := []) -> void:
 	has_output = true
-	var node: Node = get_node_from_index(node_to_recieve[0], node_to_recieve[1])
+	var node: Node = get_node_from_tile(node_to_recieve[0], node_to_recieve[1])
 	pulse_emitted.connect(node.get_node("SignalExposer").recieved_pulse.emit)
 	powered_on.connect(node.get_node("SignalExposer").recieved_power.emit)
 	powered_off.connect(node.get_node("SignalExposer").lost_power.emit)
@@ -96,14 +129,15 @@ func input_removed() -> void:
 	if total_inputs <= 0:
 		has_input = false
 
-func get_node_from_index(layer_num := 0, tile_index := 0) -> Node:
-	if Global.level_editor != null:
-		return Global.level_editor.entity_layer_nodes[layer_num].get_child(tile_index)
-	else:
-		return Global.current_level.get_node("EntityTiles" + str(layer_num + 1)).get_child(tile_index)
+func get_node_from_tile(layer_num := 0, tile_position := Vector2i.ZERO) -> Node:
+	for i in get_tree().get_nodes_in_group("SignalExposers"):
+		print([i.owner, i.owner.get_meta("tile_position", i.owner.get_parent())])
+		if i.owner.get_meta("tile_position", Vector2i.ZERO) == tile_position and i.owner.get_parent() == Global.current_level.get_node("EntityLayer" + str(layer_num + 1)):
+			return i.owner
+	return null
 
 func update_animation(from := 1.2, to := 1.0) -> void:
-	if do_animation == false:
+	if do_animation == false or is_visible_in_tree() == false:
 		return
 	owner.scale = Vector2(from, from)
 	create_tween().set_trans(Tween.TRANS_CIRC).tween_property(owner, "scale", Vector2(to, to), 0.15)

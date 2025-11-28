@@ -69,7 +69,6 @@ var character := "Mario"
 
 var crouching := false:
 	get(): # You can't crouch if the animation somehow doesn't exist.
-		if not sprite.sprite_frames.has_animation("Crouch"): return false
 		return crouching
 var skidding := false
 

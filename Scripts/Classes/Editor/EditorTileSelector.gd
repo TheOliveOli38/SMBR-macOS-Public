@@ -1,4 +1,3 @@
-@tool
 class_name EditorTileSelector
 extends Control
 
@@ -16,7 +15,6 @@ extends Control
 @export_group("ID Generation")
 @export var entity_scene: PackedScene = null
 @export var tile_offset := Vector2i.ZERO
-@export_tool_button("Gen ID") var but = get_id
 
 @export_category("Tile")
 @export var source_id := 0

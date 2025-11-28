@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://bc1mrna4kybhv"]
+[gd_scene load_steps=18 format=3 uid="uid://bc1mrna4kybhv"]
 
 [ext_resource type="Script" uid="uid://b5ejlbl0vp1gm" path="res://Scripts/Classes/Blocks/BlockClass.gd" id="1_bxree"]
 [ext_resource type="Texture2D" uid="uid://uh7uhdkv3e6s" path="res://Assets/Sprites/Blocks/QuestionBlock.png" id="1_wt4d5"]
@@ -10,6 +10,7 @@
 [ext_resource type="Script" uid="uid://ctfbuoxtnnl0q" path="res://Scripts/Classes/Components/EditorPropertyExposer.gd" id="7_aekuo"]
 [ext_resource type="Script" uid="uid://d4a7yp6e55u8t" path="res://Scripts/Classes/Components/TrackJoint.gd" id="8_ov42f"]
 [ext_resource type="Script" uid="uid://maqpreddu5kg" path="res://Scripts/Classes/Components/LevelPersistance.gd" id="9_j1txv"]
+[ext_resource type="Script" uid="uid://b3bokos5jcpr7" path="res://Scripts/Classes/Components/SignalExposer.gd" id="11_pslic"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_w6pbl"]
 atlas = ExtResource("1_wt4d5")
@@ -94,6 +95,10 @@ metadata/_custom_type_script = "uid://d4a7yp6e55u8t"
 script = ExtResource("9_j1txv")
 metadata/_custom_type_script = "uid://maqpreddu5kg"
 
+[node name="SignalExposer" type="Node2D" parent="." unique_id=1775923059]
+script = ExtResource("11_pslic")
+metadata/_custom_type_script = "uid://b3bokos5jcpr7"
+
 [connection signal="block_destroyed" from="." to="LevelPersistance" method="set_as_active_2"]
 [connection signal="block_emptied" from="." to="LevelPersistance" method="set_as_active"]
 [connection signal="player_block_hit" from="." to="." method="player_mushroom_check"]
@@ -103,3 +108,5 @@ metadata/_custom_type_script = "uid://maqpreddu5kg"
 [connection signal="shell_block_hit" from="." to="BlockAnimations" method="bounce_block" unbinds=1]
 [connection signal="enabled" from="LevelPersistance" to="." method="spawn_empty_block"]
 [connection signal="enabled_2" from="LevelPersistance" to="." method="queue_free"]
+[connection signal="recieved_power" from="SignalExposer" to="." method="hit_block"]
+[connection signal="recieved_pulse" from="SignalExposer" to="." method="hit_block"]

@@ -41,7 +41,7 @@ metadata/_custom_type_script = "uid://b3bokos5jcpr7"
 
 [node name="PropertyExposer" type="Node" parent="." unique_id=1046722467]
 script = ExtResource("4_66481")
-properties = Array[String](["total_needed"])
+properties = Array[String](["total_needed", "reset_on_total_reached"])
 metadata/_custom_type_script = "uid://ctfbuoxtnnl0q"
 
 [connection signal="total_reached" from="." to="SignalExposer" method="emit_pulse"]

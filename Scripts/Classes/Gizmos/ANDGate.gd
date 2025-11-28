@@ -14,7 +14,8 @@ func input_added() -> void:
 	update()
 
 func update() -> void:
-	await get_tree().process_frame
+	if is_inside_tree():
+		await get_tree().process_frame
 	total_inputs = clamp(total_inputs, 0, INF)
 	var test_condition = get_condition()
 	if test_condition != condition_filled:
@@ -38,6 +39,12 @@ func get_condition() -> bool:
 			return total_inputs > 0 and total_inputs < $SignalExposer.total_inputs
 		_:
 			return false
+
+func pulse_recieved() -> void:
+	input_added()
+	$SignalExposer.queue_redraw()
+	await get_tree().process_frame
+	input_lost()
 
 
 func input_lost() -> void:

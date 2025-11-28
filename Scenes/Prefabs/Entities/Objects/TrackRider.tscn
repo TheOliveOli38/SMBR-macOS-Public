@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://dvmr3r2uub283"]
+[gd_scene load_steps=8 format=3 uid="uid://dvmr3r2uub283"]
 
 [ext_resource type="Script" uid="uid://cpwloakvp672a" path="res://Scripts/Parts/EditorVisibleNode.gd" id="1_n5i2x"]
 [ext_resource type="Script" uid="uid://dg16ltpjq1r4r" path="res://Scripts/Classes/Entities/Objects/TrackRider.gd" id="1_xlgar"]
 [ext_resource type="Texture2D" uid="uid://dtrgyp1sjp568" path="res://Assets/Sprites/Editor/TrackRider.png" id="2_qkkla"]
 [ext_resource type="Script" uid="uid://b8vmbtoaaq5nc" path="res://Scripts/Parts/EditorToggleDetection.gd" id="4_yiejl"]
 [ext_resource type="Script" uid="uid://ctfbuoxtnnl0q" path="res://Scripts/Classes/Components/EditorPropertyExposer.gd" id="5_yiejl"]
+[ext_resource type="Script" uid="uid://b3bokos5jcpr7" path="res://Scripts/Classes/Components/SignalExposer.gd" id="6_62713"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xlgar"]
 size = Vector2(12, 12)
@@ -38,4 +39,10 @@ metadata/_custom_type_script = "uid://ctfbuoxtnnl0q"
 [node name="Joint" type="Node2D" parent="." unique_id=1144801055]
 z_as_relative = false
 
+[node name="SignalExposer" type="Node2D" parent="." unique_id=920527108]
+script = ExtResource("6_62713")
+metadata/_custom_type_script = "uid://b3bokos5jcpr7"
+
 [connection signal="toggled" from="LevelEditorToggleDetection" to="." method="start"]
+[connection signal="recieved_power" from="SignalExposer" to="." method="start_moving"]
+[connection signal="recieved_pulse" from="SignalExposer" to="." method="start_moving"]

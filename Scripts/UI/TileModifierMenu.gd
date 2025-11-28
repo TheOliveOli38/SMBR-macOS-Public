@@ -45,6 +45,7 @@ func open() -> void:
 	%Properties.visible = properties.size() > 0
 	%SignalDisplay.visible = has_connection
 	add_properties()
+	update_minimum_size()
 	show()
 	editing_node.tree_exiting.connect(close)
 
@@ -143,7 +144,7 @@ func close() -> void:
 var old_scale = Vector2.ONE
 
 func connect_signal(new_node: Node) -> void:
-	editing_node.get_node("SignalExposer").connect_to_node([Global.level_editor.current_layer, new_node.get_index()])
+	editing_node.get_node("SignalExposer").connect_to_node([Global.level_editor.current_layer, new_node.get_meta("tile_position")])
 	can_exit = true
 	print("Connected!")
 	show()
