@@ -26,12 +26,16 @@ var total_inputs := 0
 @export var do_animation := true
 
 var wire_node: Node2D = null
-
+var save_string := ""
 
 func _ready() -> void:
 	set_visibility_layer_bit(0, false)
 	set_visibility_layer_bit(1, true)
 	add_to_group("SignalExposers")
+	save_string = owner.get_meta("save_string", "")
+	if save_string != "":
+		apply_string(save_string)
+		owner.remove_meta("save_string")
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	show_behind_parent = true
 	owner.z_index = -5
@@ -128,6 +132,16 @@ func input_removed() -> void:
 	total_inputs -= 1
 	if total_inputs <= 0:
 		has_input = false
+
+func apply_string(string := "") -> void:
+	print(string)
+	var arr := []
+	if string.contains("&"):
+		string = string.substr(string.find("&"))
+		arr = string.split("&", false)
+	for i in arr:
+		var signal_arr = i.split(",")
+		connections.append([int(signal_arr[0]), Vector2i(int(signal_arr[1]), int(signal_arr[2]))])
 
 func get_node_from_tile(layer_num := 0, tile_position := Vector2i.ZERO) -> Node:
 	for i in get_tree().get_nodes_in_group("SignalExposers"):

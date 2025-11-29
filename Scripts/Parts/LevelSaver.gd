@@ -77,6 +77,7 @@ func get_tiles(level: CustomLevel = null) -> void:
 
 
 static func compress_string(buffer := "") -> String:
+	print(buffer)
 	var bytes = buffer.to_ascii_buffer()
 	var compressed_bytes = bytes.compress(FileAccess.CompressionMode.COMPRESSION_DEFLATE)
 	var b64_buffer = Marshalls.raw_to_base64(compressed_bytes)
@@ -96,6 +97,7 @@ static func decompress_string(buffer := "") -> String:
 func get_entities(level: CustomLevel) -> void:
 	for layer in 5:
 		var layer_node = level.get_node("EntityLayer" + str(layer + 1))
+		var signals := []
 		for entity in layer_node.get_children():
 			if entity.has_meta("tile_position") == false:
 				continue
@@ -108,6 +110,10 @@ func get_entities(level: CustomLevel) -> void:
 			entity_string += EntityIDMapper.get_map_id(entity.scene_file_path)
 			if entity.has_node("EditorPropertyExposer"):
 				entity_string += entity.get_node("EditorPropertyExposer").get_string()
+			if entity.has_node("SignalExposer"):
+				for i in entity.get_node("SignalExposer").connections:
+					entity_string += ",&"
+					entity_string += str(i[0]) + "," + str(i[1].x) + "," + str(i[1].y)
 			var entity_chunk_idx = tile_to_chunk_idx(entity.get_meta("tile_position"))
 			var tile_chunk := {}
 			if sub_level_file["Layers"][layer].has(entity_chunk_idx):
@@ -118,6 +124,9 @@ func get_entities(level: CustomLevel) -> void:
 			sub_level_file["Layers"][layer][entity_chunk_idx] = tile_chunk
 		for i in sub_level_file["Layers"][layer]:
 			sub_level_file["Layers"][layer][i]["Entities"] = compress_string(sub_level_file["Layers"][layer][i]["Entities"])
+
+func get_signals() -> void:
+	pass
 
 func encode_to_base64_2char(value: int) -> String:
 	if value < 0 or value >= 4096:
