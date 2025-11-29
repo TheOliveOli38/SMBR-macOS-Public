@@ -42,7 +42,7 @@ texture = ExtResource("2_pw874")
 script = ExtResource("3_0gjbp")
 metadata/_custom_type_script = "uid://b3bokos5jcpr7"
 
-[node name="PropertyExposer" type="Node" parent="." unique_id=837440895]
+[node name="EditorPropertyExposer" type="Node" parent="." unique_id=837440895]
 script = ExtResource("4_0gjbp")
 properties = Array[String](["channel", "mode"])
 properties_force_selector = Dictionary[String, PackedScene]({

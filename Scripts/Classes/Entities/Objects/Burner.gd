@@ -3,10 +3,16 @@ extends AnimatableBody2D
 
 @export_enum("Up", "Down", "Left", "Right") var direction := 0
 
+var can_burn := true
+
 func _ready() -> void:
-	$Timer.start()
+	if $SignalExposer.total_inputs <= 0:
+		$Timer.start()
 
 func do_cycle() -> void:
+	if can_burn == false:
+		return
+	can_burn = false
 	if BooRaceHandler.countdown_active == false:
 		if $OnScreen.is_on_screen():
 			AudioManager.play_sfx("burner", global_position)
@@ -15,7 +21,9 @@ func do_cycle() -> void:
 		%Shape.set_deferred("disabled", false)
 		await get_tree().create_timer(1.5, false).timeout
 	%Shape.set_deferred("disabled", true)
-	$Timer.start()
+	can_burn = true
+	if $SignalExposer.total_inputs <= 0:
+		$Timer.start()
 
 func do_animation() -> void:
 	%Flame.show()

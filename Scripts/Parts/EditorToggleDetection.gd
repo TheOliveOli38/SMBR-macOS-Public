@@ -13,3 +13,5 @@ func _ready() -> void:
 		Global.level_editor.level_start.connect(level_start.emit)
 		Global.level_editor.editor_start.connect(editor_start.emit)
 		Global.level_editor.editor_start.connect(toggled.emit)
+	else:
+		level_start.emit()

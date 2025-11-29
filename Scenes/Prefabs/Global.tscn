@@ -1,4 +1,4 @@
-[gd_scene load_steps=58 format=3 uid="uid://c3h2iqkvitqd2"]
+[gd_scene load_steps=60 format=3 uid="uid://c3h2iqkvitqd2"]
 
 [ext_resource type="PackedScene" uid="uid://bod0jkf7jc5pm" path="res://Scenes/Prefabs/GameHud.tscn" id="1_ctvpw"]
 [ext_resource type="Script" uid="uid://bbxqn16ekbpcl" path="res://Scripts/Classes/Singletons/Global.gd" id="1_t23sr"]
@@ -25,6 +25,23 @@
 [ext_resource type="JSON" path="res://Assets/Sprites/UI/Cursor.json" id="20_3l3ph"]
 [ext_resource type="JSON" path="res://Assets/Sprites/UI/FontMain.json" id="23_3l3ph"]
 [ext_resource type="JSON" path="res://Assets/Sprites/UI/ScoreFont.json" id="24_m6bur"]
+
+[sub_resource type="Shader" id="Shader_m6bur"]
+code = "shader_type canvas_item;
+
+uniform sampler2D SCREEN_TEXTURE: hint_screen_texture, filter_nearest;
+
+void fragment() {
+    // Flip the x-axis: instead of sampling UV.x, sample (1.0 - UV.x)
+    vec2 flipped_uv = vec2(1.0 - UV.x, UV.y);
+
+    // SAMPLE_SCREEN returns the screen texture at given UV
+    COLOR = texture(SCREEN_TEXTURE, flipped_uv);
+}
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mpjtu"]
+shader = SubResource("Shader_m6bur")
 
 [sub_resource type="Animation" id="Animation_6jmk5"]
 resource_name = "FadeIn"
@@ -279,6 +296,18 @@ region = Rect2(0, 0, 8, 8)
 [node name="Global" type="Node" unique_id=1897878467]
 process_mode = 3
 script = ExtResource("1_t23sr")
+
+[node name="LUIGIMODE" type="CanvasLayer" parent="." unique_id=2000491311]
+visible = false
+
+[node name="ColorRect" type="ColorRect" parent="LUIGIMODE" unique_id=1900831145]
+show_behind_parent = true
+material = SubResource("ShaderMaterial_mpjtu")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="Transition" type="CanvasLayer" parent="." unique_id=637443556]
 layer = 128

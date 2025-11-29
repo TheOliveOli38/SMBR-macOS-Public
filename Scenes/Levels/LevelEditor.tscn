@@ -1,4 +1,4 @@
-[gd_scene load_steps=252 format=3 uid="uid://gbcmqonky63j"]
+[gd_scene load_steps=259 format=3 uid="uid://gbcmqonky63j"]
 
 [ext_resource type="Script" uid="uid://c2lnc7vnq3xth" path="res://Scripts/Classes/Editor/LevelEditor.gd" id="1_0qbyu"]
 [ext_resource type="Texture2D" uid="uid://cbha2l6hg1kfo" path="res://Assets/Sprites/UI/EditorGrid.png" id="2_8q7yr"]
@@ -125,11 +125,15 @@
 [ext_resource type="Texture2D" uid="uid://bu83phly7km01" path="res://Assets/Sprites/Editor/Gizmos/PlayerDetection.png" id="153_gf7vd"]
 [ext_resource type="PackedScene" uid="uid://crmu32j38j4y0" path="res://Scenes/Prefabs/Gizmos/Inputs/PlayerDetection.tscn" id="154_nxlms"]
 [ext_resource type="Texture2D" uid="uid://dfpbjnd1o5tig" path="res://Assets/Sprites/Tilesets/OnOffPlatform.png" id="155_i2jbr"]
+[ext_resource type="Texture2D" uid="uid://cui738lv33yo8" path="res://Assets/Sprites/Editor/Gizmos/PlayerEventDetection.png" id="155_k5kal"]
 [ext_resource type="Texture2D" uid="uid://bcns43fy5y3n7" path="res://Assets/Sprites/Editor/Gizmos/Lamp.png" id="155_wo43l"]
+[ext_resource type="PackedScene" uid="uid://wuilwn5k1uqk" path="res://Scenes/Prefabs/Gizmos/Inputs/PlayerEventDetection.tscn" id="156_6c7k7"]
 [ext_resource type="PackedScene" uid="uid://cb7ydcmetjs8d" path="res://Scenes/Prefabs/Gizmos/Outputs/Lamp.tscn" id="156_7xqm2"]
 [ext_resource type="Texture2D" uid="uid://gv1pjlssjnso" path="res://Assets/Sprites/Editor/Gizmos/Switch.png" id="157_26a4w"]
+[ext_resource type="Texture2D" uid="uid://dri4i34qcd8xv" path="res://Assets/Sprites/Editor/Gizmos/EnemyDetection.png" id="157_sf60c"]
 [ext_resource type="PackedScene" uid="uid://df2mpmmdeumgo" path="res://Scenes/Prefabs/Gizmos/Inputs/Broadcaster.tscn" id="158_5yjx1"]
 [ext_resource type="PackedScene" uid="uid://dbhud5kb2qnvv" path="res://Scenes/Prefabs/Gizmos/Outputs/Switch.tscn" id="158_26a4w"]
+[ext_resource type="PackedScene" uid="uid://bibrr2kxrsy5f" path="res://Scenes/Prefabs/Gizmos/Inputs/EnemyDetection.tscn" id="158_adqgr"]
 [ext_resource type="Texture2D" uid="uid://cumync742jg78" path="res://Assets/Sprites/Editor/Gizmos/Counter.png" id="159_itqoj"]
 [ext_resource type="FontFile" uid="uid://djsv6aojrcuyg" path="res://Assets/Sprites/UI/Font.fnt" id="160_da57p"]
 [ext_resource type="PackedScene" uid="uid://1rjmesav4wm0" path="res://Scenes/Prefabs/Gizmos/Outputs/Counter.tscn" id="161_1i68c"]
@@ -160,6 +164,9 @@
 [ext_resource type="PackedScene" uid="uid://rvrkmp0wgg5w" path="res://Scenes/Prefabs/Gizmos/Outputs/Teleporter.tscn" id="176_uggri"]
 [ext_resource type="Texture2D" uid="uid://wbsdfjs21yf0" path="res://Assets/Sprites/Editor/Gizmos/EnemyDefeatDetect.png" id="177_2l75x"]
 [ext_resource type="PackedScene" uid="uid://dr5lmraq8gwtm" path="res://Scenes/Prefabs/Gizmos/Inputs/EnemyDefeatDetect.tscn" id="178_0bfpc"]
+[ext_resource type="Texture2D" uid="uid://cp6jjfs5n3jjd" path="res://Assets/Sprites/Editor/Gizmos/Dice.png" id="181_k6wox"]
+[ext_resource type="PackedScene" uid="uid://bbc6s5nyphtn2" path="res://Scenes/Prefabs/Gizmos/Outputs/Dice.tscn" id="182_3c4c7"]
+[ext_resource type="Texture2D" uid="uid://ba1s5nfrmpd5a" path="res://Assets/Sprites/Editor/Gizmos/Speaker.png" id="189_3c4c7"]
 [ext_resource type="JSON" path="res://Assets/Sprites/Blocks/Cannon.json" id="190_numt2"]
 [ext_resource type="JSON" path="res://Assets/Sprites/Items/HammerItem.json" id="194_k6wox"]
 [ext_resource type="Texture2D" uid="uid://4fafl7yuo5k0" path="res://Assets/Sprites/Editor/GravityInverter.png" id="195_co4xw"]
@@ -5176,8 +5183,16 @@ theme_override_constants/separation = 4
 [node name="Inputs" type="HFlowContainer" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Gizmos/MarginContainer/VBoxContainer" unique_id=2119671143]
 layout_mode = 2
 
-[node name="PlayerDetection" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Gizmos/MarginContainer/VBoxContainer/Inputs" unique_id=1390379137 groups=["Selectors"] instance=ExtResource("8_wkmjk")]
+[node name="PlayerStuff" type="Control" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Gizmos/MarginContainer/VBoxContainer/Inputs" unique_id=825347357]
+custom_minimum_size = Vector2(16, 16)
 layout_mode = 2
+mouse_force_pass_scroll_events = false
+script = ExtResource("20_jc7xg")
+
+[node name="PlayerDetection" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Gizmos/MarginContainer/VBoxContainer/Inputs/PlayerStuff" unique_id=1390379137 groups=["Selectors"] instance=ExtResource("8_wkmjk")]
+layout_mode = 0
+offset_right = 16.0
+offset_bottom = 16.0
 tile_name = "Player Detection"
 type = 1
 icon_texture = ExtResource("153_gf7vd")
@@ -5186,8 +5201,53 @@ entity_id = "Ci"
 entity_scene = ExtResource("154_nxlms")
 metadata/can_be_stored = true
 
-[node name="EnemyDefeatDetect" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Gizmos/MarginContainer/VBoxContainer/Inputs" unique_id=850817339 groups=["Selectors"] instance=ExtResource("8_wkmjk")]
+[node name="PlayerEventDetection2" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Gizmos/MarginContainer/VBoxContainer/Inputs/PlayerStuff" unique_id=1170958258 groups=["Selectors"] instance=ExtResource("8_wkmjk")]
+layout_mode = 0
+offset_right = 16.0
+offset_bottom = 16.0
+tile_name = "Player Event Detection"
+type = 1
+icon_texture = ExtResource("155_k5kal")
+icon_region_override = Rect2(0, 0, 16, 16)
+entity_id = "Cz"
+entity_scene = ExtResource("156_6c7k7")
+metadata/can_be_stored = true
+
+[node name="TextureRect" type="TextureRect" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Gizmos/MarginContainer/VBoxContainer/Inputs/PlayerStuff" unique_id=929992253]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("22_3cjpb")
+expand_mode = 1
+stretch_mode = 3
+
+[node name="EnemyStuff" type="Control" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Gizmos/MarginContainer/VBoxContainer/Inputs" unique_id=1281915632]
+custom_minimum_size = Vector2(16, 16)
 layout_mode = 2
+mouse_force_pass_scroll_events = false
+script = ExtResource("20_jc7xg")
+
+[node name="EnemyDetection" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Gizmos/MarginContainer/VBoxContainer/Inputs/EnemyStuff" unique_id=252540760 groups=["Selectors"] instance=ExtResource("8_wkmjk")]
+layout_mode = 0
+offset_right = 16.0
+offset_bottom = 16.0
+tile_name = "Enemy Detection"
+type = 1
+icon_texture = ExtResource("157_sf60c")
+icon_region_override = Rect2(0, 0, 16, 16)
+secondary_icon_region_override = Rect2(0, 0, 16, 16)
+entity_id = "Cy"
+entity_scene = ExtResource("158_adqgr")
+metadata/can_be_stored = true
+
+[node name="EnemyDefeatDetect" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Gizmos/MarginContainer/VBoxContainer/Inputs/EnemyStuff" unique_id=850817339 groups=["Selectors"] instance=ExtResource("8_wkmjk")]
+layout_mode = 0
+offset_right = 16.0
+offset_bottom = 16.0
 tile_name = "Enemy Defeat Detect"
 type = 1
 icon_texture = ExtResource("177_2l75x")
@@ -5196,6 +5256,18 @@ secondary_icon_region_override = Rect2(0, 0, 16, 16)
 entity_id = "Cu"
 entity_scene = ExtResource("178_0bfpc")
 metadata/can_be_stored = true
+
+[node name="TextureRect" type="TextureRect" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Gizmos/MarginContainer/VBoxContainer/Inputs/EnemyStuff" unique_id=1417672935]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("22_3cjpb")
+expand_mode = 1
+stretch_mode = 3
 
 [node name="Broadcaster" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Gizmos/MarginContainer/VBoxContainer/Inputs" unique_id=1587515387 groups=["Selectors"] instance=ExtResource("8_wkmjk")]
 layout_mode = 2
@@ -5351,6 +5423,18 @@ entity_id = "Cx"
 entity_scene = ExtResource("176_adqgr")
 metadata/can_be_stored = true
 
+[node name="Dice" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Gizmos/MarginContainer/VBoxContainer/Logic" unique_id=603260121 groups=["Selectors"] instance=ExtResource("8_wkmjk")]
+layout_mode = 2
+tile_name = "Dice"
+type = 1
+icon_texture = ExtResource("181_k6wox")
+icon_region_override = Rect2(0, 0, 16, 16)
+secondary_icon_texture = ExtResource("160_da57p")
+secondary_icon_region_override = Rect2(0, 0, 16, 16)
+entity_id = "DA"
+entity_scene = ExtResource("182_3c4c7")
+metadata/can_be_stored = true
+
 [node name="Output" type="HFlowContainer" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Gizmos/MarginContainer/VBoxContainer" unique_id=193752837]
 layout_mode = 2
 
@@ -5383,6 +5467,17 @@ icon_texture = ExtResource("175_al0re")
 icon_region_override = Rect2(0, 0, 16, 16)
 secondary_icon_region_override = Rect2(0, 0, 16, 16)
 entity_id = "Ct"
+entity_scene = ExtResource("176_uggri")
+metadata/can_be_stored = true
+
+[node name="Speaker" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Gizmos/MarginContainer/VBoxContainer/Output" unique_id=789673022 groups=["Selectors"] instance=ExtResource("8_wkmjk")]
+layout_mode = 2
+tile_name = "Speaker"
+type = 1
+icon_texture = ExtResource("189_3c4c7")
+icon_region_override = Rect2(0, 0, 16, 16)
+secondary_icon_region_override = Rect2(0, 0, 16, 16)
+entity_id = "DB"
 entity_scene = ExtResource("176_uggri")
 metadata/can_be_stored = true
 

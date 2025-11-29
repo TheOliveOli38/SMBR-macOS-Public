@@ -23,6 +23,7 @@ func get_entity_map() -> void:
 func get_string() -> String:
 	var string = ""
 	for i in properties:
+		print(i)
 		string += ","
 		if owner is Track:
 			if owner.get(i) is Array:
@@ -40,6 +41,8 @@ func get_string() -> String:
 			if key == null or key == "":
 				key = "!!"
 			string += key
+		elif owner.get(i) is float:
+			string += str(owner.get(i))
 		elif owner.get(i) is int:
 			if owner.get(i) >= 64:
 				string += encode_to_base64_2char(owner.get(i))
@@ -89,6 +92,8 @@ func apply_string(entity_string := "") -> void:
 			owner.set(i, num)
 		elif owner.get(i) is bool:
 			owner.set(i, bool(base64_charset.find(value)))
+		elif owner.get(i) is float:
+			owner.set(i, float(value))
 		idx += 1
 	modifier_applied.emit()
 

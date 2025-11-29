@@ -710,5 +710,21 @@
 	"Cx": [
 		"res://Scenes/Prefabs/Gizmos/Outputs/Fuse.tscn",
 		"0,0"
+	],
+	"Cy": [
+		"res://Scenes/Prefabs/Gizmos/Inputs/EnemyDetection.tscn",
+		"0,0"
+	],
+	"Cz": [
+		"res://Scenes/Prefabs/Gizmos/Inputs/PlayerEventDetection.tscn",
+		"0,0"
+	],
+	"DA": [
+		"res://Scenes/Prefabs/Gizmos/Outputs/Dice.tscn",
+		"0,0"
+	],
+	"DB": [
+		"res://Scenes/Prefabs/Gizmos/Outputs/Speaker.tscn",
+		"0,0"
 	]
 }

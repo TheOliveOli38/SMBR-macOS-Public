@@ -14,15 +14,16 @@ z_index = 0
 script = ExtResource("2_00yji")
 size_x = 1
 size_y = 1
+type = 0
 
 [node name="Sprite2D" parent="." index="0" unique_id=1224179792]
 texture = ExtResource("2_1x2ni")
 
-[node name="PlayerDetection" type="Area2D" parent="." index="2" unique_id=1285879126]
+[node name="Hitbox" type="Area2D" parent="." index="2" unique_id=1285879126]
 script = ExtResource("3_1x2ni")
 metadata/_custom_type_script = "uid://cnheej0sxmoxg"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetection" index="0" unique_id=1374569313]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" index="0" unique_id=1374569313]
 shape = SubResource("RectangleShape2D_00yji")
 
 [node name="PropertyExposer" type="Node" parent="." index="3" unique_id=666886942]
@@ -30,5 +31,5 @@ script = ExtResource("5_5frb8")
 properties = Array[String](["size_x", "size_y"])
 metadata/_custom_type_script = "uid://ctfbuoxtnnl0q"
 
-[connection signal="player_entered" from="PlayerDetection" to="SignalExposer" method="turn_on" unbinds=1]
-[connection signal="player_exited" from="PlayerDetection" to="SignalExposer" method="turn_off" unbinds=1]
+[connection signal="player_entered" from="Hitbox" to="SignalExposer" method="turn_on" unbinds=1]
+[connection signal="player_exited" from="Hitbox" to="SignalExposer" method="turn_off" unbinds=1]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://biupk6yel683f"]
+[gd_scene load_steps=11 format=3 uid="uid://biupk6yel683f"]
 
 [ext_resource type="Script" uid="uid://c7qf2r1yve6nl" path="res://Scripts/Classes/Entities/Objects/SnakeBlock.gd" id="1_r8seh"]
 [ext_resource type="PackedScene" uid="uid://br1hsfo0ihtxu" path="res://Scenes/Parts/SnakeBlockSegment.tscn" id="2_fuc5y"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://bid7njjtqgb26" path="res://Assets/Sprites/Editor/SnakeBlockPath.png" id="5_51wbc"]
 [ext_resource type="Script" uid="uid://cpwloakvp672a" path="res://Scripts/Parts/EditorVisibleNode.gd" id="6_51wbc"]
 [ext_resource type="Texture2D" uid="uid://dlldh5aks0wff" path="res://Assets/Sprites/Editor/GhostTile.png" id="7_yol8k"]
+[ext_resource type="Script" uid="uid://b3bokos5jcpr7" path="res://Scripts/Classes/Components/SignalExposer.gd" id="8_46787"]
 
 [sub_resource type="GDScript" id="GDScript_r8seh"]
 script/source = "extends Node
@@ -150,6 +151,10 @@ texture = ExtResource("7_yol8k")
 [node name="Tweens" type="Node2D" parent="." unique_id=1871003237]
 process_mode = 1
 
+[node name="SignalExposer" type="Node2D" parent="." unique_id=1335334571]
+script = ExtResource("8_46787")
+metadata/_custom_type_script = "uid://b3bokos5jcpr7"
+
 [connection signal="mouse_entered" from="PlacePreview/N/MouseArea" to="." method="on_mouse_entered" binds= [0]]
 [connection signal="mouse_exited" from="PlacePreview/N/MouseArea" to="." method="on_mouse_exited" binds= [0]]
 [connection signal="mouse_entered" from="PlacePreview/E/MouseArea" to="." method="on_mouse_entered" binds= [1]]
@@ -159,3 +164,5 @@ process_mode = 1
 [connection signal="mouse_entered" from="PlacePreview/W/MouseArea" to="." method="on_mouse_entered" binds= [3]]
 [connection signal="mouse_exited" from="PlacePreview/W/MouseArea" to="." method="on_mouse_exited" binds= [3]]
 [connection signal="visibility_changed" from="PathPreview" to="." method="queue_redraw"]
+[connection signal="recieved_power" from="SignalExposer" to="." method="start_travelling"]
+[connection signal="recieved_pulse" from="SignalExposer" to="." method="start_travelling"]

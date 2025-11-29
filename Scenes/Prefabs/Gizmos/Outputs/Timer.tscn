@@ -40,7 +40,7 @@ metadata/_custom_type_script = "uid://b3bokos5jcpr7"
 [node name="Timer" type="Timer" parent="." unique_id=781792681]
 one_shot = true
 
-[node name="PropertyExposer" type="Node" parent="." unique_id=1294009337]
+[node name="EditorPropertyExposer" type="Node" parent="." unique_id=1294009337]
 script = ExtResource("4_855jj")
 properties = Array[String](["duration", "loop"])
 metadata/_custom_type_script = "uid://ctfbuoxtnnl0q"

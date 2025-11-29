@@ -9,6 +9,7 @@ func update(delta: float) -> void:
 
 func throw_fireball() -> void:
 	var node = projectile_scene.instantiate()
+	player.attacked.emit()
 	node.character = player.character
 	node.global_position = player.global_position - Vector2(-4 * player.direction, player.shoot_height * player.gravity_vector.y)
 	node.direction = player.direction

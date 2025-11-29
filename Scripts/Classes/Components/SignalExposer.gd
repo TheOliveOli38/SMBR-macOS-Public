@@ -42,7 +42,7 @@ func _ready() -> void:
 	z_index = -10
 	top_level = true
 	global_position = owner.global_position
-	await get_tree().create_timer(0.1).timeout
+	await get_tree().process_frame
 	connect_pre_existing_signals()
 	queue_redraw()
 

@@ -372,9 +372,9 @@ func handle_tile_cursor() -> void:
 	if current_state == EditorState.IDLE:
 		if Input.is_action_pressed("mb_left"):
 			print([multi_selecting])
-			if (Input.is_action_pressed("editor_select") or Input.is_action_pressed("multi_select")) and not multi_selecting:
+			if (Input.is_action_pressed("editor_select")) and not multi_selecting:
 				multi_select_start(tile_position)
-			elif Input.is_action_pressed("editor_select") == false and Input.is_action_pressed("multi_select") == false:
+			elif Input.is_action_pressed("editor_select") == false:
 				multi_selecting = false
 				match current_tile_type:
 					TileType.TILE:

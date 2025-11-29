@@ -70,6 +70,11 @@ var character := "Mario"
 var crouching := false:
 	get(): # You can't crouch if the animation somehow doesn't exist.
 		return crouching
+	set(value):
+		if value and crouching == false:
+			crouch_started.emit()
+		crouching = value
+
 var skidding := false
 
 var bumping := false
@@ -129,6 +134,12 @@ const POWER_STATES := ["Small", "Big", "Fire", "Superball"]
 
 signal moved
 signal dead
+
+signal jumped
+signal crouch_started
+signal attacked
+signal damaged
+signal powered_up
 
 var is_dead := false
 
@@ -585,6 +596,7 @@ func damage() -> void:
 	if can_hurt == false or is_invincible:
 		return
 	times_hit += 1
+	damaged.emit()
 	var damage_state = power_state.damage_state
 	if damage_state != null:
 		if Settings.file.difficulty.damage_style == 0:
@@ -731,6 +743,7 @@ func set_power_state_frame() -> void:
 func get_power_up(power_name := "", give_points := true) -> void:
 	if is_dead:
 		return
+	powered_up.emit()
 	if give_points:
 		Global.score += 1000
 		DiscoLevel.combo_amount += 1
@@ -879,6 +892,7 @@ func exit_pipe(pipe: PipeArea) -> void:
 func jump() -> void:
 	if spring_bouncing:
 		return
+	jumped.emit()
 	velocity.y = calculate_jump_height() * gravity_vector.y
 	velocity_x_jump_stored = velocity.x
 	jump_cancelled = false
