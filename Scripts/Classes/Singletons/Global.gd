@@ -15,6 +15,7 @@ signal level_time_changed
 const BASE64_CHARSET := "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/"
 
 const VERSION_CHECK_URL := "https://raw.githubusercontent.com/JHDev2006/smb1r-version/refs/heads/main/version.txt"
+@onready var screen_shaker: Node = $ScreenShaker
 
 var entity_gravity := 10.0
 var entity_max_fall_speed := 280
@@ -249,7 +250,7 @@ func check_for_rom() -> void:
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("debug_reload"):
 		ResourceSetter.cache.clear()
-		ResourceSetterNew.cache.clear()
+		ResourceSetterNew.clear_cache()
 		ResourceGetter.cache.clear()
 		AudioManager.current_level_theme = ""
 		level_theme_changed.emit()

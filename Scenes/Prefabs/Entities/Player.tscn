@@ -1,4 +1,4 @@
-[gd_scene load_steps=88 format=3 uid="uid://cuh62hlq8errh"]
+[gd_scene load_steps=93 format=3 uid="uid://cuh62hlq8errh"]
 
 [ext_resource type="Script" uid="uid://dt4rosa5o35xr" path="res://Scripts/Classes/Entities/Player.gd" id="1_f6bau"]
 [ext_resource type="Script" uid="uid://uribh0f1jttq" path="res://Scripts/Classes/States/StateMachine.gd" id="2_1y62l"]
@@ -23,6 +23,7 @@
 [ext_resource type="Script" uid="uid://c7kmriol0gj16" path="res://Scripts/Classes/States/Player/Climb.gd" id="10_shhao"]
 [ext_resource type="JSON" path="res://Assets/Sprites/Players/Mario/ColourPalette.json" id="10_xy8gq"]
 [ext_resource type="Script" uid="uid://b10ui1x45l6ly" path="res://Scripts/Classes/States/Player/WallSlide.gd" id="11_057py"]
+[ext_resource type="Texture2D" uid="uid://dht3hx742rrim" path="res://Assets/Sprites/Particles/ShakeLines.png" id="11_o5ef6"]
 [ext_resource type="Texture2D" uid="uid://bqra7e5xsdg5r" path="res://Assets/Sprites/Particles/SkidParticles.png" id="11_vijl6"]
 [ext_resource type="Texture2D" uid="uid://dq58glgwf2l3" path="res://Assets/Sprites/UI/CheckpointIcon.png" id="13_uo1a1"]
 [ext_resource type="Script" uid="uid://ugfx3sb3h6rj" path="res://Scripts/Classes/States/Player/NoClip.gd" id="16_cekpg"]
@@ -32,6 +33,7 @@
 [ext_resource type="Script" uid="uid://dgmaoklmc0wfa" path="res://Scripts/Parts/CameraHandler.gd" id="20_d7xah"]
 [ext_resource type="Script" uid="uid://cp1bh6fi6tpa5" path="res://Scripts/Classes/Components/ScalableCollisionShape.gd" id="21_jl70t"]
 [ext_resource type="Script" uid="uid://cqif1li7otvpl" path="res://Scripts/Parts/SpriteFramesToJsonConverter.gd" id="22_445e4"]
+[ext_resource type="Script" uid="uid://con7f8whb65cc" path="res://Scripts/Classes/States/Player/Stunned.gd" id="22_p07ho"]
 [ext_resource type="SpriteFrames" uid="uid://dw8r8t7iqvrmq" path="res://Resources/SpriteFrames/Player/Luigi/Fire.tres" id="23_445e4"]
 [ext_resource type="PackedScene" uid="uid://dutrlpq47wguf" path="res://Scenes/Prefabs/Entities/Items/Fireball.tscn" id="23_ny1wd"]
 [ext_resource type="PackedScene" uid="uid://ca2sgs2pk06hb" path="res://Scenes/Prefabs/Entities/Items/SuperballProjectile.tscn" id="24_2t4xr"]
@@ -291,6 +293,44 @@ _data = {
 &"Grow": SubResource("Animation_fqdtv"),
 &"RESET": SubResource("Animation_vijl6"),
 &"Shrink": SubResource("Animation_pm4ir")
+}
+
+[sub_resource type="Animation" id="Animation_p07ho"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_me8vp"]
+resource_name = "Shake"
+length = 0.05
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Vector2(1, 1), Vector2(1.1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_p5htn"]
+_data = {
+&"RESET": SubResource("Animation_p07ho"),
+&"Shake": SubResource("Animation_me8vp")
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nbkfn"]
@@ -599,6 +639,25 @@ libraries = {
 &"": SubResource("AnimationLibrary_pm4ir")
 }
 
+[node name="ShakeLines" type="Node2D" parent="SpriteScaleJoint" unique_id=890375813]
+unique_name_in_owner = true
+visible = false
+
+[node name="L" type="Sprite2D" parent="SpriteScaleJoint/ShakeLines" unique_id=1788266195]
+position = Vector2(-10, -8)
+texture = ExtResource("11_o5ef6")
+
+[node name="R" type="Sprite2D" parent="SpriteScaleJoint/ShakeLines" unique_id=1364223351]
+position = Vector2(10, -8)
+texture = ExtResource("11_o5ef6")
+flip_h = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="SpriteScaleJoint/ShakeLines" unique_id=626530951]
+libraries = {
+&"": SubResource("AnimationLibrary_p5htn")
+}
+autoplay = &"Shake"
+
 [node name="States" type="Node" parent="." unique_id=989665606 node_paths=PackedStringArray("state")]
 script = ExtResource("2_1y62l")
 state = NodePath("Normal")
@@ -636,6 +695,10 @@ metadata/_custom_type_script = "uid://cnjpqn05bfm57"
 
 [node name="NoClip" type="Node" parent="States" unique_id=2076181292]
 script = ExtResource("16_cekpg")
+metadata/_custom_type_script = "uid://cnjpqn05bfm57"
+
+[node name="Stunned" type="Node" parent="States" unique_id=1763457428]
+script = ExtResource("22_p07ho")
 metadata/_custom_type_script = "uid://cnjpqn05bfm57"
 
 [node name="PowerStates" type="Node" parent="." unique_id=1921329385]
@@ -749,9 +812,8 @@ offset = Vector2(0, -14)
 physics_interpolation_mode = 2
 top_level = true
 
-[node name="LeftWall" type="AnimatableBody2D" parent="CameraCenterJoint" unique_id=536942218]
-position = Vector2(-128, 0)
-collision_layer = 0
+[node name="LeftWall" type="StaticBody2D" parent="CameraCenterJoint" unique_id=984106448]
+position = Vector2(-1000000000, 0)
 collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CameraCenterJoint/LeftWall" unique_id=2026445492]
@@ -759,9 +821,8 @@ rotation = 1.5707964
 shape = SubResource("RectangleShape2D_t1xso")
 one_way_collision = true
 
-[node name="RightWall" type="AnimatableBody2D" parent="CameraCenterJoint" unique_id=188337799]
-position = Vector2(128, 0)
-collision_layer = 0
+[node name="RightWall" type="StaticBody2D" parent="CameraCenterJoint" unique_id=1189441564]
+position = Vector2(1000000000, 0)
 collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CameraCenterJoint/RightWall" unique_id=438637538]

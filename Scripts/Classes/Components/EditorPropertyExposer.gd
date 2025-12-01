@@ -12,7 +12,11 @@ static var entity_map := {}
 
 signal modifier_applied
 
+func _init() -> void:
+	name = "EditorPropertyExposer"
+
 func _ready() -> void:
+	assert(name == "EditorPropertyExposer", "MISSED ONE")
 	name = "EditorPropertyExposer"
 	get_entity_map()
 
@@ -59,6 +63,8 @@ func apply_string(entity_string := "") -> void:
 	get_entity_map()
 	var idx := 2
 	var slice = entity_string.split(",")
+	print([entity_string, owner.name])
+	print(slice)
 	for i in properties:
 		if slice.size() <= idx:
 			return

@@ -155,6 +155,8 @@ func recenter_camera() -> void:
 	camera_position += camera_offset
 	do_limits()
 	camera.global_position = camera_position
+	camera.reset_physics_interpolation()
+	camera.reset_smoothing()
 
 func handle_offsets(delta: float) -> void:
 	var true_velocity = (global_position - last_position) / delta

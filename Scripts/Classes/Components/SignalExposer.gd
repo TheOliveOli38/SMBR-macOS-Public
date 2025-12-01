@@ -115,6 +115,7 @@ func connect_to_node(node_to_recieve := []) -> void:
 	powered_off.connect(node.get_node("SignalExposer").lost_power.emit)
 	node.get_node("SignalExposer").has_input = true
 	node.get_node("SignalExposer").total_inputs += 1
+	node.get_node("SignalExposer").update_animation(1.2, 1.0, true)
 	node.tree_exiting.connect(remove_node_connection.bind(node_to_recieve))
 	tree_exiting.connect(node.get_node("SignalExposer").input_removed)
 	if connections.has(node_to_recieve) == false:
@@ -150,8 +151,8 @@ func get_node_from_tile(layer_num := 0, tile_position := Vector2i.ZERO) -> Node:
 			return i.owner
 	return null
 
-func update_animation(from := 1.2, to := 1.0) -> void:
-	if do_animation == false or is_visible_in_tree() == false:
+func update_animation(from := 1.2, to := 1.0, force := false) -> void:
+	if (do_animation == false or is_visible_in_tree() == false) and not force:
 		return
 	owner.scale = Vector2(from, from)
 	create_tween().set_trans(Tween.TRANS_CIRC).tween_property(owner, "scale", Vector2(to, to), 0.15)

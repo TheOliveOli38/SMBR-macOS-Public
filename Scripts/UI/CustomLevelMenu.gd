@@ -15,7 +15,7 @@ static var level_id := ""
 
 func _ready() -> void:
 	has_entered = true
-	ResourceSetterNew.cache.clear()
+	ResourceSetterNew.clear_cache()
 	ResourceSetter.cache.clear()
 	Global.get_node("GameHUD").hide()
 	Checkpoint.passed_checkpoints.clear()

@@ -91,7 +91,7 @@ script = ExtResource("6_2era1")
 hitbox = NodePath("../Hitbox")
 metadata/_custom_type_script = "uid://dri2d5jtu0fbq"
 
-[node name="PropertyExposer" type="Node" parent="." unique_id=348727385]
+[node name="EditorPropertyExposer" type="Node" parent="." unique_id=348727385]
 script = ExtResource("7_jo3g1")
 properties = Array[String](["item"])
 filters = Dictionary[String, String]({

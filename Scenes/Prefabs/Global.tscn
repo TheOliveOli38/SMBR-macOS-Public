@@ -1,4 +1,4 @@
-[gd_scene load_steps=60 format=3 uid="uid://c3h2iqkvitqd2"]
+[gd_scene load_steps=61 format=3 uid="uid://c3h2iqkvitqd2"]
 
 [ext_resource type="PackedScene" uid="uid://bod0jkf7jc5pm" path="res://Scenes/Prefabs/GameHud.tscn" id="1_ctvpw"]
 [ext_resource type="Script" uid="uid://bbxqn16ekbpcl" path="res://Scripts/Classes/Singletons/Global.gd" id="1_t23sr"]
@@ -25,6 +25,7 @@
 [ext_resource type="JSON" path="res://Assets/Sprites/UI/Cursor.json" id="20_3l3ph"]
 [ext_resource type="JSON" path="res://Assets/Sprites/UI/FontMain.json" id="23_3l3ph"]
 [ext_resource type="JSON" path="res://Assets/Sprites/UI/ScoreFont.json" id="24_m6bur"]
+[ext_resource type="Script" uid="uid://ci0mnknqe2d7d" path="res://Scripts/Classes/Components/ScreenShaker.gd" id="26_mpjtu"]
 
 [sub_resource type="Shader" id="Shader_m6bur"]
 code = "shader_type canvas_item;
@@ -492,6 +493,9 @@ metadata/_custom_type_script = "uid://cbal8ms2oe1ik"
 script = ExtResource("19_l7dvb")
 labels = [NodePath("../CanvasLayer/VBoxContainer/ErrorMessage"), NodePath("../CanvasLayer/VBoxContainer/Comment"), NodePath("../CanvasLayer/VBoxContainer/Warning"), NodePath("../GameHUD/FPSCount")]
 metadata/_custom_type_script = "uid://dt2p68xl462v2"
+
+[node name="ScreenShaker" type="Node" parent="." unique_id=1052498364]
+script = ExtResource("26_mpjtu")
 
 [connection signal="finished" from="ScoreTally" to="." method="on_score_sfx_finished"]
 [connection signal="finished" from="ScoreTallyEnd" to="." method="on_score_sfx_finished"]

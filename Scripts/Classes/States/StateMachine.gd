@@ -3,6 +3,11 @@ extends Node
 
 @export var state: State = null
 
+func _ready() -> void:
+	if Global.level_editor != null:
+		await Global.level_editor.level_start
+	state.enter()
+
 func transition_to(state_name := "", state_msg := {}) -> void:
 	state.exit()
 	state.state_exited.emit()

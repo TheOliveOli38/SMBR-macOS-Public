@@ -130,7 +130,7 @@ func update_theme() -> void:
 			theme_time = "Day"
 		if Global.current_campaign == "SMBANN":
 			theme_time = "Night"
-		ResourceSetterNew.cache.clear()
+		ResourceSetterNew.clear_cache()
 	Global.current_campaign = campaign
 	Global.level_theme = theme
 	Global.theme_time = theme_time

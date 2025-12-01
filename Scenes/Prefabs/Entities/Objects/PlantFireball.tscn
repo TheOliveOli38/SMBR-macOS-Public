@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=3 uid="uid://d4m3rae0x77vn"]
 
 [ext_resource type="Script" uid="uid://cnheej0sxmoxg" path="res://Scripts/Parts/PlayerDetection.gd" id="1_eqrf8"]
-[ext_resource type="Script" path="res://Scripts/Classes/Entities/Objects/PlantFireball.gd" id="1_wo14a"]
+[ext_resource type="Script" uid="uid://c11i71w03bckd" path="res://Scripts/Classes/Entities/Objects/PlantFireball.gd" id="1_wo14a"]
 [ext_resource type="Texture2D" uid="uid://bir050juri13b" path="res://Assets/Sprites/Enemies/PlantFireball.png" id="2_wo14a"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_42myg"]
@@ -87,4 +87,7 @@ speed_scale = 2.0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=410120936]
 shape = SubResource("CircleShape2D_106mo")
 
+[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="." unique_id=995118794]
+
 [connection signal="player_entered" from="PlayerDetection" to="." method="damage_player"]
+[connection signal="screen_exited" from="VisibleOnScreenEnabler2D" to="." method="queue_free"]

@@ -577,7 +577,7 @@
 	],
 	"CQ": [
 		"res://Scenes/Prefabs/LevelObjects/SecondCamera.tscn",
-		"0,0"
+		"8,0"
 	],
 	"CR": [
 		"res://Scenes/Prefabs/LevelObjects/TextLabel.tscn",
@@ -726,5 +726,9 @@
 	"DB": [
 		"res://Scenes/Prefabs/Gizmos/Outputs/Speaker.tscn",
 		"0,0"
+	],
+	"DC": [
+		"res://Scenes/Prefabs/Entities/Enemies/BowserJr.tscn",
+		"0,8"
 	]
 }

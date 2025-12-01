@@ -32,8 +32,7 @@ func _ready() -> void:
 	$BG/Control/MarathonPB.visible = Global.current_game_mode == Global.GameMode.MARATHON_PRACTICE
 	$BG/Control/LivesCount.visible = Global.current_game_mode != Global.GameMode.MARATHON_PRACTICE
 	Level.can_set_time = true
-	ResourceSetterNew.cache.clear()
-	ResourceSetterNew.property_cache.clear()
+	ResourceSetterNew.clear_cache()
 	AudioManager.current_level_theme = ""
 	Level.vine_return_level = ""
 	Level.vine_warp_level = ""

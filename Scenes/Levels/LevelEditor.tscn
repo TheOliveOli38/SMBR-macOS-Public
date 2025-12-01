@@ -1,4 +1,4 @@
-[gd_scene load_steps=259 format=3 uid="uid://gbcmqonky63j"]
+[gd_scene load_steps=261 format=3 uid="uid://gbcmqonky63j"]
 
 [ext_resource type="Script" uid="uid://c2lnc7vnq3xth" path="res://Scripts/Classes/Editor/LevelEditor.gd" id="1_0qbyu"]
 [ext_resource type="Texture2D" uid="uid://cbha2l6hg1kfo" path="res://Assets/Sprites/UI/EditorGrid.png" id="2_8q7yr"]
@@ -37,6 +37,7 @@
 [ext_resource type="JSON" path="res://Assets/Sprites/Enemies/Blooper.json" id="36_sfuh0"]
 [ext_resource type="JSON" path="res://Assets/Sprites/Enemies/HammerBro.json" id="38_6xl1p"]
 [ext_resource type="JSON" path="res://Assets/Sprites/Items/Coin.json" id="38_ofb1x"]
+[ext_resource type="JSON" path="res://Assets/Sprites/Enemies/BowserJr.json" id="39_swqrt"]
 [ext_resource type="JSON" path="res://Assets/Sprites/Enemies/Bowser.json" id="40_62ull"]
 [ext_resource type="JSON" path="res://Assets/Sprites/Enemies/Lakitu.json" id="44_h5kf7"]
 [ext_resource type="JSON" path="res://Assets/Sprites/Enemies/BulletBill.json" id="46_kk6ga"]
@@ -200,6 +201,14 @@
 [ext_resource type="JSON" path="res://Assets/Sprites/Items/30Coin.json" id="277_ggvb3"]
 [ext_resource type="JSON" path="res://Assets/Sprites/Items/50Coin.json" id="279_i4hak"]
 [ext_resource type="Script" uid="uid://b77kpu65i243a" path="res://Scripts/Parts/LevelSaver.gd" id="280_75p8d"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3c4c7"]
+draw_center = false
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 1, 0, 1)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_i4hak"]
 atlas = ExtResource("4_thawd")
@@ -572,7 +581,7 @@ layout_mode = 0
 offset_right = 16.0
 offset_bottom = 16.0
 
-[node name="MultiSelectRect" type="ColorRect" parent="TileCursor" unique_id=770910963]
+[node name="AreaSelectRect" type="ColorRect" parent="TileCursor" unique_id=770910963]
 unique_name_in_owner = true
 visible = false
 modulate = Color(1, 1, 1, 0.494118)
@@ -583,6 +592,17 @@ z_as_relative = false
 offset_right = 16.0
 offset_bottom = 16.0
 color = Color(1, 0.486275, 0, 1)
+
+[node name="MultiSelectRect" type="Panel" parent="TileCursor" unique_id=1927552544]
+unique_name_in_owner = true
+visible = false
+top_level = true
+visibility_layer = 2
+z_index = 4096
+z_as_relative = false
+offset_right = 32.0
+offset_bottom = 32.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_3c4c7")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=862928203]
 
@@ -3226,6 +3246,15 @@ texture = ExtResource("22_3cjpb")
 expand_mode = 1
 stretch_mode = 3
 
+[node name="BowserJr" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Enemies/MarginContainer/GridContainer" unique_id=937752968 groups=["Selectors"] instance=ExtResource("8_wkmjk")]
+layout_mode = 2
+tile_name = "ENEMY_BOWSERJR"
+type = 1
+icon_texture = ExtResource("39_swqrt")
+icon_region_override = Rect2(0, 8, 16, 16)
+entity_id = "DC"
+metadata/can_be_stored = false
+
 [node name="Pokey" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Enemies/MarginContainer/GridContainer" unique_id=1903346747 groups=["Selectors"] instance=ExtResource("8_wkmjk")]
 layout_mode = 2
 tile_name = "ENEMY_POKEY"
@@ -3538,7 +3567,7 @@ icon_texture = ExtResource("106_ji0c6")
 icon_region_override = Rect2(8, 8, 16, 16)
 entity_id = "CI"
 
-[node name="HappyMoon" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Enemies/MarginContainer/GridContainer/SunMoon" unique_id=937752968 groups=["Selectors"] instance=ExtResource("8_wkmjk")]
+[node name="HappyMoon" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Enemies/MarginContainer/GridContainer/SunMoon" unique_id=598459031 groups=["Selectors"] instance=ExtResource("8_wkmjk")]
 layout_mode = 0
 offset_right = 16.0
 offset_bottom = 16.0
@@ -6274,6 +6303,7 @@ wait_time = 0.25
 [connection signal="tile_selected" from="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Enemies/MarginContainer/GridContainer/HammerBro" to="." method="on_tile_selected"]
 [connection signal="tile_selected" from="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Enemies/MarginContainer/GridContainer/Bowsers/Bowser" to="." method="on_tile_selected"]
 [connection signal="tile_selected" from="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Enemies/MarginContainer/GridContainer/Bowsers/BowserBro" to="." method="on_tile_selected"]
+[connection signal="tile_selected" from="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Enemies/MarginContainer/GridContainer/BowserJr" to="." method="on_tile_selected"]
 [connection signal="tile_selected" from="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Enemies/MarginContainer/GridContainer/Pokey" to="." method="on_tile_selected"]
 [connection signal="tile_selected" from="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Enemies/MarginContainer/GridContainer/BulletBills/BulletBill" to="." method="on_tile_selected"]
 [connection signal="tile_selected" from="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Enemies/MarginContainer/GridContainer/BulletBills/HomingBill" to="." method="on_tile_selected"]

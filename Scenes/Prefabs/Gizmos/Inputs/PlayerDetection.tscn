@@ -7,7 +7,7 @@
 [ext_resource type="Script" uid="uid://ctfbuoxtnnl0q" path="res://Scripts/Classes/Components/EditorPropertyExposer.gd" id="5_5frb8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_00yji"]
-size = Vector2(16, 16)
+size = Vector2(12, 12)
 
 [node name="PlayerDetection" unique_id=515746201 instance=ExtResource("1_kux4u")]
 z_index = 0
@@ -26,7 +26,7 @@ metadata/_custom_type_script = "uid://cnheej0sxmoxg"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" index="0" unique_id=1374569313]
 shape = SubResource("RectangleShape2D_00yji")
 
-[node name="PropertyExposer" type="Node" parent="." index="3" unique_id=666886942]
+[node name="EditorPropertyExposer" type="Node" parent="." index="3" unique_id=666886942]
 script = ExtResource("5_5frb8")
 properties = Array[String](["size_x", "size_y"])
 metadata/_custom_type_script = "uid://ctfbuoxtnnl0q"

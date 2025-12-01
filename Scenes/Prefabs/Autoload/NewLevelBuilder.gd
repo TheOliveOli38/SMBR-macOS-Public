@@ -130,7 +130,7 @@ func apply_level_data(level: Level, data := "") -> void:
 	level.can_backscroll = bool(values[4])
 	level.vertical_height = -int(values[5])
 	level.time_limit = int(values[6])
-	ResourceSetterNew.cache.clear()
+	ResourceSetterNew.clear_cache()
 	Global.level_theme_changed.emit()
 
 func apply_bg_data(level: Node, data := "") -> void:

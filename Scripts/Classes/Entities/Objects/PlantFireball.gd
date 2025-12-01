@@ -6,10 +6,12 @@ var direction := Vector2.ZERO
 const MOVE_SPEED := 75.0
 const SMOKE_PARTICLE = preload("uid://d08nv4qtfouv1")
 
+@export var can_pass_walls := false
+
 func _physics_process(delta: float) -> void:
 	global_position += MOVE_SPEED * direction * delta
 	move_and_slide()
-	if is_on_wall():
+	if is_on_wall() and not can_pass_walls:
 		hit()
 
 func hit() -> void:

@@ -127,7 +127,7 @@ func apply_level_data(data := "") -> void:
 		%HeightLimit.value = values[5]
 		%TimeLimit.value = values[6]
 		%SubLevelID.selected = editor.sub_level_id
-	ResourceSetterNew.cache.clear()
+	ResourceSetterNew.clear_cache()
 	Global.level_theme_changed.emit()
 
 func apply_bg_data(data := "") -> void:

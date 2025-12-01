@@ -95,7 +95,7 @@ func select() -> void:
 	if old_campaign != Global.current_campaign:
 		Global.freeze_screen()
 		ResourceSetter.cache.clear()
-		ResourceSetterNew.cache.clear()
+		ResourceSetterNew.clear_cache()
 		Global.level_theme_changed.emit()
 		for i in 2:
 			await get_tree().process_frame

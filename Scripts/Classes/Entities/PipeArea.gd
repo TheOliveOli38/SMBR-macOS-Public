@@ -52,6 +52,9 @@ func _physics_process(_delta: float) -> void:
 		in_game()
 		update_visuals()
 
+func _exit_tree() -> void:
+	can_enter = true
+
 func update_visuals() -> void:
 	if Engine.is_editor_hint() or (Global.current_game_mode == Global.GameMode.LEVEL_EDITOR and LevelEditor.playing_level == false):
 		show()
@@ -116,8 +119,8 @@ func run_player_check(player: Player) -> void:
 	# guzlad: Added support for characters with a hitbox height below 1.0 to enter pipes underwater
 	print(player.is_actually_on_floor())
 	if Global.player_action_pressed(get_input_direction(enter_direction), player.player_id) and (player.is_on_floor() or enter_direction == 1):
-		can_enter = false
 		pipe_entered.emit()
+		can_enter = false
 		DiscoLevel.can_meter_tick = false
 		Level.in_vine_level = false
 		player.enter_pipe(self)

@@ -58,7 +58,7 @@ func update_json() -> void:
 
 func close() -> void:
 	ResourceSetter.cache.clear()
-	ResourceSetterNew.cache.clear()
+	ResourceSetterNew.clear_cache()
 	Global.level_theme_changed.emit()
 	closed.emit()
 	clear_options()

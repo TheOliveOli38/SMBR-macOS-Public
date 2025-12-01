@@ -12,7 +12,7 @@ powered = false
 [node name="Sprite2D" parent="." index="0" unique_id=1224179792]
 texture = ExtResource("3_nea2u")
 
-[node name="PropertyExposer" type="Node" parent="." index="2" unique_id=615000374]
+[node name="EditorPropertyExposer" type="Node" parent="." index="2" unique_id=615000374]
 script = ExtResource("4_me4jo")
 properties = Array[String](["powered"])
 metadata/_custom_type_script = "uid://ctfbuoxtnnl0q"

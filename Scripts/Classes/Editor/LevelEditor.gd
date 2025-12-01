@@ -79,7 +79,7 @@ const CURSOR_PENCIL = preload("uid://c8oyhfvlv2gvh")
 const CURSOR_RULER = preload("uid://cg2wkxnmjgplf")
 const CURSOR_INSPECT = preload("uid://1l3foyjqeej")
 
-var multi_selecting := false
+var area_selecting := false
 
 var inspect_mode := false
 var inspect_menu_open := false
@@ -365,17 +365,17 @@ func handle_tile_cursor() -> void:
 	tile_position.x = clamp(tile_position.x, -16, INF)
 	cursor_tile_position = tile_position
 
-	inspect_mode = Input.is_action_pressed("editor_inspect") and not multi_selecting
+	inspect_mode = Input.is_action_pressed("editor_inspect") and not area_selecting
 	if inspect_mode and current_state == EditorState.IDLE:
 		handle_inspection(tile_position)
 		return
 	if current_state == EditorState.IDLE:
 		if Input.is_action_pressed("mb_left"):
-			print([multi_selecting])
-			if (Input.is_action_pressed("editor_select")) and not multi_selecting:
-				multi_select_start(tile_position)
+			print([area_selecting])
+			if (Input.is_action_pressed("editor_select")) and not area_selecting:
+				area_select_start(tile_position)
 			elif Input.is_action_pressed("editor_select") == false:
-				multi_selecting = false
+				area_selecting = false
 				match current_tile_type:
 					TileType.TILE:
 						place_tile(tile_position, current_layer, current_tile_coords, [current_tile_source])
@@ -386,11 +386,11 @@ func handle_tile_cursor() -> void:
 				target_mouse_icon = (CURSOR_PENCIL)
 			
 		if Input.is_action_pressed("mb_right"):
-			if Input.is_action_pressed("editor_select") and not multi_selecting:
-				multi_select_start(tile_position)
+			if Input.is_action_pressed("editor_select") and not area_selecting:
+				area_select_start(tile_position)
 				target_mouse_icon = (CURSOR_RULER)
 			elif Input.is_action_pressed("editor_select") == false:
-				multi_selecting = false
+				area_selecting = false
 				remove_tile(tile_position)
 				target_mouse_icon = (CURSOR_ERASOR)
 		
@@ -422,7 +422,7 @@ func handle_tile_cursor() -> void:
 					connection_node_found.emit(entity_tiles[current_layer][tile_position])
 					current_state = EditorState.MODIFYING_TILE
 	
-	handle_multi_selecting(tile_position)
+	handle_area_selecting(tile_position)
 	if old_index != selected_tile_index:
 		selected_tile_index = wrap(selected_tile_index, 0, tile_list.size())
 		on_tile_selected(tile_list[selected_tile_index])
@@ -472,21 +472,21 @@ func open_tile_properties(tile: Node2D) -> void:
 	await %TileModifierMenu.closed
 	current_state = EditorState.IDLE
 
-func multi_select_start(tile_position := Vector2i.ZERO) -> void:
+func area_select_start(tile_position := Vector2i.ZERO) -> void:
 	select_start = tile_position
-	multi_selecting = true
+	area_selecting = true
 
-func handle_multi_selecting(tile_position := Vector2i.ZERO) -> void:
+func handle_area_selecting(tile_position := Vector2i.ZERO) -> void:
 	select_end = tile_position
-	%MultiSelectRect.visible = multi_selecting
+	%AreaSelectRect.visible = area_selecting
 	var top_corner := select_start
 	if select_start.x > select_end.x:
 		top_corner.x = select_end.x
 	if select_start.y > select_end.y:
 		top_corner.y = select_end.y
-	%MultiSelectRect.global_position = top_corner * 16
-	%MultiSelectRect.size = abs(select_end - select_start) * 16 + Vector2i(16, 16)
-	if multi_selecting:
+	%AreaSelectRect.global_position = top_corner * 16
+	%AreaSelectRect.size = abs(select_end - select_start) * 16 + Vector2i(16, 16)
+	if area_selecting:
 		Input.set_custom_mouse_cursor(CURSOR_RULER)
 		if Input.is_action_just_released("mb_left"): 
 			match current_tile_type:
@@ -496,10 +496,10 @@ func handle_multi_selecting(tile_position := Vector2i.ZERO) -> void:
 					mass_place(top_corner, select_start, select_end, current_layer, current_entity_id)
 				TileType.TERRAIN:
 					mass_place(top_corner, select_start, select_end, current_layer, current_terrain_id)
-			multi_selecting = false
+			area_selecting = false
 		if Input.is_action_just_released("mb_right"): 
 			mass_remove(top_corner, select_start, select_end)
-			multi_selecting = false
+			area_selecting = false
 
 func mass_place(top_corner := Vector2i.ZERO, select_start := Vector2i.ZERO, select_end := Vector2i.ZERO, layer_num := current_layer, thing_to_place = null, info := [], save_action := true) -> void:
 	var area = save_area(top_corner, select_start, select_end, layer_num)
@@ -714,14 +714,14 @@ func global_position_to_tile_position(position := Vector2.ZERO) -> Vector2i:
 	return Vector2i(position / 16)
 
 func theme_selected(theme_idx := 0) -> void:
-	ResourceSetterNew.cache.clear()
+	ResourceSetterNew.clear_cache()
 	AudioManager.current_level_theme = ""
 	$Level.theme = Level.THEME_IDXS[theme_idx]
 	Global.level_theme = $Level.theme
 	Global.level_theme_changed.emit()
 
 func time_selected(time_idx := 0) -> void:
-	ResourceSetterNew.cache.clear()
+	ResourceSetterNew.clear_cache()
 	AudioManager.current_level_theme = ""
 	level.theme_time = ["Day", "Night"][time_idx]
 	Global.theme_time = ["Day", "Night"][time_idx]
@@ -732,7 +732,7 @@ func music_selected(music_idx := 0) -> void:
 	bgm_id = music_idx
 
 func campaign_selected(campaign_idx := 0) -> void:
-	ResourceSetterNew.cache.clear()
+	ResourceSetterNew.clear_cache()
 	Global.current_campaign = ["SMB1", "SMBLL", "SMBS", "SMBANN"][campaign_idx]
 	level.campaign = Global.current_campaign
 	Global.level_theme_changed.emit()

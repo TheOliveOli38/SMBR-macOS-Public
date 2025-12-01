@@ -201,7 +201,8 @@ const ANIMATION_FALLBACKS := {
 	"RunJumpFall": "JumpFall",
 	"RunJumpBump": "JumpBump",
 	"StarJump": "Jump",
-	"StarFall": "JumpFall"
+	"StarFall": "JumpFall",
+	"Stunned": "Idle"
 }
 
 var palette_transform := true
@@ -986,3 +987,9 @@ func on_area_exited(area: Area2D) -> void:
 
 func hide_platform() -> void:
 	$PitPlatform.global_position = Vector2(-9999, 99999)
+
+func do_earthquake() -> void:
+	if is_on_floor() and not is_invincible:
+		velocity.x = 0
+
+		state_machine.transition_to("Stunned")

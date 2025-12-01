@@ -67,14 +67,14 @@ region = Rect2(112, 16, 8, 8)
 atlas = ExtResource("5_k0wu2")
 region = Rect2(104, 32, 8, 8)
 
-[node name="LevelSelect" type="Control"]
+[node name="LevelSelect" type="Control" unique_id=763244508]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 256.0
 offset_bottom = 80.0
 script = ExtResource("1_3dhxq")
 
-[node name="Panel" type="PanelContainer" parent="."]
+[node name="Panel" type="PanelContainer" parent="." unique_id=1761091726]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -84,22 +84,22 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = ExtResource("2_k0wu2")
 
-[node name="MarginContainer" type="MarginContainer" parent="Panel"]
+[node name="MarginContainer" type="MarginContainer" parent="Panel" unique_id=1693276629]
 layout_mode = 2
 theme_override_constants/margin_bottom = 0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Panel/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/MarginContainer" unique_id=223526002]
 layout_mode = 2
 theme_override_constants/separation = 0
 
-[node name="Title" type="Label" parent="Panel/MarginContainer/VBoxContainer"]
+[node name="Title" type="Label" parent="Panel/MarginContainer/VBoxContainer" unique_id=98526462]
 layout_mode = 2
 size_flags_horizontal = 4
 text = "MENU_LEVEL_SELECT"
 horizontal_alignment = 1
 uppercase = true
 
-[node name="HSeparator" type="HSeparator" parent="Panel/MarginContainer/VBoxContainer/Title"]
+[node name="HSeparator" type="HSeparator" parent="Panel/MarginContainer/VBoxContainer/Title" unique_id=1366717086]
 layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0
@@ -110,12 +110,12 @@ grow_horizontal = 2
 grow_vertical = 0
 theme_override_styles/separator = SubResource("StyleBoxLine_d8v6d")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer" unique_id=1029440079]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_constants/separation = 4
 
-[node name="ScrollContainer" type="ScrollContainer" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="ScrollContainer" type="ScrollContainer" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer" unique_id=436913428]
 clip_contents = false
 layout_mode = 2
 size_flags_horizontal = 3
@@ -124,101 +124,101 @@ follow_focus = true
 horizontal_scroll_mode = 3
 vertical_scroll_mode = 0
 
-[node name="SlotContainer" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer"]
+[node name="SlotContainer" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer" unique_id=77204983]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 alignment = 1
 
-[node name="Slot1" type="VBoxContainer" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer/SlotContainer"]
+[node name="Slot1" type="VBoxContainer" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer/SlotContainer" unique_id=541421345]
 custom_minimum_size = Vector2(56, 32)
 layout_mode = 2
 focus_mode = 2
 theme_override_constants/separation = 0
 
-[node name="ChallengeModeBits" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer/SlotContainer/Slot1"]
+[node name="ChallengeModeBits" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer/SlotContainer/Slot1" unique_id=92334320]
 custom_minimum_size = Vector2(0, 8)
 layout_mode = 2
 size_flags_vertical = 10
 
-[node name="ColorRect" type="ColorRect" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer/SlotContainer/Slot1/ChallengeModeBits"]
+[node name="ColorRect" type="ColorRect" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer/SlotContainer/Slot1/ChallengeModeBits" unique_id=1973751254]
 visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 color = Color(0, 0, 0, 1)
 
-[node name="1" type="Sprite2D" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer/SlotContainer/Slot1/ChallengeModeBits"]
+[node name="1" type="Sprite2D" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer/SlotContainer/Slot1/ChallengeModeBits" unique_id=655784569]
 position = Vector2(4, 4)
 texture = ExtResource("10_ywryf")
 hframes = 2
 script = ExtResource("6_x05vu")
 metadata/_custom_type_script = "uid://364rywt44hy6"
 
-[node name="Full" type="Sprite2D" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer/SlotContainer/Slot1/ChallengeModeBits/1"]
+[node name="Full" type="Sprite2D" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer/SlotContainer/Slot1/ChallengeModeBits/1" unique_id=1953186199]
 texture = ExtResource("10_ywryf")
 hframes = 2
 frame = 1
 script = ExtResource("6_x05vu")
 metadata/_custom_type_script = "uid://364rywt44hy6"
 
-[node name="2" type="Sprite2D" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer/SlotContainer/Slot1/ChallengeModeBits"]
+[node name="2" type="Sprite2D" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer/SlotContainer/Slot1/ChallengeModeBits" unique_id=909573474]
 position = Vector2(11, 4)
 texture = ExtResource("10_ywryf")
 hframes = 2
 script = ExtResource("6_x05vu")
 metadata/_custom_type_script = "uid://364rywt44hy6"
 
-[node name="Full" type="Sprite2D" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer/SlotContainer/Slot1/ChallengeModeBits/2"]
+[node name="Full" type="Sprite2D" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer/SlotContainer/Slot1/ChallengeModeBits/2" unique_id=1327172730]
 texture = ExtResource("10_ywryf")
 hframes = 2
 frame = 1
 script = ExtResource("6_x05vu")
 metadata/_custom_type_script = "uid://364rywt44hy6"
 
-[node name="3" type="Sprite2D" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer/SlotContainer/Slot1/ChallengeModeBits"]
+[node name="3" type="Sprite2D" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer/SlotContainer/Slot1/ChallengeModeBits" unique_id=1492547518]
 position = Vector2(18, 4)
 texture = ExtResource("10_ywryf")
 hframes = 2
 script = ExtResource("6_x05vu")
 metadata/_custom_type_script = "uid://364rywt44hy6"
 
-[node name="Full" type="Sprite2D" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer/SlotContainer/Slot1/ChallengeModeBits/3"]
+[node name="Full" type="Sprite2D" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer/SlotContainer/Slot1/ChallengeModeBits/3" unique_id=2052939097]
 texture = ExtResource("10_ywryf")
 hframes = 2
 frame = 1
 script = ExtResource("6_x05vu")
 metadata/_custom_type_script = "uid://364rywt44hy6"
 
-[node name="4" type="Sprite2D" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer/SlotContainer/Slot1/ChallengeModeBits"]
+[node name="4" type="Sprite2D" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer/SlotContainer/Slot1/ChallengeModeBits" unique_id=1515577700]
 position = Vector2(25, 4)
 texture = ExtResource("10_ywryf")
 hframes = 2
 script = ExtResource("6_x05vu")
 metadata/_custom_type_script = "uid://364rywt44hy6"
 
-[node name="Full" type="Sprite2D" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer/SlotContainer/Slot1/ChallengeModeBits/4"]
+[node name="Full" type="Sprite2D" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer/SlotContainer/Slot1/ChallengeModeBits/4" unique_id=1804743042]
 texture = ExtResource("10_ywryf")
 hframes = 2
 frame = 1
 script = ExtResource("6_x05vu")
 metadata/_custom_type_script = "uid://364rywt44hy6"
 
-[node name="5" type="Sprite2D" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer/SlotContainer/Slot1/ChallengeModeBits"]
+[node name="5" type="Sprite2D" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer/SlotContainer/Slot1/ChallengeModeBits" unique_id=978639121]
 position = Vector2(32, 4)
 texture = ExtResource("10_ywryf")
 hframes = 2
 script = ExtResource("6_x05vu")
 metadata/_custom_type_script = "uid://364rywt44hy6"
 
-[node name="Full" type="Sprite2D" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer/SlotContainer/Slot1/ChallengeModeBits/5"]
+[node name="Full" type="Sprite2D" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer/SlotContainer/Slot1/ChallengeModeBits/5" unique_id=1011664242]
 texture = ExtResource("10_ywryf")
 hframes = 2
 frame = 1
 script = ExtResource("6_x05vu")
 metadata/_custom_type_script = "uid://364rywt44hy6"
 
-[node name="6" type="Sprite2D" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer/SlotContainer/Slot1/ChallengeModeBits"]
+[node name="6" type="Sprite2D" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer/SlotContainer/Slot1/ChallengeModeBits" unique_id=1927127474]
 position = Vector2(41, 4)
 texture = ExtResource("11_sk22j")
 hframes = 3
@@ -227,7 +227,7 @@ region_rect = Rect2(0, 0, 8, 8)
 script = ExtResource("6_x05vu")
 metadata/_custom_type_script = "uid://364rywt44hy6"
 
-[node name="Full" type="Sprite2D" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer/SlotContainer/Slot1/ChallengeModeBits/6"]
+[node name="Full" type="Sprite2D" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer/SlotContainer/Slot1/ChallengeModeBits/6" unique_id=1413663629]
 visible = false
 texture = ExtResource("11_sk22j")
 region_enabled = true
@@ -235,7 +235,7 @@ region_rect = Rect2(8, 0, 8, 8)
 script = ExtResource("6_x05vu")
 metadata/_custom_type_script = "uid://364rywt44hy6"
 
-[node name="Score" type="Sprite2D" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer/SlotContainer/Slot1/ChallengeModeBits"]
+[node name="Score" type="Sprite2D" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer/SlotContainer/Slot1/ChallengeModeBits" unique_id=2124989973]
 position = Vector2(51, 4)
 texture = ExtResource("12_asr3n")
 hframes = 2
@@ -243,7 +243,7 @@ region_rect = Rect2(0, 0, 8, 8)
 script = ExtResource("6_x05vu")
 metadata/_custom_type_script = "uid://364rywt44hy6"
 
-[node name="Full" type="Sprite2D" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer/SlotContainer/Slot1/ChallengeModeBits/Score"]
+[node name="Full" type="Sprite2D" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer/SlotContainer/Slot1/ChallengeModeBits/Score" unique_id=567188524]
 texture = ExtResource("12_asr3n")
 hframes = 2
 frame = 1
@@ -251,7 +251,7 @@ region_rect = Rect2(8, 0, 8, 8)
 script = ExtResource("6_x05vu")
 metadata/_custom_type_script = "uid://364rywt44hy6"
 
-[node name="Icon" type="NinePatchRect" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer/SlotContainer/Slot1"]
+[node name="Icon" type="NinePatchRect" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer/SlotContainer/Slot1" unique_id=218620924]
 custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
 size_flags_vertical = 10
@@ -260,7 +260,7 @@ region_rect = Rect2(0, 0, 56, 32)
 script = ExtResource("5_r70xa")
 metadata/_custom_type_script = "uid://xem6lai3ufyj"
 
-[node name="Number" type="NinePatchRect" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer/SlotContainer/Slot1/Icon"]
+[node name="Number" type="NinePatchRect" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer/SlotContainer/Slot1/Icon" unique_id=657003434]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.5
@@ -278,7 +278,7 @@ region_rect = Rect2(0, 0, 12, 12)
 script = ExtResource("5_r70xa")
 metadata/_custom_type_script = "uid://xem6lai3ufyj"
 
-[node name="RankMedal" type="Sprite2D" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer/SlotContainer/Slot1/Icon"]
+[node name="RankMedal" type="Sprite2D" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer/SlotContainer/Slot1/Icon" unique_id=1455945271]
 position = Vector2(43, -2)
 texture = ExtResource("5_h2uw4")
 centered = false
@@ -286,7 +286,7 @@ hframes = 8
 script = ExtResource("6_x05vu")
 metadata/_custom_type_script = "uid://364rywt44hy6"
 
-[node name="SRankParticles" type="GPUParticles2D" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer/SlotContainer/Slot1/Icon/RankMedal"]
+[node name="SRankParticles" type="GPUParticles2D" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer/SlotContainer/Slot1/Icon/RankMedal" unique_id=56517483 groups=["Particles"]]
 z_index = 1
 material = SubResource("CanvasItemMaterial_ggm71")
 position = Vector2(8, 8)
@@ -299,7 +299,7 @@ interpolate = false
 fract_delta = false
 process_material = SubResource("ParticleProcessMaterial_gxb4q")
 
-[node name="PRankParticles" type="GPUParticles2D" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer/SlotContainer/Slot1/Icon/RankMedal"]
+[node name="PRankParticles" type="GPUParticles2D" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer/SlotContainer/Slot1/Icon/RankMedal" unique_id=1874802346 groups=["Particles"]]
 visible = false
 z_index = 1
 material = SubResource("CanvasItemMaterial_ggm71")
@@ -313,15 +313,15 @@ interpolate = false
 fract_delta = false
 process_material = SubResource("ParticleProcessMaterial_gxb4q")
 
-[node name="Control" type="Control" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer/SlotContainer/Slot1"]
+[node name="Control" type="Control" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer/SlotContainer/Slot1" unique_id=1060820725]
 layout_mode = 2
 
-[node name="Cursor" type="Control" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer/SlotContainer/Slot1"]
+[node name="Cursor" type="Control" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer/SlotContainer/Slot1" unique_id=1204503274]
 visible = false
 custom_minimum_size = Vector2(0, 8)
 layout_mode = 2
 
-[node name="Label" type="Label" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer/SlotContainer/Slot1/Cursor"]
+[node name="Label" type="Label" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer/SlotContainer/Slot1/Cursor" unique_id=492090097]
 layout_mode = 0
 offset_top = -1.0
 offset_right = 56.0
@@ -329,94 +329,94 @@ offset_bottom = 15.0
 text = "^"
 horizontal_alignment = 1
 
-[node name="Slot2" type="VBoxContainer" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer/SlotContainer"]
+[node name="Slot2" type="VBoxContainer" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer/SlotContainer" unique_id=1250422923]
 custom_minimum_size = Vector2(56, 32)
 layout_mode = 2
 focus_mode = 2
 theme_override_constants/separation = 0
 
-[node name="ChallengeModeBits" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer/SlotContainer/Slot2"]
+[node name="ChallengeModeBits" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer/SlotContainer/Slot2" unique_id=919579861]
 custom_minimum_size = Vector2(0, 8)
 layout_mode = 2
 size_flags_vertical = 10
 
-[node name="ColorRect" type="ColorRect" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer/SlotContainer/Slot2/ChallengeModeBits"]
+[node name="ColorRect" type="ColorRect" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer/SlotContainer/Slot2/ChallengeModeBits" unique_id=1726159804]
 visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 color = Color(0, 0, 0, 1)
 
-[node name="1" type="Sprite2D" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer/SlotContainer/Slot2/ChallengeModeBits"]
+[node name="1" type="Sprite2D" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer/SlotContainer/Slot2/ChallengeModeBits" unique_id=1291959551]
 position = Vector2(4, 4)
 texture = ExtResource("10_ywryf")
 hframes = 2
 script = ExtResource("6_x05vu")
 metadata/_custom_type_script = "uid://364rywt44hy6"
 
-[node name="Full" type="Sprite2D" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer/SlotContainer/Slot2/ChallengeModeBits/1"]
+[node name="Full" type="Sprite2D" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer/SlotContainer/Slot2/ChallengeModeBits/1" unique_id=325537608]
 texture = ExtResource("10_ywryf")
 hframes = 2
 frame = 1
 script = ExtResource("6_x05vu")
 metadata/_custom_type_script = "uid://364rywt44hy6"
 
-[node name="2" type="Sprite2D" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer/SlotContainer/Slot2/ChallengeModeBits"]
+[node name="2" type="Sprite2D" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer/SlotContainer/Slot2/ChallengeModeBits" unique_id=714603727]
 position = Vector2(11, 4)
 texture = ExtResource("10_ywryf")
 hframes = 2
 script = ExtResource("6_x05vu")
 metadata/_custom_type_script = "uid://364rywt44hy6"
 
-[node name="Full" type="Sprite2D" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer/SlotContainer/Slot2/ChallengeModeBits/2"]
+[node name="Full" type="Sprite2D" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer/SlotContainer/Slot2/ChallengeModeBits/2" unique_id=169020209]
 texture = ExtResource("10_ywryf")
 hframes = 2
 frame = 1
 script = ExtResource("6_x05vu")
 metadata/_custom_type_script = "uid://364rywt44hy6"
 
-[node name="3" type="Sprite2D" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer/SlotContainer/Slot2/ChallengeModeBits"]
+[node name="3" type="Sprite2D" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer/SlotContainer/Slot2/ChallengeModeBits" unique_id=724866797]
 position = Vector2(18, 4)
 texture = ExtResource("10_ywryf")
 hframes = 2
 script = ExtResource("6_x05vu")
 metadata/_custom_type_script = "uid://364rywt44hy6"
 
-[node name="Full" type="Sprite2D" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer/SlotContainer/Slot2/ChallengeModeBits/3"]
+[node name="Full" type="Sprite2D" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer/SlotContainer/Slot2/ChallengeModeBits/3" unique_id=52885719]
 texture = ExtResource("10_ywryf")
 hframes = 2
 frame = 1
 script = ExtResource("6_x05vu")
 metadata/_custom_type_script = "uid://364rywt44hy6"
 
-[node name="4" type="Sprite2D" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer/SlotContainer/Slot2/ChallengeModeBits"]
+[node name="4" type="Sprite2D" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer/SlotContainer/Slot2/ChallengeModeBits" unique_id=346253355]
 position = Vector2(25, 4)
 texture = ExtResource("10_ywryf")
 hframes = 2
 script = ExtResource("6_x05vu")
 metadata/_custom_type_script = "uid://364rywt44hy6"
 
-[node name="Full" type="Sprite2D" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer/SlotContainer/Slot2/ChallengeModeBits/4"]
+[node name="Full" type="Sprite2D" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer/SlotContainer/Slot2/ChallengeModeBits/4" unique_id=1896012622]
 texture = ExtResource("10_ywryf")
 hframes = 2
 frame = 1
 script = ExtResource("6_x05vu")
 metadata/_custom_type_script = "uid://364rywt44hy6"
 
-[node name="5" type="Sprite2D" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer/SlotContainer/Slot2/ChallengeModeBits"]
+[node name="5" type="Sprite2D" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer/SlotContainer/Slot2/ChallengeModeBits" unique_id=1984702845]
 position = Vector2(32, 4)
 texture = ExtResource("10_ywryf")
 hframes = 2
 script = ExtResource("6_x05vu")
 metadata/_custom_type_script = "uid://364rywt44hy6"
 
-[node name="Full" type="Sprite2D" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer/SlotContainer/Slot2/ChallengeModeBits/5"]
+[node name="Full" type="Sprite2D" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer/SlotContainer/Slot2/ChallengeModeBits/5" unique_id=884142506]
 texture = ExtResource("10_ywryf")
 hframes = 2
 frame = 1
 script = ExtResource("6_x05vu")
 metadata/_custom_type_script = "uid://364rywt44hy6"
 
-[node name="6" type="Sprite2D" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer/SlotContainer/Slot2/ChallengeModeBits"]
+[node name="6" type="Sprite2D" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer/SlotContainer/Slot2/ChallengeModeBits" unique_id=1584656364]
 position = Vector2(41, 4)
 texture = ExtResource("11_sk22j")
 hframes = 3
@@ -425,7 +425,7 @@ region_rect = Rect2(0, 0, 8, 8)
 script = ExtResource("6_x05vu")
 metadata/_custom_type_script = "uid://364rywt44hy6"
 
-[node name="Full" type="Sprite2D" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer/SlotContainer/Slot2/ChallengeModeBits/6"]
+[node name="Full" type="Sprite2D" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer/SlotContainer/Slot2/ChallengeModeBits/6" unique_id=906010938]
 texture = ExtResource("11_sk22j")
 hframes = 3
 vframes = 2
@@ -434,7 +434,7 @@ region_rect = Rect2(16, 0, 8, 8)
 script = ExtResource("6_x05vu")
 metadata/_custom_type_script = "uid://364rywt44hy6"
 
-[node name="Score" type="Sprite2D" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer/SlotContainer/Slot2/ChallengeModeBits"]
+[node name="Score" type="Sprite2D" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer/SlotContainer/Slot2/ChallengeModeBits" unique_id=1773490162]
 position = Vector2(51, 4)
 texture = ExtResource("12_asr3n")
 hframes = 2
@@ -442,7 +442,7 @@ region_rect = Rect2(0, 0, 8, 8)
 script = ExtResource("6_x05vu")
 metadata/_custom_type_script = "uid://364rywt44hy6"
 
-[node name="Full" type="Sprite2D" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer/SlotContainer/Slot2/ChallengeModeBits/Score"]
+[node name="Full" type="Sprite2D" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer/SlotContainer/Slot2/ChallengeModeBits/Score" unique_id=298553889]
 texture = ExtResource("12_asr3n")
 hframes = 2
 frame = 1
@@ -450,7 +450,7 @@ region_rect = Rect2(8, 0, 8, 8)
 script = ExtResource("6_x05vu")
 metadata/_custom_type_script = "uid://364rywt44hy6"
 
-[node name="Icon" type="NinePatchRect" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer/SlotContainer/Slot2"]
+[node name="Icon" type="NinePatchRect" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer/SlotContainer/Slot2" unique_id=910303357]
 custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
 size_flags_vertical = 10
@@ -459,7 +459,7 @@ region_rect = Rect2(0, 0, 56, 32)
 script = ExtResource("5_r70xa")
 metadata/_custom_type_script = "uid://xem6lai3ufyj"
 
-[node name="Number" type="NinePatchRect" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer/SlotContainer/Slot2/Icon"]
+[node name="Number" type="NinePatchRect" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer/SlotContainer/Slot2/Icon" unique_id=1560265881]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.5
@@ -477,7 +477,7 @@ region_rect = Rect2(0, 0, 12, 12)
 script = ExtResource("5_r70xa")
 metadata/_custom_type_script = "uid://xem6lai3ufyj"
 
-[node name="RankMedal" type="Sprite2D" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer/SlotContainer/Slot2/Icon"]
+[node name="RankMedal" type="Sprite2D" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer/SlotContainer/Slot2/Icon" unique_id=972630826]
 position = Vector2(43, -2)
 texture = ExtResource("5_h2uw4")
 centered = false
@@ -485,7 +485,7 @@ hframes = 8
 script = ExtResource("6_x05vu")
 metadata/_custom_type_script = "uid://364rywt44hy6"
 
-[node name="SRankParticles" type="GPUParticles2D" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer/SlotContainer/Slot2/Icon/RankMedal"]
+[node name="SRankParticles" type="GPUParticles2D" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer/SlotContainer/Slot2/Icon/RankMedal" unique_id=2063015730 groups=["Particles"]]
 z_index = 1
 material = SubResource("CanvasItemMaterial_ggm71")
 position = Vector2(8, 8)
@@ -498,7 +498,7 @@ interpolate = false
 fract_delta = false
 process_material = SubResource("ParticleProcessMaterial_gxb4q")
 
-[node name="PRankParticles" type="GPUParticles2D" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer/SlotContainer/Slot2/Icon/RankMedal"]
+[node name="PRankParticles" type="GPUParticles2D" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer/SlotContainer/Slot2/Icon/RankMedal" unique_id=1672998172 groups=["Particles"]]
 visible = false
 z_index = 1
 material = SubResource("CanvasItemMaterial_ggm71")
@@ -512,15 +512,15 @@ interpolate = false
 fract_delta = false
 process_material = SubResource("ParticleProcessMaterial_gxb4q")
 
-[node name="Control" type="Control" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer/SlotContainer/Slot2"]
+[node name="Control" type="Control" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer/SlotContainer/Slot2" unique_id=1026751840]
 layout_mode = 2
 
-[node name="Cursor" type="Control" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer/SlotContainer/Slot2"]
+[node name="Cursor" type="Control" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer/SlotContainer/Slot2" unique_id=375427484]
 visible = false
 custom_minimum_size = Vector2(0, 8)
 layout_mode = 2
 
-[node name="Label" type="Label" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer/SlotContainer/Slot2/Cursor"]
+[node name="Label" type="Label" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer/SlotContainer/Slot2/Cursor" unique_id=12309222]
 layout_mode = 0
 offset_top = -1.0
 offset_right = 56.0
@@ -528,94 +528,94 @@ offset_bottom = 15.0
 text = "^"
 horizontal_alignment = 1
 
-[node name="Slot3" type="VBoxContainer" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer/SlotContainer"]
+[node name="Slot3" type="VBoxContainer" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer/SlotContainer" unique_id=462035697]
 custom_minimum_size = Vector2(56, 32)
 layout_mode = 2
 focus_mode = 2
 theme_override_constants/separation = 0
 
-[node name="ChallengeModeBits" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer/SlotContainer/Slot3"]
+[node name="ChallengeModeBits" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer/SlotContainer/Slot3" unique_id=1436517804]
 custom_minimum_size = Vector2(0, 8)
 layout_mode = 2
 size_flags_vertical = 10
 
-[node name="ColorRect" type="ColorRect" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer/SlotContainer/Slot3/ChallengeModeBits"]
+[node name="ColorRect" type="ColorRect" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer/SlotContainer/Slot3/ChallengeModeBits" unique_id=1745558560]
 visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 color = Color(0, 0, 0, 1)
 
-[node name="1" type="Sprite2D" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer/SlotContainer/Slot3/ChallengeModeBits"]
+[node name="1" type="Sprite2D" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer/SlotContainer/Slot3/ChallengeModeBits" unique_id=820201498]
 position = Vector2(4, 4)
 texture = ExtResource("10_ywryf")
 hframes = 2
 script = ExtResource("6_x05vu")
 metadata/_custom_type_script = "uid://364rywt44hy6"
 
-[node name="Full" type="Sprite2D" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer/SlotContainer/Slot3/ChallengeModeBits/1"]
+[node name="Full" type="Sprite2D" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer/SlotContainer/Slot3/ChallengeModeBits/1" unique_id=1326107657]
 texture = ExtResource("10_ywryf")
 hframes = 2
 frame = 1
 script = ExtResource("6_x05vu")
 metadata/_custom_type_script = "uid://364rywt44hy6"
 
-[node name="2" type="Sprite2D" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer/SlotContainer/Slot3/ChallengeModeBits"]
+[node name="2" type="Sprite2D" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer/SlotContainer/Slot3/ChallengeModeBits" unique_id=1878404584]
 position = Vector2(11, 4)
 texture = ExtResource("10_ywryf")
 hframes = 2
 script = ExtResource("6_x05vu")
 metadata/_custom_type_script = "uid://364rywt44hy6"
 
-[node name="Full" type="Sprite2D" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer/SlotContainer/Slot3/ChallengeModeBits/2"]
+[node name="Full" type="Sprite2D" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer/SlotContainer/Slot3/ChallengeModeBits/2" unique_id=1989578397]
 texture = ExtResource("10_ywryf")
 hframes = 2
 frame = 1
 script = ExtResource("6_x05vu")
 metadata/_custom_type_script = "uid://364rywt44hy6"
 
-[node name="3" type="Sprite2D" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer/SlotContainer/Slot3/ChallengeModeBits"]
+[node name="3" type="Sprite2D" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer/SlotContainer/Slot3/ChallengeModeBits" unique_id=694934574]
 position = Vector2(18, 4)
 texture = ExtResource("10_ywryf")
 hframes = 2
 script = ExtResource("6_x05vu")
 metadata/_custom_type_script = "uid://364rywt44hy6"
 
-[node name="Full" type="Sprite2D" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer/SlotContainer/Slot3/ChallengeModeBits/3"]
+[node name="Full" type="Sprite2D" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer/SlotContainer/Slot3/ChallengeModeBits/3" unique_id=1795724261]
 texture = ExtResource("10_ywryf")
 hframes = 2
 frame = 1
 script = ExtResource("6_x05vu")
 metadata/_custom_type_script = "uid://364rywt44hy6"
 
-[node name="4" type="Sprite2D" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer/SlotContainer/Slot3/ChallengeModeBits"]
+[node name="4" type="Sprite2D" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer/SlotContainer/Slot3/ChallengeModeBits" unique_id=2028448784]
 position = Vector2(25, 4)
 texture = ExtResource("10_ywryf")
 hframes = 2
 script = ExtResource("6_x05vu")
 metadata/_custom_type_script = "uid://364rywt44hy6"
 
-[node name="Full" type="Sprite2D" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer/SlotContainer/Slot3/ChallengeModeBits/4"]
+[node name="Full" type="Sprite2D" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer/SlotContainer/Slot3/ChallengeModeBits/4" unique_id=985024894]
 texture = ExtResource("10_ywryf")
 hframes = 2
 frame = 1
 script = ExtResource("6_x05vu")
 metadata/_custom_type_script = "uid://364rywt44hy6"
 
-[node name="5" type="Sprite2D" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer/SlotContainer/Slot3/ChallengeModeBits"]
+[node name="5" type="Sprite2D" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer/SlotContainer/Slot3/ChallengeModeBits" unique_id=397017047]
 position = Vector2(32, 4)
 texture = ExtResource("10_ywryf")
 hframes = 2
 script = ExtResource("6_x05vu")
 metadata/_custom_type_script = "uid://364rywt44hy6"
 
-[node name="Full" type="Sprite2D" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer/SlotContainer/Slot3/ChallengeModeBits/5"]
+[node name="Full" type="Sprite2D" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer/SlotContainer/Slot3/ChallengeModeBits/5" unique_id=1961739540]
 texture = ExtResource("10_ywryf")
 hframes = 2
 frame = 1
 script = ExtResource("6_x05vu")
 metadata/_custom_type_script = "uid://364rywt44hy6"
 
-[node name="6" type="Sprite2D" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer/SlotContainer/Slot3/ChallengeModeBits"]
+[node name="6" type="Sprite2D" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer/SlotContainer/Slot3/ChallengeModeBits" unique_id=507016648]
 position = Vector2(41, 4)
 texture = ExtResource("11_sk22j")
 hframes = 3
@@ -624,7 +624,7 @@ region_rect = Rect2(0, 0, 8, 8)
 script = ExtResource("6_x05vu")
 metadata/_custom_type_script = "uid://364rywt44hy6"
 
-[node name="Full" type="Sprite2D" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer/SlotContainer/Slot3/ChallengeModeBits/6"]
+[node name="Full" type="Sprite2D" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer/SlotContainer/Slot3/ChallengeModeBits/6" unique_id=2122688755]
 texture = ExtResource("11_sk22j")
 hframes = 3
 vframes = 2
@@ -633,7 +633,7 @@ region_rect = Rect2(0, 8, 8, 8)
 script = ExtResource("6_x05vu")
 metadata/_custom_type_script = "uid://364rywt44hy6"
 
-[node name="Score" type="Sprite2D" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer/SlotContainer/Slot3/ChallengeModeBits"]
+[node name="Score" type="Sprite2D" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer/SlotContainer/Slot3/ChallengeModeBits" unique_id=10376966]
 position = Vector2(51, 4)
 texture = ExtResource("12_asr3n")
 hframes = 2
@@ -641,7 +641,7 @@ region_rect = Rect2(0, 0, 8, 8)
 script = ExtResource("6_x05vu")
 metadata/_custom_type_script = "uid://364rywt44hy6"
 
-[node name="Full" type="Sprite2D" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer/SlotContainer/Slot3/ChallengeModeBits/Score"]
+[node name="Full" type="Sprite2D" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer/SlotContainer/Slot3/ChallengeModeBits/Score" unique_id=228353101]
 texture = ExtResource("12_asr3n")
 hframes = 2
 frame = 1
@@ -649,7 +649,7 @@ region_rect = Rect2(8, 0, 8, 8)
 script = ExtResource("6_x05vu")
 metadata/_custom_type_script = "uid://364rywt44hy6"
 
-[node name="Icon" type="NinePatchRect" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer/SlotContainer/Slot3"]
+[node name="Icon" type="NinePatchRect" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer/SlotContainer/Slot3" unique_id=1792195704]
 custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
 size_flags_vertical = 10
@@ -658,7 +658,7 @@ region_rect = Rect2(0, 0, 56, 32)
 script = ExtResource("5_r70xa")
 metadata/_custom_type_script = "uid://xem6lai3ufyj"
 
-[node name="Number" type="NinePatchRect" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer/SlotContainer/Slot3/Icon"]
+[node name="Number" type="NinePatchRect" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer/SlotContainer/Slot3/Icon" unique_id=1864431610]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.5
@@ -676,7 +676,7 @@ region_rect = Rect2(0, 0, 12, 12)
 script = ExtResource("5_r70xa")
 metadata/_custom_type_script = "uid://xem6lai3ufyj"
 
-[node name="RankMedal" type="Sprite2D" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer/SlotContainer/Slot3/Icon"]
+[node name="RankMedal" type="Sprite2D" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer/SlotContainer/Slot3/Icon" unique_id=820298683]
 position = Vector2(43, -2)
 texture = ExtResource("5_h2uw4")
 centered = false
@@ -684,7 +684,7 @@ hframes = 8
 script = ExtResource("6_x05vu")
 metadata/_custom_type_script = "uid://364rywt44hy6"
 
-[node name="SRankParticles" type="GPUParticles2D" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer/SlotContainer/Slot3/Icon/RankMedal"]
+[node name="SRankParticles" type="GPUParticles2D" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer/SlotContainer/Slot3/Icon/RankMedal" unique_id=804675880 groups=["Particles"]]
 z_index = 1
 material = SubResource("CanvasItemMaterial_ggm71")
 position = Vector2(8, 8)
@@ -697,7 +697,7 @@ interpolate = false
 fract_delta = false
 process_material = SubResource("ParticleProcessMaterial_gxb4q")
 
-[node name="PRankParticles" type="GPUParticles2D" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer/SlotContainer/Slot3/Icon/RankMedal"]
+[node name="PRankParticles" type="GPUParticles2D" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer/SlotContainer/Slot3/Icon/RankMedal" unique_id=1039161699 groups=["Particles"]]
 visible = false
 z_index = 1
 material = SubResource("CanvasItemMaterial_ggm71")
@@ -711,15 +711,15 @@ interpolate = false
 fract_delta = false
 process_material = SubResource("ParticleProcessMaterial_gxb4q")
 
-[node name="Control" type="Control" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer/SlotContainer/Slot3"]
+[node name="Control" type="Control" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer/SlotContainer/Slot3" unique_id=1065120171]
 layout_mode = 2
 
-[node name="Cursor" type="Control" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer/SlotContainer/Slot3"]
+[node name="Cursor" type="Control" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer/SlotContainer/Slot3" unique_id=1385828343]
 visible = false
 custom_minimum_size = Vector2(0, 8)
 layout_mode = 2
 
-[node name="Label" type="Label" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer/SlotContainer/Slot3/Cursor"]
+[node name="Label" type="Label" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer/SlotContainer/Slot3/Cursor" unique_id=73031871]
 layout_mode = 0
 offset_top = -1.0
 offset_right = 56.0
@@ -727,94 +727,94 @@ offset_bottom = 15.0
 text = "^"
 horizontal_alignment = 1
 
-[node name="Slot4" type="VBoxContainer" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer/SlotContainer"]
+[node name="Slot4" type="VBoxContainer" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer/SlotContainer" unique_id=1758507047]
 custom_minimum_size = Vector2(56, 32)
 layout_mode = 2
 focus_mode = 2
 theme_override_constants/separation = 0
 
-[node name="ChallengeModeBits" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer/SlotContainer/Slot4"]
+[node name="ChallengeModeBits" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer/SlotContainer/Slot4" unique_id=199607782]
 custom_minimum_size = Vector2(0, 8)
 layout_mode = 2
 size_flags_vertical = 10
 
-[node name="ColorRect" type="ColorRect" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer/SlotContainer/Slot4/ChallengeModeBits"]
+[node name="ColorRect" type="ColorRect" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer/SlotContainer/Slot4/ChallengeModeBits" unique_id=822020898]
 visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 color = Color(0, 0, 0, 1)
 
-[node name="1" type="Sprite2D" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer/SlotContainer/Slot4/ChallengeModeBits"]
+[node name="1" type="Sprite2D" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer/SlotContainer/Slot4/ChallengeModeBits" unique_id=512297702]
 position = Vector2(4, 4)
 texture = ExtResource("10_ywryf")
 hframes = 2
 script = ExtResource("6_x05vu")
 metadata/_custom_type_script = "uid://364rywt44hy6"
 
-[node name="Full" type="Sprite2D" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer/SlotContainer/Slot4/ChallengeModeBits/1"]
+[node name="Full" type="Sprite2D" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer/SlotContainer/Slot4/ChallengeModeBits/1" unique_id=1051137594]
 texture = ExtResource("10_ywryf")
 hframes = 2
 frame = 1
 script = ExtResource("6_x05vu")
 metadata/_custom_type_script = "uid://364rywt44hy6"
 
-[node name="2" type="Sprite2D" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer/SlotContainer/Slot4/ChallengeModeBits"]
+[node name="2" type="Sprite2D" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer/SlotContainer/Slot4/ChallengeModeBits" unique_id=437394496]
 position = Vector2(11, 4)
 texture = ExtResource("10_ywryf")
 hframes = 2
 script = ExtResource("6_x05vu")
 metadata/_custom_type_script = "uid://364rywt44hy6"
 
-[node name="Full" type="Sprite2D" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer/SlotContainer/Slot4/ChallengeModeBits/2"]
+[node name="Full" type="Sprite2D" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer/SlotContainer/Slot4/ChallengeModeBits/2" unique_id=1014656424]
 texture = ExtResource("10_ywryf")
 hframes = 2
 frame = 1
 script = ExtResource("6_x05vu")
 metadata/_custom_type_script = "uid://364rywt44hy6"
 
-[node name="3" type="Sprite2D" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer/SlotContainer/Slot4/ChallengeModeBits"]
+[node name="3" type="Sprite2D" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer/SlotContainer/Slot4/ChallengeModeBits" unique_id=754684951]
 position = Vector2(18, 4)
 texture = ExtResource("10_ywryf")
 hframes = 2
 script = ExtResource("6_x05vu")
 metadata/_custom_type_script = "uid://364rywt44hy6"
 
-[node name="Full" type="Sprite2D" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer/SlotContainer/Slot4/ChallengeModeBits/3"]
+[node name="Full" type="Sprite2D" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer/SlotContainer/Slot4/ChallengeModeBits/3" unique_id=54566261]
 texture = ExtResource("10_ywryf")
 hframes = 2
 frame = 1
 script = ExtResource("6_x05vu")
 metadata/_custom_type_script = "uid://364rywt44hy6"
 
-[node name="4" type="Sprite2D" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer/SlotContainer/Slot4/ChallengeModeBits"]
+[node name="4" type="Sprite2D" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer/SlotContainer/Slot4/ChallengeModeBits" unique_id=1409214298]
 position = Vector2(25, 4)
 texture = ExtResource("10_ywryf")
 hframes = 2
 script = ExtResource("6_x05vu")
 metadata/_custom_type_script = "uid://364rywt44hy6"
 
-[node name="Full" type="Sprite2D" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer/SlotContainer/Slot4/ChallengeModeBits/4"]
+[node name="Full" type="Sprite2D" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer/SlotContainer/Slot4/ChallengeModeBits/4" unique_id=286015629]
 texture = ExtResource("10_ywryf")
 hframes = 2
 frame = 1
 script = ExtResource("6_x05vu")
 metadata/_custom_type_script = "uid://364rywt44hy6"
 
-[node name="5" type="Sprite2D" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer/SlotContainer/Slot4/ChallengeModeBits"]
+[node name="5" type="Sprite2D" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer/SlotContainer/Slot4/ChallengeModeBits" unique_id=444515061]
 position = Vector2(32, 4)
 texture = ExtResource("10_ywryf")
 hframes = 2
 script = ExtResource("6_x05vu")
 metadata/_custom_type_script = "uid://364rywt44hy6"
 
-[node name="Full" type="Sprite2D" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer/SlotContainer/Slot4/ChallengeModeBits/5"]
+[node name="Full" type="Sprite2D" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer/SlotContainer/Slot4/ChallengeModeBits/5" unique_id=974869872]
 texture = ExtResource("10_ywryf")
 hframes = 2
 frame = 1
 script = ExtResource("6_x05vu")
 metadata/_custom_type_script = "uid://364rywt44hy6"
 
-[node name="6" type="Sprite2D" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer/SlotContainer/Slot4/ChallengeModeBits"]
+[node name="6" type="Sprite2D" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer/SlotContainer/Slot4/ChallengeModeBits" unique_id=462022159]
 position = Vector2(41, 4)
 texture = ExtResource("11_sk22j")
 hframes = 3
@@ -823,7 +823,7 @@ region_rect = Rect2(0, 0, 8, 8)
 script = ExtResource("6_x05vu")
 metadata/_custom_type_script = "uid://364rywt44hy6"
 
-[node name="Full" type="Sprite2D" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer/SlotContainer/Slot4/ChallengeModeBits/6"]
+[node name="Full" type="Sprite2D" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer/SlotContainer/Slot4/ChallengeModeBits/6" unique_id=1334254648]
 texture = ExtResource("11_sk22j")
 hframes = 3
 vframes = 2
@@ -832,7 +832,7 @@ region_rect = Rect2(8, 8, 8, 8)
 script = ExtResource("6_x05vu")
 metadata/_custom_type_script = "uid://364rywt44hy6"
 
-[node name="Score" type="Sprite2D" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer/SlotContainer/Slot4/ChallengeModeBits"]
+[node name="Score" type="Sprite2D" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer/SlotContainer/Slot4/ChallengeModeBits" unique_id=237436867]
 position = Vector2(51, 4)
 texture = ExtResource("12_asr3n")
 hframes = 2
@@ -840,7 +840,7 @@ region_rect = Rect2(0, 0, 8, 8)
 script = ExtResource("6_x05vu")
 metadata/_custom_type_script = "uid://364rywt44hy6"
 
-[node name="Full" type="Sprite2D" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer/SlotContainer/Slot4/ChallengeModeBits/Score"]
+[node name="Full" type="Sprite2D" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer/SlotContainer/Slot4/ChallengeModeBits/Score" unique_id=990373296]
 texture = ExtResource("12_asr3n")
 hframes = 2
 frame = 1
@@ -848,7 +848,7 @@ region_rect = Rect2(8, 0, 8, 8)
 script = ExtResource("6_x05vu")
 metadata/_custom_type_script = "uid://364rywt44hy6"
 
-[node name="Icon" type="NinePatchRect" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer/SlotContainer/Slot4"]
+[node name="Icon" type="NinePatchRect" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer/SlotContainer/Slot4" unique_id=370320250]
 custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
 size_flags_vertical = 10
@@ -857,7 +857,7 @@ region_rect = Rect2(0, 0, 56, 32)
 script = ExtResource("5_r70xa")
 metadata/_custom_type_script = "uid://xem6lai3ufyj"
 
-[node name="Number" type="NinePatchRect" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer/SlotContainer/Slot4/Icon"]
+[node name="Number" type="NinePatchRect" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer/SlotContainer/Slot4/Icon" unique_id=515450264]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.5
@@ -875,7 +875,7 @@ region_rect = Rect2(0, 0, 12, 12)
 script = ExtResource("5_r70xa")
 metadata/_custom_type_script = "uid://xem6lai3ufyj"
 
-[node name="RankMedal" type="Sprite2D" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer/SlotContainer/Slot4/Icon"]
+[node name="RankMedal" type="Sprite2D" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer/SlotContainer/Slot4/Icon" unique_id=1572351791]
 position = Vector2(43, -2)
 texture = ExtResource("5_h2uw4")
 centered = false
@@ -883,7 +883,7 @@ hframes = 8
 script = ExtResource("6_x05vu")
 metadata/_custom_type_script = "uid://364rywt44hy6"
 
-[node name="SRankParticles" type="GPUParticles2D" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer/SlotContainer/Slot4/Icon/RankMedal"]
+[node name="SRankParticles" type="GPUParticles2D" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer/SlotContainer/Slot4/Icon/RankMedal" unique_id=1051920437 groups=["Particles"]]
 z_index = 1
 material = SubResource("CanvasItemMaterial_ggm71")
 position = Vector2(8, 8)
@@ -896,7 +896,7 @@ interpolate = false
 fract_delta = false
 process_material = SubResource("ParticleProcessMaterial_gxb4q")
 
-[node name="PRankParticles" type="GPUParticles2D" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer/SlotContainer/Slot4/Icon/RankMedal"]
+[node name="PRankParticles" type="GPUParticles2D" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer/SlotContainer/Slot4/Icon/RankMedal" unique_id=239945736 groups=["Particles"]]
 visible = false
 z_index = 1
 material = SubResource("CanvasItemMaterial_ggm71")
@@ -910,14 +910,15 @@ interpolate = false
 fract_delta = false
 process_material = SubResource("ParticleProcessMaterial_gxb4q")
 
-[node name="Control" type="Control" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer/SlotContainer/Slot4"]
+[node name="Control" type="Control" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer/SlotContainer/Slot4" unique_id=1619171452]
 layout_mode = 2
 
-[node name="Cursor" type="Control" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer/SlotContainer/Slot4"]
+[node name="Cursor" type="Control" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer/SlotContainer/Slot4" unique_id=1844939425]
+visible = false
 custom_minimum_size = Vector2(0, 8)
 layout_mode = 2
 
-[node name="Label" type="Label" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer/SlotContainer/Slot4/Cursor"]
+[node name="Label" type="Label" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer/SlotContainer/Slot4/Cursor" unique_id=1288750011]
 layout_mode = 0
 offset_top = -1.0
 offset_right = 56.0
@@ -925,30 +926,30 @@ offset_bottom = 15.0
 text = "^"
 horizontal_alignment = 1
 
-[node name="Control" type="Control" parent="Panel/MarginContainer/VBoxContainer"]
+[node name="Control" type="Control" parent="Panel/MarginContainer/VBoxContainer" unique_id=818831551]
 custom_minimum_size = Vector2(0, 7)
 layout_mode = 2
 
-[node name="MarathonBits" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer"]
+[node name="MarathonBits" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer" unique_id=1189885193]
 unique_name_in_owner = true
 visible = false
 layout_mode = 2
 size_flags_vertical = 3
 alignment = 1
 
-[node name="Label" type="Label" parent="Panel/MarginContainer/VBoxContainer/MarathonBits"]
+[node name="Label" type="Label" parent="Panel/MarginContainer/VBoxContainer/MarathonBits" unique_id=1555317694]
 layout_mode = 2
 size_flags_vertical = 0
 text = "PB:"
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Panel/MarginContainer/VBoxContainer/MarathonBits"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/MarginContainer/VBoxContainer/MarathonBits" unique_id=1880017683]
 layout_mode = 2
 size_flags_vertical = 4
 
-[node name="FullRun" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer/MarathonBits/VBoxContainer"]
+[node name="FullRun" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer/MarathonBits/VBoxContainer" unique_id=177723854]
 layout_mode = 2
 
-[node name="Flag" type="TextureRect" parent="Panel/MarginContainer/VBoxContainer/MarathonBits/VBoxContainer/FullRun"]
+[node name="Flag" type="TextureRect" parent="Panel/MarginContainer/VBoxContainer/MarathonBits/VBoxContainer/FullRun" unique_id=1000560734]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 4
@@ -957,7 +958,7 @@ stretch_mode = 2
 script = ExtResource("14_ywryf")
 metadata/_custom_type_script = "uid://ca3bew33g45eq"
 
-[node name="Axe" type="TextureRect" parent="Panel/MarginContainer/VBoxContainer/MarathonBits/VBoxContainer/FullRun"]
+[node name="Axe" type="TextureRect" parent="Panel/MarginContainer/VBoxContainer/MarathonBits/VBoxContainer/FullRun" unique_id=300192172]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 4
@@ -966,62 +967,62 @@ stretch_mode = 2
 script = ExtResource("14_ywryf")
 metadata/_custom_type_script = "uid://ca3bew33g45eq"
 
-[node name="FullRunPB" type="Label" parent="Panel/MarginContainer/VBoxContainer/MarathonBits/VBoxContainer/FullRun"]
+[node name="FullRunPB" type="Label" parent="Panel/MarginContainer/VBoxContainer/MarathonBits/VBoxContainer/FullRun" unique_id=1918514840]
 unique_name_in_owner = true
 layout_mode = 2
 text = "00:00:00"
 
-[node name="FullRunMedals" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer/MarathonBits/VBoxContainer/FullRun"]
+[node name="FullRunMedals" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer/MarathonBits/VBoxContainer/FullRun" unique_id=1976341277]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_constants/separation = 0
 
-[node name="Bronze" type="TextureRect" parent="Panel/MarginContainer/VBoxContainer/MarathonBits/VBoxContainer/FullRun/FullRunMedals"]
+[node name="Bronze" type="TextureRect" parent="Panel/MarginContainer/VBoxContainer/MarathonBits/VBoxContainer/FullRun/FullRunMedals" unique_id=565425327]
 layout_mode = 2
 size_flags_vertical = 4
 texture = SubResource("AtlasTexture_h2uw4")
 script = ExtResource("14_ywryf")
 metadata/_custom_type_script = "uid://ca3bew33g45eq"
 
-[node name="Full" type="TextureRect" parent="Panel/MarginContainer/VBoxContainer/MarathonBits/VBoxContainer/FullRun/FullRunMedals/Bronze"]
+[node name="Full" type="TextureRect" parent="Panel/MarginContainer/VBoxContainer/MarathonBits/VBoxContainer/FullRun/FullRunMedals/Bronze" unique_id=1882795727]
 layout_mode = 1
 offset_right = 8.0
 offset_bottom = 8.0
 size_flags_vertical = 4
 texture = SubResource("AtlasTexture_x05vu")
 
-[node name="Silver" type="TextureRect" parent="Panel/MarginContainer/VBoxContainer/MarathonBits/VBoxContainer/FullRun/FullRunMedals"]
+[node name="Silver" type="TextureRect" parent="Panel/MarginContainer/VBoxContainer/MarathonBits/VBoxContainer/FullRun/FullRunMedals" unique_id=2082134052]
 layout_mode = 2
 size_flags_vertical = 4
 texture = SubResource("AtlasTexture_h2uw4")
 script = ExtResource("14_ywryf")
 metadata/_custom_type_script = "uid://ca3bew33g45eq"
 
-[node name="Full" type="TextureRect" parent="Panel/MarginContainer/VBoxContainer/MarathonBits/VBoxContainer/FullRun/FullRunMedals/Silver"]
+[node name="Full" type="TextureRect" parent="Panel/MarginContainer/VBoxContainer/MarathonBits/VBoxContainer/FullRun/FullRunMedals/Silver" unique_id=1190141676]
 layout_mode = 1
 offset_right = 8.0
 offset_bottom = 8.0
 size_flags_vertical = 4
 texture = SubResource("AtlasTexture_21y1v")
 
-[node name="Gold" type="TextureRect" parent="Panel/MarginContainer/VBoxContainer/MarathonBits/VBoxContainer/FullRun/FullRunMedals"]
+[node name="Gold" type="TextureRect" parent="Panel/MarginContainer/VBoxContainer/MarathonBits/VBoxContainer/FullRun/FullRunMedals" unique_id=370188056]
 layout_mode = 2
 size_flags_vertical = 4
 texture = SubResource("AtlasTexture_h2uw4")
 script = ExtResource("14_ywryf")
 metadata/_custom_type_script = "uid://ca3bew33g45eq"
 
-[node name="Full" type="TextureRect" parent="Panel/MarginContainer/VBoxContainer/MarathonBits/VBoxContainer/FullRun/FullRunMedals/Gold"]
+[node name="Full" type="TextureRect" parent="Panel/MarginContainer/VBoxContainer/MarathonBits/VBoxContainer/FullRun/FullRunMedals/Gold" unique_id=1994953919]
 layout_mode = 1
 offset_right = 8.0
 offset_bottom = 8.0
 size_flags_vertical = 4
 texture = SubResource("AtlasTexture_r70xa")
 
-[node name="Warp" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer/MarathonBits/VBoxContainer"]
+[node name="Warp" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer/MarathonBits/VBoxContainer" unique_id=1705943159]
 layout_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="Panel/MarginContainer/VBoxContainer/MarathonBits/VBoxContainer/Warp"]
+[node name="TextureRect" type="TextureRect" parent="Panel/MarginContainer/VBoxContainer/MarathonBits/VBoxContainer/Warp" unique_id=601592681]
 layout_mode = 2
 size_flags_vertical = 4
 texture = SubResource("AtlasTexture_ggm71")
@@ -1029,81 +1030,81 @@ stretch_mode = 2
 script = ExtResource("14_ywryf")
 metadata/_custom_type_script = "uid://ca3bew33g45eq"
 
-[node name="WarpRunPB" type="Label" parent="Panel/MarginContainer/VBoxContainer/MarathonBits/VBoxContainer/Warp"]
+[node name="WarpRunPB" type="Label" parent="Panel/MarginContainer/VBoxContainer/MarathonBits/VBoxContainer/Warp" unique_id=1524946118]
 unique_name_in_owner = true
 layout_mode = 2
 text = "00:00:00"
 
-[node name="WarpRunMedals" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer/MarathonBits/VBoxContainer/Warp"]
+[node name="WarpRunMedals" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer/MarathonBits/VBoxContainer/Warp" unique_id=1797176939]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_constants/separation = 0
 
-[node name="Bronze" type="TextureRect" parent="Panel/MarginContainer/VBoxContainer/MarathonBits/VBoxContainer/Warp/WarpRunMedals"]
+[node name="Bronze" type="TextureRect" parent="Panel/MarginContainer/VBoxContainer/MarathonBits/VBoxContainer/Warp/WarpRunMedals" unique_id=81393071]
 layout_mode = 2
 size_flags_vertical = 4
 texture = SubResource("AtlasTexture_h2uw4")
 script = ExtResource("14_ywryf")
 metadata/_custom_type_script = "uid://ca3bew33g45eq"
 
-[node name="Full" type="TextureRect" parent="Panel/MarginContainer/VBoxContainer/MarathonBits/VBoxContainer/Warp/WarpRunMedals/Bronze"]
+[node name="Full" type="TextureRect" parent="Panel/MarginContainer/VBoxContainer/MarathonBits/VBoxContainer/Warp/WarpRunMedals/Bronze" unique_id=1762316963]
 layout_mode = 1
 offset_right = 8.0
 offset_bottom = 8.0
 size_flags_vertical = 4
 texture = SubResource("AtlasTexture_x05vu")
 
-[node name="Silver" type="TextureRect" parent="Panel/MarginContainer/VBoxContainer/MarathonBits/VBoxContainer/Warp/WarpRunMedals"]
+[node name="Silver" type="TextureRect" parent="Panel/MarginContainer/VBoxContainer/MarathonBits/VBoxContainer/Warp/WarpRunMedals" unique_id=760953836]
 layout_mode = 2
 size_flags_vertical = 4
 texture = SubResource("AtlasTexture_h2uw4")
 script = ExtResource("14_ywryf")
 metadata/_custom_type_script = "uid://ca3bew33g45eq"
 
-[node name="Full" type="TextureRect" parent="Panel/MarginContainer/VBoxContainer/MarathonBits/VBoxContainer/Warp/WarpRunMedals/Silver"]
+[node name="Full" type="TextureRect" parent="Panel/MarginContainer/VBoxContainer/MarathonBits/VBoxContainer/Warp/WarpRunMedals/Silver" unique_id=169010065]
 layout_mode = 1
 offset_right = 8.0
 offset_bottom = 8.0
 size_flags_vertical = 4
 texture = SubResource("AtlasTexture_21y1v")
 
-[node name="Gold" type="TextureRect" parent="Panel/MarginContainer/VBoxContainer/MarathonBits/VBoxContainer/Warp/WarpRunMedals"]
+[node name="Gold" type="TextureRect" parent="Panel/MarginContainer/VBoxContainer/MarathonBits/VBoxContainer/Warp/WarpRunMedals" unique_id=1765423976]
 layout_mode = 2
 size_flags_vertical = 4
 texture = SubResource("AtlasTexture_h2uw4")
 script = ExtResource("14_ywryf")
 metadata/_custom_type_script = "uid://ca3bew33g45eq"
 
-[node name="Full" type="TextureRect" parent="Panel/MarginContainer/VBoxContainer/MarathonBits/VBoxContainer/Warp/WarpRunMedals/Gold"]
+[node name="Full" type="TextureRect" parent="Panel/MarginContainer/VBoxContainer/MarathonBits/VBoxContainer/Warp/WarpRunMedals/Gold" unique_id=2135193621]
 layout_mode = 1
 offset_right = 8.0
 offset_bottom = 8.0
 size_flags_vertical = 4
 texture = SubResource("AtlasTexture_r70xa")
 
-[node name="ChallengeBits" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer"]
+[node name="ChallengeBits" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer" unique_id=1934941908]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_constants/separation = -8
 alignment = 1
 
-[node name="HighScore" type="Label" parent="Panel/MarginContainer/VBoxContainer/ChallengeBits"]
+[node name="HighScore" type="Label" parent="Panel/MarginContainer/VBoxContainer/ChallengeBits" unique_id=508842737]
 unique_name_in_owner = true
 layout_mode = 2
 text = "SCORE: 00000"
 
-[node name="ScoreTarget" type="Label" parent="Panel/MarginContainer/VBoxContainer/ChallengeBits"]
+[node name="ScoreTarget" type="Label" parent="Panel/MarginContainer/VBoxContainer/ChallengeBits" unique_id=207549895]
 unique_name_in_owner = true
 modulate = Color(0.4627451, 0.5254902, 1, 1)
 layout_mode = 2
 text = "/24000"
 
-[node name="LabelFontChanger" type="Node" parent="." node_paths=PackedStringArray("labels")]
+[node name="LabelFontChanger" type="Node" parent="." unique_id=480904859 node_paths=PackedStringArray("labels")]
 script = ExtResource("5_x05vu")
 labels = [NodePath("../Panel/MarginContainer/VBoxContainer/Title")]
 metadata/_custom_type_script = "uid://co6tjg3w6qpd8"
 
-[node name="LabelFontChanger2" type="Node" parent="." node_paths=PackedStringArray("labels")]
+[node name="LabelFontChanger2" type="Node" parent="." unique_id=1380789725 node_paths=PackedStringArray("labels")]
 script = ExtResource("5_x05vu")
 labels = [NodePath("../Panel/MarginContainer/VBoxContainer/Title"), NodePath("../Panel/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer/SlotContainer/Slot1/Cursor/Label"), NodePath("../Panel/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer/SlotContainer/Slot2/Cursor/Label"), NodePath("../Panel/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer/SlotContainer/Slot3/Cursor/Label"), NodePath("../Panel/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer/SlotContainer/Slot4/Cursor/Label"), NodePath("../Panel/MarginContainer/VBoxContainer/MarathonBits/Label"), NodePath("../Panel/MarginContainer/VBoxContainer/MarathonBits/VBoxContainer/FullRun/FullRunPB"), NodePath("../Panel/MarginContainer/VBoxContainer/MarathonBits/VBoxContainer/Warp/WarpRunPB")]
 metadata/_custom_type_script = "uid://co6tjg3w6qpd8"

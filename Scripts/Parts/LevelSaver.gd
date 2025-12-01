@@ -97,7 +97,6 @@ static func decompress_string(buffer := "") -> String:
 func get_entities(level: CustomLevel) -> void:
 	for layer in 5:
 		var layer_node = level.get_node("EntityLayer" + str(layer + 1))
-		var signals := []
 		for entity in layer_node.get_children():
 			if entity.has_meta("tile_position") == false:
 				continue
