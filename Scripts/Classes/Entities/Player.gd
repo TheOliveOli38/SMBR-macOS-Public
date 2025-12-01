@@ -599,14 +599,6 @@ func physics_params(type: String, params_dict: Dictionary = {}, key: String = ""
 	print("NULL PARAMETER! Looking up: type='%s', key='%s'\nparams_dict='%s'" % [type, key, params_dict["Default"]])
 	return null
 
-func merge_dict(target: Dictionary, source: Dictionary) -> void:
-	# SkyanUltra: Used to properly merge dictionaries in CharacterInfo rather than out right overwriting entries.
-	for key in source.keys():
-		if target.has(key) and target[key] is Dictionary and source[key] is Dictionary:
-			merge_dict(target[key], source[key])
-		else:
-			target[key] = source[key]
-
 func apply_character_physics() -> void:
 	var apply_gameplay_changes = [Global.GameMode.BOO_RACE, Global.GameMode.MARATHON, Global.GameMode.MARATHON_PRACTICE].has(Global.current_game_mode) == false
 	var path = "res://Assets/Sprites/Players/" + character + "/CharacterInfo.json"
@@ -624,12 +616,12 @@ func apply_character_physics() -> void:
 		if key in ["PHYSICS_PARAMETERS", "CLASSIC_PARAMETERS", "POWER_PARAMETERS", "ENDING_PARAMETERS"]:
 			if apply_gameplay_changes:
 				if get(key) is Dictionary and json.physics[key] is Dictionary:
-					merge_dict(get(key), json.physics[key])
+					Global.merge_dict(get(key), json.physics[key])
 				else:
 					set(key, json.physics[key])
 		else:
 			if get(key) is Dictionary and json.physics[key] is Dictionary:
-				merge_dict(get(key), json.physics[key])
+				Global.merge_dict(get(key), json.physics[key])
 			else:
 				set(key, json.physics[key])
 	
