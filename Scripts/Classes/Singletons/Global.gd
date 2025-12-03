@@ -189,6 +189,7 @@ func _ready() -> void:
 		debug_mode = false
 	setup_config_dirs()
 	check_for_rom()
+	load_default_translations()
 
 func setup_config_dirs() -> void:
 	var dirs = [
@@ -515,3 +516,21 @@ func get_base_asset_version() -> int:
 
 func get_version_num_int(ver_num := "0.0.0") -> int:
 	return int(ver_num.replace(".", ""))
+
+func load_default_translations() -> void:
+	for i in lang_codes:
+		create_translation_from_json(i, "res://Assets/Locale/" + i + ".json")
+
+func create_translation_from_json(locale := "", json_path := "") -> void:
+	var trans = Translation.new()
+	trans.locale = locale
+	var file = FileAccess.open(json_path, FileAccess.READ)
+	if file == null:
+		return
+	var json = JSON.parse_string(file.get_as_text())
+	for i in json.keys():
+		trans.add_message(i, json[i])
+	if TranslationServer.has_translation_for_locale(locale, false):
+		for i in TranslationServer.find_translations(locale, false):
+			TranslationServer.remove_translation(i)
+	TranslationServer.add_translation(trans)
