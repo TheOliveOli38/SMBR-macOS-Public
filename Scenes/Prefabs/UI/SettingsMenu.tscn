@@ -363,8 +363,8 @@ values = ["VIDEO_HUD_STRETCHED", "VIDEO_HUD_CENTER"]
 [node name="FrameLimit" parent="PanelContainer/MarginContainer/VBoxContainer/Video" unique_id=2105009171 instance=ExtResource("3_dl6kk")]
 layout_mode = 2
 option_key = "frame_limit"
-title = "FRAME LIMIT"
-values = ["Unlimited", "60fps", "120fps", "144fps", "240fps"]
+title = "VIDEO_FRAMELIMIT"
+values = ["VIDEO_FPS_UNLIMITED", "60fps", "120fps", "144fps", "240fps"]
 
 [node name="WindowChanger" type="Node" parent="PanelContainer/MarginContainer/VBoxContainer/Video" unique_id=332900191]
 script = ExtResource("5_hnwhb")
@@ -427,7 +427,7 @@ settings_category = "audio"
 layout_mode = 2
 option_key = "pause_bgm"
 title = "AUDIO_PAUSE_BGM"
-values = ["SETTING_OFF", "SETTING_MUFFLED", "SETTING_ON"]
+values = ["SETTING_OFF", "AUDIO_PAUSEBGM_MUFFLED", "SETTING_ON"]
 settings_category = "audio"
 
 [node name="MenuBGM" parent="PanelContainer/MarginContainer/VBoxContainer/Audio" unique_id=2135905088 groups=["Options"] instance=ExtResource("3_dl6kk")]
@@ -526,14 +526,14 @@ settings_category = "visuals"
 [node name="FirebarStyle" parent="PanelContainer/MarginContainer/VBoxContainer/Visuals" unique_id=1085803096 groups=["Options"] instance=ExtResource("3_dl6kk")]
 layout_mode = 2
 option_key = "firebar_style"
-title = "FIREBAR STYLE"
-values = ["Classic", "Modern"]
+title = "VISUAL_FIREBAR_STYLE"
+values = ["SETTINGS_CLASSIC", "SETTINGS_MODERN"]
 settings_category = "visuals"
 
 [node name="ExtraParticles" parent="PanelContainer/MarginContainer/VBoxContainer/Visuals" unique_id=998350056 groups=["Options"] instance=ExtResource("3_dl6kk")]
 layout_mode = 2
 option_key = "extra_particles"
-title = "EXTRA EFFECTS"
+title = "VISUAL_EXTRA_EFFECTS"
 values = ["SETTING_OFF", "SETTING_ON"]
 settings_category = "visuals"
 
@@ -774,17 +774,17 @@ title = "ACTION_DOWN"
 [node name="Accept" parent="PanelContainer/MarginContainer/VBoxContainer/KeyboardControls" unique_id=1468594018 groups=["Options"] instance=ExtResource("9_ksnto")]
 layout_mode = 2
 action_names = ["ui_accept"]
-title = "ACCEPT"
+title = "ACTION_ACCEPT"
 
 [node name="Back" parent="PanelContainer/MarginContainer/VBoxContainer/KeyboardControls" unique_id=1594400469 groups=["Options"] instance=ExtResource("9_ksnto")]
 layout_mode = 2
 action_names = ["ui_back"]
-title = "BACK"
+title = "ACTION_BACK"
 
 [node name="Pause" parent="PanelContainer/MarginContainer/VBoxContainer/KeyboardControls" unique_id=954449538 groups=["Options"] instance=ExtResource("9_ksnto")]
 layout_mode = 2
 action_names = ["pause"]
-title = "PAUSE"
+title = "ACTION_PAUSE"
 
 [node name="InputMapSaving" type="Node" parent="PanelContainer/MarginContainer/VBoxContainer/KeyboardControls" unique_id=1659597281 groups=["Options"]]
 process_mode = 3
@@ -862,21 +862,21 @@ type = 1
 layout_mode = 2
 settings_category = "controller"
 action_names = ["ui_accept"]
-title = "ACCEPT"
+title = "ACTION_ACCEPT"
 type = 1
 
 [node name="Back" parent="PanelContainer/MarginContainer/VBoxContainer/Controller" unique_id=511083773 groups=["Options"] instance=ExtResource("9_ksnto")]
 layout_mode = 2
 settings_category = "controller"
 action_names = ["ui_back"]
-title = "BACK"
+title = "ACTION_BACK"
 type = 1
 
 [node name="Pause" parent="PanelContainer/MarginContainer/VBoxContainer/Controller" unique_id=415481594 groups=["Options"] instance=ExtResource("9_ksnto")]
 layout_mode = 2
 settings_category = "controller"
 action_names = ["pause"]
-title = "PAUSE"
+title = "ACTION_PAUSE"
 type = 1
 
 [node name="InputMapSaving" type="Node" parent="PanelContainer/MarginContainer/VBoxContainer/Controller" unique_id=1957718330 groups=["Options"]]

@@ -25,7 +25,7 @@ var current_level: Level = null
 
 var second_quest := false
 var extra_worlds_win := false
-const lang_codes := ["en", "fr", "es", "de", "it", "pt", "pl", "tr", "ru", "jp", "fil", "id", "ga"]
+const lang_codes := ["en", "fr", "es", "de", "it", "pt_br", "pl", "tr", "ru", "jp", "fil", "id", "gal"]
 
 var config_path : String = get_config_path()
 
@@ -190,6 +190,7 @@ func _ready() -> void:
 	setup_config_dirs()
 	check_for_rom()
 	load_default_translations()
+	level_theme_changed.connect(load_default_translations)
 
 func setup_config_dirs() -> void:
 	var dirs = [
@@ -255,6 +256,7 @@ func _process(delta: float) -> void:
 		ResourceGetter.cache.clear()
 		AudioManager.current_level_theme = ""
 		level_theme_changed.emit()
+		TranslationServer.reload_pseudolocalization()
 		log_comment("Reloaded resource packs!")
 	
 	if Input.is_action_just_pressed("toggle_fps_count"):
@@ -520,17 +522,40 @@ func get_version_num_int(ver_num := "0.0.0") -> int:
 func load_default_translations() -> void:
 	for i in lang_codes:
 		create_translation_from_json(i, "res://Assets/Locale/" + i + ".json")
+	create_gal_translation("res://Assets/Locale/en.json")
 
 func create_translation_from_json(locale := "", json_path := "") -> void:
 	var trans = Translation.new()
 	trans.locale = locale
+	json_path = ResourceGetter.new().get_resource_path(json_path)
 	var file = FileAccess.open(json_path, FileAccess.READ)
 	if file == null:
 		return
 	var json = JSON.parse_string(file.get_as_text())
 	for i in json.keys():
-		trans.add_message(i, json[i])
-	if TranslationServer.has_translation_for_locale(locale, false):
-		for i in TranslationServer.find_translations(locale, false):
-			TranslationServer.remove_translation(i)
+		var value = json[i]
+		if value is Dictionary:
+			value = $ResourceSetterNew.get_variation_json(value).source
+		trans.add_message(i, value.to_upper())
+	if TranslationServer.get_translation_object(locale) != null:
+		TranslationServer.remove_translation(TranslationServer.get_translation_object(locale))
 	TranslationServer.add_translation(trans)
+
+func create_gal_translation(en_json_path := "") -> void:
+	var en_json = JSON.parse_string(FileAccess.open(en_json_path, FileAccess.READ).get_as_text())
+	var translation = Translation.new()
+	for i in en_json.keys():
+		translation.add_message(i, convert_en_to_gal(en_json[i]))
+	translation.locale = "gal"
+	if TranslationServer.get_translation_object("gal") != null:
+		TranslationServer.remove_translation(TranslationServer.get_translation_object("gal"))
+	TranslationServer.add_translation(translation)
+
+func convert_en_to_gal(en_string := "") -> String:
+	var gal_string = en_string.to_upper()
+	var idx := 0
+	for i in gal_string:
+		if gal_string[idx] in "ABCDEFGHIJKLMNOPQRSTUVWXYZ":
+			gal_string[idx] = String.chr(i.unicode_at(0) + 65248)
+		idx += 1
+	return gal_string
