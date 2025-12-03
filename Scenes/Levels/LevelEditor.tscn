@@ -3644,6 +3644,8 @@ layout_mode = 2
 tile_name = "BLOCK_BRICK"
 type = 1
 icon_texture = ExtResource("95_eby78")
+icon_region_override = Rect2(0, 0, 16, 16)
+secondary_icon_region_override = Rect2(16, 0, 0, 0)
 entity_id = "Ac"
 metadata/_edit_group_ = true
 

@@ -29,7 +29,8 @@ func _ready() -> void:
 		global_position.y -= 1
 
 func do_cutscene() -> void:
-	top_point = global_position.y
+	if owner is WarpVine:
+		top_point = global_position.y
 	global_position.y = 40
 	$SFX.play()
 	can_grow = true
@@ -63,6 +64,7 @@ func _physics_process(delta: float) -> void:
 		collision.shape.size.y += SPEED * delta
 		collision.position.y += (SPEED / 2) * delta
 	elif can_stop:
+		print("FUCK", global_position.y, " ", top_point)
 		can_stop = false
 		stopped.emit()
 	

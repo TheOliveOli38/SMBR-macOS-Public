@@ -14,6 +14,10 @@ func enter(_msg := {}) -> void:
 
 func physics_update(delta: float) -> void:
 	var direction = 0
+	if owner.is_on_wall():
+		if abs(owner.velocity.x) < 100:
+			owner.velocity.x = 100 * sign(owner.velocity.x)
+		owner.velocity.x = -(owner.velocity.x)
 	if can_move:
 		if get_tree().get_first_node_in_group("Players") != null:
 			direction = sign(get_tree().get_first_node_in_group("Players").global_position.x - owner.global_position.x)
