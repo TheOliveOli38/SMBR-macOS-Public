@@ -508,7 +508,10 @@ func bump_ceiling() -> void:
 
 func kick_anim() -> void:
 	kicking = true
-	await get_tree().create_timer(0.2).timeout
+	if can_kick_anim:
+		for i in 2:
+			await get_tree().physics_frame
+		await get_tree().create_timer(calculate_await_time(), false).timeout
 	kicking = false
 
 func super_star() -> void:
@@ -993,3 +996,6 @@ func do_earthquake() -> void:
 		velocity.x = 0
 
 		state_machine.transition_to("Stunned")
+
+func calculate_await_time() -> float:
+	return (sprite.sprite_frames.get_frame_count(sprite.animation) / sprite.sprite_frames.get_animation_speed(sprite.animation))

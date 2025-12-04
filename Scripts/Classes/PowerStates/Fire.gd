@@ -19,5 +19,9 @@ func throw_fireball() -> void:
 	node.tree_exited.connect(func(): projectile_amount -= 1)
 	AudioManager.play_sfx(shoot_sfx, player.global_position)
 	player.attacking = true
-	await get_tree().create_timer(0.1, false).timeout
+	for i in 2:
+		await get_tree().physics_frame
+	var time = player.calculate_await_time()
+	print(time)
+	await get_tree().create_timer(time, false).timeout
 	player.attacking = false
