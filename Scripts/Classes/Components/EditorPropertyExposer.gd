@@ -27,7 +27,6 @@ func get_entity_map() -> void:
 func get_string() -> String:
 	var string = ""
 	for i in properties:
-		print(i)
 		string += ","
 		if owner is Track:
 			if owner.get(i) is Array:
@@ -37,7 +36,6 @@ func get_string() -> String:
 			if owner.get(i) is Array:
 				for x in owner.get(i):
 					string += base64_charset[(SnakeBlock.DIRECTIONS.find(x))]
-				print(string)
 		if owner.get(i) is String:
 			string += owner.get(i).replace(",", "&")
 		elif owner.get(i) is PackedScene:
@@ -63,8 +61,6 @@ func apply_string(entity_string := "") -> void:
 	get_entity_map()
 	var idx := 2
 	var slice = entity_string.split(",")
-	print([entity_string, owner.name])
-	print(slice)
 	for i in properties:
 		if slice.size() <= idx:
 			return
@@ -77,7 +73,6 @@ func apply_string(entity_string := "") -> void:
 		if owner is SnakeBlock:
 			if owner.get(i) is Array:
 				for x in value:
-					print(value)
 					owner.get(i).append(SnakeBlock.DIRECTIONS[base64_charset.find(x)])
 		if owner.get(i) is String:
 			owner.set(i, value.replace("&", ","))
@@ -86,8 +81,6 @@ func apply_string(entity_string := "") -> void:
 			if scene != null:
 				owner.set(i, load(entity_map.get(value)[0]))
 			elif value != "!!":
-				print([value, entity_map.get(value)])
-				print(entity_map)
 				Global.log_error("error getting item! : " + i + str(value))
 		elif owner.get(i) is int:
 			var num = value

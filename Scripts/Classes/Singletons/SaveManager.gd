@@ -72,6 +72,8 @@ func write_save(campaign: String = Global.current_campaign, force := false) -> v
 		return
 	var save = null
 	var save_json = {}
+	if Global.in_custom_campaign():
+		campaign = Global.current_custom_campaign
 	var path = Global.config_path.path_join("saves/" + campaign + ".sav")
 	if FileAccess.file_exists(path):
 		save = FileAccess.open(path, FileAccess.READ)
@@ -94,6 +96,8 @@ func write_save(campaign: String = Global.current_campaign, force := false) -> v
 			save_json["HighScore"] = Global.high_score
 			save_json["ExtraWorldWin"] = Global.extra_worlds_win
 			save_json["SecondQuest"] = Global.second_quest
+			if Global.in_custom_campaign():
+				save_json["LevelIdx"] = Global.custom_level_idx
 		Global.GameMode.CHALLENGE:
 			save_json["ChallengeScores"] = ChallengeModeHandler.top_challenge_scores
 			save_json["RedCoins"] = ChallengeModeHandler.red_coins_collected
@@ -139,6 +143,7 @@ func apply_save(json := {}) -> void:
 		DiscoLevel.level_ranks = json.get("Ranks")
 	if json.has("BooBestTimes"):
 		BooRaceHandler.best_times = json.get("BooBestTimes").duplicate()
+	Global.custom_level_idx = json.get("LevelIdx", 0)
 	Global.second_quest = json.get("SecondQuest", false)
 
 func clear_save() -> void:

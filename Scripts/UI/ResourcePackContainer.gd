@@ -33,7 +33,12 @@ func _process(_delta: float) -> void:
 	%LoadedOrder.visible = loaded
 	%LoadedOrder.text = str(load_order + 1)
 	load_order = Settings.file.visuals.resource_packs.find(pack_name)
-	$ResourcePackContainer.self_modulate = Color.GREEN if loaded else Color.WHITE
+	var colour = Color.WHITE
+	if Global.custom_pack == pack_name:
+		colour = Color.YELLOW
+	elif loaded:
+		colour = Color.GREEN
+	$ResourcePackContainer.self_modulate = colour
 	$Edit/EditLabel.visible = selected and config != {}
 	for i in [%TitleScroll, %DescScroll]:
 		i.is_focused = selected
@@ -51,6 +56,9 @@ func open_config_menu() -> void:
 	open_config.emit(self)
 
 func select() -> void:
+	if Global.custom_pack == pack_name:
+		AudioManager.play_global_sfx("bump")
+		return
 	ResourceSetter.cache.clear()
 	ResourceSetterNew.clear_cache()
 	ResourceGetter.cache.clear()

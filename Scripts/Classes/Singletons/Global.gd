@@ -48,6 +48,11 @@ const LEVEL_THEMES := {
 	"SMBS": SMBS_LEVEL_THEMES
 }
 
+var custom_campaigns := []
+var custom_pack := ""
+var custom_level_idx := 0
+var current_custom_campaign := ""
+
 const SMB1_LEVEL_THEMES := ["Overworld", "Desert", "Snow", "Jungle", "Desert", "Snow", "Jungle", "Overworld", "Space", "Autumn", "Pipeland", "Skyland", "Volcano"]
 const SMBS_LEVEL_THEMES := ["Overworld", "Garden", "Beach", "Mountain", "Garden", "Beach", "Mountain", "Overworld", "Autumn", "Pipeland", "Skyland", "Volcano", "Fuck"]
 
@@ -179,8 +184,9 @@ var p_switch_timer_paused := false
 
 var debug_mode := false
 
-var current_level_pack := {}
-var level_pack_name := ""
+var custom_campaign_jsons := {}
+
+var level_sequence_captured := false
 
 func _ready() -> void:
 	current_version = get_version_number()
@@ -559,3 +565,6 @@ func convert_en_to_gal(en_string := "") -> String:
 			gal_string[idx] = String.chr(i.unicode_at(0) + 65248)
 		idx += 1
 	return gal_string
+
+func in_custom_campaign(campaign := current_custom_campaign) -> bool:
+	return current_custom_campaign != ""

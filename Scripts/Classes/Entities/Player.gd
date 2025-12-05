@@ -854,7 +854,7 @@ func enter_pipe(pipe: PipeArea, warp_to_level := true) -> void:
 	hide_pipe_animation()
 	if warp_to_level:
 		await get_tree().create_timer(1, false).timeout
-		if Global.current_game_mode == Global.GameMode.CUSTOM_LEVEL:
+		if Global.current_game_mode == Global.GameMode.CUSTOM_LEVEL or Global.in_custom_campaign():
 			Global.transition_to_scene(NewLevelBuilder.sub_levels[pipe.target_sub_level])
 		elif Global.level_editor != null:
 			Global.level_editor.transition_to_sublevel(pipe.target_sub_level)

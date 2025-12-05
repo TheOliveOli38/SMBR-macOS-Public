@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=3 uid="uid://cyf16hyu7mr7x"]
+[gd_scene load_steps=43 format=3 uid="uid://cyf16hyu7mr7x"]
 
 [ext_resource type="Script" uid="uid://bxu6kcun4m6uo" path="res://Scripts/UI/CustomLevelMenu.gd" id="1_2wr4s"]
 [ext_resource type="Texture2D" uid="uid://bhuybr2gtuco5" path="res://Assets/Sprites/UI/MenuBG.png" id="2_0jssh"]
@@ -26,7 +26,6 @@
 [ext_resource type="PackedScene" uid="uid://ctw1isl6cmayh" path="res://Scenes/Parts/SelectableOptionLabel.tscn" id="22_13and"]
 [ext_resource type="Texture2D" uid="uid://dr28edkhbb1pg" path="res://Assets/Sprites/UI/LSSIcon.png" id="23_8jgx6"]
 [ext_resource type="AudioStream" uid="uid://lwyvpothl3lv" path="res://Assets/Audio/BGM/CustomLevel.mp3" id="23_22hnx"]
-[ext_resource type="Texture2D" uid="uid://bdfacnvuppo3u" path="res://Assets/Sprites/UI/LevelPackIconEmpty.png" id="23_gmv51"]
 [ext_resource type="Script" uid="uid://c4x7i885h4si0" path="res://Scripts/UI/LssLevelInfo.gd" id="23_u8fen"]
 [ext_resource type="Script" uid="uid://d63p6qr5a748" path="res://Scripts/UI/AutoScrollContainer.gd" id="24_wf6nb"]
 [ext_resource type="PackedScene" uid="uid://cr2pku7fjkgpo" path="res://Scenes/Prefabs/UI/OnlineLevelContainer.tscn" id="26_r5ajm"]
@@ -438,11 +437,11 @@ layout_mode = 2
 focus_mode = 0
 
 [node name="ScrollContainer" parent="BG/Border/Levels/VBoxContainer/LevelInfo/SelectedLevel/MarginContainer/HBoxContainer/HSplitContainer/LeftHalf/LevelInfo" index="0"]
-scroll_horizontal = 249
+scroll_horizontal = 90
 is_active = true
 
 [node name="ScrollContainer2" parent="BG/Border/Levels/VBoxContainer/LevelInfo/SelectedLevel/MarginContainer/HBoxContainer/HSplitContainer/LeftHalf/LevelInfo" index="1"]
-scroll_horizontal = 88
+scroll_horizontal = 36
 is_active = true
 
 [node name="Panel" type="PanelContainer" parent="BG/Border/Levels/VBoxContainer/LevelInfo" unique_id=2125756912]
@@ -453,7 +452,7 @@ theme_override_styles/panel = ExtResource("8_psbt7")
 [node name="AutoScrollContainer" type="ScrollContainer" parent="BG/Border/Levels/VBoxContainer/LevelInfo/Panel" unique_id=975980634]
 layout_mode = 2
 mouse_filter = 2
-scroll_vertical = 100
+scroll_vertical = 20
 horizontal_scroll_mode = 3
 vertical_scroll_mode = 3
 script = ExtResource("24_wf6nb")
@@ -528,93 +527,6 @@ texture = SubResource("AtlasTexture_otk5o")
 
 [node name="Label" parent="BG/Border/Levels/VBoxContainer/LevelInfo/HBoxContainer/DeleteConfirm" index="2"]
 text = "EDITOR_MAIN_LEVEL_CONFIRM"
-
-[node name="LevelPackInfo" type="VBoxContainer" parent="BG/Border/Levels/VBoxContainer" unique_id=1543305563]
-unique_name_in_owner = true
-visible = false
-layout_mode = 2
-size_flags_vertical = 3
-theme_override_constants/separation = 4
-script = ExtResource("19_ruj08")
-
-[node name="Panel2" type="PanelContainer" parent="BG/Border/Levels/VBoxContainer/LevelPackInfo" unique_id=1905961050]
-layout_mode = 2
-theme_override_styles/panel = ExtResource("8_psbt7")
-
-[node name="HBoxContainer" type="HBoxContainer" parent="BG/Border/Levels/VBoxContainer/LevelPackInfo/Panel2" unique_id=427016276]
-layout_mode = 2
-
-[node name="Icon" type="TextureRect" parent="BG/Border/Levels/VBoxContainer/LevelPackInfo/Panel2/HBoxContainer" unique_id=302124746]
-layout_mode = 2
-texture = ExtResource("23_gmv51")
-
-[node name="VBoxContainer" type="VBoxContainer" parent="BG/Border/Levels/VBoxContainer/LevelPackInfo/Panel2/HBoxContainer" unique_id=814674404]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="Title" type="Label" parent="BG/Border/Levels/VBoxContainer/LevelPackInfo/Panel2/HBoxContainer/VBoxContainer" unique_id=1313603815]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-text = "TEST PACK"
-autowrap_mode = 2
-uppercase = true
-
-[node name="Title2" type="Label" parent="BG/Border/Levels/VBoxContainer/LevelPackInfo/Panel2/HBoxContainer/VBoxContainer" unique_id=1054621871]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-text = "BY SO AND SO"
-vertical_alignment = 2
-autowrap_mode = 2
-uppercase = true
-
-[node name="Panel" type="PanelContainer" parent="BG/Border/Levels/VBoxContainer/LevelPackInfo" unique_id=555694255]
-layout_mode = 2
-size_flags_vertical = 3
-theme_override_styles/panel = ExtResource("8_psbt7")
-
-[node name="AutoScrollContainer" type="ScrollContainer" parent="BG/Border/Levels/VBoxContainer/LevelPackInfo/Panel" unique_id=314573510]
-layout_mode = 2
-mouse_filter = 2
-scroll_vertical = 100
-horizontal_scroll_mode = 3
-vertical_scroll_mode = 3
-script = ExtResource("24_wf6nb")
-direction = 1
-is_active = true
-auto_connect_focus = false
-metadata/_custom_type_script = "uid://d63p6qr5a748"
-
-[node name="Description" type="Label" parent="BG/Border/Levels/VBoxContainer/LevelPackInfo/Panel/AutoScrollContainer" unique_id=1628038787]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-text = "this is text, isnt it so cool. WOWOWOWOWOWW"
-autowrap_mode = 2
-uppercase = true
-
-[node name="HBoxContainer" type="HBoxContainer" parent="BG/Border/Levels/VBoxContainer/LevelPackInfo" unique_id=1252263000]
-layout_mode = 2
-alignment = 1
-
-[node name="DeleteConfirm" parent="BG/Border/Levels/VBoxContainer/LevelPackInfo/HBoxContainer" unique_id=1738150847 instance=ExtResource("19_hvf3u")]
-visible = false
-layout_mode = 2
-
-[node name="Button" parent="BG/Border/Levels/VBoxContainer/LevelPackInfo/HBoxContainer/DeleteConfirm" index="0"]
-theme_override_styles/pressed = SubResource("StyleBoxTexture_paqvc")
-theme_override_styles/focus = SubResource("StyleBoxTexture_paqvc")
-
-[node name="Icon" parent="BG/Border/Levels/VBoxContainer/LevelPackInfo/HBoxContainer/DeleteConfirm" index="1"]
-texture = SubResource("AtlasTexture_otk5o")
-
-[node name="Label" parent="BG/Border/Levels/VBoxContainer/LevelPackInfo/HBoxContainer/DeleteConfirm" index="2"]
-text = "EDITOR_MAIN_LEVEL_CONFIRM"
-
-[node name="Button" type="Button" parent="BG/Border/Levels/VBoxContainer/LevelPackInfo" unique_id=14074458]
-layout_mode = 2
-text = "PLAY PACK"
 
 [node name="LSSBrowser" type="VBoxContainer" parent="BG/Border/Levels/VBoxContainer" unique_id=1228715031]
 unique_name_in_owner = true
@@ -731,12 +643,12 @@ focus_mode = 0
 autoplay = &"Load"
 
 [node name="ScrollContainer" parent="BG/Border/Levels/VBoxContainer/LSSLevelInfo/SelectedOnlineLevel/MarginContainer/HBoxContainer/HSplitContainer/LeftHalf/LevelInfo" index="0"]
-scroll_horizontal = 26
+scroll_horizontal = 72
 is_active = true
 auto_connect_focus = false
 
 [node name="ScrollContainer2" parent="BG/Border/Levels/VBoxContainer/LSSLevelInfo/SelectedOnlineLevel/MarginContainer/HBoxContainer/HSplitContainer/LeftHalf/LevelInfo" index="1"]
-scroll_horizontal = 88
+scroll_horizontal = 36
 is_active = true
 auto_connect_focus = false
 
@@ -749,7 +661,7 @@ theme_override_styles/panel = ExtResource("8_psbt7")
 [node name="AutoScrollContainer" type="ScrollContainer" parent="BG/Border/Levels/VBoxContainer/LSSLevelInfo/Panel" unique_id=1801631913]
 layout_mode = 2
 mouse_filter = 0
-scroll_vertical = 100
+scroll_vertical = 20
 horizontal_scroll_mode = 3
 script = ExtResource("24_wf6nb")
 direction = 1
@@ -853,10 +765,6 @@ focus_mode = 2
 [connection signal="pressed" from="BG/Border/Levels/VBoxContainer/LevelInfo/HBoxContainer/Delete/Button" to="BG/Border/Levels/VBoxContainer/LevelInfo/HBoxContainer/Delete" method="hide"]
 [connection signal="pressed" from="BG/Border/Levels/VBoxContainer/LevelInfo/HBoxContainer/Delete/Button" to="BG/Border/Levels/VBoxContainer/LevelInfo/HBoxContainer/DeleteConfirm" method="grab_focus"]
 [connection signal="pressed" from="BG/Border/Levels/VBoxContainer/LevelInfo/HBoxContainer/DeleteConfirm/Button" to="." method="delete_level"]
-[connection signal="closed" from="BG/Border/Levels/VBoxContainer/LevelPackInfo" to="BG/Border/Levels/VBoxContainer/LevelList" method="open" binds= [false]]
-[connection signal="level_edit" from="BG/Border/Levels/VBoxContainer/LevelPackInfo" to="." method="edit_level"]
-[connection signal="level_play" from="BG/Border/Levels/VBoxContainer/LevelPackInfo" to="." method="play_level"]
-[connection signal="pressed" from="BG/Border/Levels/VBoxContainer/LevelPackInfo/HBoxContainer/DeleteConfirm/Button" to="." method="delete_level"]
 [connection signal="closed" from="BG/Border/Levels/VBoxContainer/LSSBrowser" to="BG/Border/Levels/VBoxContainer/LevelList" method="open" binds= [false]]
 [connection signal="level_selected" from="BG/Border/Levels/VBoxContainer/LSSBrowser" to="BG/Border/Levels/VBoxContainer/LSSLevelInfo" method="open"]
 [connection signal="level_selected" from="BG/Border/Levels/VBoxContainer/LSSBrowser" to="BG/Border/Levels/VBoxContainer/LSSBrowser" method="close" unbinds=1]
@@ -884,5 +792,4 @@ focus_mode = 2
 [editable path="BG/Border/Levels/VBoxContainer/LevelInfo/HBoxContainer/Edit"]
 [editable path="BG/Border/Levels/VBoxContainer/LevelInfo/HBoxContainer/Delete"]
 [editable path="BG/Border/Levels/VBoxContainer/LevelInfo/HBoxContainer/DeleteConfirm"]
-[editable path="BG/Border/Levels/VBoxContainer/LevelPackInfo/HBoxContainer/DeleteConfirm"]
 [editable path="BG/Border/Levels/VBoxContainer/LSSLevelInfo/SelectedOnlineLevel"]

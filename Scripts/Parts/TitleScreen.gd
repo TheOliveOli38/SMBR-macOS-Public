@@ -26,6 +26,8 @@ func _enter_tree() -> void:
 	title_first_load = false
 
 func _ready() -> void:
+	if Global.CAMPAIGNS.has(Global.current_campaign) == false:
+		Global.current_campaign = "SMB1"
 	setup_stars()
 	Global.level_theme_changed.connect(setup_stars)
 	DiscoLevel.in_disco_level = false
@@ -126,6 +128,13 @@ func get_highscore() -> void:
 func clear_stats() -> void:
 	Global.clear_saved_values()
 
+func clear_custom_save() -> void:
+	Global.world_num = 1
+	Global.level_num = 1
+	Global.custom_level_idx = 0
+	Global.clear_saved_values()
+	Global.reset_values()
+
 func go_back_to_first_level() -> void:
 	Global.world_num = 1
 	Global.level_num = 1
@@ -135,7 +144,8 @@ func start_game() -> void:
 	PipeCutscene.seen_cutscene = false
 	first_load = true
 	Global.reset_values()
-	LevelTransition.level_to_transition_to = Level.get_scene_string(Global.world_num, Global.level_num)
+	if Global.in_custom_campaign() == false:
+		LevelTransition.level_to_transition_to = Level.get_scene_string(Global.world_num, Global.level_num)
 	Global.transition_to_scene("res://Scenes/Levels/LevelTransition.tscn")
 
 func start_full_run() -> void:
@@ -154,6 +164,15 @@ func start_full_run() -> void:
 	Global.level_num = 1
 	LevelTransition.level_to_transition_to = Level.get_scene_string(Global.world_num, Global.level_num)
 	Global.transition_to_scene("res://Scenes/Levels/LevelTransition.tscn")
+
+func open_custom_campaign() -> void:
+	$CanvasLayer/StoryMode/CustomCampaign.open()
+	$CanvasLayer/StoryMode/CustomCampaign/HighScore.text = "TOP- " + str(Global.high_score).pad_zeros(6)
+	if (Global.score <= 0) == false:
+		$CanvasLayer/StoryMode/CustomCampaign.selected_index = 0
+	else:
+		$CanvasLayer/StoryMode/CustomCampaign.selected_index = 1
+
 
 func start_level_run() -> void:
 	Global.second_quest = false

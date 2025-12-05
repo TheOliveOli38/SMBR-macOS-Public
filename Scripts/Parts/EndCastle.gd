@@ -16,7 +16,9 @@ var can_transition := false
 static var is_transitioning := false
 
 func _ready() -> void:
+	Global.level_sequence_captured = false
 	await Global.level_complete_begin
+	Global.level_sequence_captured = true
 	$Overlay.show()
 	$OverlaySprite.show()
 	$Overlay/PlayerDetection.set_collision_layer_value(1, true)
@@ -59,6 +61,8 @@ func on_tally_finished() -> void:
 	$FlagJoint/Flag/AnimationPlayer.play("Raise")
 
 func do_sequence() -> void:
+	if Global.tallying_score:
+		await Global.score_tally_finished
 	if Global.current_game_mode != Global.GameMode.BOO_RACE:
 		await get_tree().create_timer(1, false).timeout
 		if Global.current_campaign == "SMBLL":

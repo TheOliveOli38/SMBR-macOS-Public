@@ -42,7 +42,6 @@ func refresh() -> void:
 			i.queue_free()
 	containers.clear()
 	get_levels(Global.config_path.path_join("custom_levels"), CustomLevelContainer.Type.SAVED)
-	get_level_packs()
 	get_levels(Global.config_path.path_join("custom_levels/downloaded"), CustomLevelContainer.Type.DOWNLOADED)
 
 func get_levels(path : String = "", type := CustomLevelContainer.Type.ALL) -> void:
@@ -82,17 +81,6 @@ func get_levels(path : String = "", type := CustomLevelContainer.Type.ALL) -> vo
 		idx += 1
 		
 const LEVEL_PACK_CONTAINER = preload("uid://buj10cxh15fnd")
-
-func get_level_packs() -> void:
-	for i in DirAccess.get_directories_at(Global.config_path.path_join("level_packs")):
-		var container = LEVEL_PACK_CONTAINER.instantiate()
-		var json = JSON.parse_string(FileAccess.open(Global.config_path.path_join("level_packs").path_join(i).path_join("pack_info.json"), FileAccess.READ).get_as_text())
-		container.json = json
-		containers.append(container)
-		container.pack_folder_name = i
-		%LevelPacks.show()
-		%LevelContainers.add_child(container)
-		%LevelContainers.move_child(container, %LevelPacks.get_index() + 1)
 
 func update_show(new_type := 0) -> void:
 	for i in containers:
