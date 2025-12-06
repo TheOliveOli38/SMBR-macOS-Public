@@ -567,4 +567,4 @@ func convert_en_to_gal(en_string := "") -> String:
 	return gal_string
 
 func in_custom_campaign(campaign := current_custom_campaign) -> bool:
-	return current_custom_campaign != ""
+	return campaign != ""

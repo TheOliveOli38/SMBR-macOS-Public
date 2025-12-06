@@ -437,11 +437,11 @@ layout_mode = 2
 focus_mode = 0
 
 [node name="ScrollContainer" parent="BG/Border/Levels/VBoxContainer/LevelInfo/SelectedLevel/MarginContainer/HBoxContainer/HSplitContainer/LeftHalf/LevelInfo" index="0"]
-scroll_horizontal = 90
+scroll_horizontal = 241
 is_active = true
 
 [node name="ScrollContainer2" parent="BG/Border/Levels/VBoxContainer/LevelInfo/SelectedLevel/MarginContainer/HBoxContainer/HSplitContainer/LeftHalf/LevelInfo" index="1"]
-scroll_horizontal = 36
+scroll_horizontal = 39
 is_active = true
 
 [node name="Panel" type="PanelContainer" parent="BG/Border/Levels/VBoxContainer/LevelInfo" unique_id=2125756912]
@@ -452,7 +452,7 @@ theme_override_styles/panel = ExtResource("8_psbt7")
 [node name="AutoScrollContainer" type="ScrollContainer" parent="BG/Border/Levels/VBoxContainer/LevelInfo/Panel" unique_id=975980634]
 layout_mode = 2
 mouse_filter = 2
-scroll_vertical = 20
+scroll_vertical = 24
 horizontal_scroll_mode = 3
 vertical_scroll_mode = 3
 script = ExtResource("24_wf6nb")
@@ -643,12 +643,12 @@ focus_mode = 0
 autoplay = &"Load"
 
 [node name="ScrollContainer" parent="BG/Border/Levels/VBoxContainer/LSSLevelInfo/SelectedOnlineLevel/MarginContainer/HBoxContainer/HSplitContainer/LeftHalf/LevelInfo" index="0"]
-scroll_horizontal = 72
+scroll_horizontal = 6
 is_active = true
 auto_connect_focus = false
 
 [node name="ScrollContainer2" parent="BG/Border/Levels/VBoxContainer/LSSLevelInfo/SelectedOnlineLevel/MarginContainer/HBoxContainer/HSplitContainer/LeftHalf/LevelInfo" index="1"]
-scroll_horizontal = 36
+scroll_horizontal = 39
 is_active = true
 auto_connect_focus = false
 
@@ -661,7 +661,7 @@ theme_override_styles/panel = ExtResource("8_psbt7")
 [node name="AutoScrollContainer" type="ScrollContainer" parent="BG/Border/Levels/VBoxContainer/LSSLevelInfo/Panel" unique_id=1801631913]
 layout_mode = 2
 mouse_filter = 0
-scroll_vertical = 20
+scroll_vertical = 24
 horizontal_scroll_mode = 3
 script = ExtResource("24_wf6nb")
 direction = 1
@@ -782,7 +782,6 @@ focus_mode = 2
 [connection signal="pressed" from="BG/Border/Levels/VBoxContainer/LSSLevelInfo/HBoxContainer/ViewOnLSS" to="BG/Border/Levels/VBoxContainer/LSSLevelInfo" method="open_lss"]
 [connection signal="request_completed" from="BG/Border/Levels/VBoxContainer/LSSLevelInfo/Description" to="BG/Border/Levels/VBoxContainer/LSSLevelInfo" method="on_request_completed"]
 [connection signal="request_completed" from="BG/Border/Levels/VBoxContainer/LSSLevelInfo/DownloadLevel" to="BG/Border/Levels/VBoxContainer/LSSLevelInfo" method="level_downloaded"]
-[connection signal="updated" from="BGM/ResourceSetterNew" to="BGM" method="play"]
 [connection signal="cancelled" from="CharacterSelect" to="BG/Border/Levels/VBoxContainer/LevelInfo" method="reopen"]
 [connection signal="cancelled" from="LSSCharacterSelect" to="BG/Border/Levels/VBoxContainer/LSSLevelInfo" method="reset_process"]
 [connection signal="cancelled" from="LSSCharacterSelect" to="BG/Border/Levels/VBoxContainer/LSSLevelInfo/HBoxContainer/OnlinePlay" method="grab_focus"]

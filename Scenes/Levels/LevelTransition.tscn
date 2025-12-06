@@ -15,14 +15,14 @@ shader = ExtResource("5_abjth")
 shader_parameter/shadow_colour = Vector4(0, 0, 0, 1)
 shader_parameter/allow_transparency = true
 
-[node name="LevelTransition" type="Node" node_paths=PackedStringArray("text_shadows")]
+[node name="LevelTransition" type="Node" unique_id=1831071960 node_paths=PackedStringArray("text_shadows")]
 script = ExtResource("1_75ji3")
 text_shadows = [NodePath("BG/Control/World"), NodePath("BG/Control/MarathonPB"), NodePath("BG/Control/LivesCount")]
 
-[node name="BG" type="CanvasLayer" parent="."]
+[node name="BG" type="CanvasLayer" parent="." unique_id=807714975]
 layer = 0
 
-[node name="ColorRect" type="ColorRect" parent="BG"]
+[node name="ColorRect" type="ColorRect" parent="BG" unique_id=1726178366]
 z_index = -4096
 anchors_preset = 15
 anchor_right = 1.0
@@ -31,7 +31,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
-[node name="Control" type="Control" parent="BG"]
+[node name="Control" type="Control" parent="BG" unique_id=1502355946]
 layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5
@@ -42,7 +42,7 @@ grow_horizontal = 2
 grow_vertical = 2
 metadata/_edit_use_anchors_ = true
 
-[node name="World" type="Label" parent="BG/Control"]
+[node name="World" type="Label" parent="BG/Control" unique_id=42533503]
 layout_mode = 0
 offset_left = -144.0
 offset_top = -44.0
@@ -53,7 +53,7 @@ text = "HUD_WORLD"
 horizontal_alignment = 2
 uppercase = true
 
-[node name="CustomLevelName" type="Label" parent="BG/Control"]
+[node name="CustomLevelName" type="Label" parent="BG/Control" unique_id=157056372]
 unique_name_in_owner = true
 visible = false
 layout_mode = 1
@@ -69,7 +69,7 @@ text = "Test Level"
 horizontal_alignment = 1
 uppercase = true
 
-[node name="CustomLevelAuthor" type="Label" parent="BG/Control"]
+[node name="CustomLevelAuthor" type="Label" parent="BG/Control" unique_id=273117739]
 unique_name_in_owner = true
 visible = false
 layout_mode = 1
@@ -85,7 +85,7 @@ text = "by Joemama"
 horizontal_alignment = 1
 uppercase = true
 
-[node name="WorldNum" type="Label" parent="BG/Control"]
+[node name="WorldNum" type="Label" parent="BG/Control" unique_id=1170030488]
 layout_mode = 0
 offset_left = 4.0
 offset_top = -44.0
@@ -95,7 +95,7 @@ theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 text = "1-1"
 uppercase = true
 
-[node name="LivesCount" type="Label" parent="BG/Control"]
+[node name="LivesCount" type="Label" parent="BG/Control" unique_id=97189087]
 layout_mode = 0
 offset_left = -12.0
 offset_top = -12.0
@@ -105,7 +105,7 @@ theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 text = "* 10"
 uppercase = true
 
-[node name="MarathonPB" type="Label" parent="BG/Control"]
+[node name="MarathonPB" type="Label" parent="BG/Control" unique_id=1909366921]
 visible = false
 layout_mode = 0
 offset_left = -12.0
@@ -117,7 +117,7 @@ text = "PB
 00:00:00"
 uppercase = true
 
-[node name="Sprite" type="AnimatedSprite2D" parent="BG/Control" node_paths=PackedStringArray("resource_setter")]
+[node name="Sprite" type="AnimatedSprite2D" parent="BG/Control" unique_id=178483196 node_paths=PackedStringArray("resource_setter")]
 position = Vector2(-24, 1)
 sprite_frames = ExtResource("3_y8ytj")
 animation = &"Idle"
@@ -126,11 +126,11 @@ script = ExtResource("5_jsg51")
 force_power_state = "Small"
 resource_setter = NodePath("ResourceSetterNew")
 
-[node name="ResourceSetterNew" type="Node" parent="BG/Control/Sprite"]
+[node name="ResourceSetterNew" type="Node" parent="BG/Control/Sprite" unique_id=1331077916]
 script = ExtResource("5_mcaat")
 metadata/_custom_type_script = "uid://cbal8ms2oe1ik"
 
-[node name="ChallengeScore" type="Label" parent="BG/Control"]
+[node name="ChallengeScore" type="Label" parent="BG/Control" unique_id=1413064833]
 unique_name_in_owner = true
 visible = false
 layout_mode = 0
@@ -142,7 +142,7 @@ theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 text = "CHALLENGE_DIALOGUE_SCORE"
 uppercase = true
 
-[node name="ChallengeScoreText" type="Label" parent="BG/Control"]
+[node name="ChallengeScoreText" type="Label" parent="BG/Control" unique_id=1850271790]
 unique_name_in_owner = true
 visible = false
 layout_mode = 0
@@ -154,7 +154,7 @@ text = "0"
 horizontal_alignment = 2
 uppercase = true
 
-[node name="Target" type="Label" parent="BG/Control/ChallengeScoreText"]
+[node name="Target" type="Label" parent="BG/Control/ChallengeScoreText" unique_id=1439855519]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 1.0
@@ -168,7 +168,7 @@ text = "/00000"
 horizontal_alignment = 2
 uppercase = true
 
-[node name="ChallengeCoins2" type="Label" parent="BG/Control"]
+[node name="ChallengeCoins2" type="Label" parent="BG/Control" unique_id=814132180]
 unique_name_in_owner = true
 visible = false
 layout_mode = 0
@@ -180,12 +180,12 @@ theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 text = "CHALLENGE_DIALOGUE_COINS"
 uppercase = true
 
-[node name="ChallengeCoins" type="Node2D" parent="BG/Control"]
+[node name="ChallengeCoins" type="Node2D" parent="BG/Control" unique_id=444200866]
 unique_name_in_owner = true
 visible = false
 position = Vector2(17, -55)
 
-[node name="1" type="Sprite2D" parent="BG/Control/ChallengeCoins"]
+[node name="1" type="Sprite2D" parent="BG/Control/ChallengeCoins" unique_id=1234276770]
 position = Vector2(-5, 36)
 texture = ExtResource("5_ehrek")
 hframes = 2
@@ -193,7 +193,7 @@ region_rect = Rect2(8, 0, 8, 8)
 script = ExtResource("6_abjth")
 metadata/_custom_type_script = "uid://364rywt44hy6"
 
-[node name="Shadow" type="Sprite2D" parent="BG/Control/ChallengeCoins/1"]
+[node name="Shadow" type="Sprite2D" parent="BG/Control/ChallengeCoins/1" unique_id=1819200989]
 show_behind_parent = true
 material = SubResource("ShaderMaterial_ehrek")
 position = Vector2(1, 1)
@@ -203,7 +203,7 @@ region_rect = Rect2(8, 0, 8, 8)
 script = ExtResource("6_abjth")
 metadata/_custom_type_script = "uid://364rywt44hy6"
 
-[node name="2" type="Sprite2D" parent="BG/Control/ChallengeCoins"]
+[node name="2" type="Sprite2D" parent="BG/Control/ChallengeCoins" unique_id=87695173]
 position = Vector2(3, 36)
 texture = ExtResource("5_ehrek")
 hframes = 2
@@ -212,7 +212,7 @@ region_rect = Rect2(8, 0, 8, 8)
 script = ExtResource("6_abjth")
 metadata/_custom_type_script = "uid://364rywt44hy6"
 
-[node name="Shadow" type="Sprite2D" parent="BG/Control/ChallengeCoins/2"]
+[node name="Shadow" type="Sprite2D" parent="BG/Control/ChallengeCoins/2" unique_id=1335820992]
 show_behind_parent = true
 material = SubResource("ShaderMaterial_ehrek")
 position = Vector2(1, 1)
@@ -222,7 +222,7 @@ region_rect = Rect2(8, 0, 8, 8)
 script = ExtResource("6_abjth")
 metadata/_custom_type_script = "uid://364rywt44hy6"
 
-[node name="3" type="Sprite2D" parent="BG/Control/ChallengeCoins"]
+[node name="3" type="Sprite2D" parent="BG/Control/ChallengeCoins" unique_id=348627163]
 position = Vector2(11, 36)
 texture = ExtResource("5_ehrek")
 hframes = 2
@@ -231,7 +231,7 @@ region_rect = Rect2(8, 0, 8, 8)
 script = ExtResource("6_abjth")
 metadata/_custom_type_script = "uid://364rywt44hy6"
 
-[node name="Shadow" type="Sprite2D" parent="BG/Control/ChallengeCoins/3"]
+[node name="Shadow" type="Sprite2D" parent="BG/Control/ChallengeCoins/3" unique_id=1864478600]
 show_behind_parent = true
 material = SubResource("ShaderMaterial_ehrek")
 position = Vector2(1, 1)
@@ -241,7 +241,7 @@ region_rect = Rect2(8, 0, 8, 8)
 script = ExtResource("6_abjth")
 metadata/_custom_type_script = "uid://364rywt44hy6"
 
-[node name="4" type="Sprite2D" parent="BG/Control/ChallengeCoins"]
+[node name="4" type="Sprite2D" parent="BG/Control/ChallengeCoins" unique_id=1236305175]
 position = Vector2(19, 36)
 texture = ExtResource("5_ehrek")
 hframes = 2
@@ -250,7 +250,7 @@ region_rect = Rect2(8, 0, 8, 8)
 script = ExtResource("6_abjth")
 metadata/_custom_type_script = "uid://364rywt44hy6"
 
-[node name="Shadow" type="Sprite2D" parent="BG/Control/ChallengeCoins/4"]
+[node name="Shadow" type="Sprite2D" parent="BG/Control/ChallengeCoins/4" unique_id=1684643241]
 show_behind_parent = true
 material = SubResource("ShaderMaterial_ehrek")
 position = Vector2(1, 1)
@@ -260,7 +260,7 @@ region_rect = Rect2(8, 0, 8, 8)
 script = ExtResource("6_abjth")
 metadata/_custom_type_script = "uid://364rywt44hy6"
 
-[node name="5" type="Sprite2D" parent="BG/Control/ChallengeCoins"]
+[node name="5" type="Sprite2D" parent="BG/Control/ChallengeCoins" unique_id=1695067456]
 position = Vector2(27, 36)
 texture = ExtResource("5_ehrek")
 hframes = 2
@@ -269,7 +269,7 @@ region_rect = Rect2(8, 0, 8, 8)
 script = ExtResource("6_abjth")
 metadata/_custom_type_script = "uid://364rywt44hy6"
 
-[node name="Shadow" type="Sprite2D" parent="BG/Control/ChallengeCoins/5"]
+[node name="Shadow" type="Sprite2D" parent="BG/Control/ChallengeCoins/5" unique_id=220188161]
 show_behind_parent = true
 material = SubResource("ShaderMaterial_ehrek")
 position = Vector2(1, 1)
@@ -279,7 +279,7 @@ region_rect = Rect2(8, 0, 8, 8)
 script = ExtResource("6_abjth")
 metadata/_custom_type_script = "uid://364rywt44hy6"
 
-[node name="Loading" type="Label" parent="BG"]
+[node name="Loading" type="Label" parent="BG" unique_id=178395601]
 unique_name_in_owner = true
 process_thread_group = 2
 process_thread_group_order = 0
@@ -299,16 +299,16 @@ grow_vertical = 2
 text = "BUILDING LEVEL..."
 horizontal_alignment = 1
 
-[node name="Timer" type="Timer" parent="."]
+[node name="Timer" type="Timer" parent="." unique_id=1950000717]
 wait_time = 3.0
 one_shot = true
 
-[node name="LabelFontChanger" type="Node" parent="." node_paths=PackedStringArray("labels")]
+[node name="LabelFontChanger" type="Node" parent="." unique_id=83421475 node_paths=PackedStringArray("labels")]
 script = ExtResource("8_ehrek")
 labels = [NodePath("../BG/Control/World"), NodePath("../BG/Control/LivesCount"), NodePath("../BG/Control/MarathonPB"), NodePath("../BG/Control/WorldNum"), NodePath("../BG/Control/CustomLevelName"), NodePath("../BG/Control/CustomLevelAuthor"), NodePath("../BG/Control/ChallengeScore"), NodePath("../BG/Control/ChallengeScoreText"), NodePath("../BG/Control/ChallengeScoreText/Target"), NodePath("../BG/Control/ChallengeCoins2"), NodePath("../BG/Loading")]
 metadata/_custom_type_script = "uid://co6tjg3w6qpd8"
 
-[node name="TextShadowColourChanger" type="Node" parent="." node_paths=PackedStringArray("labels", "shadow_node")]
+[node name="TextShadowColourChanger" type="Node" parent="." unique_id=1399323806 node_paths=PackedStringArray("labels", "shadow_node")]
 script = ExtResource("10_abjth")
 labels = [NodePath("../BG/Control/World"), NodePath("../BG/Control/LivesCount"), NodePath("../BG/Control/MarathonPB"), NodePath("../BG/Control/WorldNum"), NodePath("../BG/Control/CustomLevelName"), NodePath("../BG/Control/CustomLevelAuthor"), NodePath("../BG/Control/ChallengeScoreText"), NodePath("../BG/Control/ChallengeScore"), NodePath("../BG/Control/ChallengeScoreText/Target"), NodePath("../BG/Control/ChallengeCoins2"), NodePath("../BG/Loading")]
 shadow_node = NodePath("../BG/Control/ChallengeCoins/1/Shadow")

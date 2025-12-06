@@ -11,7 +11,7 @@ var enabled := true
 func shake_screen(amount := 0.0, duration := 0.0) -> void:
 	if enabled == false:
 		return
-	shake_power = amount
+	shake_power += amount
 	shake_time = duration
 
 func _physics_process(delta: float) -> void:

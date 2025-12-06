@@ -63,31 +63,31 @@ func _physics_process(delta: float) -> void:
 		idx += 1
 "
 
-[node name="BooBuddies" type="CharacterBody2D" groups=["Enemies"]]
+[node name="BooBuddies" type="CharacterBody2D" unique_id=145743447 groups=["Enemies"]]
 script = ExtResource("1_vavt3")
 metadata/_custom_type_script = "uid://bpydbpyjk1mt4"
 
-[node name="RotationJoint" type="Sprite2D" parent="."]
+[node name="RotationJoint" type="Sprite2D" parent="." unique_id=2050665476]
 unique_name_in_owner = true
 z_index = 50
 z_as_relative = false
 texture = ExtResource("2_1eh5v")
 script = ExtResource("3_5b8ig")
 
-[node name="ResourceSetter" type="Node" parent="RotationJoint" node_paths=PackedStringArray("node_to_affect")]
+[node name="ResourceSetter" type="Node" parent="RotationJoint" unique_id=709004097 node_paths=PackedStringArray("node_to_affect")]
 script = ExtResource("4_4rg7w")
 node_to_affect = NodePath("..")
 property_name = "texture"
 themed_resource = ExtResource("5_4rg7w")
 metadata/_custom_type_script = "uid://cq6f682453q6o"
 
-[node name="Boos" type="Node2D" parent="."]
+[node name="Boos" type="Node2D" parent="." unique_id=835975039]
 unique_name_in_owner = true
 
-[node name="Boo1" type="Node2D" parent="Boos"]
+[node name="Boo1" type="Node2D" parent="Boos" unique_id=1525639414]
 visible = false
 
-[node name="Sprite" type="AnimatedSprite2D" parent="Boos/Boo1"]
+[node name="Sprite" type="AnimatedSprite2D" parent="Boos/Boo1" unique_id=983709291]
 sprite_frames = SubResource("SpriteFrames_8qb0a")
 animation = &"WhiteMove"
 autoplay = "WhiteMove"
@@ -96,27 +96,27 @@ script = ExtResource("2_vavt3")
 do_offset = false
 metadata/_custom_type_script = "uid://caq1qiwmy0mox"
 
-[node name="ResourceSetterNew" type="Node" parent="Boos/Boo1/Sprite" node_paths=PackedStringArray("node_to_affect")]
+[node name="ResourceSetterNew" type="Node" parent="Boos/Boo1/Sprite" unique_id=1962536284 node_paths=PackedStringArray("node_to_affect")]
 script = ExtResource("8_ifdhg")
 node_to_affect = NodePath("..")
 property_name = "sprite_frames"
 resource_json = ExtResource("9_ifdhg")
 metadata/_custom_type_script = "uid://cbal8ms2oe1ik"
 
-[node name="Hitbox" type="Area2D" parent="Boos/Boo1"]
+[node name="Hitbox" type="Area2D" parent="Boos/Boo1" unique_id=760456787]
 
-[node name="Shape" type="CollisionShape2D" parent="Boos/Boo1/Hitbox"]
+[node name="Shape" type="CollisionShape2D" parent="Boos/Boo1/Hitbox" unique_id=1609977586]
 shape = SubResource("RectangleShape2D_1eh5v")
 
-[node name="EnemyPlayerDetection" type="Node" parent="Boos/Boo1" node_paths=PackedStringArray("hitbox")]
+[node name="EnemyPlayerDetection" type="Node" parent="Boos/Boo1" unique_id=1934749089 node_paths=PackedStringArray("hitbox")]
 script = ExtResource("10_al3pe")
 hitbox = NodePath("../Hitbox")
 metadata/_custom_type_script = "uid://chj8hu207lrh"
 
-[node name="Boo2" type="Node2D" parent="Boos"]
+[node name="Boo2" type="Node2D" parent="Boos" unique_id=42211215]
 visible = false
 
-[node name="Sprite" type="AnimatedSprite2D" parent="Boos/Boo2"]
+[node name="Sprite" type="AnimatedSprite2D" parent="Boos/Boo2" unique_id=1934012651]
 sprite_frames = SubResource("SpriteFrames_8qb0a")
 animation = &"WhiteMove"
 autoplay = "WhiteMove"
@@ -125,27 +125,27 @@ script = ExtResource("2_vavt3")
 do_offset = false
 metadata/_custom_type_script = "uid://caq1qiwmy0mox"
 
-[node name="ResourceSetterNew" type="Node" parent="Boos/Boo2/Sprite" node_paths=PackedStringArray("node_to_affect")]
+[node name="ResourceSetterNew" type="Node" parent="Boos/Boo2/Sprite" unique_id=1576152396 node_paths=PackedStringArray("node_to_affect")]
 script = ExtResource("8_ifdhg")
 node_to_affect = NodePath("..")
 property_name = "sprite_frames"
 resource_json = ExtResource("9_ifdhg")
 metadata/_custom_type_script = "uid://cbal8ms2oe1ik"
 
-[node name="Hitbox" type="Area2D" parent="Boos/Boo2"]
+[node name="Hitbox" type="Area2D" parent="Boos/Boo2" unique_id=229209293]
 
-[node name="Shape" type="CollisionShape2D" parent="Boos/Boo2/Hitbox"]
+[node name="Shape" type="CollisionShape2D" parent="Boos/Boo2/Hitbox" unique_id=1824667352]
 shape = SubResource("RectangleShape2D_1eh5v")
 
-[node name="EnemyPlayerDetection" type="Node" parent="Boos/Boo2" node_paths=PackedStringArray("hitbox")]
+[node name="EnemyPlayerDetection" type="Node" parent="Boos/Boo2" unique_id=215364162 node_paths=PackedStringArray("hitbox")]
 script = ExtResource("10_al3pe")
 hitbox = NodePath("../Hitbox")
 metadata/_custom_type_script = "uid://chj8hu207lrh"
 
-[node name="Boo3" type="Node2D" parent="Boos"]
+[node name="Boo3" type="Node2D" parent="Boos" unique_id=986238224]
 visible = false
 
-[node name="Sprite" type="AnimatedSprite2D" parent="Boos/Boo3"]
+[node name="Sprite" type="AnimatedSprite2D" parent="Boos/Boo3" unique_id=226762205]
 sprite_frames = SubResource("SpriteFrames_8qb0a")
 animation = &"WhiteMove"
 autoplay = "WhiteMove"
@@ -154,27 +154,27 @@ script = ExtResource("2_vavt3")
 do_offset = false
 metadata/_custom_type_script = "uid://caq1qiwmy0mox"
 
-[node name="ResourceSetterNew" type="Node" parent="Boos/Boo3/Sprite" node_paths=PackedStringArray("node_to_affect")]
+[node name="ResourceSetterNew" type="Node" parent="Boos/Boo3/Sprite" unique_id=41963572 node_paths=PackedStringArray("node_to_affect")]
 script = ExtResource("8_ifdhg")
 node_to_affect = NodePath("..")
 property_name = "sprite_frames"
 resource_json = ExtResource("9_ifdhg")
 metadata/_custom_type_script = "uid://cbal8ms2oe1ik"
 
-[node name="Hitbox" type="Area2D" parent="Boos/Boo3"]
+[node name="Hitbox" type="Area2D" parent="Boos/Boo3" unique_id=1999744758]
 
-[node name="Shape" type="CollisionShape2D" parent="Boos/Boo3/Hitbox"]
+[node name="Shape" type="CollisionShape2D" parent="Boos/Boo3/Hitbox" unique_id=1541095200]
 shape = SubResource("RectangleShape2D_1eh5v")
 
-[node name="EnemyPlayerDetection" type="Node" parent="Boos/Boo3" node_paths=PackedStringArray("hitbox")]
+[node name="EnemyPlayerDetection" type="Node" parent="Boos/Boo3" unique_id=332765516 node_paths=PackedStringArray("hitbox")]
 script = ExtResource("10_al3pe")
 hitbox = NodePath("../Hitbox")
 metadata/_custom_type_script = "uid://chj8hu207lrh"
 
-[node name="Boo4" type="Node2D" parent="Boos"]
+[node name="Boo4" type="Node2D" parent="Boos" unique_id=1563159441]
 visible = false
 
-[node name="Sprite" type="AnimatedSprite2D" parent="Boos/Boo4"]
+[node name="Sprite" type="AnimatedSprite2D" parent="Boos/Boo4" unique_id=507768318]
 sprite_frames = SubResource("SpriteFrames_8qb0a")
 animation = &"WhiteMove"
 autoplay = "WhiteMove"
@@ -183,27 +183,27 @@ script = ExtResource("2_vavt3")
 do_offset = false
 metadata/_custom_type_script = "uid://caq1qiwmy0mox"
 
-[node name="ResourceSetterNew" type="Node" parent="Boos/Boo4/Sprite" node_paths=PackedStringArray("node_to_affect")]
+[node name="ResourceSetterNew" type="Node" parent="Boos/Boo4/Sprite" unique_id=113015387 node_paths=PackedStringArray("node_to_affect")]
 script = ExtResource("8_ifdhg")
 node_to_affect = NodePath("..")
 property_name = "sprite_frames"
 resource_json = ExtResource("9_ifdhg")
 metadata/_custom_type_script = "uid://cbal8ms2oe1ik"
 
-[node name="Hitbox" type="Area2D" parent="Boos/Boo4"]
+[node name="Hitbox" type="Area2D" parent="Boos/Boo4" unique_id=1032412589]
 
-[node name="Shape" type="CollisionShape2D" parent="Boos/Boo4/Hitbox"]
+[node name="Shape" type="CollisionShape2D" parent="Boos/Boo4/Hitbox" unique_id=144382685]
 shape = SubResource("RectangleShape2D_1eh5v")
 
-[node name="EnemyPlayerDetection" type="Node" parent="Boos/Boo4" node_paths=PackedStringArray("hitbox")]
+[node name="EnemyPlayerDetection" type="Node" parent="Boos/Boo4" unique_id=242172499 node_paths=PackedStringArray("hitbox")]
 script = ExtResource("10_al3pe")
 hitbox = NodePath("../Hitbox")
 metadata/_custom_type_script = "uid://chj8hu207lrh"
 
-[node name="Boo5" type="Node2D" parent="Boos"]
+[node name="Boo5" type="Node2D" parent="Boos" unique_id=223355978]
 visible = false
 
-[node name="Sprite" type="AnimatedSprite2D" parent="Boos/Boo5"]
+[node name="Sprite" type="AnimatedSprite2D" parent="Boos/Boo5" unique_id=185209090]
 sprite_frames = SubResource("SpriteFrames_8qb0a")
 animation = &"WhiteMove"
 autoplay = "WhiteMove"
@@ -212,27 +212,27 @@ script = ExtResource("2_vavt3")
 do_offset = false
 metadata/_custom_type_script = "uid://caq1qiwmy0mox"
 
-[node name="ResourceSetterNew" type="Node" parent="Boos/Boo5/Sprite" node_paths=PackedStringArray("node_to_affect")]
+[node name="ResourceSetterNew" type="Node" parent="Boos/Boo5/Sprite" unique_id=506718252 node_paths=PackedStringArray("node_to_affect")]
 script = ExtResource("8_ifdhg")
 node_to_affect = NodePath("..")
 property_name = "sprite_frames"
 resource_json = ExtResource("9_ifdhg")
 metadata/_custom_type_script = "uid://cbal8ms2oe1ik"
 
-[node name="Hitbox" type="Area2D" parent="Boos/Boo5"]
+[node name="Hitbox" type="Area2D" parent="Boos/Boo5" unique_id=261646267]
 
-[node name="Shape" type="CollisionShape2D" parent="Boos/Boo5/Hitbox"]
+[node name="Shape" type="CollisionShape2D" parent="Boos/Boo5/Hitbox" unique_id=854594935]
 shape = SubResource("RectangleShape2D_1eh5v")
 
-[node name="EnemyPlayerDetection" type="Node" parent="Boos/Boo5" node_paths=PackedStringArray("hitbox")]
+[node name="EnemyPlayerDetection" type="Node" parent="Boos/Boo5" unique_id=1036683563 node_paths=PackedStringArray("hitbox")]
 script = ExtResource("10_al3pe")
 hitbox = NodePath("../Hitbox")
 metadata/_custom_type_script = "uid://chj8hu207lrh"
 
-[node name="Boo6" type="Node2D" parent="Boos"]
+[node name="Boo6" type="Node2D" parent="Boos" unique_id=905159862]
 visible = false
 
-[node name="Sprite" type="AnimatedSprite2D" parent="Boos/Boo6"]
+[node name="Sprite" type="AnimatedSprite2D" parent="Boos/Boo6" unique_id=625651618]
 sprite_frames = SubResource("SpriteFrames_8qb0a")
 animation = &"WhiteMove"
 autoplay = "WhiteMove"
@@ -241,27 +241,27 @@ script = ExtResource("2_vavt3")
 do_offset = false
 metadata/_custom_type_script = "uid://caq1qiwmy0mox"
 
-[node name="ResourceSetterNew" type="Node" parent="Boos/Boo6/Sprite" node_paths=PackedStringArray("node_to_affect")]
+[node name="ResourceSetterNew" type="Node" parent="Boos/Boo6/Sprite" unique_id=1229150231 node_paths=PackedStringArray("node_to_affect")]
 script = ExtResource("8_ifdhg")
 node_to_affect = NodePath("..")
 property_name = "sprite_frames"
 resource_json = ExtResource("9_ifdhg")
 metadata/_custom_type_script = "uid://cbal8ms2oe1ik"
 
-[node name="Hitbox" type="Area2D" parent="Boos/Boo6"]
+[node name="Hitbox" type="Area2D" parent="Boos/Boo6" unique_id=609747303]
 
-[node name="Shape" type="CollisionShape2D" parent="Boos/Boo6/Hitbox"]
+[node name="Shape" type="CollisionShape2D" parent="Boos/Boo6/Hitbox" unique_id=2054927617]
 shape = SubResource("RectangleShape2D_1eh5v")
 
-[node name="EnemyPlayerDetection" type="Node" parent="Boos/Boo6" node_paths=PackedStringArray("hitbox")]
+[node name="EnemyPlayerDetection" type="Node" parent="Boos/Boo6" unique_id=1491829206 node_paths=PackedStringArray("hitbox")]
 script = ExtResource("10_al3pe")
 hitbox = NodePath("../Hitbox")
 metadata/_custom_type_script = "uid://chj8hu207lrh"
 
-[node name="Boo7" type="Node2D" parent="Boos"]
+[node name="Boo7" type="Node2D" parent="Boos" unique_id=1914576069]
 visible = false
 
-[node name="Sprite" type="AnimatedSprite2D" parent="Boos/Boo7"]
+[node name="Sprite" type="AnimatedSprite2D" parent="Boos/Boo7" unique_id=372223407]
 sprite_frames = SubResource("SpriteFrames_8qb0a")
 animation = &"WhiteMove"
 autoplay = "WhiteMove"
@@ -270,27 +270,27 @@ script = ExtResource("2_vavt3")
 do_offset = false
 metadata/_custom_type_script = "uid://caq1qiwmy0mox"
 
-[node name="ResourceSetterNew" type="Node" parent="Boos/Boo7/Sprite" node_paths=PackedStringArray("node_to_affect")]
+[node name="ResourceSetterNew" type="Node" parent="Boos/Boo7/Sprite" unique_id=1108166931 node_paths=PackedStringArray("node_to_affect")]
 script = ExtResource("8_ifdhg")
 node_to_affect = NodePath("..")
 property_name = "sprite_frames"
 resource_json = ExtResource("9_ifdhg")
 metadata/_custom_type_script = "uid://cbal8ms2oe1ik"
 
-[node name="Hitbox" type="Area2D" parent="Boos/Boo7"]
+[node name="Hitbox" type="Area2D" parent="Boos/Boo7" unique_id=1007216178]
 
-[node name="Shape" type="CollisionShape2D" parent="Boos/Boo7/Hitbox"]
+[node name="Shape" type="CollisionShape2D" parent="Boos/Boo7/Hitbox" unique_id=922704683]
 shape = SubResource("RectangleShape2D_1eh5v")
 
-[node name="EnemyPlayerDetection" type="Node" parent="Boos/Boo7" node_paths=PackedStringArray("hitbox")]
+[node name="EnemyPlayerDetection" type="Node" parent="Boos/Boo7" unique_id=1476839445 node_paths=PackedStringArray("hitbox")]
 script = ExtResource("10_al3pe")
 hitbox = NodePath("../Hitbox")
 metadata/_custom_type_script = "uid://chj8hu207lrh"
 
-[node name="Boo8" type="Node2D" parent="Boos"]
+[node name="Boo8" type="Node2D" parent="Boos" unique_id=957360549]
 visible = false
 
-[node name="Sprite" type="AnimatedSprite2D" parent="Boos/Boo8"]
+[node name="Sprite" type="AnimatedSprite2D" parent="Boos/Boo8" unique_id=1473924724]
 sprite_frames = SubResource("SpriteFrames_8qb0a")
 animation = &"WhiteMove"
 autoplay = "WhiteMove"
@@ -299,27 +299,27 @@ script = ExtResource("2_vavt3")
 do_offset = false
 metadata/_custom_type_script = "uid://caq1qiwmy0mox"
 
-[node name="ResourceSetterNew" type="Node" parent="Boos/Boo8/Sprite" node_paths=PackedStringArray("node_to_affect")]
+[node name="ResourceSetterNew" type="Node" parent="Boos/Boo8/Sprite" unique_id=793293710 node_paths=PackedStringArray("node_to_affect")]
 script = ExtResource("8_ifdhg")
 node_to_affect = NodePath("..")
 property_name = "sprite_frames"
 resource_json = ExtResource("9_ifdhg")
 metadata/_custom_type_script = "uid://cbal8ms2oe1ik"
 
-[node name="Hitbox" type="Area2D" parent="Boos/Boo8"]
+[node name="Hitbox" type="Area2D" parent="Boos/Boo8" unique_id=1706200822]
 
-[node name="Shape" type="CollisionShape2D" parent="Boos/Boo8/Hitbox"]
+[node name="Shape" type="CollisionShape2D" parent="Boos/Boo8/Hitbox" unique_id=1736279217]
 shape = SubResource("RectangleShape2D_1eh5v")
 
-[node name="EnemyPlayerDetection" type="Node" parent="Boos/Boo8" node_paths=PackedStringArray("hitbox")]
+[node name="EnemyPlayerDetection" type="Node" parent="Boos/Boo8" unique_id=1405214451 node_paths=PackedStringArray("hitbox")]
 script = ExtResource("10_al3pe")
 hitbox = NodePath("../Hitbox")
 metadata/_custom_type_script = "uid://chj8hu207lrh"
 
-[node name="Boo9" type="Node2D" parent="Boos"]
+[node name="Boo9" type="Node2D" parent="Boos" unique_id=1268975214]
 visible = false
 
-[node name="Sprite" type="AnimatedSprite2D" parent="Boos/Boo9"]
+[node name="Sprite" type="AnimatedSprite2D" parent="Boos/Boo9" unique_id=964395198]
 sprite_frames = SubResource("SpriteFrames_8qb0a")
 animation = &"WhiteMove"
 autoplay = "WhiteMove"
@@ -328,27 +328,27 @@ script = ExtResource("2_vavt3")
 do_offset = false
 metadata/_custom_type_script = "uid://caq1qiwmy0mox"
 
-[node name="ResourceSetterNew" type="Node" parent="Boos/Boo9/Sprite" node_paths=PackedStringArray("node_to_affect")]
+[node name="ResourceSetterNew" type="Node" parent="Boos/Boo9/Sprite" unique_id=872107589 node_paths=PackedStringArray("node_to_affect")]
 script = ExtResource("8_ifdhg")
 node_to_affect = NodePath("..")
 property_name = "sprite_frames"
 resource_json = ExtResource("9_ifdhg")
 metadata/_custom_type_script = "uid://cbal8ms2oe1ik"
 
-[node name="Hitbox" type="Area2D" parent="Boos/Boo9"]
+[node name="Hitbox" type="Area2D" parent="Boos/Boo9" unique_id=956199636]
 
-[node name="Shape" type="CollisionShape2D" parent="Boos/Boo9/Hitbox"]
+[node name="Shape" type="CollisionShape2D" parent="Boos/Boo9/Hitbox" unique_id=17421357]
 shape = SubResource("RectangleShape2D_1eh5v")
 
-[node name="EnemyPlayerDetection" type="Node" parent="Boos/Boo9" node_paths=PackedStringArray("hitbox")]
+[node name="EnemyPlayerDetection" type="Node" parent="Boos/Boo9" unique_id=1006013469 node_paths=PackedStringArray("hitbox")]
 script = ExtResource("10_al3pe")
 hitbox = NodePath("../Hitbox")
 metadata/_custom_type_script = "uid://chj8hu207lrh"
 
-[node name="Boo10" type="Node2D" parent="Boos"]
+[node name="Boo10" type="Node2D" parent="Boos" unique_id=1706962689]
 visible = false
 
-[node name="Sprite" type="AnimatedSprite2D" parent="Boos/Boo10"]
+[node name="Sprite" type="AnimatedSprite2D" parent="Boos/Boo10" unique_id=774794332]
 sprite_frames = SubResource("SpriteFrames_8qb0a")
 animation = &"WhiteMove"
 autoplay = "WhiteMove"
@@ -357,27 +357,27 @@ script = ExtResource("2_vavt3")
 do_offset = false
 metadata/_custom_type_script = "uid://caq1qiwmy0mox"
 
-[node name="ResourceSetterNew" type="Node" parent="Boos/Boo10/Sprite" node_paths=PackedStringArray("node_to_affect")]
+[node name="ResourceSetterNew" type="Node" parent="Boos/Boo10/Sprite" unique_id=1207903152 node_paths=PackedStringArray("node_to_affect")]
 script = ExtResource("8_ifdhg")
 node_to_affect = NodePath("..")
 property_name = "sprite_frames"
 resource_json = ExtResource("9_ifdhg")
 metadata/_custom_type_script = "uid://cbal8ms2oe1ik"
 
-[node name="Hitbox" type="Area2D" parent="Boos/Boo10"]
+[node name="Hitbox" type="Area2D" parent="Boos/Boo10" unique_id=1734416098]
 
-[node name="Shape" type="CollisionShape2D" parent="Boos/Boo10/Hitbox"]
+[node name="Shape" type="CollisionShape2D" parent="Boos/Boo10/Hitbox" unique_id=1868693290]
 shape = SubResource("RectangleShape2D_1eh5v")
 
-[node name="EnemyPlayerDetection" type="Node" parent="Boos/Boo10" node_paths=PackedStringArray("hitbox")]
+[node name="EnemyPlayerDetection" type="Node" parent="Boos/Boo10" unique_id=1512784360 node_paths=PackedStringArray("hitbox")]
 script = ExtResource("10_al3pe")
 hitbox = NodePath("../Hitbox")
 metadata/_custom_type_script = "uid://chj8hu207lrh"
 
-[node name="Boo11" type="Node2D" parent="Boos"]
+[node name="Boo11" type="Node2D" parent="Boos" unique_id=1298348571]
 visible = false
 
-[node name="Sprite" type="AnimatedSprite2D" parent="Boos/Boo11"]
+[node name="Sprite" type="AnimatedSprite2D" parent="Boos/Boo11" unique_id=238780809]
 sprite_frames = SubResource("SpriteFrames_8qb0a")
 animation = &"WhiteMove"
 autoplay = "WhiteMove"
@@ -386,27 +386,27 @@ script = ExtResource("2_vavt3")
 do_offset = false
 metadata/_custom_type_script = "uid://caq1qiwmy0mox"
 
-[node name="ResourceSetterNew" type="Node" parent="Boos/Boo11/Sprite" node_paths=PackedStringArray("node_to_affect")]
+[node name="ResourceSetterNew" type="Node" parent="Boos/Boo11/Sprite" unique_id=194167269 node_paths=PackedStringArray("node_to_affect")]
 script = ExtResource("8_ifdhg")
 node_to_affect = NodePath("..")
 property_name = "sprite_frames"
 resource_json = ExtResource("9_ifdhg")
 metadata/_custom_type_script = "uid://cbal8ms2oe1ik"
 
-[node name="Hitbox" type="Area2D" parent="Boos/Boo11"]
+[node name="Hitbox" type="Area2D" parent="Boos/Boo11" unique_id=2131414889]
 
-[node name="Shape" type="CollisionShape2D" parent="Boos/Boo11/Hitbox"]
+[node name="Shape" type="CollisionShape2D" parent="Boos/Boo11/Hitbox" unique_id=1057159636]
 shape = SubResource("RectangleShape2D_1eh5v")
 
-[node name="EnemyPlayerDetection" type="Node" parent="Boos/Boo11" node_paths=PackedStringArray("hitbox")]
+[node name="EnemyPlayerDetection" type="Node" parent="Boos/Boo11" unique_id=886845133 node_paths=PackedStringArray("hitbox")]
 script = ExtResource("10_al3pe")
 hitbox = NodePath("../Hitbox")
 metadata/_custom_type_script = "uid://chj8hu207lrh"
 
-[node name="Boo12" type="Node2D" parent="Boos"]
+[node name="Boo12" type="Node2D" parent="Boos" unique_id=2091489865]
 visible = false
 
-[node name="Sprite" type="AnimatedSprite2D" parent="Boos/Boo12"]
+[node name="Sprite" type="AnimatedSprite2D" parent="Boos/Boo12" unique_id=1892145430]
 sprite_frames = SubResource("SpriteFrames_8qb0a")
 animation = &"WhiteMove"
 autoplay = "WhiteMove"
@@ -415,28 +415,28 @@ script = ExtResource("2_vavt3")
 do_offset = false
 metadata/_custom_type_script = "uid://caq1qiwmy0mox"
 
-[node name="ResourceSetterNew" type="Node" parent="Boos/Boo12/Sprite" node_paths=PackedStringArray("node_to_affect")]
+[node name="ResourceSetterNew" type="Node" parent="Boos/Boo12/Sprite" unique_id=1335168205 node_paths=PackedStringArray("node_to_affect")]
 script = ExtResource("8_ifdhg")
 node_to_affect = NodePath("..")
 property_name = "sprite_frames"
 resource_json = ExtResource("9_ifdhg")
 metadata/_custom_type_script = "uid://cbal8ms2oe1ik"
 
-[node name="Hitbox" type="Area2D" parent="Boos/Boo12"]
+[node name="Hitbox" type="Area2D" parent="Boos/Boo12" unique_id=583759484]
 
-[node name="Shape" type="CollisionShape2D" parent="Boos/Boo12/Hitbox"]
+[node name="Shape" type="CollisionShape2D" parent="Boos/Boo12/Hitbox" unique_id=1467456649]
 shape = SubResource("RectangleShape2D_1eh5v")
 
-[node name="EnemyPlayerDetection" type="Node" parent="Boos/Boo12" node_paths=PackedStringArray("hitbox")]
+[node name="EnemyPlayerDetection" type="Node" parent="Boos/Boo12" unique_id=1394806392 node_paths=PackedStringArray("hitbox")]
 script = ExtResource("10_al3pe")
 hitbox = NodePath("../Hitbox")
 metadata/_custom_type_script = "uid://chj8hu207lrh"
 
-[node name="BooPositioner" type="Node" parent="."]
+[node name="BooPositioner" type="Node" parent="." unique_id=632251416]
 process_mode = 3
 script = SubResource("GDScript_vavt3")
 
-[node name="EditorPropertyExposer" type="Node" parent="."]
+[node name="EditorPropertyExposer" type="Node" parent="." unique_id=1659194250]
 script = ExtResource("6_5b8ig")
 properties = Array[String](["length", "direction", "boo_amount", "spread_boos"])
 

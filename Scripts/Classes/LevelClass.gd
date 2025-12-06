@@ -124,6 +124,8 @@ func update_theme() -> void:
 	else:
 		Global.current_room = get_room_type()
 	if auto_set_theme:
+		if Global.CAMPAIGNS.has(Global.current_campaign) == false and first_load:
+			Global.current_campaign = "SMB1"
 		if Global.in_custom_campaign() == false:
 			theme = WORLD_THEMES[Global.current_campaign][Global.world_num]
 			if Global.world_num > 4 and Global.world_num < 9:

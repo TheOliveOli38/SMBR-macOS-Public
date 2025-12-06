@@ -17,6 +17,7 @@ func _ready() -> void:
 	has_entered = true
 	ResourceSetterNew.clear_cache()
 	ResourceSetter.cache.clear()
+	Global.level_theme_changed.emit()
 	Global.get_node("GameHUD").hide()
 	Checkpoint.passed_checkpoints.clear()
 	Global.world_num = 1
@@ -48,6 +49,7 @@ func _ready() -> void:
 		await get_tree().process_frame
 		%LSSBrowser.grab_levels()
 		%LevelList.close()
+	$BGM.play()
 
 func clear_saved_stuff() -> void:
 	last_played_container = null

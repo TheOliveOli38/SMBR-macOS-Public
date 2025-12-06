@@ -69,6 +69,8 @@ func generate_text() -> String:
 
 func open() -> void:
 	old_campaign = Global.current_campaign
+	if Global.in_custom_campaign():
+		old_campaign = Global.current_custom_campaign
 	Global.current_game_mode = Global.GameMode.NONE
 	get_starting_position()
 	update()
@@ -82,6 +84,8 @@ func open() -> void:
 func get_starting_position() -> void:
 	if CustomLevelMenu.has_entered or selected_index == 4:
 		selected_index = 4
+	elif Global.in_custom_campaign():
+		selected_index = campaign.find(Global.current_custom_campaign)
 	else:
 		selected_index = campaign.find(Global.current_campaign)
 
@@ -103,6 +107,11 @@ func handle_input() -> void:
 func select() -> void:
 	CustomLevelMenu.has_entered = false
 	Global.current_custom_campaign = ""
+	var idx := 0
+	for i in Settings.file.visuals.resource_packs:
+		if i == Global.custom_pack:
+			Settings.file.visuals.resource_packs.remove_at(idx)
+		idx += 1
 	if selected_index == 4:
 		Global.current_campaign = "SMB1"
 		Global.transition_to_scene("res://Scenes/Levels/CustomLevelMenu.tscn")
@@ -115,24 +124,20 @@ func select() -> void:
 	if Global.current_campaign != "SMBANN" and Global.in_custom_campaign() == false:
 		SpeedrunHandler.load_best_times()
 	Settings.save_settings()
-	var idx := 0
-	for i in Settings.file.visuals.resource_packs:
-		if i == Global.custom_pack:
-			Settings.file.visuals.resource_packs.remove_at(idx)
-		idx += 1
 	if Global.in_custom_campaign():
-		Global.custom_pack = Global.custom_campaign_jsons[Global.current_campaign].resource_pack
+		Global.custom_pack = Global.custom_campaign_jsons[Global.current_custom_campaign].resource_pack
 		Global.current_game_mode = Global.GameMode.CAMPAIGN
 		if Global.custom_pack != "":
-			Settings.file.visuals.resource_packs.push_front(Global.custom_pack)
 			if DirAccess.dir_exists_absolute(ProjectSettings.globalize_path(Global.config_path.path_join("resource_packs/" + Global.custom_pack))) == false:
 				Global.log_error("Level Resource Pack not Found! Are you sure you installed it correctly?")
+			else:
+				Settings.file.visuals.resource_packs.push_front(Global.custom_pack)
 		custom_selected.emit()
 	else:
 		Global.custom_pack = ""
 		selected.emit()
 	hide()
-	if old_campaign != Global.current_campaign or Global.in_custom_campaign():
+	if old_campaign != Global.current_campaign:
 		Global.freeze_screen()
 		ResourceSetter.cache.clear()
 		ResourceSetterNew.clear_cache()
@@ -140,6 +145,8 @@ func select() -> void:
 		for i in 2:
 			await get_tree().process_frame
 		Global.close_freeze()
+	if Global.in_custom_campaign():
+		Global.current_campaign = "SMB1"
 
 func close() -> void:
 	CustomLevelMenu.has_entered = false

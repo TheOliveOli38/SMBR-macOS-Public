@@ -26,8 +26,6 @@ func _enter_tree() -> void:
 	title_first_load = false
 
 func _ready() -> void:
-	if Global.CAMPAIGNS.has(Global.current_campaign) == false:
-		Global.current_campaign = "SMB1"
 	setup_stars()
 	Global.level_theme_changed.connect(setup_stars)
 	DiscoLevel.in_disco_level = false

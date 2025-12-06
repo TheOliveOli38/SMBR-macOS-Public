@@ -68,9 +68,6 @@ func add_tiles(level: Node, chunk := "", chunk_id := 0, layer := 0) -> void:
 		source_id = base64_charset.find(tile[4])
 		tile_atlas_position = Vector2i(base64_charset.find(tile[2]), base64_charset.find(tile[3]))
 		level.get_node("TileLayer" + str(layer + 1)).set_cell(tile_position, source_id, tile_atlas_position)
-		if tile_position.y >= 1:
-			level.get_node("TileLayer" + str(layer + 1)).set_cell(tile_position + Vector2i(0, 1), source_id, tile_atlas_position)
-		BetterTerrain.update_terrain_cell(level.get_node("TileLayer" + str(layer + 1)), tile_position, true)
 
 func add_entities(level: Node, chunk := "", chunk_id := 0, layer := 0) -> void:
 	for entity in chunk.split("=", false):

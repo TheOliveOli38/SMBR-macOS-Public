@@ -5,7 +5,7 @@ const PIPE_CUTSCENE_LEVELS := {
 	"SMB1": [[1, 2], [2, 2], [4, 2], [7, 2]],
 	"SMBLL": [[1, 2], [3, 2], [5, 2], [6, 2], [10, 2], [11, 2]],
 	"SMBS": [[1, 2], [2, 2], [3, 1], [7, 2], [8, 3]],
-	"SMBANN": []
+	"SMBANN": [[1, 2], [2, 2], [4, 2], [7, 2]]
 	}
 
 const PIPE_CUTSCENE_OVERRIDE := {
@@ -148,16 +148,16 @@ func handle_challenge_mode_transition() -> void:
 	
 func transition() -> void:
 	Global.can_time_tick = true
-	if Global.in_custom_campaign() == false:
-		if PIPE_CUTSCENE_LEVELS[Global.current_campaign].has([Global.world_num, Global.level_num]) and not PipeCutscene.seen_cutscene and [Global.GameMode.BOO_RACE, Global.GameMode.MARATHON].has(Global.current_game_mode):
+	if Global.current_game_mode == Global.GameMode.CUSTOM_LEVEL or Global.in_custom_campaign():
+		Global.transition_to_scene(NewLevelBuilder.sub_levels[Checkpoint.sublevel_id])
+	else:
+		if PIPE_CUTSCENE_LEVELS[Global.current_campaign].has([Global.world_num, Global.level_num]) and not PipeCutscene.seen_cutscene and [Global.GameMode.BOO_RACE, Global.GameMode.MARATHON].has(Global.current_game_mode) == false:
 			if PIPE_CUTSCENE_OVERRIDE[Global.current_campaign].has([Global.world_num, Global.level_num]):
 				Global.transition_to_scene(PIPE_CUTSCENE_OVERRIDE[Global.current_campaign][[Global.world_num, Global.level_num]])
 			else:
 				Global.transition_to_scene("res://Scenes/Levels/PipeCutscene.tscn")
-	elif Global.current_game_mode == Global.GameMode.CUSTOM_LEVEL or Global.in_custom_campaign():
-		Global.transition_to_scene(NewLevelBuilder.sub_levels[Checkpoint.sublevel_id])
-	else:
-		Global.transition_to_scene(level_to_transition_to)
+		else:
+			Global.transition_to_scene(level_to_transition_to)
 
 func show_best_time() -> void:
 	var best_time = SpeedrunHandler.best_time
