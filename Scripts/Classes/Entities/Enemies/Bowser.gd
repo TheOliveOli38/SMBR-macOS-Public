@@ -117,6 +117,7 @@ func throw_hammers() -> void:
 		node.velocity.y = -200
 		node.global_position = $Hammer.global_position
 		node.direction = direction
+		AudioManager.play_sfx("hammer_throw", node.global_position)
 		if $TrackJoint.is_attached:
 			get_parent().owner.add_sibling(node)
 		else:

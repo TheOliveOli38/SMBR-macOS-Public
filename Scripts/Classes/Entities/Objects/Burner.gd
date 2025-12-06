@@ -36,4 +36,4 @@ func do_animation() -> void:
 	%Flame.hide()
 
 func damage_player(player: Player) -> void:
-	player.damage()
+	player.damage("Fire")

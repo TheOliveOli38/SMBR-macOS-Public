@@ -51,10 +51,10 @@ func bounce_bodies() -> void:
 				i.jump_cancelled = false
 				i.has_jumped = true
 				i.velocity.y = -350
-				i.gravity = i.JUMP_GRAVITY
+				i.gravity = i.calculate_speed_param("JUMP_GRAVITY")
 			else:
 				i.velocity.y = -300
-				i.gravity = i.FALL_GRAVITY
+				i.gravity = i.calculate_speed_param("FALL_GRAVITY")
 		else:
 			i.velocity.y = -200
 		if i is Thwomp:
