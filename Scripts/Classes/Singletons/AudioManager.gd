@@ -17,7 +17,11 @@ const DEFAULT_SFX_LIBRARY := {
 	"kick": ("res://Assets/Audio/SFX/Kick.wav"),
 	"fireball": ("res://Assets/Audio/SFX/Fireball.wav"),
 	"1_up": ("res://Assets/Audio/SFX/1up.wav"),
+	"die_sting": ("res://Assets/Audio/SFX/DieSting.wav"),
 	"cannon": ("res://Assets/Audio/SFX/Cannon.wav"),
+	"explode": ("res://Assets/Audio/SFX/Cannon.wav"),
+	"pswitch_pressed": ("res://Assets/Audio/SFX/Cannon.wav"),
+	"thwomp_land": ("res://Assets/Audio/SFX/Cannon.wav"),
 	"checkpoint": ("res://Assets/Audio/SFX/Checkpoint.wav"),
 	"flag_slide": ("res://Assets/Audio/SFX/FlagSlide.json"),
 	"magic": ("res://Assets/Audio/SFX/Magic.wav"),
@@ -30,6 +34,10 @@ const DEFAULT_SFX_LIBRARY := {
 	"score_end": "res://Assets/Audio/SFX/Score.wav",
 	"pause": ("res://Assets/Audio/SFX/Pause.wav"),
 	"spring": ("res://Assets/Audio/SFX/Spring.wav"),
+	"small_trampoline": ("res://Assets/Audio/SFX/TrampolineSmall.wav"),
+	"big_trampoline": ("res://Assets/Audio/SFX/TrampolineBig.wav"),
+	"small_used_trampoline": ("res://Assets/Audio/SFX/TrampolineUsedSmall.wav"),
+	"big_used_trampoline": ("res://Assets/Audio/SFX/TrampolineUsedBig.wav"),
 	"swim": ("res://Assets/Audio/SFX/Swim.wav"),
 	"dry_bones_crumble": ("res://Assets/Audio/SFX/DryBonesCrumble.wav"),
 	"clock_get": ("res://Assets/Audio/SFX/ClockGet.wav"),
@@ -109,9 +117,7 @@ var audio_override_queue := []
 
 func play_sfx(stream_name = "", position := Vector2.ZERO, pitch := 1.0, can_overlap := true) -> void:
 	if sfx_library.has(stream_name): # SkyanUltra: Simple check that allows for custom optional sounds.
-		if not can_overlap and active_sfxs.has(stream_name):
-			return
-		if queued_sfxs.has(stream_name):
+		if (not can_overlap and active_sfxs.has(stream_name)) or queued_sfxs.has(stream_name):
 			return
 		queued_sfxs.append(stream_name)
 		if stream_name is String:
@@ -135,7 +141,6 @@ func play_sfx(stream_name = "", position := Vector2.ZERO, pitch := 1.0, can_over
 		add_child(player)
 		active_sfxs[stream_name] = player
 		queued_sfxs.erase(stream_name)
-		#print(active_sfxs)
 		await player.finished
 		active_sfxs.erase(stream_name)
 		player.queue_free()
@@ -177,7 +182,7 @@ func set_music_override(stream: MUSIC_OVERRIDES, priority := 0, stop_on_finish :
 	else:
 		audio_override_queue.append(stream)
 	current_music_override = stream
-	print(OVERRIDE_STREAMS[stream])
+	#print(OVERRIDE_STREAMS[stream])
 	music_override_player.stream = create_stream_from_json(OVERRIDE_STREAMS[stream])
 	music_override_player.bus = "Music" if stream != MUSIC_OVERRIDES.FLAG_POLE else "SFX"
 	music_override_player.play()

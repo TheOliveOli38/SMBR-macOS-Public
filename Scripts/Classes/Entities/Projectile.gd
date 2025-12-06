@@ -4,11 +4,11 @@ extends Enemy
 ## Determines if this projectile deals damage to the player or not.
 @export var is_friendly := false
 ## Which particle scene to load.
-@export var PARTICLE := load("") 
+@export var PARTICLE: Resource = null
 ## Determines if the projectile will display a particle upon making contact with something, but hasn't been destroyed.
 @export var PARTICLE_ON_CONTACT := false
 ## Determines what sound will play when the projectile makes contact with something.
-@export var SFX_COLLIDE := "bump"
+@export var SFX_COLLIDE := ""
 ## Determines how many entities a projectile can hit before being destroyed. Negative values are considered infinite.
 @export var PIERCE_COUNT: int = -1
 ## Determines how much time must pass in seconds before the projectile can hit the same enemy it is currently intersecting with again. Negative values are considered infinite.
