@@ -214,7 +214,11 @@ func get_variation_json(json := {}) -> Dictionary:
 		if config_to_use != {}:
 			var option_name = i.get_slice(":", 1)
 			if config_to_use.options.has(option_name):
-				json = get_variation_json(json[i][config_to_use.options[option_name]])
+				var config_json = json[i][config_to_use.options[option_name]]
+				if config_json.has("link"):
+					json = get_variation_json(json[config_json.get("link")])
+				else:
+					json = get_variation_json(config_json)
 				break
 	
 	for i in json.keys().filter(func(key): return key.contains("flag:")):
@@ -252,7 +256,11 @@ func get_variation_json(json := {}) -> Dictionary:
 	
 	if json.has("choices"):
 		is_random = true
-		json = get_variation_json(json.choices.pick_random())
+		var random_json = json.choices.pick_random()
+		if random_json.has("link"):
+			json = get_variation_json(json[random_json.get("link")])
+		else:
+			json = get_variation_json(random_json)
 	
 	var world = "World" + str(Global.world_num)
 	if force_properties.has("World"):
@@ -315,8 +323,8 @@ func get_variation_json(json := {}) -> Dictionary:
 	return json
 
 func get_config_file(resource_pack := "") -> void:
-	if FileAccess.file_exists("user://resource_packs/" + resource_pack + "/config.json"):
-		config_to_use = JSON.parse_string(FileAccess.open("user://resource_packs/" + resource_pack + "/config.json", FileAccess.READ).get_as_text())
+	if FileAccess.file_exists(Global.config_path.path_join("resource_packs/" + resource_pack + "/config.json")):
+		config_to_use = JSON.parse_string(FileAccess.open(Global.config_path.path_join("resource_packs/" + resource_pack + "/config.json"), FileAccess.READ).get_as_text())
 		if config_to_use == null:
 			Global.log_error("Error parsing Config File! (" + resource_pack + ")")
 			config_to_use = {}

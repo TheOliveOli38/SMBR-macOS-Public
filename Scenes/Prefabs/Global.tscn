@@ -247,11 +247,14 @@ grow_vertical = 2
 mouse_filter = 2
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Transition" unique_id=804731792]
+libraries = {
+&"": SubResource("AnimationLibrary_l7dvb")
+}
 
-[node name="GameHUD" parent="." unique_id=2057009065 instance=ExtResource("1_ctvpw")]
+[node name="GameHUD" parent="." unique_id=1073507466 instance=ExtResource("1_ctvpw")]
 layer = 1
 
-[node name="FPSCount" type="Label" parent="GameHUD" unique_id=1147446380]
+[node name="FPSCount" type="Label" parent="GameHUD" unique_id=1476489533]
 unique_name_in_owner = true
 visible = false
 anchors_preset = 3
