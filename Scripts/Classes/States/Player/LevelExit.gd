@@ -20,8 +20,13 @@ func enter(_msg := {}) -> void:
 	player.speed_mult = player.physics_params(get_npc_count("_SPEED_MULT", "FLAG"), player.ENDING_PARAMETERS)
 	player.accel_mult = player.physics_params(get_npc_count("_ACCEL_MULT", "FLAG"), player.ENDING_PARAMETERS)
 	pose_offset = player.physics_params(get_npc_count("_POSE_OFFSET", "DOOR"), player.ENDING_PARAMETERS)
-	pose_type = "PoseToad"; pose_offset = Vector2(player.physics_params("TOAD_POSE_OFFSET", player.ENDING_PARAMETERS), 0)
-
+	if npc_count == [0, 0]:
+		pose_type = "PoseDoor"
+	elif npc_count[0] > npc_count[1]:
+		pose_type = "PoseToad"
+	else:
+		pose_type = "PosePeach"
+	
 func physics_update(delta: float) -> void:
 	handle_posing()
 	if player.is_posing:
@@ -48,18 +53,18 @@ func handle_posing() -> void:
 		if npc_count == [0, 0]:
 			for i: Node2D in get_tree().get_nodes_in_group("EndCastles"):
 				var pose_position = i.global_position.x + pose_offset
-				if pose_position <= player.global_position.x <= pose_position + 24 and player.can_pose_anim and player.sprite.sprite_frames.has_animation("PoseDoor"):
+				if (player.global_position[0] >= pose_position and player.global_position[0] <= pose_position + 24) and player.can_pose_anim and player.sprite.sprite_frames.has_animation("PoseDoor"):
 					player.is_posing = true; player.can_pose_anim = false
-					player.global_position = pose_position
-					player.play_animation("PoseDoor")
+					player.global_position = Vector2(pose_position, i.global_position.y)
+					player.play_animation(pose_type)
 					player.sprite.animation_finished.connect(on_pose_finished.bind())
 					player.sprite.animation_looped.connect(on_pose_finished.bind())
 		else:
 			for i: Node2D in get_tree().get_nodes_in_group("CastleNPCs"):
 				var pose_position = i.global_position.x + pose_offset
-				if pose_position <= player.global_position.x <= pose_position + 24:
+				if (player.global_position[0] >= pose_position and player.global_position[0] <= pose_position + 24):
 					player.is_posing = true
-					player.global_position = pose_position
+					player.global_position = Vector2(pose_position, i.global_position.y)
 				if player.is_posing and player.can_pose_castle_anim and player.sprite.sprite_frames.has_animation("PoseToad"):
 					player.can_pose_castle_anim = false
 					player.play_animation(pose_type)
