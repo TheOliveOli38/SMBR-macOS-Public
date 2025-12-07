@@ -924,6 +924,7 @@ func handle_directions() -> void:
 # with other power-states, and easier manipulation through parameters.
 var projectile_amount = 0
 var projectile_type = load("res://Scenes/Prefabs/Entities/Items/Fireball.tscn")
+
 const POWER_PARAM_LIST = {
 	"PARTICLE_ON_CONTACT": "PROJ_PARTICLE_ON_CONTACT",
 	"SFX_COLLIDE": "PROJ_SFX_COLLIDE",
@@ -968,7 +969,7 @@ func throw_projectile() -> void:
 			node.character = character
 		node.PARTICLE = load(physics_params("PROJ_PARTICLE", POWER_PARAMETERS) + ".tscn")
 		for param in POWER_PARAM_LIST:
-			node[param] = physics_params(POWER_PARAM_LIST[param], POWER_PARAMETERS)
+			node.set(param, physics_params(POWER_PARAM_LIST[param], POWER_PARAMETERS))
 		node.MOVE_SPEED = speed[0] + speed_scaling
 	call_deferred("add_sibling", node)
 	projectile_amount += 1
@@ -1115,7 +1116,7 @@ func fire_die() -> void: die(false, "Fire")
 
 func death_load() -> void:
 	power_state = get_node("PowerStates/" + physics_params("STARTING_POWER_STATE", POWER_PARAMETERS))
-	Global.player_power_states = str(power_state.power_tier).repeat(4)
+	Global.player_power_states[player_id] = "0"
 
 	if Global.death_load:
 		return
@@ -1133,8 +1134,8 @@ func death_load() -> void:
 			Global.transition_to_scene("res://Scenes/Levels/LevelTransition.tscn"),
 
 		Global.GameMode.LEVEL_EDITOR: func():
-			owner.stop_testing(),
-			
+			Global.level_editor.stop_testing()
+			Global.death_load = false,
 
 		Global.GameMode.CHALLENGE: func():
 			Global.transition_to_scene("res://Scenes/Levels/ChallengeMiss.tscn"),

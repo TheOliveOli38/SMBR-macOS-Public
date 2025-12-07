@@ -590,7 +590,7 @@ size_flags_vertical = 3
 theme_override_constants/separation = -4
 script = ExtResource("4_avtty")
 category_name = "SETTINGS_DIFFICULTY"
-options = [NodePath("ScrollContainer/VBoxContainer/DamageStyle"), NodePath("ScrollContainer/VBoxContainer/Checkpoints"), NodePath("ScrollContainer/VBoxContainer/ExtraCheckpoints"), NodePath("ScrollContainer/VBoxContainer/Lives"), NodePath("ScrollContainer/VBoxContainer/FlagpoleLives"), NodePath("ScrollContainer/VBoxContainer/GameOverStyle"), NodePath("ScrollContainer/VBoxContainer/LevelDesign"), NodePath("ScrollContainer/VBoxContainer/BackScroll"), NodePath("ScrollContainer/VBoxContainer/TimeLimit"), NodePath("ScrollContainer/VBoxContainer/LakituStyle")]
+options = [NodePath("ScrollContainer/VBoxContainer/PhysicsStyle"), NodePath("ScrollContainer/VBoxContainer/DamageStyle"), NodePath("ScrollContainer/VBoxContainer/Checkpoints"), NodePath("ScrollContainer/VBoxContainer/ExtraCheckpoints"), NodePath("ScrollContainer/VBoxContainer/Lives"), NodePath("ScrollContainer/VBoxContainer/FlagpoleLives"), NodePath("ScrollContainer/VBoxContainer/GameOverStyle"), NodePath("ScrollContainer/VBoxContainer/LevelDesign"), NodePath("ScrollContainer/VBoxContainer/BackScroll"), NodePath("ScrollContainer/VBoxContainer/TimeLimit"), NodePath("ScrollContainer/VBoxContainer/LakituStyle")]
 description_node = NodePath("Description/AutoScrollContainer/MarginContainer/Desc")
 scroll_container = NodePath("ScrollContainer")
 
@@ -607,6 +607,14 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_constants/separation = -4
+
+[node name="PhysicsStyle" parent="PanelContainer/MarginContainer/VBoxContainer/Difficulty/ScrollContainer/VBoxContainer" unique_id=1431594263 groups=["Options"] instance=ExtResource("3_dl6kk")]
+layout_mode = 2
+option_key = "physics_style"
+title = "DIFFI_PHYSICS_STYLE"
+value_descs = Array[String](["DESC_PHYSICS_0", "DESC_PHYSICS_1"])
+values = ["SETTINGS_CLASSIC", "SETTINGS_MODERN"]
+settings_category = "difficulty"
 
 [node name="DamageStyle" parent="PanelContainer/MarginContainer/VBoxContainer/Difficulty/ScrollContainer/VBoxContainer" unique_id=57378041 groups=["Options"] instance=ExtResource("3_dl6kk")]
 layout_mode = 2
@@ -1030,6 +1038,7 @@ script = ExtResource("19_k6yev")
 [connection signal="button_pressed" from="PanelContainer/MarginContainer/VBoxContainer/ResourcePacks/SelectableOptionNode2" to="PanelContainer/MarginContainer/VBoxContainer/ResourcePacks/ResourcePackLoader" method="get_resource_packs"]
 [connection signal="button_pressed" from="PanelContainer/MarginContainer/VBoxContainer/ResourcePacks/SelectableOptionNode3" to="ResourcePackTemplateCreator" method="create_template"]
 [connection signal="button_pressed" from="PanelContainer/MarginContainer/VBoxContainer/ResourcePacks/SelectableOptionNode3" to="PanelContainer/MarginContainer/VBoxContainer/ResourcePacks/SelectableOptionNode3" method="set_title" binds= ["Creating Resource Pack..."]]
+[connection signal="value_changed" from="PanelContainer/MarginContainer/VBoxContainer/Difficulty/ScrollContainer/VBoxContainer/PhysicsStyle" to="PanelContainer/MarginContainer/VBoxContainer/Difficulty/DifficultySetter" method="physics_style_changed"]
 [connection signal="value_changed" from="PanelContainer/MarginContainer/VBoxContainer/Difficulty/ScrollContainer/VBoxContainer/DamageStyle" to="PanelContainer/MarginContainer/VBoxContainer/Difficulty/DifficultySetter" method="damage_style_changed"]
 [connection signal="value_changed" from="PanelContainer/MarginContainer/VBoxContainer/Difficulty/ScrollContainer/VBoxContainer/Checkpoints" to="PanelContainer/MarginContainer/VBoxContainer/Difficulty/DifficultySetter" method="checkpoint_changed"]
 [connection signal="value_changed" from="PanelContainer/MarginContainer/VBoxContainer/Difficulty/ScrollContainer/VBoxContainer/ExtraCheckpoints" to="PanelContainer/MarginContainer/VBoxContainer/Difficulty/DifficultySetter" method="extra_checkpoints_changed"]

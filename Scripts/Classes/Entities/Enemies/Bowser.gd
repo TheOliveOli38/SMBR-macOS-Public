@@ -79,25 +79,25 @@ func breathe_fire() -> void:
 	await get_tree().create_timer(0.5, false).timeout
 	sprite.play("Idle")
 
-func bridge_fall(start: bool = false) -> void:
-	if start:
-		process_mode = Node.PROCESS_MODE_ALWAYS
-		direction = 1
-		sprite.play("Fall")
-		sprite.reset_physics_interpolation()
-		$FlameTimer.queue_free()
-		$HammerTime.queue_free()
-		$JumpTimer.queue_free()
-		$MoveAnimation.queue_free()
-		can_fall = false
-		velocity.y = 0
-	else:
-		$FallSFX.play()
-		ignore_flag_die = true
-		can_fall = true
-		$Collision.queue_free()
-		await get_tree().create_timer(5).timeout
-		queue_free()
+func bridge_fall() -> void:
+	$FallSFX.play()
+	ignore_flag_die = true
+	can_fall = true
+	$Collision.queue_free()
+	await get_tree().create_timer(5).timeout
+	queue_free()
+
+func do_start_fall() -> void:
+	process_mode = Node.PROCESS_MODE_ALWAYS
+	direction = 1
+	sprite.play("Fall")
+	sprite.reset_physics_interpolation()
+	$FlameTimer.queue_free()
+	$HammerTime.queue_free()
+	$JumpTimer.queue_free()
+	$MoveAnimation.queue_free()
+	can_fall = false
+	velocity.y = 0
 
 func throw_hammers() -> void:
 	if can_hammer == false:

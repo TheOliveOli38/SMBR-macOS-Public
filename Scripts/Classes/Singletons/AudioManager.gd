@@ -70,7 +70,8 @@ const DEFAULT_SFX_LIBRARY := {
 	"door_locked": "res://Assets/Audio/SFX/DoorLocked.wav",
 	"moon_wipe": "res://Assets/Audio/SFX/MoonWipe.wav",
 	"sp_coin": "res://Assets/Audio/SFX/SPCoin.wav",
-	"hidden_coin": "res://Assets/Audio/SFX/HiddenCoin.wav"
+	"hidden_coin": "res://Assets/Audio/SFX/HiddenCoin.wav",
+	"bridge_break": "res://Assets/Audio/SFX/BreakBridge.wav"
 }
 
 @onready var sfx_library = DEFAULT_SFX_LIBRARY.duplicate()

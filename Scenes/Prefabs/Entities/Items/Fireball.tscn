@@ -58,7 +58,9 @@ slide_on_ceiling = false
 script = ExtResource("1_00jom")
 is_friendly = true
 PARTICLE = ExtResource("2_ajyso")
+PARTICLE_ON_CONTACT = true
 PIERCE_COUNT = 0
+HAS_COLLISION = true
 GROUND_BOUNCE = true
 MOVE_SPEED = 220
 GRAVITY = 15
@@ -72,7 +74,7 @@ z_index = 2
 libraries = {
 &"": SubResource("AnimationLibrary_an01s")
 }
-autoplay = "Spin"
+autoplay = &"Spin"
 speed_scale = 2.0
 
 [node name="ResourceSetter" type="Node" parent="Sprite" unique_id=1274639605 node_paths=PackedStringArray("node_to_affect")]
@@ -85,14 +87,14 @@ metadata/_custom_type_script = "uid://cbal8ms2oe1ik"
 [node name="Collision" type="CollisionShape2D" parent="." unique_id=1261293152]
 shape = SubResource("RectangleShape2D_ajyso")
 
-[node name="Hitbox" type="Area2D" parent="."]
+[node name="Hitbox" type="Area2D" parent="." unique_id=562006670]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=135259216]
 shape = SubResource("CircleShape2D_dhdpv")
 
-[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=874988204]
 
-[node name="EnemyPlayerDetection" type="Node" parent="." node_paths=PackedStringArray("hitbox")]
+[node name="EnemyPlayerDetection" type="Node" parent="." unique_id=870170895 node_paths=PackedStringArray("hitbox")]
 script = ExtResource("4_an01s")
 hitbox = NodePath("../Hitbox")
 metadata/_custom_type_script = "uid://chj8hu207lrh"

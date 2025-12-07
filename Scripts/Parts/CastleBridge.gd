@@ -14,6 +14,9 @@ signal axe_touched
 var bowser_present := true
 
 func _ready() -> void:
+	#for x in [axe_touched, victory_begin]:
+		#for i in x.get_connections():
+			#x.disconnect(i.callable)
 	await get_tree().physics_frame
 	$Axe/CameraRightLimit._enter_tree()
 
@@ -48,13 +51,7 @@ func destroy_bridge(player: Player) -> void:
 	else:
 		$AxeAnim.queue_free()
 	if bowser_present:
-		var bowser_count = 0
-		for i in get_tree().get_nodes_in_group("Bowser"):
-			if i.ignore_flag_die == false:
-				bowser_count += 1 
-				i.bridge_fall(true)
-		if bowser_count <= 0: 
-			return
+		get_tree().call_group("Bowser", "do_start_fall")
 		get_tree().paused = true
 		await get_tree().create_timer(0.5).timeout
 		AudioManager.play_sfx("bridge_break", $BridgeChain.global_position)
@@ -68,9 +65,8 @@ func destroy_bridge(player: Player) -> void:
 				else:
 					bridge_piece_fall(i)
 				await get_tree().create_timer(0.067).timeout
-		for i in get_tree().get_nodes_in_group("Bowser"):
-			i.bridge_fall(false)
-		await get_tree().create_timer(1).timeout
+		get_tree().call_group("Bowser", "bridge_fall")
+		await get_tree().create_timer(2).timeout
 		get_tree().paused = false
 	victory_sequence(player)
 
