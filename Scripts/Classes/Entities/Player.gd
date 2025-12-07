@@ -1079,10 +1079,12 @@ func do_i_frames() -> void:
 	can_hurt = true
 	refresh_hitbox()
 
+var valid_death_types = ["", "Fire"]
+
 func die(pit: bool = false, type: String = "") -> void:
 	if ["Dead", "Pipe", "LevelExit"].has(state_machine.state.name):
 		return
-	if type != "": last_damage_source = type
+	if type != "": last_damage_source = type if type in valid_death_types else ""
 	is_dead = true
 	visible = not pit
 	dead.emit()
