@@ -6,12 +6,11 @@ signal killed(direction: int)
 
 @export var on_screen_enabler: VisibleOnScreenNotifier2D = null
 @export var score_note_adder: ScoreNoteSpawner = null
-@export_enum("Normal", "Fire") var damage_type: String = "Normal"
 
 var direction := -1
 
-func damage_player(player: Player) -> void:
-	player.damage(damage_type if damage_type != "Normal" else "")
+func damage_player(player: Player, type: String = "Normal") -> void:
+	player.damage(type if type != "Normal" else "")
 
 func apply_enemy_gravity(delta: float) -> void:
 	velocity.y += (Global.entity_gravity / delta) * delta

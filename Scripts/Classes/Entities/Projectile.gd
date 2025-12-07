@@ -52,7 +52,6 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	$Sprite.flip_h = direction == 1
 	handle_movement(delta)
-	handle_collection()
 
 func handle_movement(delta: float) -> void:
 	var CUR_GRAVITY = GRAVITY * (Global.entity_gravity * 0.1)
@@ -83,9 +82,9 @@ func projectile_bounce() -> void:
 		if not WALL_BOUNCE: hit(true, true)
 		direction *= -1
 
-func damage_player(player: Player) -> void:
+func damage_player(player: Player, type: String = "Normal") -> void:
 	if !is_friendly:
-		player.damage(damage_type if damage_type != "Normal" else "")
+		player.damage(type if type != "Normal" else "")
 		hit()
 
 func hit(play_sfx := true, force_destroy := false) -> void:
@@ -108,9 +107,3 @@ func summon_explosion() -> void:
 		var node = PARTICLE.instantiate()
 		node.global_position = global_position
 		add_sibling(node)
-
-func handle_collection() -> void:
-	if COLLECT_COINS:
-		var areas = get_node_or_null("Hitbox").get_overlapping_areas()
-		for i in areas:
-			if i.owner.is_in_group("Coins"): i.owner.collect()

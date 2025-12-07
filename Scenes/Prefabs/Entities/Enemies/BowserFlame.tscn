@@ -40,7 +40,6 @@ collision_layer = 0
 collision_mask = 2
 script = ExtResource("1_dq7qg")
 MOVE_SPEED = 100
-damage_type = "Fire"
 metadata/_custom_type_script = "uid://c5elnt7uap15b"
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
@@ -80,6 +79,6 @@ metadata/_custom_type_script = "uid://chj8hu207lrh"
 
 [connection signal="screen_entered" from="VisibleOnScreenEnabler2D" to="." method="play_sfx"]
 [connection signal="screen_exited" from="VisibleOnScreenEnabler2D" to="." method="queue_free"]
-[connection signal="player_hit" from="EnemyPlayerDetection" to="." method="damage_player"]
-[connection signal="player_stomped_below" from="EnemyPlayerDetection" to="." method="damage_player"]
-[connection signal="player_stomped_on" from="EnemyPlayerDetection" to="." method="damage_player"]
+[connection signal="player_hit" from="EnemyPlayerDetection" to="." method="damage_player" binds= ["Fire"]]
+[connection signal="player_stomped_below" from="EnemyPlayerDetection" to="." method="damage_player" binds= ["Fire"]]
+[connection signal="player_stomped_on" from="EnemyPlayerDetection" to="." method="damage_player" binds= ["Fire"]]

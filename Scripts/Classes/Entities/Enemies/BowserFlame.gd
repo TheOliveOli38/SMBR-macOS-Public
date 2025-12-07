@@ -10,7 +10,6 @@ func _physics_process(delta: float) -> void:
 		global_position.y = move_toward(global_position.y, target_y, delta * 50)
 	$Sprite.flip_h = direction != 1
 	handle_movement(delta)
-	handle_collection()
 
 func play_sfx() -> void:
 	AudioManager.play_sfx("bowser_flame", global_position)

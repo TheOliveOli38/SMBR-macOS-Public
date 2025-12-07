@@ -217,7 +217,6 @@ extends CharacterBody2D
 		"PROJ_GROUND_BOUNCE": true,        # Determines if the projectile can bounce off the ground.
 		"PROJ_WALL_BOUNCE": false,         # Determines if the projectile can bounce off of wals.
 		"PROJ_CEIL_BOUNCE": false,         # Determines if the projectile can bounce off of ceilings.
-		"PROJ_COLLECT_COINS": false,       # Determines if the projectile can collect coins.
 		
 		"PROJ_LIFETIME": -1,               # Determines how long the projectile will last for. -1 and below count as infinite.
 		"PROJ_OFFSET": [-4.0, 16.0],       # Determines the offset for where the projectile will spawn.
@@ -485,7 +484,10 @@ const ANIMATION_FALLBACKS := {
 
 	# --- Size Transformations ---
 	"Shrink": "Grow",
-	"FireShrink": "FireGrow", # SkyanUltra: Future power-ups will need to be added here.
+	# SkyanUltra: Future power-ups will need to be added here.
+	"SmallShrink": "SmallGrow",
+	"NormalShrink": "NormalGrow",
+	"FireShrink": "FireGrow",
 
 	# --- Attack States ---
 	"IdleAttack": "MoveAttack",
