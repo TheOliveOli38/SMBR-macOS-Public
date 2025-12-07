@@ -252,9 +252,9 @@ rect = Rect2(-64, -64, 128, 128)
 script = ExtResource("12_je1ke")
 metadata/_custom_type_script = "uid://b3bokos5jcpr7"
 
-[connection signal="player_hit" from="RotationJoint/EnemyPlayerDetection" to="." method="damage_player"]
-[connection signal="player_stomped_below" from="RotationJoint/EnemyPlayerDetection" to="." method="damage_player"]
-[connection signal="player_stomped_on" from="RotationJoint/EnemyPlayerDetection" to="." method="damage_player"]
+[connection signal="player_hit" from="RotationJoint/EnemyPlayerDetection" to="." method="damage_player" binds= ["Fire"]]
+[connection signal="player_stomped_below" from="RotationJoint/EnemyPlayerDetection" to="." method="damage_player" binds= ["Fire"]]
+[connection signal="player_stomped_on" from="RotationJoint/EnemyPlayerDetection" to="." method="damage_player" binds= ["Fire"]]
 [connection signal="timeout" from="Timer" to="." method="do_cycle"]
 [connection signal="recieved_power" from="SignalExposer" to="." method="do_cycle"]
 [connection signal="recieved_pulse" from="SignalExposer" to="." method="do_cycle"]

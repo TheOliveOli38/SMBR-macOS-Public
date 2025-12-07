@@ -68,6 +68,7 @@
 				"CAN_AIR_SKID_ALWAYS": true,
 				"CAN_AIR_RUN_EARLY": false,
 				
+				"CLIMB_OFFSET": 5.0,
 				"CLIMB_UP_SPEED": 50.0,
 				"CLIMB_DOWN_SPEED": 120.0,
 
@@ -157,8 +158,9 @@
 				"CAN_AIR_SKID_ALWAYS": false,
 				"CAN_AIR_RUN_EARLY": false,
 				
+				"CLIMB_OFFSET": 5.0,
 				"CLIMB_UP_SPEED": 50.0,
-				"CLIMB_DOWN_SPEED": 50.0,
+				"CLIMB_DOWN_SPEED": 120.0,
 
 				"TRAMPOLINE_SPEED": 500.0,
 				"SUPER_TRAMPOLINE_SPEED": 1200.0,

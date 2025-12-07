@@ -52,35 +52,39 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	$Sprite.flip_h = direction == 1
 	handle_movement(delta)
-	handle_collection()
 
 func handle_movement(delta: float) -> void:
 	var CUR_GRAVITY = GRAVITY * (Global.entity_gravity * 0.1)
 	var DECEL_TYPE = GROUND_DECEL if is_on_floor() else AIR_DECEL
 	velocity.y += (CUR_GRAVITY / delta) * delta
 	velocity.y = clamp(velocity.y, -INF, MAX_FALL_SPEED)
-	if is_on_floor():
-		if GROUND_BOUNCE and BOUNCE_COUNT != 0:
-			BOUNCE_COUNT -= 1
-			velocity.y = -BOUNCE_HEIGHT
-		else: hit(true, true)
-	if is_on_ceiling():
-		if CEIL_BOUNCE and BOUNCE_COUNT != 0:
-			BOUNCE_COUNT -= 1
-			velocity.y = BOUNCE_HEIGHT
-		else: hit(true, true)
-	if is_on_wall():
-		if WALL_BOUNCE and BOUNCE_COUNT != 0:
-			BOUNCE_COUNT -= 1
-			direction *= -1
-		else: hit(true, true)
+	if HAS_COLLISION:
+		projectile_bounce()
 	MOVE_SPEED = clamp(move_toward(MOVE_SPEED, 0, (DECEL_TYPE / delta) * delta), MOVE_SPEED_CAP[0], MOVE_SPEED_CAP[1])
 	velocity.x = MOVE_SPEED * direction
 	move_and_slide()
 
-func damage_player(player: Player) -> void:
+func projectile_bounce() -> void:
+	if get_slide_collision_count() <= 0:
+		return
+	if BOUNCE_COUNT != 0:
+		BOUNCE_COUNT -= 1
+	else:
+		hit(true, true)
+		return
+	if is_on_floor() and GROUND_BOUNCE:
+		if not GROUND_BOUNCE: hit(true, true)
+		velocity.y = -BOUNCE_HEIGHT
+	if is_on_ceiling() and CEIL_BOUNCE:
+		if not CEIL_BOUNCE: hit(true, true)
+		velocity.y = BOUNCE_HEIGHT
+	if is_on_wall():
+		if not WALL_BOUNCE: hit(true, true)
+		direction *= -1
+
+func damage_player(player: Player, type: String = "Normal") -> void:
 	if !is_friendly:
-		player.damage(damage_type if damage_type != "Normal" else "")
+		player.damage(type if type != "Normal" else "")
 		hit()
 
 func hit(play_sfx := true, force_destroy := false) -> void:
@@ -103,9 +107,3 @@ func summon_explosion() -> void:
 		var node = PARTICLE.instantiate()
 		node.global_position = global_position
 		add_sibling(node)
-
-func handle_collection() -> void:
-	if COLLECT_COINS:
-		var areas = get_node_or_null("Hitbox").get_overlapping_areas()
-		for i in areas:
-			if i.owner.is_in_group("Coins"): i.owner.collect()

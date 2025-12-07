@@ -64,8 +64,6 @@ MOVE_SPEED = 220
 GRAVITY = 15
 BOUNCE_HEIGHT = 125
 MAX_FALL_SPEED = 150.0
-damage_type = "Fire"
-metadata/_custom_type_script = "uid://c5elnt7uap15b"
 
 [node name="Sprite" type="AnimatedSprite2D" parent="." unique_id=1917100360]
 z_index = 2
@@ -74,7 +72,7 @@ z_index = 2
 libraries = {
 &"": SubResource("AnimationLibrary_an01s")
 }
-autoplay = &"Spin"
+autoplay = "Spin"
 speed_scale = 2.0
 
 [node name="ResourceSetter" type="Node" parent="Sprite" unique_id=1274639605 node_paths=PackedStringArray("node_to_affect")]
@@ -89,15 +87,10 @@ shape = SubResource("RectangleShape2D_ajyso")
 
 [node name="Hitbox" type="Area2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=1094849592]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
 shape = SubResource("CircleShape2D_dhdpv")
 
-[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=2098505260]
-
-[node name="LightBarer" type="Node2D" parent="." unique_id=1545833082]
-script = ExtResource("4_an01s")
-size = 0.25
-metadata/_custom_type_script = "uid://b01jg87w7sltl"
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
 
 [node name="EnemyPlayerDetection" type="Node" parent="." node_paths=PackedStringArray("hitbox")]
 script = ExtResource("4_an01s")
@@ -105,6 +98,6 @@ hitbox = NodePath("../Hitbox")
 metadata/_custom_type_script = "uid://chj8hu207lrh"
 
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="queue_free"]
-[connection signal="player_hit" from="EnemyPlayerDetection" to="." method="damage_player"]
-[connection signal="player_stomped_below" from="EnemyPlayerDetection" to="." method="damage_player"]
-[connection signal="player_stomped_on" from="EnemyPlayerDetection" to="." method="damage_player"]
+[connection signal="player_hit" from="EnemyPlayerDetection" to="." method="damage_player" binds= ["Fire"]]
+[connection signal="player_stomped_below" from="EnemyPlayerDetection" to="." method="damage_player" binds= ["Fire"]]
+[connection signal="player_stomped_on" from="EnemyPlayerDetection" to="." method="damage_player" binds= ["Fire"]]

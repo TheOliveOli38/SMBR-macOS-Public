@@ -35,5 +35,5 @@ func do_animation() -> void:
 	await %Flame.animation_finished
 	%Flame.hide()
 
-func damage_player(player: Player) -> void:
-	player.damage("Fire")
+func damage_player(player: Player, type: String = "Normal") -> void:
+	player.damage(type if type != "Normal" else "")

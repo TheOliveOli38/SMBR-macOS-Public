@@ -76,6 +76,7 @@ extends CharacterBody2D
 		"CAN_AIR_SKID_ALWAYS": true,       # Determines if the player uses 'skid' params instead of 'accel' params if jump started below a certain speed.
 		"CAN_AIR_RUN_EARLY": false,        # Determines a multiplier to the player's acceleration when moving backwards in the air.
 		
+		"CLIMB_OFFSET": 5.0,               # The X position offset applied to the player when climbing.
 		"CLIMB_UP_SPEED": 50.0,            # The player's speed while climbing upwards, measured in px/sec.
 		"CLIMB_DOWN_SPEED": 120.0,         # The player's speed while climbing downwards, measured in px/sec.
 
@@ -166,8 +167,9 @@ extends CharacterBody2D
 		"CAN_AIR_SKID_ALWAYS": false,      # Determines if the player uses 'skid' params instead of 'accel' params if jump started below a certain speed.
 		"CAN_AIR_RUN_EARLY": false,        # Determines a multiplier to the player's acceleration when moving backwards in the air.
 		
+		"CLIMB_OFFSET": 5.0,               # The X position offset applied to the player when climbing.
 		"CLIMB_UP_SPEED": 50.0,            # The player's speed while climbing upwards, measured in px/sec.
-		"CLIMB_DOWN_SPEED": 50.0,          # The player's speed while climbing downwards, measured in px/sec.
+		"CLIMB_DOWN_SPEED": 120.0,         # The player's speed while climbing downwards, measured in px/sec.
 
 		"TRAMPOLINE_SPEED": 500.0,         # The strength of a jump on a trampoline, measured in px/sec.
 		"SUPER_TRAMPOLINE_SPEED": 1200.0,  # The strength of a jump on a super trampoline, measured in px/sec.
@@ -215,7 +217,6 @@ extends CharacterBody2D
 		"PROJ_GROUND_BOUNCE": true,        # Determines if the projectile can bounce off the ground.
 		"PROJ_WALL_BOUNCE": false,         # Determines if the projectile can bounce off of wals.
 		"PROJ_CEIL_BOUNCE": false,         # Determines if the projectile can bounce off of ceilings.
-		"PROJ_COLLECT_COINS": false,       # Determines if the projectile can collect coins.
 		
 		"PROJ_LIFETIME": -1,               # Determines how long the projectile will last for. -1 and below count as infinite.
 		"PROJ_OFFSET": [-4.0, 16.0],       # Determines the offset for where the projectile will spawn.
@@ -483,7 +484,10 @@ const ANIMATION_FALLBACKS := {
 
 	# --- Size Transformations ---
 	"Shrink": "Grow",
-	"FireShrink": "FireGrow", # SkyanUltra: Future power-ups will need to be added here.
+	# SkyanUltra: Future power-ups will need to be added here.
+	"SmallShrink": "SmallGrow",
+	"NormalShrink": "NormalGrow",
+	"FireShrink": "FireGrow",
 
 	# --- Attack States ---
 	"IdleAttack": "MoveAttack",
@@ -1075,10 +1079,12 @@ func do_i_frames() -> void:
 	can_hurt = true
 	refresh_hitbox()
 
+var valid_death_types = ["", "Fire"]
+
 func die(pit: bool = false, type: String = "") -> void:
 	if ["Dead", "Pipe", "LevelExit"].has(state_machine.state.name):
 		return
-	if type != "": last_damage_source = type
+	if type != "": last_damage_source = type if type in valid_death_types else ""
 	is_dead = true
 	visible = not pit
 	dead.emit()
