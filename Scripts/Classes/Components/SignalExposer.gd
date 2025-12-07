@@ -134,6 +134,13 @@ func input_removed() -> void:
 	if total_inputs <= 0:
 		has_input = false
 
+func get_string() -> String:
+	var entity_string := ""
+	for i in connections:
+		entity_string += ",&"
+		entity_string += str(i[0]) + "," + str(i[1].x) + "," + str(i[1].y)
+	return entity_string
+
 func apply_string(string := "") -> void:
 	print(string)
 	var arr := []

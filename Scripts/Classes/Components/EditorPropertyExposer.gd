@@ -60,7 +60,8 @@ func get_string() -> String:
 func apply_string(entity_string := "") -> void:
 	get_entity_map()
 	var idx := 2
-	var slice = entity_string.split(",")
+	var slice = entity_string.split(",", false)
+	print(slice)
 	for i in properties:
 		if slice.size() <= idx:
 			return

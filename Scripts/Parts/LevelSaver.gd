@@ -110,9 +110,7 @@ func get_entities(level: CustomLevel) -> void:
 			if entity.has_node("EditorPropertyExposer"):
 				entity_string += entity.get_node("EditorPropertyExposer").get_string()
 			if entity.has_node("SignalExposer"):
-				for i in entity.get_node("SignalExposer").connections:
-					entity_string += ",&"
-					entity_string += str(i[0]) + "," + str(i[1].x) + "," + str(i[1].y)
+				entity_string += entity.get_node("SignalExposer").get_string()
 			var entity_chunk_idx = tile_to_chunk_idx(entity.get_meta("tile_position"))
 			var tile_chunk := {}
 			if sub_level_file["Layers"][layer].has(entity_chunk_idx):

@@ -89,7 +89,7 @@ var coins := 0:
 	set(value):
 		coins = value
 		if coins >= 100:#
-			if Settings.file.difficulty.inf_lives == 0 and (Global.current_game_mode != Global.GameMode.CHALLENGE and Global.current_campaign != "SMBANN"):
+			if Settings.file.difficulty.inf_lives == 0 and (current_game_mode != GameMode.CHALLENGE and current_campaign != "SMBANN"):
 				lives += floor(coins / 100.0)
 				AudioManager.play_sfx("1_up", get_viewport().get_camera_2d().get_screen_center_position())
 			coins = coins % 100
@@ -208,11 +208,12 @@ func setup_config_dirs() -> void:
 		"resource_packs",
 		"saves",
 		"screenshots",
-		"level_packs"
+		"level_packs",
+		"blueprints"
 	]
 
 	for d in dirs:
-		var full_path = Global.config_path.path_join(d)
+		var full_path = config_path.path_join(d)
 		if not DirAccess.dir_exists_absolute(full_path):
 			DirAccess.make_dir_recursive_absolute(full_path)
 
@@ -241,9 +242,9 @@ func get_config_path() -> String:
 func check_for_rom() -> void:
 	rom_path = ""
 	rom_assets_exist = false
-	if FileAccess.file_exists(Global.ROM_PATH) == false:
+	if FileAccess.file_exists(ROM_PATH) == false:
 		return
-	var path = Global.ROM_PATH 
+	var path = ROM_PATH 
 	if FileAccess.file_exists(path):
 		if ROMVerifier.is_valid_rom(path):
 			rom_path = path
@@ -281,7 +282,7 @@ func _process(delta: float) -> void:
 
 func take_screenshot() -> void:
 	var img: Image = get_viewport().get_texture().get_image()
-	var filename = Global.config_path.path_join("screenshots/screenshot_" + str(int(Time.get_unix_time_from_system())) + ".png")
+	var filename = config_path.path_join("screenshots/screenshot_" + str(int(Time.get_unix_time_from_system())) + ".png")
 	var err = img.save_png(filename)
 	if !err:
 		log_comment("Screenshot Saved!")
@@ -369,14 +370,14 @@ func reset_values() -> void:
 	PlayerGhost.idx = 0
 	Checkpoint.passed_checkpoints.clear()
 	Checkpoint.sublevel_id = 0
-	Global.total_deaths = 0
+	total_deaths = 0
 	Door.unlocked_doors = []
 	Door.exiting_door_id = -1
 	Checkpoint.unlocked_doors = []
 	KeyItem.total_collected = 0
 	Checkpoint.keys_collected = 0
 	Broadcaster.active_channels = []
-	Level.start_level_path = Level.get_scene_string(Global.world_num, Global.level_num)
+	Level.start_level_path = Level.get_scene_string(world_num, level_num)
 	LevelPersistance.reset_states()
 	Level.first_load = true
 	Level.can_set_time = true
@@ -393,7 +394,7 @@ func clear_saved_values() -> void:
 	player_power_states = "0000"
 
 func transition_to_scene(scene_path = "") -> void:
-	Global.fade_transition = bool(Settings.file.visuals.transition_animation)
+	fade_transition = bool(Settings.file.visuals.transition_animation)
 	if transitioning_scene:
 		return
 	transitioning_scene = true
@@ -447,10 +448,10 @@ func close_freeze() -> void:
 var recording_dir = config_path.path_join("marathon_recordings")
 
 func update_game_status() -> void:
-	var lives_str := str(Global.lives)
+	var lives_str := str(lives)
 	if Settings.file.difficulty.inf_lives == 1:
 		lives_str = "∞"
-	var string := "Coins = " + str(Global.coins) + " Lives = " + lives_str
+	var string := "Coins = " + str(coins) + " Lives = " + lives_str
 
 func open_marathon_results() -> void:
 	get_node("GameHUD/MarathonResults").open()
@@ -510,10 +511,10 @@ func log_comment(msg := "") -> void:
 	error_message.queue_free()
 
 func level_editor_is_playtesting() -> bool:
-	if Global.level_editor == null:
+	if level_editor == null:
 		return false
-	if Global.current_game_mode == Global.GameMode.LEVEL_EDITOR:
-		if Global.level_editor.current_state == LevelEditor.EditorState.PLAYTESTING:
+	if current_game_mode == GameMode.LEVEL_EDITOR:
+		if level_editor.current_state == LevelEditor.EditorState.PLAYTESTING:
 			return true
 	return false
 
@@ -537,7 +538,7 @@ func sanitize_string(string := "") -> String:
 	return string
 
 func get_base_asset_version() -> int:
-	var json = JSON.parse_string(FileAccess.open(Global.config_path.path_join("BaseAssets/pack_info.json"), FileAccess.READ).get_as_text())
+	var json = JSON.parse_string(FileAccess.open(config_path.path_join("BaseAssets/pack_info.json"), FileAccess.READ).get_as_text())
 	var version = json.version
 	return get_version_num_int(version)
 

@@ -730,5 +730,9 @@
 	"DC": [
 		"res://Scenes/Prefabs/Entities/Enemies/BowserJr.tscn",
 		"0,8"
+	],
+	"DD": [
+		"res://Scenes/Prefabs/Entities/Items/HiddenCoin.tscn",
+		"0,0"
 	]
 }
