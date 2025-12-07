@@ -59,24 +59,29 @@ func handle_movement(delta: float) -> void:
 	var DECEL_TYPE = GROUND_DECEL if is_on_floor() else AIR_DECEL
 	velocity.y += (CUR_GRAVITY / delta) * delta
 	velocity.y = clamp(velocity.y, -INF, MAX_FALL_SPEED)
-	if is_on_floor():
-		if GROUND_BOUNCE and BOUNCE_COUNT != 0:
-			BOUNCE_COUNT -= 1
-			velocity.y = -BOUNCE_HEIGHT
-		else: hit(true, true)
-	if is_on_ceiling():
-		if CEIL_BOUNCE and BOUNCE_COUNT != 0:
-			BOUNCE_COUNT -= 1
-			velocity.y = BOUNCE_HEIGHT
-		else: hit(true, true)
-	if is_on_wall():
-		if WALL_BOUNCE and BOUNCE_COUNT != 0:
-			BOUNCE_COUNT -= 1
-			direction *= -1
-		else: hit(true, true)
+	if HAS_COLLISION:
+		projectile_bounce()
 	MOVE_SPEED = clamp(move_toward(MOVE_SPEED, 0, (DECEL_TYPE / delta) * delta), MOVE_SPEED_CAP[0], MOVE_SPEED_CAP[1])
 	velocity.x = MOVE_SPEED * direction
 	move_and_slide()
+
+func projectile_bounce() -> void:
+	if get_slide_collision_count() <= 0:
+		return
+	if BOUNCE_COUNT != 0:
+		BOUNCE_COUNT -= 1
+	else:
+		hit(true, true)
+		return
+	if is_on_floor() and GROUND_BOUNCE:
+		if not GROUND_BOUNCE: hit(true, true)
+		velocity.y = -BOUNCE_HEIGHT
+	if is_on_ceiling() and CEIL_BOUNCE:
+		if not CEIL_BOUNCE: hit(true, true)
+		velocity.y = BOUNCE_HEIGHT
+	if is_on_wall():
+		if not WALL_BOUNCE: hit(true, true)
+		direction *= -1
 
 func damage_player(player: Player) -> void:
 	if !is_friendly:
