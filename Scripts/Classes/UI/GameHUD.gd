@@ -115,39 +115,43 @@ func handle_challenge_mode_hud() -> void:
 	
 	var idx := 0
 	for i in [$Main/RedCoins/Coin1, $Main/RedCoins/Coin2, $Main/RedCoins/Coin3, $Main/RedCoins/Coin4, $Main/RedCoins/Coin5]:
-		i.frame = int(ChallengeModeHandler.is_coin_collected(idx, red_coins_collected))
+		if (ChallengeModeHandler.is_coin_collected(idx, red_coins_collected)):
+			i.frame = 1
+			i.get_node("Shadow").frame = 1
+		elif ChallengeModeHandler.is_coin_permanently_collected(idx):
+			i.frame = 2
+			i.get_node("Shadow").frame = 1
+		else:
+			i.frame = 0
+			i.get_node("Shadow").frame = 0
 		idx += 1
 	idx = 0
-	for i in [$Main/RedCoins/Coin1Transparent, $Main/RedCoins/Coin2Transparent, $Main/RedCoins/Coin3Transparent, $Main/RedCoins/Coin4Transparent, $Main/RedCoins/Coin5Transparent]:
-		i.visible = false
-		if ChallengeModeHandler.is_coin_permanently_collected(idx) and not ChallengeModeHandler.is_coin_collected(idx, red_coins_collected):
-			i.visible = true
-			i.frame = 1
-		idx += 1
 	
 	$Main/RedCoins/ScoreMedal.frame = 0
-	$Main/RedCoins/ScoreMedalTransparent.visible = false
+	$Main/RedCoins/ScoreMedal.get_node("Shadow").frame = 0
 	var score_target = ChallengeModeHandler.CHALLENGE_TARGETS[Global.current_campaign][Global.world_num - 1][Global.level_num - 1]
-	if Global.score >= score_target or ChallengeModeHandler.top_challenge_scores[Global.world_num - 1][Global.level_num - 1] >= score_target:
+	if Global.score >= score_target:
 		$Main/RedCoins/ScoreMedal.frame = 1
-	elif Global.score > 0 and (Global.score + (Global.time * 50)) >= score_target:
-		$Main/RedCoins/ScoreMedalTransparent.frame = 1
-		$Main/RedCoins/ScoreMedalTransparent.visible = true
+		$Main/RedCoins/ScoreMedal.get_node("Shadow").frame = 1
+	elif ChallengeModeHandler.top_challenge_scores[Global.world_num - 1][Global.level_num - 1] >= score_target:
+		$Main/RedCoins/ScoreMedal.frame = 2
+		$Main/RedCoins/ScoreMedal.get_node("Shadow").frame = 1
 	
 	if ChallengeModeHandler.is_coin_collected(ChallengeModeHandler.CoinValues.YOSHI_EGG, red_coins_collected):
 		$Main/RedCoins/YoshiEgg.frame = Global.level_num
+		$Main/RedCoins/YoshiEgg/Shadow.frame = 1
+	elif ChallengeModeHandler.is_coin_permanently_collected(ChallengeModeHandler.CoinValues.YOSHI_EGG):
+		$Main/RedCoins/YoshiEgg.frame = Global.level_num + 4
+		$Main/RedCoins/YoshiEgg/Shadow.frame = 1
 	else:
 		$Main/RedCoins/YoshiEgg.frame = 0
+		$Main/RedCoins/YoshiEgg/Shadow.frame = 0
 	
 	handle_yoshi_radar()
-	
-	for i in $Main/RedCoins.get_children():
-		i.get_node("Shadow").frame = i.frame
-		i.get_node("Shadow").visible = i.visible
 	for i in $ModernHUD/TopLeft/RedCoins.get_child_count():
 		$ModernHUD/TopLeft/RedCoins.get_child(i).frame = $Main/RedCoins.get_child(i).frame
 		$ModernHUD/TopLeft/RedCoins.get_child(i).visible = $Main/RedCoins.get_child(i).visible
-		$ModernHUD/TopLeft/RedCoins.get_child(i).get_node("Shadow").frame = $Main/RedCoins.get_child(i).frame
+		$ModernHUD/TopLeft/RedCoins.get_child(i).get_node("Shadow").frame = $Main/RedCoins.get_child(i).get_node("Shadow").frame
 		$ModernHUD/TopLeft/RedCoins.get_child(i).get_node("Shadow").visible = $Main/RedCoins.get_child(i).visible
 
 func handle_yoshi_radar() -> void:

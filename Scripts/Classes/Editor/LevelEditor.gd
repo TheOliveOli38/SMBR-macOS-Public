@@ -18,6 +18,10 @@ var current_tile_flip := Vector2.ZERO ## 1 = true, 0 = false, x = hori, y = vert
 
 var last_placed_position := Vector2i.ZERO
 
+var multi_select_area := {}
+var selected_area := false
+var select_bounds := Rect2i()
+
 var menu_open := false
 var testing_level := false
 var entity_tiles := [{}, {}, {}, {}, {}]
@@ -27,6 +31,8 @@ static var playing_level := false
 var tile_list: Array[EditorTileSelector] = []
 
 var tile_offsets := {}
+var multi_select_layer := 0
+var can_place := true
 
 signal level_start
 
@@ -49,6 +55,10 @@ const MUSIC_TRACK_DIR := "res://Assets/Audio/BGM/"
 
 var select_start := Vector2i.ZERO
 var select_end := Vector2i.ZERO
+
+var copied_area := {}
+
+var area_to_save := {}
 
 signal close_confirm(save: bool)
 
@@ -80,6 +90,7 @@ const CURSOR_RULER = preload("uid://cg2wkxnmjgplf")
 const CURSOR_INSPECT = preload("uid://1l3foyjqeej")
 
 var area_selecting := false
+var multi_selecting := false
 
 var inspect_mode := false
 var inspect_menu_open := false
@@ -102,6 +113,9 @@ signal tile_selected(tile_selector: EditorTileSelector)
 var tile_menu_open := false
 
 signal editor_start
+
+var pasting_area := false
+var pasting_bounds := Rect2()
 
 enum EditorState{IDLE, TILE_MENU, MODIFYING_TILE, SAVE_MENU, SELECTING_TILE_SCENE, QUITTING, PLAYTESTING, TRACK_EDITING, CONNECTING}
 
@@ -130,6 +144,7 @@ func _ready() -> void:
 		if i == "": continue
 		$%LevelMusic.add_item(tr(music_track_names[idx]).to_upper())
 		idx += 1
+	get_blueprints()
 	load_level(0)
 	await get_tree().process_frame
 	Level.start_level_path = scene_file_path
@@ -251,7 +266,7 @@ func stop_testing() -> void:
 		return
 	cleanup()
 	return_to_editor()
-	
+
 
 func cleanup() -> void:
 	Global.reset_values()
@@ -270,7 +285,6 @@ func cleanup() -> void:
 	elif Level.can_set_time and playing_level:
 		Global.time = level.time_limit
 	Global.can_time_tick = playing_level
-	print(Global.can_time_tick)
 
 func update_music() -> void:
 	if music_track_list[bgm_id] != "":
@@ -364,26 +378,42 @@ func handle_tile_cursor() -> void:
 	tile_position.y = clamp(tile_position.y, -30, 1)
 	tile_position.x = clamp(tile_position.x, -16, INF)
 	cursor_tile_position = tile_position
-
-	inspect_mode = Input.is_action_pressed("editor_inspect") and not area_selecting
+	%AreaPlacePreview.visible = pasting_area
+	%AreaPlacePreview.size = (pasting_bounds.size + Vector2(1, 1)) * 16
+	var offset = Vector2.ZERO
+	if pasting_area:
+		if int(pasting_bounds.size.x) % 2 == 1:
+			offset.x = 8
+		if int(pasting_bounds.size.y) % 2 == 1:
+			offset.y = 8
+	if Input.is_action_just_released("mb_left"):
+		can_place = true
+	%AreaPlacePreview.global_position = ((snapped_position) - (%AreaPlacePreview.size / 2)) + offset
+	inspect_mode = Input.is_action_pressed("editor_inspect") and not area_selecting and not multi_selecting
 	if inspect_mode and current_state == EditorState.IDLE:
 		handle_inspection(tile_position)
 		return
 	if current_state == EditorState.IDLE:
 		if Input.is_action_pressed("mb_left"):
-			print([area_selecting])
 			if (Input.is_action_pressed("editor_select")) and not area_selecting:
 				area_select_start(tile_position)
-			elif Input.is_action_pressed("editor_select") == false:
+			elif Input.is_action_pressed("multi_select") and (not multi_selecting or selected_area):
+				multi_select_start(tile_position)
+			elif Input.is_action_pressed("editor_select") == false and Input.is_action_pressed("multi_select") == false:
 				area_selecting = false
-				match current_tile_type:
-					TileType.TILE:
-						place_tile(tile_position, current_layer, current_tile_coords, [current_tile_source])
-					TileType.ENTITY:
-						place_tile(tile_position, current_layer, current_entity_id)
-					TileType.TERRAIN:
-						place_tile(tile_position, current_layer, current_terrain_id)
-				target_mouse_icon = (CURSOR_PENCIL)
+				multi_select_start()
+				multi_selecting = false
+				if pasting_area:
+					paste_area(tile_position, copied_area.duplicate_deep(), current_layer)
+				elif can_place:
+					match current_tile_type:
+						TileType.TILE:
+							place_tile(tile_position, current_layer, current_tile_coords, [current_tile_source])
+						TileType.ENTITY:
+							place_tile(tile_position, current_layer, current_entity_id)
+						TileType.TERRAIN:
+							place_tile(tile_position, current_layer, current_terrain_id)
+					target_mouse_icon = (CURSOR_PENCIL)
 			
 		if Input.is_action_pressed("mb_right"):
 			if Input.is_action_pressed("editor_select") and not area_selecting:
@@ -400,11 +430,12 @@ func handle_tile_cursor() -> void:
 			selected_tile_index += 1
 	
 		if Input.is_action_just_pressed("editor_copy"):
-			copy_node(tile_position)
+			pass
 		elif Input.is_action_just_pressed("editor_cut"):
 			cut_node(tile_position)
 		elif Input.is_action_pressed("ui_paste"):
-			paste_node(tile_position)
+			if copied_area != {}:
+				pasting_area = true
 	
 		if Input.is_action_just_pressed("pick_tile"):
 			pick_tile(tile_position)
@@ -422,13 +453,28 @@ func handle_tile_cursor() -> void:
 					connection_node_found.emit(entity_tiles[current_layer][tile_position])
 					current_state = EditorState.MODIFYING_TILE
 	
-	handle_area_selecting(tile_position)
+	if not multi_selecting:
+		handle_area_selecting(tile_position)
+	if not area_selecting:
+		handle_multi_selecting(tile_position)
 	if old_index != selected_tile_index:
 		selected_tile_index = wrap(selected_tile_index, 0, tile_list.size())
 		on_tile_selected(tile_list[selected_tile_index])
 		show_scroll_preview()
 	
 	Input.set_custom_mouse_cursor(target_mouse_icon)
+
+func paste_area(tile_position := Vector2i.ZERO, area := copied_area, layer_num := current_layer, save_action := true) -> void:
+	var corner = tile_position - Vector2i(pasting_bounds.size / 2)
+	var old_area = save_area(corner, corner, corner + Vector2i(pasting_bounds.size), layer_num)
+	replace_area(corner, current_layer, copied_area, false)
+	pasting_area = false
+	can_place = false
+	if save_action:
+		undo_redo.create_action("Paste Area")
+		undo_redo.add_do_method(paste_area.bind(tile_position, area.duplicate_deep(), layer_num, false))
+		undo_redo.add_undo_method(replace_area.bind(corner, layer_num, old_area.duplicate_deep()))
+		undo_redo.commit_action(false)
 
 func pick_tile(tile_position := Vector2i.ZERO) -> void:
 	if tile_layer_nodes[current_layer].get_used_cells().has(tile_position):
@@ -475,6 +521,8 @@ func open_tile_properties(tile: Node2D) -> void:
 func area_select_start(tile_position := Vector2i.ZERO) -> void:
 	select_start = tile_position
 	area_selecting = true
+	multi_select_start(tile_position)
+	multi_selecting = false
 
 func handle_area_selecting(tile_position := Vector2i.ZERO) -> void:
 	select_end = tile_position
@@ -501,6 +549,62 @@ func handle_area_selecting(tile_position := Vector2i.ZERO) -> void:
 			mass_remove(top_corner, select_start, select_end)
 			area_selecting = false
 
+func multi_select_start(tile_position := Vector2i.ZERO) -> void:
+	select_start = tile_position
+	multi_selecting = true
+	selected_area = false
+	select_bounds = Rect2i()
+	multi_select_area = {}
+
+func handle_multi_selecting(tile_position := Vector2i.ZERO) -> void:
+	if selected_area == false:
+		select_end = tile_position
+	%MultiSelectRect.visible = multi_selecting and selected_area == false
+	%SelectedAreaRect.visible = selected_area
+	var top_corner := select_start
+	if select_start.x > select_end.x:
+		top_corner.x = select_end.x
+	if select_start.y > select_end.y:
+		top_corner.y = select_end.y
+	if selected_area == false:
+		%MultiSelectRect.global_position = top_corner * 16
+		%MultiSelectRect.size = abs(select_end - select_start) * 16 + Vector2i(16, 16)
+	else:
+		%SelectedAreaRect.global_position = select_bounds.position * 16
+		%SelectedAreaRect.size = select_bounds.size * 16 + Vector2i(16, 16)
+		if Input.is_action_just_pressed("editor_copy") or Input.is_action_just_pressed("editor_cut"):
+			top_corner = select_bounds.position
+			select_start = top_corner
+			select_end = select_start + select_bounds.size
+			pasting_bounds = get_area_bounds(top_corner, select_start, select_end, multi_select_layer)
+			copied_area = save_area(top_corner, select_start, select_end, multi_select_layer)
+			multi_selecting = false
+			selected_area = false
+			if Input.is_action_just_pressed("editor_cut"):
+				mass_remove(top_corner, select_start, select_end, multi_select_layer)
+				Global.log_comment("Area Cut!")
+			else:
+				Global.log_comment("Area Copied!")
+		if Input.is_action_just_pressed("editor_save"):
+			top_corner = select_bounds.position
+			select_start = top_corner
+			select_end = select_start + select_bounds.size
+			area_to_save = save_area(top_corner, select_start, select_end, multi_select_layer)
+			%SaveBlueprint.show()
+			current_state = EditorState.SAVE_MENU
+	if multi_selecting:
+		Input.set_custom_mouse_cursor(CURSOR_RULER)
+		if Input.is_action_just_released("mb_left"): 
+			selected_area = false
+			if is_tile_in_area(top_corner, select_start, select_end, current_layer):
+				select_bounds = get_area_bounds(top_corner, select_start, select_end, multi_select_layer)
+				multi_select_area = save_area(top_corner, select_start, select_end, current_layer)
+				selected_area = true
+				multi_select_layer = current_layer
+				print(multi_select_layer)
+				select_bounds = get_area_bounds(top_corner, select_start, select_end, multi_select_layer)
+
+
 func mass_place(top_corner := Vector2i.ZERO, select_start := Vector2i.ZERO, select_end := Vector2i.ZERO, layer_num := current_layer, thing_to_place = null, info := [], save_action := true) -> void:
 	var area = save_area(top_corner, select_start, select_end, layer_num)
 	var position := Vector2i.ZERO
@@ -515,7 +619,7 @@ func mass_place(top_corner := Vector2i.ZERO, select_start := Vector2i.ZERO, sele
 		undo_redo.commit_action(false)
 
 func mass_remove(top_corner := Vector2i.ZERO, select_start := Vector2i.ZERO, select_end := Vector2i.ZERO, layer_num := current_layer, save_action := true) -> void:
-	var area := []
+	var area := {}
 	if save_action:
 		area = save_area(top_corner, select_start, select_end, layer_num)
 	for x in abs(select_end.x - select_start.x) + 1:
@@ -528,38 +632,125 @@ func mass_remove(top_corner := Vector2i.ZERO, select_start := Vector2i.ZERO, sel
 		undo_redo.add_undo_method(replace_area.bind(top_corner, layer_num, area))
 		undo_redo.commit_action(false)
 
-func replace_area(top_corner := Vector2i.ZERO, layer_num := current_layer, area := []) -> void:
-	var x_pos := 0
-	for x in area:
-		var y_pos := 0
-		for y in x:
-			var position = top_corner + Vector2i(x_pos, y_pos)
-			if y != null:
-				if y is Array:
-					place_tile(position, layer_num, y[1], [y[0]], false)
-				else:
-					place_tile(position, layer_num, y.duplicate(), [], false)
-			else:
-				remove_tile(position, layer_num, false)
-			y_pos += 1
-		x_pos += 1
-
-func save_area(top_corner := Vector2i.ZERO, select_start := Vector2i.ZERO, select_end := Vector2i.ZERO, layer_num := current_layer) -> Array:
-	var x_arr := []
+func get_area_bounds(top_corner := Vector2i.ZERO, select_start := Vector2i.ZERO, select_end := Vector2i.ZERO, layer_num := current_layer) -> Rect2i:
+	
+	var smallest_x := 99999
+	var smallest_y := 99999
+	var largest_x := -1
+	var largest_y := -1
+	
 	for x in abs(select_end.x - select_start.x) + 1:
-		var y_arr := []
 		for y in abs(select_end.y - select_start.y) + 1:
 			var position = top_corner + Vector2i(x, y)
 			var tile = null
 			if entity_tiles[layer_num].get(position, null) != null:
-				y_arr.append(entity_tiles[layer_num].get(position).duplicate())
+				if tile is not Player:
+					tile = Vector2i(x, y)
 			elif tile_layer_nodes[layer_num].get_used_cells().has(position):
-				y_arr.append([tile_layer_nodes[layer_num].get_cell_source_id(position), tile_layer_nodes[layer_num].get_cell_atlas_coords(position)])
+				tile = Vector2i(x, y)
+			if tile != null:
+				if tile.x > largest_x:
+					largest_x = tile.x
+				if tile.y > largest_y:
+					largest_y = tile.y
+				if tile.x < smallest_x:
+					smallest_x = tile.x
+				if tile.y < smallest_y:
+					smallest_y = tile.y
+	return Rect2i(top_corner.x + smallest_x, top_corner.y + smallest_y, abs(smallest_x - largest_x), abs(smallest_y - largest_y))
+
+
+
+func replace_area(top_corner := Vector2i.ZERO, layer_num := current_layer, area := {}, delete_empty := true) -> void:
+	if delete_empty:
+		for i in area["Empty"].split("="):
+			var decode = i.split(",", false)
+			if decode.is_empty() == false:
+				var position = top_corner + Vector2i(int(decode[0]), int(decode[1]))
+				remove_tile(position, layer_num, false)
+	for i in area["Tiles"].split("="):
+		var decode = i.split(",", false)
+		if decode.is_empty() == false:
+			var position = top_corner + Vector2i(int(decode[0]), int(decode[1]))
+			var source_id = int(decode[2])
+			var atlas_coords = Vector2i(int(decode[3]), int(decode[4]))
+			place_tile(position, layer_num, atlas_coords, [source_id], false)
+			BetterTerrain.update_terrain_cell(tile_layer_nodes[layer_num], position, true)
+	for i in area["Entities"].split("="):
+		var decode = i.split(",", false)
+		if decode.is_empty() == false:
+			var position = top_corner + Vector2i(int(decode[0]), int(decode[1]))
+			var entity_id = decode[2]
+			if decode.size() > 3:
+				var idx := 3
+				var entity_string := "0,0,"
+				for x in decode.size() - 3:
+					entity_string += decode[idx] + ","
+					idx += 1
+				place_tile(position, layer_num, entity_id, [entity_string], false)
 			else:
-				y_arr.append(null)
-		x_arr.append(y_arr)
-	
-	return x_arr
+				place_tile(position, layer_num, entity_id, [], false)
+	for i in area["Connections"].split("="):
+		var decode = i.split(",", false)
+		if decode.is_empty():
+			continue
+		var true_source_position = top_corner + Vector2i(int(decode[0]), int(decode[1]))
+		var true_target_position = top_corner + Vector2i(int(decode[2]), int(decode[3]))
+		var source = entity_tiles[layer_num][true_source_position]
+		source.get_node("SignalExposer").connections.append([layer_num, true_target_position])
+
+func save_area(top_corner := Vector2i.ZERO, select_start := Vector2i.ZERO, select_end := Vector2i.ZERO, layer_num := current_layer) -> Dictionary:
+	var dict := {"Tiles": "", "Entities": "", "Connections": "", "Empty": "", "Size": "0,0"}
+	var entities := []
+	print(layer_num)
+	var bounds := get_area_bounds(top_corner, select_start, select_end, layer_num)
+	for x in abs(select_end.x - select_start.x) + 1:
+		for y in abs(select_end.y - select_start.y) + 1:
+			var position = top_corner + Vector2i(x, y)
+			if entity_tiles[layer_num].get(position, null) != null:
+				entities.append(entity_tiles[layer_num].get(position))
+	for x in abs(select_end.x - select_start.x) + 1:
+		for y in abs(select_end.y - select_start.y) + 1:
+			var position = top_corner + Vector2i(x, y)
+			if entity_tiles[layer_num].get(position, null) != null:
+				var entity_tile = entity_tiles[layer_num].get(position)
+				if entity_tile is Player:
+					continue
+				var entity_string = str(x) + "," + str(y) + "," + EntityIDMapper.get_map_id(entity_tile.scene_file_path)
+				if entity_tile.has_node("EditorPropertyExposer"):
+					entity_string += entity_tile.get_node("EditorPropertyExposer").get_string()
+				if entity_tile.has_node("SignalExposer"):
+					var connection_string := ""
+					for i in entity_tile.get_node("SignalExposer").connections:
+						var target_entity = entity_tiles[i[0]].get(Vector2i(i[1].x, i[1].y))
+						var local_position = position - top_corner
+						var local_target_position = abs(Vector2i(i[1].x, i[1].y) - top_corner)
+						if entities.has(target_entity):
+							connection_string += (str(local_position.x) + "," + str(local_position.y) + "," + str(local_target_position.x) + "," + str(local_target_position.y) + "=")
+					if connection_string != "":
+						dict["Connections"] += connection_string
+				dict["Entities"] += entity_string + "="
+			elif tile_layer_nodes[layer_num].get_used_cells().has(position):
+				var local_position = abs(position - top_corner)
+				var atlas_position = tile_layer_nodes[layer_num].get_cell_atlas_coords(position)
+				var tile_string = str(local_position.x) + "," + str(local_position.y) + "," + str(tile_layer_nodes[layer_num].get_cell_source_id(position)) + "," + str(atlas_position.x) + "," + str(atlas_position.y) + "="
+				dict["Tiles"] += tile_string
+			else:
+				var local_position = abs(position - top_corner)
+				dict["Empty"] += str(local_position.x) + "," + str(local_position.y) + "="
+	dict["Size"] = str(bounds.size.x) + "," + str(bounds.size.y)
+	print(dict)
+	return dict
+
+func is_tile_in_area(top_corner := Vector2i.ZERO, select_start := Vector2i.ZERO, select_end := Vector2i.ZERO, layer_num := current_layer) -> bool:
+	for x in abs(select_end.x - select_start.x) + 1:
+		for y in abs(select_end.y - select_start.y) + 1:
+			var position = top_corner + Vector2i(x, y)
+			if entity_tiles[layer_num].get(position, null) != null:
+				return true
+			elif tile_layer_nodes[layer_num].get_used_cells().has(position):
+				return true
+	return false
 
 func show_scroll_preview() -> void:
 	$TileCursor/Previews.show()
@@ -661,6 +852,8 @@ func place_tile(tile_position := Vector2i.ZERO, layer_num := current_layer, tile
 		entity_layer_nodes[layer_num].add_child(node)
 		node.reset_physics_interpolation()
 		entity_tiles[layer_num].set(tile_position, node)
+		if info.is_empty() == false and node.has_node("EditorPropertyExposer"):
+			node.get_node("EditorPropertyExposer").apply_string(info[0])
 	elif tile_to_place is Node:
 		tile_to_place = tile_to_place.duplicate()
 		if entity_tiles[layer_num].get(tile_position) != null:
@@ -697,7 +890,6 @@ func remove_tile(tile_position := Vector2i.ZERO, layer_num := current_layer, sav
 			return
 		if save_action:
 			old_node = entity_tiles[layer_num].get(tile_position).duplicate()
-			print("Node Saved: ", old_node)
 		entity_tiles[layer_num].get(tile_position).queue_free()
 	else:
 		entity_tiles[layer_num].erase(tile_position)
@@ -895,3 +1087,39 @@ func clear_level() -> void:
 	sub_areas = [null, null, null, null, null]
 	level_file = BLANK_FILE.duplicate_deep()
 	load_level(0)
+
+func set_state(state := EditorState.IDLE) -> void:
+	current_state = state
+
+func save_blueprint() -> void:
+	var file_name = %BlueprintName.text.to_pascal_case() + ".mbp"
+	var file = FileAccess.open(Global.config_path.path_join("blueprints").path_join(file_name), FileAccess.WRITE)
+	file.store_string($LevelSaver.compress_string(JSON.stringify(area_to_save)))
+	file.close()
+	Global.log_comment(file_name + " saved.")
+	area_to_save = {}
+
+func load_blueprint(blueprint_path := "") -> void:
+	var file = FileAccess.open(blueprint_path, FileAccess.READ).get_as_text()
+	var json = JSON.parse_string($LevelSaver.decompress_string(file))
+	copied_area = json
+	pasting_area = true
+	var size_str = json["Size"].split(",", false)
+	var size = Vector2(int(size_str[0]), int(size_str[1]))
+	pasting_bounds = Rect2i(-ceil((size.x + 1) / 2), -ceil((size.y + 1) / 2), size.x, size.y)
+	pasting_bounds.position += Vector2(16, 16)
+	print(pasting_bounds)
+	$TileMenu.hide()
+	current_state = EditorState.IDLE
+
+const BLUEPRINT_CONTAINER = preload("uid://cgij8pg22drfx")
+
+func get_blueprints() -> void:
+	for i in %Blueprints.get_children():
+		i.queue_free()
+	var blueprint_path = Global.config_path.path_join("blueprints")
+	for i in DirAccess.get_files_at(blueprint_path):
+		var container = BLUEPRINT_CONTAINER.instantiate()
+		container.path = blueprint_path.path_join(i)
+		%Blueprints.add_child(container)
+		container.blueprint_selected.connect(load_blueprint)

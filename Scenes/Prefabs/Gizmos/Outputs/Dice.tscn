@@ -14,7 +14,7 @@ percentage_chance = 50
 texture = ExtResource("3_rd23s")
 hframes = 1
 
-[node name="PropertyExposer" type="Node" parent="." index="2" unique_id=1827714215]
+[node name="EditorPropertyExposer" type="Node" parent="." index="2" unique_id=1827714215]
 script = ExtResource("4_fi5x3")
 properties = Array[String](["percentage_chance"])
 properties_force_selector = Dictionary[String, PackedScene]({
