@@ -49,25 +49,28 @@ func handle_posing() -> void:
 	# SkyanUltra: Moved PoseDoor behavior to LevelExit for easier access and easier sorting
 	# of player behavior. Additionally added similar behavior for Toad and Peach NPCs in
 	# castle levels.
-	if player.in_cutscene:
-		if npc_count == [0, 0]:
-			for i: Node2D in get_tree().get_nodes_in_group("EndCastles"):
-				var pose_position = i.global_position.x + pose_offset
-				if (player.global_position[0] >= pose_position and player.global_position[0] <= pose_position + 24) and player.can_pose_anim and player.sprite.sprite_frames.has_animation("PoseDoor"):
-					player.is_posing = true; player.can_pose_anim = false
-					player.global_position = Vector2(pose_position, i.global_position.y)
+	if not player.in_cutscene:
+		return
+	if npc_count == [0, 0]:
+		for i: Node2D in get_tree().get_nodes_in_group("EndCastles"):
+			var pose_position = i.global_position.x + pose_offset
+			if (player.global_position[0] >= pose_position and player.global_position[0] <= pose_position + 24) and player.can_pose_anim and player.sprite.sprite_frames.has_animation("PoseDoor"):
+				player.is_posing = true; player.can_pose_anim = false
+				player.global_position = Vector2(pose_position, i.global_position.y)
+				player.play_animation(pose_type)
+				player.sprite.animation_finished.connect(on_pose_finished.bind())
+				player.sprite.animation_looped.connect(on_pose_finished.bind())
+	else:
+		for i: Node2D in get_tree().get_nodes_in_group("CastleNPCs"):
+			var pose_position = i.global_position.x + pose_offset
+			if (player.global_position[0] >= pose_position and player.global_position[0] <= pose_position + 24):
+				player.is_posing = true; player.can_pose_castle_anim = false
+				player.global_position = Vector2(pose_position, i.global_position.y)
+				player.velocity.x = 0
+				if player.sprite.sprite_frames.has_animation(pose_type):
 					player.play_animation(pose_type)
-					player.sprite.animation_finished.connect(on_pose_finished.bind())
-					player.sprite.animation_looped.connect(on_pose_finished.bind())
-		else:
-			for i: Node2D in get_tree().get_nodes_in_group("CastleNPCs"):
-				var pose_position = i.global_position.x + pose_offset
-				if (player.global_position[0] >= pose_position and player.global_position[0] <= pose_position + 24):
-					player.is_posing = true
-					player.global_position = Vector2(pose_position, i.global_position.y)
-				if player.is_posing and player.can_pose_castle_anim and player.sprite.sprite_frames.has_animation("PoseToad"):
-					player.can_pose_castle_anim = false
-					player.play_animation(pose_type)
+				else:
+					player.normal_state.handle_animations()
 
 func on_pose_finished() -> void:
 	player.is_posing = false
