@@ -97,7 +97,7 @@ func start_travelling() -> void:
 		return
 	moving = true
 	var idx := 0
-	var move_speed = 1.0 / (speed * 2)
+	var move_speed = 1.0 / (speed * 1.5)
 	for i in get_tree().get_nodes_in_group("SnakePieces"):
 		i.get_node("Sprite").play("Moving")
 	for i in (path.size()) - (length - 1):

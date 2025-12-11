@@ -44,16 +44,16 @@ position = Vector2(1016, -32)
 scale = Vector2(1, 1.36331)
 reset_pos = Vector2(-56, 0)
 
-[node name="PickAPathTeleport2" parent="PickAPathTeleport" unique_id=1594008739 instance=ExtResource("7_sbjt5")]
-position = Vector2(-56, -58.6807)
-scale = Vector2(1, 1.34429)
-reset_pos = Vector2(-56, 0)
-
 [node name="PickAPathPoint" parent="PickAPathTeleport" unique_id=1442743705 instance=ExtResource("8_wflwc")]
 position = Vector2(-288, 0)
 
 [node name="PickAPathPoint2" parent="PickAPathTeleport" unique_id=1657013155 instance=ExtResource("8_wflwc")]
 position = Vector2(-728, 0)
+
+[node name="PickAPathTeleport3" parent="PickAPathTeleport" unique_id=1594008739 instance=ExtResource("7_sbjt5")]
+position = Vector2(-56, -58.680702)
+scale = Vector2(1, 1.34429)
+reset_pos = Vector2(-56, 0)
 
 [node name="Enemies" type="Node" parent="." unique_id=270013850]
 
@@ -180,6 +180,11 @@ position = Vector2(0, -160.00002)
 scale = Vector2(1, 1.34429)
 reset_pos = Vector2(-56, 0)
 
+[node name="PickAPathTeleport3" parent="SettingObjectNode/PickAPathTeleport" unique_id=1623936940 instance=ExtResource("7_sbjt5")]
+position = Vector2(-56, -448.00003)
+scale = Vector2(1, 6.33)
+reset_pos = Vector2(-56, 0)
+
 [node name="PickAPathPoint" parent="SettingObjectNode/PickAPathTeleport" unique_id=1371546631 instance=ExtResource("8_wflwc")]
 position = Vector2(-184, 0)
 
@@ -194,20 +199,20 @@ scale = Vector2(1, 7.13)
 [connection signal="player_block_hit" from="Tiles/InvisibleQuestionBlock" to="Tiles/InvisibleQuestionBlock/BlockAnimations" method="bounce_block" unbinds=1]
 [connection signal="shell_block_hit" from="Tiles/InvisibleQuestionBlock" to="Tiles/InvisibleQuestionBlock" method="dispense_item" unbinds=1]
 [connection signal="shell_block_hit" from="Tiles/InvisibleQuestionBlock" to="Tiles/InvisibleQuestionBlock/BlockAnimations" method="bounce_block" unbinds=1]
-[connection signal="block_destroyed" from="Tiles/@AnimatableBody2D@82074" to="Tiles/@AnimatableBody2D@82074/LevelPersistance" method="set_as_active_2"]
-[connection signal="block_emptied" from="Tiles/@AnimatableBody2D@82074" to="Tiles/@AnimatableBody2D@82074/LevelPersistance" method="set_as_active"]
-[connection signal="player_block_hit" from="Tiles/@AnimatableBody2D@82074" to="Tiles/@AnimatableBody2D@82074" method="player_mushroom_check"]
-[connection signal="player_block_hit" from="Tiles/@AnimatableBody2D@82074" to="Tiles/@AnimatableBody2D@82074" method="dispense_item" unbinds=1]
-[connection signal="player_block_hit" from="Tiles/@AnimatableBody2D@82074" to="Tiles/@AnimatableBody2D@82074/BlockAnimations" method="bounce_block" unbinds=1]
-[connection signal="shell_block_hit" from="Tiles/@AnimatableBody2D@82074" to="Tiles/@AnimatableBody2D@82074" method="dispense_item" unbinds=1]
-[connection signal="shell_block_hit" from="Tiles/@AnimatableBody2D@82074" to="Tiles/@AnimatableBody2D@82074/BlockAnimations" method="bounce_block" unbinds=1]
-[connection signal="block_destroyed" from="Tiles/@AnimatableBody2D@82075" to="Tiles/@AnimatableBody2D@82075/LevelPersistance" method="set_as_active_2"]
-[connection signal="block_emptied" from="Tiles/@AnimatableBody2D@82075" to="Tiles/@AnimatableBody2D@82075/LevelPersistance" method="set_as_active"]
-[connection signal="player_block_hit" from="Tiles/@AnimatableBody2D@82075" to="Tiles/@AnimatableBody2D@82075" method="player_mushroom_check"]
-[connection signal="player_block_hit" from="Tiles/@AnimatableBody2D@82075" to="Tiles/@AnimatableBody2D@82075" method="dispense_item" unbinds=1]
-[connection signal="player_block_hit" from="Tiles/@AnimatableBody2D@82075" to="Tiles/@AnimatableBody2D@82075/BlockAnimations" method="bounce_block" unbinds=1]
-[connection signal="shell_block_hit" from="Tiles/@AnimatableBody2D@82075" to="Tiles/@AnimatableBody2D@82075" method="dispense_item" unbinds=1]
-[connection signal="shell_block_hit" from="Tiles/@AnimatableBody2D@82075" to="Tiles/@AnimatableBody2D@82075/BlockAnimations" method="bounce_block" unbinds=1]
+[connection signal="block_destroyed" from="Tiles/@AnimatableBody2D@48399" to="Tiles/@AnimatableBody2D@48399/LevelPersistance" method="set_as_active_2"]
+[connection signal="block_emptied" from="Tiles/@AnimatableBody2D@48399" to="Tiles/@AnimatableBody2D@48399/LevelPersistance" method="set_as_active"]
+[connection signal="player_block_hit" from="Tiles/@AnimatableBody2D@48399" to="Tiles/@AnimatableBody2D@48399" method="player_mushroom_check"]
+[connection signal="player_block_hit" from="Tiles/@AnimatableBody2D@48399" to="Tiles/@AnimatableBody2D@48399" method="dispense_item" unbinds=1]
+[connection signal="player_block_hit" from="Tiles/@AnimatableBody2D@48399" to="Tiles/@AnimatableBody2D@48399/BlockAnimations" method="bounce_block" unbinds=1]
+[connection signal="shell_block_hit" from="Tiles/@AnimatableBody2D@48399" to="Tiles/@AnimatableBody2D@48399" method="dispense_item" unbinds=1]
+[connection signal="shell_block_hit" from="Tiles/@AnimatableBody2D@48399" to="Tiles/@AnimatableBody2D@48399/BlockAnimations" method="bounce_block" unbinds=1]
+[connection signal="block_destroyed" from="Tiles/@AnimatableBody2D@48400" to="Tiles/@AnimatableBody2D@48400/LevelPersistance" method="set_as_active_2"]
+[connection signal="block_emptied" from="Tiles/@AnimatableBody2D@48400" to="Tiles/@AnimatableBody2D@48400/LevelPersistance" method="set_as_active"]
+[connection signal="player_block_hit" from="Tiles/@AnimatableBody2D@48400" to="Tiles/@AnimatableBody2D@48400" method="player_mushroom_check"]
+[connection signal="player_block_hit" from="Tiles/@AnimatableBody2D@48400" to="Tiles/@AnimatableBody2D@48400" method="dispense_item" unbinds=1]
+[connection signal="player_block_hit" from="Tiles/@AnimatableBody2D@48400" to="Tiles/@AnimatableBody2D@48400/BlockAnimations" method="bounce_block" unbinds=1]
+[connection signal="shell_block_hit" from="Tiles/@AnimatableBody2D@48400" to="Tiles/@AnimatableBody2D@48400" method="dispense_item" unbinds=1]
+[connection signal="shell_block_hit" from="Tiles/@AnimatableBody2D@48400" to="Tiles/@AnimatableBody2D@48400/BlockAnimations" method="bounce_block" unbinds=1]
 [connection signal="victory_begin" from="CastleBridge" to="ChallengeNodes/CastleChallengeEnd" method="begin"]
 
 [editable path="Bowser"]

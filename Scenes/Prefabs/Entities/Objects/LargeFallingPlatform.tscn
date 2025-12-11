@@ -9,7 +9,7 @@ size = Vector2(48, 8)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_w0y68"]
 size = Vector2(48, 10)
 
-[node name="FallingPlatform" instance=ExtResource("1_6dtc5")]
+[node name="FallingPlatform" unique_id=1846663454 instance=ExtResource("1_6dtc5")]
 
 [node name="TextureRect" parent="." index="0"]
 offset_left = -24.0
@@ -21,7 +21,7 @@ shape = SubResource("RectangleShape2D_jcaah")
 [node name="CollisionShape2D" parent="PlayerDetect" index="0"]
 shape = SubResource("RectangleShape2D_w0y68")
 
-[node name="SecondQuestReplacer" type="Node" parent="." index="4"]
+[node name="SecondQuestReplacer" type="Node" parent="." index="4" unique_id=891270654]
 script = ExtResource("2_jcaah")
 new_scene = "uid://bm8obwlkm56wb"
 metadata/_custom_type_script = "uid://d0mqkvopasu8k"

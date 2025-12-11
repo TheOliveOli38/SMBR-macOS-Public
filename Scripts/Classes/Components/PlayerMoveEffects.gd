@@ -42,6 +42,7 @@ func handle_move_fx(player: Player, force_kill: bool) -> void:
 		and on_floor
 		and (player.skidding and player.skid_frames > 2 or player.crouching)
 		and vel_x > 25
+		and player.on_ice == false
 	)
 
 	var skid_active := on_floor and player.skidding

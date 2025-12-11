@@ -1,4 +1,4 @@
-[gd_scene load_steps=267 format=3 uid="uid://gbcmqonky63j"]
+[gd_scene load_steps=262 format=3 uid="uid://gbcmqonky63j"]
 
 [ext_resource type="Script" uid="uid://c2lnc7vnq3xth" path="res://Scripts/Classes/Editor/LevelEditor.gd" id="1_0qbyu"]
 [ext_resource type="Texture2D" uid="uid://cbha2l6hg1kfo" path="res://Assets/Sprites/UI/EditorGrid.png" id="2_8q7yr"]
@@ -90,7 +90,7 @@
 [ext_resource type="JSON" path="res://Assets/Sprites/Enemies/Barrel.json" id="102_6c7k7"]
 [ext_resource type="JSON" path="res://Assets/Sprites/Blocks/OnOffSwitch.json" id="103_mbniv"]
 [ext_resource type="JSON" path="res://Assets/Sprites/Tilesets/Platform.json" id="104_111c4"]
-[ext_resource type="Texture2D" uid="uid://b6llxbiv825av" path="res://Assets/Sprites/Editor/PlatformIcons/SideToSideVerrt.png" id="105_ipwxy"]
+[ext_resource type="Texture2D" uid="uid://dsncqqhfsnq6s" path="res://Assets/Sprites/Editor/RotationIcon.png" id="106_3c4c7"]
 [ext_resource type="JSON" path="res://Assets/Sprites/Enemies/AngrySun.json" id="106_ji0c6"]
 [ext_resource type="JSON" path="res://Assets/Sprites/Enemies/ChainChomp.json" id="107_0p3ev"]
 [ext_resource type="JSON" path="res://Assets/Sprites/Blocks/OnOffBlockRed.json" id="107_mbniv"]
@@ -99,7 +99,6 @@
 [ext_resource type="JSON" path="res://Assets/Sprites/Enemies/HappyMoon.json" id="108_fvohb"]
 [ext_resource type="JSON" path="res://Assets/Sprites/Enemies/SpikeTop.json" id="108_ji0c6"]
 [ext_resource type="JSON" path="res://Assets/Sprites/Blocks/BlueOnOffBlock.json" id="109_c84f5"]
-[ext_resource type="Texture2D" uid="uid://cke2nve5v64am" path="res://Assets/Sprites/Editor/PlatformIcons/Falling.png" id="111_4b5os"]
 [ext_resource type="Script" uid="uid://dja6281w30iv0" path="res://Scripts/UI/TextValidator.gd" id="114_cjvlm"]
 [ext_resource type="Texture2D" uid="uid://bi13n4mw0to20" path="res://Assets/Sprites/Blocks/TimedBooBlock.png" id="114_swqrt"]
 [ext_resource type="Texture2D" uid="uid://cv27sth0k3amk" path="res://Assets/Sprites/Blocks/SwitchSpike.png" id="118_xde7w"]
@@ -126,7 +125,6 @@
 [ext_resource type="JSON" path="res://Assets/Sprites/Blocks/BubbleNoteBlock.json" id="151_26bgm"]
 [ext_resource type="Texture2D" uid="uid://bu83phly7km01" path="res://Assets/Sprites/Editor/Gizmos/PlayerDetection.png" id="153_gf7vd"]
 [ext_resource type="PackedScene" uid="uid://crmu32j38j4y0" path="res://Scenes/Prefabs/Gizmos/Inputs/PlayerDetection.tscn" id="154_nxlms"]
-[ext_resource type="Texture2D" uid="uid://dfpbjnd1o5tig" path="res://Assets/Sprites/Tilesets/OnOffPlatform.png" id="155_i2jbr"]
 [ext_resource type="Texture2D" uid="uid://cui738lv33yo8" path="res://Assets/Sprites/Editor/Gizmos/PlayerEventDetection.png" id="155_k5kal"]
 [ext_resource type="Texture2D" uid="uid://bcns43fy5y3n7" path="res://Assets/Sprites/Editor/Gizmos/Lamp.png" id="155_wo43l"]
 [ext_resource type="PackedScene" uid="uid://wuilwn5k1uqk" path="res://Scenes/Prefabs/Gizmos/Inputs/PlayerEventDetection.tscn" id="156_6c7k7"]
@@ -333,18 +331,6 @@ region = Rect2(16, 0, 16, 16)
 [sub_resource type="AtlasTexture" id="AtlasTexture_jt16h"]
 atlas = ExtResource("11_24ald")
 region = Rect2(24, 0, 8, 8)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_i2jbr"]
-atlas = ExtResource("155_i2jbr")
-region = Rect2(0, 0, 16, 8)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_qebwb"]
-atlas = ExtResource("155_i2jbr")
-region = Rect2(0, 8, 16, 8)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_cr6gn"]
-atlas = ExtResource("155_i2jbr")
-region = Rect2(0, 8, 16, 8)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dl3il"]
 atlas = ExtResource("11_24ald")
@@ -4078,200 +4064,45 @@ texture = ExtResource("22_3cjpb")
 expand_mode = 1
 stretch_mode = 3
 
-[node name="SideToSideVert" type="Control" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Objects/MarginContainer/GridContainer" unique_id=476299463]
+[node name="Platforms" type="Control" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Objects/MarginContainer/GridContainer" unique_id=971594654]
 custom_minimum_size = Vector2(16, 16)
 layout_mode = 2
 mouse_force_pass_scroll_events = false
 script = ExtResource("20_jc7xg")
 
-[node name="SmallPlat" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Objects/MarginContainer/GridContainer/SideToSideVert" unique_id=1991876770 groups=["Selectors"] instance=ExtResource("8_wkmjk")]
-layout_mode = 0
-offset_right = 16.0
-offset_bottom = 16.0
-tile_name = "OBJ_PLAT_SIDE_VERT"
-type = 1
-icon_texture = ExtResource("104_111c4")
-icon_region_override = Rect2(0, 0, 16, 8)
-entity_id = "A0"
-
-[node name="BigPlat" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Objects/MarginContainer/GridContainer/SideToSideVert" unique_id=1076097727 groups=["Selectors"] instance=ExtResource("8_wkmjk")]
-layout_mode = 0
-offset_right = 16.0
-offset_bottom = 16.0
-tile_name = "OBJ_PLAT_SIDE_VERT_BIG"
-type = 1
-icon_texture = ExtResource("104_111c4")
-icon_region_override = Rect2(0, 0, 16, 8)
-secondary_icon_texture = ExtResource("105_ipwxy")
-entity_id = "A1"
-
-[node name="TextureRect" type="TextureRect" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Objects/MarginContainer/GridContainer/SideToSideVert" unique_id=378252611]
+[node name="TextureRect" type="TextureRect" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Objects/MarginContainer/GridContainer/Platforms" unique_id=1433900642]
 layout_mode = 1
-anchors_preset = 15
+anchors_preset = -1
+anchor_left = 1.0
 anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+offset_left = -16.0
+offset_bottom = 16.0
+grow_horizontal = 0
 mouse_filter = 2
 texture = ExtResource("22_3cjpb")
-expand_mode = 1
-stretch_mode = 3
 
-[node name="SideToSideHori" type="Control" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Objects/MarginContainer/GridContainer" unique_id=566183836]
-custom_minimum_size = Vector2(16, 16)
-layout_mode = 2
-mouse_force_pass_scroll_events = false
-script = ExtResource("20_jc7xg")
-
-[node name="SmallPlat" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Objects/MarginContainer/GridContainer/SideToSideHori" unique_id=1186240816 groups=["Selectors"] instance=ExtResource("8_wkmjk")]
+[node name="MovingPlatform" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Objects/MarginContainer/GridContainer/Platforms" unique_id=1927187442 groups=["Selectors"] instance=ExtResource("8_wkmjk")]
 layout_mode = 0
 offset_right = 16.0
 offset_bottom = 16.0
-tile_name = "OBJ_PLAT_SIDE_HORI"
+tile_name = "OBJ_MOVING_PLATFORM"
 type = 1
 icon_texture = ExtResource("104_111c4")
-icon_region_override = Rect2(0, 0, 16, 8)
+icon_region_override = Rect2(0, 0, 16, 16)
 secondary_icon_texture = ExtResource("108_73mr2")
-entity_id = "A2"
+entity_id = "DE"
 
-[node name="BigPlat" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Objects/MarginContainer/GridContainer/SideToSideHori" unique_id=1575285813 groups=["Selectors"] instance=ExtResource("8_wkmjk")]
+[node name="Looping" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Objects/MarginContainer/GridContainer/Platforms" unique_id=520436004 groups=["Selectors"] instance=ExtResource("8_wkmjk")]
 layout_mode = 0
 offset_right = 16.0
 offset_bottom = 16.0
-tile_name = "OBJ_PLAT_SIDE_HORI_BIG"
+tile_name = "OBJ_LOOPING_PLATFORM"
 type = 1
 icon_texture = ExtResource("104_111c4")
-icon_region_override = Rect2(0, 0, 16, 8)
-secondary_icon_texture = ExtResource("108_73mr2")
-entity_id = "A3"
-
-[node name="TextureRect" type="TextureRect" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Objects/MarginContainer/GridContainer/SideToSideHori" unique_id=1696071175]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-texture = ExtResource("22_3cjpb")
-expand_mode = 1
-stretch_mode = 3
-
-[node name="SideToSideVertOnOff" type="Control" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Objects/MarginContainer/GridContainer" unique_id=1081713338]
-custom_minimum_size = Vector2(16, 16)
-layout_mode = 2
-mouse_force_pass_scroll_events = false
-script = ExtResource("20_jc7xg")
-
-[node name="SmallPlat" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Objects/MarginContainer/GridContainer/SideToSideVertOnOff" unique_id=471080871 groups=["Selectors"] instance=ExtResource("8_wkmjk")]
-layout_mode = 0
-offset_right = 16.0
-offset_bottom = 16.0
-tile_name = "OBJ_PLAT_ON_VERT"
-type = 1
-icon_texture = SubResource("AtlasTexture_i2jbr")
-secondary_icon_texture = ExtResource("105_ipwxy")
-entity_id = "Bi"
-
-[node name="SmallPlat2" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Objects/MarginContainer/GridContainer/SideToSideVertOnOff" unique_id=155394708 groups=["Selectors"] instance=ExtResource("8_wkmjk")]
-layout_mode = 0
-offset_right = 16.0
-offset_bottom = 16.0
-tile_name = "OBJ_PLAT_OFF_VERT"
-type = 1
-icon_texture = SubResource("AtlasTexture_qebwb")
-secondary_icon_texture = ExtResource("105_ipwxy")
-entity_id = "Bj"
-
-[node name="TextureRect" type="TextureRect" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Objects/MarginContainer/GridContainer/SideToSideVertOnOff" unique_id=264602993]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-texture = ExtResource("22_3cjpb")
-expand_mode = 1
-stretch_mode = 3
-
-[node name="SideToSideHoriOnOff2" type="Control" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Objects/MarginContainer/GridContainer" unique_id=698150614]
-custom_minimum_size = Vector2(16, 16)
-layout_mode = 2
-mouse_force_pass_scroll_events = false
-script = ExtResource("20_jc7xg")
-
-[node name="SmallPlat" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Objects/MarginContainer/GridContainer/SideToSideHoriOnOff2" unique_id=115161404 groups=["Selectors"] instance=ExtResource("8_wkmjk")]
-layout_mode = 0
-offset_right = 16.0
-offset_bottom = 16.0
-tile_name = "OBJ_PLAT_ON_HORI"
-type = 1
-icon_texture = SubResource("AtlasTexture_i2jbr")
-secondary_icon_texture = ExtResource("108_73mr2")
-entity_id = "Bk"
-
-[node name="SmallPlat2" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Objects/MarginContainer/GridContainer/SideToSideHoriOnOff2" unique_id=1818730532 groups=["Selectors"] instance=ExtResource("8_wkmjk")]
-layout_mode = 0
-offset_right = 16.0
-offset_bottom = 16.0
-tile_name = "OBJ_PLAT_OFF_HORI"
-type = 1
-icon_texture = SubResource("AtlasTexture_cr6gn")
-secondary_icon_texture = ExtResource("108_73mr2")
-entity_id = "Bl"
-
-[node name="TextureRect" type="TextureRect" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Objects/MarginContainer/GridContainer/SideToSideHoriOnOff2" unique_id=1983532398]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-texture = ExtResource("22_3cjpb")
-expand_mode = 1
-stretch_mode = 3
-
-[node name="FallingPlatform" type="Control" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Objects/MarginContainer/GridContainer" unique_id=269111017]
-custom_minimum_size = Vector2(16, 16)
-layout_mode = 2
-mouse_force_pass_scroll_events = false
-script = ExtResource("20_jc7xg")
-
-[node name="SmallPlat" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Objects/MarginContainer/GridContainer/FallingPlatform" unique_id=791467873 groups=["Selectors"] instance=ExtResource("8_wkmjk")]
-layout_mode = 0
-offset_right = 16.0
-offset_bottom = 16.0
-tile_name = "OBJ_PLAT_FALLING"
-type = 1
-icon_texture = ExtResource("104_111c4")
-icon_region_override = Rect2(8, 0, 16, 8)
-secondary_icon_texture = ExtResource("111_4b5os")
-entity_id = "A4"
-
-[node name="BigPlat" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Objects/MarginContainer/GridContainer/FallingPlatform" unique_id=115264647 groups=["Selectors"] instance=ExtResource("8_wkmjk")]
-layout_mode = 0
-offset_right = 16.0
-offset_bottom = 16.0
-tile_name = "OBJ_PLAT_FALLING_BIG"
-type = 1
-icon_texture = ExtResource("104_111c4")
-icon_region_override = Rect2(0, 0, 16, 8)
-secondary_icon_texture = ExtResource("111_4b5os")
-entity_id = "A5"
-
-[node name="TextureRect" type="TextureRect" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Objects/MarginContainer/GridContainer/FallingPlatform" unique_id=25022468]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-texture = ExtResource("22_3cjpb")
-expand_mode = 1
-stretch_mode = 3
+icon_region_override = Rect2(0, 0, 16, 16)
+secondary_icon_texture = ExtResource("106_3c4c7")
+secondary_icon_region_override = Rect2(16, 0, 16, 16)
+entity_id = "DF"
 
 [node name="Conveyors" type="Control" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Objects/MarginContainer/GridContainer" unique_id=1691318170]
 custom_minimum_size = Vector2(16, 16)
@@ -5996,7 +5827,6 @@ theme_override_styles/pressed = SubResource("StyleBoxTexture_xw16o")
 theme_override_styles/hover = SubResource("StyleBoxTexture_xw16o")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_jdin3")
 toggle_mode = true
-button_pressed = true
 
 [node name="ShowGrid" type="Button" parent="CanvasLayer/Tools/MarginContainer/HBoxContainer/TheRest" unique_id=1217643034]
 custom_minimum_size = Vector2(12, 12)
@@ -6460,6 +6290,7 @@ process_callback = 0
 wait_time = 0.25
 
 [node name="PlayerTrail" type="Node2D" parent="." unique_id=2144528200]
+visible = false
 
 [connection signal="connection_node_found" from="." to="CanvasLayer/TileModifierMenu" method="connect_signal"]
 [connection signal="pressed" from="TileMenu/MarginContainer/VBoxContainer/TabButtons/Bindings" to="." method="open_bindings_menu"]

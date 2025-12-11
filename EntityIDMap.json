@@ -734,5 +734,13 @@
 	"DD": [
 		"res://Scenes/Prefabs/Entities/Items/HiddenCoin.tscn",
 		"0,0"
+	],
+	"DE": [
+		"res://Scenes/Prefabs/Entities/Objects/MovingPlatform.tscn",
+		"0,-8"
+	],
+	"DF": [
+		"res://Scenes/Prefabs/Entities/Objects/LoopingPlatform.tscn",
+		"0,-8"
 	]
 }

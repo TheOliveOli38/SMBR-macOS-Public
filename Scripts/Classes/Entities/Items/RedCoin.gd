@@ -11,6 +11,9 @@ var can_spawn_particles := false
 signal collected
 
 func _ready() -> void:
+	if Global.current_game_mode != Global.GameMode.CHALLENGE:
+		queue_free()
+		return
 	if ChallengeModeHandler.is_coin_collected(id) or ChallengeModeHandler.is_coin_permanently_collected(id):
 		already_collected = true
 		$Sprite.play("Collected")

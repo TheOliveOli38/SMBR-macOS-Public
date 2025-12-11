@@ -16,6 +16,9 @@ var character_sprite_jsons := [
 	"res://Assets/Sprites/Players/Toadette/Small.json"
 ]
 
+const PLAYER_SCENE = "res://Scenes/Prefabs/Entities/Player.tscn"
+
+
 func _process(_delta: float) -> void:
 	if active:
 		handle_input()
@@ -70,6 +73,7 @@ func get_custom_characters() -> void:
 				AudioManager.character_sfx_map[i] = JSON.parse_string(FileAccess.open(char_path.path_join("SFX.json"), FileAccess.READ).get_as_text())
 			else:
 				AudioManager.character_sfx_map[i] = {}
+
 
 func open() -> void:
 	get_custom_characters()

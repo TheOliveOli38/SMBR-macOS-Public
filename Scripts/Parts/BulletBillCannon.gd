@@ -35,6 +35,8 @@ func fire() -> void:
 	if node is not BulletBill:
 		AudioManager.play_sfx("cannon", global_position)
 	else:
+		BulletBill.amount += 1
+		node.tree_exiting.connect(func(): BulletBill.amount -= 1)
 		node.cannon = true
 	add_sibling(node)
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://dnksdgorle8su"]
+[gd_scene load_steps=28 format=3 uid="uid://dnksdgorle8su"]
 
 [ext_resource type="Script" uid="uid://cj6858gmexp11" path="res://Scripts/UI/SettingsMenu.gd" id="1_hnwhb"]
 [ext_resource type="StyleBox" uid="uid://comkghpj0djcl" path="res://Resources/UI/Panel.tres" id="2_t6b48"]
@@ -194,6 +194,9 @@ func regen_rom() -> void:
 	Global.check_for_rom()
 	Global.transition_to_scene(\"res://Scenes/Levels/RomVerifier.tscn\")
 "
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_yvj4y"]
+color = Color(1, 1, 1, 1)
 
 [node name="SettingsMenu" type="Control" unique_id=540914940 node_paths=PackedStringArray("containers")]
 process_mode = 4
@@ -1003,6 +1006,53 @@ anchor_bottom = 0.95
 [node name="ResourcePackTemplateCreator" type="Node" parent="." unique_id=479645518]
 script = ExtResource("19_k6yev")
 
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1052541210]
+visible = false
+
+[node name="Panel" type="PanelContainer" parent="CanvasLayer" unique_id=383732120]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -122.0
+offset_top = -72.0
+offset_right = 122.0
+offset_bottom = 72.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = ExtResource("2_t6b48")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Panel" unique_id=1535374695]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/Panel/VBoxContainer" unique_id=725078764]
+modulate = Color(1, 0, 0, 1)
+layout_mode = 2
+size_flags_horizontal = 4
+text = "WARNING!!"
+horizontal_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="CanvasLayer/Panel/VBoxContainer/Label" unique_id=303129681]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -4.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/separator = SubResource("StyleBoxLine_yvj4y")
+
+[node name="Label2" type="Label" parent="CanvasLayer/Panel/VBoxContainer" unique_id=165644100]
+layout_mode = 2
+text = "This game was designed with the modern physics style, in mind. Some levels and challenges may be harder, or even impossible with the classic physics.
+
+you have been warned."
+horizontal_alignment = 1
+autowrap_mode = 2
+uppercase = true
+
 [connection signal="closed" from="." to="PanelContainer/MarginContainer/VBoxContainer/KeyboardControls/InputMapSaving" method="save_inputs"]
 [connection signal="closed" from="." to="PanelContainer/MarginContainer/VBoxContainer/Controller/InputMapSaving" method="save_inputs"]
 [connection signal="value_changed" from="PanelContainer/MarginContainer/VBoxContainer/Video/Language" to="PanelContainer/MarginContainer/VBoxContainer/Video/WindowChanger" method="language_changed"]
@@ -1038,6 +1088,7 @@ script = ExtResource("19_k6yev")
 [connection signal="button_pressed" from="PanelContainer/MarginContainer/VBoxContainer/ResourcePacks/SelectableOptionNode2" to="PanelContainer/MarginContainer/VBoxContainer/ResourcePacks/ResourcePackLoader" method="get_resource_packs"]
 [connection signal="button_pressed" from="PanelContainer/MarginContainer/VBoxContainer/ResourcePacks/SelectableOptionNode3" to="ResourcePackTemplateCreator" method="create_template"]
 [connection signal="button_pressed" from="PanelContainer/MarginContainer/VBoxContainer/ResourcePacks/SelectableOptionNode3" to="PanelContainer/MarginContainer/VBoxContainer/ResourcePacks/SelectableOptionNode3" method="set_title" binds= ["Creating Resource Pack..."]]
+[connection signal="value_changed" from="PanelContainer/MarginContainer/VBoxContainer/Difficulty/ScrollContainer/VBoxContainer/PhysicsStyle" to="." method="show_physics_warning"]
 [connection signal="value_changed" from="PanelContainer/MarginContainer/VBoxContainer/Difficulty/ScrollContainer/VBoxContainer/PhysicsStyle" to="PanelContainer/MarginContainer/VBoxContainer/Difficulty/DifficultySetter" method="physics_style_changed"]
 [connection signal="value_changed" from="PanelContainer/MarginContainer/VBoxContainer/Difficulty/ScrollContainer/VBoxContainer/DamageStyle" to="PanelContainer/MarginContainer/VBoxContainer/Difficulty/DifficultySetter" method="damage_style_changed"]
 [connection signal="value_changed" from="PanelContainer/MarginContainer/VBoxContainer/Difficulty/ScrollContainer/VBoxContainer/Checkpoints" to="PanelContainer/MarginContainer/VBoxContainer/Difficulty/DifficultySetter" method="checkpoint_changed"]

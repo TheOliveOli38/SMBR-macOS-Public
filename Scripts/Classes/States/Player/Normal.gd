@@ -126,6 +126,8 @@ func ground_acceleration(delta: float) -> void:
 			target_accel = player.physics_params("RUN_SKID")
 		else:
 			target_accel = player.physics_params("WALK_SKID")
+	if player.on_ice:
+		target_accel *= player.physics_params("ICE_ACCEL_MOD")
 	var clamp_values = [-target_move_speed, target_move_speed] if player.physics_params("CLAMP_GROUND_SPEED") else [-INF, INF]
 	player.velocity.x = clamp(move_toward(player.velocity.x, target_move_speed * player.input_direction, (target_accel / delta) * delta), clamp_values[0], clamp_values[1])
 	if abs(player.velocity.x) < player.physics_params("MINIMUM_SPEED"):
@@ -137,10 +139,14 @@ func deceleration(delta: float, airborne := false) -> void:
 		decel_type = player.physics_params("GROUND_DECEL")
 	elif player.in_water or player.has_wings:
 		decel_type = player.physics_params("SWIM_DECEL")
+	if player.on_ice:
+		decel_type *= player.physics_params("ICE_DECEL_MOD")
 	player.velocity.x = move_toward(player.velocity.x, 0, (decel_type / delta) * delta)
 
 func ground_skid(delta: float) -> void:
 	var target_skid: float = player.physics_params("RUN_SKID") if (Global.player_action_pressed("run", player.player_id) or run_buffer > 0) and player.can_run else player.physics_params("WALK_SKID")
+	if player.on_ice:
+		target_skid *= player.physics_params("ICE_SKID_MOD")
 	player.skid_frames += 1
 	player.velocity.x = move_toward(player.velocity.x, 1 * player.input_direction, (target_skid / delta) * delta)
 	if abs(player.velocity.x) < player.physics_params("SKID_STOP_THRESHOLD") or sign(player.input_direction * player.velocity_direction) > 0:
@@ -243,6 +249,8 @@ func handle_animations() -> void:
 	player.sprite.speed_scale = 1
 	if ["Walk", "Move", "Run"].has(animation):
 		player.sprite.speed_scale = abs(player.velocity.x) / player.physics_params("MOVE_ANIM_SPEED_DIV", player.COSMETIC_PARAMETERS)
+		if player.on_ice:
+			player.sprite.speed_scale *= player.physics_params("ICE_SPEED_MOD", player.COSMETIC_PARAMETERS)
 	player.play_animation(animation)
 	if player.sprite.animation == "Move":
 		walk_frame = player.sprite.frame

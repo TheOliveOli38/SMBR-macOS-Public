@@ -518,6 +518,11 @@ func level_editor_is_playtesting() -> bool:
 			return true
 	return false
 
+func level_editor_is_editing() -> bool:
+	if level_editor == null:
+		return false
+	return level_editor.current_state != LevelEditor.EditorState.PLAYTESTING
+
 func unlock_achievement(achievement_id := AchievementID.SMB1_CLEAR) -> void:
 	achievements[achievement_id] = "1"
 	if achievement_id != AchievementID.COMPLETIONIST:

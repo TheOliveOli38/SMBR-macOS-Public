@@ -23,7 +23,8 @@ func _process(_delta: float) -> void:
 	
 	for i in [%LeftArrow, %RightArrow]:
 		i.modulate.a = int(current_container.selected_index == -1)
-	
+	if Input.is_action_just_pressed("ui_accept"):
+		$CanvasLayer.hide()
 	for i in containers.size():
 		containers[i].active = category_index == i and active
 		if SelectableInputOption.rebinding_input == false:
@@ -34,6 +35,12 @@ func _process(_delta: float) -> void:
 		handle_inputs()
 	if Input.is_action_just_pressed("ui_back") and active and current_container.can_input and can_move:
 		close()
+
+func show_physics_warning(value := 0) -> void:
+	if value != 0:
+		return
+	AudioManager.play_global_sfx("bump")
+	$CanvasLayer.show()
 
 func handle_inputs() -> void:
 	var direction := 0

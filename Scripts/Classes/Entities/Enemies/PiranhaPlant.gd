@@ -12,6 +12,11 @@ func _ready() -> void:
 	$Animation.play("RESET")
 	$Animation.play("Hide")
 	upside_down_hitbox.set_deferred("disabled", is_equal_approx(abs(global_rotation_degrees), 180) == false)
+	if abs(global_rotation_degrees) >= 178:
+		pipe_direction = 1
+		global_rotation_degrees = 0
+		global_position.y += 16
+		$RotationJoint.global_rotation_degrees = 180
 	$Timer.start()
 
 func on_timeout() -> void:

@@ -537,6 +537,8 @@ var swim_stroke := false
 
 var skid_frames := 0
 
+var on_ice := false
+
 var simulated_velocity := Vector2.ZERO
 
 func _ready() -> void:
@@ -597,6 +599,8 @@ func physics_params(type: String, params_dict: Dictionary = {}, key: String = ""
 		var default_dict = params_dict["Default"]
 		if type in default_dict:
 			var value = default_dict[type]
+			if value is Dictionary:
+				value = $ResourceSetterNew.get_variation_json(value).value
 			if (value is int or value is float) and not (value is bool):
 				return value * mult_applied
 			return value
@@ -604,7 +608,7 @@ func physics_params(type: String, params_dict: Dictionary = {}, key: String = ""
 	return null
 
 func apply_character_physics() -> void:
-	var apply_gameplay_changes = [Global.GameMode.BOO_RACE, Global.GameMode.MARATHON, Global.GameMode.MARATHON_PRACTICE].has(Global.current_game_mode) == false
+	var apply_gameplay_changes = true
 	var path = "res://Assets/Sprites/Players/" + character + "/CharacterInfo.json"
 	if int(Global.player_characters[player_id]) > 3:
 		path = path.replace("res://Assets/Sprites/Players", Global.config_path.path_join("custom_characters/"))
@@ -689,6 +693,7 @@ func _physics_process(delta: float) -> void:
 	handle_star(delta)
 	handle_hammer(delta)
 	handle_wing_flight(delta)
+	on_ice = %IceCheck.is_colliding() and is_on_floor()
 	air_frames = (air_frames + 1 if is_on_floor() == false else 0)
 	for i in get_tree().get_nodes_in_group("StepCollision"):
 		var on_wall := false
