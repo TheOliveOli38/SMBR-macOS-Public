@@ -361,7 +361,7 @@ func check_for_medal_achievement() -> void:
 	var has_bronze_levels_any := true
 	var has_bronze_full := false
 	
-	if Global.current_campaign == "SMBANN":
+	if Global.current_game_mode == Global.GameMode.DISCO:
 		return
 	
 	

@@ -47,7 +47,7 @@ func _ready() -> void:
 	else:
 		Door.unlocked_doors = []
 		KeyItem.total_collected = 0
-	if Global.current_campaign == "SMBANN":
+	if Global.current_game_mode == Global.GameMode.DISCO:
 		DiscoLevel.reset_values()
 	DiscoLevel.first_load = true
 	if Global.current_game_mode == Global.GameMode.MARATHON_PRACTICE:

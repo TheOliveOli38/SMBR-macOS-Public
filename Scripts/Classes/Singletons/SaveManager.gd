@@ -109,7 +109,7 @@ func write_save(campaign: String = Global.current_campaign, force := false) -> v
 			save_json["BestWarplessTime"] = SpeedrunHandler.marathon_best_warpless_time
 		_:
 			pass
-	if campaign == "SMBANN":
+	if Global.current_game_mode == Global.GameMode.DISCO:
 		save_json["Ranks"] = DiscoLevel.level_ranks
 	write_save_to_file(save_json, path)
 

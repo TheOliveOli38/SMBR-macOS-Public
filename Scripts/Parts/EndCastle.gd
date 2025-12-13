@@ -119,7 +119,7 @@ func exit_level() -> void:
 		Global.GameMode.LEVEL_EDITOR:
 			Global.level_editor.stop_testing()
 		_:
-			if Global.current_campaign == "SMBANN":
+			if Global.current_game_mode == Global.GameMode.DISCO:
 				Global.open_disco_results()
 			else:
 				Global.current_level.transition_to_next_level()

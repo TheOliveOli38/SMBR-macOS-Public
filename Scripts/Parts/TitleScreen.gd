@@ -76,7 +76,9 @@ func campaign_selected() -> void:
 		last_campaign = Global.current_campaign
 		update_title()
 	if Global.current_campaign == "SMBANN":
-		$CanvasLayer/Options2Stripped.open()
+		Global.current_game_mode = Global.GameMode.DISCO
+		$CanvasLayer/AllNightNippon/WorldSelect.open()
+		$%Options1.show()
 		return
 	$CanvasLayer/Options2.open()
 

@@ -35,7 +35,8 @@ func _ready() -> void:
 
 func start_particle(particle: GPUParticles2D) -> void:
 	await get_tree().create_timer(randf_range(0, 5)).timeout
-	particle.emitting = true
+	if is_instance_valid(particle):
+		particle.emitting = true
 
 func _process(_delta: float) -> void:
 	if active:
