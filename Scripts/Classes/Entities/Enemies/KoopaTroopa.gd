@@ -37,6 +37,9 @@ func handle_fly_movement(delta: float) -> void:
 	else:
 		global_position.y = starting_position.y + (cos(fly_wave) * 48) + 48
 
+func _exit_tree() -> void:
+	pass
+
 func stomped_on(player: Player) -> void:
 	if dead:
 		return

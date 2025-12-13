@@ -12,7 +12,7 @@ const PIPE_CUTSCENE_OVERRIDE := {
 	"SMB1": {[2, 2]: "res://Scenes/Levels/PipeCutsceneWater.tscn", [7, 2]: "res://Scenes/Levels/PipeCutsceneWater.tscn"},
 	"SMBLL": {[3, 2]: "res://Scenes/Levels/PipeCutsceneWater.tscn", [11, 2]: "res://Scenes/Levels/PipeCutsceneWater.tscn"},
 	"SMBS": {[3, 1]: "res://Scenes/Levels/SMBS/SPCastlePipeCutscene.tscn", [7, 2]: "res://Scenes/Levels/PipeCutsceneWater.tscn"},
-	"SMBANN": {}
+	"SMBANN": {[2, 2]: "res://Scenes/Levels/PipeCutsceneWater.tscn", [7, 2]: "res://Scenes/Levels/PipeCutsceneWater.tscn"},
 }
 
 
