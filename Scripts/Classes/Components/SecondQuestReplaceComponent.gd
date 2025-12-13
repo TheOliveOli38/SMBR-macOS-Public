@@ -5,7 +5,7 @@ extends Node
 @export var properties: Array[String] = []
 
 func _ready() -> void:
-	if Global.second_quest and new_scene != "" and new_scene != owner.scene_file_path:
+	if (Global.second_quest or HardModeForce.enabled) and new_scene != "" and new_scene != owner.scene_file_path:
 		if owner.owner != null:
 			await owner.owner.ready
 		var node = load(new_scene).instantiate()
