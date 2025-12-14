@@ -378,6 +378,7 @@ func reset_values() -> void:
 	Checkpoint.keys_collected = 0
 	Broadcaster.active_channels = []
 	ConditionalClear.valid = true
+	ConditionalClear.checked = false
 	GlobalCounter.amounts = {}
 	Level.start_level_path = Level.get_scene_string(world_num, level_num)
 	LevelPersistance.reset_states()

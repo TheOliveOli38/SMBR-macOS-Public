@@ -1,4 +1,4 @@
-[gd_scene load_steps=80 format=4 uid="uid://bksxgpygrdjl7"]
+[gd_scene load_steps=81 format=4 uid="uid://bksxgpygrdjl7"]
 
 [ext_resource type="Script" uid="uid://erdjx03phltn" path="res://Scripts/Classes/LevelBGNew.gd" id="1_pkg8e"]
 [ext_resource type="Script" uid="uid://cq6f682453q6o" path="res://Scripts/Classes/Components/ResourceSetter.gd" id="3_6m0f5"]
@@ -21,6 +21,7 @@
 [ext_resource type="AudioStream" uid="uid://mgub7yupxkau" path="res://Assets/Audio/SFX/ANNCheering1.wav" id="15_b1lev"]
 [ext_resource type="AudioStream" uid="uid://dxpllussaq340" path="res://Assets/Audio/SFX/ANNCheering2.wav" id="16_ugdi7"]
 [ext_resource type="AudioStream" uid="uid://cp0qfxaqq5v25" path="res://Assets/Audio/SFX/ANNCheering3.wav" id="17_aw4cr"]
+[ext_resource type="JSON" path="res://Assets/Sprites/Backgrounds/TopEdge.json" id="17_b1lev"]
 [ext_resource type="Script" uid="uid://dpoo4pluhin8p" path="res://Scripts/Classes/Resources/TimedResource.gd" id="17_q1cch"]
 [ext_resource type="Texture2D" uid="uid://nbfvmi0gi71a" path="res://Assets/Sprites/Backgrounds/SecondaryTrees/JungleNightTrees.png" id="17_t06j2"]
 [ext_resource type="JSON" path="res://Assets/Sprites/Backgrounds/Bushes/Bush.json" id="17_yxjfg"]
@@ -444,17 +445,6 @@ property_name = "sprite_frames"
 resource_json = ExtResource("17_yxjfg")
 metadata/_custom_type_script = "uid://cbal8ms2oe1ik"
 
-[node name="TopEdge" type="ColorRect" parent="PrimaryLayer" unique_id=361778520]
-process_mode = 1
-anchors_preset = 10
-anchor_right = 1.0
-offset_top = -608.0
-offset_right = 512.0
-offset_bottom = -480.0
-grow_horizontal = 2
-color = Color(0, 0, 0, 1)
-metadata/_edit_use_anchors_ = true
-
 [node name="DiscoBits" type="Node2D" parent="." unique_id=957846129]
 process_mode = 1
 visible = false
@@ -562,6 +552,29 @@ stream = ExtResource("17_aw4cr")
 bus = &"SFX"
 script = ExtResource("14_ugdi7")
 metadata/_custom_type_script = "uid://dmtw1jesw1vl7"
+
+[node name="TopEdge" type="Parallax2D" parent="." unique_id=1361706023]
+visibility_layer = 2
+z_index = 1
+scroll_offset = Vector2(0, 32)
+repeat_size = Vector2(256, 0)
+repeat_times = 8
+
+[node name="Sprite" type="AnimatedSprite2D" parent="TopEdge" unique_id=750812347]
+visibility_layer = 2
+position = Vector2(0, -32)
+centered = false
+script = ExtResource("7_y7xk0")
+do_offset = false
+metadata/_custom_type_script = "uid://caq1qiwmy0mox"
+
+[node name="ResourceSetterNew" type="Node" parent="TopEdge/Sprite" unique_id=1443367621 node_paths=PackedStringArray("node_to_affect", "property_node")]
+script = ExtResource("10_lvidp")
+node_to_affect = NodePath("..")
+property_node = NodePath("../../..")
+property_name = "sprite_frames"
+resource_json = ExtResource("17_b1lev")
+metadata/_custom_type_script = "uid://cbal8ms2oe1ik"
 
 [node name="SecondaryLayer" type="Parallax2D" parent="." unique_id=2045657376]
 process_mode = 1

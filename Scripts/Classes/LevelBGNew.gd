@@ -95,7 +95,10 @@ func _physics_process(delta: float) -> void:
 	handle_disco_visuals(delta)
 	if Engine.is_editor_hint() == false:
 		if Global.current_level != null:
-			$PrimaryLayer/TopEdge.position.y = Global.current_level.vertical_height - $PrimaryLayer/TopEdge.size.y
+			var frame = $TopEdge/Sprite.sprite_frames.get_frame_texture($TopEdge/Sprite.animation, 0)
+			$TopEdge/Sprite.position.y = Global.current_level.vertical_height - 32
+			$TopEdge.repeat_size.x = frame.get_width()
+			$TopEdge.repeat_times = (ceil(get_viewport_rect().size.x / $TopEdge.repeat_size.x) + 1) * 2
 		var repeat_times = (ceil(get_viewport_rect().size.x / 512) + 1) * 2
 		for i in [$SkyLayer, $PrimaryLayer, $DiscoBits/Rainbow, $DiscoBits/SpotLights, $SecondaryLayer, $OverlayLayer/CloudLayer, $OverlayLayer/Particles, $LiquidLayer, $Parallax2D, $FGLayer]:
 			i.repeat_times = repeat_times
@@ -210,4 +213,4 @@ func update_visuals() -> void:
 	
 	$PrimaryLayer.z_index = int(not bool(second_layer_order))
 	$OverlayLayer/CloudLayer.visible = overlay_clouds and Settings.file.visuals.bg_particles == 1
-	$PrimaryLayer/TopEdge.visible = ["Underground", "Castle", "GhostHouse", "Bonus"].has(Global.level_theme) and primary_layer == 0 and top_edge_enabled
+	$TopEdge.visible = ["Underground", "Castle", "GhostHouse", "Bonus"].has(Global.level_theme) and primary_layer == 0 and top_edge_enabled
