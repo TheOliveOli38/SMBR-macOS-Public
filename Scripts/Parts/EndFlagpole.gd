@@ -13,6 +13,8 @@ func on_area_entered(area: Area2D) -> void:
 		player_touch(area.owner)
 
 func player_touch(player: Player) -> void:
+	if ConditionalClear.valid == false:
+		return
 	player_reached.emit()
 	if Global.current_game_mode == Global.GameMode.MARATHON_PRACTICE:
 		SpeedrunHandler.is_warp_run = false
@@ -45,6 +47,11 @@ func player_touch(player: Player) -> void:
 	await get_tree().create_timer(1, false).timeout
 	if [Global.GameMode.BOO_RACE].has(Global.current_game_mode) == false:
 		Global.tally_time()
+
+func _physics_process(_delta: float) -> void:
+	$Hollow.visible = not ConditionalClear.valid
+	$Pole.visible = ConditionalClear.valid
+	$Flag.visible = $Pole.visible
 
 func give_points(player: Player) -> void:
 	var value = clamp(int(lerp(0, 4, (player.global_position.y / -144))), 0, 4)

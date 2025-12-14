@@ -23,8 +23,6 @@ var id := ""
 func _enter_tree() -> void:
 	id = get_id()
 	passed = passed_checkpoints.has(id)
-	if passed:
-		LevelPersistance.active_nodes = old_state.duplicate(true)
 
 func _ready() -> void:
 	if [Global.GameMode.CHALLENGE, Global.GameMode.MARATHON_PRACTICE, Global.GameMode.DISCO].has(Global.current_game_mode) or (Settings.file.difficulty.extra_checkpoints == 0 and optional):

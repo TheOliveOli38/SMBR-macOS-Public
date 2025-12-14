@@ -24,10 +24,13 @@ func run_check() -> void:
 	for i in $Hitbox.get_overlapping_areas():
 		if i.owner.get_parent() != get_parent():
 			continue
-		if i.owner is Enemy and type == 1:
+		var node_owner = i.owner
+		if node_owner is TrackRider:
+			node_owner = node_owner.attached_entity
+		if node_owner is Enemy and type == 1:
 			object_in_area = true
 			break
-		if i.owner is Player and type == 0:
+		if node_owner is Player and type == 0:
 			object_in_area = true
 			break
 	if object_in_area and not save:

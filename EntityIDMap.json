@@ -746,5 +746,17 @@
 	"DG": [
 		"res://Scenes/Prefabs/Gizmos/Outputs/Trigger.tscn",
 		"0,0"
+	],
+	"DH": [
+		"res://Scenes/Prefabs/Gizmos/Inputs/ItemCollectDetect.tscn",
+		"0,0"
+	],
+	"DI": [
+		"res://Scenes/Prefabs/Gizmos/Outputs/ConditionalClear.tscn",
+		"0,0"
+	],
+	"DJ": [
+		"res://Scenes/Prefabs/Gizmos/Outputs/GlobalCounter.tscn",
+		"0,0"
 	]
 }

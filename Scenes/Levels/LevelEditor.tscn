@@ -1,4 +1,4 @@
-[gd_scene load_steps=264 format=3 uid="uid://gbcmqonky63j"]
+[gd_scene load_steps=268 format=3 uid="uid://gbcmqonky63j"]
 
 [ext_resource type="Script" uid="uid://c2lnc7vnq3xth" path="res://Scripts/Classes/Editor/LevelEditor.gd" id="1_0qbyu"]
 [ext_resource type="Texture2D" uid="uid://cbha2l6hg1kfo" path="res://Assets/Sprites/UI/EditorGrid.png" id="2_8q7yr"]
@@ -143,6 +143,7 @@
 [ext_resource type="JSON" path="res://Assets/Sprites/Blocks/OnOffConveyor.json" id="164_dl3il"]
 [ext_resource type="PackedScene" uid="uid://b5gs47nvw8q1k" path="res://Scenes/Prefabs/Gizmos/Outputs/ANDGate.tscn" id="164_f5y2p"]
 [ext_resource type="Texture2D" uid="uid://das61c03dnben" path="res://Assets/Sprites/Editor/Gizmos/OR.png" id="165_gq8kq"]
+[ext_resource type="Texture2D" uid="uid://bgtom1x1jmc06" path="res://Assets/Sprites/Editor/Gizmos/ItemCollectDetection.png" id="166_dp0ao"]
 [ext_resource type="PackedScene" uid="uid://ukg5xikl8n2i" path="res://Scenes/Prefabs/Gizmos/Outputs/ORGate.tscn" id="166_upqx4"]
 [ext_resource type="Texture2D" uid="uid://0uhljpmjcqbh" path="res://Assets/Sprites/Editor/BulletBillGenerator.png" id="167_cmcm2"]
 [ext_resource type="Texture2D" uid="uid://r1wsxep0hvxf" path="res://Assets/Sprites/Editor/Gizmos/NOT.png" id="167_snabn"]
@@ -158,6 +159,7 @@
 [ext_resource type="Texture2D" uid="uid://dleyxhhngy3r5" path="res://Assets/Sprites/Editor/Gizmos/TilePlacer.png" id="173_a6wyw"]
 [ext_resource type="Texture2D" uid="uid://db8e2n65pq1ik" path="res://Assets/Sprites/Editor/Gizmos/Repeater.png" id="173_yjk03"]
 [ext_resource type="PackedScene" uid="uid://bo3sr1fjh6pcq" path="res://Scenes/Prefabs/Gizmos/Outputs/Repeater.tscn" id="174_2vwpv"]
+[ext_resource type="Texture2D" uid="uid://b4dgfpxq1x2lq" path="res://Assets/Sprites/Editor/Gizmos/GlobalCounter.png" id="174_qebwb"]
 [ext_resource type="PackedScene" uid="uid://wn8d6mt61hag" path="res://Scenes/Prefabs/Gizmos/Outputs/TilePlacer.tscn" id="174_wc8ue"]
 [ext_resource type="Texture2D" uid="uid://cyohkov1cy2vb" path="res://Assets/Sprites/Editor/GeneratorStop.png" id="175_2vwpv"]
 [ext_resource type="Texture2D" uid="uid://vmemt78mexln" path="res://Assets/Sprites/Editor/Gizmos/PlayerTeleporter.png" id="175_al0re"]
@@ -170,8 +172,10 @@
 [ext_resource type="PackedScene" uid="uid://bbc6s5nyphtn2" path="res://Scenes/Prefabs/Gizmos/Outputs/Dice.tscn" id="182_3c4c7"]
 [ext_resource type="Texture2D" uid="uid://ba1s5nfrmpd5a" path="res://Assets/Sprites/Editor/Gizmos/Speaker.png" id="189_3c4c7"]
 [ext_resource type="JSON" path="res://Assets/Sprites/Blocks/Cannon.json" id="190_numt2"]
+[ext_resource type="Texture2D" uid="uid://dd3s0d7y11p4x" path="res://Assets/Sprites/Editor/ConnectableIcon.png" id="194_24ald"]
 [ext_resource type="JSON" path="res://Assets/Sprites/Items/HammerItem.json" id="194_k6wox"]
 [ext_resource type="Texture2D" uid="uid://4fafl7yuo5k0" path="res://Assets/Sprites/Editor/GravityInverter.png" id="195_co4xw"]
+[ext_resource type="Texture2D" uid="uid://dgamrlgy76d3a" path="res://Assets/Sprites/Editor/Gizmos/ConditionalClearer.png" id="196_i2jbr"]
 [ext_resource type="Texture2D" uid="uid://rbln0ee0fknc" path="res://Assets/Sprites/Enemies/Icicle.png" id="196_p4o5x"]
 [ext_resource type="Texture2D" uid="uid://dfurem6jj7gso" path="res://Assets/Sprites/Editor/MoonGravity.png" id="199_klg4c"]
 [ext_resource type="JSON" path="res://Assets/Sprites/Blocks/Bumper.json" id="200_l3prv"]
@@ -3798,6 +3802,16 @@ icon_region_override = Rect2(0, 0, 16, 16)
 entity_id = "Ab"
 metadata/_edit_group_ = true
 
+[node name="TextureRect" type="TextureRect" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Blocks/MarginContainer/GridContainer/QuestionBlock" unique_id=1057777817]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("194_24ald")
+
 [node name="BrickBlock" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Blocks/MarginContainer/GridContainer" unique_id=1524628605 groups=["Selectors"] instance=ExtResource("8_wkmjk")]
 layout_mode = 2
 tile_name = "BLOCK_BRICK"
@@ -3807,6 +3821,16 @@ icon_region_override = Rect2(0, 0, 16, 16)
 secondary_icon_region_override = Rect2(16, 0, 0, 0)
 entity_id = "Ac"
 metadata/_edit_group_ = true
+
+[node name="TextureRect" type="TextureRect" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Blocks/MarginContainer/GridContainer/BrickBlock" unique_id=2127058680]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("194_24ald")
 
 [node name="TurnBlock" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Blocks/MarginContainer/GridContainer" unique_id=564128766 groups=["Selectors"] instance=ExtResource("8_wkmjk")]
 layout_mode = 2
@@ -3877,6 +3901,16 @@ type = 1
 icon_texture = ExtResource("103_mbniv")
 icon_region_override = Rect2(0, 0, 16, 16)
 entity_id = "Ag"
+
+[node name="TextureRect" type="TextureRect" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Blocks/MarginContainer/GridContainer/OnOffSwitch/OnOffSwitch" unique_id=1990147939]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("194_24ald")
 
 [node name="TimedSwittch" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Blocks/MarginContainer/GridContainer/OnOffSwitch" unique_id=880716959 groups=["Selectors"] instance=ExtResource("8_wkmjk")]
 layout_mode = 0
@@ -4098,6 +4132,16 @@ icon_texture = ExtResource("90_0msv8")
 icon_region_override = Rect2(0, 0, 16, 16)
 entity_id = "BE"
 
+[node name="TextureRect" type="TextureRect" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Blocks/MarginContainer/GridContainer/NoteBlock/MusicBlock" unique_id=1379991078]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("194_24ald")
+
 [node name="BubbleNoteBlock" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Blocks/MarginContainer/GridContainer/NoteBlock" unique_id=201648844 groups=["Selectors"] instance=ExtResource("8_wkmjk")]
 layout_mode = 0
 offset_right = 16.0
@@ -4252,6 +4296,16 @@ icon_region_override = Rect2(0, 0, 16, 16)
 entity_id = "Bw"
 metadata/_edit_group_ = true
 
+[node name="TextureRect" type="TextureRect" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Blocks/MarginContainer/GridContainer/Burner" unique_id=1443499857]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("194_24ald")
+
 [node name="Crate" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Blocks/MarginContainer/GridContainer" unique_id=993417719 groups=["Selectors"] instance=ExtResource("8_wkmjk")]
 layout_mode = 2
 tile_name = "OBJ_CRATE"
@@ -4260,6 +4314,16 @@ icon_texture = ExtResource("172_2j7v4")
 icon_region_override = Rect2(0, 0, 16, 16)
 entity_id = "CP"
 metadata/_edit_group_ = true
+
+[node name="TextureRect" type="TextureRect" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Blocks/MarginContainer/GridContainer/Crate" unique_id=1970852286]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("194_24ald")
 
 [node name="SnakeBlock" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Blocks/MarginContainer/GridContainer" unique_id=120532549 groups=["Selectors"] instance=ExtResource("8_wkmjk")]
 layout_mode = 2
@@ -4270,6 +4334,16 @@ icon_region_override = Rect2(0, 0, 16, 16)
 entity_id = "Cf"
 entity_scene = ExtResource("94_jmysq")
 metadata/_edit_group_ = true
+
+[node name="TextureRect" type="TextureRect" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Blocks/MarginContainer/GridContainer/SnakeBlock" unique_id=2115669333]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("194_24ald")
 
 [node name="Objects" type="VBoxContainer" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer" unique_id=1913042751]
 layout_mode = 2
@@ -4322,6 +4396,16 @@ metadata/can_lakitu_throw = false
 metadata/can_pipe_gen = false
 metadata/can_crate_store = false
 
+[node name="TextureRect" type="TextureRect" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Objects/MarginContainer/GridContainer/PSwitch" unique_id=260719051]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("194_24ald")
+
 [node name="CheckpointFlag" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Objects/MarginContainer/GridContainer" unique_id=494955494 groups=["Selectors"] instance=ExtResource("8_wkmjk")]
 layout_mode = 2
 tile_name = "OBJ_CHECKPOINTFLAG"
@@ -4337,6 +4421,16 @@ type = 1
 icon_texture = ExtResource("69_8vfnk")
 entity_id = "Al"
 
+[node name="TextureRect" type="TextureRect" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Objects/MarginContainer/GridContainer/EntityCannon" unique_id=886214118]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("194_24ald")
+
 [node name="Pipe" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Objects/MarginContainer/GridContainer" unique_id=891117282 groups=["Selectors"] instance=ExtResource("8_wkmjk")]
 layout_mode = 2
 tile_name = "OBJ_PIPEAREA"
@@ -4350,6 +4444,16 @@ tile_name = "OBJ_PIPE_GENERATOR"
 type = 1
 icon_texture = ExtResource("86_gixmk")
 entity_id = "An"
+
+[node name="TextureRect" type="TextureRect" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Objects/MarginContainer/GridContainer/PipeGenerator" unique_id=35728952]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("194_24ald")
 
 [node name="FlagPole" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Objects/MarginContainer/GridContainer" unique_id=194219872 groups=["Selectors"] instance=ExtResource("8_wkmjk")]
 layout_mode = 2
@@ -4533,6 +4637,16 @@ icon_texture = ExtResource("208_ji0c6")
 icon_region_override = Rect2(0, 0, 16, 16)
 entity_id = "CQ"
 
+[node name="TextureRect" type="TextureRect" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Objects/MarginContainer/GridContainer/SecondCamera" unique_id=2129830296]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("194_24ald")
+
 [node name="CastleBridge" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Objects/MarginContainer/GridContainer" unique_id=2132031237 groups=["Selectors"] instance=ExtResource("8_wkmjk")]
 layout_mode = 2
 tile_name = "OBJ_CASTLE_BRIDGE"
@@ -4597,6 +4711,16 @@ icon_region_override = Rect2(0, 0, 16, 16)
 secondary_icon_region_override = Rect2(16, 16, 16, 16)
 entity_id = "BO"
 
+[node name="TextureRect" type="TextureRect" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Objects/MarginContainer/GridContainer/TrackRider" unique_id=792946462]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("194_24ald")
+
 [node name="TextLabel" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Objects/MarginContainer/GridContainer" unique_id=1163866816 groups=["Selectors"] instance=ExtResource("8_wkmjk")]
 layout_mode = 2
 tile_name = "OBJ_TEXT_LABEL"
@@ -4604,6 +4728,16 @@ type = 1
 icon_texture = ExtResource("145_gf7vd")
 icon_region_override = Rect2(0, 0, 16, 16)
 entity_id = "BU"
+
+[node name="TextureRect" type="TextureRect" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Objects/MarginContainer/GridContainer/TextLabel" unique_id=2103736779]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("194_24ald")
 
 [node name="Generators" type="Control" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Objects/MarginContainer/GridContainer" unique_id=725034732]
 custom_minimum_size = Vector2(16, 16)
@@ -4621,6 +4755,16 @@ icon_texture = ExtResource("167_cmcm2")
 icon_region_override = Rect2(0, 0, 16, 16)
 entity_id = "BV"
 
+[node name="TextureRect" type="TextureRect" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Objects/MarginContainer/GridContainer/Generators/BulletBill" unique_id=1708772811]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("194_24ald")
+
 [node name="CheepCheep" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Objects/MarginContainer/GridContainer/Generators" unique_id=816782927 groups=["Selectors"] instance=ExtResource("8_wkmjk")]
 layout_mode = 0
 offset_right = 16.0
@@ -4630,6 +4774,16 @@ type = 1
 icon_texture = ExtResource("169_2vwpv")
 icon_region_override = Rect2(0, 0, 16, 16)
 entity_id = "BW"
+
+[node name="TextureRect" type="TextureRect" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Objects/MarginContainer/GridContainer/Generators/CheepCheep" unique_id=1736969686]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("194_24ald")
 
 [node name="Flame" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Objects/MarginContainer/GridContainer/Generators" unique_id=1918725630 groups=["Selectors"] instance=ExtResource("8_wkmjk")]
 layout_mode = 0
@@ -4641,6 +4795,16 @@ icon_texture = ExtResource("171_adqgr")
 icon_region_override = Rect2(0, 0, 16, 16)
 entity_id = "BX"
 
+[node name="TextureRect" type="TextureRect" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Objects/MarginContainer/GridContainer/Generators/Flame" unique_id=1046054933]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("194_24ald")
+
 [node name="Wind" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Objects/MarginContainer/GridContainer/Generators" unique_id=1428725925 groups=["Selectors"] instance=ExtResource("8_wkmjk")]
 layout_mode = 0
 offset_right = 16.0
@@ -4651,6 +4815,16 @@ icon_texture = ExtResource("173_6c7k7")
 icon_region_override = Rect2(0, 0, 16, 16)
 entity_id = "BY"
 
+[node name="TextureRect" type="TextureRect" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Objects/MarginContainer/GridContainer/Generators/Wind" unique_id=1291142477]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("194_24ald")
+
 [node name="GravityFlipper" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Objects/MarginContainer/GridContainer/Generators" unique_id=1050524617 groups=["Selectors"] instance=ExtResource("8_wkmjk")]
 layout_mode = 0
 offset_right = 16.0
@@ -4660,6 +4834,16 @@ type = 1
 icon_texture = ExtResource("195_co4xw")
 icon_region_override = Rect2(0, 0, 16, 16)
 entity_id = "B6"
+
+[node name="TextureRect" type="TextureRect" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Objects/MarginContainer/GridContainer/Generators/GravityFlipper" unique_id=579979702]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("194_24ald")
 
 [node name="TextureRect" type="TextureRect" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Objects/MarginContainer/GridContainer/Generators" unique_id=307105476]
 layout_mode = 1
@@ -4679,6 +4863,16 @@ type = 1
 icon_texture = ExtResource("175_2vwpv")
 icon_region_override = Rect2(0, 0, 16, 16)
 entity_id = "BR"
+
+[node name="TextureRect" type="TextureRect" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Objects/MarginContainer/GridContainer/Wind" unique_id=569526366]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("194_24ald")
 
 [node name="MoonGravity" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Objects/MarginContainer/GridContainer" unique_id=1991911832 groups=["Selectors"] instance=ExtResource("8_wkmjk")]
 layout_mode = 2
@@ -4762,6 +4956,16 @@ icon_region_override = Rect2(0, 0, 16, 16)
 secondary_icon_texture = ExtResource("190_numt2")
 secondary_icon_region_override = Rect2(32, 0, 16, 16)
 entity_id = "By"
+
+[node name="TextureRect" type="TextureRect" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Objects/MarginContainer/GridContainer/Cannon" unique_id=1841083725]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("194_24ald")
 
 [node name="Icicle" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Objects/MarginContainer/GridContainer" unique_id=143409778 groups=["Selectors"] instance=ExtResource("8_wkmjk")]
 layout_mode = 2
@@ -5048,18 +5252,6 @@ layout_mode = 2
 mouse_force_pass_scroll_events = false
 script = ExtResource("20_jc7xg")
 
-[node name="TextureRect" type="TextureRect" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Items/MarginContainer/GridContainer/SPCoins" unique_id=1823899643]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-texture = ExtResource("22_3cjpb")
-expand_mode = 1
-stretch_mode = 3
-
 [node name="10Coin" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Items/MarginContainer/GridContainer/SPCoins" unique_id=638113197 groups=["Selectors"] instance=ExtResource("8_wkmjk")]
 layout_mode = 0
 offset_right = 16.0
@@ -5092,6 +5284,18 @@ icon_texture = ExtResource("279_i4hak")
 icon_region_override = Rect2(7, 11, 16, 16)
 entity_id = "Cb"
 metadata/can_be_stored = true
+
+[node name="TextureRect" type="TextureRect" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Items/MarginContainer/GridContainer/SPCoins" unique_id=1823899643]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("22_3cjpb")
+expand_mode = 1
+stretch_mode = 3
 
 [node name="Star" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Items/MarginContainer/GridContainer" unique_id=1823896090 groups=["Selectors"] instance=ExtResource("8_wkmjk")]
 layout_mode = 2
@@ -5246,6 +5450,16 @@ entity_id = "Ci"
 entity_scene = ExtResource("154_nxlms")
 metadata/can_be_stored = true
 
+[node name="TextureRect" type="TextureRect" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Gizmos/MarginContainer/VBoxContainer/Inputs/PlayerStuff/PlayerDetection" unique_id=737811648]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("194_24ald")
+
 [node name="PlayerEventDetection2" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Gizmos/MarginContainer/VBoxContainer/Inputs/PlayerStuff" unique_id=1170958258 groups=["Selectors"] instance=ExtResource("8_wkmjk")]
 layout_mode = 0
 offset_right = 16.0
@@ -5258,6 +5472,16 @@ icon_region_override = Rect2(0, 0, 16, 16)
 entity_id = "Cz"
 entity_scene = ExtResource("156_6c7k7")
 metadata/can_be_stored = true
+
+[node name="TextureRect" type="TextureRect" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Gizmos/MarginContainer/VBoxContainer/Inputs/PlayerStuff/PlayerEventDetection2" unique_id=50838470]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("194_24ald")
 
 [node name="TextureRect" type="TextureRect" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Gizmos/MarginContainer/VBoxContainer/Inputs/PlayerStuff" unique_id=929992253]
 layout_mode = 1
@@ -5291,6 +5515,16 @@ entity_id = "Cy"
 entity_scene = ExtResource("158_adqgr")
 metadata/can_be_stored = true
 
+[node name="TextureRect" type="TextureRect" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Gizmos/MarginContainer/VBoxContainer/Inputs/EnemyStuff/EnemyDetection" unique_id=1181466747]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("194_24ald")
+
 [node name="EnemyDefeatDetect" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Gizmos/MarginContainer/VBoxContainer/Inputs/EnemyStuff" unique_id=850817339 groups=["Selectors"] instance=ExtResource("8_wkmjk")]
 layout_mode = 0
 offset_right = 16.0
@@ -5304,6 +5538,16 @@ secondary_icon_region_override = Rect2(0, 0, 16, 16)
 entity_id = "Cu"
 entity_scene = ExtResource("178_0bfpc")
 metadata/can_be_stored = true
+
+[node name="TextureRect" type="TextureRect" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Gizmos/MarginContainer/VBoxContainer/Inputs/EnemyStuff/EnemyDefeatDetect" unique_id=1247852792]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("194_24ald")
 
 [node name="TextureRect" type="TextureRect" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Gizmos/MarginContainer/VBoxContainer/Inputs/EnemyStuff" unique_id=1417672935]
 layout_mode = 1
@@ -5329,6 +5573,38 @@ entity_id = "Cv"
 entity_scene = ExtResource("158_5yjx1")
 metadata/can_be_stored = true
 
+[node name="TextureRect" type="TextureRect" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Gizmos/MarginContainer/VBoxContainer/Inputs/Broadcaster" unique_id=1785510386]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("194_24ald")
+
+[node name="ItemCollectDetection" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Gizmos/MarginContainer/VBoxContainer/Inputs" unique_id=2012844368 groups=["Selectors"] instance=ExtResource("8_wkmjk")]
+layout_mode = 2
+tile_name = "Item Collect Detection"
+tile_desc = "Will emit a pulse, when an item on its layer is collected."
+type = 1
+icon_texture = ExtResource("166_dp0ao")
+icon_region_override = Rect2(0, 0, 16, 16)
+secondary_icon_region_override = Rect2(0, 0, 16, 16)
+entity_id = "DH"
+entity_scene = ExtResource("158_5yjx1")
+metadata/can_be_stored = true
+
+[node name="TextureRect" type="TextureRect" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Gizmos/MarginContainer/VBoxContainer/Inputs/ItemCollectDetection" unique_id=2104253654]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("194_24ald")
+
 [node name="Logic" type="HFlowContainer" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Gizmos/MarginContainer/VBoxContainer" unique_id=1170676853]
 layout_mode = 2
 
@@ -5343,6 +5619,16 @@ entity_id = "Ck"
 entity_scene = ExtResource("158_26a4w")
 metadata/can_be_stored = true
 
+[node name="TextureRect" type="TextureRect" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Gizmos/MarginContainer/VBoxContainer/Logic/Switch" unique_id=1240622347]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("194_24ald")
+
 [node name="Trigger" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Gizmos/MarginContainer/VBoxContainer/Logic" unique_id=1211905887 groups=["Selectors"] instance=ExtResource("8_wkmjk")]
 layout_mode = 2
 tile_name = "Trigger"
@@ -5356,8 +5642,38 @@ entity_id = "DG"
 entity_scene = ExtResource("182_3c4c7")
 metadata/can_be_stored = true
 
-[node name="Counter" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Gizmos/MarginContainer/VBoxContainer/Logic" unique_id=1147168041 groups=["Selectors"] instance=ExtResource("8_wkmjk")]
+[node name="TextureRect" type="TextureRect" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Gizmos/MarginContainer/VBoxContainer/Logic/Trigger" unique_id=1812007616]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("194_24ald")
+
+[node name="Counters" type="Control" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Gizmos/MarginContainer/VBoxContainer/Logic" unique_id=666045333]
+custom_minimum_size = Vector2(16, 16)
 layout_mode = 2
+mouse_force_pass_scroll_events = false
+script = ExtResource("20_jc7xg")
+
+[node name="TextureRect" type="TextureRect" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Gizmos/MarginContainer/VBoxContainer/Logic/Counters" unique_id=1646626171]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("22_3cjpb")
+expand_mode = 1
+stretch_mode = 3
+
+[node name="Counter" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Gizmos/MarginContainer/VBoxContainer/Logic/Counters" unique_id=1147168041 groups=["Selectors"] instance=ExtResource("8_wkmjk")]
+layout_mode = 0
+offset_right = 16.0
+offset_bottom = 16.0
 tile_name = "Counter"
 tile_desc = "Will count up, every time it's pulsed or powered, will emit a pulse, when its threshold is reached."
 type = 1
@@ -5368,6 +5684,53 @@ secondary_icon_region_override = Rect2(0, 0, 16, 16)
 entity_id = "Cl"
 entity_scene = ExtResource("161_1i68c")
 metadata/can_be_stored = true
+
+[node name="TextureRect" type="TextureRect" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Gizmos/MarginContainer/VBoxContainer/Logic/Counters/Counter" unique_id=2026079846]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("194_24ald")
+
+[node name="GlobalCounter" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Gizmos/MarginContainer/VBoxContainer/Logic/Counters" unique_id=896882103 groups=["Selectors"] instance=ExtResource("8_wkmjk")]
+layout_mode = 0
+offset_right = 16.0
+offset_bottom = 16.0
+tile_name = "Global Counter"
+tile_desc = "Same as the regular counter, however its amount is shared between all other global counters, with a matching channel."
+type = 1
+icon_texture = ExtResource("174_qebwb")
+icon_region_override = Rect2(0, 0, 16, 16)
+secondary_icon_texture = ExtResource("160_da57p")
+secondary_icon_region_override = Rect2(0, 0, 16, 16)
+entity_id = "DJ"
+entity_scene = ExtResource("161_1i68c")
+metadata/can_be_stored = true
+
+[node name="TextureRect" type="TextureRect" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Gizmos/MarginContainer/VBoxContainer/Logic/Counters/GlobalCounter" unique_id=1756230515]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("194_24ald")
+
+[node name="TextureRect2" type="TextureRect" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Gizmos/MarginContainer/VBoxContainer/Logic/Counters" unique_id=922957475]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("22_3cjpb")
+expand_mode = 1
+stretch_mode = 3
 
 [node name="Timer" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Gizmos/MarginContainer/VBoxContainer/Logic" unique_id=2051023015 groups=["Selectors"] instance=ExtResource("8_wkmjk")]
 layout_mode = 2
@@ -5382,13 +5745,92 @@ entity_id = "Cm"
 entity_scene = ExtResource("162_da57p")
 metadata/can_be_stored = true
 
-[node name="Gates" type="Control" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Gizmos/MarginContainer/VBoxContainer/Logic" unique_id=666045333]
+[node name="TextureRect" type="TextureRect" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Gizmos/MarginContainer/VBoxContainer/Logic/Timer" unique_id=843245579]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("194_24ald")
+
+[node name="Repeater" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Gizmos/MarginContainer/VBoxContainer/Logic" unique_id=1671354315 groups=["Selectors"] instance=ExtResource("8_wkmjk")]
+layout_mode = 2
+tile_name = "Repeater"
+tile_desc = "Will repeat a power off, power on, or pulse signal, a specific number of times."
+type = 1
+icon_texture = ExtResource("173_yjk03")
+icon_region_override = Rect2(0, 0, 16, 16)
+secondary_icon_texture = ExtResource("160_da57p")
+secondary_icon_region_override = Rect2(0, 0, 16, 16)
+entity_id = "Cw"
+entity_scene = ExtResource("174_2vwpv")
+metadata/can_be_stored = true
+
+[node name="TextureRect" type="TextureRect" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Gizmos/MarginContainer/VBoxContainer/Logic/Repeater" unique_id=2013092546]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("194_24ald")
+
+[node name="Fuse" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Gizmos/MarginContainer/VBoxContainer/Logic" unique_id=15943736 groups=["Selectors"] instance=ExtResource("8_wkmjk")]
+layout_mode = 2
+tile_name = "Fuse"
+tile_desc = "Will destroy itself and relay the signal, when powered, useful for one-time events."
+type = 1
+icon_texture = ExtResource("175_sf60c")
+icon_region_override = Rect2(0, 0, 16, 16)
+secondary_icon_texture = ExtResource("160_da57p")
+secondary_icon_region_override = Rect2(0, 0, 16, 16)
+entity_id = "Cx"
+entity_scene = ExtResource("176_adqgr")
+metadata/can_be_stored = true
+
+[node name="TextureRect" type="TextureRect" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Gizmos/MarginContainer/VBoxContainer/Logic/Fuse" unique_id=629881542]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("194_24ald")
+
+[node name="Dice" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Gizmos/MarginContainer/VBoxContainer/Logic" unique_id=603260121 groups=["Selectors"] instance=ExtResource("8_wkmjk")]
+layout_mode = 2
+tile_name = "Dice"
+tile_desc = "Will emit a pulse when powered, if a random number matches its odds."
+type = 1
+icon_texture = ExtResource("181_k6wox")
+icon_region_override = Rect2(0, 0, 16, 16)
+secondary_icon_texture = ExtResource("160_da57p")
+secondary_icon_region_override = Rect2(0, 0, 16, 16)
+entity_id = "DA"
+entity_scene = ExtResource("182_3c4c7")
+metadata/can_be_stored = true
+
+[node name="TextureRect" type="TextureRect" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Gizmos/MarginContainer/VBoxContainer/Logic/Dice" unique_id=189219645]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("194_24ald")
+
+[node name="Gates2" type="Control" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Gizmos/MarginContainer/VBoxContainer/Logic" unique_id=1128498849]
 custom_minimum_size = Vector2(16, 16)
 layout_mode = 2
 mouse_force_pass_scroll_events = false
 script = ExtResource("20_jc7xg")
 
-[node name="AND" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Gizmos/MarginContainer/VBoxContainer/Logic/Gates" unique_id=544130877 groups=["Selectors"] instance=ExtResource("8_wkmjk")]
+[node name="AND" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Gizmos/MarginContainer/VBoxContainer/Logic/Gates2" unique_id=1974475933 groups=["Selectors"] instance=ExtResource("8_wkmjk")]
 layout_mode = 0
 offset_right = 16.0
 offset_bottom = 16.0
@@ -5405,7 +5847,17 @@ metadata/can_lakitu_throw = false
 metadata/can_pipe_gen = false
 metadata/can_crate_store = false
 
-[node name="OR" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Gizmos/MarginContainer/VBoxContainer/Logic/Gates" unique_id=638572330 groups=["Selectors"] instance=ExtResource("8_wkmjk")]
+[node name="TextureRect" type="TextureRect" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Gizmos/MarginContainer/VBoxContainer/Logic/Gates2/AND" unique_id=1908360192]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("194_24ald")
+
+[node name="OR" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Gizmos/MarginContainer/VBoxContainer/Logic/Gates2" unique_id=611235104 groups=["Selectors"] instance=ExtResource("8_wkmjk")]
 layout_mode = 0
 offset_right = 16.0
 offset_bottom = 16.0
@@ -5422,7 +5874,17 @@ metadata/can_lakitu_throw = false
 metadata/can_pipe_gen = false
 metadata/can_crate_store = false
 
-[node name="NOT" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Gizmos/MarginContainer/VBoxContainer/Logic/Gates" unique_id=356540055 groups=["Selectors"] instance=ExtResource("8_wkmjk")]
+[node name="TextureRect" type="TextureRect" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Gizmos/MarginContainer/VBoxContainer/Logic/Gates2/OR" unique_id=357113452]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("194_24ald")
+
+[node name="NOT" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Gizmos/MarginContainer/VBoxContainer/Logic/Gates2" unique_id=1682878703 groups=["Selectors"] instance=ExtResource("8_wkmjk")]
 layout_mode = 0
 offset_right = 16.0
 offset_bottom = 16.0
@@ -5439,7 +5901,17 @@ metadata/can_lakitu_throw = false
 metadata/can_pipe_gen = false
 metadata/can_crate_store = false
 
-[node name="XOR" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Gizmos/MarginContainer/VBoxContainer/Logic/Gates" unique_id=323110241 groups=["Selectors"] instance=ExtResource("8_wkmjk")]
+[node name="TextureRect" type="TextureRect" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Gizmos/MarginContainer/VBoxContainer/Logic/Gates2/NOT" unique_id=1518606766]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("194_24ald")
+
+[node name="XOR" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Gizmos/MarginContainer/VBoxContainer/Logic/Gates2" unique_id=942645207 groups=["Selectors"] instance=ExtResource("8_wkmjk")]
 layout_mode = 0
 offset_right = 16.0
 offset_bottom = 16.0
@@ -5456,7 +5928,17 @@ metadata/can_lakitu_throw = false
 metadata/can_pipe_gen = false
 metadata/can_crate_store = false
 
-[node name="TextureRect" type="TextureRect" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Gizmos/MarginContainer/VBoxContainer/Logic/Gates" unique_id=1646626171]
+[node name="TextureRect" type="TextureRect" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Gizmos/MarginContainer/VBoxContainer/Logic/Gates2/XOR" unique_id=1292957715]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("194_24ald")
+
+[node name="TextureRect" type="TextureRect" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Gizmos/MarginContainer/VBoxContainer/Logic/Gates2" unique_id=912479882]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -5467,45 +5949,6 @@ mouse_filter = 2
 texture = ExtResource("22_3cjpb")
 expand_mode = 1
 stretch_mode = 3
-
-[node name="Repeater" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Gizmos/MarginContainer/VBoxContainer/Logic" unique_id=1671354315 groups=["Selectors"] instance=ExtResource("8_wkmjk")]
-layout_mode = 2
-tile_name = "Repeater"
-tile_desc = "Will repeat a power off, power on, or pulse signal, a specific number of times."
-type = 1
-icon_texture = ExtResource("173_yjk03")
-icon_region_override = Rect2(0, 0, 16, 16)
-secondary_icon_texture = ExtResource("160_da57p")
-secondary_icon_region_override = Rect2(0, 0, 16, 16)
-entity_id = "Cw"
-entity_scene = ExtResource("174_2vwpv")
-metadata/can_be_stored = true
-
-[node name="Fuse" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Gizmos/MarginContainer/VBoxContainer/Logic" unique_id=15943736 groups=["Selectors"] instance=ExtResource("8_wkmjk")]
-layout_mode = 2
-tile_name = "Fuse"
-tile_desc = "Will destroy itself and relay the signal, when powered, useful for one-time events."
-type = 1
-icon_texture = ExtResource("175_sf60c")
-icon_region_override = Rect2(0, 0, 16, 16)
-secondary_icon_texture = ExtResource("160_da57p")
-secondary_icon_region_override = Rect2(0, 0, 16, 16)
-entity_id = "Cx"
-entity_scene = ExtResource("176_adqgr")
-metadata/can_be_stored = true
-
-[node name="Dice" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Gizmos/MarginContainer/VBoxContainer/Logic" unique_id=603260121 groups=["Selectors"] instance=ExtResource("8_wkmjk")]
-layout_mode = 2
-tile_name = "Dice"
-tile_desc = "Will emit a pulse when powered, if a random number matches its odds."
-type = 1
-icon_texture = ExtResource("181_k6wox")
-icon_region_override = Rect2(0, 0, 16, 16)
-secondary_icon_texture = ExtResource("160_da57p")
-secondary_icon_region_override = Rect2(0, 0, 16, 16)
-entity_id = "DA"
-entity_scene = ExtResource("182_3c4c7")
-metadata/can_be_stored = true
 
 [node name="Output" type="HFlowContainer" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Gizmos/MarginContainer/VBoxContainer" unique_id=193752837]
 layout_mode = 2
@@ -5521,6 +5964,16 @@ entity_id = "Cj"
 entity_scene = ExtResource("156_7xqm2")
 metadata/can_be_stored = true
 
+[node name="TextureRect" type="TextureRect" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Gizmos/MarginContainer/VBoxContainer/Output/Lamp" unique_id=229729106]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("194_24ald")
+
 [node name="Placer" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Gizmos/MarginContainer/VBoxContainer/Output" unique_id=528780198 groups=["Selectors"] instance=ExtResource("8_wkmjk")]
 layout_mode = 2
 tile_name = "Tile Placer"
@@ -5532,6 +5985,16 @@ secondary_icon_region_override = Rect2(0, 0, 16, 16)
 entity_id = "Cs"
 entity_scene = ExtResource("174_wc8ue")
 metadata/can_be_stored = true
+
+[node name="TextureRect" type="TextureRect" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Gizmos/MarginContainer/VBoxContainer/Output/Placer" unique_id=157246982]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("194_24ald")
 
 [node name="Teleporter" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Gizmos/MarginContainer/VBoxContainer/Output" unique_id=1161625026 groups=["Selectors"] instance=ExtResource("8_wkmjk")]
 layout_mode = 2
@@ -5545,6 +6008,16 @@ entity_id = "Ct"
 entity_scene = ExtResource("176_uggri")
 metadata/can_be_stored = true
 
+[node name="TextureRect" type="TextureRect" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Gizmos/MarginContainer/VBoxContainer/Output/Teleporter" unique_id=1202098081]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("194_24ald")
+
 [node name="Speaker" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Gizmos/MarginContainer/VBoxContainer/Output" unique_id=789673022 groups=["Selectors"] instance=ExtResource("8_wkmjk")]
 layout_mode = 2
 tile_name = "Speaker"
@@ -5556,6 +6029,38 @@ secondary_icon_region_override = Rect2(0, 0, 16, 16)
 entity_id = "DB"
 entity_scene = ExtResource("176_uggri")
 metadata/can_be_stored = true
+
+[node name="TextureRect" type="TextureRect" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Gizmos/MarginContainer/VBoxContainer/Output/Speaker" unique_id=1461127604]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("194_24ald")
+
+[node name="ConditionalClear" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Gizmos/MarginContainer/VBoxContainer/Output" unique_id=1550750723 groups=["Selectors"] instance=ExtResource("8_wkmjk")]
+layout_mode = 2
+tile_name = "Conditional Clearer"
+tile_desc = "When powered, will either validate or fail the condition required to beat a level."
+type = 1
+icon_texture = ExtResource("196_i2jbr")
+icon_region_override = Rect2(0, 0, 16, 16)
+secondary_icon_region_override = Rect2(0, 0, 16, 16)
+entity_id = "DI"
+entity_scene = ExtResource("176_uggri")
+metadata/can_be_stored = true
+
+[node name="TextureRect" type="TextureRect" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Gizmos/MarginContainer/VBoxContainer/Output/ConditionalClear" unique_id=236414212]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("194_24ald")
 
 [node name="LEVEL" type="MarginContainer" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer" unique_id=1826282093]
 visible = false

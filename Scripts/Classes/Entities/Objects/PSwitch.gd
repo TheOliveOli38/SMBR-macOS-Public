@@ -2,6 +2,8 @@ extends CharacterBody2D
 
 var is_pressed := false
 
+signal switch_pressed
+
 @export var one_time := true
 
 func on_player_entered(player: Player) -> void:
@@ -11,6 +13,7 @@ func on_player_entered(player: Player) -> void:
 func pressed(destroy := true) -> void:
 	if is_pressed:
 		return
+	switch_pressed.emit()
 	for i in [$LCollision, $RCollision]:
 		i.set_deferred("disabled", true)
 	is_pressed = true

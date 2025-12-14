@@ -19,7 +19,7 @@ border_color = Color(0, 1, 0, 1)
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bh0ve"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xy0d6"]
-bg_color = Color(0, 0, 0, 0.83100003)
+bg_color = Color(0, 0, 0, 0.892)
 
 [sub_resource type="StyleBoxLine" id="StyleBoxLine_ecw13"]
 color = Color(1, 1, 1, 1)

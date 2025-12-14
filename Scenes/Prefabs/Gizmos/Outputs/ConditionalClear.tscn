@@ -1,0 +1,28 @@
+[gd_scene load_steps=6 format=3 uid="uid://vax1sabjimuj"]
+
+[ext_resource type="PackedScene" uid="uid://cllscucqyd033" path="res://Scenes/Prefabs/Gizmos/Outputs/BaseOutput.tscn" id="1_srjh2"]
+[ext_resource type="Script" uid="uid://c21dyd6ackh38" path="res://Scripts/Classes/Gizmos/ConditionalClear.gd" id="2_1cpyg"]
+[ext_resource type="Texture2D" uid="uid://dgamrlgy76d3a" path="res://Assets/Sprites/Editor/Gizmos/ConditionalClearer.png" id="2_268d0"]
+[ext_resource type="Script" uid="uid://b8vmbtoaaq5nc" path="res://Scripts/Parts/EditorToggleDetection.gd" id="4_1cpyg"]
+[ext_resource type="Script" uid="uid://ctfbuoxtnnl0q" path="res://Scripts/Classes/Components/EditorPropertyExposer.gd" id="5_lprr3"]
+
+[node name="ConditionalClear" unique_id=515746201 instance=ExtResource("1_srjh2")]
+script = ExtResource("2_1cpyg")
+on_power = 0
+
+[node name="Sprite2D" parent="." index="0" unique_id=1224179792]
+texture = ExtResource("2_268d0")
+hframes = 1
+
+[node name="LevelEditorToggleDetection" type="Node" parent="." index="2" unique_id=1972157966]
+script = ExtResource("4_1cpyg")
+metadata/_custom_type_script = "uid://b8vmbtoaaq5nc"
+
+[node name="EditorPropertyExposer" type="Node" parent="." index="3" unique_id=280249416]
+script = ExtResource("5_lprr3")
+properties = Array[String](["on_power"])
+metadata/_custom_type_script = "uid://ctfbuoxtnnl0q"
+
+[connection signal="recieved_power" from="SignalExposer" to="." method="powered"]
+[connection signal="recieved_pulse" from="SignalExposer" to="." method="validate"]
+[connection signal="level_start" from="LevelEditorToggleDetection" to="." method="on_level_start"]

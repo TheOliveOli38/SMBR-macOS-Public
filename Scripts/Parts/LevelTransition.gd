@@ -44,7 +44,9 @@ func _ready() -> void:
 	if Checkpoint.passed_checkpoints.is_empty() == false:
 		Door.unlocked_doors = Checkpoint.unlocked_doors.duplicate()
 		KeyItem.total_collected = Checkpoint.keys_collected
+		LevelPersistance.active_nodes = Checkpoint.old_state.duplicate(true)
 	else:
+		LevelPersistance.reset_states()
 		Door.unlocked_doors = []
 		KeyItem.total_collected = 0
 	if Global.current_game_mode == Global.GameMode.DISCO:

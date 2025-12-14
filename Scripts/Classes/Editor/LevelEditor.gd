@@ -1023,7 +1023,9 @@ func load_level(level_id := 0) -> void:
 		node.music = null
 		node.process_mode = ProcessMode.PROCESS_MODE_DISABLED
 	else:
+		save_current_level()
 		node.process_mode = ProcessMode.PROCESS_MODE_PAUSABLE
+		get_tree().call_group("Players", "editor_level_start")
 
 func convert_scenes_to_nodes() -> void:
 	pass

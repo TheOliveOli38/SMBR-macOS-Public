@@ -52,8 +52,9 @@ func _ready() -> void:
 	show_behind_parent = true
 	owner.z_index = -5
 	z_index = -10
+	var pos_save = global_position
 	top_level = true
-	global_position = owner.global_position
+	global_position = pos_save
 	await get_tree().process_frame
 	connect_pre_existing_signals()
 	queue_redraw()
@@ -64,7 +65,7 @@ func _process(_delta: float) -> void:
 
 func _draw() -> void:
 	if editing:
-		draw_square_line(Vector2.ZERO, get_local_mouse_position(), WIRE_COLOURS[connections.size()])
+		draw_square_line(Vector2.ZERO, to_local(get_global_mouse_position()).snapped(Vector2(16, 16)), WIRE_COLOURS[connections.size()])
 	var idx := 0
 	for x in connections:
 		var target_node = get_node_from_tile(x[0], x[1])
@@ -72,8 +73,6 @@ func _draw() -> void:
 		idx += 1
 
 func draw_square_line(from := Vector2.ZERO, to := Vector2.ZERO, colour := Color.RED) -> void:
-	from = from.snapped(Vector2(16, 16))
-	to = to.snapped(Vector2(16, 16))
 	var dist_x = abs(from.x - to.x)
 	var dist_y = abs(from.y - to.y)
 	if turned_on:

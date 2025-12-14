@@ -97,10 +97,12 @@ metadata/_custom_type_script = "uid://maqpreddu5kg"
 
 [node name="SignalExposer" type="Node2D" parent="." unique_id=1775923059]
 script = ExtResource("11_pslic")
+do_animation = false
 metadata/_custom_type_script = "uid://b3bokos5jcpr7"
 
 [connection signal="block_destroyed" from="." to="LevelPersistance" method="set_as_active_2"]
 [connection signal="block_emptied" from="." to="LevelPersistance" method="set_as_active"]
+[connection signal="block_hit" from="." to="SignalExposer" method="emit_pulse"]
 [connection signal="player_block_hit" from="." to="." method="player_mushroom_check"]
 [connection signal="player_block_hit" from="." to="." method="dispense_item" unbinds=1]
 [connection signal="player_block_hit" from="." to="BlockAnimations" method="bounce_block" unbinds=1]
