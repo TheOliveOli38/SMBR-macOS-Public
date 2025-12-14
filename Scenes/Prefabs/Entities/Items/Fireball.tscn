@@ -88,6 +88,7 @@ metadata/_custom_type_script = "uid://cbal8ms2oe1ik"
 shape = SubResource("RectangleShape2D_ajyso")
 
 [node name="Hitbox" type="Area2D" parent="." unique_id=562006670]
+collision_layer = 1025
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=135259216]
 shape = SubResource("CircleShape2D_dhdpv")

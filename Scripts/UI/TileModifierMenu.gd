@@ -25,6 +25,8 @@ var signal_nodes := []
 
 var signal_to_connect := ""
 
+signal left_click_release
+
 var can_exit := true:
 	set(value):
 		can_exit = value
@@ -32,6 +34,7 @@ var can_exit := true:
 
 
 func _process(_delta: float) -> void:
+	if Input.is_action_just_released("mb_left"): left_click_release.emit()
 	if active and (Input.is_action_just_pressed("ui_back") or Input.is_action_just_pressed("editor_open_menu")):
 		print(can_exit)
 		if can_exit:
@@ -44,7 +47,9 @@ func open() -> void:
 	clear_nodes()
 	%Properties.visible = properties.size() > 0
 	%SignalDisplay.visible = has_connection
+	%SignalDisplay.node = editing_node
 	add_properties()
+	size = Vector2.ZERO
 	update_minimum_size()
 	show()
 	editing_node.tree_exiting.connect(close)
@@ -53,6 +58,7 @@ func clear_nodes() -> void:
 	for i in property_nodes:
 		i.queue_free()
 	property_nodes.clear()
+	update_minimum_size()
 
 func add_properties() -> void:
 	for i in properties:
@@ -118,6 +124,16 @@ func begin_signal_connection() -> void:
 	hide()
 	Global.level_editor.start_signal_connection(editing_node)
 
+func cancel_connection() -> void:
+	Global.level_editor.current_state = LevelEditor.EditorState.MODIFYING_TILE
+	editing_node.get_node("SignalExposer").stop_connection()
+	can_exit = true
+	show()
+	if Global.level_editor.quick_connecting:
+		Global.level_editor.quick_connecting = false
+		close()
+	Global.level_editor.quick_connecting = false
+
 func value_changed(property, new_value) -> void:
 	can_exit = true
 	var old_value = editing_node.get(property.tile_property_name)
@@ -134,12 +150,17 @@ func set_value(node: Node, value_name := "", value = null) -> void:
 	do_animation(node)
 
 func close() -> void:
-	hide()
-	active = false
-	if get_tree() == null: return
 	clear_nodes()
-	await get_tree().create_timer(0.1).timeout
-	closed.emit()
+	hide()
+	editing_node.tree_exiting.disconnect(close)
+	active = false
+	properties.clear()
+	if get_tree() == null: return
+	if Global.level_editor.quick_connecting:
+		await left_click_release
+	else:
+		await get_tree().create_timer(0.03).timeout
+	Global.level_editor.current_state = LevelEditor.EditorState.IDLE
 
 var old_scale = Vector2.ONE
 
@@ -147,7 +168,11 @@ func connect_signal(new_node: Node) -> void:
 	editing_node.get_node("SignalExposer").connect_to_node([Global.level_editor.current_layer, new_node.get_meta("tile_position")])
 	can_exit = true
 	print("Connected!")
-	show()
+	if Global.level_editor.quick_connecting:
+		close()
+	else:
+		show()
+	Global.level_editor.quick_connecting = false
 
 func do_animation(node: Node) -> void:
 	if node is Node2D:

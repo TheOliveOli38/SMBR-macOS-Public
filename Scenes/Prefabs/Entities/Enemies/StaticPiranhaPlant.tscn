@@ -52,7 +52,7 @@ func _physics_process(_delta: float) -> void:
 	$\"../BasicStaticMovement\".auto_call = owner.gravity_enabled
 "
 
-[node name="StaticPiranhaPlant" type="CharacterBody2D" node_paths=PackedStringArray("on_screen_enabler", "score_note_adder")]
+[node name="StaticPiranhaPlant" type="CharacterBody2D" unique_id=1453745756 node_paths=PackedStringArray("on_screen_enabler", "score_note_adder")]
 collision_layer = 16
 collision_mask = 2
 script = ExtResource("1_w45fi")
@@ -60,9 +60,9 @@ on_screen_enabler = NodePath("VisibleOnScreenEnabler2D")
 score_note_adder = NodePath("ScoreNoteSpawner")
 metadata/_custom_type_script = "uid://bpydbpyjk1mt4"
 
-[node name="RotationJoint" type="Node2D" parent="."]
+[node name="RotationJoint" type="Node2D" parent="." unique_id=149871732]
 
-[node name="Sprite" type="AnimatedSprite2D" parent="RotationJoint"]
+[node name="Sprite" type="AnimatedSprite2D" parent="RotationJoint" unique_id=1886446228]
 position = Vector2(0, -12)
 sprite_frames = SubResource("SpriteFrames_jddy0")
 autoplay = "default"
@@ -71,76 +71,75 @@ offset = Vector2(0, 1)
 script = ExtResource("3_1x1il")
 metadata/_custom_type_script = "uid://caq1qiwmy0mox"
 
-[node name="ResourceSetterNew" type="Node" parent="RotationJoint/Sprite" node_paths=PackedStringArray("node_to_affect")]
+[node name="ResourceSetterNew" type="Node" parent="RotationJoint/Sprite" unique_id=1213319844 node_paths=PackedStringArray("node_to_affect")]
 script = ExtResource("4_xj1cg")
 node_to_affect = NodePath("..")
 property_name = "sprite_frames"
 resource_json = ExtResource("5_bc7fo")
 metadata/_custom_type_script = "uid://cbal8ms2oe1ik"
 
-[node name="Hitbox" type="Area2D" parent="RotationJoint"]
+[node name="Hitbox" type="Area2D" parent="RotationJoint" unique_id=154198614]
 script = ExtResource("5_1x1il")
 metadata/_custom_type_script = "uid://cnheej0sxmoxg"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="RotationJoint/Hitbox"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RotationJoint/Hitbox" unique_id=1098284799]
 position = Vector2(0, -6)
 shape = SubResource("RectangleShape2D_oy87v")
 
-[node name="RemoteTransform2D" type="RemoteTransform2D" parent="RotationJoint"]
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="RotationJoint" unique_id=584721705]
 position = Vector2(0, -5)
 remote_path = NodePath("../../Collision")
 
-[node name="Collision" type="CollisionShape2D" parent="."]
+[node name="Collision" type="CollisionShape2D" parent="." unique_id=1294483231]
 position = Vector2(0, -5)
 shape = SubResource("RectangleShape2D_vypk5")
 
-[node name="BasicStaticMovement" type="Node" parent="." node_paths=PackedStringArray("visuals")]
+[node name="BasicStaticMovement" type="Node" parent="." unique_id=1202683613]
 script = ExtResource("4_oy87v")
 auto_call = false
-visuals = NodePath("../RotationJoint/Sprite")
 metadata/_custom_type_script = "uid://bx6r8sjar6cwr"
 
-[node name="ExplosionDetection" type="Node" parent="." node_paths=PackedStringArray("hitbox")]
+[node name="ExplosionDetection" type="Node" parent="." unique_id=319113680 node_paths=PackedStringArray("hitbox")]
 script = ExtResource("6_jddy0")
 hitbox = NodePath("../RotationJoint/Hitbox")
 metadata/_custom_type_script = "uid://ba18grqjixded"
 
-[node name="FireballDetection" type="Node" parent="." node_paths=PackedStringArray("hitbox")]
+[node name="FireballDetection" type="Node" parent="." unique_id=1228539268 node_paths=PackedStringArray("hitbox")]
 script = ExtResource("7_hqsfc")
 hitbox = NodePath("../RotationJoint/Hitbox")
 metadata/_custom_type_script = "uid://dri2d5jtu0fbq"
 
-[node name="ShellDetection" type="Node" parent="." node_paths=PackedStringArray("hitbox")]
+[node name="ShellDetection" type="Node" parent="." unique_id=171044912 node_paths=PackedStringArray("hitbox")]
 script = ExtResource("8_q1mv6")
 hitbox = NodePath("../RotationJoint/Hitbox")
 metadata/_custom_type_script = "uid://bbww34oiexbx2"
 
-[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
+[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="." unique_id=594296051]
 position = Vector2(0, -9)
 rect = Rect2(-10, -16, 20, 26)
 
-[node name="ScoreNoteSpawner" type="Node" parent="."]
+[node name="ScoreNoteSpawner" type="Node" parent="." unique_id=103208922]
 script = ExtResource("9_hqsfc")
 add_score = true
 metadata/_custom_type_script = "uid://5octqlf4ohel"
 
-[node name="BlockBouncingDetection" type="Node" parent="." node_paths=PackedStringArray("hitbox")]
+[node name="BlockBouncingDetection" type="Node" parent="." unique_id=1805524087 node_paths=PackedStringArray("hitbox")]
 script = ExtResource("10_q1mv6")
 detection_type = 1
 hitbox = NodePath("../RotationJoint/Hitbox")
 metadata/_custom_type_script = "uid://cmg61722ktg2m"
 
-[node name="GibSpawner" type="Node" parent="." node_paths=PackedStringArray("visuals")]
+[node name="GibSpawner" type="Node" parent="." unique_id=2085030428 node_paths=PackedStringArray("visuals")]
 script = ExtResource("13_bc7fo")
 visuals = NodePath("../RotationJoint/Sprite")
 gib_type = 2
 metadata/_custom_type_script = "uid://c3gg32ivrlq8n"
 
-[node name="Node" type="Node" parent="."]
+[node name="Node" type="Node" parent="." unique_id=1285741073]
 process_mode = 3
 script = SubResource("GDScript_qutrf")
 
-[node name="EditorPropertyExposer" type="Node" parent="."]
+[node name="EditorPropertyExposer" type="Node" parent="." unique_id=593577841]
 script = ExtResource("13_w45fi")
 properties = Array[String](["pipe_direction", "gravity_enabled"])
 metadata/_custom_type_script = "uid://ctfbuoxtnnl0q"

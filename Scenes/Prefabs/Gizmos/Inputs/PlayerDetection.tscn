@@ -19,6 +19,9 @@ type = 0
 [node name="Sprite2D" parent="." index="0" unique_id=1224179792]
 texture = ExtResource("2_1x2ni")
 
+[node name="SignalExposer" parent="." index="1" unique_id=634423865]
+can_input = false
+
 [node name="Hitbox" type="Area2D" parent="." index="2" unique_id=1285879126]
 script = ExtResource("3_1x2ni")
 metadata/_custom_type_script = "uid://cnheej0sxmoxg"

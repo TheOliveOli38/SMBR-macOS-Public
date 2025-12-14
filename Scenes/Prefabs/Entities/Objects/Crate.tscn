@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://drxot73c7kksb"]
+[gd_scene load_steps=18 format=3 uid="uid://drxot73c7kksb"]
 
 [ext_resource type="Script" uid="uid://bmmtdr6wiweyh" path="res://Scripts/Classes/Entities/Objects/Crate.gd" id="1_a5r2x"]
 [ext_resource type="Script" uid="uid://cbal8ms2oe1ik" path="res://Scripts/Classes/Components/ResourceSetterNew.gd" id="2_2yyer"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" uid="uid://ctfbuoxtnnl0q" path="res://Scripts/Classes/Components/EditorPropertyExposer.gd" id="7_jo3g1"]
 [ext_resource type="Script" uid="uid://bbww34oiexbx2" path="res://Scripts/Classes/Components/ShellDetection.gd" id="8_suce4"]
 [ext_resource type="Script" uid="uid://ba18grqjixded" path="res://Scripts/Classes/Components/ExplosionDetection.gd" id="9_550b4"]
+[ext_resource type="Script" uid="uid://b3bokos5jcpr7" path="res://Scripts/Classes/Components/SignalExposer.gd" id="10_550b4"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_2era1"]
 animations = [{
@@ -120,9 +121,16 @@ position = Vector2(0, -14)
 shape = SubResource("RectangleShape2D_jo3g1")
 one_way_collision = true
 
+[node name="SignalExposer" type="Node2D" parent="." unique_id=424836887]
+script = ExtResource("10_550b4")
+can_output = false
+metadata/_custom_type_script = "uid://b3bokos5jcpr7"
+
 [connection signal="area_entered" from="WaterHitbox" to="." method="splash" unbinds=1]
 [connection signal="body_entered" from="WaterHitbox" to="." method="splash" unbinds=1]
 [connection signal="player_entered" from="PlayerDetection" to="." method="on_player_entered"]
 [connection signal="fireball_hit" from="FireballDetection" to="." method="destroy" unbinds=1]
 [connection signal="moving_shell_entered" from="ShellDetection" to="." method="destroy" unbinds=1]
 [connection signal="explosion_entered" from="ExplosionDetection" to="." method="destroy" unbinds=1]
+[connection signal="recieved_power" from="SignalExposer" to="." method="destroy"]
+[connection signal="recieved_pulse" from="SignalExposer" to="." method="destroy"]

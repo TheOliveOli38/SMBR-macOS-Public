@@ -742,5 +742,9 @@
 	"DF": [
 		"res://Scenes/Prefabs/Entities/Objects/LoopingPlatform.tscn",
 		"0,-8"
+	],
+	"DG": [
+		"res://Scenes/Prefabs/Gizmos/Outputs/Trigger.tscn",
+		"0,0"
 	]
 }

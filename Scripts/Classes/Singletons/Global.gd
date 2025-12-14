@@ -494,17 +494,17 @@ func do_cooldown() -> void:
 	await get_tree().create_timer(1, false).timeout
 	error_log_cooldown = false
 
-func log_warning(msg := "") -> void:
+func log_warning(text) -> void:
 	var error_message: Label = $CanvasLayer/VBoxContainer/Warning.duplicate()
-	error_message.text = "Warning - " + msg
+	error_message.text = "Warning - " + str(text)
 	error_message.visible = true
 	$CanvasLayer/VBoxContainer.add_child(error_message)
 	await get_tree().create_timer(10, false).timeout
 	error_message.queue_free()
 	
-func log_comment(msg := "") -> void:
+func log_comment(text) -> void:
 	var error_message = $CanvasLayer/VBoxContainer/Comment.duplicate()
-	error_message.text =  msg
+	error_message.text = str(text)
 	error_message.visible = true
 	$CanvasLayer/VBoxContainer.add_child(error_message)
 	await get_tree().create_timer(2, false).timeout

@@ -21,6 +21,8 @@ static var cam_locked := false
 var scrolling := false
 var cam_direction := 1
 
+static var solid_cam_bounds := false
+
 # how far between the center and the edge of the screen before scrolling to the center
 const SCROLL_DIFFERENCE := 48.0
 
@@ -34,6 +36,7 @@ var sp_scrolling := false
 
 func _exit_tree() -> void:
 	cam_locked = false
+	solid_cam_bounds = false
 
 func _physics_process(delta: float) -> void:
 	sp_screen_scroll = Settings.file.visuals.smbs_scroll > 0
@@ -67,6 +70,8 @@ func update_camera_barriers() -> void:
 		camera_center_joint.global_position = get_viewport().get_camera_2d().get_screen_center_position()
 		camera_center_joint.get_node("LeftWall").position.x = -(get_viewport_rect().size.x / 2)
 		camera_center_joint.get_node("RightWall").position.x = (get_viewport_rect().size.x / 2)
+		for i in [camera_center_joint.get_node("RightWall"), camera_center_joint.get_node("LeftWall")]:
+			i.get_node("CollisionShape2D").set_deferred("one_way_collision", not solid_cam_bounds)
 
 func handle_horizontal_scrolling(delta: float) -> void:
 	scrolling = false

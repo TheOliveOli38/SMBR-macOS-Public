@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://cbs645wiwmaxq"]
+[gd_scene load_steps=35 format=3 uid="uid://cbs645wiwmaxq"]
 
 [ext_resource type="Script" uid="uid://clareynx710qb" path="res://Scripts/Classes/Entities/Objects/Burner.gd" id="1_4fveq"]
 [ext_resource type="Texture2D" uid="uid://dhk5jdqjqo77p" path="res://Assets/Sprites/Blocks/BurnerFlame.png" id="1_vrk50"]
@@ -12,6 +12,7 @@
 [ext_resource type="Script" uid="uid://cmvlgsjmsk0v5" path="res://Scripts/Classes/Resources/ThemedResource.gd" id="8_oeevx"]
 [ext_resource type="Script" uid="uid://d4a7yp6e55u8t" path="res://Scripts/Classes/Components/TrackJoint.gd" id="10_oeevx"]
 [ext_resource type="Script" uid="uid://b3bokos5jcpr7" path="res://Scripts/Classes/Components/SignalExposer.gd" id="12_je1ke"]
+[ext_resource type="Script" uid="uid://b8vmbtoaaq5nc" path="res://Scripts/Parts/EditorToggleDetection.gd" id="13_liwv0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_amjrr"]
 size = Vector2(16, 16)
@@ -250,11 +251,19 @@ rect = Rect2(-64, -64, 128, 128)
 
 [node name="SignalExposer" type="Node2D" parent="." unique_id=1543179752]
 script = ExtResource("12_je1ke")
+can_output = false
+do_animation = false
 metadata/_custom_type_script = "uid://b3bokos5jcpr7"
+
+[node name="LevelEditorToggleDetection" type="Node" parent="." unique_id=1278851659]
+script = ExtResource("13_liwv0")
+metadata/_custom_type_script = "uid://b8vmbtoaaq5nc"
 
 [connection signal="player_hit" from="RotationJoint/EnemyPlayerDetection" to="." method="damage_player" binds= ["Fire"]]
 [connection signal="player_stomped_below" from="RotationJoint/EnemyPlayerDetection" to="." method="damage_player" binds= ["Fire"]]
 [connection signal="player_stomped_on" from="RotationJoint/EnemyPlayerDetection" to="." method="damage_player" binds= ["Fire"]]
 [connection signal="timeout" from="Timer" to="." method="do_cycle"]
-[connection signal="recieved_power" from="SignalExposer" to="." method="do_cycle"]
+[connection signal="lost_power" from="SignalExposer" to="." method="turn_off"]
+[connection signal="recieved_power" from="SignalExposer" to="." method="turn_on"]
 [connection signal="recieved_pulse" from="SignalExposer" to="." method="do_cycle"]
+[connection signal="level_start" from="LevelEditorToggleDetection" to="." method="start"]

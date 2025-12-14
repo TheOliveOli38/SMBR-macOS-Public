@@ -19,7 +19,7 @@ texture = ExtResource("2_8lanu")
 script = ExtResource("3_rf2yg")
 metadata/_custom_type_script = "uid://b3bokos5jcpr7"
 
-[node name="PropertyExposer" type="Node" parent="." unique_id=1706999895]
+[node name="EditorPropertyExposer" type="Node" parent="." unique_id=1706999895]
 script = ExtResource("4_8lanu")
 properties = Array[String](["amount", "delay"])
 properties_force_selector = Dictionary[String, PackedScene]({

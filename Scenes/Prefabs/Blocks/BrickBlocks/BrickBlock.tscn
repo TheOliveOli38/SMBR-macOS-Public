@@ -69,6 +69,7 @@ metadata/_custom_type_script = "uid://maqpreddu5kg"
 
 [node name="SignalExposer" type="Node2D" parent="." unique_id=793668131]
 script = ExtResource("11_5lt17")
+can_output = false
 metadata/_custom_type_script = "uid://b3bokos5jcpr7"
 
 [connection signal="block_destroyed" from="." to="LevelPersistance" method="set_as_active_2"]

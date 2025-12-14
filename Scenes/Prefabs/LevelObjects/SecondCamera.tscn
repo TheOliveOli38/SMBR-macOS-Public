@@ -1,12 +1,14 @@
-[gd_scene load_steps=9 format=3 uid="uid://b7l1or6o4absh"]
+[gd_scene load_steps=11 format=3 uid="uid://b7l1or6o4absh"]
 
 [ext_resource type="Texture2D" uid="uid://ejdm7k30661p" path="res://Assets/Sprites/Editor/SecondCamera.png" id="1_54xm2"]
 [ext_resource type="Script" uid="uid://hs44d1hdb3uf" path="res://Scripts/Classes/Entities/Objects/SecondCamera.gd" id="1_gxl3e"]
 [ext_resource type="Script" uid="uid://b8vmbtoaaq5nc" path="res://Scripts/Parts/EditorToggleDetection.gd" id="2_1iuxi"]
+[ext_resource type="Script" uid="uid://cpwloakvp672a" path="res://Scripts/Parts/EditorVisibleNode.gd" id="2_g27jv"]
 [ext_resource type="Script" uid="uid://d4a7yp6e55u8t" path="res://Scripts/Classes/Components/TrackJoint.gd" id="3_1iuxi"]
 [ext_resource type="Texture2D" uid="uid://5p3ab5rs3rfq" path="res://Assets/Sprites/Editor/ScreenBorder.png" id="5_1mpv3"]
 [ext_resource type="Script" uid="uid://b3bokos5jcpr7" path="res://Scripts/Classes/Components/SignalExposer.gd" id="6_6u6ve"]
 [ext_resource type="Script" uid="uid://ctfbuoxtnnl0q" path="res://Scripts/Classes/Components/EditorPropertyExposer.gd" id="7_uqqdw"]
+[ext_resource type="Texture2D" uid="uid://dlldh5aks0wff" path="res://Assets/Sprites/Editor/GhostTile.png" id="9_yxgtw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uqqdw"]
 
@@ -17,13 +19,19 @@ script = ExtResource("1_gxl3e")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1163343351]
 top_level = true
+enabled = false
 process_callback = 0
 limit_left = -256
 limit_bottom = 32
 position_smoothing_speed = 8.0
+script = ExtResource("2_g27jv")
 
 [node name="Sprite2D" type="Sprite2D" parent="Camera2D" unique_id=349657222]
 texture = ExtResource("1_54xm2")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Camera2D" unique_id=567042564]
+position = Vector2(-8, 0)
+texture = ExtResource("9_yxgtw")
 
 [node name="LevelEditorToggleDetection" type="Node" parent="." unique_id=273691880]
 script = ExtResource("2_1iuxi")
@@ -45,6 +53,7 @@ patch_margin_right = 2
 patch_margin_bottom = 2
 axis_stretch_horizontal = 1
 axis_stretch_vertical = 1
+script = ExtResource("2_g27jv")
 
 [node name="SignalExposer" type="Node2D" parent="." unique_id=631337864]
 script = ExtResource("6_6u6ve")
@@ -63,5 +72,6 @@ shape = SubResource("RectangleShape2D_uqqdw")
 [connection signal="level_start" from="LevelEditorToggleDetection" to="." method="level_start"]
 [connection signal="bounced" from="TrackJoint" to="." method="ended"]
 [connection signal="bounced" from="TrackJoint" to="TrackJoint" method="detach"]
+[connection signal="started_moving" from="TrackJoint" to="." method="start_moving"]
 [connection signal="recieved_power" from="SignalExposer" to="." method="toggle"]
 [connection signal="recieved_pulse" from="SignalExposer" to="." method="toggle"]

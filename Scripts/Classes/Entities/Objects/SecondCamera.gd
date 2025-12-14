@@ -23,9 +23,13 @@ func activate() -> void:
 		$Camera2D.enabled = true
 		$Camera2D.make_current()
 
+func start_moving() -> void:
+	level_start()
+	CameraHandler.solid_cam_bounds = true
+
 func ended() -> void:
-	$Camera2D.position_smoothing_enabled = false
-	$Camera2D.enabled = true
+	CameraHandler.solid_cam_bounds = false
+	await get_tree().process_frame
 	$Camera2D.make_current()
 
 func _physics_process(delta: float) -> void:

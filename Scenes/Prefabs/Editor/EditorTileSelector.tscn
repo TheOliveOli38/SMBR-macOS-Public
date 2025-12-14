@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://knfs0rx7n1ry"]
+[gd_scene load_steps=9 format=3 uid="uid://knfs0rx7n1ry"]
 
 [ext_resource type="Script" uid="uid://dx0yj4sc1lnpu" path="res://Scripts/Classes/Editor/EditorTileSelector.gd" id="1_ecw13"]
 [ext_resource type="Script" uid="uid://cbal8ms2oe1ik" path="res://Scripts/Classes/Components/ResourceSetterNew.gd" id="3_bh0ve"]
@@ -19,7 +19,12 @@ border_color = Color(0, 1, 0, 1)
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bh0ve"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xy0d6"]
-bg_color = Color(0, 0, 0, 0.580392)
+bg_color = Color(0, 0, 0, 0.83100003)
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_ecw13"]
+color = Color(1, 1, 1, 1)
+grow_begin = -1.0
+grow_end = -1.0
 
 [node name="EditorTileSelector" type="Control" unique_id=937752968]
 custom_minimum_size = Vector2(16, 16)
@@ -72,6 +77,7 @@ use_cache = false
 metadata/_custom_type_script = "uid://cbal8ms2oe1ik"
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1878125320]
+layer = 99999
 
 [node name="NamePanel" type="Node2D" parent="CanvasLayer" unique_id=1559205178]
 unique_name_in_owner = true
@@ -92,9 +98,52 @@ grow_vertical = 2
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_xy0d6")
 
-[node name="NameLabel" type="Label" parent="CanvasLayer/NamePanel/Panel" unique_id=1551794302]
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/NamePanel/Panel" unique_id=420988235]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="NameLabel" type="Label" parent="CanvasLayer/NamePanel/Panel/VBoxContainer" unique_id=1551794302]
 unique_name_in_owner = true
 layout_mode = 2
+size_flags_horizontal = 0
+text = "DICE"
+horizontal_alignment = 1
+uppercase = true
+
+[node name="Line" type="HSeparator" parent="CanvasLayer/NamePanel/Panel/VBoxContainer/NameLabel" unique_id=327969178]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -4.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 2
+theme_override_styles/separator = SubResource("StyleBoxLine_ecw13")
+
+[node name="DescriptionSizer" type="Control" parent="CanvasLayer/NamePanel/Panel/VBoxContainer" unique_id=1117357971]
+unique_name_in_owner = true
+visible = false
+custom_minimum_size = Vector2(256, 0)
+layout_mode = 2
+
+[node name="DescPreview" type="Label" parent="CanvasLayer/NamePanel/Panel/VBoxContainer" unique_id=274185489]
+unique_name_in_owner = true
+visible = false
+modulate = Color(0.46229053, 0.4622907, 0.46229017, 1)
+layout_mode = 2
+text = "..."
+uppercase = true
+
+[node name="Description" type="Label" parent="CanvasLayer/NamePanel/Panel/VBoxContainer" unique_id=476339118]
+unique_name_in_owner = true
+visible = false
+modulate = Color(0.46229053, 0.4622907, 0.46229017, 1)
+layout_mode = 2
+text = "Emits a Signal"
+autowrap_mode = 2
 uppercase = true
 
 [connection signal="mouse_entered" from="Button" to="." method="on_mouse_entered"]

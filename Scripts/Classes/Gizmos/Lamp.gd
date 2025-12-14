@@ -10,3 +10,8 @@ func turn_on() -> void:
 
 func turn_off() -> void:
 	number_of_inputs -= 1
+
+func pulse() -> void:
+	turn_on()
+	await get_tree().create_timer(0.1, false).timeout
+	turn_off()

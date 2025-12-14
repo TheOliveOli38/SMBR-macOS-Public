@@ -11,6 +11,8 @@ signal bounced
 var rider: TrackRider = null
 var is_attached := false
 
+signal started_moving
+
 func detach() -> void:
 	if rider == null: return
 	owner.physics_interpolation_mode = Node.PHYSICS_INTERPOLATION_MODE_INHERIT

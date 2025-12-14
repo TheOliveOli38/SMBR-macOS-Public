@@ -13,7 +13,7 @@ event = 0
 [node name="Sprite2D" parent="." index="0" unique_id=1224179792]
 texture = ExtResource("3_5nlwp")
 
-[node name="PropertyExposer" type="Node" parent="." index="2" unique_id=1585908060]
+[node name="EditorPropertyExposer" type="Node" parent="." index="2" unique_id=1585908060]
 script = ExtResource("4_ubbg8")
 properties = Array[String](["event"])
 metadata/_custom_type_script = "uid://ctfbuoxtnnl0q"

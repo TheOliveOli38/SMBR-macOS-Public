@@ -350,6 +350,10 @@ var crouching := false:
 	get(): # You can't crouch if the animation somehow doesn't exist.
 		if not sprite.sprite_frames.has_animation("Crouch"): return false
 		return crouching
+	set(value):
+		if not crouching and value:
+			crouch_started.emit()
+		crouching = value
 var looking_up := false:
 	get(): # Same deal, can't look up if the animation doesn't exist.
 		if not sprite.sprite_frames.has_animation("LookUp"): return false
@@ -423,6 +427,11 @@ const POWER_STATES := ["Small", "Big", "Fire"]
 
 signal moved
 signal dead
+signal jumped
+signal crouch_started
+signal damaged
+signal attacked
+signal powered_up
 
 var is_dead := false
 var last_damage_source := ""
@@ -528,6 +537,7 @@ var transforming := false
 static var camera_right_limit := 999999
 
 static var times_hit := 0
+
 
 var can_run := true
 
@@ -957,6 +967,7 @@ func handle_projectile_firing(delta: float) -> void:
 		throw_projectile()
 
 func throw_projectile() -> void:
+	attacked.emit()
 	projectile_type = load(physics_params("PROJ_TYPE", POWER_PARAMETERS) + ".tscn")
 	var node = projectile_type.instantiate()
 	var offset = physics_params("PROJ_OFFSET", POWER_PARAMETERS)
@@ -1043,6 +1054,7 @@ func damage(type: String = "") -> void:
 	times_hit += 1
 	var damage_state = power_state.damage_state
 	if damage_state != null and power_state.power_tier > physics_params("POWER_TIER_RANGE", POWER_PARAMETERS)[0]:
+		damaged.emit()
 		if Settings.file.difficulty.damage_style == 0:
 			damage_state = get_node("PowerStates/" +  POWER_STATES[physics_params("POWER_TIER_RANGE", POWER_PARAMETERS)[0]])
 		DiscoLevel.combo_meter -= 50
@@ -1204,6 +1216,7 @@ func get_power_up(power_name := "", give_points := true) -> void:
 		DiscoLevel.combo_amount += 1
 		score_note_spawner.spawn_note(1000)
 	AudioManager.play_sfx("power_up", global_position)
+	powered_up.emit()
 	if Settings.file.difficulty.damage_style == 0 and power_state.state_name != power_name:
 		if power_name != "Big" and power_state.state_name != "Big":
 			power_name = "Big"
@@ -1376,6 +1389,7 @@ func jump() -> void:
 	gravity = calculate_speed_param("JUMP_GRAVITY")
 	AudioManager.play_sfx(physics_params("JUMP_SFX", COSMETIC_PARAMETERS), global_position)
 	has_jumped = true
+	jumped.emit()
 	await get_tree().physics_frame
 	has_jumped = true
 

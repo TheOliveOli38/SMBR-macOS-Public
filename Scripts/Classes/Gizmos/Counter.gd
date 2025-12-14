@@ -11,9 +11,9 @@ func _process(_delta: float) -> void:
 
 func increment() -> void:
 	amount += 1
+	update()
 	if reset_on_total_reached:
 		amount = amount % total_needed
-	update()
 
 func update() -> void:
 	if total_needed <= 0:

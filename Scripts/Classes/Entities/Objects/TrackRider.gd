@@ -21,6 +21,8 @@ signal started
 
 var can_move := true
 
+var moving := false
+
 func _ready() -> void:
 	start()
 	await get_tree().physics_frame
@@ -91,9 +93,12 @@ func check_for_rail() -> void:
 		if current_track != null:
 			if can_move == false:
 				await started
+			if moving == false:
+				attached_entity.get_node("TrackJoint").started_moving.emit()
 			move_tween(Vector2(direction_vector))
 
 func move_tween(new_direction := Vector2.ZERO) -> void:
+	moving = true
 	var tween = create_tween()
 	tween.tween_property(self, "global_position", global_position + (new_direction * 16), float(1.0 if new_direction.is_normalized() else 1.414) / (speed * 2))
 	await tween.finished

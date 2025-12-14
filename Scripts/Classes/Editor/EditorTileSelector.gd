@@ -2,6 +2,7 @@ class_name EditorTileSelector
 extends Control
 
 @export var tile_name := ""
+@export_multiline var tile_desc := ""
 @export_enum("Tile", "Entity", "Terrain") var type := 0
 @export var icon_texture: Resource = null
 @export var icon_region_override := Rect2(0, 0, 0, 0)
@@ -49,6 +50,13 @@ func _process(_delta: float) -> void:
 	var target_position = get_viewport().get_mouse_position()
 	target_position.x = clamp(target_position.x, %Panel.size.x / 2, (get_viewport().get_visible_rect().size.x) - %Panel.size.x / 2)
 	%NamePanel.position = target_position
+	%Description.text = tile_desc
+	%Line.visible = tile_desc != ""
+	%Description.custom_minimum_size.x = get_viewport().get_visible_rect().size.x / 2
+	if tile_desc != "":
+		%DescPreview.visible = not Input.is_action_pressed("editor_inspect")
+		%Description.visible = not %DescPreview.visible
+		%DescriptionSizer.visible = %Description.visible
 
 func set_icon_texture():
 	if icon_texture == null:

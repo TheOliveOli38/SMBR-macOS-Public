@@ -13,8 +13,8 @@ signal lost_power
 
 var turned_on := false
 
-enum ConnectorType{INPUT, OUTPUT, IN_OUTPUT}
-@export var type := ConnectorType.INPUT
+@export var can_input := true
+@export var can_output := true
 
 var editing := false
 
@@ -27,6 +27,18 @@ var total_inputs := 0
 
 var wire_node: Node2D = null
 var save_string := ""
+
+const WIRE_COLOURS := [
+  "#FF0000",
+  "#00FF00",
+  "#0000FF",
+  "#FFFF00",
+  "#FF00FF",
+  "#00FFFF",
+  "#FFA500",
+  "#800080"
+]
+
 
 func _ready() -> void:
 	set_visibility_layer_bit(0, false)
@@ -52,27 +64,36 @@ func _process(_delta: float) -> void:
 
 func _draw() -> void:
 	if editing:
-		draw_square_line(Vector2.ZERO, get_local_mouse_position())
+		draw_square_line(Vector2.ZERO, get_local_mouse_position(), WIRE_COLOURS[connections.size()])
+	var idx := 0
 	for x in connections:
 		var target_node = get_node_from_tile(x[0], x[1])
-		draw_square_line(Vector2.ZERO, to_local(target_node.global_position))
+		draw_square_line(Vector2.ZERO, to_local(target_node.global_position), WIRE_COLOURS[idx % (WIRE_COLOURS.size())])
+		idx += 1
 
-func draw_square_line(from := Vector2.ZERO, to := Vector2.ZERO) -> void:
-	var colour = Color.RED
-	if turned_on:
-		colour = Color.GREEN
+func draw_square_line(from := Vector2.ZERO, to := Vector2.ZERO, colour := Color.RED) -> void:
 	from = from.snapped(Vector2(16, 16))
 	to = to.snapped(Vector2(16, 16))
 	var dist_x = abs(from.x - to.x)
 	var dist_y = abs(from.y - to.y)
-	if dist_x == dist_y and dist_x > 16:
-		draw_dashed_line(from, to, colour, 1.5, 2.0, false)
-	elif dist_x > dist_y:
-		draw_dashed_line(from, Vector2(to.x, from.y), colour, 1)
-		draw_dashed_line(Vector2(to.x, from.y), to, colour, 1)
+	if turned_on:
+			if dist_x == dist_y and dist_x > 16:
+				draw_line(from, to, colour, 2, false)
+			elif dist_x > dist_y:
+				draw_line(from, Vector2(to.x, from.y), colour, 2) 
+				draw_line(Vector2(to.x, from.y), to, colour, 2)
+			else:
+				draw_line(from, Vector2(from.x, to.y), colour, 2)
+				draw_line(Vector2(from.x, to.y), to, colour, 2)
 	else:
-		draw_dashed_line(from, Vector2(from.x, to.y), colour, 1)
-		draw_dashed_line(Vector2(from.x, to.y), to, colour, 1)
+		if dist_x == dist_y and dist_x > 16:
+			draw_dashed_line(from, to, colour, 1.5, 2.0, false)
+		elif dist_x > dist_y:
+			draw_dashed_line(from, Vector2(to.x, from.y), colour, 1)
+			draw_dashed_line(Vector2(to.x, from.y), to, colour, 1)
+		else:
+			draw_dashed_line(from, Vector2(from.x, to.y), colour, 1)
+			draw_dashed_line(Vector2(from.x, to.y), to, colour, 1)
 
 func begin_connecting() -> void:
 	update_animation(1.0, 1.2)
@@ -101,6 +122,11 @@ func emit_pulse() -> void:
 	queue_redraw()
 	await get_tree().create_timer(0.1, false).timeout
 	turned_on = false
+	queue_redraw()
+
+func stop_connection() -> void:
+	editing = false
+	update_animation(1.2, 1.0)
 	queue_redraw()
 
 func connect_pre_existing_signals() -> void:

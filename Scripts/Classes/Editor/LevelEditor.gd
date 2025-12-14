@@ -64,6 +64,8 @@ signal close_confirm(save: bool)
 
 signal connection_node_found(new_node: Node)
 
+var quick_connecting := false
+
 var sub_level_id := 0
 
 static var sub_areas: Array = [null, null, null, null, null]
@@ -206,6 +208,7 @@ func quit_editor() -> void:
 signal level_saved
 
 func open_tile_menu() -> void:
+	$TileMenu/MarginContainer/VBoxContainer/TabButtons.show()
 	$TileMenu.visible = true
 	current_state = EditorState.TILE_MENU
 	for i in get_tree().get_nodes_in_group("Selectors"):
@@ -344,6 +347,14 @@ func handle_layers() -> void:
 		tile_layer_nodes[idx].z_index = i.z_index - 1
 		%LayerDisplay.get_child(idx).modulate = Color.WHITE if current_layer == idx else Color(0.1, 0.1, 0.1, 0.5)
 		idx += 1
+	if current_state != EditorState.PLAYTESTING:
+		for i in entity_tiles:
+			for x in i.keys():
+				if is_instance_valid(i[x]) == false: continue
+				i[x].modulate = Color.WHITE if i[x].has_node("SignalExposer") and i[x].get_node("SignalExposer").can_input or %TileModifierMenu.editing_node == i[x] or current_state != EditorState.CONNECTING else Color.DIM_GRAY
+		for i in tile_layer_nodes:
+			i.self_modulate = Color.WHITE if current_state != EditorState.CONNECTING else Color.DIM_GRAY
+		level.get_node("LevelBG").modulate = Color.WHITE if current_state != EditorState.CONNECTING else Color.DIM_GRAY
 	%LayerLabel.text = "Layer " + str(current_layer + 1)
 
 func save_level() -> void:
@@ -450,8 +461,11 @@ func handle_tile_cursor() -> void:
 		if Input.is_action_just_pressed("mb_left"):
 			if entity_tiles[current_layer].has(tile_position):
 				if entity_tiles[current_layer][tile_position].get_node_or_null("SignalExposer") != null:
-					connection_node_found.emit(entity_tiles[current_layer][tile_position])
-					current_state = EditorState.MODIFYING_TILE
+					if entity_tiles[current_layer][tile_position].get_node("SignalExposer").can_input:
+						connection_node_found.emit(entity_tiles[current_layer][tile_position])
+						current_state = EditorState.MODIFYING_TILE
+		if Input.is_action_just_pressed("mb_right") or Input.is_action_just_pressed("editor_open_menu"):
+			%TileModifierMenu.cancel_connection()
 	
 	if not multi_selecting:
 		handle_area_selecting(tile_position)
@@ -461,6 +475,15 @@ func handle_tile_cursor() -> void:
 		selected_tile_index = wrap(selected_tile_index, 0, tile_list.size())
 		on_tile_selected(tile_list[selected_tile_index])
 		show_scroll_preview()
+	
+	if current_state == EditorState.IDLE:
+		if Input.is_action_just_pressed("quick_connect"):
+			if entity_tiles[current_layer].get(tile_position) != null:
+				if entity_tiles[current_layer][tile_position].has_node("SignalExposer"):
+					if entity_tiles[current_layer][tile_position].get_node("SignalExposer").can_output:
+						quick_connecting = true
+						%TileModifierMenu.editing_node = entity_tiles[current_layer][tile_position]
+						%TileModifierMenu.begin_signal_connection()
 	
 	Input.set_custom_mouse_cursor(target_mouse_icon)
 
@@ -514,9 +537,6 @@ func open_tile_properties(tile: Node2D) -> void:
 	%TileModifierMenu.position = tile.get_global_transform_with_canvas().origin
 	%TileModifierMenu.position.x = clamp(%TileModifierMenu.position.x, 0, get_viewport().get_visible_rect().size.x - %TileModifierMenu.size.x - 2)
 	%TileModifierMenu.position.y = clamp(%TileModifierMenu.position.y, 0, get_viewport().get_visible_rect().size.y - %TileModifierMenu.size.y - 2)
-
-	await %TileModifierMenu.closed
-	current_state = EditorState.IDLE
 
 func area_select_start(tile_position := Vector2i.ZERO) -> void:
 	select_start = tile_position
@@ -767,6 +787,7 @@ func show_scroll_preview() -> void:
 
 func open_tile_selection_menu_scene_ref(selector: TilePropertySceneRef) -> void:
 	open_tile_menu()
+	$TileMenu/MarginContainer/VBoxContainer/TabButtons.hide()
 	current_state = EditorState.SELECTING_TILE_SCENE
 	selection_filter = selector.editing_node.get_node("EditorPropertyExposer").filters[selector.tile_property_name]
 	for i in get_tree().get_nodes_in_group("Selectors"):
@@ -975,7 +996,9 @@ func get_tile_properties(tile: Node) -> Array:
 	return properties
 
 func tile_has_signal(tile: Node) -> bool:
-	return tile.get_node_or_null("SignalExposer") != null
+	if tile.has_node("SignalExposer"):
+		return tile.get_node("SignalExposer").can_output
+	return false
 
 const CUSTOM_LEVEL_BASE = ("res://Scenes/Levels/CustomLevelBase.tscn")
 
@@ -1062,7 +1085,7 @@ func clear_toolbar_tooltip(text := "") -> void:
 	if %ToolsName.text == text:
 		%ToolsName.hide()
 
-var gizmos_visible := false
+var gizmos_visible := true
 
 func toggle_gizmos(toggled := false) -> void:
 	gizmos_visible = toggled
