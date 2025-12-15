@@ -72,7 +72,12 @@ const DEFAULT_SFX_LIBRARY := {
 	"sp_coin": "res://Assets/Audio/SFX/SPCoin.wav",
 	"hidden_coin": "res://Assets/Audio/SFX/HiddenCoin.wav",
 	"bridge_break": "res://Assets/Audio/SFX/BreakBridge.wav",
-	"secret": "res://Assets/Audio/SFX/Secret.wav"
+	"secret": "res://Assets/Audio/SFX/Secret.wav",
+	"red_coin_1": "res://Assets/Audio/SFX/RedCoin1.wav",
+	"red_coin_2": "res://Assets/Audio/SFX/RedCoin2.wav",
+	"red_coin_3": "res://Assets/Audio/SFX/RedCoin3.wav",
+	"red_coin_4": "res://Assets/Audio/SFX/RedCoin4.wav",
+	"red_coin_5": "res://Assets/Audio/SFX/RedCoin5.wav"
 }
 
 @onready var sfx_library = DEFAULT_SFX_LIBRARY.duplicate()

@@ -1,8 +1,9 @@
+class_name RedCoin
 extends Node2D
 
 @export var id := 0
 var already_collected := false
-const COLLECTION_SFXS := [preload("uid://drr1qqeuhmv6m"), preload("uid://de1tktivtggdv"), preload("uid://cdtlca36qsba5"), preload("uid://dd47k4c5sypwp"), preload("uid://chi2nogc2op4i")]
+const COLLECTION_SFXS := ["red_coin_1", "red_coin_2", "red_coin_3", "red_coin_4", "red_coin_5"]
 const SPINNING_RED_COIN = preload("res://Scenes/Prefabs/Entities/Items/SpinningRedCoin.tscn")
 var can_spawn_particles := false
 

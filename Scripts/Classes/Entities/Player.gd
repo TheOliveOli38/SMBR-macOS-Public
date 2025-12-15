@@ -1381,6 +1381,7 @@ func exit_pipe(pipe: PipeArea) -> void:
 	state_machine.transition_to("Normal")
 	Global.can_time_tick = true
 
+
 func jump() -> void:
 	if spring_bouncing:
 		return
