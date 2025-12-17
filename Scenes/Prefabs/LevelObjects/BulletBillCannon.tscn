@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://bqhtste1il47d"]
+[gd_scene load_steps=7 format=3 uid="uid://bqhtste1il47d"]
 
 [ext_resource type="Script" uid="uid://0btfo4kjnnrg" path="res://Scripts/Parts/BulletBillCannon.gd" id="1_je07o"]
 [ext_resource type="Script" uid="uid://cpwloakvp672a" path="res://Scripts/Parts/EditorVisibleNode.gd" id="2_vkq2x"]
 [ext_resource type="Texture2D" uid="uid://di0lgq3cojy41" path="res://Assets/Sprites/Editor/BillCannon.png" id="3_xxt5v"]
+[ext_resource type="Script" uid="uid://b3bokos5jcpr7" path="res://Scripts/Classes/Components/SignalExposer.gd" id="5_xxt5v"]
 [ext_resource type="Script" uid="uid://ctfbuoxtnnl0q" path="res://Scripts/Classes/Components/EditorPropertyExposer.gd" id="6_guvwn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mi286"]
@@ -41,3 +42,12 @@ position = Vector2(9, 0)
 target_position = Vector2(8, 0)
 collision_mask = 6
 hit_from_inside = true
+
+[node name="SignalExposer" type="Node2D" parent="." unique_id=855123279]
+script = ExtResource("5_xxt5v")
+can_output = false
+do_animation = false
+metadata/_custom_type_script = "uid://b3bokos5jcpr7"
+
+[connection signal="recieved_power" from="SignalExposer" to="." method="fire"]
+[connection signal="recieved_pulse" from="SignalExposer" to="." method="fire"]

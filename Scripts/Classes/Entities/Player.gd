@@ -240,7 +240,15 @@ extends CharacterBody2D
 	},
 	"Superball": {
 		"PROJ_TYPE": "res://Scenes/Prefabs/Entities/Items/SuperballProjectile",
-		"PROJ_PARTICLE": "res://Scenes/Prefabs/Particles/SmokeParticle"
+		"PROJ_PARTICLE": "res://Scenes/Prefabs/Particles/SmokeParticle",
+		"PROJ_SFX_THROW": "fireball",
+		"PROJ_GRAVITY": 0.0, 
+		"PROJ_LIFETIME": 10.0,
+		"PROJ_WALL_BOUNCE": true,
+		"PROJ_CEIL_BOUNCE": true,
+		"PROJ_FLOOR_BOUNCE": true,
+		"PROJ_COLLECT_COINS": true,
+		"PROJ_SPEED": [100.0, -100.0],
 	}
 }
 ## Determines values involving various ending sequences, such as grabbing the flagpole and walking to an NPC at the end of a level.
@@ -701,6 +709,7 @@ func _physics_process(delta: float) -> void:
 
 	up_direction = -gravity_vector
 	handle_collision_shapes()
+	handle_step_collision()
 	handle_directions()
 	handle_projectile_firing(delta)
 	handle_block_collision_detection()
@@ -709,13 +718,6 @@ func _physics_process(delta: float) -> void:
 	handle_wing_flight(delta)
 	on_ice = %IceCheck.is_colliding() and is_on_floor()
 	air_frames = (air_frames + 1 if is_on_floor() == false else 0)
-	for i in get_tree().get_nodes_in_group("StepCollision"):
-		var on_wall := false
-		for x in [$StepWallChecks/LWall, $StepWallChecks/RWall]:
-			if x.is_colliding():
-				on_wall = true
-		var step_enabled = (not on_wall and air_frames < 4 and actual_velocity_y() >= 0)
-		i.set_deferred("disabled", not step_enabled)
 	if is_actually_on_ceiling() and can_bump_sfx:
 		bump_ceiling()
 	elif is_actually_on_floor() and not is_invincible:
@@ -998,6 +1000,21 @@ func handle_collision_shapes() -> void:
 	$Hitbox/Shape.shape.size = collision_size + Vector2(0.2, 0.2)
 	%BlockCollision.position.y = -collision_size.y
 	$BlockCollision/Shape.shape.size.x = collision_size.x
+
+func handle_step_collision() -> void:
+	var collision_size = physics_params("COLLISION_SIZE")
+	if crouching:
+		collision_size = physics_params("CROUCH_COLLISION_SIZE")
+	collision_size = Vector2(collision_size[0], collision_size[1])
+	for i in get_tree().get_nodes_in_group("StepCollision"):
+		var on_wall := false
+		for x in [$StepWallChecks/LWall, $StepWallChecks/RWall]:
+			x.position.x = ((collision_size.x / 2) + 2) * sign(x.position.x)
+			if x.is_colliding():
+				on_wall = true
+		var step_enabled = (not on_wall and air_frames < 4 and actual_velocity_y() >= 0)
+		i.set_deferred("disabled", not step_enabled)
+		i.position.x = ((collision_size.x / 2) + 2) * sign(i.position.x)
 
 func handle_star(delta:float) -> void:
 	star_meter -= delta

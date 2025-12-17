@@ -8,3 +8,5 @@ type = 2
 
 [node name="Sprite2D" parent="." index="0" unique_id=1224179792]
 texture = ExtResource("2_mrtii")
+
+[connection signal="level_start" from="LevelEditorToggleDetection" to="." method="update"]

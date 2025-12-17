@@ -8,6 +8,8 @@ const MAX_TIME := 15
 const HARD_TIME := 7
 
 func _physics_process(_delta: float) -> void:
+	if $SignalExposer.total_inputs > 0:
+		return
 	if randi_range(0, 8) == 8:
 		timer -= 1
 	if timer <= 0:
@@ -19,7 +21,8 @@ func _physics_process(_delta: float) -> void:
 
 func fire() -> void:
 	if BulletBill.amount >= 3 or $PlayerDetect.get_overlapping_areas().any(func(area: Area2D): return area.owner is Player) or is_inside_tree() == false:
-		return
+		if $SignalExposer.total_inputs <= 0:
+			return
 	var player: Player = get_tree().get_first_node_in_group("Players")
 	var direction = sign(player.global_position.x - global_position.x)
 	$BlockCheck.scale.x = direction

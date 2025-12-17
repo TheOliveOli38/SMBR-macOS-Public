@@ -15,6 +15,9 @@ static func reset_states() -> void:
 	Checkpoint.old_state = [[], []]
 
 func _ready() -> void:
+	if owner.has_meta("block_item"):
+		queue_free()
+		return
 	if active_nodes[0].has(path):
 		enabled.emit()
 	if active_nodes[1].has(path):

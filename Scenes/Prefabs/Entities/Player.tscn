@@ -984,10 +984,10 @@ metadata/_custom_type_script = "uid://cbal8ms2oe1ik"
 
 [node name="Collision" type="CollisionPolygon2D" parent="." unique_id=1622259203]
 unique_name_in_owner = true
-polygon = PackedVector2Array(4, -2, 4, -24, 1, -30, -1, -30, -4, -24, -4, -2, -2, 0, 2, 0)
+polygon = PackedVector2Array(4, -2, 4, -8, 1, -14, -1, -14, -4, -8, -4, -2, -2, 0, 2, 0)
 one_way_collision = true
 script = ExtResource("35_nbkfn")
-hitbox = Vector2(8, 30)
+hitbox = Vector2(8, 14)
 
 [node name="FootL" type="CollisionShape2D" parent="." unique_id=449333133 groups=["StepCollision"]]
 position = Vector2(-6, -4)
@@ -1016,13 +1016,13 @@ camera_center_joint = NodePath("../CameraCenterJoint")
 
 [node name="LWall" type="RayCast2D" parent="StepWallChecks" unique_id=1780434792]
 position = Vector2(-6, -4)
-target_position = Vector2(-1, 0)
+target_position = Vector2(-2, 0)
 collision_mask = 3
 hit_from_inside = true
 
 [node name="RWall" type="RayCast2D" parent="StepWallChecks" unique_id=841745751]
 position = Vector2(6, -4)
-target_position = Vector2(1, 0)
+target_position = Vector2(2, 0)
 collision_mask = 3
 hit_from_inside = true
 

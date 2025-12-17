@@ -8,7 +8,8 @@ extends Node2D
 @export var loop := false
 
 func level_start() -> void:
-	if $SignalExposer.has_input == false:
+	await get_tree().physics_frame
+	if $SignalExposer.total_inputs <= 0:
 		start_timer()
 
 func timeout() -> void:

@@ -37,6 +37,7 @@ func _physics_process(delta: float) -> void:
 
 func toggle() -> void:
 	active = !active
+	if get_viewport() == null: return
 	if active:
 		transition_to_self()
 	else:
@@ -46,7 +47,6 @@ func return_to_old_camera() -> void:
 	if taken:
 		return
 	var trans_cam = Camera2D.new()
-	get_tree().get_first_node_in_group("Players").recenter_camera()
 	for i in ["limit_left", "limit_right", "limit_top", "limit_bottom"]:
 		trans_cam.set(i, $Camera2D.get(i))
 	get_tree().get_first_node_in_group("Players").camera.add_child(trans_cam)

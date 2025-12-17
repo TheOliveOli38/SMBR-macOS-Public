@@ -19,6 +19,7 @@ size = Vector2(48, 5)
 script = ExtResource("1_h7s5k")
 
 [node name="Platform" type="AnimatableBody2D" parent="." unique_id=749308287]
+collision_layer = 3
 sync_to_physics = false
 
 [node name="Sprite" type="NinePatchRect" parent="Platform" unique_id=1185437037]

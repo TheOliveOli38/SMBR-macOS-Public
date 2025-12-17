@@ -4,17 +4,21 @@ extends EntityGenerator
 const new_vector = Vector2.UP
 
 func activate() -> void:
+	active = true
 	for i in get_tree().get_nodes_in_group("Players"):
 		on_player_entered(i)
 
 func deactivate() -> void:
+	active = false
 	for i in get_tree().get_nodes_in_group("Players"):
 		on_player_exited(i)
 
 func calculate_player_height(player: Player):
-	var player_height = player.physics_params("HITBOX_SCALE")[1]
-	var player_crouch_height = player.physics_params("CROUCH_SCALE") if player.crouching else 1
-	return (16 if player.power_state.state_name == "Small" else 32) * player_height * player_crouch_height
+	var height = player.physics_params("COLLISION_SIZE")
+	if player.crouching:
+		height = player.physics_params("CROUCH_COLLISION_SIZE")
+	height = height[1]
+	return height
 
 func on_player_entered(player: Player) -> void:
 	if player.gravity_vector == new_vector:

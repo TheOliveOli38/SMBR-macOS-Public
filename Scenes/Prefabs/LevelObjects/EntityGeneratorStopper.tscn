@@ -7,10 +7,10 @@
 threshold = 99999.0
 entity_scene = null
 
-[node name="Sprite" parent="LevelEditorVisibleNode" index="0"]
+[node name="Sprite" parent="LevelEditorVisibleNode" parent_id_path=PackedInt32Array(1819047736) index="0" unique_id=2086579252]
 texture = ExtResource("2_bd4qu")
 
-[node name="PlayerDetection" parent="." index="1"]
+[node name="PlayerDetection" parent="." index="1" unique_id=1599199670]
 visible = true
 
 [connection signal="player_entered" from="PlayerDetection" to="." method="deactivate_all_generators" unbinds=1]

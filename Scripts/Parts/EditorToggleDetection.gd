@@ -8,10 +8,10 @@ signal editor_start
 
 func _ready() -> void:
 	if is_instance_valid(Global.level_editor):
-		if Global.level_editor.current_state != LevelEditor.EditorState.PLAYTESTING:
-			Global.level_editor.level_start.connect(toggled.emit)
-			Global.level_editor.level_start.connect(level_start.emit)
-			Global.level_editor.editor_start.connect(editor_start.emit)
-			Global.level_editor.editor_start.connect(toggled.emit)
-			return
+		Global.level_editor.level_start.connect(toggled.emit)
+		Global.level_editor.level_start.connect(level_start.emit)
+		Global.level_editor.editor_start.connect(editor_start.emit)
+		Global.level_editor.editor_start.connect(toggled.emit)
+		return
+	await get_tree().process_frame
 	level_start.emit()

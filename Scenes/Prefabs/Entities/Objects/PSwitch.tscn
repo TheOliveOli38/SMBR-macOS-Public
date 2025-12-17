@@ -188,6 +188,7 @@ one_way_collision = true
 [node name="SignalExposer" type="Node2D" parent="." unique_id=200280199]
 position = Vector2(0, -8)
 script = ExtResource("9_i4nd2")
+do_animation = false
 metadata/_custom_type_script = "uid://b3bokos5jcpr7"
 
 [node name="EditorPropertyExposer" type="Node" parent="." unique_id=853085131]

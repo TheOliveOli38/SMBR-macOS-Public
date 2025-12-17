@@ -9,6 +9,10 @@ signal condition_lost
 
 var condition_filled := false
 
+func _ready() -> void:
+	if Global.level_editor_is_editing() == false:
+		update()
+
 func input_added() -> void:
 	total_inputs += 1
 	update()
@@ -35,7 +39,6 @@ func get_condition() -> bool:
 		2:
 			return total_inputs == 0
 		3:
-			print("FUCK")
 			return total_inputs > 0 and total_inputs < $SignalExposer.total_inputs
 		_:
 			return false

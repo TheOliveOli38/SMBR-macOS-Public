@@ -1,3 +1,4 @@
+class_name TilePlacer
 extends Node2D
 
 @export var tile_to_place = null

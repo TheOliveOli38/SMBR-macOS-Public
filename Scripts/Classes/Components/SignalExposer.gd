@@ -55,9 +55,10 @@ func _ready() -> void:
 	var pos_save = global_position
 	top_level = true
 	global_position = pos_save
-	await get_tree().process_frame
-	connect_pre_existing_signals()
+	call_deferred("connect_pre_existing_signals")
 	queue_redraw()
+	if Global.current_game_mode == Global.GameMode.CUSTOM_LEVEL:
+		get_tree().call_group("Gizmos", "hide")
 
 func _process(_delta: float) -> void:
 	if editing:
@@ -162,16 +163,16 @@ func input_removed() -> void:
 func get_string() -> String:
 	var entity_string := ""
 	for i in connections:
-		entity_string += ",&"
+		entity_string += ",$"
 		entity_string += str(i[0]) + "," + str(i[1].x) + "," + str(i[1].y)
 	return entity_string
 
 func apply_string(string := "") -> void:
 	print(string)
 	var arr := []
-	if string.contains("&"):
-		string = string.substr(string.find("&"))
-		arr = string.split("&", false)
+	if string.contains("$"):
+		string = string.substr(string.find("$"))
+		arr = string.split("$", false)
 	for i in arr:
 		var signal_arr = i.split(",")
 		connections.append([int(signal_arr[0]), Vector2i(int(signal_arr[1]), int(signal_arr[2]))])
