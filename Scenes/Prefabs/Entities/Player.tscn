@@ -1,4 +1,4 @@
-[gd_scene load_steps=84 format=3 uid="uid://cuh62hlq8errh"]
+[gd_scene load_steps=78 format=3 uid="uid://cuh62hlq8errh"]
 
 [ext_resource type="Script" uid="uid://dt4rosa5o35xr" path="res://Scripts/Classes/Entities/Player.gd" id="1_f6bau"]
 [ext_resource type="Script" uid="uid://uribh0f1jttq" path="res://Scripts/Classes/States/StateMachine.gd" id="2_1y62l"]
@@ -296,27 +296,7 @@ _data = {
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nbkfn"]
 resource_local_to_scene = true
-size = Vector2(9.2, 14)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_vijl6"]
-resource_local_to_scene = true
-size = Vector2(9.2, 29.5)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_f6bau"]
-resource_local_to_scene = true
-size = Vector2(6, 15.5)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_sda2e"]
-resource_local_to_scene = true
-size = Vector2(6, 29.5)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_uwhl4"]
-resource_local_to_scene = true
-size = Vector2(10, 16.5)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_o70e0"]
-resource_local_to_scene = true
-size = Vector2(10, 30.5)
+size = Vector2(8, 16)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_t1xso"]
 size = Vector2(9999999, 8)
@@ -469,14 +449,6 @@ func _physics_process(_delta: float) -> void:
 			print(Global.level_editor.entity_tiles)
 "
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_d7xah"]
-resource_local_to_scene = true
-size = Vector2(4, 6.75)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_34tqy"]
-resource_local_to_scene = true
-size = Vector2(4, 12)
-
 [sub_resource type="Resource" id="Resource_xy8gq"]
 script = ExtResource("24_hu5lw")
 Overworld = ExtResource("40_o70e0")
@@ -487,6 +459,10 @@ particles_animation = true
 particles_anim_h_frames = 5
 particles_anim_v_frames = 1
 particles_anim_loop = false
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fqdtv"]
+resource_local_to_scene = true
+size = Vector2(8, 8)
 
 [node name="Player" type="CharacterBody2D" unique_id=1190317973 node_paths=PackedStringArray("power_state") groups=["Players"]]
 process_priority = 1
@@ -648,6 +624,14 @@ hitbox_size = "Fire"
 damage_state = NodePath("../Big")
 metadata/_custom_type_script = "uid://c8xvkkv34fjr4"
 
+[node name="Superball" type="Node" parent="PowerStates" unique_id=1475465758 node_paths=PackedStringArray("damage_state")]
+script = ExtResource("5_rs3l8")
+state_name = "Superball"
+power_tier = 2
+hitbox_size = "Superball"
+damage_state = NodePath("../Big")
+metadata/_custom_type_script = "uid://c8xvkkv34fjr4"
+
 [node name="Camera" type="Camera2D" parent="." unique_id=369954744]
 process_mode = 3
 top_level = true
@@ -658,118 +642,46 @@ editor_draw_limits = true
 editor_draw_drag_margin = true
 
 [node name="Hitbox" type="Area2D" parent="." unique_id=2054851719]
-position = Vector2(0, -10)
 collision_mask = 5
 
-[node name="SmallShape" type="CollisionShape2D" parent="Hitbox" unique_id=2041618811 groups=["SmallCollisions"]]
-position = Vector2(0, 3)
+[node name="Shape" type="CollisionShape2D" parent="Hitbox" unique_id=2041618811]
+position = Vector2(0, -8)
 shape = SubResource("RectangleShape2D_nbkfn")
-debug_color = Color(1, 0, 0, 0.419608)
+debug_color = Color(1, 1, 0, 0.42000002)
 script = ExtResource("21_jl70t")
-offset = Vector2(0, -10)
-
-[node name="BigShape" type="CollisionShape2D" parent="Hitbox" unique_id=3638387 groups=["BigCollisions"]]
-position = Vector2(0, -4.75)
-shape = SubResource("RectangleShape2D_vijl6")
-disabled = true
-debug_color = Color(1, 0, 0, 0.419608)
-script = ExtResource("21_jl70t")
-offset = Vector2(0, -10)
-
-[node name="FireShape" type="CollisionShape2D" parent="Hitbox" unique_id=1097949057 groups=["FireCollisions"]]
-position = Vector2(0, -4.75)
-shape = SubResource("RectangleShape2D_vijl6")
-disabled = true
-debug_color = Color(1, 0, 0, 0.419608)
-script = ExtResource("21_jl70t")
-offset = Vector2(0, -10)
 
 [node name="WaterDetect" type="Area2D" parent="." unique_id=764842293]
 visible = false
-position = Vector2(0, -13)
 collision_layer = 0
 collision_mask = 64
 
-[node name="SmallShape" type="CollisionShape2D" parent="WaterDetect" unique_id=1492110389 groups=["SmallCollisions"]]
-position = Vector2(0, 5.25)
-shape = SubResource("RectangleShape2D_f6bau")
+[node name="Shape" type="CollisionShape2D" parent="WaterDetect" unique_id=1492110389]
+position = Vector2(0, -8)
+shape = SubResource("RectangleShape2D_nbkfn")
 debug_color = Color(1, 0, 0, 0.419608)
 script = ExtResource("21_jl70t")
-offset = Vector2(0, -13)
-
-[node name="BigShape" type="CollisionShape2D" parent="WaterDetect" unique_id=1296858438 groups=["BigCollisions"]]
-position = Vector2(0, -1.75)
-shape = SubResource("RectangleShape2D_sda2e")
-disabled = true
-debug_color = Color(1, 0, 0, 0.419608)
-script = ExtResource("21_jl70t")
-offset = Vector2(0, -13)
-
-[node name="FireShape" type="CollisionShape2D" parent="WaterDetect" unique_id=1215268052 groups=["FireCollisions"]]
-position = Vector2(0, -1.75)
-shape = SubResource("RectangleShape2D_sda2e")
-disabled = true
-debug_color = Color(1, 0, 0, 0.419608)
-script = ExtResource("21_jl70t")
-offset = Vector2(0, -13)
 
 [node name="LavaDetect" type="Area2D" parent="." unique_id=272558444]
 visible = false
-position = Vector2(0, -13)
 collision_layer = 0
 collision_mask = 128
 
-[node name="SmallShape" type="CollisionShape2D" parent="LavaDetect" unique_id=1361790950 groups=["SmallCollisions"]]
-position = Vector2(0, 5.75)
-shape = SubResource("RectangleShape2D_uwhl4")
+[node name="Shape" type="CollisionShape2D" parent="LavaDetect" unique_id=1361790950]
+position = Vector2(0, -8)
+shape = SubResource("RectangleShape2D_nbkfn")
 debug_color = Color(1, 0, 0, 0.419608)
 script = ExtResource("21_jl70t")
-offset = Vector2(0, -14)
-
-[node name="BigShape" type="CollisionShape2D" parent="LavaDetect" unique_id=1514277755 groups=["BigCollisions"]]
-position = Vector2(0, -1.25)
-shape = SubResource("RectangleShape2D_o70e0")
-disabled = true
-debug_color = Color(1, 0, 0, 0.419608)
-script = ExtResource("21_jl70t")
-offset = Vector2(0, -14)
-
-[node name="FireShape" type="CollisionShape2D" parent="LavaDetect" unique_id=1396306359 groups=["FireCollisions"]]
-position = Vector2(0, -1.25)
-shape = SubResource("RectangleShape2D_o70e0")
-disabled = true
-debug_color = Color(1, 0, 0, 0.419608)
-script = ExtResource("21_jl70t")
-offset = Vector2(0, -14)
 
 [node name="PoisonDetect" type="Area2D" parent="." unique_id=949078937]
 visible = false
-position = Vector2(0, -13)
 collision_layer = 0
 collision_mask = 256
 
-[node name="SmallShape" type="CollisionShape2D" parent="PoisonDetect" unique_id=1435651111 groups=["SmallCollisions"]]
-position = Vector2(0, 5.75)
-shape = SubResource("RectangleShape2D_uwhl4")
+[node name="Shape" type="CollisionShape2D" parent="PoisonDetect" unique_id=1435651111]
+position = Vector2(0, -8)
+shape = SubResource("RectangleShape2D_nbkfn")
 debug_color = Color(1, 0, 0, 0.419608)
 script = ExtResource("21_jl70t")
-offset = Vector2(0, -14)
-
-[node name="BigShape" type="CollisionShape2D" parent="PoisonDetect" unique_id=422639108 groups=["BigCollisions"]]
-position = Vector2(0, -1.25)
-shape = SubResource("RectangleShape2D_o70e0")
-disabled = true
-debug_color = Color(1, 0, 0, 0.419608)
-script = ExtResource("21_jl70t")
-offset = Vector2(0, -14)
-
-[node name="FireShape" type="CollisionShape2D" parent="PoisonDetect" unique_id=1691775462 groups=["FireCollisions"]]
-position = Vector2(0, -1.25)
-shape = SubResource("RectangleShape2D_o70e0")
-disabled = true
-debug_color = Color(1, 0, 0, 0.419608)
-script = ExtResource("21_jl70t")
-offset = Vector2(0, -14)
 
 [node name="CameraCenterJoint" type="Node2D" parent="." unique_id=1981443036]
 physics_interpolation_mode = 2
@@ -1070,20 +982,12 @@ mode = 1
 resource_json = ExtResource("10_xy8gq")
 metadata/_custom_type_script = "uid://cbal8ms2oe1ik"
 
-[node name="SmallCollision" type="CollisionPolygon2D" parent="." unique_id=1622259203 groups=["SmallCollisions"]]
-polygon = PackedVector2Array(4, -2, 4, -8, 1, -14, -1, -14, -4, -8, -4, -2, -2, 0, 2, 0)
+[node name="Collision" type="CollisionPolygon2D" parent="." unique_id=1622259203]
+unique_name_in_owner = true
+polygon = PackedVector2Array(4, -2, 4, -24, 1, -30, -1, -30, -4, -24, -4, -2, -2, 0, 2, 0)
 one_way_collision = true
 script = ExtResource("35_nbkfn")
-
-[node name="BigCollision" type="CollisionPolygon2D" parent="." unique_id=1045902060 groups=["BigCollisions"]]
-polygon = PackedVector2Array(-4, -2, -2, 0, 2, 0, 4, -2, 4, -23, 1, -28, -1, -28, -4, -23)
-one_way_collision = true
-script = ExtResource("35_nbkfn")
-
-[node name="FireCollision" type="CollisionPolygon2D" parent="." unique_id=1763620623 groups=["FireCollisions"]]
-polygon = PackedVector2Array(-4, -2, -2, 0, 2, 0, 4, -2, 4, -23, 1, -28, -1, -28, -4, -23)
-one_way_collision = true
-script = ExtResource("35_nbkfn")
+hitbox = Vector2(8, 30)
 
 [node name="FootL" type="CollisionShape2D" parent="." unique_id=449333133 groups=["StepCollision"]]
 position = Vector2(-6, -4)
@@ -1122,36 +1026,6 @@ target_position = Vector2(1, 0)
 collision_mask = 3
 hit_from_inside = true
 
-[node name="BlockCollision" type="Area2D" parent="." unique_id=1507773990]
-collision_layer = 0
-collision_mask = 4
-
-[node name="SmallShape" type="CollisionShape2D" parent="BlockCollision" unique_id=15466727 node_paths=PackedStringArray("link") groups=["SmallCollisions"]]
-position = Vector2(0, -3.375)
-shape = SubResource("RectangleShape2D_d7xah")
-debug_color = Color(1, 0, 0, 0.419608)
-script = ExtResource("21_jl70t")
-link = NodePath("../../SmallCollision")
-metadata/scalable = false
-
-[node name="BigShape" type="CollisionShape2D" parent="BlockCollision" unique_id=484585453 node_paths=PackedStringArray("link") groups=["BigCollisions"]]
-position = Vector2(0, -6)
-shape = SubResource("RectangleShape2D_34tqy")
-disabled = true
-debug_color = Color(1, 0, 0, 0.419608)
-script = ExtResource("21_jl70t")
-link = NodePath("../../BigCollision")
-metadata/scalable = false
-
-[node name="FireShape" type="CollisionShape2D" parent="BlockCollision" unique_id=1401818493 node_paths=PackedStringArray("link") groups=["FireCollisions"]]
-position = Vector2(0, -6)
-shape = SubResource("RectangleShape2D_34tqy")
-disabled = true
-debug_color = Color(1, 0, 0, 0.419608)
-script = ExtResource("21_jl70t")
-link = NodePath("../../BigCollision")
-metadata/scalable = false
-
 [node name="TimerWarn" type="AudioStreamPlayer" parent="." unique_id=1357526984]
 process_mode = 3
 stream = ExtResource("40_o70e0")
@@ -1187,6 +1061,17 @@ position = Vector2(0, -7)
 target_position = Vector2(0, 8)
 collision_mask = 512
 hit_from_inside = true
+
+[node name="BlockCollision" type="Area2D" parent="." unique_id=183752720]
+unique_name_in_owner = true
+position = Vector2(0, -30)
+collision_layer = 0
+collision_mask = 4
+monitorable = false
+
+[node name="Shape" type="CollisionShape2D" parent="BlockCollision" unique_id=2092768561]
+position = Vector2(0, -4)
+shape = SubResource("RectangleShape2D_fqdtv")
 
 [connection signal="frame_changed" from="SpriteScaleJoint/Sprite" to="SpriteScaleJoint/Sprite" method="on_frame_changed"]
 [connection signal="sprite_frames_changed" from="SpriteScaleJoint/Sprite" to="SpriteScaleJoint/Sprite" method="on_frame_changed"]

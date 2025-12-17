@@ -12,6 +12,9 @@
 [sub_resource type="GDScript" id="GDScript_r8seh"]
 script/source = "extends Node
 
+func _ready() -> void:
+	handle_starting_position()
+
 func _physics_process(_delta: float) -> void:
 	if Global.level_editor != null:
 		if Global.level_editor.current_state != LevelEditor.EditorState.PLAYTESTING:

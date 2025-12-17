@@ -11,8 +11,8 @@ extends CharacterBody2D
 ## Determines the physics properties of the player character, such as general movement values, hitboxes, and other typical behavior.
 @export var PHYSICS_PARAMETERS: Dictionary = {
 	"Default": { # Fallback parameters. Additional entries can be added through CharacterInfo.json.
-		"HITBOX_SCALE": [1.0, 1.0],        # The player's hitbox scale.
-		"CROUCH_SCALE": 0.5,               # The player's hitbox scale when crouched.
+		"COLLISION_SIZE": [8, 28],
+		"CROUCH_COLLISION_SIZE": [8, 14],            # The player's hitbox scale when crouched.
 		"CAN_AIR_TURN": false,             # Determines if the player can turn in mid-air.
 		"CAN_BREAK_BRICKS": true,          # Determines if the player can break bricks in their current form.
 		"CAN_BE_WALL_EJECTED": true,       # Determines if the player gets pushed out of blocks if inside of them.
@@ -92,7 +92,8 @@ extends CharacterBody2D
 		"MAX_SWIM_FALL_SPEED": 200.0,      # The player's maximum fall speed while swimming, measured in px/sec.
 	},
 	"Small": {
-		"CROUCH_SCALE": 0.75,
+		"COLLISION_SIZE": [8, 14],
+		"CROUCH_COLLISION_SIZE": [8, 12],
 		"CAN_BREAK_BRICKS": false,
 		"CAN_BE_WALL_EJECTED": false,
 	},
@@ -193,7 +194,6 @@ extends CharacterBody2D
 ## Determines parameters typically involved with power-up behavior, mainly projectiles fired by the player.
 @export var POWER_PARAMETERS: Dictionary = {
 	"Default": {
-		"POWER_TIER_RANGE": [0, 2],        # Determines the range of available power-up tiers to the player.
 		"STARTING_POWER_STATE": "Small",   # Determines the default starting power state.
 		"STAR_TIME": 12.0,                 # Determines how long a Star will last for.
 		"WING_TIME": 10.0,                 # Determines how long Wings will last for.
@@ -208,7 +208,7 @@ extends CharacterBody2D
 		"PROJ_SFX_THROW": "fireball",      # Defines the sound effect that plays when this projectile is fired.
 		"PROJ_SFX_COLLIDE": "bump",        # Defines the sound effect that plays when this projectile collides.
 		#"PROJ_SFX_HIT": "kick",           # Defines the sound effect that plays when this projectile damages an enemy.
-		
+		"PROJ_COLLECT_COINS": false,
 		"MAX_PROJ_COUNT": 2,               # How many projectiles can be fired at once. -1 and below count as infinite.
 		"PROJ_COLLISION": true,            # Determines if the projectile can interact with collidable surfaces.
 		"PROJ_PIERCE_COUNT": 0,            # Determines how many additional enemies this projectile can hit before being destroyed. -1 and below count as infinite.
@@ -238,6 +238,10 @@ extends CharacterBody2D
 		"PROJ_TYPE": "res://Scenes/Prefabs/Entities/Items/Fireball",
 		"PROJ_PARTICLE": "res://Scenes/Prefabs/Particles/FireballExplosion",
 	},
+	"Superball": {
+		"PROJ_TYPE": "res://Scenes/Prefabs/Entities/Items/SuperballProjectile",
+		"PROJ_PARTICLE": "res://Scenes/Prefabs/Particles/SmokeParticle"
+	}
 }
 ## Determines values involving various ending sequences, such as grabbing the flagpole and walking to an NPC at the end of a level.
 @export var ENDING_PARAMETERS: Dictionary = {
@@ -395,7 +399,7 @@ var can_spring_fall_anim = false
 
 const COMBO_VALS := [100, 200, 400, 500, 800, 1000, 2000, 4000, 5000, 8000, null]
 
-@export_enum("Small", "Big", "Fire") var starting_power_state := 0
+@export_enum("Small", "Big", "Fire", "Superball") var starting_power_state := 0
 @onready var state_machine: StateMachine = $States
 @onready var normal_state: Node = $States/Normal
 @export var auto_death_pit := true
@@ -423,7 +427,7 @@ var animating_camera := false
 var can_uncrouch := false
 
 static var CHARACTERS := ["Mario", "Luigi", "Toad", "Toadette"]
-const POWER_STATES := ["Small", "Big", "Fire"]
+const POWER_STATES := ["Small", "Big", "Fire", "Superball"]
 
 signal moved
 signal dead
@@ -568,9 +572,8 @@ func _ready() -> void:
 	if Global.current_level.first_load and Global.current_game_mode == Global.GameMode.MARATHON_PRACTICE:
 		Global.player_power_states[player_id] = "0"
 	var cur_power_state = int(Global.player_power_states[player_id])
-	var power_tier_range = physics_params("POWER_TIER_RANGE", POWER_PARAMETERS)
 	power_state = get_node("PowerStates/" + physics_params("STARTING_POWER_STATE", POWER_PARAMETERS))
-	power_state = $PowerStates.get_node(POWER_STATES[clamp(cur_power_state, power_state.power_tier, power_tier_range[1])])
+	power_state = $PowerStates.get_node(POWER_STATES[cur_power_state])
 	if Global.current_game_mode == Global.GameMode.LEVEL_EDITOR:
 		camera.enabled = false
 	handle_power_up_states(0)
@@ -697,6 +700,7 @@ func _physics_process(delta: float) -> void:
 			Global.log_comment("NOCLIP Enabled")
 
 	up_direction = -gravity_vector
+	handle_collision_shapes()
 	handle_directions()
 	handle_projectile_firing(delta)
 	handle_block_collision_detection()
@@ -906,27 +910,11 @@ func handle_invincible_palette() -> void:
 
 func handle_block_collision_detection() -> void:
 	if ["Pipe"].has(state_machine.state.name): return
-	match power_state.hitbox_size:
-		"Small":
-			var points: Array = $SmallCollision.polygon
-			points.sort_custom(func(a, b): return a.y < b.y)
-			$BlockCollision.position.y = points.front().y * $SmallCollision.scale.y
-			%Hammer.position.x = -8 * (1 - $SmallCollision.scale.x)
-		"Big":
-			var points: Array = $BigCollision.polygon
-			points.sort_custom(func(a, b): return a.y < b.y)
-			$BlockCollision.position.y = points.front().y * $BigCollision.scale.y
-			%Hammer.position.x = -8 * (1 - $BigCollision.scale.x)
-		"Fire":
-			var points: Array = $FireCollision.polygon
-			points.sort_custom(func(a, b): return a.y < b.y)
-			$BlockCollision.position.y = points.front().y * $FireCollision.scale.y
-			%Hammer.position.x = -8 * (1 - $FireCollision.scale.x)
-	if actual_velocity_y() <= calculate_speed_param("FALL_GRAVITY", velocity_x_jump_stored):
-		for i in $BlockCollision.get_overlapping_bodies():
+	if actual_velocity_y() <= calculate_speed_param("FALL_GRAVITY", velocity_x_jump_stored) and is_on_ceiling():
+		for i in %BlockCollision.get_overlapping_bodies():
 			if i is Block:
-				if is_on_ceiling():
-					i.player_block_hit.emit(self)
+				i.player_block_hit.emit(self)
+
 func handle_directions() -> void:
 	input_direction = 0
 	if Global.player_action_pressed("move_right", player_id):
@@ -996,20 +984,20 @@ func throw_projectile() -> void:
 	attacking = false
 
 func handle_power_up_states(delta) -> void:
-	for i in get_tree().get_nodes_in_group("SmallCollisions"):
-		i.disabled = power_state.hitbox_size != "Small"
-		i.visible = not i.disabled
-		i.crouching = crouching
-	for i in get_tree().get_nodes_in_group("BigCollisions"):
-		i.disabled = power_state.hitbox_size != "Big"
-		i.visible = not i.disabled
-		i.crouching = crouching
-	for i in get_tree().get_nodes_in_group("FireCollisions"):
-		i.disabled = power_state.hitbox_size != "Fire"
-		i.visible = not i.disabled
-		i.crouching = crouching
 	$Checkpoint.position.y = -24 if power_state.hitbox_size == "Small" else -40
 	power_state.update(delta)
+
+func handle_collision_shapes() -> void:
+	var collision_size = physics_params("COLLISION_SIZE")
+	if crouching:
+		collision_size = physics_params("CROUCH_COLLISION_SIZE")
+	collision_size = Vector2(collision_size[0], collision_size[1])
+	collision_size.x = max(collision_size.x, 6)
+	collision_size.y = max(collision_size.y, 8)
+	%Collision.hitbox = collision_size
+	$Hitbox/Shape.shape.size = collision_size + Vector2(0.2, 0.2)
+	%BlockCollision.position.y = -collision_size.y
+	$BlockCollision/Shape.shape.size.x = collision_size.x
 
 func handle_star(delta:float) -> void:
 	star_meter -= delta
@@ -1053,10 +1041,10 @@ func damage(type: String = "") -> void:
 		return
 	times_hit += 1
 	var damage_state = power_state.damage_state
-	if damage_state != null and power_state.power_tier > physics_params("POWER_TIER_RANGE", POWER_PARAMETERS)[0]:
+	if damage_state != null:
 		damaged.emit()
 		if Settings.file.difficulty.damage_style == 0:
-			damage_state = get_node("PowerStates/" +  POWER_STATES[physics_params("POWER_TIER_RANGE", POWER_PARAMETERS)[0]])
+			damage_state = get_node("PowerStates/" +  POWER_STATES[0])
 		DiscoLevel.combo_meter -= 50
 		AudioManager.play_sfx("damage", global_position)
 		await power_up_animation(damage_state.state_name)
@@ -1221,7 +1209,7 @@ func get_power_up(power_name := "", give_points := true) -> void:
 		if power_name != "Big" and power_state.state_name != "Big":
 			power_name = "Big"
 	var new_power_state = get_node("PowerStates/" + power_name)
-	if power_state.power_tier <= new_power_state.power_tier and new_power_state.power_tier <= physics_params("POWER_TIER_RANGE", POWER_PARAMETERS)[1] and new_power_state != power_state:
+	if power_state.power_tier <= new_power_state.power_tier and new_power_state != power_state:
 		can_hurt = false
 		await power_up_animation(power_name)
 	else:

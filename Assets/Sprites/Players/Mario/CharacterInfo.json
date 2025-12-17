@@ -3,8 +3,8 @@
 	"physics": {
 		"PHYSICS_PARAMETERS": {
 			"Default": {
-				"HITBOX_SCALE": [1.0, 1.0],
-				"CROUCH_SCALE": 0.5,
+				"COLLISION_SIZE": [8, 28],
+				"CROUCH_COLLISION_SIZE": [8, 14],
 				"CAN_AIR_TURN": false,
 				"CAN_BREAK_BRICKS": true,
 				"CAN_BE_WALL_EJECTED": true,
@@ -88,7 +88,8 @@
 				"MAX_SWIM_FALL_SPEED": 200.0,
 			},
 			"Small": {
-				"CROUCH_SCALE": 0.75,
+				"COLLISION_SIZE": [8, 14],
+				"CROUCH_COLLISION_SIZE": [8, 12],
 				"CAN_BREAK_BRICKS": false,
 				"CAN_BE_WALL_EJECTED": false,
 			},
