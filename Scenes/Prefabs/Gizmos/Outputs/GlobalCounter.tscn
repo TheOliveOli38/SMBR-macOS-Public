@@ -44,7 +44,7 @@ metadata/_custom_type_script = "uid://b3bokos5jcpr7"
 
 [node name="EditorPropertyExposer" type="Node" parent="." unique_id=1046722467]
 script = ExtResource("5_qlb02")
-properties = Array[String](["total_needed", "reset_on_total_reached"])
+properties = Array[String](["total_needed", "reset_on_total_reached", "channel"])
 properties_force_selector = Dictionary[String, PackedScene]({
 "total_needed": ExtResource("6_v4stf")
 })

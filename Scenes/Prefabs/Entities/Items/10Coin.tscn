@@ -96,4 +96,5 @@ resource_json = ExtResource("4_qjhmb")
 metadata/_custom_type_script = "uid://cbal8ms2oe1ik"
 
 [connection signal="collected" from="." to="ScoreNoteSpawner" method="spawn_note" binds= [100]]
+[connection signal="area_entered" from="PlayerDetection" to="." method="on_area_entered"]
 [connection signal="player_entered" from="PlayerDetection" to="." method="collect" flags=6 unbinds=1]

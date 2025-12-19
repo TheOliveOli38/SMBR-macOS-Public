@@ -95,7 +95,7 @@ func wait_for_build_completion() -> void:
 	%Loading.hide()
 
 func handle_challenge_mode_transition() -> void:
-	%Default.hide()
+	%LivesCount.hide()
 	%PlayerSprite.hide()
 	%ChallengeMode.show()
 	%ChallengeScoreText.text = str(int(ChallengeModeHandler.top_challenge_scores[Global.world_num - 1][Global.level_num - 1]))

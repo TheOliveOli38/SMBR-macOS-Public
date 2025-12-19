@@ -8,5 +8,7 @@ func _ready() -> void:
 		Global.level_editor.level_start.connect(update)
 
 func update() -> void:
-	var visible = (!LevelEditor.playing_level and Global.current_game_mode == Global.GameMode.LEVEL_EDITOR)
+	var visible = (Global.level_editor_is_editing())
+	if Global.level_editor != null:
+		visible = Global.level_editor.gizmos_visible or Global.level_editor_is_editing()
 	set("visible", visible)

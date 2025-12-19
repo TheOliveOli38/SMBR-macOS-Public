@@ -49,7 +49,6 @@ script/source = "extends Node
 func _physics_process(_delta: float) -> void:
 	$\"../RotationJoint\".global_rotation_degrees = [0, 180, 270, 90][owner.pipe_direction]
 	$\"../RotationJoint\".position = [Vector2.ZERO, Vector2(0, -16), Vector2(8, -8), Vector2(-8, -8)][owner.pipe_direction]
-	$\"../BasicStaticMovement\".auto_call = owner.gravity_enabled
 "
 
 [node name="StaticPiranhaPlant" type="CharacterBody2D" unique_id=1453745756 node_paths=PackedStringArray("on_screen_enabler", "score_note_adder")]

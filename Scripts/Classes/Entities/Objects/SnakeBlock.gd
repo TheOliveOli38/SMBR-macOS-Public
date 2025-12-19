@@ -16,6 +16,8 @@ const DIRECTIONS := [
 	Vector2i.LEFT # 3
 ]
 
+var looping := false
+
 var mouse_in_areas := 0
 var last_direction := Vector2i.RIGHT
 

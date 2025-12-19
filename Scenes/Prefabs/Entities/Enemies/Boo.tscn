@@ -38,8 +38,10 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ilcde"]
 size = Vector2(12, 12)
 
-[node name="Boo" type="CharacterBody2D" unique_id=13484290 groups=["Enemies"]]
+[node name="Boo" type="CharacterBody2D" unique_id=13484290 node_paths=PackedStringArray("on_screen_enabler", "score_note_adder") groups=["Enemies"]]
 script = ExtResource("1_ilcde")
+on_screen_enabler = NodePath("VisibleOnScreenEnabler2D")
+score_note_adder = NodePath("ScoreNoteSpawner")
 metadata/_custom_type_script = "uid://bpydbpyjk1mt4"
 
 [node name="Sprite" type="AnimatedSprite2D" parent="." unique_id=92003820]

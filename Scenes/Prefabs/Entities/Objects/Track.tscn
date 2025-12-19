@@ -17,7 +17,7 @@ size = Vector2(15, 15)
 [node name="Track" type="Node2D" unique_id=699421484]
 process_mode = 3
 physics_interpolation_mode = 2
-z_index = -5
+z_index = -20
 script = ExtResource("1_5apin")
 
 [node name="Point" type="Sprite2D" parent="." unique_id=62342976]

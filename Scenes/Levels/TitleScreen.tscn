@@ -1,4 +1,4 @@
-[gd_scene load_steps=67 format=4 uid="uid://dnlgawye840rs"]
+[gd_scene load_steps=68 format=4 uid="uid://dnlgawye840rs"]
 
 [ext_resource type="Script" uid="uid://bqetotvkgfpta" path="res://Scripts/Parts/TitleScreen.gd" id="1_1wpe0"]
 [ext_resource type="Texture2D" uid="uid://d01emqx4qafd7" path="res://Assets/Sprites/UI/TitleSMB1.png" id="2_1j3pg"]
@@ -18,6 +18,7 @@
 [ext_resource type="PackedScene" uid="uid://c7w8dmlmj0hoh" path="res://Scenes/Prefabs/UI/CampaignSelect.tscn" id="14_1wnbq"]
 [ext_resource type="PackedScene" uid="uid://br018ivvrtsjd" path="res://Scenes/Prefabs/UI/SaveDeletionWarning.tscn" id="15_s06mt"]
 [ext_resource type="PackedScene" uid="uid://bpx20uohhikd7" path="res://Scenes/Prefabs/UI/QuestSelect.tscn" id="16_s06mt"]
+[ext_resource type="PackedScene" uid="uid://0awwjaglc0tg" path="res://Scenes/Prefabs/UI/SpeedrunTypeSelectLevel.tscn" id="17_wjo1g"]
 [ext_resource type="Script" uid="uid://bdq0373j5n5o0" path="res://Scripts/Parts/CameraRightLimit.gd" id="18_3wltv"]
 [ext_resource type="PackedScene" uid="uid://bvgigoyn7lrc2" path="res://Scenes/Prefabs/UI/SpeedrunTypeSelect.tscn" id="19_6t4fx"]
 [ext_resource type="PackedScene" uid="uid://r2n1ka3mc5v6" path="res://Scenes/Prefabs/UI/GhostSelect.tscn" id="20_p54in"]
@@ -807,6 +808,7 @@ offset_right = 90.0
 offset_bottom = 32.5
 grow_horizontal = 2
 grow_vertical = 2
+has_disco_stuff = true
 
 [node name="LevelSelect" parent="CanvasLayer/AllNightNippon" unique_id=1771393260 instance=ExtResource("58_qgapq")]
 visible = false
@@ -821,6 +823,7 @@ offset_right = 128.0
 offset_bottom = 40.0
 grow_horizontal = 2
 grow_vertical = 2
+has_disco_stuff = true
 
 [node name="CharacterSelect" parent="CanvasLayer/AllNightNippon" unique_id=525170753 instance=ExtResource("13_8wrri")]
 visible = false
@@ -838,7 +841,11 @@ visible = false
 [node name="SpeedrunTypeSelect" parent="CanvasLayer/MarathonMode" unique_id=1889005451 instance=ExtResource("19_6t4fx")]
 visible = false
 
-[node name="CharacterSelect2" parent="CanvasLayer/MarathonMode" unique_id=1791087174 instance=ExtResource("13_8wrri")]
+[node name="SpeedrunTypeSelectLevel" parent="CanvasLayer/MarathonMode" unique_id=985065137 instance=ExtResource("17_wjo1g")]
+unique_name_in_owner = true
+visible = false
+
+[node name="CharacterSelectFull" parent="CanvasLayer/MarathonMode" unique_id=1791087174 instance=ExtResource("13_8wrri")]
 visible = false
 offset_left = -64.0
 offset_top = -36.0
@@ -874,7 +881,7 @@ grow_horizontal = 2
 grow_vertical = 2
 has_speedrun_stuff = true
 
-[node name="CharacterSelect" parent="CanvasLayer/MarathonMode" unique_id=1188824904 instance=ExtResource("13_8wrri")]
+[node name="CharacterSelectLevel" parent="CanvasLayer/MarathonMode" unique_id=1188824904 instance=ExtResource("13_8wrri")]
 visible = false
 offset_left = -64.0
 offset_top = -36.0
@@ -1653,15 +1660,17 @@ metadata/_custom_type_script = "uid://cbal8ms2oe1ik"
 [connection signal="full_run_selected" from="CanvasLayer/MarathonMode/MarathonSelect" to="CanvasLayer/MarathonMode/SpeedrunTypeSelect" method="open"]
 [connection signal="level_run_selected" from="CanvasLayer/MarathonMode/MarathonSelect" to="CanvasLayer/MarathonMode/WorldSelect" method="open"]
 [connection signal="cancelled" from="CanvasLayer/MarathonMode/SpeedrunTypeSelect" to="CanvasLayer/MarathonMode/MarathonSelect" method="open"]
-[connection signal="selected" from="CanvasLayer/MarathonMode/SpeedrunTypeSelect" to="CanvasLayer/MarathonMode/CharacterSelect2" method="open"]
-[connection signal="cancelled" from="CanvasLayer/MarathonMode/CharacterSelect2" to="CanvasLayer/MarathonMode/SpeedrunTypeSelect" method="open"]
-[connection signal="selected" from="CanvasLayer/MarathonMode/CharacterSelect2" to="." method="start_full_run"]
+[connection signal="selected" from="CanvasLayer/MarathonMode/SpeedrunTypeSelect" to="CanvasLayer/MarathonMode/CharacterSelectFull" method="open"]
+[connection signal="cancelled" from="CanvasLayer/MarathonMode/SpeedrunTypeSelectLevel" to="CanvasLayer/MarathonMode/LevelSelect" method="open"]
+[connection signal="selected" from="CanvasLayer/MarathonMode/SpeedrunTypeSelectLevel" to="CanvasLayer/MarathonMode/CharacterSelectLevel" method="open"]
+[connection signal="cancelled" from="CanvasLayer/MarathonMode/CharacterSelectFull" to="CanvasLayer/MarathonMode/SpeedrunTypeSelect" method="open"]
+[connection signal="selected" from="CanvasLayer/MarathonMode/CharacterSelectFull" to="." method="start_full_run"]
 [connection signal="cancelled" from="CanvasLayer/MarathonMode/WorldSelect" to="CanvasLayer/MarathonMode/MarathonSelect" method="open"]
 [connection signal="world_selected" from="CanvasLayer/MarathonMode/WorldSelect" to="CanvasLayer/MarathonMode/LevelSelect" method="open"]
 [connection signal="cancelled" from="CanvasLayer/MarathonMode/LevelSelect" to="CanvasLayer/MarathonMode/WorldSelect" method="open"]
 [connection signal="level_selected" from="CanvasLayer/MarathonMode/LevelSelect" to="." method="check_for_warpless"]
-[connection signal="cancelled" from="CanvasLayer/MarathonMode/CharacterSelect" to="CanvasLayer/MarathonMode/LevelSelect" method="open"]
-[connection signal="selected" from="CanvasLayer/MarathonMode/CharacterSelect" to="." method="start_level_run"]
+[connection signal="cancelled" from="CanvasLayer/MarathonMode/CharacterSelectLevel" to="CanvasLayer/MarathonMode/LevelSelect" method="open"]
+[connection signal="selected" from="CanvasLayer/MarathonMode/CharacterSelectLevel" to="." method="start_level_run"]
 [connection signal="cancelled" from="CanvasLayer/MarathonMode/HasWarp/SpeedrunTypeSelect" to="CanvasLayer/MarathonMode/LevelSelect" method="open"]
 [connection signal="selected" from="CanvasLayer/MarathonMode/HasWarp/SpeedrunTypeSelect" to="." method="check_for_ghost"]
 [connection signal="cancelled" from="CanvasLayer/MarathonMode/HasWarp/CharacterSelect" to="CanvasLayer/MarathonMode/HasWarp/SpeedrunTypeSelect" method="open"]

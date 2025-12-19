@@ -168,7 +168,6 @@ func get_string() -> String:
 	return entity_string
 
 func apply_string(string := "") -> void:
-	print(string)
 	var arr := []
 	if string.contains("$"):
 		string = string.substr(string.find("$"))
@@ -179,7 +178,7 @@ func apply_string(string := "") -> void:
 
 func get_node_from_tile(layer_num := 0, tile_position := Vector2i.ZERO) -> Node:
 	for i in get_tree().get_nodes_in_group("SignalExposers"):
-		print([i.owner, i.owner.get_meta("tile_position", i.owner.get_parent())])
+
 		if i.owner.get_meta("tile_position", Vector2i.ZERO) == tile_position and i.owner.get_parent() == Global.current_level.get_node("EntityLayer" + str(layer_num + 1)):
 			return i.owner
 	return null

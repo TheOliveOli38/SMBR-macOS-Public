@@ -282,6 +282,8 @@ position = Vector2(43, -2)
 texture = ExtResource("5_h2uw4")
 centered = false
 hframes = 8
+region_enabled = true
+region_rect = Rect2(0, 0, 128, 16)
 script = ExtResource("6_x05vu")
 metadata/_custom_type_script = "uid://364rywt44hy6"
 
@@ -481,6 +483,8 @@ position = Vector2(43, -2)
 texture = ExtResource("5_h2uw4")
 centered = false
 hframes = 8
+region_enabled = true
+region_rect = Rect2(0, 0, 128, 16)
 script = ExtResource("6_x05vu")
 metadata/_custom_type_script = "uid://364rywt44hy6"
 
@@ -680,6 +684,8 @@ position = Vector2(43, -2)
 texture = ExtResource("5_h2uw4")
 centered = false
 hframes = 8
+region_enabled = true
+region_rect = Rect2(0, 0, 128, 16)
 script = ExtResource("6_x05vu")
 metadata/_custom_type_script = "uid://364rywt44hy6"
 
@@ -879,6 +885,8 @@ position = Vector2(43, -2)
 texture = ExtResource("5_h2uw4")
 centered = false
 hframes = 8
+region_enabled = true
+region_rect = Rect2(0, 0, 128, 16)
 script = ExtResource("6_x05vu")
 metadata/_custom_type_script = "uid://364rywt44hy6"
 

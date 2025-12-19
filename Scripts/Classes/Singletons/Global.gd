@@ -324,13 +324,19 @@ func get_version_number() -> int:
 	version_number = str(number)
 	return int(number)
 
-func player_action_pressed(action := "", player_id := 0) -> bool:
+func player_action_pressed(action := "", player_id = 0) -> bool:
+	if SpeedrunHandler.simulating_inputs:
+		player_id = "s"
 	return Input.is_action_pressed(action + "_" + str(player_id))
 
-func player_action_just_pressed(action := "", player_id := 0) -> bool:
+func player_action_just_pressed(action := "", player_id = 0) -> bool:
+	if SpeedrunHandler.simulating_inputs:
+		player_id = "s"
 	return Input.is_action_just_pressed(action + "_" + str(player_id))
 
-func player_action_just_released(action := "", player_id := 0) -> bool:
+func player_action_just_released(action := "", player_id = 0) -> bool:
+	if SpeedrunHandler.simulating_inputs:
+		player_id = "s"
 	return Input.is_action_just_released(action + "_" + str(player_id))
 
 func tally_time() -> void:
@@ -342,6 +348,7 @@ func tally_time() -> void:
 	score_tween = create_tween()
 	time_tween = create_tween()
 	var duration = float(time) / 120
+	duration = min(duration, 5)
 	
 	score_tween.tween_property(self, "score", target_score, duration)
 	time_tween.tween_property(self, "time", 0, duration)

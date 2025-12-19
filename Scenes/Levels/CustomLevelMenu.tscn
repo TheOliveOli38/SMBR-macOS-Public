@@ -313,7 +313,7 @@ theme_override_styles/separator = SubResource("StyleBoxLine_wgcm7")
 layout_mode = 2
 focus_neighbor_right = NodePath("../../../../..")
 title = "Show"
-values = ["All", "Saved Levels", "Downloaded Levels", "Level Packs"]
+values = ["All", "Saved Levels", "Downloaded Levels"]
 
 [node name="HSeparator3" type="HSeparator" parent="BG/Border/Levels/VBoxContainer/LevelList" unique_id=368126585]
 layout_mode = 2
@@ -376,26 +376,6 @@ grow_horizontal = 2
 grow_vertical = 0
 theme_override_styles/separator = SubResource("StyleBoxLine_ruj08")
 
-[node name="LevelPacks" type="Label" parent="BG/Border/Levels/VBoxContainer/LevelList/CustomLevels/MarginContainer/ScrollContainer/MarginContainer/LevelContainers" unique_id=863051985]
-unique_name_in_owner = true
-visible = false
-custom_minimum_size = Vector2(0, 24)
-layout_mode = 2
-size_flags_horizontal = 0
-text = "LEVEL PACKS"
-vertical_alignment = 2
-
-[node name="HSeparator" type="HSeparator" parent="BG/Border/Levels/VBoxContainer/LevelList/CustomLevels/MarginContainer/ScrollContainer/MarginContainer/LevelContainers/LevelPacks" unique_id=1523909766]
-layout_mode = 1
-anchors_preset = 12
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = -4.0
-grow_horizontal = 2
-grow_vertical = 0
-theme_override_styles/separator = SubResource("StyleBoxLine_ruj08")
-
 [node name="DownloadedLevels" type="Label" parent="BG/Border/Levels/VBoxContainer/LevelList/CustomLevels/MarginContainer/ScrollContainer/MarginContainer/LevelContainers" unique_id=1065590258]
 unique_name_in_owner = true
 visible = false
@@ -437,11 +417,11 @@ layout_mode = 2
 focus_mode = 0
 
 [node name="ScrollContainer" parent="BG/Border/Levels/VBoxContainer/LevelInfo/SelectedLevel/MarginContainer/HBoxContainer/HSplitContainer/LeftHalf/LevelInfo" index="0"]
-scroll_horizontal = 241
+scroll_horizontal = 175
 is_active = true
 
 [node name="ScrollContainer2" parent="BG/Border/Levels/VBoxContainer/LevelInfo/SelectedLevel/MarginContainer/HBoxContainer/HSplitContainer/LeftHalf/LevelInfo" index="1"]
-scroll_horizontal = 39
+scroll_horizontal = 28
 is_active = true
 
 [node name="Panel" type="PanelContainer" parent="BG/Border/Levels/VBoxContainer/LevelInfo" unique_id=2125756912]
@@ -452,7 +432,6 @@ theme_override_styles/panel = ExtResource("8_psbt7")
 [node name="AutoScrollContainer" type="ScrollContainer" parent="BG/Border/Levels/VBoxContainer/LevelInfo/Panel" unique_id=975980634]
 layout_mode = 2
 mouse_filter = 2
-scroll_vertical = 24
 horizontal_scroll_mode = 3
 vertical_scroll_mode = 3
 script = ExtResource("24_wf6nb")
@@ -643,12 +622,12 @@ focus_mode = 0
 autoplay = &"Load"
 
 [node name="ScrollContainer" parent="BG/Border/Levels/VBoxContainer/LSSLevelInfo/SelectedOnlineLevel/MarginContainer/HBoxContainer/HSplitContainer/LeftHalf/LevelInfo" index="0"]
-scroll_horizontal = 6
+scroll_horizontal = 44
 is_active = true
 auto_connect_focus = false
 
 [node name="ScrollContainer2" parent="BG/Border/Levels/VBoxContainer/LSSLevelInfo/SelectedOnlineLevel/MarginContainer/HBoxContainer/HSplitContainer/LeftHalf/LevelInfo" index="1"]
-scroll_horizontal = 39
+scroll_horizontal = 28
 is_active = true
 auto_connect_focus = false
 
@@ -661,7 +640,6 @@ theme_override_styles/panel = ExtResource("8_psbt7")
 [node name="AutoScrollContainer" type="ScrollContainer" parent="BG/Border/Levels/VBoxContainer/LSSLevelInfo/Panel" unique_id=1801631913]
 layout_mode = 2
 mouse_filter = 0
-scroll_vertical = 24
 horizontal_scroll_mode = 3
 script = ExtResource("24_wf6nb")
 direction = 1

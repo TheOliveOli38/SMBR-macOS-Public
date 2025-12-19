@@ -90,6 +90,7 @@ func _ready() -> void:
 		Global.level_theme_changed.connect(update_visuals)
 		Global.level_time_changed.connect(update_visuals)
 		update_visuals()
+	handle_disco_visuals(1)
 
 func _physics_process(delta: float) -> void:
 	handle_disco_visuals(delta)

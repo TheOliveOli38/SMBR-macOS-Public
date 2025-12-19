@@ -37,10 +37,9 @@ func _process(_delta: float) -> void:
 		close()
 
 func show_physics_warning(value := 0) -> void:
-	if value != 0:
-		return
-	AudioManager.play_global_sfx("bump")
-	$CanvasLayer.show()
+	if value == 0:
+		AudioManager.play_global_sfx("bump")
+	$CanvasLayer.visible = not value
 
 func handle_inputs() -> void:
 	var direction := 0
@@ -86,6 +85,7 @@ func update_all_starting() -> void:
 	$PanelContainer/MarginContainer/VBoxContainer/Video/Language.selected_index = Global.lang_codes.find(Settings.file.game.lang)
 
 func close() -> void:
+	$CanvasLayer.hide()
 	hide()
 	active = false
 	closed.emit()

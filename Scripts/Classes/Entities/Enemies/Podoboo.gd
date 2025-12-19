@@ -14,6 +14,16 @@ signal killed
 const BASE_LINE := 48
 
 func _physics_process(delta: float) -> void:
+	var old_position = global_position
+	if $TrackJoint.is_attached == false:
+		handle_movement(delta)
+		$Sprite.flip_v = velocity > 0
+	else:
+		await get_tree().physics_frame
+		$Sprite.flip_v = false
+		$Sprite.rotation = (old_position - global_position).normalized().angle() - deg_to_rad(90)
+
+func handle_movement(delta: float) -> void:
 	velocity += (5 / delta) * delta
 	velocity = clamp(velocity, -INF, 280)
 	global_position.y += velocity * delta
@@ -21,8 +31,6 @@ func _physics_process(delta: float) -> void:
 	if global_position.y >= BASE_LINE and can_jump:
 		can_jump = false
 		do_jump()
-		
-	$Sprite.flip_v = velocity > 0
 
 func do_jump() -> void:
 	if jump_delay > 0:

@@ -6,6 +6,8 @@ extends Node
 
 @export var properties_force_selector: Dictionary[String, PackedScene] = {}
 
+@export var animate_change := true
+
 const base64_charset := "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/"
 
 static var entity_map := {}
@@ -136,6 +138,8 @@ func decode_from_base64_2char(encoded: String) -> int:
 	return (char1_val << 6) | char2_val
 
 func do_animation() -> void:
+	if animate_change == false:
+		return
 	if owner is Node2D:
 		var old_scale = owner.scale
 		owner.scale += Vector2(0.2, 0.2)

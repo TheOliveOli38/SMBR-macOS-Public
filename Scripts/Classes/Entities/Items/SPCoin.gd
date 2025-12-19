@@ -23,3 +23,9 @@ func collect() -> void:
 	collected.emit()
 	await get_tree().create_timer(0.5, false).timeout
 	queue_free()
+
+
+func on_area_entered(area: Area2D) -> void:
+	if area.owner is Projectile:
+		if area.owner.COLLECT_COINS:
+			collect()

@@ -12,7 +12,6 @@ func _physics_process(delta: float) -> void:
 	$Collision.set_deferred("one_way_collision", collision_enabled == false)
 	if is_on_floor() or is_on_wall() or is_on_ceiling():
 		if last_velocity.length() >= 280:
-			print(last_velocity.length())
 			destroy()
 
 
@@ -24,7 +23,10 @@ func handle_movement(delta: float) -> void:
 	else:
 		apply_gravity(delta)
 	if is_on_floor():
-		velocity.x = lerpf(velocity.x, 0, delta * 20)
+		var friction = 5
+		if $RayCast2D.is_colliding():
+			friction = 1
+		velocity.x = lerpf(velocity.x, 0, delta * friction)
 	for i in $PlayerDetection.get_overlapping_areas():
 		if i.owner is Player and i.owner.global_position.y < global_position.y:
 			if i.owner.power_state.hitbox_size == "Small":

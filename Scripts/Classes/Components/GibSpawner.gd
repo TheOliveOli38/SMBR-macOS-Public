@@ -8,6 +8,7 @@ const ENTITY_GIB = preload("res://Scenes/Prefabs/Entities/EntityGib.tscn")
 
 signal gib_about_to_spawn
 
+@export var global_parent := false
 
 func summon_gib(direction := 1, play_sfx := play_death_sfx, override_gib_type := gib_type) -> void:
 	gib_about_to_spawn.emit()
@@ -27,7 +28,10 @@ func summon_gib(direction := 1, play_sfx := play_death_sfx, override_gib_type :=
 	node.visuals.set("offset", Vector2.ZERO)
 	node.gib_type = override_gib_type
 	node.direction = direction
-	owner.add_sibling(node)
+	var parent = owner.get_parent()
+	if global_parent:
+		parent = Global.current_level
+	parent.add_child(node)
 
 func play_die_sfx() -> void:
 	AudioManager.play_sfx("kick", owner.global_position)

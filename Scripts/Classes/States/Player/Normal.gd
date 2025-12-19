@@ -56,6 +56,7 @@ func handle_movement(delta: float) -> void:
 
 func grounded(delta: float) -> void:
 	player.jump_cancelled = false
+	player.floor_constant_speed = sign(player.get_floor_normal().x) == -player.velocity_direction
 	if player.velocity.y >= 0:
 		player.has_jumped = false
 		player.has_spring_jumped = false
@@ -142,7 +143,9 @@ func deceleration(delta: float, airborne := false) -> void:
 	if player.on_ice:
 		decel_type *= player.physics_params("ICE_DECEL_MOD")
 	player.velocity.x = move_toward(player.velocity.x, 0, (decel_type / delta) * delta)
-
+	if abs(player.velocity.x) <= player.physics_params("DECEL_THRESHOLD"):
+		player.velocity.x = 0
+	
 func ground_skid(delta: float) -> void:
 	var target_skid: float = player.physics_params("RUN_SKID") if (Global.player_action_pressed("run", player.player_id) or run_buffer > 0) and player.can_run else player.physics_params("WALK_SKID")
 	if player.on_ice:
@@ -161,7 +164,7 @@ func in_air() -> void:
 			swim_up()
 		else:
 			jump_queued = true
-			jump_buffer = 4
+			jump_buffer = player.physics_params("JUMP_BUFFER")
 
 func handle_air_movement(delta: float) -> void:
 	if player.input_direction != 0:

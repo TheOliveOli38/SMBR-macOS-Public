@@ -29,7 +29,7 @@ extends CharacterBody2D
 		"JUMP_INCR": 8.0,                  # How much the player's X velocity affects their jump speed.
 		"JUMP_CANCEL_DIVIDE": 1.5,         # When the player cancels their jump, their Y velocity gets divided by this value.
 		"JUMP_HOLD_SPEED_THRESHOLD": 0.0,  # When the player's Y velocity goes past this value while jumping, their gravity switches to FALL_GRAVITY.
-		
+		"JUMP_BUFFER": 10,
 		"CLASSIC_BOUNCE_BEHAVIOR": false,  # Determines if the player can only get extra height from a bounce with upward velocity, as opposed to holding jump.
 		"BOUNCE_SPEED": 200.0,             # The strength at which the player bounces off enemies without any extra input, measured in px/sec.
 		"BOUNCE_JUMP_SPEED": 300.0,        # The strength at which the player bounces off enemies while holding jump, measured in px/sec.
@@ -60,7 +60,7 @@ extends CharacterBody2D
 		"SKID_STOP_THRESHOLD": 10.0,       # The maximum velocity required before the player will stop skidding.
 		
 		"GROUND_DECEL": 3.0,              # The player's grounded deceleration while no buttons are pressed, measured in px/frame.
-		
+		"DECEL_THRESHOLD": 0, 
 		"AIR_DECEL": 0.0,                  # The player's airborne deceleration while no buttons are pressed, measured in px/frame.
 		"AIR_WALK_ACCEL": 3.0,             # The player's usual acceleration while in midair, measured in px/frame.
 		"AIR_WALK_SKID_ACCEL": 4.5,        # The player's usual skid acceleration while in midair, measured in px/frame.
@@ -103,15 +103,15 @@ extends CharacterBody2D
 ## Determines the physics properties of the character while "Classic Physics" are enabled.
 @export var CLASSIC_PARAMETERS: Dictionary = {
 	"Default": { # This uses the same parameters as PHYSICS_PARAMETERS and should be updated whenever new parameters are added.
-		"HITBOX_SCALE": [1.0, 1.0],        # The player's hitbox scale.
-		"CROUCH_SCALE": 0.5,               # The player's hitbox scale when crouched.
+		"COLLISION_SIZE": [8, 28],        # The player's hitbox scale.
+		"CROUCH_COLLISION_SIZE": [8, 14],             # The player's hitbox scale when crouched.
 		"CAN_AIR_TURN": false,             # Determines if the player can turn in mid-air.
 		"CAN_BREAK_BRICKS": true,          # Determines if the player can break bricks in their current form.
 		"CAN_BE_WALL_EJECTED": true,       # Determines if the player gets pushed out of blocks if inside of them.
 		
 		"JUMP_WALK_THRESHOLD": 60.0,       # The minimum velocity the player must move at to perform a walking jump.
 		"JUMP_RUN_THRESHOLD": 135.0,       # The minimum velocity the player must move at to perform a running jump.
-		
+		"JUMP_BUFFER": 2,
 		"JUMP_GRAVITY_IDLE": 7.5,          # The player's gravity while jumping from an idle state, measured in px/frame.
 		"JUMP_GRAVITY_WALK": 7.03,         # The player's gravity while jumping from a walking state, measured in px/frame.
 		"JUMP_GRAVITY_RUN": 9.375,         # The player's gravity while jumping from a running state, measured in px/frame.
@@ -151,7 +151,8 @@ extends CharacterBody2D
 		"SKID_THRESHOLD": 100.0,           # The horizontal speed required, to be able to start skidding.
 		"SKID_STOP_THRESHOLD": 33.75,      # The maximum velocity required before the player will stop skidding.
 		
-		"GROUND_DECEL": 2.23,              # The player's grounded deceleration while no buttons are pressed, measured in px/frame.
+		"GROUND_DECEL": 3.05,   
+		"DECEL_THRESHOLD": 33.75,           # The player's grounded deceleration while no buttons are pressed, measured in px/frame.
 		
 		"AIR_DECEL": 0.0,                  # The player's airborne deceleration while no buttons are pressed, measured in px/frame.
 		"AIR_WALK_ACCEL": 2.23,            # The player's usual acceleration while in midair, measured in px/frame.
@@ -184,6 +185,8 @@ extends CharacterBody2D
 		"MAX_SWIM_FALL_SPEED": 200.0,      # The player's maximum fall speed while swimming, measured in px/sec.
 	},
 	"Small": {
+		"COLLISION_SIZE": [8, 14],        # The player's hitbox scale.
+		"CROUCH_COLLISION_SIZE": [8, 12],  
 		"CROUCH_SCALE": 1.0,
 		"CAN_BREAK_BRICKS": false,
 		"CAN_BE_WALL_EJECTED": false,
@@ -248,7 +251,7 @@ extends CharacterBody2D
 		"PROJ_CEIL_BOUNCE": true,
 		"PROJ_FLOOR_BOUNCE": true,
 		"PROJ_COLLECT_COINS": true,
-		"PROJ_SPEED": [100.0, -100.0],
+		"PROJ_SPEED": [150.0, -150.0],
 	}
 }
 ## Determines values involving various ending sequences, such as grabbing the flagpole and walking to an NPC at the end of a level.
@@ -1012,7 +1015,7 @@ func handle_step_collision() -> void:
 			x.position.x = ((collision_size.x / 2) + 2) * sign(x.position.x)
 			if x.is_colliding():
 				on_wall = true
-		var step_enabled = (not on_wall and air_frames < 4 and actual_velocity_y() >= 0)
+		var step_enabled = (not on_wall and air_frames < 4 and actual_velocity_y() >= 0 and abs(velocity.x) >= 50)
 		i.set_deferred("disabled", not step_enabled)
 		i.position.x = ((collision_size.x / 2) + 2) * sign(i.position.x)
 
@@ -1348,9 +1351,11 @@ func enter_pipe(pipe: PipeArea, warp_to_level := true) -> void:
 	hide_pipe_animation()
 	if warp_to_level:
 		await get_tree().create_timer(1, false).timeout
-		if Global.current_game_mode == Global.GameMode.LEVEL_EDITOR or Global.current_game_mode == Global.GameMode.CUSTOM_LEVEL:
+		if Global.current_game_mode == Global.GameMode.LEVEL_EDITOR:
 			LevelEditor.play_pipe_transition = true
-			owner.transition_to_sublevel(pipe.target_sub_level)
+			Global.level_editor.transition_to_sublevel(pipe.target_sub_level)
+		elif Global.current_level is CustomLevel:
+			Global.transition_to_scene(NewLevelBuilder.sub_levels[pipe.target_sub_level])
 		else:
 			Global.transition_to_scene(pipe.target_level)
 

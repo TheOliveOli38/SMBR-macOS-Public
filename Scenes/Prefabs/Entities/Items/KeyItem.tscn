@@ -178,3 +178,4 @@ metadata/_custom_type_script = "uid://maqpreddu5kg"
 [connection signal="collected" from="." to="SignalExposer" method="emit_pulse"]
 [connection signal="collected" from="." to="LevelPersistance" method="set_as_active"]
 [connection signal="area_entered" from="Hitbox" to="." method="on_area_entered"]
+[connection signal="enabled" from="LevelPersistance" to="." method="queue_free"]

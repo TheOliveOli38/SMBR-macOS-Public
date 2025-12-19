@@ -126,6 +126,11 @@ script = ExtResource("10_550b4")
 can_output = false
 metadata/_custom_type_script = "uid://b3bokos5jcpr7"
 
+[node name="RayCast2D" type="RayCast2D" parent="." unique_id=1684431449]
+position = Vector2(0, -6)
+target_position = Vector2(0, 8)
+collision_mask = 512
+
 [connection signal="area_entered" from="WaterHitbox" to="." method="splash" unbinds=1]
 [connection signal="body_entered" from="WaterHitbox" to="." method="splash" unbinds=1]
 [connection signal="player_entered" from="PlayerDetection" to="." method="on_player_entered"]

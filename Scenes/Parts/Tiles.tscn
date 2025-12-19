@@ -1788,17 +1788,17 @@ func _ready() -> void:
 		add_child(node)
 "
 
-[node name="Tiles" type="TileMapLayer"]
+[node name="Tiles" type="TileMapLayer" unique_id=1722190602]
 z_index = -1
 tile_set = SubResource("TileSet_g81ue")
 physics_quadrant_size = 2
 
-[node name="MainTilesetTextureSetter" type="Node" parent="." node_paths=PackedStringArray("tile_map")]
+[node name="MainTilesetTextureSetter" type="Node" parent="." unique_id=1474113207 node_paths=PackedStringArray("tile_map")]
 script = ExtResource("24_5xtcs")
 tile_map = NodePath("..")
 texture = ExtResource("30_vdakf")
 
-[node name="ResourceSetterNew" type="Node" parent="MainTilesetTextureSetter" node_paths=PackedStringArray("node_to_affect")]
+[node name="ResourceSetterNew" type="Node" parent="MainTilesetTextureSetter" unique_id=155864555 node_paths=PackedStringArray("node_to_affect")]
 script = ExtResource("22_ls3wh")
 node_to_affect = NodePath("..")
 property_name = "texture"
@@ -1806,12 +1806,12 @@ mode = 1
 resource_json = ExtResource("23_vt0hv")
 metadata/_custom_type_script = "uid://cbal8ms2oe1ik"
 
-[node name="LiquidTextureSetter" type="Node" parent="." node_paths=PackedStringArray("tile_map")]
+[node name="LiquidTextureSetter" type="Node" parent="." unique_id=1830483692 node_paths=PackedStringArray("tile_map")]
 script = ExtResource("24_5xtcs")
 tile_map = NodePath("..")
 atlas_id = 2
 
-[node name="ResourceSetterNew" type="Node" parent="LiquidTextureSetter" node_paths=PackedStringArray("node_to_affect")]
+[node name="ResourceSetterNew" type="Node" parent="LiquidTextureSetter" unique_id=1364274198 node_paths=PackedStringArray("node_to_affect")]
 script = ExtResource("22_ls3wh")
 node_to_affect = NodePath("..")
 property_name = "texture"
@@ -1819,12 +1819,12 @@ mode = 1
 resource_json = ExtResource("28_ls3wh")
 metadata/_custom_type_script = "uid://cbal8ms2oe1ik"
 
-[node name="DecoTileTextureSetter" type="Node" parent="." node_paths=PackedStringArray("tile_map")]
+[node name="DecoTileTextureSetter" type="Node" parent="." unique_id=2007165853 node_paths=PackedStringArray("tile_map")]
 script = ExtResource("24_5xtcs")
 tile_map = NodePath("..")
 atlas_id = 3
 
-[node name="ResourceSetterNew" type="Node" parent="DecoTileTextureSetter" node_paths=PackedStringArray("node_to_affect")]
+[node name="ResourceSetterNew" type="Node" parent="DecoTileTextureSetter" unique_id=226971325 node_paths=PackedStringArray("node_to_affect")]
 script = ExtResource("22_ls3wh")
 node_to_affect = NodePath("..")
 property_name = "texture"
@@ -1832,13 +1832,13 @@ mode = 1
 resource_json = ExtResource("27_b6qiv")
 metadata/_custom_type_script = "uid://cbal8ms2oe1ik"
 
-[node name="ConveyorTextureSetter" type="Node" parent="." node_paths=PackedStringArray("tile_map")]
+[node name="ConveyorTextureSetter" type="Node" parent="." unique_id=1480608045 node_paths=PackedStringArray("tile_map")]
 script = ExtResource("24_5xtcs")
 tile_map = NodePath("..")
 texture = ExtResource("24_vt0hv")
 atlas_id = 4
 
-[node name="ResourceSetterNew" type="Node" parent="ConveyorTextureSetter" node_paths=PackedStringArray("node_to_affect")]
+[node name="ResourceSetterNew" type="Node" parent="ConveyorTextureSetter" unique_id=368331622 node_paths=PackedStringArray("node_to_affect")]
 script = ExtResource("22_ls3wh")
 node_to_affect = NodePath("..")
 property_name = "texture"
@@ -1846,13 +1846,13 @@ mode = 1
 resource_json = ExtResource("33_ra18v")
 metadata/_custom_type_script = "uid://cbal8ms2oe1ik"
 
-[node name="OnOffConveyorTextureSetter" type="Node" parent="." node_paths=PackedStringArray("tile_map")]
+[node name="OnOffConveyorTextureSetter" type="Node" parent="." unique_id=758230177 node_paths=PackedStringArray("tile_map")]
 script = ExtResource("24_5xtcs")
 tile_map = NodePath("..")
 texture = ExtResource("25_vt0hv")
 atlas_id = 5
 
-[node name="ResourceSetterNew" type="Node" parent="OnOffConveyorTextureSetter" node_paths=PackedStringArray("node_to_affect")]
+[node name="ResourceSetterNew" type="Node" parent="OnOffConveyorTextureSetter" unique_id=1832547189 node_paths=PackedStringArray("node_to_affect")]
 script = ExtResource("22_ls3wh")
 node_to_affect = NodePath("..")
 property_name = "texture"
@@ -1860,13 +1860,13 @@ mode = 1
 resource_json = ExtResource("34_7cpm5")
 metadata/_custom_type_script = "uid://cbal8ms2oe1ik"
 
-[node name="OnOffConveyorHandler" type="Node" parent="." groups=["BooBlocks"]]
+[node name="OnOffConveyorHandler" type="Node" parent="." unique_id=590121252 groups=["BooBlocks"]]
 script = SubResource("GDScript_vt0hv")
 
-[node name="PipeReplacer" type="Node" parent="."]
+[node name="PipeReplacer" type="Node" parent="." unique_id=388259230]
 script = SubResource("GDScript_vdakf")
 
-[node name="BrickBlockSpawner" type="Node" parent="."]
+[node name="BrickBlockSpawner" type="Node" parent="." unique_id=1141289151]
 script = SubResource("GDScript_hqc4a")
 
 [connection signal="child_entered_tree" from="." to="." method="on_child_entered_tree"]

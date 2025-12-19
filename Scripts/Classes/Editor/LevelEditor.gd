@@ -43,7 +43,7 @@ var selected_tile_index := 0
 var can_move_cam := true
 
 static var music_track_list: Array[String] = [ "res://Assets/Audio/BGM/Silence.json","res://Assets/Audio/BGM/Athletic.json", "res://Assets/Audio/BGM/Autumn.json", "res://Assets/Audio/BGM/Beach.json", "res://Assets/Audio/BGM/Bonus.json", "res://Assets/Audio/BGM/Bowser.json", "res://Assets/Audio/BGM/FinalBowser.json", "res://Assets/Audio/BGM/Castle.json", "res://Assets/Audio/BGM/CoinHeaven.json", "res://Assets/Audio/BGM/Desert.json", "res://Assets/Audio/BGM/Garden.json", "res://Assets/Audio/BGM/GhostHouse.json", "res://Assets/Audio/BGM/Jungle.json", "res://Assets/Audio/BGM/Mountain.json", "res://Assets/Audio/BGM/Overworld.json", "res://Assets/Audio/BGM/Pipeland.json", "res://Assets/Audio/BGM/BooRace.json", "res://Assets/Audio/BGM/Sky.json", "res://Assets/Audio/BGM/Snow.json", "res://Assets/Audio/BGM/Space.json", "res://Assets/Audio/BGM/Underground.json", "res://Assets/Audio/BGM/Underwater.json", "res://Assets/Audio/BGM/Volcano.json", "res://Assets/Audio/BGM/Airship.json"]
-var music_track_names: Array[String] = ["BGM_NONE", "BGM_ATHLETIC", "BGM_AUTUMN", "BGM_BEACH", "BGM_BONUS", "BGM_BOWSER", "BGM_FINALBOWSER", "BGM_CASTLE", "BGM_COINHEAVEN", "BGM_DESERT", "BGM_GARDEN", "BGM_GHOSTHOUSE", "BGM_JUNGLE", "BGM_MOUNTAIN", "BGM_OVERWORLD", "BGM_PIPELAND", "BGM_RACE", "BGM_SKY", "BGM_SNOW", "BGM_SPACE", "BGM_UNDERGROUND", "BGM_UNDERWATER", "BGM_VOLCANO", "BGM_AIRSHIP"]
+static var music_track_names: Array[String] = ["BGM_NONE", "BGM_ATHLETIC", "BGM_AUTUMN", "BGM_BEACH", "BGM_BONUS", "BGM_BOWSER", "BGM_FINALBOWSER", "BGM_CASTLE", "BGM_COINHEAVEN", "BGM_DESERT", "BGM_GARDEN", "BGM_GHOSTHOUSE", "BGM_JUNGLE", "BGM_MOUNTAIN", "BGM_OVERWORLD", "BGM_PIPELAND", "BGM_RACE", "BGM_SKY", "BGM_SNOW", "BGM_SPACE", "BGM_UNDERGROUND", "BGM_UNDERWATER", "BGM_VOLCANO", "BGM_AIRSHIP"]
 
 enum TileType{TILE, ENTITY, TERRAIN}
 
@@ -297,6 +297,7 @@ func update_music() -> void:
 
 func play_level() -> void:
 	clear_trail()
+	current_state = EditorState.PLAYTESTING
 	$TileMenu.hide()
 	menu_open = false
 	update_music()
@@ -307,12 +308,12 @@ func play_level() -> void:
 		get_tree().call_group("Gizmos", "hide")
 	get_tree().call_group("Players", "editor_level_start")
 	save_current_level()
-	current_state = EditorState.PLAYTESTING
 	level.process_mode = Node.PROCESS_MODE_PAUSABLE
 	handle_hud()
 	$TrailTimer.start()
 
 func return_to_editor() -> void:
+	current_state = EditorState.IDLE
 	AudioManager.stop_all_music()
 	level.music = null
 	%Camera.global_position = get_viewport().get_camera_2d().get_screen_center_position()
@@ -322,7 +323,6 @@ func return_to_editor() -> void:
 	%Camera.enabled = true
 	%Camera.make_current()
 	editor_start.emit()
-	current_state = EditorState.IDLE
 	level.process_mode = Node.PROCESS_MODE_DISABLED
 	handle_hud()
 

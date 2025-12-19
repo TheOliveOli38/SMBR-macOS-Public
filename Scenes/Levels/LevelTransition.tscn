@@ -337,7 +337,7 @@ script = ExtResource("5_mcaat")
 metadata/_custom_type_script = "uid://cbal8ms2oe1ik"
 
 [node name="Timer" type="Timer" parent="." unique_id=1950000717]
-wait_time = 3.0
+wait_time = 2.0
 one_shot = true
 
 [node name="LabelFontChanger" type="Node" parent="." unique_id=83421475 node_paths=PackedStringArray("labels")]

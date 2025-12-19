@@ -758,5 +758,13 @@
 	"DJ": [
 		"res://Scenes/Prefabs/Gizmos/Outputs/GlobalCounter.tscn",
 		"0,0"
+	],
+	"DK": [
+		"res://Scenes/Prefabs/Gizmos/Outputs/MusicPlayer.tscn",
+		"0,0"
+	],
+	"DL": [
+		"res://Scenes/Prefabs/LevelObjects/Sign.tscn",
+		"0,0"
 	]
 }

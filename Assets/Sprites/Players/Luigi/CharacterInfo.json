@@ -3,8 +3,8 @@
 	"physics": {
 		"PHYSICS_PARAMETERS": {
 			"Default": {
-				"HITBOX_SCALE": [1.0, 1.0],
-				"CROUCH_SCALE": 0.5,
+				"COLLISION_SIZE": [8, 28],
+				"CROUCH_COLLISION_SIZE": [8, 14],
 				"CAN_AIR_TURN": false,
 				"CAN_BREAK_BRICKS": true,
 				"CAN_BE_WALL_EJECTED": true,
@@ -35,6 +35,10 @@
 				
 				"CLAMP_GROUND_SPEED": false,
 				"MINIMUM_SPEED": 0.0,
+				
+				"ICE_ACCEL_MOD": 0.3,
+				"ICE_SKID_MOD": 0.3,
+				"ICE_DECEL_MOD": 0.3,
 				
 				"WALK_SPEED": 96.0,
 				"GROUND_WALK_ACCEL": 4.0,
@@ -84,7 +88,8 @@
 				"MAX_SWIM_FALL_SPEED": 200.0,
 			},
 			"Small": {
-				"CROUCH_SCALE": 0.75,
+				"COLLISION_SIZE": [8, 14],
+				"CROUCH_COLLISION_SIZE": [8, 12],
 				"CAN_BREAK_BRICKS": false,
 				"CAN_BE_WALL_EJECTED": false,
 			},
@@ -93,8 +98,8 @@
 		},
 		"CLASSIC_PARAMETERS": {
 			"Default": {
-				"HITBOX_SCALE": [1.0, 1.0],
-				"CROUCH_SCALE": 0.5,
+				"COLLISION_SIZE": [12, 28],
+				"CROUCH_COLLISION_SIZE": [12, 14],
 				"CAN_AIR_TURN": false,
 				"CAN_BREAK_BRICKS": true,
 				"CAN_BE_WALL_EJECTED": true,
@@ -113,9 +118,14 @@
 				"JUMP_HOLD_SPEED_THRESHOLD": 0.0,
 				
 				"CLASSIC_BOUNCE_BEHAVIOR": true,
-				"BOUNCE_SPEED": 248.0,
-				"BOUNCE_JUMP_SPEED": 310.0,
-				
+				"BOUNCE_SPEED": {
+					"SMB1": {"value": 248.0},
+					"SMBLL": {"value": 370.0}
+				},
+				"BOUNCE_JUMP_SPEED": {
+					"SMB1": {"value": 310.0},
+					"SMBLL": {"value": 370.0}
+				},
 				"FALL_GRAVITY_PREDETERMINED": true,
 				"FALL_GRAVITY_IDLE": 26.25,
 				"FALL_GRAVITY_WALK": 22.5,
@@ -125,6 +135,10 @@
 				
 				"CLAMP_GROUND_SPEED": true,
 				"MINIMUM_SPEED": 4.46,
+				
+				"ICE_ACCEL_MOD": 0.3,
+				"ICE_SKID_MOD": 0.3,
+				"ICE_DECEL_MOD": 0.3,
 				
 				"WALK_SPEED": 90.0,
 				"GROUND_WALK_ACCEL": 2.23,
@@ -174,7 +188,8 @@
 				"MAX_SWIM_FALL_SPEED": 200.0,
 			},
 			"Small": {
-				"CROUCH_SCALE": 1.0,
+				"COLLISION_SIZE": [12, 14],
+				"CROUCH_COLLISION_SIZE": [12, 14],
 				"CAN_BREAK_BRICKS": false,
 				"CAN_BE_WALL_EJECTED": false,
 			},
@@ -229,6 +244,8 @@
 				"RAINBOW_STAR_SLOW_FX_SPEED": 7.5,
 				"RAINBOW_POWERUP_FX": true,
 				"RAINBOW_FX_SPEED": 15.0,
+				
+				"ICE_SPEED_MOD": 1.5,
 				
 				"WALK_SFX": "walk",
 				"RUN_SFX": "run",

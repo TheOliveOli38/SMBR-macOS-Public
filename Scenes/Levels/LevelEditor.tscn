@@ -1,4 +1,4 @@
-[gd_scene load_steps=268 format=3 uid="uid://gbcmqonky63j"]
+[gd_scene load_steps=270 format=3 uid="uid://gbcmqonky63j"]
 
 [ext_resource type="Script" uid="uid://c2lnc7vnq3xth" path="res://Scripts/Classes/Editor/LevelEditor.gd" id="1_0qbyu"]
 [ext_resource type="Texture2D" uid="uid://cbha2l6hg1kfo" path="res://Assets/Sprites/UI/EditorGrid.png" id="2_8q7yr"]
@@ -21,6 +21,7 @@
 [ext_resource type="Texture2D" uid="uid://clbmg515rgdhs" path="res://Assets/Sprites/Tilesets/Liquids.png" id="17_awwgo"]
 [ext_resource type="JSON" path="res://Assets/Sprites/Tilesets/Deco/DecoTiles.json" id="18_esk8u"]
 [ext_resource type="Script" uid="uid://c7xreamx2wvdq" path="res://Scripts/Classes/Editor/EditorSelectorScroller.gd" id="20_jc7xg"]
+[ext_resource type="JSON" path="res://Assets/Sprites/Tilesets/Sign.json" id="21_idval"]
 [ext_resource type="Texture2D" uid="uid://dqi2e7yddiqhy" path="res://Assets/Sprites/Editor/ScrollerIcon.png" id="22_3cjpb"]
 [ext_resource type="Texture2D" uid="uid://ctsptxfwdh7c4" path="res://Assets/Sprites/Blocks/IceBlock.png" id="22_cnvg7"]
 [ext_resource type="JSON" path="res://Assets/Sprites/Tilesets/Terrain/EmptyBlock.json" id="22_ulh3l"]
@@ -177,6 +178,7 @@
 [ext_resource type="Texture2D" uid="uid://4fafl7yuo5k0" path="res://Assets/Sprites/Editor/GravityInverter.png" id="195_co4xw"]
 [ext_resource type="Texture2D" uid="uid://dgamrlgy76d3a" path="res://Assets/Sprites/Editor/Gizmos/ConditionalClearer.png" id="196_i2jbr"]
 [ext_resource type="Texture2D" uid="uid://rbln0ee0fknc" path="res://Assets/Sprites/Enemies/Icicle.png" id="196_p4o5x"]
+[ext_resource type="Texture2D" uid="uid://ubdnbge6xo3s" path="res://Assets/Sprites/Editor/Gizmos/MusicSetter.png" id="197_5mw2n"]
 [ext_resource type="Texture2D" uid="uid://dfurem6jj7gso" path="res://Assets/Sprites/Editor/MoonGravity.png" id="199_klg4c"]
 [ext_resource type="JSON" path="res://Assets/Sprites/Blocks/Bumper.json" id="200_l3prv"]
 [ext_resource type="JSON" path="res://Assets/Sprites/Tilesets/Doors.json" id="203_ym1gn"]
@@ -1810,6 +1812,17 @@ icon_texture = ExtResource("10_vhlvp")
 icon_region_override = Rect2(112, 96, 16, 16)
 tile_coords = Vector2i(7, 6)
 
+[node name="Sign" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Tiles/MarginContainer/GridContainer" unique_id=937752968 groups=["Selectors"] instance=ExtResource("8_wkmjk")]
+layout_mode = 2
+tile_name = "TILE_SIGN"
+type = 1
+icon_texture = ExtResource("21_idval")
+icon_region_override = Rect2(0, 0, 24, 24)
+secondary_icon_texture = ExtResource("21_idval")
+secondary_icon_region_override = Rect2(0, 72, 24, 24)
+entity_id = "DL"
+tile_coords = Vector2i(7, 6)
+
 [node name="Pipes" type="VBoxContainer" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer" unique_id=1322807014]
 layout_mode = 2
 
@@ -3409,7 +3422,7 @@ texture = ExtResource("22_3cjpb")
 expand_mode = 1
 stretch_mode = 3
 
-[node name="BowserJr" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Enemies/MarginContainer/GridContainer" unique_id=937752968 groups=["Selectors"] instance=ExtResource("8_wkmjk")]
+[node name="BowserJr" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Enemies/MarginContainer/GridContainer" unique_id=805251226 groups=["Selectors"] instance=ExtResource("8_wkmjk")]
 layout_mode = 2
 tile_name = "ENEMY_BOWSERJR"
 type = 1
@@ -6040,6 +6053,28 @@ grow_vertical = 2
 mouse_filter = 2
 texture = ExtResource("194_24ald")
 
+[node name="MusicPlayer" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Gizmos/MarginContainer/VBoxContainer/Output" unique_id=1292935067 groups=["Selectors"] instance=ExtResource("8_wkmjk")]
+layout_mode = 2
+tile_name = "Music Player"
+tile_desc = "Changes the current level song, when powered."
+type = 1
+icon_texture = ExtResource("197_5mw2n")
+icon_region_override = Rect2(0, 0, 16, 16)
+secondary_icon_region_override = Rect2(0, 0, 16, 16)
+entity_id = "DK"
+entity_scene = ExtResource("176_uggri")
+metadata/can_be_stored = true
+
+[node name="TextureRect" type="TextureRect" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Gizmos/MarginContainer/VBoxContainer/Output/MusicPlayer" unique_id=137829531]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("194_24ald")
+
 [node name="ConditionalClear" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Gizmos/MarginContainer/VBoxContainer/Output" unique_id=1550750723 groups=["Selectors"] instance=ExtResource("8_wkmjk")]
 layout_mode = 2
 tile_name = "Conditional Clearer"
@@ -6365,21 +6400,6 @@ popup/item_1/text = "IN FRONT"
 popup/item_1/id = 1
 script = ExtResource("241_8au2b")
 metadata/_custom_type_script = "uid://codql1f5eca56"
-
-[node name="HBoxContainer4" type="HBoxContainer" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/BG/ScrollContainer/VBoxContainer" unique_id=1039662638]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/BG/ScrollContainer/VBoxContainer/HBoxContainer4" unique_id=491953438]
-layout_mode = 2
-text = "2ND LAYER OFFSET"
-
-[node name="SecondLayerOffset" type="SpinBox" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/BG/ScrollContainer/VBoxContainer/HBoxContainer4" unique_id=704243158]
-unique_name_in_owner = true
-layout_mode = 2
-size_flags_horizontal = 10
-max_value = 512.0
-suffix = "PX"
-script = ExtResource("204_idval")
 
 [node name="HBoxContainer5" type="HBoxContainer" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/BG/ScrollContainer/VBoxContainer" unique_id=1037562194]
 layout_mode = 2
@@ -6928,6 +6948,13 @@ visible = false
 [connection signal="toggled" from="TileMenu/MarginContainer/VBoxContainer/PanelContainer/LEVEL/ScrollContainer/VBoxContainer/HBoxContainer3/BackScroll" to="." method="backscroll_toggled"]
 [connection signal="value_changed" from="TileMenu/MarginContainer/VBoxContainer/PanelContainer/LEVEL/ScrollContainer/VBoxContainer/HBoxContainer4/HeightLimit" to="." method="height_limit_changed"]
 [connection signal="value_changed" from="TileMenu/MarginContainer/VBoxContainer/PanelContainer/LEVEL/ScrollContainer/VBoxContainer/HBoxContainer6/TimeLimit" to="." method="time_limit_changed"]
+[connection signal="item_selected" from="TileMenu/MarginContainer/VBoxContainer/PanelContainer/BG/ScrollContainer/VBoxContainer/HBoxContainer/PrimaryLayer" to="." method="set_bg_value" binds= ["primary_layer"]]
+[connection signal="item_selected" from="TileMenu/MarginContainer/VBoxContainer/PanelContainer/BG/ScrollContainer/VBoxContainer/HBoxContainer2/SecondLayer" to="." method="set_bg_value" binds= ["second_layer"]]
+[connection signal="item_selected" from="TileMenu/MarginContainer/VBoxContainer/PanelContainer/BG/ScrollContainer/VBoxContainer/HBoxContainer7/SecondLayerOrder" to="." method="set_bg_value" binds= ["second_layer_order"]]
+[connection signal="item_selected" from="TileMenu/MarginContainer/VBoxContainer/PanelContainer/BG/ScrollContainer/VBoxContainer/HBoxContainer8/TimeOfDay" to="." method="set_bg_value" binds= ["time_of_day"]]
+[connection signal="item_selected" from="TileMenu/MarginContainer/VBoxContainer/PanelContainer/BG/ScrollContainer/VBoxContainer/HBoxContainer5/Particles" to="." method="set_bg_value" binds= ["particles"]]
+[connection signal="item_selected" from="TileMenu/MarginContainer/VBoxContainer/PanelContainer/BG/ScrollContainer/VBoxContainer/HBoxContainer6/LiquidLayer" to="." method="set_bg_value" binds= ["liquid_layer"]]
+[connection signal="toggled" from="TileMenu/MarginContainer/VBoxContainer/PanelContainer/BG/ScrollContainer/VBoxContainer/HBoxContainer3/OverlayClouds" to="." method="set_bg_value" binds= ["overlay_clouds"]]
 [connection signal="pressed" from="TileMenu/MarginContainer/VBoxContainer/PanelContainer/Blueprints/VBoxContainer/Button" to="." method="get_blueprints"]
 [connection signal="pressed" from="Info/QuitDialog/Yes" to="." method="save_level_before_exit"]
 [connection signal="pressed" from="Info/QuitDialog/No" to="." method="go_back_to_menu"]

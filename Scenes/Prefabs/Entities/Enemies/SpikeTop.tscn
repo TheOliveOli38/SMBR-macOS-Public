@@ -104,6 +104,7 @@ remote_path = NodePath("../../RCollision")
 
 [node name="Hitbox" type="Area2D" parent="RotationJoint" unique_id=337335188]
 position = Vector2(0, -4)
+collision_mask = 5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RotationJoint/Hitbox" unique_id=914836369]
 shape = SubResource("RectangleShape2D_014pt")

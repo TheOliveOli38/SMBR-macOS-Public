@@ -87,7 +87,6 @@ func update_show(new_type := 0) -> void:
 		i.visible = i.current_type == new_type or new_type == 0
 	%SavedLevels.visible = new_type == CustomLevelContainer.Type.SAVED or new_type == 0
 	%DownloadedLevels.visible = new_type == CustomLevelContainer.Type.DOWNLOADED or new_type == 0
-	%LevelPacks.visible = new_type == CustomLevelContainer.Type.LEVEL_PACK or new_type == 0
 
 
 func container_selected(container: CustomLevelContainer) -> void:

@@ -69,9 +69,9 @@ func add_properties() -> void:
 			property = preload("uid://l0lulnbn7v6b").instantiate()
 			property.editing_start.connect(set_can_exit.bind(false))
 			property.editing_finished.connect(set_can_exit.bind(true))
-		if i.hint_string == "PackedScene":
+		elif i.hint_string == "PackedScene":
 			property = preload("uid://clfxxcxk3fobh").instantiate()
-		if i.hint == PROPERTY_HINT_ENUM:
+		elif i.hint == PROPERTY_HINT_ENUM:
 			property = preload("uid://87lcnsa0epi1").instantiate()
 			var values := {}
 			var idx := 0
@@ -148,6 +148,7 @@ func set_value(node: Node, value_name := "", value = null) -> void:
 		return
 	node.set(value_name, value)
 	do_animation(node)
+	node.get_node("EditorPropertyExposer").modifier_applied.emit()
 
 func close() -> void:
 	clear_nodes()
@@ -175,6 +176,8 @@ func connect_signal(new_node: Node) -> void:
 	Global.level_editor.quick_connecting = false
 
 func do_animation(node: Node) -> void:
+	if node.get_node("EditorPropertyExposer").animate_change == false:
+		return
 	if node is Node2D:
 		if node.scale != old_scale:
 			node.scale = old_scale

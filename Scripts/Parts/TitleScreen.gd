@@ -104,10 +104,10 @@ func check_for_warpless() -> void:
 	SpeedrunHandler.is_warp_run = false
 	SpeedrunHandler.ghost_enabled = false
 	if SpeedrunHandler.WARP_LEVELS[Global.current_campaign].has(str(Global.world_num) + "-" + str(Global.level_num)):
-		%SpeedrunTypeSelect.open()
+		%SpeedrunTypeSelectLevel.open()
 	elif (SpeedrunHandler.best_level_any_times.get(str(Global.world_num) + "-" + str(Global.level_num), -1) > -1 or SpeedrunHandler.best_level_warpless_times[Global.world_num - 1][Global.level_num - 1] > -1):
 		$CanvasLayer/MarathonMode/HasRan/GhostSelect.open()
-	else: $CanvasLayer/MarathonMode/CharacterSelect.open()
+	else: $CanvasLayer/MarathonMode/CharacterSelectLevel.open()
 
 func check_for_ghost() -> void:
 	SpeedrunHandler.ghost_enabled = false

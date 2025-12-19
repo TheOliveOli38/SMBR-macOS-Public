@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://0awwjaglc0tg"]
+
+[ext_resource type="PackedScene" uid="uid://bvgigoyn7lrc2" path="res://Scenes/Prefabs/UI/SpeedrunTypeSelect.tscn" id="1_lkwun"]
+[ext_resource type="Texture2D" uid="uid://dhu46wvad72wp" path="res://Assets/Sprites/UI/MarathonIcons.png" id="2_0io7a"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_in3fl"]
+atlas = ExtResource("2_0io7a")
+region = Rect2(96, 32, 8, 8)
+
+[node name="SpeedrunTypeSelect" unique_id=985065137 instance=ExtResource("1_lkwun")]
+
+[node name="TextureRect" parent="Panel/VBoxContainer/Warpless" index="2"]
+texture = SubResource("AtlasTexture_in3fl")
+
+[node name="Any" parent="Panel/VBoxContainer/Warpless" index="3"]
+text = "TO FLAGPOLE"
+
+[node name="Any" parent="Panel/VBoxContainer/Any" index="3"]
+text = "TO WARP ZONE"

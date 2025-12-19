@@ -13,6 +13,8 @@ var length := 0
 		invisible = value
 		update_pieces()
 
+var looping := false
+
 var editing := false
 
 var track_texture: Texture = null
@@ -94,6 +96,9 @@ func update_pieces() -> void:
 	for i in $Pieces.get_children():
 		track_pieces_save.append(i)
 	queue_redraw()
+	looping = $PlacePreview.position == Vector2.ZERO and length > 0
+	$Point.visible = not looping
+	$End.visible = not looping
 
 func add_piece(new_direction := Vector2i.ZERO, add_to_arr := true) -> void:
 	placed_pieces = true
@@ -113,6 +118,7 @@ func add_piece(new_direction := Vector2i.ZERO, add_to_arr := true) -> void:
 	update_pieces()
 
 func remove_last_piece() -> void:
+	looping = false
 	$Pieces.get_child($Pieces.get_child_count() - 1).queue_free()
 	await get_tree().process_frame
 	path.pop_back()

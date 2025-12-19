@@ -16,6 +16,9 @@ var paused_time := 0.0
 
 var start_time := 0.0
 
+var simulating_inputs := false
+var simulated_inputs := 0
+
 const GHOST_RECORDING_TEMPLATE := {
 	"position": Vector2.ZERO,
 	"character": "Mario",
@@ -43,6 +46,11 @@ var is_warp_run := false
 var ghost_path := []
 
 var best_time_campaign := ""
+
+var recording_inputs := false
+var inputs: PackedByteArray = []
+var input_idx := 0
+var loaded_inputs: PackedByteArray = []
 
 var best_level_any_times := {}
 
@@ -165,6 +173,8 @@ const SMBS_WARP_LEVELS := ["4-2"]
 
 const MEDAL_CONVERSIONS := [2, 1.5, 1]
 
+enum Inputs{LEFT=1, RIGHT=2, UP=4, DOWN=8, RUN=16, JUMP=32, ACTION=64}
+
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
 
@@ -181,12 +191,21 @@ func _physics_process(delta: float) -> void:
 		paused_time = 0
 	if ghost_active and ghost_enabled and (Global.game_paused == false):
 		ghost_idx += 1
+		print(ghost_path)
 		if ghost_idx >= ghost_path.size():
 			ghost_active = false
 			return
 		Global.player_ghost.apply_data(ghost_path[ghost_idx])
 	else:
 		Global.player_ghost.hide()
+	if get_tree().get_first_node_in_group("Players") != null:
+		if recording_inputs:
+			record_inputs()
+		if simulating_inputs:
+			apply_inputs(loaded_inputs[input_idx])
+			input_idx += 1
+			if input_idx >= loaded_inputs.size() - 1:
+				simulating_inputs = false
 
 func start_timer() -> void:
 	timer = 0
@@ -194,6 +213,19 @@ func start_timer() -> void:
 	timer_active = true
 	show_timer = true
 	start_time = Time.get_ticks_msec()
+
+func load_inputs(input_path := "") -> void:
+	var file = FileAccess.open(input_path, FileAccess.READ)
+	var buffer = file.get_buffer(file.get_length())
+	loaded_inputs = buffer.decompress_dynamic(-1, FileAccess.COMPRESSION_GZIP)
+	simulating_inputs = true
+	input_idx = 0
+	file.close()
+
+func save_inputs() -> void:
+	var input_file = FileAccess.open("user://inputs.tst", FileAccess.WRITE)
+	input_file.store_buffer(inputs.compress(FileAccess.COMPRESSION_GZIP))
+	input_file.close()
 
 func record_frame(player: Player) -> void:
 	var data := ""
@@ -301,6 +333,8 @@ func run_finished() -> void:
 	SpeedrunHandler.ghost_active = false
 	SpeedrunHandler.ghost_idx = -1
 	SpeedrunHandler.timer_active = false
+	if recording_inputs:
+		save_inputs()
 	if Global.current_game_mode == Global.GameMode.BOO_RACE:
 		pass
 	else:
@@ -346,6 +380,39 @@ func get_best_time() -> float:
 			return marathon_best_any_time
 		else:
 			return marathon_best_warpless_time
+
+func record_inputs() -> void:
+	var input := 0
+	const map = {
+		"action": Inputs.ACTION,
+		"run": Inputs.RUN,
+		"jump": Inputs.JUMP,
+		"move_left": Inputs.LEFT,
+		"move_right": Inputs.RIGHT,
+		"move_up": Inputs.UP,
+		"move_down": Inputs.DOWN
+	}
+	for i in map.keys():
+		if Global.player_action_pressed(i, 0):
+			input |= map[i]
+	inputs.append(input)
+	
+
+func apply_inputs(input := 0) -> void:
+	const map = {
+		"action": Inputs.ACTION,
+		"run": Inputs.RUN,
+		"jump": Inputs.JUMP,
+		"move_left": Inputs.LEFT,
+		"move_right": Inputs.RIGHT,
+		"move_up": Inputs.UP,
+		"move_down": Inputs.DOWN
+	}
+	for i in map.keys():
+		if input & map[i]:
+			Input.action_press(i + "_s")
+		else:
+			Input.action_release(i + "_s")
 
 func check_for_medal_achievement() -> void:
 

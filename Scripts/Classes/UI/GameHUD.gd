@@ -75,7 +75,7 @@ func handle_modern_hud() -> void:
 	$ModernHUD/TopLeft/RedCoins.hide()
 	$ModernHUD/TopLeft/CoinCount.show()
 	%ModernPB.hide()
-	%ModernIGT.hide()
+	%ModernStopwatch.hide()
 	%ModernCoinCount.text = "*" + str(Global.coins).pad_zeros(2)
 	%ModernScore.text = str(Global.score).pad_zeros(9)
 	%ModernTime.text = "⏲" + str(Global.time).pad_zeros(3)
@@ -190,18 +190,14 @@ func handle_yoshi_radar() -> void:
 func handle_speedrun_timer() -> void:
 	%Time.hide()
 	%Stopwatch.show()
-	%IGT.show()
-	%IGT.modulate.a = int([Global.GameMode.MARATHON, Global.GameMode.MARATHON_PRACTICE].has(Global.current_game_mode) and get_tree().get_first_node_in_group("Players") != null)
-	%IGT.text = "⏲" + (str(Global.time).pad_zeros(3))
-	%ModernIGT.visible = %IGT.modulate.a == 1
-	%ModernIGT.text = %IGT.text
+	%ModernStopwatch.show()
 	var late = SpeedrunHandler.timer > SpeedrunHandler.best_time
 	var diff = SpeedrunHandler.best_time - SpeedrunHandler.timer
 	%PB.visible = SpeedrunHandler.best_time > 0 and (SpeedrunHandler.timer > 0 or Global.current_level != null)
 	%ModernPB.visible = %PB.visible
 	var time_string = SpeedrunHandler.gen_time_string(SpeedrunHandler.format_time(SpeedrunHandler.timer))
 	%Stopwatch.text = time_string
-	%ModernTime.text = "⏲" + time_string
+	%ModernStopwatch.text = time_string
 	%PB.text = ("+" if late else "-") + SpeedrunHandler.gen_time_string(SpeedrunHandler.format_time(diff))
 	%PB.modulate = Color.RED if late else Color.GREEN
 	%ModernPB.text = %PB.text
