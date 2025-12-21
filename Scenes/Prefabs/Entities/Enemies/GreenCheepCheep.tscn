@@ -117,6 +117,7 @@ _data = {
 }
 
 [node name="CheepCheep" type="CharacterBody2D" unique_id=390140115 node_paths=PackedStringArray("on_screen_enabler", "score_note_adder") groups=["Enemies"]]
+disable_mode = 1
 script = ExtResource("1_a3qb1")
 on_screen_enabler = NodePath("Sprite/VisibleOnScreenEnabler2D")
 score_note_adder = NodePath("ScoreNoteSpawner")

@@ -6,8 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://cqnw2x27uxb8i" path="res://Assets/Sprites/Players/InvinciblePalettes/Overworld.png" id="2_fqdtv"]
 [ext_resource type="Texture2D" uid="uid://bbdcmhyxmc3pu" path="res://Assets/Sprites/Items/SPItems.png" id="3_a1d2e"]
 [ext_resource type="Script" uid="uid://blxvov3jyx8gg" path="res://Scripts/Classes/States/Player/Normal.gd" id="3_f6bau"]
+[ext_resource type="Texture2D" uid="uid://dlxt4l5kpe2i8" path="res://Assets/Sprites/Players/Luigi/ColourPalette.png" id="3_fqdtv"]
 [ext_resource type="Texture2D" uid="uid://bdurtsr7cld64" path="res://Assets/Sprites/Players/Mario/ColourPalette.png" id="3_x2idl"]
-[ext_resource type="SpriteFrames" uid="uid://df4enjjl84mji" path="res://Resources/SpriteFrames/Player/Mario/Small.tres" id="4_fqdtv"]
 [ext_resource type="Script" uid="uid://dvbib1gtmmvui" path="res://Scripts/Classes/States/Player/Pipe.gd" id="5_hodem"]
 [ext_resource type="Script" uid="uid://c8xvkkv34fjr4" path="res://Scripts/Classes/PowerStates/PowerUpState.gd" id="5_rs3l8"]
 [ext_resource type="Script" uid="uid://caq1qiwmy0mox" path="res://Scripts/Parts/BetterAnimatedSprite.gd" id="5_x2idl"]
@@ -50,6 +50,7 @@ uniform int mode = 0;
 uniform float speed = 50;
 uniform bool enabled = false;
 uniform float palette_size = 3;
+uniform float palette_height = 4;
 uniform sampler2D player_palette: filter_nearest;
 uniform int palette_idx = 0;
 uniform sampler2D invincible_palette: filter_nearest;
@@ -79,7 +80,7 @@ vec4 mode_1(vec4 colour)
     for (int i = 0; i < palette_count; i++)
 {
     float x_coord = (float(i) + 0.5) / palette_size;
-    float y_coord = (float(palette_idx) + 0.5) / float(invincible_palette_size);
+    float y_coord = (float(palette_idx)) / float(invincible_palette_size);
 
     vec4 sampled = texture(player_palette, vec2(x_coord, y_coord));
 
@@ -118,10 +119,11 @@ resource_local_to_scene = true
 shader = SubResource("Shader_7nbqp")
 shader_parameter/mode = 1
 shader_parameter/speed = 15.0
-shader_parameter/enabled = false
+shader_parameter/enabled = true
 shader_parameter/palette_size = 3.0
-shader_parameter/player_palette = ExtResource("3_x2idl")
-shader_parameter/palette_idx = 0
+shader_parameter/palette_height = 3.0
+shader_parameter/player_palette = ExtResource("3_fqdtv")
+shader_parameter/palette_idx = 2
 shader_parameter/invincible_palette = ExtResource("2_fqdtv")
 shader_parameter/invincible_palette_size = 3
 shader_parameter/dist_1 = 0.0
@@ -485,7 +487,7 @@ unique_name_in_owner = true
 physics_interpolation_mode = 2
 material = SubResource("ShaderMaterial_4ojwh")
 position = Vector2(0, -16)
-sprite_frames = ExtResource("4_fqdtv")
+sprite_frames = ExtResource("23_445e4")
 animation = &"Idle"
 offset = Vector2(0, 1)
 script = ExtResource("5_x2idl")
@@ -984,7 +986,7 @@ metadata/_custom_type_script = "uid://cbal8ms2oe1ik"
 
 [node name="Collision" type="CollisionPolygon2D" parent="." unique_id=1622259203]
 unique_name_in_owner = true
-polygon = PackedVector2Array(4, -2, 4, -8, 1, -14, -1, -14, -4, -8, -4, 0, -2, 0, 2, 0)
+polygon = PackedVector2Array(4, -2, 4, -8, 1, -14, -1, -14, -4, -8, -4, -2, -2, 0, 2, 0)
 one_way_collision = true
 script = ExtResource("35_nbkfn")
 hitbox = Vector2(8, 14)

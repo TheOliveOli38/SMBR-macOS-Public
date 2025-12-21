@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://dnksdgorle8su"]
+[gd_scene load_steps=29 format=3 uid="uid://dnksdgorle8su"]
 
 [ext_resource type="Script" uid="uid://cj6858gmexp11" path="res://Scripts/UI/SettingsMenu.gd" id="1_hnwhb"]
 [ext_resource type="StyleBox" uid="uid://comkghpj0djcl" path="res://Resources/UI/Panel.tres" id="2_t6b48"]
@@ -24,6 +24,9 @@
 color = Color(1, 1, 1, 1)
 
 [sub_resource type="StyleBoxLine" id="StyleBoxLine_oh4w7"]
+color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_yjhhu"]
 color = Color(1, 1, 1, 1)
 
 [sub_resource type="StyleBoxLine" id="StyleBoxLine_2qqpf"]
@@ -312,7 +315,7 @@ title = "SETTINGS_LANGUAGE"
 values = ["LANGUAGE_NAME", "LANGUAGE_NAME", "LANGUAGE_NAME", "LANGUAGE_NAME", "LANGUAGE_NAME", "LANGUAGE_NAME", "LANGUAGE_NAME", "LANGUAGE_NAME", "LANGUAGE_NAME", "LANGUAGE_NAME", "LANGUAGE_NAME", "LANGUAGE_NAME", "LANGUAGE_NAME"]
 settings_category = "game"
 
-[node name="Flag" type="NinePatchRect" parent="PanelContainer/MarginContainer/VBoxContainer/Video/Language/HBoxContainer" index="0" unique_id=2029262217]
+[node name="Flag" type="NinePatchRect" parent="PanelContainer/MarginContainer/VBoxContainer/Video/Language/HBoxContainer" parent_id_path=PackedInt32Array(1089169309, 1680938547) index="0" unique_id=2029262217]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(16, 0)
 layout_mode = 2
@@ -443,97 +446,109 @@ settings_category = "audio"
 [node name="AudioAdjuster" type="Node" parent="PanelContainer/MarginContainer/VBoxContainer/Audio" unique_id=1580736642]
 script = ExtResource("8_yclde")
 
-[node name="Visuals" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=1711283484 node_paths=PackedStringArray("options")]
+[node name="Visuals" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=1711283484 node_paths=PackedStringArray("options", "scroll_container")]
 visible = false
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_constants/separation = -4
 script = ExtResource("4_avtty")
 category_name = "SETTINGS_VISUALS"
-options = [NodePath("ParallaxStyle"), NodePath("BGParticles"), NodePath("HUDStyle"), NodePath("RainbowEffect"), NodePath("TransformationEffect"), NodePath("TextShadows"), NodePath("BridgeDestructionAnimation"), NodePath("VisibleTimers"), NodePath("TransitionAnimation"), NodePath("ColourfulPipes"), NodePath("FirebarStyle"), NodePath("ExtraParticles")]
+options = [NodePath("ScrollContainer/VBoxContainer/ParallaxStyle"), NodePath("ScrollContainer/VBoxContainer/BGParticles"), NodePath("ScrollContainer/VBoxContainer/HUDStyle"), NodePath("ScrollContainer/VBoxContainer/RainbowEffect"), NodePath("ScrollContainer/VBoxContainer/TransformationEffect"), NodePath("ScrollContainer/VBoxContainer/TextShadows"), NodePath("ScrollContainer/VBoxContainer/BridgeDestructionAnimation"), NodePath("ScrollContainer/VBoxContainer/VisibleTimers"), NodePath("ScrollContainer/VBoxContainer/TransitionAnimation"), NodePath("ScrollContainer/VBoxContainer/ColourfulPipes"), NodePath("ScrollContainer/VBoxContainer/FirebarStyle"), NodePath("ScrollContainer/VBoxContainer/ExtraParticles")]
+scroll_container = NodePath("ScrollContainer")
 
 [node name="Control" type="Control" parent="PanelContainer/MarginContainer/VBoxContainer/Visuals" unique_id=935709450]
 custom_minimum_size = Vector2(0, 4)
 layout_mode = 2
 
-[node name="ParallaxStyle" parent="PanelContainer/MarginContainer/VBoxContainer/Visuals" unique_id=1438341136 groups=["Options"] instance=ExtResource("3_dl6kk")]
+[node name="ScrollContainer" type="ScrollContainer" parent="PanelContainer/MarginContainer/VBoxContainer/Visuals" unique_id=1382682199]
+layout_mode = 2
+size_flags_vertical = 3
+follow_focus = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/Visuals/ScrollContainer" unique_id=480911627]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = -4
+
+[node name="ParallaxStyle" parent="PanelContainer/MarginContainer/VBoxContainer/Visuals/ScrollContainer/VBoxContainer" unique_id=1438341136 groups=["Options"] instance=ExtResource("3_dl6kk")]
 layout_mode = 2
 option_key = "parallax_style"
 title = "VISUALS_PARALLAX"
 values = ["VISUAL_PARALLAX_NONE", "VISUAL_PARALLAX_BASIC", "VISUAL_PARALLAX_DETAIL"]
 settings_category = "visuals"
 
-[node name="BGParticles" parent="PanelContainer/MarginContainer/VBoxContainer/Visuals" unique_id=1553021834 groups=["Options"] instance=ExtResource("3_dl6kk")]
+[node name="BGParticles" parent="PanelContainer/MarginContainer/VBoxContainer/Visuals/ScrollContainer/VBoxContainer" unique_id=1553021834 groups=["Options"] instance=ExtResource("3_dl6kk")]
 layout_mode = 2
 option_key = "bg_particles"
 title = "VISUAL_PARTICLES"
 values = ["SETTING_OFF", "SETTING_ON"]
 settings_category = "visuals"
 
-[node name="HUDStyle" parent="PanelContainer/MarginContainer/VBoxContainer/Visuals" unique_id=534696896 groups=["Options"] instance=ExtResource("3_dl6kk")]
+[node name="HUDStyle" parent="PanelContainer/MarginContainer/VBoxContainer/Visuals/ScrollContainer/VBoxContainer" unique_id=534696896 groups=["Options"] instance=ExtResource("3_dl6kk")]
 layout_mode = 2
 option_key = "modern_hud"
 title = "VISUAL_HUD_STYLE"
 values = ["SETTINGS_CLASSIC", "SETTINGS_MODERN"]
 settings_category = "visuals"
 
-[node name="RainbowEffect" parent="PanelContainer/MarginContainer/VBoxContainer/Visuals" unique_id=1166512935 groups=["Options"] instance=ExtResource("3_dl6kk")]
+[node name="RainbowEffect" parent="PanelContainer/MarginContainer/VBoxContainer/Visuals/ScrollContainer/VBoxContainer" unique_id=1166512935 groups=["Options"] instance=ExtResource("3_dl6kk")]
 layout_mode = 2
 option_key = "rainbow_style"
 title = "VISUAL_RAINBOW"
 values = ["SETTINGS_CLASSIC", "SETTINGS_MODERN"]
 settings_category = "visuals"
 
-[node name="TransformationEffect" parent="PanelContainer/MarginContainer/VBoxContainer/Visuals" unique_id=95271833 groups=["Options"] instance=ExtResource("3_dl6kk")]
+[node name="TransformationEffect" parent="PanelContainer/MarginContainer/VBoxContainer/Visuals/ScrollContainer/VBoxContainer" unique_id=95271833 groups=["Options"] instance=ExtResource("3_dl6kk")]
 layout_mode = 2
 option_key = "transform_style"
 title = "VISUAL_TRANSFORM"
 values = ["SETTINGS_CLASSIC", "SETTINGS_MODERN"]
 settings_category = "visuals"
 
-[node name="TextShadows" parent="PanelContainer/MarginContainer/VBoxContainer/Visuals" unique_id=2025239341 groups=["Options"] instance=ExtResource("3_dl6kk")]
+[node name="TextShadows" parent="PanelContainer/MarginContainer/VBoxContainer/Visuals/ScrollContainer/VBoxContainer" unique_id=2025239341 groups=["Options"] instance=ExtResource("3_dl6kk")]
 layout_mode = 2
 option_key = "text_shadows"
 title = "VISUAL_TEXT_SHADOWS"
 values = ["SETTING_OFF", "SETTING_ON"]
 settings_category = "visuals"
 
-[node name="BridgeDestructionAnimation" parent="PanelContainer/MarginContainer/VBoxContainer/Visuals" unique_id=1031268764 groups=["Options"] instance=ExtResource("3_dl6kk")]
+[node name="BridgeDestructionAnimation" parent="PanelContainer/MarginContainer/VBoxContainer/Visuals/ScrollContainer/VBoxContainer" unique_id=1031268764 groups=["Options"] instance=ExtResource("3_dl6kk")]
 layout_mode = 2
 option_key = "bridge_animation"
 title = "VISUAL_BRIDGE_ANIMATION"
 values = ["SETTINGS_CLASSIC", "SETTINGS_MODERN"]
 settings_category = "visuals"
 
-[node name="VisibleTimers" parent="PanelContainer/MarginContainer/VBoxContainer/Visuals" unique_id=1653709606 groups=["Options"] instance=ExtResource("3_dl6kk")]
+[node name="VisibleTimers" parent="PanelContainer/MarginContainer/VBoxContainer/Visuals/ScrollContainer/VBoxContainer" unique_id=1653709606 groups=["Options"] instance=ExtResource("3_dl6kk")]
 layout_mode = 2
 option_key = "visible_timers"
 title = "VISUAL_VISIBLE_TIMERS"
 values = ["SETTING_OFF", "SETTING_ON"]
 settings_category = "visuals"
 
-[node name="TransitionAnimation" parent="PanelContainer/MarginContainer/VBoxContainer/Visuals" unique_id=1050307503 groups=["Options"] instance=ExtResource("3_dl6kk")]
+[node name="TransitionAnimation" parent="PanelContainer/MarginContainer/VBoxContainer/Visuals/ScrollContainer/VBoxContainer" unique_id=1050307503 groups=["Options"] instance=ExtResource("3_dl6kk")]
 layout_mode = 2
 option_key = "transition_animation"
 title = "VISUAL_TRANSITION_EFFECT"
 values = ["VISUAL_TRANSITION_CLASSIC", "VISUAL_TRANSITION_SMOOTH"]
 settings_category = "visuals"
 
-[node name="ColourfulPipes" parent="PanelContainer/MarginContainer/VBoxContainer/Visuals" unique_id=1821028896 groups=["Options"] instance=ExtResource("3_dl6kk")]
+[node name="ColourfulPipes" parent="PanelContainer/MarginContainer/VBoxContainer/Visuals/ScrollContainer/VBoxContainer" unique_id=1821028896 groups=["Options"] instance=ExtResource("3_dl6kk")]
 layout_mode = 2
 option_key = "colour_pipes"
 title = "VISUAL_COLOURFUL_PIPES"
 values = ["SETTING_OFF", "SETTING_ON"]
 settings_category = "visuals"
 
-[node name="FirebarStyle" parent="PanelContainer/MarginContainer/VBoxContainer/Visuals" unique_id=1085803096 groups=["Options"] instance=ExtResource("3_dl6kk")]
+[node name="FirebarStyle" parent="PanelContainer/MarginContainer/VBoxContainer/Visuals/ScrollContainer/VBoxContainer" unique_id=1085803096 groups=["Options"] instance=ExtResource("3_dl6kk")]
 layout_mode = 2
 option_key = "firebar_style"
 title = "VISUAL_FIREBAR_STYLE"
 values = ["SETTINGS_CLASSIC", "SETTINGS_MODERN"]
 settings_category = "visuals"
 
-[node name="ExtraParticles" parent="PanelContainer/MarginContainer/VBoxContainer/Visuals" unique_id=998350056 groups=["Options"] instance=ExtResource("3_dl6kk")]
+[node name="ExtraParticles" parent="PanelContainer/MarginContainer/VBoxContainer/Visuals/ScrollContainer/VBoxContainer" unique_id=998350056 groups=["Options"] instance=ExtResource("3_dl6kk")]
 layout_mode = 2
 option_key = "extra_particles"
 title = "VISUAL_EXTRA_EFFECTS"
@@ -544,25 +559,26 @@ settings_category = "visuals"
 script = ExtResource("9_kfq5n")
 
 [node name="ResourcePacks" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=1947474697 node_paths=PackedStringArray("options")]
-visible = false
-custom_minimum_size = Vector2(0, 171)
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_constants/separation = -4
 script = ExtResource("4_avtty")
 category_name = "SETTINGS_RESOURCE_PACK"
-options = [NodePath("SelectableOptionNode"), NodePath("SelectableOptionNode2"), NodePath("SelectableOptionNode3")]
+options = [NodePath("VBoxContainer/SelectableOptionNode"), NodePath("VBoxContainer/SelectableOptionNode2"), NodePath("VBoxContainer/SelectableOptionNode3")]
 
-[node name="SelectableOptionNode" parent="PanelContainer/MarginContainer/VBoxContainer/ResourcePacks" unique_id=1129427645 groups=["Options"] instance=ExtResource("9_t6b48")]
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/ResourcePacks" unique_id=1232588624]
+layout_mode = 2
+theme_override_constants/separation = -8
+
+[node name="SelectableOptionNode" parent="PanelContainer/MarginContainer/VBoxContainer/ResourcePacks/VBoxContainer" unique_id=1129427645 groups=["Options"] instance=ExtResource("9_t6b48")]
 layout_mode = 2
 title = "RESOURCE_OPEN_FOLDER"
 
-[node name="SelectableOptionNode2" parent="PanelContainer/MarginContainer/VBoxContainer/ResourcePacks" unique_id=637045987 groups=["Options"] instance=ExtResource("9_t6b48")]
+[node name="SelectableOptionNode2" parent="PanelContainer/MarginContainer/VBoxContainer/ResourcePacks/VBoxContainer" unique_id=637045987 groups=["Options"] instance=ExtResource("9_t6b48")]
 custom_minimum_size = Vector2(0, 25)
 layout_mode = 2
 title = "RESOURCE_REFRESH"
 
-[node name="SelectableOptionNode3" parent="PanelContainer/MarginContainer/VBoxContainer/ResourcePacks" unique_id=729432640 instance=ExtResource("9_t6b48")]
+[node name="SelectableOptionNode3" parent="PanelContainer/MarginContainer/VBoxContainer/ResourcePacks/VBoxContainer" unique_id=729432640 instance=ExtResource("9_t6b48")]
 layout_mode = 2
 title = "RESOURCE_PACK_CREATE"
 press_sfx = ""
@@ -570,11 +586,15 @@ press_sfx = ""
 [node name="ResourcePackLoader" type="Node" parent="PanelContainer/MarginContainer/VBoxContainer/ResourcePacks" unique_id=1249240363]
 script = ExtResource("9_2qqpf")
 
+[node name="HSeparator" type="HSeparator" parent="PanelContainer/MarginContainer/VBoxContainer/ResourcePacks" unique_id=807575092]
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxLine_yjhhu")
+
 [node name="ScrollContainer" type="ScrollContainer" parent="PanelContainer/MarginContainer/VBoxContainer/ResourcePacks" unique_id=1054794413]
+custom_minimum_size = Vector2(0, 128)
 layout_mode = 2
 size_flags_vertical = 3
 follow_focus = true
-vertical_scroll_mode = 3
 
 [node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/ResourcePacks/ScrollContainer" unique_id=48098530]
 layout_mode = 2
@@ -587,6 +607,7 @@ custom_minimum_size = Vector2(0, 8)
 layout_mode = 2
 
 [node name="Difficulty" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=508103354 node_paths=PackedStringArray("options", "description_node", "scroll_container")]
+visible = false
 custom_minimum_size = Vector2(0, 134)
 layout_mode = 2
 size_flags_vertical = 3
@@ -604,6 +625,7 @@ layout_mode = 2
 [node name="ScrollContainer" type="ScrollContainer" parent="PanelContainer/MarginContainer/VBoxContainer/Difficulty" unique_id=266847994]
 layout_mode = 2
 size_flags_vertical = 3
+follow_focus = true
 
 [node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/Difficulty/ScrollContainer" unique_id=1559772825]
 layout_mode = 2
@@ -1072,22 +1094,22 @@ uppercase = true
 [connection signal="value_changed" from="PanelContainer/MarginContainer/VBoxContainer/Audio/ExtraSFX" to="PanelContainer/MarginContainer/VBoxContainer/Audio/AudioAdjuster" method="extra_sfx_changed"]
 [connection signal="value_changed" from="PanelContainer/MarginContainer/VBoxContainer/Audio/PauseBGM" to="PanelContainer/MarginContainer/VBoxContainer/Audio/AudioAdjuster" method="pause_bgm_changed"]
 [connection signal="value_changed" from="PanelContainer/MarginContainer/VBoxContainer/Audio/MenuBGM" to="PanelContainer/MarginContainer/VBoxContainer/Audio/AudioAdjuster" method="menu_bgm_changed"]
-[connection signal="value_changed" from="PanelContainer/MarginContainer/VBoxContainer/Visuals/ParallaxStyle" to="PanelContainer/MarginContainer/VBoxContainer/Visuals/VisualsSetter" method="parallax_style_changed"]
-[connection signal="value_changed" from="PanelContainer/MarginContainer/VBoxContainer/Visuals/BGParticles" to="PanelContainer/MarginContainer/VBoxContainer/Visuals/VisualsSetter" method="bg_particles_changed"]
-[connection signal="value_changed" from="PanelContainer/MarginContainer/VBoxContainer/Visuals/HUDStyle" to="PanelContainer/MarginContainer/VBoxContainer/Visuals/VisualsSetter" method="hud_style_changed"]
-[connection signal="value_changed" from="PanelContainer/MarginContainer/VBoxContainer/Visuals/RainbowEffect" to="PanelContainer/MarginContainer/VBoxContainer/Visuals/VisualsSetter" method="rainbow_style_changed"]
-[connection signal="value_changed" from="PanelContainer/MarginContainer/VBoxContainer/Visuals/TransformationEffect" to="PanelContainer/MarginContainer/VBoxContainer/Visuals/VisualsSetter" method="transform_style_changed"]
-[connection signal="value_changed" from="PanelContainer/MarginContainer/VBoxContainer/Visuals/TextShadows" to="PanelContainer/MarginContainer/VBoxContainer/Visuals/VisualsSetter" method="text_shadows_changed"]
-[connection signal="value_changed" from="PanelContainer/MarginContainer/VBoxContainer/Visuals/BridgeDestructionAnimation" to="PanelContainer/MarginContainer/VBoxContainer/Visuals/VisualsSetter" method="bridge_changed"]
-[connection signal="value_changed" from="PanelContainer/MarginContainer/VBoxContainer/Visuals/VisibleTimers" to="PanelContainer/MarginContainer/VBoxContainer/Visuals/VisualsSetter" method="visible_timers_changed"]
-[connection signal="value_changed" from="PanelContainer/MarginContainer/VBoxContainer/Visuals/TransitionAnimation" to="PanelContainer/MarginContainer/VBoxContainer/Visuals/VisualsSetter" method="transition_style_changed"]
-[connection signal="value_changed" from="PanelContainer/MarginContainer/VBoxContainer/Visuals/ColourfulPipes" to="PanelContainer/MarginContainer/VBoxContainer/Visuals/VisualsSetter" method="colourful_pipes_changed"]
-[connection signal="value_changed" from="PanelContainer/MarginContainer/VBoxContainer/Visuals/FirebarStyle" to="PanelContainer/MarginContainer/VBoxContainer/Visuals/VisualsSetter" method="firebar_style_changed"]
-[connection signal="value_changed" from="PanelContainer/MarginContainer/VBoxContainer/Visuals/ExtraParticles" to="PanelContainer/MarginContainer/VBoxContainer/Visuals/VisualsSetter" method="extra_particles"]
-[connection signal="button_pressed" from="PanelContainer/MarginContainer/VBoxContainer/ResourcePacks/SelectableOptionNode" to="PanelContainer/MarginContainer/VBoxContainer/ResourcePacks/ResourcePackLoader" method="open_folder"]
-[connection signal="button_pressed" from="PanelContainer/MarginContainer/VBoxContainer/ResourcePacks/SelectableOptionNode2" to="PanelContainer/MarginContainer/VBoxContainer/ResourcePacks/ResourcePackLoader" method="get_resource_packs"]
-[connection signal="button_pressed" from="PanelContainer/MarginContainer/VBoxContainer/ResourcePacks/SelectableOptionNode3" to="ResourcePackTemplateCreator" method="create_template"]
-[connection signal="button_pressed" from="PanelContainer/MarginContainer/VBoxContainer/ResourcePacks/SelectableOptionNode3" to="PanelContainer/MarginContainer/VBoxContainer/ResourcePacks/SelectableOptionNode3" method="set_title" binds= ["Creating Resource Pack..."]]
+[connection signal="value_changed" from="PanelContainer/MarginContainer/VBoxContainer/Visuals/ScrollContainer/VBoxContainer/ParallaxStyle" to="PanelContainer/MarginContainer/VBoxContainer/Visuals/VisualsSetter" method="parallax_style_changed"]
+[connection signal="value_changed" from="PanelContainer/MarginContainer/VBoxContainer/Visuals/ScrollContainer/VBoxContainer/BGParticles" to="PanelContainer/MarginContainer/VBoxContainer/Visuals/VisualsSetter" method="bg_particles_changed"]
+[connection signal="value_changed" from="PanelContainer/MarginContainer/VBoxContainer/Visuals/ScrollContainer/VBoxContainer/HUDStyle" to="PanelContainer/MarginContainer/VBoxContainer/Visuals/VisualsSetter" method="hud_style_changed"]
+[connection signal="value_changed" from="PanelContainer/MarginContainer/VBoxContainer/Visuals/ScrollContainer/VBoxContainer/RainbowEffect" to="PanelContainer/MarginContainer/VBoxContainer/Visuals/VisualsSetter" method="rainbow_style_changed"]
+[connection signal="value_changed" from="PanelContainer/MarginContainer/VBoxContainer/Visuals/ScrollContainer/VBoxContainer/TransformationEffect" to="PanelContainer/MarginContainer/VBoxContainer/Visuals/VisualsSetter" method="transform_style_changed"]
+[connection signal="value_changed" from="PanelContainer/MarginContainer/VBoxContainer/Visuals/ScrollContainer/VBoxContainer/TextShadows" to="PanelContainer/MarginContainer/VBoxContainer/Visuals/VisualsSetter" method="text_shadows_changed"]
+[connection signal="value_changed" from="PanelContainer/MarginContainer/VBoxContainer/Visuals/ScrollContainer/VBoxContainer/BridgeDestructionAnimation" to="PanelContainer/MarginContainer/VBoxContainer/Visuals/VisualsSetter" method="bridge_changed"]
+[connection signal="value_changed" from="PanelContainer/MarginContainer/VBoxContainer/Visuals/ScrollContainer/VBoxContainer/VisibleTimers" to="PanelContainer/MarginContainer/VBoxContainer/Visuals/VisualsSetter" method="visible_timers_changed"]
+[connection signal="value_changed" from="PanelContainer/MarginContainer/VBoxContainer/Visuals/ScrollContainer/VBoxContainer/TransitionAnimation" to="PanelContainer/MarginContainer/VBoxContainer/Visuals/VisualsSetter" method="transition_style_changed"]
+[connection signal="value_changed" from="PanelContainer/MarginContainer/VBoxContainer/Visuals/ScrollContainer/VBoxContainer/ColourfulPipes" to="PanelContainer/MarginContainer/VBoxContainer/Visuals/VisualsSetter" method="colourful_pipes_changed"]
+[connection signal="value_changed" from="PanelContainer/MarginContainer/VBoxContainer/Visuals/ScrollContainer/VBoxContainer/FirebarStyle" to="PanelContainer/MarginContainer/VBoxContainer/Visuals/VisualsSetter" method="firebar_style_changed"]
+[connection signal="value_changed" from="PanelContainer/MarginContainer/VBoxContainer/Visuals/ScrollContainer/VBoxContainer/ExtraParticles" to="PanelContainer/MarginContainer/VBoxContainer/Visuals/VisualsSetter" method="extra_particles"]
+[connection signal="button_pressed" from="PanelContainer/MarginContainer/VBoxContainer/ResourcePacks/VBoxContainer/SelectableOptionNode" to="PanelContainer/MarginContainer/VBoxContainer/ResourcePacks/ResourcePackLoader" method="open_folder"]
+[connection signal="button_pressed" from="PanelContainer/MarginContainer/VBoxContainer/ResourcePacks/VBoxContainer/SelectableOptionNode2" to="PanelContainer/MarginContainer/VBoxContainer/ResourcePacks/ResourcePackLoader" method="get_resource_packs"]
+[connection signal="button_pressed" from="PanelContainer/MarginContainer/VBoxContainer/ResourcePacks/VBoxContainer/SelectableOptionNode3" to="ResourcePackTemplateCreator" method="create_template"]
+[connection signal="button_pressed" from="PanelContainer/MarginContainer/VBoxContainer/ResourcePacks/VBoxContainer/SelectableOptionNode3" to="PanelContainer/MarginContainer/VBoxContainer/ResourcePacks/VBoxContainer/SelectableOptionNode3" method="set_title" binds= ["Creating Resource Pack..."]]
 [connection signal="value_changed" from="PanelContainer/MarginContainer/VBoxContainer/Difficulty/ScrollContainer/VBoxContainer/PhysicsStyle" to="." method="show_physics_warning"]
 [connection signal="value_changed" from="PanelContainer/MarginContainer/VBoxContainer/Difficulty/ScrollContainer/VBoxContainer/PhysicsStyle" to="PanelContainer/MarginContainer/VBoxContainer/Difficulty/DifficultySetter" method="physics_style_changed"]
 [connection signal="value_changed" from="PanelContainer/MarginContainer/VBoxContainer/Difficulty/ScrollContainer/VBoxContainer/DamageStyle" to="PanelContainer/MarginContainer/VBoxContainer/Difficulty/DifficultySetter" method="damage_style_changed"]
@@ -1107,8 +1129,8 @@ uppercase = true
 [connection signal="deleted" from="PanelContainer/MarginContainer/VBoxContainer/Data/AchievementData" to="PanelContainer/MarginContainer/VBoxContainer/Data/DataDeletion" method="delete_achievement"]
 [connection signal="deleted" from="PanelContainer/MarginContainer/VBoxContainer/Data/Everything" to="PanelContainer/MarginContainer/VBoxContainer/Data/DataDeletion" method="delete_everything"]
 [connection signal="button_pressed" from="PanelContainer/MarginContainer/VBoxContainer/Data/RegenROM" to="PanelContainer/MarginContainer/VBoxContainer/Data/DataDeletion" method="regen_rom"]
-[connection signal="pack_created" from="ResourcePackTemplateCreator" to="PanelContainer/MarginContainer/VBoxContainer/ResourcePacks/SelectableOptionNode3" method="set_title" binds= ["RESOURCE_PACK_CREATE"]]
-[connection signal="pack_created" from="ResourcePackTemplateCreator" to="PanelContainer/MarginContainer/VBoxContainer/ResourcePacks/SelectableOptionNode3" method="play_sfx" binds= ["correct"]]
+[connection signal="pack_created" from="ResourcePackTemplateCreator" to="PanelContainer/MarginContainer/VBoxContainer/ResourcePacks/VBoxContainer/SelectableOptionNode3" method="set_title" binds= ["RESOURCE_PACK_CREATE"]]
+[connection signal="pack_created" from="ResourcePackTemplateCreator" to="PanelContainer/MarginContainer/VBoxContainer/ResourcePacks/VBoxContainer/SelectableOptionNode3" method="play_sfx" binds= ["correct"]]
 
 [editable path="PanelContainer/MarginContainer/VBoxContainer/Video/Language"]
 [editable path="PanelContainer/MarginContainer/VBoxContainer/Audio/SelectableOptionNode"]

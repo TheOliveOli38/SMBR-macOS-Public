@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://coasuq2vsmlce"]
+[gd_scene load_steps=11 format=3 uid="uid://coasuq2vsmlce"]
 
 [ext_resource type="Script" uid="uid://djdtghrjbpv2i" path="res://Scripts/Classes/Entities/Enemies/BooBuddies.gd" id="1_vavt3"]
 [ext_resource type="Texture2D" uid="uid://dsncqqhfsnq6s" path="res://Assets/Sprites/Editor/RotationIcon.png" id="2_1eh5v"]
@@ -7,6 +7,7 @@
 [ext_resource type="Resource" uid="uid://c8ojbqg4q4qh6" path="res://Resources/ThemedResources/EditorRotationIcon.tres" id="5_4rg7w"]
 [ext_resource type="Script" uid="uid://ctfbuoxtnnl0q" path="res://Scripts/Classes/Components/EditorPropertyExposer.gd" id="6_5b8ig"]
 [ext_resource type="PackedScene" uid="uid://c2avl86pxl2pt" path="res://Scenes/Prefabs/Entities/Enemies/CircleBoo.tscn" id="6_7bbmq"]
+[ext_resource type="Script" uid="uid://d4a7yp6e55u8t" path="res://Scripts/Classes/Components/TrackJoint.gd" id="8_4rg7w"]
 
 [sub_resource type="GDScript" id="GDScript_vavt3"]
 script/source = "extends Node
@@ -33,6 +34,8 @@ func _physics_process(delta: float) -> void:
 			i.global_position = Vector2(-999, 999)
 		idx += 1
 "
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_st3ei"]
 
 [node name="BooBuddies" type="CharacterBody2D" unique_id=145743447 node_paths=PackedStringArray("on_screen_enabler") groups=["Enemies"]]
 script = ExtResource("1_vavt3")
@@ -91,3 +94,14 @@ properties = Array[String](["length", "direction", "boo_amount", "spread_boos"])
 animate_change = false
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=304489113]
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1178259762]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=542860448]
+shape = SubResource("CircleShape2D_st3ei")
+
+[node name="TrackJoint" type="Node" parent="." unique_id=867717459]
+script = ExtResource("8_4rg7w")
+offset = Vector2(0, 0)
+disable_physics = false
+metadata/_custom_type_script = "uid://d4a7yp6e55u8t"

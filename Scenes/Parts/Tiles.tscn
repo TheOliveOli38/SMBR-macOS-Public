@@ -79,7 +79,7 @@ texture = ExtResource("1_vdakf")
 1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 1:0/0/metadata/_better_terrain = {
 0: [17, 0, 30],
-3: [17, 0, 30],
+3: [17, 30],
 4: [17, 0, 30],
 &"type": 0
 }
@@ -87,9 +87,9 @@ texture = ExtResource("1_vdakf")
 2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 2:0/0/metadata/_better_terrain = {
 0: [17, 0, 30],
-3: [17, 0, 30],
+3: [17, 30],
 4: [17, 0, 30],
-7: [17, 0, 30],
+7: [17, 30],
 8: [17, 0, 30],
 &"type": 0
 }
@@ -97,7 +97,7 @@ texture = ExtResource("1_vdakf")
 3:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 3:0/0/metadata/_better_terrain = {
 4: [17, 0, 30],
-7: [17, 0, 30],
+7: [17, 30],
 8: [17, 0, 30],
 &"type": 0
 }
@@ -131,10 +131,10 @@ texture = ExtResource("1_vdakf")
 1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 1:1/0/metadata/_better_terrain = {
 0: [17, 0, 30],
-3: [17, 0, 30],
+3: [17, 30],
 4: [17, 0, 30],
 12: [17, 0, 30],
-15: [17, 0, 30],
+15: [17, 30],
 &"symmetry": 0,
 &"type": 0
 }
@@ -156,9 +156,9 @@ texture = ExtResource("1_vdakf")
 3:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 3:1/0/metadata/_better_terrain = {
 4: [17, 0, 30],
-7: [17, 0, 30],
+7: [17, 30],
 8: [17, 0, 30],
-11: [17, 0, 30],
+11: [17, 30],
 12: [17, 0, 30],
 &"type": 0
 }
@@ -189,7 +189,7 @@ texture = ExtResource("1_vdakf")
 1:2/0/metadata/_better_terrain = {
 0: [17, 0, 30],
 12: [17, 0, 30],
-15: [17, 0, 30],
+15: [17, 30, 0],
 &"symmetry": 0,
 &"type": 0
 }
@@ -198,9 +198,9 @@ texture = ExtResource("1_vdakf")
 2:2/0/metadata/_better_terrain = {
 0: [17, 0, 30],
 8: [17, 0, 30],
-11: [17, 0, 30],
+11: [17, 30],
 12: [17, 0, 30],
-15: [17, 0, 30],
+15: [17, 30],
 &"symmetry": 0,
 &"type": 0
 }
@@ -208,7 +208,7 @@ texture = ExtResource("1_vdakf")
 3:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 3:2/0/metadata/_better_terrain = {
 8: [17, 0, 30],
-11: [17, 0, 30],
+11: [17, 30],
 12: [17, 0, 30],
 &"symmetry": 0,
 &"type": 0
@@ -933,26 +933,26 @@ texture = ExtResource("1_vdakf")
 10:11/0 = 0
 10:11/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 10:11/0/metadata/_better_terrain = {
-4: [17, 30],
+4: [17, 30, 0],
 7: [17, 30],
-8: [17, 30],
-12: [17, 30],
+8: [17, 30, 0],
+12: [17, 30, 0],
 &"type": 0
 }
 9:11/0 = 0
 9:11/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 9:11/0/metadata/_better_terrain = {
-0: [17, 30],
+0: [17, 30, 0],
 3: [17, 30],
-4: [17, 30],
-12: [17, 30],
+4: [17, 30, 0],
+12: [17, 30, 0],
 &"type": 0
 }
 8:11/0 = 0
 8:11/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 8:11/0/metadata/_better_terrain = {
-0: [17, 30],
-4: [17, 30],
+0: [17, 30, 0],
+4: [17, 30, 0],
 7: [17, 30],
 8: [17, 30],
 &"type": 0
@@ -962,18 +962,18 @@ texture = ExtResource("1_vdakf")
 7:11/0/metadata/_better_terrain = {
 0: [17, 30],
 3: [17, 30],
-4: [17, 30],
-8: [17, 30],
+4: [17, 30, 0],
+8: [17, 30, 0],
 &"type": 0
 }
 6:11/0 = 0
 6:11/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 6:11/0/metadata/_better_terrain = {
-0: [17, 30],
+0: [17, 30, 0],
 4: [17, 30],
 7: [17, 30],
 8: [17, 30],
-12: [17, 30],
+12: [17, 30, 0],
 &"type": 0
 }
 5:11/0 = 0
@@ -982,14 +982,14 @@ texture = ExtResource("1_vdakf")
 0: [17, 30],
 3: [17, 30],
 4: [17, 30],
-8: [17, 30],
-12: [17, 30],
+8: [17, 30, 0],
+12: [17, 30, 0],
 &"type": 0
 }
 4:11/0 = 0
 4:11/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 4:11/0/metadata/_better_terrain = {
-0: [17, 30],
+0: [17, 30, 0],
 4: [17, 30],
 7: [17, 30],
 8: [17, 30],
@@ -1005,17 +1005,17 @@ texture = ExtResource("1_vdakf")
 4: [17, 30],
 7: [17, 30],
 8: [17, 30],
-12: [17, 30],
+12: [17, 30, 0],
 &"type": 0
 }
 2:11/0 = 0
 2:11/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 2:11/0/metadata/_better_terrain = {
 0: [17, 30],
-4: [17, 30],
+4: [17, 30, 0],
 7: [17, 30],
 8: [17, 30],
-12: [17, 30],
+12: [17, 30, 0],
 15: [17, 30],
 &"type": 0
 }
@@ -1072,10 +1072,10 @@ texture = ExtResource("1_vdakf")
 2:12/0/metadata/_better_terrain = {
 0: [17, 30],
 3: [17, 30],
-4: [17, 30],
+4: [17, 30, 0],
 8: [17, 30],
 11: [17, 30],
-12: [17, 30],
+12: [17, 30, 0],
 &"type": 0
 }
 3:12/0 = 0
@@ -1084,7 +1084,7 @@ texture = ExtResource("1_vdakf")
 0: [17, 30],
 3: [17, 30],
 4: [17, 30],
-8: [17, 30],
+8: [17, 30, 0],
 12: [17, 30],
 15: [17, 30],
 &"type": 0
@@ -1093,7 +1093,7 @@ texture = ExtResource("1_vdakf")
 4:12/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 4:12/0/metadata/_better_terrain = {
 0: [17, 30],
-4: [17, 30],
+4: [17, 30, 0],
 8: [17, 30],
 11: [17, 30],
 12: [17, 30],
@@ -1104,7 +1104,7 @@ texture = ExtResource("1_vdakf")
 5:12/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 5:12/0/metadata/_better_terrain = {
 0: [17, 30],
-4: [17, 30],
+4: [17, 30, 0],
 8: [17, 30],
 12: [17, 30],
 15: [17, 30],
@@ -1113,8 +1113,8 @@ texture = ExtResource("1_vdakf")
 6:12/0 = 0
 6:12/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 6:12/0/metadata/_better_terrain = {
-0: [17, 30],
-4: [17, 30],
+0: [17, 30, 0],
+4: [17, 30, 0],
 8: [17, 30],
 11: [17, 30],
 12: [17, 30],
@@ -1124,15 +1124,15 @@ texture = ExtResource("1_vdakf")
 7:12/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 7:12/0/metadata/_better_terrain = {
 0: [17, 30],
-8: [17, 30],
-12: [17, 30],
+8: [17, 30, 0],
+12: [17, 30, 0],
 15: [17, 30],
 &"type": 0
 }
 8:12/0 = 0
 8:12/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 8:12/0/metadata/_better_terrain = {
-0: [17, 30],
+0: [17, 30, 0],
 8: [17, 30],
 11: [17, 30],
 12: [0, 17, 30],
@@ -1141,88 +1141,88 @@ texture = ExtResource("1_vdakf")
 9:12/0 = 0
 9:12/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 9:12/0/metadata/_better_terrain = {
-0: [17, 30],
-4: [17, 30],
-12: [17, 30],
+0: [17, 30, 0],
+4: [17, 30, 0],
+12: [17, 30, 0],
 15: [17, 30],
 &"type": 0
 }
 10:12/0 = 0
 10:12/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 10:12/0/metadata/_better_terrain = {
-4: [17, 30],
-8: [17, 30],
+4: [17, 30, 0],
+8: [17, 30, 0],
 11: [17, 30],
-12: [17, 30],
+12: [17, 30, 0],
 &"type": 0
 }
 11:12/0 = 0
 11:12/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 11:12/0/metadata/_better_terrain = {
-0: [17, 30],
-12: [17, 30],
+0: [17, 30, 0],
+12: [17, 30, 0],
 &"type": 0
 }
 12:12/0 = 0
 12:12/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 12:12/0/metadata/_better_terrain = {
-8: [17, 30],
-12: [17, 30],
+8: [17, 30, 0],
+12: [17, 30, 0],
 &"type": 0
 }
 13:12/0 = 0
 13:12/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 13:12/0/metadata/_better_terrain = {
-0: [17, 30],
-8: [17, 30],
-12: [17, 30],
+0: [17, 30, 0],
+8: [17, 30, 0],
+12: [17, 30, 0],
 &"type": 0
 }
 14:12/0 = 0
 14:12/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 14:12/0/metadata/_better_terrain = {
-4: [17, 30],
-8: [17, 30],
-12: [17, 30],
+4: [17, 30, 0],
+8: [17, 30, 0],
+12: [17, 30, 0],
 &"type": 0
 }
 15:11/0 = 0
 15:11/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 15:11/0/metadata/_better_terrain = {
-0: [17, 30],
-4: [17, 30],
-8: [17, 30],
-12: [17, 30],
+0: [17, 30, 0],
+4: [17, 30, 0],
+8: [17, 30, 0],
+12: [17, 30, 0],
 &"type": 0
 }
 14:11/0 = 0
 14:11/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 14:11/0/metadata/_better_terrain = {
-0: [17, 30],
-4: [17, 30],
-8: [17, 30],
+0: [17, 30, 0],
+4: [17, 30, 0],
+8: [17, 30, 0],
 &"type": 0
 }
 13:11/0 = 0
 13:11/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 13:11/0/metadata/_better_terrain = {
-0: [17, 30],
-4: [17, 30],
-12: [17, 30],
+0: [17, 30, 0],
+4: [17, 30, 0],
+12: [17, 30, 0],
 &"type": 0
 }
 12:11/0 = 0
 12:11/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 12:11/0/metadata/_better_terrain = {
-4: [17, 30],
-8: [17, 30],
+4: [17, 30, 0],
+8: [17, 30, 0],
 &"type": 0
 }
 11:11/0 = 0
 11:11/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 11:11/0/metadata/_better_terrain = {
-0: [17, 30],
-4: [17, 30],
+0: [17, 30, 0],
+4: [17, 30, 0],
 &"type": 0
 }
 5:14/0 = 0
@@ -1696,7 +1696,7 @@ metadata/_better_terrain = {
 &"path": ""
 }], ["OnOffConveyorR", Color(0.6458518, 0.49463975, 0.4241487, 1), 0, [], {
 &"path": ""
-}], ["Terrain", Color(0.54969203, 0.636939, 0.09403645, 1), 2, [], {
+}], ["Terrain", Color(0.8409091, 1, 0, 1), 2, [], {
 &"path": ""
 }], ["SteepSlopeTL", Color(0.0027723156, 0.6224138, 0.13507082, 1), 0, [17], {
 &"path": ""

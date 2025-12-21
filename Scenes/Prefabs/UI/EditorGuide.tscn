@@ -1,0 +1,185 @@
+[gd_scene load_steps=5 format=3 uid="uid://k4bgruingvi0"]
+
+[ext_resource type="Script" uid="uid://dlnm31ghtd415" path="res://Scripts/UI/EditorGuide.gd" id="1_1mv3v"]
+[ext_resource type="StyleBox" uid="uid://comkghpj0djcl" path="res://Resources/UI/Panel.tres" id="1_ua084"]
+[ext_resource type="VideoStream" uid="uid://71qskyteiy7y" path="res://Assets/Videos/Fuck.ogv" id="3_arq4g"]
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_ua084"]
+color = Color(1, 1, 1, 1)
+
+[node name="EditorGuide" type="Control" unique_id=578106112]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_1mv3v")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=490414418]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer" unique_id=405096940]
+layout_mode = 2
+theme_override_styles/panel = ExtResource("1_ua084")
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/PanelContainer" unique_id=2040270293]
+layout_mode = 2
+theme_override_constants/margin_left = -4
+theme_override_constants/margin_top = -4
+theme_override_constants/margin_right = -4
+theme_override_constants/margin_bottom = -4
+
+[node name="HSplitContainer" type="HSplitContainer" parent="MarginContainer/PanelContainer/MarginContainer" unique_id=591327134]
+layout_mode = 2
+theme_override_constants/separation = 8
+split_offset = -32
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/PanelContainer/MarginContainer/HSplitContainer" unique_id=96769149]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer/HSplitContainer/ScrollContainer" unique_id=524723266]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="ItemList" type="ItemList" parent="MarginContainer/PanelContainer/MarginContainer/HSplitContainer/ScrollContainer/VBoxContainer" unique_id=1047147375]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = ExtResource("1_ua084")
+item_count = 8
+item_0/text = "INTRODUCTION"
+item_1/text = "CONTROLS"
+item_2/text = "MODIFYING TILES"
+item_3/text = "SHORTCUTS"
+item_4/text = "PIPES"
+item_5/text = "WARPS"
+item_6/text = "GIZMOS"
+item_7/text = "TIPS & TRICKS"
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer/PanelContainer/MarginContainer/HSplitContainer" unique_id=119690840]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = ExtResource("1_ua084")
+
+[node name="Guides" type="MarginContainer" parent="MarginContainer/PanelContainer/MarginContainer/HSplitContainer/PanelContainer" unique_id=1654142476]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = -4
+theme_override_constants/margin_top = -4
+theme_override_constants/margin_right = -4
+theme_override_constants/margin_bottom = -4
+
+[node name="Introduction" type="VBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer/HSplitContainer/PanelContainer/Guides" unique_id=1931494966]
+visible = false
+layout_mode = 2
+
+[node name="Title" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/HSplitContainer/PanelContainer/Guides/Introduction" unique_id=534263787]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "INTRODUCTION"
+uppercase = true
+
+[node name="HSeparator" type="HSeparator" parent="MarginContainer/PanelContainer/MarginContainer/HSplitContainer/PanelContainer/Guides/Introduction/Title" unique_id=1227336600]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -4.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/separator = SubResource("StyleBoxLine_ua084")
+
+[node name="Control" type="Control" parent="MarginContainer/PanelContainer/MarginContainer/HSplitContainer/PanelContainer/Guides/Introduction" unique_id=437409656]
+custom_minimum_size = Vector2(0, 4)
+layout_mode = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/PanelContainer/MarginContainer/HSplitContainer/PanelContainer/Guides/Introduction" unique_id=455103160]
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer/HSplitContainer/PanelContainer/Guides/Introduction/ScrollContainer" unique_id=632360169]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/HSplitContainer/PanelContainer/Guides/Introduction/ScrollContainer/VBoxContainer" unique_id=496830112]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Welcome to the level editor!
+
+Although this may seem a bit complex, the editor itself, is quite simple to understand. It's not as polished or seamless and Super Mario Maker, but it gets the job done, and can actually do some extra things aswell if you know what you're doing!
+Feel free to take your time, reading through all the features the editor has to offer.
+
+There is also a great video guide made by bluSeven on Youtube you can watch aswell, if you prefer. (LINK)"
+autowrap_mode = 2
+uppercase = true
+
+[node name="Controls" type="VBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer/HSplitContainer/PanelContainer/Guides" unique_id=1225722736]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/HSplitContainer/PanelContainer/Guides/Controls" unique_id=1987339254]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Controls"
+uppercase = true
+
+[node name="HSeparator" type="HSeparator" parent="MarginContainer/PanelContainer/MarginContainer/HSplitContainer/PanelContainer/Guides/Controls/Title" unique_id=250393058]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -4.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/separator = SubResource("StyleBoxLine_ua084")
+
+[node name="Control" type="Control" parent="MarginContainer/PanelContainer/MarginContainer/HSplitContainer/PanelContainer/Guides/Controls" unique_id=1881285656]
+custom_minimum_size = Vector2(0, 4)
+layout_mode = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/PanelContainer/MarginContainer/HSplitContainer/PanelContainer/Guides/Controls" unique_id=49586956]
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer/HSplitContainer/PanelContainer/Guides/Controls/ScrollContainer" unique_id=692768804]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/HSplitContainer/PanelContainer/Guides/Controls/ScrollContainer/VBoxContainer" unique_id=227857286]
+layout_mode = 2
+size_flags_vertical = 3
+text = "To place tiles, simply use left click, you can hold down left click, and drag the mouse around, to use it as a brush. to remove tiles, simply use right click."
+autowrap_mode = 2
+uppercase = true
+
+[node name="AspectRatioContainer" type="AspectRatioContainer" parent="MarginContainer/PanelContainer/MarginContainer/HSplitContainer/PanelContainer/Guides/Controls/ScrollContainer/VBoxContainer" unique_id=1941997257]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="MarginContainer/PanelContainer/MarginContainer/HSplitContainer/PanelContainer/Guides/Controls/ScrollContainer/VBoxContainer/AspectRatioContainer" unique_id=2044254361]
+layout_mode = 2
+size_flags_vertical = 3
+stream = ExtResource("3_arq4g")
+volume_db = -80.0
+autoplay = true
+expand = true
+loop = true
+
+[connection signal="item_selected" from="MarginContainer/PanelContainer/MarginContainer/HSplitContainer/ScrollContainer/VBoxContainer/ItemList" to="." method="on_item_selected"]

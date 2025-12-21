@@ -23,9 +23,10 @@ func _physics_process(_delta: float) -> void:
 				on_player_exited(i)
 
 func calculate_player_height(player: Player):
-	var player_height = player.physics_params("HITBOX_SCALE")[1]
-	var player_crouch_height = player.physics_params("CROUCH_SCALE") if player.crouching else 1
-	return (16 if player.power_state.state_name == "Small" else 32) * player_height * player_crouch_height
+	var player_height = player.physics_params("COLLISION_SIZE")[1]
+	if player.crouching:
+		player_height = player.physics_params("CROUCH_COLLISION_SIZE")[1]
+	return player_height
 
 func on_player_entered(player: Player) -> void:
 	low_gravity = player.low_gravity

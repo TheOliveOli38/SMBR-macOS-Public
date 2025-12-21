@@ -29,7 +29,7 @@ func _process(_delta: float) -> void:
 	if (threshold_type == 0 and percent >= warn_threshold) or (threshold_type == 1 and value <= warn_threshold) and Settings.file.audio.extra_sfx == 1:
 		if node is Timer:
 			if node.is_stopped(): return
-		if can_warn:
+		if can_warn and percent > 0 and percent < 1:
 			can_warn = false
 			AudioManager.play_global_sfx("timer_warning")
 	else:

@@ -36,7 +36,9 @@ func handle_input() -> void:
 	if Input.is_action_just_pressed("ui_up"):
 		selected_index -= 1
 	if scroll_container != null:
-		scroll_container.scroll_vertical = float(lerpf(0.0, scroll_container.get_v_scroll_bar().max_value, inverse_lerp(0.0, options.size() - 1, selected_index - 2)))
+		scroll_container.follow_focus = selected_index > minimum_idx
+		if selected_index <= minimum_idx:
+			scroll_container.scroll_vertical = 0
 	selected_index = clamp(selected_index, minimum_idx, options.size() - 1)
 	if old_idx != selected_index:
 		if Settings.file.audio.extra_sfx == 1:

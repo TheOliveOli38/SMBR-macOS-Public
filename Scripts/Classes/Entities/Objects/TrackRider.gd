@@ -36,9 +36,10 @@ func start() -> void:
 	track_idx = -1
 	if auto_move == false:
 		can_move = false
+	if Global.level_editor_is_editing() == false:
+		global_position += Vector2.DOWN * 0.1
 
 func check_for_entities() -> void:
-	global_position += Vector2.DOWN * 0.1
 	for i in $Hitbox.get_overlapping_bodies():
 		if i.has_node("TrackJoint"):
 			attach_to_joint(i)
@@ -52,20 +53,23 @@ func _physics_process(delta: float) -> void:
 	if attached_entity == null:
 		check_for_entities()
 		return
-	if travelling_on_rail == false:
+	elif travelling_on_rail == false:
 		velocity.y += 10
 		global_position += velocity * delta
 		check_for_rail()
-	last_position = global_position
+		last_position = global_position
 
 func attach_to_joint(node: Node2D) -> void:
 	var joint = node.get_node("TrackJoint")
 	joint.is_attached = true
 	if joint.movement_node != null:
-		joint.movement_node.active = false
+		joint.movement_node.set("active", false)
+		joint.movement_node.set("auto_call", false)
 		joint.attached.emit()
 	elif joint.disable_physics:
 		node.set_physics_process(false)
+	if joint.get_parent().has_node("GibSpawner"):
+		joint.get_parent().get_node("GibSpawner").global_parent = true
 	joint.rider = self
 	node.physics_interpolation_mode = Node.PHYSICS_INTERPOLATION_MODE_OFF
 	node.reparent($Joint, false)

@@ -20,4 +20,3 @@ func detach() -> void:
 	rider.queue_free()
 	get_parent().reparent(rider.get_parent()) 
 	owner.reset_physics_interpolation()
-	

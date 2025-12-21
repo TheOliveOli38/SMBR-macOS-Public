@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://dekuqrdjmnr1m"]
+[gd_scene load_steps=9 format=3 uid="uid://dekuqrdjmnr1m"]
 
 [ext_resource type="Script" uid="uid://by48a8oa5hefr" path="res://Scripts/UI/StoryPause.gd" id="1_nyd8q"]
 [ext_resource type="StyleBox" uid="uid://comkghpj0djcl" path="res://Resources/UI/Panel.tres" id="2_owmu6"]
@@ -7,6 +7,12 @@
 [ext_resource type="JSON" path="res://Assets/Sprites/UI/Cursor.json" id="5_k7wpt"]
 [ext_resource type="Script" uid="uid://co6tjg3w6qpd8" path="res://Scripts/Parts/LabelFontChanger.gd" id="7_38ivy"]
 [ext_resource type="PackedScene" uid="uid://dnksdgorle8su" path="res://Scenes/Prefabs/UI/SettingsMenu.tscn" id="11_k7wpt"]
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_2qqpf"]
+content_margin_top = 0.0
+color = Color(1, 1, 1, 1)
+grow_begin = 3.0
+grow_end = -2.0
 
 [node name="PauseMenu" type="Control" unique_id=1740910897 node_paths=PackedStringArray("options")]
 process_mode = 3
@@ -97,7 +103,42 @@ metadata/_custom_type_script = "uid://co6tjg3w6qpd8"
 
 [node name="SettingsMenu" parent="." unique_id=740137315 node_paths=PackedStringArray("disabled_containers") instance=ExtResource("11_k7wpt")]
 layout_mode = 1
-disabled_containers = [NodePath("PanelContainer/MarginContainer/VBoxContainer/Difficulty"), NodePath("PanelContainer/MarginContainer/VBoxContainer/Data")]
+disabled_containers = [NodePath("PanelContainer/MarginContainer/VBoxContainer/Data")]
+
+[node name="Difficulty" parent="SettingsMenu/PanelContainer/MarginContainer/VBoxContainer" parent_id_path=PackedInt32Array(740137315, 1014393390) index="7" unique_id=508103354 node_paths=PackedStringArray("options")]
+options = []
+
+[node name="Label" type="Label" parent="SettingsMenu/PanelContainer/MarginContainer/VBoxContainer/Difficulty" index="1" unique_id=447880847]
+layout_mode = 2
+text = "ONLY ON THE TITLE SCREEN!"
+horizontal_alignment = 1
+
+[node name="HSeparator2" type="HSeparator" parent="SettingsMenu/PanelContainer/MarginContainer/VBoxContainer/Difficulty" index="2" unique_id=1017619831]
+modulate = Color(0.47397572, 0.47397572, 0.47397572, 1)
+custom_minimum_size = Vector2(0, 11)
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxLine_2qqpf")
+
+[node name="ScrollContainer" parent="SettingsMenu/PanelContainer/MarginContainer/VBoxContainer/Difficulty" index="3" unique_id=266847994]
+modulate = Color(0.47397572, 0.47397572, 0.47397572, 1)
+
+[node name="HSeparator" parent="SettingsMenu/PanelContainer/MarginContainer/VBoxContainer/Difficulty" index="4" unique_id=863097764]
+visible = false
+modulate = Color(0.47397572, 0.47397572, 0.47397572, 1)
+theme_override_styles/separator = SubResource("StyleBoxLine_2qqpf")
+
+[node name="Description" parent="SettingsMenu/PanelContainer/MarginContainer/VBoxContainer/Difficulty" index="5" unique_id=1562391460]
+visible = false
+modulate = Color(0.47397572, 0.47397572, 0.47397572, 1)
+
+[node name="LabelFontChanger" parent="SettingsMenu" index="1" unique_id=1797639177 node_paths=PackedStringArray("labels")]
+labels = [NodePath("../PanelContainer/MarginContainer/VBoxContainer/Title"), NodePath("../PanelContainer/MarginContainer/VBoxContainer/CategorySelect/HBoxContainer/Category"), null, null, null, null, null, null, null, NodePath("../PanelContainer/MarginContainer/VBoxContainer/Audio/SelectableOptionNode/Value"), null, NodePath("../PanelContainer/MarginContainer/VBoxContainer/Audio/SelectableOptionNode2/Value"), null, NodePath("../PanelContainer/MarginContainer/VBoxContainer/Audio/SelectableOptionNode3/Value"), NodePath("../PanelContainer/MarginContainer/VBoxContainer/Difficulty/Description/AutoScrollContainer/MarginContainer/Desc")]
 
 [connection signal="closed" from="." to="SettingsMenu" method="close"]
 [connection signal="option_3_selected" from="." to="." method="open_settings"]
+
+[editable path="SettingsMenu"]
+[editable path="SettingsMenu/PanelContainer/MarginContainer/VBoxContainer/Video/Language"]
+[editable path="SettingsMenu/PanelContainer/MarginContainer/VBoxContainer/Audio/SelectableOptionNode"]
+[editable path="SettingsMenu/PanelContainer/MarginContainer/VBoxContainer/Audio/SelectableOptionNode2"]
+[editable path="SettingsMenu/PanelContainer/MarginContainer/VBoxContainer/Audio/SelectableOptionNode3"]

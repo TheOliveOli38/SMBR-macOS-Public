@@ -74,6 +74,7 @@ func apply_string(entity_string := "") -> void:
 		if slice.size() <= idx:
 			return
 		var value = slice[idx]
+		idx += 1
 		if owner is Track:
 			if owner.get(i) is Array:
 				for x in value:
@@ -101,6 +102,7 @@ func apply_string(entity_string := "") -> void:
 				Global.log_error("error getting item! : " + i + str(value))
 		elif owner.get(i) is int:
 			var num = value
+			print(value)
 			if value.length() > 1:
 				num = decode_from_base64_2char(value)
 			else:
@@ -110,7 +112,6 @@ func apply_string(entity_string := "") -> void:
 			owner.set(i, bool(base64_charset.find(value)))
 		elif owner.get(i) is float:
 			owner.set(i, float(value))
-		idx += 1
 	modifier_applied.emit()
 
 func encode_to_base64_2char(value: int) -> String:

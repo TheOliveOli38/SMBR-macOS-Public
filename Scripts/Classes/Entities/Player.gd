@@ -656,13 +656,6 @@ func apply_character_physics() -> void:
 				Global.merge_dict(get(key), json.physics[key])
 			else:
 				set(key, json.physics[key])
-	
-	for i in POWER_STATES:
-		var hitbox_scale = physics_params("HITBOX_SCALE", PHYSICS_PARAMETERS, i)
-		var hitbox_crouch = physics_params("CROUCH_SCALE", PHYSICS_PARAMETERS, i)
-		for o in get_tree().get_nodes_in_group(i + "Collisions"):
-			o.hitbox = Vector3(hitbox_scale[0], hitbox_scale[1] if o.get_meta("scalable", true) else 1, hitbox_crouch)
-			o._physics_process(0)
 
 func apply_classic_physics() -> void:
 	var json = JSON.parse_string(FileAccess.open("res://Resources/ClassicPhysics.json", FileAccess.READ).get_as_text())
@@ -740,6 +733,8 @@ func handle_water_detection() -> void:
 		in_water = $Hitbox.get_overlapping_areas().any(func(area: Area2D): return area is WaterArea) or $WaterDetect.get_overlapping_bodies().is_empty() == false
 	if old_water != in_water and in_water == false and flight_meter <= 0:
 		water_exited()
+	if in_water and old_water == false and flight_meter <= 0:
+		water_entered()
 
 func summon_bubble() -> void:
 	var bubble = BUBBLE_PARTICLE.instantiate()
@@ -901,8 +896,8 @@ func kick_anim() -> void:
 var colour_palette: Texture = null
 
 func stop_all_timers() -> void:
-	for i in [star_meter, flight_meter, hammer_meter]:
-		i = 0
+	for i in ["star_meter", "flight_meter", "hammer_meter"]:
+		set(i, 0)
 
 func handle_invincible_palette() -> void:
 	sprite.material.set_shader_parameter("mode", !Settings.file.visuals.rainbow_style)
@@ -1041,7 +1036,7 @@ func handle_wing_flight(delta: float) -> void:
 		has_wings = false
 		AudioManager.stop_music_override(AudioManager.MUSIC_OVERRIDES.WING)
 		gravity = calculate_speed_param("FALL_GRAVITY", velocity_x_jump_stored)
-	%Wings.visible = flight_meter >= 0
+	%Wings.visible = flight_meter > 0
 	var wing_offset = physics_params("WING_OFFSET", COSMETIC_PARAMETERS)
 	%Wing.offset = Vector2(wing_offset[0], wing_offset[1])
 	if flight_meter <= 0:
@@ -1448,6 +1443,9 @@ func on_area_entered(area: Area2D) -> void:
 			area.owner.enemy_bounce_off(false)
 			velocity.y = sign(gravity_vector.y) * 50
 			AudioManager.play_sfx("bump", global_position)
+	elif area.owner is WaterArea:
+		water_entered()
+
 
 func super_star() -> void:
 	if physics_params("STAR_TIME", POWER_PARAMETERS) <= 0:
@@ -1513,3 +1511,6 @@ func reset_camera_to_center() -> void:
 func on_area_exited(area: Area2D) -> void:
 	if area is WaterArea:
 		water_exited()
+
+func water_entered() -> void:
+	velocity.y = max(-physics_params("SWIM_HEIGHT"), velocity.y)

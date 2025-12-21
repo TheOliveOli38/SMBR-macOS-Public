@@ -40,6 +40,9 @@ var level: Level = null
 
 var selected_tile_index := 0
 
+var copied_tile = null
+var copied_tile_info = []
+
 var can_move_cam := true
 
 static var music_track_list: Array[String] = [ "res://Assets/Audio/BGM/Silence.json","res://Assets/Audio/BGM/Athletic.json", "res://Assets/Audio/BGM/Autumn.json", "res://Assets/Audio/BGM/Beach.json", "res://Assets/Audio/BGM/Bonus.json", "res://Assets/Audio/BGM/Bowser.json", "res://Assets/Audio/BGM/FinalBowser.json", "res://Assets/Audio/BGM/Castle.json", "res://Assets/Audio/BGM/CoinHeaven.json", "res://Assets/Audio/BGM/Desert.json", "res://Assets/Audio/BGM/Garden.json", "res://Assets/Audio/BGM/GhostHouse.json", "res://Assets/Audio/BGM/Jungle.json", "res://Assets/Audio/BGM/Mountain.json", "res://Assets/Audio/BGM/Overworld.json", "res://Assets/Audio/BGM/Pipeland.json", "res://Assets/Audio/BGM/BooRace.json", "res://Assets/Audio/BGM/Sky.json", "res://Assets/Audio/BGM/Snow.json", "res://Assets/Audio/BGM/Space.json", "res://Assets/Audio/BGM/Underground.json", "res://Assets/Audio/BGM/Underwater.json", "res://Assets/Audio/BGM/Volcano.json", "res://Assets/Audio/BGM/Airship.json"]
@@ -227,28 +230,6 @@ func save_level_before_exit() -> void:
 	await level_saved
 	go_back_to_menu()
 
-func copy_node(tile_position := Vector2i.ZERO) -> void:
-	if tile_layer_nodes[current_layer].get_used_cells().has(tile_position):
-		var terrain_id = BetterTerrain.get_cell(tile_layer_nodes[current_layer], tile_position)
-		if terrain_id != -2:
-			copied_tile_terrain_id = terrain_id
-			return
-		mode = 0
-		copied_tile_source_id = tile_layer_nodes[current_layer].get_cell_source_id(tile_position)
-		copied_tile_atlas_coors = tile_layer_nodes[current_layer].get_cell_atlas_coords(tile_position)
-	elif entity_tiles[current_layer].has(tile_position):
-		copied_node = entity_tiles[current_layer][tile_position].duplicate()
-		copied_tile_offset = entity_tiles[current_layer][tile_position].get_meta("tile_offset")
-
-func cut_node(tile_position := Vector2i.ZERO) -> void:
-	var old_copy = copied_node
-	copy_node(tile_position)
-	if copied_node != old_copy:
-		remove_tile(tile_position)
-
-func paste_node(tile_position := Vector2i.ZERO) -> void:
-	place_tile(tile_position, true)
-
 func go_back_to_menu() -> void:
 	Global.transition_to_scene("res://Scenes/Levels/CustomLevelMenu.tscn")
 
@@ -415,7 +396,7 @@ func handle_tile_cursor() -> void:
 				multi_select_start()
 				multi_selecting = false
 				if pasting_area:
-					paste_area(tile_position, copied_area.duplicate_deep(), current_layer)
+					paste_area(tile_position, copied_area.duplicate_deep(), current_layer, pasting_bounds, true)
 				elif can_place:
 					match current_tile_type:
 						TileType.TILE:
@@ -439,13 +420,18 @@ func handle_tile_cursor() -> void:
 			selected_tile_index -= 1
 		if Input.is_action_just_pressed("scroll_down"):
 			selected_tile_index += 1
-	
-		if Input.is_action_just_pressed("editor_copy"):
-			pass
-		elif Input.is_action_just_pressed("editor_cut"):
-			cut_node(tile_position)
+
+		if Input.is_action_just_pressed("ui_copy") and pasting_area == false:
+			copy_tile(tile_position, current_layer)
+		elif Input.is_action_just_pressed("ui_cut") and pasting_area == false:
+			copy_tile(tile_position, current_layer)
+			remove_tile(tile_position, current_layer)
 		elif Input.is_action_pressed("ui_paste"):
-			if copied_area != {}:
+			if copied_tile != null:
+				pasting_area = false
+				place_tile(tile_position, current_layer, copied_tile, copied_tile_info)
+			elif copied_area != {}:
+				copied_tile = null
 				pasting_area = true
 	
 		if Input.is_action_just_pressed("pick_tile"):
@@ -487,15 +473,15 @@ func handle_tile_cursor() -> void:
 	
 	Input.set_custom_mouse_cursor(target_mouse_icon)
 
-func paste_area(tile_position := Vector2i.ZERO, area := copied_area, layer_num := current_layer, save_action := true) -> void:
-	var corner = tile_position - Vector2i(pasting_bounds.size / 2)
-	var old_area = save_area(corner, corner, corner + Vector2i(pasting_bounds.size), layer_num)
-	replace_area(corner, current_layer, copied_area, false)
+func paste_area(tile_position := Vector2i.ZERO, area := copied_area, layer_num := current_layer, bounds := pasting_bounds, save_action := true) -> void:
+	var corner = tile_position - Vector2i(bounds.size / 2)
+	var old_area = save_area(corner, corner, corner + Vector2i(bounds.size), layer_num)
+	replace_area(corner, current_layer, area, false)
 	pasting_area = false
 	can_place = false
 	if save_action:
 		undo_redo.create_action("Paste Area")
-		undo_redo.add_do_method(paste_area.bind(tile_position, area.duplicate_deep(), layer_num, false))
+		undo_redo.add_do_method(paste_area.bind(tile_position, area.duplicate_deep(), layer_num, bounds, false))
 		undo_redo.add_undo_method(replace_area.bind(corner, layer_num, old_area.duplicate_deep()))
 		undo_redo.commit_action(false)
 
@@ -593,6 +579,7 @@ func handle_multi_selecting(tile_position := Vector2i.ZERO) -> void:
 		%SelectedAreaRect.global_position = select_bounds.position * 16
 		%SelectedAreaRect.size = select_bounds.size * 16 + Vector2i(16, 16)
 		if Input.is_action_just_pressed("editor_copy") or Input.is_action_just_pressed("editor_cut"):
+			copied_tile = null
 			top_corner = select_bounds.position
 			select_start = top_corner
 			select_end = select_start + select_bounds.size
@@ -679,8 +666,20 @@ func get_area_bounds(top_corner := Vector2i.ZERO, select_start := Vector2i.ZERO,
 					smallest_y = tile.y
 	return Rect2i(top_corner.x + smallest_x, top_corner.y + smallest_y, abs(smallest_x - largest_x), abs(smallest_y - largest_y))
 
-
-
+func copy_tile(tile_position := Vector2i.ZERO, layer_num := current_layer) -> void:
+	copied_node = null
+	copied_tile_info = []
+	if entity_tiles[layer_num].has(tile_position):
+		copied_tile = entity_tiles[layer_num][tile_position].duplicate()
+		copied_tile_info = [copied_tile.get_meta("tile_offset")]
+	elif tile_layer_nodes[layer_num].get_used_cells().has(tile_position):
+		if BetterTerrain.get_cell(tile_layer_nodes[layer_num], tile_position) >= 0:
+			copied_tile = BetterTerrain.get_cell(tile_layer_nodes[layer_num], tile_position)
+		else:
+			copied_tile = tile_layer_nodes[layer_num].get_cell_atlas_coords(tile_position)
+			copied_tile_info = [tile_layer_nodes[layer_num].get_cell_source_id(tile_position)]
+	if copied_node != null:
+		copied_area = {}
 func replace_area(top_corner := Vector2i.ZERO, layer_num := current_layer, area := {}, delete_empty := true) -> void:
 	if delete_empty:
 		for i in area["Empty"].split("="):
@@ -828,6 +827,20 @@ func reset_values_for_play() -> void:
 
 func place_tile(tile_position := Vector2i.ZERO, layer_num := current_layer, tile_to_place = null, info := [], save_action := true) -> void:
 	$TileCursor/Previews.hide()
+	var old_tile = null
+	var old_tile_info = []
+	print(tile_to_place, info)
+	if entity_tiles[layer_num].get(tile_position) != null:
+		var overlapping_tile = entity_tiles[layer_num][tile_position]
+		old_tile = overlapping_tile.duplicate()
+		old_tile_info = [overlapping_tile.get_meta("tile_offset"), overlapping_tile.get_meta("ID", "")]
+	elif BetterTerrain.get_cell(tile_layer_nodes[layer_num], tile_position) >= 0:
+		old_tile = BetterTerrain.get_cell(tile_layer_nodes[layer_num], tile_position)
+		print(old_tile)
+	elif tile_layer_nodes[layer_num].get_used_cells().has(tile_position):
+		old_tile = tile_layer_nodes[layer_num].get_cell_atlas_coords(tile_position)
+		old_tile_info = [tile_layer_nodes[layer_num].get_cell_source_id(tile_position)]
+	
 	if tile_to_place is Vector2i:
 		var alt_tile := 0
 		if current_tile_flip.x != 0:
@@ -836,27 +849,28 @@ func place_tile(tile_position := Vector2i.ZERO, layer_num := current_layer, tile
 			alt_tile += TileSetAtlasSource.TRANSFORM_FLIP_V
 		var source = info[0]
 		var atlas = tile_to_place
-		if tile_layer_nodes[layer_num].get_cell_source_id(tile_position) == source and tile_layer_nodes[layer_num].get_cell_atlas_coords(tile_position) == atlas:
-			return
-		remove_tile(tile_position, layer_num, save_action)
+		if old_tile is Vector2i:
+			if old_tile == atlas and old_tile_info == info:
+				return
+		remove_tile(tile_position, layer_num, false)
 		check_connect_boundary_tiles(tile_position, layer_num)
 		tile_layer_nodes[layer_num].set_cell(tile_position, source, atlas, alt_tile)
 	elif tile_to_place is int:
 		var terrain_id = tile_to_place
-		if BetterTerrain.get_cell(tile_layer_nodes[layer_num], tile_position) == terrain_id:
-			return
-		remove_tile(tile_position, layer_num, save_action)
+		print(old_tile)
+		if old_tile is int:
+			if old_tile == terrain_id:
+				return
+		remove_tile(tile_position, layer_num, false)
 		check_connect_boundary_tiles(tile_position, layer_num)
 		BetterTerrain.set_cell(tile_layer_nodes[layer_num], tile_position, terrain_id)
 	elif tile_to_place is String:
-		var overlapping_tile = null
 		var node: Node = null
+		if old_tile != null and old_tile is Node:
+			if old_tile.get_meta("ID", "") == tile_to_place:
+				return 
+		remove_tile(tile_position, layer_num, false)
 		current_entity_scene = load(entity_id_map[tile_to_place][0])
-		if entity_tiles[layer_num].get(tile_position) != null:
-			overlapping_tile = entity_tiles[layer_num][tile_position]
-			if overlapping_tile.get_meta("ID", "") == tile_to_place:
-				return
-		remove_tile(tile_position, layer_num, save_action)
 		node = current_entity_scene.instantiate()
 		if node.has_node("AmountLimiter"):
 			if node.get_node("AmountLimiter").run_check(get_tree()):
@@ -870,6 +884,7 @@ func place_tile(tile_position := Vector2i.ZERO, layer_num := current_layer, tile
 		node.set_meta("tile_position", tile_position)
 		node.set_meta("ID", tile_to_place)
 		node.set_meta("layer", layer_num)
+		node.set_meta("tile_offset", spawn_offset)
 		entity_layer_nodes[layer_num].add_child(node)
 		node.reset_physics_interpolation()
 		entity_tiles[layer_num].set(tile_position, node)
@@ -877,18 +892,25 @@ func place_tile(tile_position := Vector2i.ZERO, layer_num := current_layer, tile
 			node.get_node("EditorPropertyExposer").apply_string(info[0])
 	elif tile_to_place is Node:
 		tile_to_place = tile_to_place.duplicate()
+		var spawn_offset := Vector2i.ZERO
+		if info.size() > 0:
+			spawn_offset = info[0]
+		tile_to_place.global_position = (tile_position * 16) + (Vector2i(8, 8) + spawn_offset)
 		if entity_tiles[layer_num].get(tile_position) != null:
 			var overlapping_tile = entity_tiles[layer_num][tile_position]
 			if overlapping_tile.get_meta("ID", "") == tile_to_place.get_meta("ID", ""):
 				return
-			remove_tile(tile_position, layer_num, save_action)
+		remove_tile(tile_position, layer_num, save_action)
 		entity_layer_nodes[layer_num].add_child(tile_to_place)
 		entity_tiles[layer_num].set(tile_position, tile_to_place)
 	
 	if save_action:
 		undo_redo.create_action("Place Tile")
 		undo_redo.add_do_method(place_tile.bind(tile_position, layer_num, tile_to_place, info, false))
-		undo_redo.add_undo_method(remove_tile.bind(tile_position, layer_num, false))
+		if old_tile == null:
+			undo_redo.add_undo_method(remove_tile.bind(tile_position, layer_num, false))
+		else:
+			undo_redo.add_undo_method(place_tile.bind(tile_position, layer_num, old_tile, old_tile_info, false))
 		undo_redo.commit_action(false)
 
 	BetterTerrain.update_terrain_cell(tile_layer_nodes[layer_num], tile_position, true)
@@ -903,24 +925,28 @@ func check_connect_boundary_tiles(tile_position := Vector2i.ZERO, layer := 0) ->
 
 func remove_tile(tile_position := Vector2i.ZERO, layer_num := current_layer, save_action := true) -> void:
 	$TileCursor/Previews.hide()
-	tile_layer_nodes[layer_num].set_cell(tile_position, -1)
-	var old_node: Node = null
-	BetterTerrain.update_terrain_cell(tile_layer_nodes[layer_num], tile_position, true)
+	var old_tile = null
+	var info := []
 	if entity_tiles[layer_num].get(tile_position) != null:
 		if entity_tiles[layer_num].get(tile_position) is Player:
 			return
 		if save_action:
-			old_node = entity_tiles[layer_num].get(tile_position).duplicate()
+			old_tile = entity_tiles[layer_num].get(tile_position).duplicate()
+			info = [old_tile.get_meta("tile_offset")]
 		entity_tiles[layer_num].get(tile_position).queue_free()
-	else:
-		entity_tiles[layer_num].erase(tile_position)
-		return
+	elif tile_layer_nodes[layer_num].get_used_cells().has(tile_position) and save_action:
+		if BetterTerrain.get_cell(tile_layer_nodes[layer_num], tile_position) >= 0:
+			old_tile = BetterTerrain.get_cell(tile_layer_nodes[layer_num], tile_position)
+		else:
+			old_tile = tile_layer_nodes[layer_num].get_cell_atlas_coords(tile_position)
+			info = [tile_layer_nodes[layer_num].get_cell_source_id(tile_position)]
 	entity_tiles[layer_num].erase(tile_position)
-	
-	if save_action:
+	tile_layer_nodes[layer_num].set_cell(tile_position, -1)
+	BetterTerrain.update_terrain_cell(tile_layer_nodes[layer_num], tile_position, true)
+	if save_action and old_tile != null:
 		undo_redo.create_action("Remove Tile")
 		undo_redo.add_do_method(remove_tile.bind(tile_position, layer_num, false))
-		undo_redo.add_undo_method(place_tile.bind(tile_position, layer_num, old_node, [], false))
+		undo_redo.add_undo_method(place_tile.bind(tile_position, layer_num, old_tile, info, false))
 		undo_redo.commit_action(false)
 
 func global_position_to_tile_position(position := Vector2.ZERO) -> Vector2i:
