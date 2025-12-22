@@ -5,7 +5,12 @@ extends Node2D
 @export var show_smoke := true
 const SMOKE_PARTICLE = preload("uid://d08nv4qtfouv1")
 
+var spawned := false
+
 func place_tile() -> void:
+	if spawned:
+		return
+	spawned = true
 	var tileset: TileMapLayer = null
 	var tile_position = Vector2i(((global_position - Vector2(8, 8)).snapped(Vector2(16, 16))) / 16)
 	if Global.level_editor != null:
@@ -26,6 +31,9 @@ func place_tile() -> void:
 			add_sibling(node)
 	if show_smoke:
 		summon_smoke()
+
+func _physics_process(delta: float) -> void:
+	spawned = false
 
 func summon_smoke() -> void:
 	var node = SMOKE_PARTICLE.instantiate()

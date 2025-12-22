@@ -11,6 +11,10 @@ signal recieved_pulse
 signal recieved_power
 signal lost_power
 
+static var signals_recieved := 0
+
+const RECURSIVE_LIMIT := 256
+
 var turned_on := false
 
 @export var can_input := true
@@ -21,6 +25,8 @@ var editing := false
 var has_input := false
 var has_output := false
 var total_inputs := 0
+
+var accepting_inputs := true
 
 @export_storage var connections := []
 @export var do_animation := true
@@ -39,8 +45,13 @@ const WIRE_COLOURS := [
   "#800080"
 ]
 
+@onready var recursive_check := Timer.new()
 
 func _ready() -> void:
+	add_child(recursive_check)
+	recursive_check.wait_time = get_process_delta_time()
+	recursive_check.timeout.connect(on_recursive_timeout)
+	recursive_check.start()
 	set_visibility_layer_bit(0, false)
 	set_visibility_layer_bit(1, true)
 	add_to_group("SignalExposers")
@@ -104,18 +115,33 @@ func begin_connecting() -> void:
 	queue_redraw()
 
 func turn_on() -> void:
+	if accepting_inputs == false: return
+	signals_recieved += 1
+	if check_recursive() == false:
+		return
 	update_animation(1.0, 1.2)
 	powered_on.emit()
 	turned_on = true
 	queue_redraw()
 
 func turn_off() -> void:
+	if accepting_inputs == false: return
+	signals_recieved += 1
+	if check_recursive() == false:
+		return
 	update_animation(1.2, 1.0)
 	powered_off.emit()
 	turned_on = false
 	queue_redraw()
 
+func _exit_tree() -> void:
+	signals_recieved = 0
+
 func emit_pulse() -> void:
+	if accepting_inputs == false: return
+	signals_recieved += 1
+	if check_recursive() == false:
+		return
 	update_animation(1.2, 1.0)
 	pulse_emitted.emit()
 	turned_on = true
@@ -136,9 +162,9 @@ func connect_pre_existing_signals() -> void:
 func connect_to_node(node_to_recieve := []) -> void:
 	has_output = true
 	var node: Node = get_node_from_tile(node_to_recieve[0], node_to_recieve[1])
-	pulse_emitted.connect(node.get_node("SignalExposer").recieved_pulse.emit)
-	powered_on.connect(node.get_node("SignalExposer").recieved_power.emit)
-	powered_off.connect(node.get_node("SignalExposer").lost_power.emit)
+	pulse_emitted.connect(node.get_node("SignalExposer").on_recieve_pulse)
+	powered_on.connect(node.get_node("SignalExposer").on_recieve_power)
+	powered_off.connect(node.get_node("SignalExposer").on_lost_power)
 	node.get_node("SignalExposer").has_input = true
 	node.get_node("SignalExposer").total_inputs += 1
 	node.get_node("SignalExposer").update_animation(1.2, 1.0, true)
@@ -154,6 +180,24 @@ func remove_node_connection(node := []) -> void:
 		queue_redraw()
 	if connections.is_empty():
 		has_output = false
+
+func on_recieve_pulse() -> void:
+	if accepting_inputs == false: return
+	if check_recursive():
+		recieved_pulse.emit()
+
+func on_lost_power() -> void:
+	if accepting_inputs == false: return
+	if check_recursive():
+		lost_power.emit()
+
+func on_recieve_power() -> void:
+	if accepting_inputs == false: return
+	if check_recursive():
+		recieved_power.emit()
+
+func increment_pulse() -> void:
+	pass
 
 func input_removed() -> void:
 	total_inputs -= 1
@@ -188,3 +232,24 @@ func update_animation(from := 1.2, to := 1.0, force := false) -> void:
 		return
 	owner.scale = Vector2(from, from)
 	create_tween().set_trans(Tween.TRANS_CIRC).tween_property(owner, "scale", Vector2(to, to), 0.15)
+
+func on_recursive_timeout() -> void:
+	signals_recieved = 0
+
+func check_recursive() -> bool:
+	if accepting_inputs == false:
+		return false
+	if signals_recieved >= RECURSIVE_LIMIT:
+		accepting_inputs = false
+		explode()
+	return signals_recieved < RECURSIVE_LIMIT
+
+const EXPLOSION = preload("uid://clbvyne1cr8gp")
+
+func explode() -> void:
+	await get_tree().process_frame
+	var node = EXPLOSION.instantiate()
+	node.global_position = global_position
+	owner.add_sibling(node)
+	AudioManager.play_sfx("explode", global_position)
+	owner.queue_free()

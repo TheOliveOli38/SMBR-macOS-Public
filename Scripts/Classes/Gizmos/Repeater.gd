@@ -8,15 +8,21 @@ func recieved_pulse() -> void:
 		$SignalExposer.emit_pulse()
 		if delay > 0:
 			await get_tree().create_timer(delay, false).timeout
+		if $SignalExposer.signals_recieved >= $SignalExposer.RECURSIVE_LIMIT:
+			return
 
 func recieved_power() -> void:
 	for i in amount:
 		$SignalExposer.turn_on()
 		if delay > 0:
 			await get_tree().create_timer(delay, false).timeout
+		if $SignalExposer.signals_recieved >= $SignalExposer.RECURSIVE_LIMIT:
+			return
 
 func lost_power() -> void:
 	for i in amount:
 		$SignalExposer.turn_off()
 		if delay > 0:
 			await get_tree().create_timer(delay, false).timeout
+		if $SignalExposer.signals_recieved >= $SignalExposer.RECURSIVE_LIMIT:
+			return

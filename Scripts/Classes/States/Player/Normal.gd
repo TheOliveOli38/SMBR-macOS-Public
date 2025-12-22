@@ -222,7 +222,7 @@ func air_acceleration(delta: float) -> void:
 
 func handle_swimming(delta: float) -> void:
 	bubble_meter += delta
-	if bubble_meter >= 1 and player.flight_meter <= 0:
+	if bubble_meter >= 1 and player.flight_meter <= 0 and player.global_position.y >= Global.current_level.vertical_height + 64:
 		player.summon_bubble()
 		bubble_meter = 0
 	swim_up_meter -= delta

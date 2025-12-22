@@ -16,6 +16,7 @@ func bounce_player(player: Player) -> void:
 		player.velocity.y = sign(player.gravity_vector.y) * -player.physics_params("BOUNCE_JUMP_SPEED")
 		player.gravity = player.calculate_speed_param("JUMP_GRAVITY")
 		player.has_jumped = true
+		player.jump_cancelled = false
 	else:
 		player.velocity.y = sign(player.gravity_vector.y) * -player.physics_params("BOUNCE_SPEED")
 

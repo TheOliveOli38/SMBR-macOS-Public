@@ -766,5 +766,17 @@
 	"DL": [
 		"res://Scenes/Prefabs/LevelObjects/Sign.tscn",
 		"0,0"
+	],
+	"DM": [
+		"res://Scenes/Prefabs/Entities/Objects/OnOffRedMovingPlatform.tscn",
+		"0,-8"
+	],
+	"DN": [
+		"res://Scenes/Prefabs/Entities/Objects/OnOffBluMovingPlatform.tscn",
+		"0,-8"
+	],
+	"DO": [
+		"res://Scenes/Prefabs/Entities/Objects/FallingPlatformOBJ.tscn",
+		"0,-8"
 	]
 }

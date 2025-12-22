@@ -16,6 +16,10 @@ extends Node2D
 
 var wave := 0.0
 
+@export var centered_size := false
+
+@export var moving := true
+
 @onready var starting_position := global_position
 
 func _ready() -> void:
@@ -23,15 +27,17 @@ func _ready() -> void:
 	wave = -1.0
 
 func _physics_process(delta: float) -> void:
-	%Sprite.size.x = length * 16
+	%Sprite.size.x = ((length + (1 if centered_size else 0)) * 16) - (8 if centered_size else 0)
 	%Projection.size.x = %Sprite.size.x
 	%Sprite.position.x = -(%Sprite.size.x / 2)
-	$CollisionShape2D.shape.size.x = length * 16
+	$CollisionShape2D.shape.size.x = %Sprite.size.x
 	match type:
 		0:
 			handle_back_forth_movement(delta)
 		1:
 			handle_looping_movement(delta)
+		2:
+			handle_falling_movement(delta)
 
 func handle_back_forth_movement(delta: float) -> void:
 	var target_point = starting_position + Vector2(target_x, target_y)
@@ -44,7 +50,7 @@ func handle_back_forth_movement(delta: float) -> void:
 	if Global.level_editor_is_editing() == false:
 		$Line.hide()
 		%Projection.hide()
-		if distance <= 0:
+		if distance <= 0 or not moving:
 			return
 		wave += delta / (distance / (speed * 32))
 		var val = inverse_lerp(-1, 1, sin(wave))
@@ -55,5 +61,22 @@ func handle_looping_movement(delta: float) -> void:
 	$Rope.global_position.y = -top_point + 32
 	$Rope.size.y = abs((top_point - bottom_point))
 	$Rope.global_position.x = global_position.x - 8
-	if Global.level_editor_is_editing() == false:
+	if Global.level_editor_is_editing() == false and moving:
 		global_position.y = wrapf(global_position.y + (((speed * 32) * delta) * [1, -1][y_direction]), -(top_point - 32), -(bottom_point - 32))
+
+func handle_falling_movement(delta: float) -> void:
+	if %PlayerDetection.get_overlapping_areas().any(is_player):
+		global_position.y += 96 * delta
+		for i in %PlayerDetection.get_overlapping_areas():
+			if is_player(i):
+				i.owner.global_position.y += 96 * delta
+
+
+func is_player(area: Area2D) -> bool:
+	if area.owner is Player:
+		return area.owner.is_on_floor() and area.owner.global_position.y - 4 <= global_position.y
+	return false
+
+func on_switch_hit() -> void:
+	moving = !moving
+	$OnOffToggle.frame = int(moving)

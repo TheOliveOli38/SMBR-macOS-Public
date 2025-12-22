@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://cx2310jyd3fnv"]
+[gd_scene load_steps=11 format=3 uid="uid://cx2310jyd3fnv"]
 
 [ext_resource type="Texture2D" uid="uid://bk0p52ttwojml" path="res://Assets/Sprites/Tilesets/Platform.png" id="1_637rn"]
 [ext_resource type="Script" uid="uid://dnptn1i31npjc" path="res://Scripts/Classes/Entities/Objects/MovingPlatform.gd" id="1_om2jg"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://dse5pwhodrqcr" path="res://Scenes/Prefabs/Editor/EditorProperties/TilePropertyIntRangeSpin.tscn" id="6_svgdm"]
 [ext_resource type="Texture2D" uid="uid://dpdrrkqtcedgm" path="res://Assets/Sprites/Tilesets/DottedLine.png" id="7_vsshs"]
 [ext_resource type="Script" uid="uid://b8vmbtoaaq5nc" path="res://Scripts/Parts/EditorToggleDetection.gd" id="8_5vlu6"]
+[ext_resource type="Texture2D" uid="uid://dfpbjnd1o5tig" path="res://Assets/Sprites/Tilesets/OnOffPlatform.png" id="9_ni7i0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_svgdm"]
 resource_local_to_scene = true
@@ -82,5 +83,14 @@ metadata/_custom_type_script = "uid://cbal8ms2oe1ik"
 [node name="LevelEditorToggleDetection" type="Node" parent="." unique_id=1245014865]
 script = ExtResource("8_5vlu6")
 metadata/_custom_type_script = "uid://b8vmbtoaaq5nc"
+
+[node name="OnOffToggle" type="Sprite2D" parent="." unique_id=175323262]
+visible = false
+position = Vector2(0, 4)
+texture = ExtResource("9_ni7i0")
+hframes = 2
+frame = 1
+region_enabled = true
+region_rect = Rect2(24, 0, 16, 8)
 
 [connection signal="level_start" from="LevelEditorToggleDetection" to="." method="_ready"]

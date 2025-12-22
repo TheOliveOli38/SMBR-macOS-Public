@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://df2mpmmdeumgo"]
+[gd_scene load_steps=11 format=3 uid="uid://df2mpmmdeumgo"]
 
 [ext_resource type="Script" uid="uid://cbctt5c645m8m" path="res://Scripts/Classes/Gizmos/Broadcaster.gd" id="1_6hhbr"]
 [ext_resource type="Texture2D" uid="uid://62t4606wn3sw" path="res://Assets/Sprites/Editor/Gizmos/Broadcaster.png" id="2_pw874"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://ctfbuoxtnnl0q" path="res://Scripts/Classes/Components/EditorPropertyExposer.gd" id="4_0gjbp"]
 [ext_resource type="PackedScene" uid="uid://dse5pwhodrqcr" path="res://Scenes/Prefabs/Editor/EditorProperties/TilePropertyIntRangeSpin.tscn" id="5_ga5mx"]
 [ext_resource type="Texture2D" uid="uid://dq5yrx4qbtax3" path="res://Assets/Sprites/Editor/Gizmos/SignalParticle.png" id="6_ga5mx"]
+[ext_resource type="Script" uid="uid://b8vmbtoaaq5nc" path="res://Scripts/Parts/EditorToggleDetection.gd" id="7_06yxh"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_06yxh"]
 atlas = ExtResource("6_ga5mx")
@@ -58,6 +59,16 @@ sprite_frames = SubResource("SpriteFrames_xox1u")
 autoplay = "default"
 frame_progress = 0.116994165
 
+[node name="Timer" type="Timer" parent="." unique_id=1706071290]
+wait_time = 0.1
+autostart = true
+
+[node name="LevelEditorToggleDetection" type="Node" parent="." unique_id=976061048]
+script = ExtResource("7_06yxh")
+metadata/_custom_type_script = "uid://b8vmbtoaaq5nc"
+
 [connection signal="recieved_signal" from="." to="SignalExposer" method="emit_pulse"]
 [connection signal="recieved_power" from="SignalExposer" to="." method="emit_broadcast"]
 [connection signal="recieved_pulse" from="SignalExposer" to="." method="emit_broadcast"]
+[connection signal="timeout" from="Timer" to="." method="on_timeout"]
+[connection signal="level_start" from="LevelEditorToggleDetection" to="Timer" method="start"]

@@ -14,33 +14,33 @@ size = Vector2(16, 1)
 atlas = ExtResource("2_qh1vn")
 region = Rect2(0, 0, 16, 16)
 
-[node name="InvisibleQuestionBlock" instance=ExtResource("1_8myna")]
+[node name="InvisibleQuestionBlock" unique_id=1729997792 instance=ExtResource("1_8myna")]
 collision_layer = 1
 script = ExtResource("2_u3lik")
 combo_meter_amount = 10
 
-[node name="Sprite" parent="." index="0"]
+[node name="Sprite" parent="." index="0" unique_id=1322431434]
 visible = false
 
-[node name="Collision" parent="." index="1"]
+[node name="Collision" parent="." index="1" unique_id=1652996612]
 visible = true
 rotation = 3.14159
 disabled = true
 
-[node name="Hitbox" type="Area2D" parent="." index="3"]
+[node name="Hitbox" type="Area2D" parent="." index="3" unique_id=2008901292]
 position = Vector2(0, 8)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" index="0"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" index="0" unique_id=658281905]
 shape = SubResource("RectangleShape2D_f783k")
 
-[node name="Node2D" type="Node2D" parent="." index="4"]
+[node name="Node2D" type="Node2D" parent="." index="4" unique_id=1452079836]
 visibility_layer = 2
 script = ExtResource("4_f783k")
 
-[node name="EditorIcon" type="Sprite2D" parent="Node2D" index="0"]
+[node name="EditorIcon" type="Sprite2D" parent="Node2D" index="0" unique_id=524283365]
 texture = SubResource("AtlasTexture_nrsus")
 
-[node name="ResourceSetter" type="Node" parent="Node2D/EditorIcon" index="0" node_paths=PackedStringArray("node_to_affect")]
+[node name="ResourceSetter" type="Node" parent="Node2D/EditorIcon" index="0" unique_id=273263587 node_paths=PackedStringArray("node_to_affect")]
 script = ExtResource("5_8tag8")
 node_to_affect = NodePath("..")
 property_name = "texture"
@@ -49,6 +49,7 @@ resource_json = ExtResource("6_xdyfy")
 use_cache = false
 metadata/_custom_type_script = "uid://cbal8ms2oe1ik"
 
+[connection signal="block_hit" from="." to="LevelPersistance" method="set_as_active"]
 [connection signal="area_entered" from="Hitbox" to="." method="on_area_entered"]
 
 [editable path="BlockAnimations"]

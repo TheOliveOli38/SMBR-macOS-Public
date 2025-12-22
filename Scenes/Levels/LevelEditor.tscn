@@ -1,4 +1,4 @@
-[gd_scene load_steps=270 format=3 uid="uid://gbcmqonky63j"]
+[gd_scene load_steps=272 format=3 uid="uid://gbcmqonky63j"]
 
 [ext_resource type="Script" uid="uid://c2lnc7vnq3xth" path="res://Scripts/Classes/Editor/LevelEditor.gd" id="1_0qbyu"]
 [ext_resource type="Texture2D" uid="uid://cbha2l6hg1kfo" path="res://Assets/Sprites/UI/EditorGrid.png" id="2_8q7yr"]
@@ -100,6 +100,8 @@
 [ext_resource type="JSON" path="res://Assets/Sprites/Enemies/HappyMoon.json" id="108_fvohb"]
 [ext_resource type="JSON" path="res://Assets/Sprites/Enemies/SpikeTop.json" id="108_ji0c6"]
 [ext_resource type="JSON" path="res://Assets/Sprites/Blocks/BlueOnOffBlock.json" id="109_c84f5"]
+[ext_resource type="JSON" path="res://Assets/Sprites/Tilesets/OnOffPlatform.json" id="111_cr6gn"]
+[ext_resource type="Texture2D" uid="uid://cke2nve5v64am" path="res://Assets/Sprites/Editor/PlatformIcons/Falling.png" id="111_dsu6a"]
 [ext_resource type="Script" uid="uid://dja6281w30iv0" path="res://Scripts/UI/TextValidator.gd" id="114_cjvlm"]
 [ext_resource type="Texture2D" uid="uid://bi13n4mw0to20" path="res://Assets/Sprites/Blocks/TimedBooBlock.png" id="114_swqrt"]
 [ext_resource type="Texture2D" uid="uid://cv27sth0k3amk" path="res://Assets/Sprites/Blocks/SwitchSpike.png" id="118_xde7w"]
@@ -4518,17 +4520,6 @@ layout_mode = 2
 mouse_force_pass_scroll_events = false
 script = ExtResource("20_jc7xg")
 
-[node name="TextureRect" type="TextureRect" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Objects/MarginContainer/GridContainer/Platforms" unique_id=1433900642]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -16.0
-offset_bottom = 16.0
-grow_horizontal = 0
-mouse_filter = 2
-texture = ExtResource("22_3cjpb")
-
 [node name="MovingPlatform" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Objects/MarginContainer/GridContainer/Platforms" unique_id=1927187442 groups=["Selectors"] instance=ExtResource("8_wkmjk")]
 layout_mode = 0
 offset_right = 16.0
@@ -4551,6 +4542,66 @@ icon_region_override = Rect2(0, 0, 16, 16)
 secondary_icon_texture = ExtResource("106_3c4c7")
 secondary_icon_region_override = Rect2(16, 0, 16, 16)
 entity_id = "DF"
+
+[node name="Falling" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Objects/MarginContainer/GridContainer/Platforms" unique_id=1574228617 groups=["Selectors"] instance=ExtResource("8_wkmjk")]
+layout_mode = 0
+offset_right = 16.0
+offset_bottom = 16.0
+tile_name = "OBJ_FALLING_PLATFORM"
+type = 1
+icon_texture = ExtResource("104_111c4")
+icon_region_override = Rect2(0, 0, 16, 16)
+secondary_icon_texture = ExtResource("111_dsu6a")
+entity_id = "DO"
+
+[node name="TextureRect" type="TextureRect" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Objects/MarginContainer/GridContainer/Platforms" unique_id=1433900642]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -16.0
+offset_bottom = 16.0
+grow_horizontal = 0
+mouse_filter = 2
+texture = ExtResource("22_3cjpb")
+
+[node name="OnOffPlatforms" type="Control" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Objects/MarginContainer/GridContainer" unique_id=1230530835]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+mouse_force_pass_scroll_events = false
+script = ExtResource("20_jc7xg")
+
+[node name="RedPlat" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Objects/MarginContainer/GridContainer/OnOffPlatforms" unique_id=1401592991 groups=["Selectors"] instance=ExtResource("8_wkmjk")]
+layout_mode = 0
+offset_right = 16.0
+offset_bottom = 16.0
+tile_name = "OBJ_ONOFF_RED_PLATFORM"
+type = 1
+icon_texture = ExtResource("111_cr6gn")
+icon_region_override = Rect2(0, 0, 16, 8)
+entity_id = "DM"
+
+[node name="BluePlat" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Objects/MarginContainer/GridContainer/OnOffPlatforms" unique_id=423760434 groups=["Selectors"] instance=ExtResource("8_wkmjk")]
+layout_mode = 0
+offset_right = 16.0
+offset_bottom = 16.0
+tile_name = "OBJ_ONOFF_BLU_PLATFORM"
+type = 1
+icon_texture = ExtResource("111_cr6gn")
+icon_region_override = Rect2(0, 8, 16, 8)
+secondary_icon_region_override = Rect2(16, 0, 16, 16)
+entity_id = "DN"
+
+[node name="TextureRect" type="TextureRect" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Objects/MarginContainer/GridContainer/OnOffPlatforms" unique_id=1090297501]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -16.0
+offset_bottom = 16.0
+grow_horizontal = 0
+mouse_filter = 2
+texture = ExtResource("22_3cjpb")
 
 [node name="Conveyors" type="Control" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Objects/MarginContainer/GridContainer" unique_id=1691318170]
 custom_minimum_size = Vector2(16, 16)

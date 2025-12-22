@@ -769,6 +769,8 @@ func camera_make_current() -> void:
 func play_animation(animation_name := "", force := false) -> void:
 	if sprite.sprite_frames == null: return
 	animation_name = get_fallback_animation(animation_name)
+	if sprite.scale.x == -1 and sprite.sprite_frames.has_animation("Left" + animation_name):
+		animation_name = "Left" + animation_name
 	if sprite.animation != animation_name or force:
 		sprite.play(animation_name)
 
@@ -1362,8 +1364,12 @@ func hide_pipe_animation() -> void:
 		await get_tree().create_timer(0.6, false).timeout
 		hide()
 
+var exiting_pipe := false
+
 func go_to_exit_pipe(pipe: PipeArea) -> void:
 	Global.can_time_tick = false
+	exiting_pipe = true
+	can_hurt = false
 	pipe_enter_direction = Vector2.ZERO
 	state_machine.transition_to("Freeze")
 	global_position = pipe.global_position + (pipe.get_vector(pipe.enter_direction) * 32)
@@ -1383,6 +1389,8 @@ func exit_pipe(pipe: PipeArea) -> void:
 	state_machine.transition_to("Pipe")
 	await get_tree().create_timer(0.65, false).timeout
 	Global.can_pause = true
+	can_hurt = true
+	exiting_pipe = false
 	state_machine.transition_to("Normal")
 	Global.can_time_tick = true
 

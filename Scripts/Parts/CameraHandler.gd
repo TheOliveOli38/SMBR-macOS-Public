@@ -51,7 +51,8 @@ func handle_camera(delta: float) -> void:
 		handle_vertical_scrolling(delta)
 		do_limits()
 		camera.global_position = camera_position + camera_offset
-		return
+		if not owner.exiting_pipe:
+			return
 	
 	if not cam_locked:
 		if not sp_screen_scroll:

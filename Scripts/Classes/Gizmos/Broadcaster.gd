@@ -2,6 +2,7 @@ class_name Broadcaster
 extends Node2D
 
 static var active_channels := []
+static var recieved_broadcasters := []
 
 @export_range(0, 99) var channel := 0
 @export_enum("Send and Recieve", "Send Only", "Recieve Only") var mode := 0
@@ -15,18 +16,22 @@ func _ready() -> void:
 func check_channels() -> void:
 	if mode == 1:
 		return
-	if active_channels.has(channel):
+	$SignalExposer.signals_recieved += 1
+	if $SignalExposer.check_recursive() == false:
+		return
+	if active_channels.has(channel):#
 		$Status.show()
 		$Status.flip_v = true
 		recieved_signal.emit()
-		await get_tree().process_frame
 		if active_channels.has(channel):
-			active_channels.erase(channel)
+			active_channels.erase.call_deferred(channel)
 		await get_tree().create_timer(0.5, false).timeout
 		$Status.hide()
 
 func emit_broadcast() -> void:
 	if mode == 2:
+		return
+	if $SignalExposer.check_recursive() == false:
 		return
 	$Status.show()
 	$Status.flip_v = false
@@ -37,3 +42,12 @@ func emit_broadcast() -> void:
 			i.check_channels()
 	await get_tree().create_timer(0.5, false).timeout
 	$Status.hide()
+
+const EXPLOSION = preload("uid://clbvyne1cr8gp")
+
+func summon_explosion() -> void:
+	queue_free()
+	AudioManager.play_global_sfx("explode")
+	var node = EXPLOSION.instantiate()
+	node.global_position = global_position
+	add_sibling(node)

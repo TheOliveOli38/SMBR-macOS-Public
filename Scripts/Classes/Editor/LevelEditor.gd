@@ -273,6 +273,7 @@ func cleanup() -> void:
 func update_music() -> void:
 	if music_track_list[bgm_id] != "":
 		level.music = load(music_track_list[bgm_id].replace(".remap", ""))
+		print(level.music)
 	else:
 		level.music = null
 
@@ -408,6 +409,8 @@ func handle_tile_cursor() -> void:
 					target_mouse_icon = (CURSOR_PENCIL)
 			
 		if Input.is_action_pressed("mb_right"):
+			multi_select_start()
+			multi_selecting = false
 			if Input.is_action_pressed("editor_select") and not area_selecting:
 				area_select_start(tile_position)
 				target_mouse_icon = (CURSOR_RULER)
@@ -610,7 +613,9 @@ func handle_multi_selecting(tile_position := Vector2i.ZERO) -> void:
 				multi_select_layer = current_layer
 				print(multi_select_layer)
 				select_bounds = get_area_bounds(top_corner, select_start, select_end, multi_select_layer)
-
+			else:
+				multi_select_start()
+				multi_selecting = false
 
 func mass_place(top_corner := Vector2i.ZERO, select_start := Vector2i.ZERO, select_end := Vector2i.ZERO, layer_num := current_layer, thing_to_place = null, info := [], save_action := true) -> void:
 	var area = save_area(top_corner, select_start, select_end, layer_num)
@@ -721,7 +726,6 @@ func replace_area(top_corner := Vector2i.ZERO, layer_num := current_layer, area 
 func save_area(top_corner := Vector2i.ZERO, select_start := Vector2i.ZERO, select_end := Vector2i.ZERO, layer_num := current_layer) -> Dictionary:
 	var dict := {"Tiles": "", "Entities": "", "Connections": "", "Empty": "", "Size": "0,0"}
 	var entities := []
-	print(layer_num)
 	var bounds := get_area_bounds(top_corner, select_start, select_end, layer_num)
 	for x in abs(select_end.x - select_start.x) + 1:
 		for y in abs(select_end.y - select_start.y) + 1:
@@ -996,8 +1000,10 @@ func transition_to_sublevel(sub_lvl_idx := 0) -> void:
 	Global.can_pause = false
 	if Global.level_editor_is_playtesting():
 		Global.do_fake_transition()
+		await get_tree().physics_frame
 	else:
 		save_current_level()
+		Global.reset_values()
 		PipeArea.exiting_pipe_id = -1
 	load_level(sub_lvl_idx)
 	Global.can_pause = true
@@ -1029,7 +1035,12 @@ func tile_has_signal(tile: Node) -> bool:
 const CUSTOM_LEVEL_BASE = ("res://Scenes/Levels/CustomLevelBase.tscn")
 
 func save_current_level() -> void:
-	sub_areas[sub_level_id] = level.duplicate()
+	var saved_level = level.duplicate()
+	if music_track_list[bgm_id] != "":
+		saved_level.music = load(music_track_list[bgm_id].replace(".remap", ""))
+	else:
+		saved_level.music = null
+	sub_areas[sub_level_id] = saved_level.duplicate()
 
 func load_level(level_id := 0) -> void:
 	var node = sub_areas[level_id]
@@ -1067,14 +1078,14 @@ func reload_entity_tiles() -> void:
 func update_references() -> void:
 	entity_layer_nodes = [level.get_node("EntityLayer1"), level.get_node("EntityLayer2"), level.get_node("EntityLayer3"), level.get_node("EntityLayer4"), level.get_node("EntityLayer5")]
 	tile_layer_nodes = [level.get_node("TileLayer1"), level.get_node("TileLayer2"), level.get_node("TileLayer3"), level.get_node("TileLayer4"), level.get_node("TileLayer5")]
-	update_menu_values()
 	if level.music != null:
 		bgm_id = music_track_list.find(level.music.resource_path)
+	update_menu_values()
 
 func update_menu_values() -> void:
 	%ThemeTime.selected = ["Day", "Night"].find(level.theme_time)
 	if level.music != null:
-		%LevelMusic.selected = music_track_list.find(level.music.resource_path)
+		%LevelMusic.selected = bgm_id
 	else:
 		%LevelMusic.selected = 0
 	%Campaign.selected = Global.CAMPAIGNS.find(level.campaign)
