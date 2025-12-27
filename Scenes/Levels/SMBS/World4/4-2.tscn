@@ -60,24 +60,7 @@ metadata/_custom_type_script = "uid://cgm3opb5qudc1"
 [node name="RedCoin" parent="ChallengeNodes" instance=ExtResource("12_dnxbp")]
 position = Vector2(216, -8)
 
-[connection signal="block_destroyed" from="Tiles/InvisibleQuestionBlock" to="Tiles/InvisibleQuestionBlock/LevelPersistance" method="set_as_active_2"]
-[connection signal="block_emptied" from="Tiles/InvisibleQuestionBlock" to="Tiles/InvisibleQuestionBlock/LevelPersistance" method="set_as_active"]
-[connection signal="player_block_hit" from="Tiles/InvisibleQuestionBlock" to="Tiles/InvisibleQuestionBlock" method="player_mushroom_check"]
-[connection signal="player_block_hit" from="Tiles/InvisibleQuestionBlock" to="Tiles/InvisibleQuestionBlock" method="dispense_item" unbinds=1]
-[connection signal="player_block_hit" from="Tiles/InvisibleQuestionBlock" to="Tiles/InvisibleQuestionBlock/BlockAnimations" method="bounce_block" unbinds=1]
-[connection signal="shell_block_hit" from="Tiles/InvisibleQuestionBlock" to="Tiles/InvisibleQuestionBlock" method="dispense_item" unbinds=1]
-[connection signal="shell_block_hit" from="Tiles/InvisibleQuestionBlock" to="Tiles/InvisibleQuestionBlock/BlockAnimations" method="bounce_block" unbinds=1]
-[connection signal="block_destroyed" from="Tiles/@AnimatableBody2D@59678" to="Tiles/@AnimatableBody2D@59678/LevelPersistance" method="set_as_active_2"]
-[connection signal="block_emptied" from="Tiles/@AnimatableBody2D@59678" to="Tiles/@AnimatableBody2D@59678/LevelPersistance" method="set_as_active"]
-[connection signal="player_block_hit" from="Tiles/@AnimatableBody2D@59678" to="Tiles/@AnimatableBody2D@59678" method="player_mushroom_check"]
-[connection signal="player_block_hit" from="Tiles/@AnimatableBody2D@59678" to="Tiles/@AnimatableBody2D@59678" method="dispense_item" unbinds=1]
-[connection signal="player_block_hit" from="Tiles/@AnimatableBody2D@59678" to="Tiles/@AnimatableBody2D@59678/BlockAnimations" method="bounce_block" unbinds=1]
-[connection signal="shell_block_hit" from="Tiles/@AnimatableBody2D@59678" to="Tiles/@AnimatableBody2D@59678" method="dispense_item" unbinds=1]
-[connection signal="shell_block_hit" from="Tiles/@AnimatableBody2D@59678" to="Tiles/@AnimatableBody2D@59678/BlockAnimations" method="bounce_block" unbinds=1]
-[connection signal="block_destroyed" from="Tiles/@AnimatableBody2D@59679" to="Tiles/@AnimatableBody2D@59679/LevelPersistance" method="set_as_active_2"]
-[connection signal="block_emptied" from="Tiles/@AnimatableBody2D@59679" to="Tiles/@AnimatableBody2D@59679/LevelPersistance" method="set_as_active"]
-[connection signal="player_block_hit" from="Tiles/@AnimatableBody2D@59679" to="Tiles/@AnimatableBody2D@59679" method="player_mushroom_check"]
-[connection signal="player_block_hit" from="Tiles/@AnimatableBody2D@59679" to="Tiles/@AnimatableBody2D@59679" method="dispense_item" unbinds=1]
-[connection signal="player_block_hit" from="Tiles/@AnimatableBody2D@59679" to="Tiles/@AnimatableBody2D@59679/BlockAnimations" method="bounce_block" unbinds=1]
-[connection signal="shell_block_hit" from="Tiles/@AnimatableBody2D@59679" to="Tiles/@AnimatableBody2D@59679" method="dispense_item" unbinds=1]
-[connection signal="shell_block_hit" from="Tiles/@AnimatableBody2D@59679" to="Tiles/@AnimatableBody2D@59679/BlockAnimations" method="bounce_block" unbinds=1]
+
+
+
+

@@ -172,17 +172,11 @@ position = Vector2(2688, 0)
 [node name="LevelBG" parent="." unique_id=824059672 instance=ExtResource("20_0fnbe")]
 particles = 3
 
-[connection signal="area_entered" from="Tiles/DeathPit" to="Tiles/DeathPit" method="area_entered"]
-[connection signal="area_entered" from="Tiles/@Area2D@76274" to="Tiles/@Area2D@76274" method="area_entered"]
-[connection signal="area_entered" from="Tiles/@Area2D@76275" to="Tiles/@Area2D@76275" method="area_entered"]
-[connection signal="area_entered" from="Tiles/@Area2D@76276" to="Tiles/@Area2D@76276" method="area_entered"]
-[connection signal="area_entered" from="Tiles/@Area2D@76277" to="Tiles/@Area2D@76277" method="area_entered"]
-[connection signal="area_entered" from="Tiles/@Area2D@76278" to="Tiles/@Area2D@76278" method="area_entered"]
-[connection signal="area_entered" from="Tiles/@Area2D@76279" to="Tiles/@Area2D@76279" method="area_entered"]
-[connection signal="area_entered" from="Tiles/@Area2D@76280" to="Tiles/@Area2D@76280" method="area_entered"]
-[connection signal="area_entered" from="Tiles/@Area2D@76281" to="Tiles/@Area2D@76281" method="area_entered"]
-[connection signal="area_entered" from="Tiles/@Area2D@76282" to="Tiles/@Area2D@76282" method="area_entered"]
 [connection signal="victory_begin" from="CastleBridge" to="ChallengeNodes/CastleChallengeEnd" method="begin"]
 
 [editable path="Bowser"]
 [editable path="CastleBridge"]
+
+
+
+

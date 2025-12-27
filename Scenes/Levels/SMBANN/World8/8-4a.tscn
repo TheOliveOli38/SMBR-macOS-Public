@@ -24,3 +24,7 @@ metadata/_custom_type_script = "uid://bjs5mlc3xrxud"
 
 [node name="PirannhaPlant" parent="." index="17" instance=ExtResource("3_6xm61")]
 position = Vector2(-192, -32)
+
+
+
+

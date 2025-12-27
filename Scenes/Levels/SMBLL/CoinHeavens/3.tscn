@@ -1049,19 +1049,7 @@ metadata/_custom_type_script = "uid://dhtqnyrj3ndnj"
 script = ExtResource("28_hfoh6")
 destination_scene = "res://Scenes/Levels/SMBLL/World9/9-3.tscn"
 
-[connection signal="collected" from="Tiles/Coin" to="Tiles/Coin/LevelPersistance" method="set_as_active"]
-[connection signal="collected" from="Tiles/@Node2D@55290" to="Tiles/@Node2D@55290/LevelPersistance" method="set_as_active"]
-[connection signal="collected" from="Tiles/@Node2D@55291" to="Tiles/@Node2D@55291/LevelPersistance" method="set_as_active"]
-[connection signal="collected" from="Tiles/@Node2D@55292" to="Tiles/@Node2D@55292/LevelPersistance" method="set_as_active"]
-[connection signal="collected" from="Tiles/@Node2D@55293" to="Tiles/@Node2D@55293/LevelPersistance" method="set_as_active"]
-[connection signal="collected" from="Tiles/@Node2D@55294" to="Tiles/@Node2D@55294/LevelPersistance" method="set_as_active"]
-[connection signal="collected" from="Tiles/@Node2D@55295" to="Tiles/@Node2D@55295/LevelPersistance" method="set_as_active"]
-[connection signal="collected" from="Tiles/@Node2D@55296" to="Tiles/@Node2D@55296/LevelPersistance" method="set_as_active"]
-[connection signal="collected" from="Tiles/@Node2D@55297" to="Tiles/@Node2D@55297/LevelPersistance" method="set_as_active"]
-[connection signal="collected" from="Tiles/@Node2D@55298" to="Tiles/@Node2D@55298/LevelPersistance" method="set_as_active"]
-[connection signal="collected" from="Tiles/@Node2D@55299" to="Tiles/@Node2D@55299/LevelPersistance" method="set_as_active"]
-[connection signal="collected" from="Tiles/@Node2D@55300" to="Tiles/@Node2D@55300/LevelPersistance" method="set_as_active"]
-[connection signal="collected" from="Tiles/@Node2D@55301" to="Tiles/@Node2D@55301/LevelPersistance" method="set_as_active"]
-[connection signal="collected" from="Tiles/@Node2D@55302" to="Tiles/@Node2D@55302/LevelPersistance" method="set_as_active"]
-[connection signal="collected" from="Tiles/@Node2D@55303" to="Tiles/@Node2D@55303/LevelPersistance" method="set_as_active"]
-[connection signal="collected" from="Tiles/@Node2D@55304" to="Tiles/@Node2D@55304/LevelPersistance" method="set_as_active"]
+
+
+
+

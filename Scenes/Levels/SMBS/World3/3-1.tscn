@@ -99,21 +99,9 @@ position = Vector2(144, -120)
 position = Vector2(800, -8)
 id = 1
 
-[connection signal="collected" from="Tiles/Coin" to="Tiles/Coin/LevelPersistance" method="set_as_active"]
-[connection signal="collected" from="Tiles/@Node2D@76063" to="Tiles/@Node2D@76063/LevelPersistance" method="set_as_active"]
-[connection signal="collected" from="Tiles/@Node2D@76064" to="Tiles/@Node2D@76064/LevelPersistance" method="set_as_active"]
-[connection signal="collected" from="Tiles/@Node2D@76065" to="Tiles/@Node2D@76065/LevelPersistance" method="set_as_active"]
-[connection signal="collected" from="Tiles/@Node2D@76066" to="Tiles/@Node2D@76066/LevelPersistance" method="set_as_active"]
-[connection signal="collected" from="Tiles/@Node2D@76067" to="Tiles/@Node2D@76067/LevelPersistance" method="set_as_active"]
-[connection signal="collected" from="Tiles/@Node2D@76068" to="Tiles/@Node2D@76068/LevelPersistance" method="set_as_active"]
-[connection signal="collected" from="Tiles/@Node2D@76069" to="Tiles/@Node2D@76069/LevelPersistance" method="set_as_active"]
-[connection signal="collected" from="Tiles/@Node2D@76070" to="Tiles/@Node2D@76070/LevelPersistance" method="set_as_active"]
-[connection signal="collected" from="Tiles/@Node2D@76071" to="Tiles/@Node2D@76071/LevelPersistance" method="set_as_active"]
-[connection signal="collected" from="Tiles/@Node2D@76072" to="Tiles/@Node2D@76072/LevelPersistance" method="set_as_active"]
-[connection signal="collected" from="Tiles/@Node2D@76073" to="Tiles/@Node2D@76073/LevelPersistance" method="set_as_active"]
-[connection signal="collected" from="Tiles/@Node2D@76074" to="Tiles/@Node2D@76074/LevelPersistance" method="set_as_active"]
-[connection signal="collected" from="Tiles/@Node2D@76075" to="Tiles/@Node2D@76075/LevelPersistance" method="set_as_active"]
-[connection signal="collected" from="Tiles/@Node2D@76076" to="Tiles/@Node2D@76076/LevelPersistance" method="set_as_active"]
-[connection signal="collected" from="Tiles/@Node2D@76077" to="Tiles/@Node2D@76077/LevelPersistance" method="set_as_active"]
 
 [editable path="LevelBG"]
+
+
+
+

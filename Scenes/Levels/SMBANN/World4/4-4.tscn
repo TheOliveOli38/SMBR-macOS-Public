@@ -39,42 +39,10 @@ combo_meter_rate = 0.25
 max_combo = 1
 metadata/_custom_type_script = "uid://bjs5mlc3xrxud"
 
-[connection signal="area_entered" from="Tiles/DeathPit" to="Tiles/DeathPit" method="area_entered"]
-[connection signal="area_entered" from="Tiles/@Area2D@112641" to="Tiles/@Area2D@112641" method="area_entered"]
-[connection signal="area_entered" from="Tiles/@Area2D@112642" to="Tiles/@Area2D@112642" method="area_entered"]
-[connection signal="area_entered" from="Tiles/@Area2D@112643" to="Tiles/@Area2D@112643" method="area_entered"]
-[connection signal="area_entered" from="Tiles/@Area2D@112644" to="Tiles/@Area2D@112644" method="area_entered"]
-[connection signal="area_entered" from="Tiles/@Area2D@112645" to="Tiles/@Area2D@112645" method="area_entered"]
-[connection signal="area_entered" from="Tiles/@Area2D@112646" to="Tiles/@Area2D@112646" method="area_entered"]
-[connection signal="area_entered" from="Tiles/@Area2D@112647" to="Tiles/@Area2D@112647" method="area_entered"]
-[connection signal="area_entered" from="Tiles/@Area2D@112648" to="Tiles/@Area2D@112648" method="area_entered"]
-[connection signal="area_entered" from="Tiles/@Area2D@112649" to="Tiles/@Area2D@112649" method="area_entered"]
-[connection signal="block_destroyed" from="Tiles/InvisibleQuestionBlock" to="Tiles/InvisibleQuestionBlock/LevelPersistance" method="set_as_active_2"]
-[connection signal="block_emptied" from="Tiles/InvisibleQuestionBlock" to="Tiles/InvisibleQuestionBlock/LevelPersistance" method="set_as_active"]
-[connection signal="player_block_hit" from="Tiles/InvisibleQuestionBlock" to="Tiles/InvisibleQuestionBlock" method="player_mushroom_check"]
-[connection signal="player_block_hit" from="Tiles/InvisibleQuestionBlock" to="Tiles/InvisibleQuestionBlock" method="dispense_item" unbinds=1]
-[connection signal="player_block_hit" from="Tiles/InvisibleQuestionBlock" to="Tiles/InvisibleQuestionBlock/BlockAnimations" method="bounce_block" unbinds=1]
-[connection signal="shell_block_hit" from="Tiles/InvisibleQuestionBlock" to="Tiles/InvisibleQuestionBlock" method="dispense_item" unbinds=1]
-[connection signal="shell_block_hit" from="Tiles/InvisibleQuestionBlock" to="Tiles/InvisibleQuestionBlock/BlockAnimations" method="bounce_block" unbinds=1]
-[connection signal="block_destroyed" from="Tiles/QuestionBlock" to="Tiles/QuestionBlock/LevelPersistance" method="set_as_active_2"]
-[connection signal="block_emptied" from="Tiles/QuestionBlock" to="Tiles/QuestionBlock/LevelPersistance" method="set_as_active"]
-[connection signal="player_block_hit" from="Tiles/QuestionBlock" to="Tiles/QuestionBlock" method="player_mushroom_check"]
-[connection signal="player_block_hit" from="Tiles/QuestionBlock" to="Tiles/QuestionBlock" method="dispense_item" unbinds=1]
-[connection signal="player_block_hit" from="Tiles/QuestionBlock" to="Tiles/QuestionBlock/BlockAnimations" method="bounce_block" unbinds=1]
-[connection signal="shell_block_hit" from="Tiles/QuestionBlock" to="Tiles/QuestionBlock" method="dispense_item" unbinds=1]
-[connection signal="shell_block_hit" from="Tiles/QuestionBlock" to="Tiles/QuestionBlock/BlockAnimations" method="bounce_block" unbinds=1]
-[connection signal="collected" from="Tiles/Coin" to="Tiles/Coin/LevelPersistance" method="set_as_active"]
-[connection signal="collected" from="Tiles/@Node2D@112650" to="Tiles/@Node2D@112650/LevelPersistance" method="set_as_active"]
-[connection signal="collected" from="Tiles/@Node2D@112651" to="Tiles/@Node2D@112651/LevelPersistance" method="set_as_active"]
-[connection signal="collected" from="Tiles/@Node2D@112652" to="Tiles/@Node2D@112652/LevelPersistance" method="set_as_active"]
-[connection signal="collected" from="Tiles/@Node2D@112653" to="Tiles/@Node2D@112653/LevelPersistance" method="set_as_active"]
-[connection signal="collected" from="Tiles/@Node2D@112654" to="Tiles/@Node2D@112654/LevelPersistance" method="set_as_active"]
-[connection signal="collected" from="Tiles/@Node2D@112655" to="Tiles/@Node2D@112655/LevelPersistance" method="set_as_active"]
-[connection signal="collected" from="Tiles/@Node2D@112656" to="Tiles/@Node2D@112656/LevelPersistance" method="set_as_active"]
-[connection signal="collected" from="Tiles/@Node2D@112657" to="Tiles/@Node2D@112657/LevelPersistance" method="set_as_active"]
-[connection signal="collected" from="Tiles/@Node2D@112658" to="Tiles/@Node2D@112658/LevelPersistance" method="set_as_active"]
-[connection signal="collected" from="Tiles/@Node2D@112659" to="Tiles/@Node2D@112659/LevelPersistance" method="set_as_active"]
-[connection signal="collected" from="Tiles/@Node2D@112660" to="Tiles/@Node2D@112660/LevelPersistance" method="set_as_active"]
 
 [editable path="Bowser"]
 [editable path="CastleBridge"]
+
+
+
+

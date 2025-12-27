@@ -34,3 +34,7 @@ position = Vector2(-80, -32)
 [connection signal="player_block_hit" from="SettingObjectNode/Tiles2/QuestionBlock" to="SettingObjectNode/Tiles2/QuestionBlock/BlockAnimations" method="bounce_block" unbinds=1]
 [connection signal="shell_block_hit" from="SettingObjectNode/Tiles2/QuestionBlock" to="SettingObjectNode/Tiles2/QuestionBlock" method="dispense_item" unbinds=1]
 [connection signal="shell_block_hit" from="SettingObjectNode/Tiles2/QuestionBlock" to="SettingObjectNode/Tiles2/QuestionBlock/BlockAnimations" method="bounce_block" unbinds=1]
+
+
+
+

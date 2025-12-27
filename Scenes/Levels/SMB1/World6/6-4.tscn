@@ -37,26 +37,9 @@ resource_json = ExtResource("2_1tffw")
 [node name="SecondQuestNode" parent="." index="10"]
 enabled = true
 
-[connection signal="area_entered" from="Tiles/DeathPit" to="Tiles/DeathPit" method="area_entered"]
-[connection signal="area_entered" from="Tiles/@Area2D@35437" to="Tiles/@Area2D@35437" method="area_entered"]
-[connection signal="area_entered" from="Tiles/@Area2D@35438" to="Tiles/@Area2D@35438" method="area_entered"]
-[connection signal="area_entered" from="Tiles/@Area2D@35439" to="Tiles/@Area2D@35439" method="area_entered"]
-[connection signal="area_entered" from="Tiles/@Area2D@35440" to="Tiles/@Area2D@35440" method="area_entered"]
-[connection signal="area_entered" from="Tiles/@Area2D@35441" to="Tiles/@Area2D@35441" method="area_entered"]
-[connection signal="area_entered" from="Tiles/@Area2D@35442" to="Tiles/@Area2D@35442" method="area_entered"]
-[connection signal="area_entered" from="Tiles/@Area2D@35443" to="Tiles/@Area2D@35443" method="area_entered"]
-[connection signal="area_entered" from="Tiles/@Area2D@35444" to="Tiles/@Area2D@35444" method="area_entered"]
-[connection signal="area_entered" from="Tiles/@Area2D@35445" to="Tiles/@Area2D@35445" method="area_entered"]
-[connection signal="area_entered" from="Tiles/@Area2D@35446" to="Tiles/@Area2D@35446" method="area_entered"]
-[connection signal="area_entered" from="Tiles/@Area2D@35447" to="Tiles/@Area2D@35447" method="area_entered"]
-[connection signal="area_entered" from="Tiles/@Area2D@35448" to="Tiles/@Area2D@35448" method="area_entered"]
-[connection signal="area_entered" from="Tiles/@Area2D@35449" to="Tiles/@Area2D@35449" method="area_entered"]
-[connection signal="area_entered" from="Tiles/@Area2D@35450" to="Tiles/@Area2D@35450" method="area_entered"]
-[connection signal="area_entered" from="Tiles/@Area2D@35451" to="Tiles/@Area2D@35451" method="area_entered"]
-[connection signal="area_entered" from="Tiles/@Area2D@35452" to="Tiles/@Area2D@35452" method="area_entered"]
-[connection signal="area_entered" from="Tiles/@Area2D@35453" to="Tiles/@Area2D@35453" method="area_entered"]
-[connection signal="area_entered" from="Tiles/@Area2D@35454" to="Tiles/@Area2D@35454" method="area_entered"]
-[connection signal="area_entered" from="Tiles/@Area2D@35455" to="Tiles/@Area2D@35455" method="area_entered"]
-[connection signal="area_entered" from="Tiles/@Area2D@35456" to="Tiles/@Area2D@35456" method="area_entered"]
 
 [editable path="Bowser"]
+
+
+
+

@@ -160,25 +160,8 @@ position = Vector2(344, -104)
 [node name="EntityGenerator" parent="." unique_id=1927764630 instance=ExtResource("22_1vw0v")]
 position = Vector2(1224, -168)
 
-[connection signal="area_entered" from="Tiles/DeathPit" to="Tiles/DeathPit" method="area_entered"]
-[connection signal="area_entered" from="Tiles/@Area2D@74558" to="Tiles/@Area2D@74558" method="area_entered"]
-[connection signal="area_entered" from="Tiles/@Area2D@74559" to="Tiles/@Area2D@74559" method="area_entered"]
-[connection signal="area_entered" from="Tiles/@Area2D@74560" to="Tiles/@Area2D@74560" method="area_entered"]
-[connection signal="area_entered" from="Tiles/@Area2D@74561" to="Tiles/@Area2D@74561" method="area_entered"]
-[connection signal="area_entered" from="Tiles/@Area2D@74562" to="Tiles/@Area2D@74562" method="area_entered"]
-[connection signal="area_entered" from="Tiles/@Area2D@74563" to="Tiles/@Area2D@74563" method="area_entered"]
-[connection signal="area_entered" from="Tiles/@Area2D@74564" to="Tiles/@Area2D@74564" method="area_entered"]
-[connection signal="area_entered" from="Tiles/@Area2D@74565" to="Tiles/@Area2D@74565" method="area_entered"]
-[connection signal="area_entered" from="Tiles/@Area2D@74566" to="Tiles/@Area2D@74566" method="area_entered"]
-[connection signal="area_entered" from="Tiles/@Area2D@74567" to="Tiles/@Area2D@74567" method="area_entered"]
-[connection signal="area_entered" from="Tiles/@Area2D@74568" to="Tiles/@Area2D@74568" method="area_entered"]
-[connection signal="area_entered" from="Tiles/@Area2D@74569" to="Tiles/@Area2D@74569" method="area_entered"]
-[connection signal="area_entered" from="Tiles/@Area2D@74570" to="Tiles/@Area2D@74570" method="area_entered"]
-[connection signal="area_entered" from="Tiles/@Area2D@74571" to="Tiles/@Area2D@74571" method="area_entered"]
-[connection signal="area_entered" from="Tiles/@Area2D@74572" to="Tiles/@Area2D@74572" method="area_entered"]
-[connection signal="area_entered" from="Tiles/@Area2D@74573" to="Tiles/@Area2D@74573" method="area_entered"]
-[connection signal="area_entered" from="Tiles/@Area2D@74574" to="Tiles/@Area2D@74574" method="area_entered"]
-[connection signal="area_entered" from="Tiles/@Area2D@74575" to="Tiles/@Area2D@74575" method="area_entered"]
-[connection signal="area_entered" from="Tiles/@Area2D@74576" to="Tiles/@Area2D@74576" method="area_entered"]
-[connection signal="area_entered" from="Tiles/@Area2D@74577" to="Tiles/@Area2D@74577" method="area_entered"]
 [connection signal="victory_begin" from="CastleBridge" to="ChallengeNodes/CastleChallengeEnd" method="begin"]
+
+
+
+

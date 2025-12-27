@@ -73,3 +73,7 @@ position = Vector2(-88, -40)
 id = 1
 
 [connection signal="ready" from="Camera2D" to="Camera2D" method="make_current"]
+
+
+
+

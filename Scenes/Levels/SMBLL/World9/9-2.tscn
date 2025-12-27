@@ -119,3 +119,7 @@ metadata/_custom_type_script = "uid://cybpwmw4ywoow"
 [connection signal="player_exited" from="UpsideDownGravityArea2" to="UpsideDownGravityArea2" method="on_player_exited"]
 
 [editable path="UpsideDownGravityArea"]
+
+
+
+

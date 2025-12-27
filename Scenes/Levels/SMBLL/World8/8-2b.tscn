@@ -70,34 +70,7 @@ position = Vector2(-184, 8)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 shape = SubResource("RectangleShape2D_4fl3v")
 
-[connection signal="area_entered" from="Tiles/DeathPit" to="Tiles/DeathPit" method="area_entered"]
-[connection signal="area_entered" from="Tiles/@Area2D@65609" to="Tiles/@Area2D@65609" method="area_entered"]
-[connection signal="area_entered" from="Tiles/@Area2D@65610" to="Tiles/@Area2D@65610" method="area_entered"]
-[connection signal="area_entered" from="Tiles/@Area2D@65611" to="Tiles/@Area2D@65611" method="area_entered"]
-[connection signal="area_entered" from="Tiles/@Area2D@65612" to="Tiles/@Area2D@65612" method="area_entered"]
-[connection signal="area_entered" from="Tiles/@Area2D@65613" to="Tiles/@Area2D@65613" method="area_entered"]
-[connection signal="area_entered" from="Tiles/@Area2D@65614" to="Tiles/@Area2D@65614" method="area_entered"]
-[connection signal="area_entered" from="Tiles/@Area2D@65615" to="Tiles/@Area2D@65615" method="area_entered"]
-[connection signal="area_entered" from="Tiles/@Area2D@65616" to="Tiles/@Area2D@65616" method="area_entered"]
-[connection signal="area_entered" from="Tiles/@Area2D@65617" to="Tiles/@Area2D@65617" method="area_entered"]
-[connection signal="area_entered" from="Tiles/@Area2D@65618" to="Tiles/@Area2D@65618" method="area_entered"]
-[connection signal="area_entered" from="Tiles/@Area2D@65619" to="Tiles/@Area2D@65619" method="area_entered"]
-[connection signal="area_entered" from="Tiles/@Area2D@65620" to="Tiles/@Area2D@65620" method="area_entered"]
-[connection signal="area_entered" from="Tiles/@Area2D@65621" to="Tiles/@Area2D@65621" method="area_entered"]
-[connection signal="area_entered" from="Tiles/@Area2D@65622" to="Tiles/@Area2D@65622" method="area_entered"]
-[connection signal="area_entered" from="Tiles/@Area2D@65623" to="Tiles/@Area2D@65623" method="area_entered"]
-[connection signal="area_entered" from="Tiles/@Area2D@65624" to="Tiles/@Area2D@65624" method="area_entered"]
-[connection signal="area_entered" from="Tiles/@Area2D@65625" to="Tiles/@Area2D@65625" method="area_entered"]
-[connection signal="area_entered" from="Tiles/@Area2D@65626" to="Tiles/@Area2D@65626" method="area_entered"]
-[connection signal="area_entered" from="Tiles/@Area2D@65627" to="Tiles/@Area2D@65627" method="area_entered"]
-[connection signal="area_entered" from="Tiles/@Area2D@65628" to="Tiles/@Area2D@65628" method="area_entered"]
-[connection signal="area_entered" from="Tiles/@Area2D@65629" to="Tiles/@Area2D@65629" method="area_entered"]
-[connection signal="area_entered" from="Tiles/@Area2D@65630" to="Tiles/@Area2D@65630" method="area_entered"]
-[connection signal="area_entered" from="Tiles/@Area2D@65631" to="Tiles/@Area2D@65631" method="area_entered"]
-[connection signal="area_entered" from="Tiles/@Area2D@65632" to="Tiles/@Area2D@65632" method="area_entered"]
-[connection signal="area_entered" from="Tiles/@Area2D@65633" to="Tiles/@Area2D@65633" method="area_entered"]
-[connection signal="area_entered" from="Tiles/@Area2D@65634" to="Tiles/@Area2D@65634" method="area_entered"]
-[connection signal="area_entered" from="Tiles/@Area2D@65635" to="Tiles/@Area2D@65635" method="area_entered"]
-[connection signal="area_entered" from="Tiles/@Area2D@65636" to="Tiles/@Area2D@65636" method="area_entered"]
-[connection signal="area_entered" from="Tiles/@Area2D@65637" to="Tiles/@Area2D@65637" method="area_entered"]
-[connection signal="area_entered" from="Tiles/@Area2D@65638" to="Tiles/@Area2D@65638" method="area_entered"]
+
+
+
+

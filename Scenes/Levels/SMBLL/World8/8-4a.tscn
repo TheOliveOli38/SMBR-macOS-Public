@@ -81,3 +81,7 @@ tile_map_data = PackedByteArray("AAD+//3/AgAAAAUAAAD8//z/AgAAAAUAAAD6//v/AgAAAAU
 script = ExtResource("14_2mend")
 tilemap = NodePath("../Tiles")
 metadata/_custom_type_script = "uid://cybpwmw4ywoow"
+
+
+
+

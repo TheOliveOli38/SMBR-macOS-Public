@@ -1067,3 +1067,7 @@ metadata/_custom_type_script = "uid://cgm3opb5qudc1"
 [node name="RedCoin" parent="ChallengeNodes" instance=ExtResource("37_rlwa0")]
 position = Vector2(8, -104)
 id = 4
+
+
+
+

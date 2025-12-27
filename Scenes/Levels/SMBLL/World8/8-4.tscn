@@ -120,3 +120,7 @@ metadata/_custom_type_script = "uid://dn7riekvv1gpy"
 
 [node name="Tiles" parent="SettingObjectNode" instance=ExtResource("4_hy6qs")]
 tile_map_data = PackedByteArray("AAAtAPz/AAACAAMAAAAuAPz/AAADAAMAAAAsAPz/AAACAAMAAAA=")
+
+
+
+

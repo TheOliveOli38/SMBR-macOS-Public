@@ -39,3 +39,7 @@ position = Vector2(120, 0)
 script = ExtResource("10_ct0qu")
 tilemap = NodePath("../Tiles")
 metadata/_custom_type_script = "uid://cybpwmw4ywoow"
+
+
+
+

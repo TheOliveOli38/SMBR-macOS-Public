@@ -101,3 +101,7 @@ position = Vector2(1472, 0)
 
 [connection signal="victory_begin" from="CastleBridge" to="LostLevelsEndingDoor" method="begin"]
 [connection signal="victory_begin" from="CastleBridge" to="ChallengeNodes/CastleChallengeEnd" method="begin"]
+
+
+
+

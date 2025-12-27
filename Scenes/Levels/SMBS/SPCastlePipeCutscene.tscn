@@ -19,3 +19,7 @@ visible = false
 [node name="LargeCastleDeco" parent="." index="9" instance=ExtResource("2_wp0yq")]
 z_index = -10
 position = Vector2(-88, -88)
+
+
+
+

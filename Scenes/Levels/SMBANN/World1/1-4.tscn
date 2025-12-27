@@ -15,24 +15,7 @@ combo_meter_rate = 0.25
 max_combo = 1
 metadata/_custom_type_script = "uid://bjs5mlc3xrxud"
 
-[connection signal="area_entered" from="Tiles/DeathPit" to="Tiles/DeathPit" method="area_entered"]
-[connection signal="area_entered" from="Tiles/@Area2D@55495" to="Tiles/@Area2D@55495" method="area_entered"]
-[connection signal="area_entered" from="Tiles/@Area2D@55496" to="Tiles/@Area2D@55496" method="area_entered"]
-[connection signal="area_entered" from="Tiles/@Area2D@55497" to="Tiles/@Area2D@55497" method="area_entered"]
-[connection signal="area_entered" from="Tiles/@Area2D@55498" to="Tiles/@Area2D@55498" method="area_entered"]
-[connection signal="area_entered" from="Tiles/@Area2D@55499" to="Tiles/@Area2D@55499" method="area_entered"]
-[connection signal="area_entered" from="Tiles/@Area2D@55500" to="Tiles/@Area2D@55500" method="area_entered"]
-[connection signal="area_entered" from="Tiles/@Area2D@55501" to="Tiles/@Area2D@55501" method="area_entered"]
-[connection signal="area_entered" from="Tiles/@Area2D@55502" to="Tiles/@Area2D@55502" method="area_entered"]
-[connection signal="area_entered" from="Tiles/@Area2D@55503" to="Tiles/@Area2D@55503" method="area_entered"]
-[connection signal="area_entered" from="Tiles/@Area2D@55504" to="Tiles/@Area2D@55504" method="area_entered"]
-[connection signal="area_entered" from="Tiles/@Area2D@55505" to="Tiles/@Area2D@55505" method="area_entered"]
-[connection signal="area_entered" from="Tiles/@Area2D@55506" to="Tiles/@Area2D@55506" method="area_entered"]
-[connection signal="area_entered" from="Tiles/@Area2D@55507" to="Tiles/@Area2D@55507" method="area_entered"]
-[connection signal="area_entered" from="Tiles/@Area2D@55508" to="Tiles/@Area2D@55508" method="area_entered"]
-[connection signal="area_entered" from="Tiles/@Area2D@55509" to="Tiles/@Area2D@55509" method="area_entered"]
-[connection signal="area_entered" from="Tiles/@Area2D@55510" to="Tiles/@Area2D@55510" method="area_entered"]
-[connection signal="area_entered" from="Tiles/@Area2D@55511" to="Tiles/@Area2D@55511" method="area_entered"]
-[connection signal="area_entered" from="Tiles/@Area2D@55512" to="Tiles/@Area2D@55512" method="area_entered"]
-[connection signal="area_entered" from="Tiles/@Area2D@55513" to="Tiles/@Area2D@55513" method="area_entered"]
-[connection signal="area_entered" from="Tiles/@Area2D@55514" to="Tiles/@Area2D@55514" method="area_entered"]
+
+
+
+

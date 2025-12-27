@@ -118,3 +118,7 @@ script = ExtResource("19_sbf2s")
 setting_title = "level_design"
 nodes_to_delete = [NodePath("../Enemies/RedPirannhaPlant4")]
 metadata/_custom_type_script = "uid://dn7riekvv1gpy"
+
+
+
+

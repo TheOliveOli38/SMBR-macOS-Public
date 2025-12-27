@@ -36,42 +36,9 @@ combo_meter_rate = 0.15
 max_combo = 0
 metadata/_custom_type_script = "uid://bjs5mlc3xrxud"
 
-[connection signal="area_entered" from="Tiles/DeathPit" to="Tiles/DeathPit" method="area_entered"]
-[connection signal="area_entered" from="Tiles/@Area2D@54186" to="Tiles/@Area2D@54186" method="area_entered"]
-[connection signal="area_entered" from="Tiles/@Area2D@54187" to="Tiles/@Area2D@54187" method="area_entered"]
-[connection signal="area_entered" from="Tiles/@Area2D@54188" to="Tiles/@Area2D@54188" method="area_entered"]
-[connection signal="area_entered" from="Tiles/@Area2D@54189" to="Tiles/@Area2D@54189" method="area_entered"]
-[connection signal="area_entered" from="Tiles/@Area2D@54190" to="Tiles/@Area2D@54190" method="area_entered"]
-[connection signal="area_entered" from="Tiles/@Area2D@54191" to="Tiles/@Area2D@54191" method="area_entered"]
-[connection signal="area_entered" from="Tiles/@Area2D@54192" to="Tiles/@Area2D@54192" method="area_entered"]
-[connection signal="area_entered" from="Tiles/@Area2D@54193" to="Tiles/@Area2D@54193" method="area_entered"]
-[connection signal="area_entered" from="Tiles/@Area2D@54194" to="Tiles/@Area2D@54194" method="area_entered"]
-[connection signal="area_entered" from="Tiles/@Area2D@54195" to="Tiles/@Area2D@54195" method="area_entered"]
-[connection signal="area_entered" from="Tiles/@Area2D@54196" to="Tiles/@Area2D@54196" method="area_entered"]
-[connection signal="area_entered" from="Tiles/@Area2D@54197" to="Tiles/@Area2D@54197" method="area_entered"]
-[connection signal="area_entered" from="Tiles/@Area2D@54198" to="Tiles/@Area2D@54198" method="area_entered"]
-[connection signal="area_entered" from="Tiles/@Area2D@54199" to="Tiles/@Area2D@54199" method="area_entered"]
-[connection signal="area_entered" from="Tiles/@Area2D@54200" to="Tiles/@Area2D@54200" method="area_entered"]
-[connection signal="area_entered" from="Tiles/@Area2D@54201" to="Tiles/@Area2D@54201" method="area_entered"]
-[connection signal="area_entered" from="Tiles/@Area2D@54202" to="Tiles/@Area2D@54202" method="area_entered"]
-[connection signal="area_entered" from="Tiles/@Area2D@54203" to="Tiles/@Area2D@54203" method="area_entered"]
-[connection signal="area_entered" from="Tiles/@Area2D@54204" to="Tiles/@Area2D@54204" method="area_entered"]
-[connection signal="area_entered" from="Tiles/@Area2D@54205" to="Tiles/@Area2D@54205" method="area_entered"]
-[connection signal="area_entered" from="Tiles/@Area2D@54206" to="Tiles/@Area2D@54206" method="area_entered"]
-[connection signal="area_entered" from="Tiles/@Area2D@54207" to="Tiles/@Area2D@54207" method="area_entered"]
-[connection signal="area_entered" from="Tiles/@Area2D@54208" to="Tiles/@Area2D@54208" method="area_entered"]
-[connection signal="area_entered" from="Tiles/@Area2D@54209" to="Tiles/@Area2D@54209" method="area_entered"]
-[connection signal="area_entered" from="Tiles/@Area2D@54210" to="Tiles/@Area2D@54210" method="area_entered"]
-[connection signal="area_entered" from="Tiles/@Area2D@54211" to="Tiles/@Area2D@54211" method="area_entered"]
-[connection signal="area_entered" from="Tiles/@Area2D@54212" to="Tiles/@Area2D@54212" method="area_entered"]
-[connection signal="area_entered" from="Tiles/@Area2D@54213" to="Tiles/@Area2D@54213" method="area_entered"]
-[connection signal="area_entered" from="Tiles/@Area2D@54214" to="Tiles/@Area2D@54214" method="area_entered"]
-[connection signal="block_destroyed" from="Tiles/QuestionBlock" to="Tiles/QuestionBlock/LevelPersistance" method="set_as_active_2"]
-[connection signal="block_emptied" from="Tiles/QuestionBlock" to="Tiles/QuestionBlock/LevelPersistance" method="set_as_active"]
-[connection signal="player_block_hit" from="Tiles/QuestionBlock" to="Tiles/QuestionBlock" method="player_mushroom_check"]
-[connection signal="player_block_hit" from="Tiles/QuestionBlock" to="Tiles/QuestionBlock" method="dispense_item" unbinds=1]
-[connection signal="player_block_hit" from="Tiles/QuestionBlock" to="Tiles/QuestionBlock/BlockAnimations" method="bounce_block" unbinds=1]
-[connection signal="shell_block_hit" from="Tiles/QuestionBlock" to="Tiles/QuestionBlock" method="dispense_item" unbinds=1]
-[connection signal="shell_block_hit" from="Tiles/QuestionBlock" to="Tiles/QuestionBlock/BlockAnimations" method="bounce_block" unbinds=1]
 
 [editable path="Bowser"]
+
+
+
+

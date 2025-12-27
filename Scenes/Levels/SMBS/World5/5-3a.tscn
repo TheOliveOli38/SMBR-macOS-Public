@@ -77,32 +77,7 @@ enter_direction = 3
 pipe_id = 1
 target_level = "uid://det5ot7oc4jj0"
 
-[connection signal="collected" from="Tiles/Coin" to="Tiles/Coin/LevelPersistance" method="set_as_active"]
-[connection signal="collected" from="Tiles/@Node2D@77929" to="Tiles/@Node2D@77929/LevelPersistance" method="set_as_active"]
-[connection signal="collected" from="Tiles/@Node2D@77930" to="Tiles/@Node2D@77930/LevelPersistance" method="set_as_active"]
-[connection signal="collected" from="Tiles/@Node2D@77931" to="Tiles/@Node2D@77931/LevelPersistance" method="set_as_active"]
-[connection signal="collected" from="Tiles/@Node2D@77932" to="Tiles/@Node2D@77932/LevelPersistance" method="set_as_active"]
-[connection signal="collected" from="Tiles/@Node2D@77933" to="Tiles/@Node2D@77933/LevelPersistance" method="set_as_active"]
-[connection signal="collected" from="Tiles/@Node2D@77934" to="Tiles/@Node2D@77934/LevelPersistance" method="set_as_active"]
-[connection signal="collected" from="Tiles/@Node2D@77935" to="Tiles/@Node2D@77935/LevelPersistance" method="set_as_active"]
-[connection signal="collected" from="Tiles/@Node2D@77936" to="Tiles/@Node2D@77936/LevelPersistance" method="set_as_active"]
-[connection signal="collected" from="Tiles/@Node2D@77937" to="Tiles/@Node2D@77937/LevelPersistance" method="set_as_active"]
-[connection signal="collected" from="Tiles/@Node2D@77938" to="Tiles/@Node2D@77938/LevelPersistance" method="set_as_active"]
-[connection signal="collected" from="Tiles/@Node2D@77939" to="Tiles/@Node2D@77939/LevelPersistance" method="set_as_active"]
-[connection signal="collected" from="Tiles/@Node2D@77940" to="Tiles/@Node2D@77940/LevelPersistance" method="set_as_active"]
-[connection signal="collected" from="Tiles/@Node2D@77941" to="Tiles/@Node2D@77941/LevelPersistance" method="set_as_active"]
-[connection signal="collected" from="Tiles/@Node2D@77942" to="Tiles/@Node2D@77942/LevelPersistance" method="set_as_active"]
-[connection signal="collected" from="Tiles/@Node2D@77943" to="Tiles/@Node2D@77943/LevelPersistance" method="set_as_active"]
-[connection signal="collected" from="Tiles/@Node2D@77944" to="Tiles/@Node2D@77944/LevelPersistance" method="set_as_active"]
-[connection signal="collected" from="Tiles/@Node2D@77945" to="Tiles/@Node2D@77945/LevelPersistance" method="set_as_active"]
-[connection signal="collected" from="Tiles/@Node2D@77946" to="Tiles/@Node2D@77946/LevelPersistance" method="set_as_active"]
-[connection signal="collected" from="Tiles/@Node2D@77947" to="Tiles/@Node2D@77947/LevelPersistance" method="set_as_active"]
-[connection signal="collected" from="Tiles/@Node2D@77948" to="Tiles/@Node2D@77948/LevelPersistance" method="set_as_active"]
-[connection signal="collected" from="Tiles/@Node2D@77949" to="Tiles/@Node2D@77949/LevelPersistance" method="set_as_active"]
-[connection signal="collected" from="Tiles/@Node2D@77950" to="Tiles/@Node2D@77950/LevelPersistance" method="set_as_active"]
-[connection signal="collected" from="Tiles/@Node2D@77951" to="Tiles/@Node2D@77951/LevelPersistance" method="set_as_active"]
-[connection signal="collected" from="Tiles/@Node2D@77952" to="Tiles/@Node2D@77952/LevelPersistance" method="set_as_active"]
-[connection signal="collected" from="Tiles/@Node2D@77953" to="Tiles/@Node2D@77953/LevelPersistance" method="set_as_active"]
-[connection signal="collected" from="Tiles/@Node2D@77954" to="Tiles/@Node2D@77954/LevelPersistance" method="set_as_active"]
-[connection signal="collected" from="Tiles/@Node2D@77955" to="Tiles/@Node2D@77955/LevelPersistance" method="set_as_active"]
-[connection signal="collected" from="Tiles/@Node2D@77956" to="Tiles/@Node2D@77956/LevelPersistance" method="set_as_active"]
+
+
+
+

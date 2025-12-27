@@ -71,3 +71,7 @@ metadata/r_coin_id = 1
 [node name="InvisibleQuestionBlock" parent="Node" instance=ExtResource("13_s3er6")]
 position = Vector2(-216, -56)
 item = ExtResource("14_kfl17")
+
+
+
+

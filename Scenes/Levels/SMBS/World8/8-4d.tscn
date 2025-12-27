@@ -71,3 +71,7 @@ id = 4
 position = Vector2(720, 0)
 
 [connection signal="victory_begin" from="CastleBridge" to="ChallengeNodes/CastleChallengeEnd" method="begin"]
+
+
+
+

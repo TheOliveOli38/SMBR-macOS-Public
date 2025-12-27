@@ -71,3 +71,7 @@ particles = 3
 
 [node name="EntityGenerator" parent="." instance=ExtResource("12_6r5rx")]
 position = Vector2(-8, -152)
+
+
+
+

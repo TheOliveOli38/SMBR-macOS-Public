@@ -110,3 +110,7 @@ position = Vector2(2104, -8)
 [connection signal="victory_begin" from="CastleBridge" to="CastleToad" method="begin"]
 
 [editable path="Bowser"]
+
+
+
+

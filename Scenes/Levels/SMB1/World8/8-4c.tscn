@@ -108,3 +108,7 @@ position = Vector2(440, -152)
 id = 3
 
 [node name="LevelBG" parent="." instance=ExtResource("16_gvie3")]
+
+
+
+
