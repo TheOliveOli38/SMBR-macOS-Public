@@ -392,7 +392,7 @@ layout_mode = 2
 option_key = "master"
 title = "AUDIO_MASTER"
 
-[node name="SFX" parent="PanelContainer/MarginContainer/VBoxContainer/Audio/SelectableOptionNode" index="3"]
+[node name="SFX" parent="PanelContainer/MarginContainer/VBoxContainer/Audio/SelectableOptionNode" index="3" unique_id=1955555485]
 bus = &"Master"
 
 [node name="SelectableOptionNode2" parent="PanelContainer/MarginContainer/VBoxContainer/Audio" unique_id=2003326082 groups=["Options"] instance=ExtResource("7_om3lc")]
@@ -400,7 +400,7 @@ layout_mode = 2
 option_key = "music"
 title = "AUDIO_MUSIC"
 
-[node name="SFX" parent="PanelContainer/MarginContainer/VBoxContainer/Audio/SelectableOptionNode2" index="3"]
+[node name="SFX" parent="PanelContainer/MarginContainer/VBoxContainer/Audio/SelectableOptionNode2" index="3" unique_id=1955555485]
 bus = &"Music"
 
 [node name="SelectableOptionNode3" parent="PanelContainer/MarginContainer/VBoxContainer/Audio" unique_id=1425922571 groups=["Options"] instance=ExtResource("7_om3lc")]

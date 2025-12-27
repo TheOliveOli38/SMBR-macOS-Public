@@ -1,9 +1,9 @@
 [gd_scene load_steps=8 format=3 uid="uid://cc2v6iqvq1j3q"]
 
 [ext_resource type="PackedScene" uid="uid://bksfxqm6v1a4j" path="res://Scenes/Prefabs/Entities/Enemies/PipePlantBase.tscn" id="1_fn518"]
-[ext_resource type="PackedScene" path="res://Scenes/Parts/FirePiranhaVisuals.tscn" id="2_t5jdg"]
+[ext_resource type="PackedScene" uid="uid://i18ohs6q5xbh" path="res://Scenes/Parts/FirePiranhaVisuals.tscn" id="2_t5jdg"]
 [ext_resource type="Script" uid="uid://cpwloakvp672a" path="res://Scripts/Parts/EditorVisibleNode.gd" id="3_ltyw1"]
-[ext_resource type="PackedScene" path="res://Scenes/Prefabs/Entities/Objects/PlantFireball.tscn" id="3_t5jdg"]
+[ext_resource type="PackedScene" uid="uid://d4m3rae0x77vn" path="res://Scenes/Prefabs/Entities/Objects/PlantFireball.tscn" id="3_t5jdg"]
 [ext_resource type="Script" uid="uid://caq1qiwmy0mox" path="res://Scripts/Parts/BetterAnimatedSprite.gd" id="4_f4y8b"]
 [ext_resource type="Script" uid="uid://cbal8ms2oe1ik" path="res://Scripts/Classes/Components/ResourceSetterNew.gd" id="5_i834i"]
 [ext_resource type="JSON" path="res://Assets/Sprites/Enemies/FirePiranhaPlant.json" id="6_autuf"]

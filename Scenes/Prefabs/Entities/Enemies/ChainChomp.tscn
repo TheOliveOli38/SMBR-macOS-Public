@@ -49,23 +49,23 @@ size = Vector2(10, 10)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_11y13"]
 size = Vector2(10, 10)
 
-[node name="ChainChomp" type="Node2D"]
+[node name="ChainChomp" type="Node2D" unique_id=952144824]
 script = ExtResource("1_eahip")
 
-[node name="Post" type="StaticBody2D" parent="."]
+[node name="Post" type="StaticBody2D" parent="." unique_id=517068257]
 z_index = -1
 position = Vector2(0, -8)
 collision_layer = 2
 collision_mask = 0
 
-[node name="Collision" type="CollisionShape2D" parent="Post"]
+[node name="Collision" type="CollisionShape2D" parent="Post" unique_id=314640276]
 shape = SubResource("RectangleShape2D_48u40")
 one_way_collision = true
 
-[node name="Sprite" type="Sprite2D" parent="Post"]
+[node name="Sprite" type="Sprite2D" parent="Post" unique_id=1690434846]
 texture = ExtResource("2_agulk")
 
-[node name="ResourceSetterNew" type="Node" parent="Post/Sprite" node_paths=PackedStringArray("node_to_affect")]
+[node name="ResourceSetterNew" type="Node" parent="Post/Sprite" unique_id=254198888 node_paths=PackedStringArray("node_to_affect")]
 script = ExtResource("8_tts7t")
 node_to_affect = NodePath("..")
 property_name = "texture"
@@ -73,14 +73,14 @@ mode = 1
 resource_json = ExtResource("4_7wo1h")
 metadata/_custom_type_script = "uid://cbal8ms2oe1ik"
 
-[node name="Rope" type="Node2D" parent="." node_paths=PackedStringArray("left", "right")]
+[node name="Rope" type="Node2D" parent="." unique_id=1377057116 node_paths=PackedStringArray("left", "right")]
 script = ExtResource("5_48u40")
 left = NodePath("../Post")
 right = NodePath("../Enemy")
 length = 24
 texture = ExtResource("6_eahip")
 
-[node name="ResourceSetterNew" type="Node" parent="Rope" node_paths=PackedStringArray("node_to_affect")]
+[node name="ResourceSetterNew" type="Node" parent="Rope" unique_id=1292207710 node_paths=PackedStringArray("node_to_affect")]
 script = ExtResource("8_tts7t")
 node_to_affect = NodePath("..")
 property_name = "texture"
@@ -88,14 +88,14 @@ mode = 1
 resource_json = ExtResource("6_xko1t")
 metadata/_custom_type_script = "uid://cbal8ms2oe1ik"
 
-[node name="Enemy" type="CharacterBody2D" parent="."]
+[node name="Enemy" type="CharacterBody2D" parent="." unique_id=492617984]
 position = Vector2(0, -8)
 collision_layer = 16
 collision_mask = 18
 script = ExtResource("1_50rwk")
 metadata/_custom_type_script = "uid://bpydbpyjk1mt4"
 
-[node name="Sprite" type="AnimatedSprite2D" parent="Enemy"]
+[node name="Sprite" type="AnimatedSprite2D" parent="Enemy" unique_id=1853879053]
 unique_name_in_owner = true
 sprite_frames = SubResource("SpriteFrames_y7oy5")
 autoplay = "default"
@@ -105,54 +105,54 @@ script = ExtResource("3_agulk")
 do_offset = false
 metadata/_custom_type_script = "uid://caq1qiwmy0mox"
 
-[node name="ResourceSetterNew" type="Node" parent="Enemy/Sprite" node_paths=PackedStringArray("node_to_affect")]
+[node name="ResourceSetterNew" type="Node" parent="Enemy/Sprite" unique_id=1255975175 node_paths=PackedStringArray("node_to_affect")]
 script = ExtResource("8_tts7t")
 node_to_affect = NodePath("..")
 property_name = "sprite_frames"
 resource_json = ExtResource("9_xko1t")
 metadata/_custom_type_script = "uid://cbal8ms2oe1ik"
 
-[node name="Collision" type="CollisionShape2D" parent="Enemy"]
+[node name="Collision" type="CollisionShape2D" parent="Enemy" unique_id=1397438194]
 position = Vector2(0, 3)
 shape = SubResource("RectangleShape2D_eahip")
 
-[node name="Hitbox" type="Area2D" parent="Enemy"]
+[node name="Hitbox" type="Area2D" parent="Enemy" unique_id=2134133954]
 
-[node name="Shape" type="CollisionShape2D" parent="Enemy/Hitbox"]
+[node name="Shape" type="CollisionShape2D" parent="Enemy/Hitbox" unique_id=2032877001]
 position = Vector2(0, 1)
 shape = SubResource("RectangleShape2D_11y13")
 
-[node name="ShellDetection" type="Node" parent="Enemy" node_paths=PackedStringArray("hitbox")]
+[node name="ShellDetection" type="Node" parent="Enemy" unique_id=583682858 node_paths=PackedStringArray("hitbox")]
 script = ExtResource("12_yv2hs")
 hitbox = NodePath("../Hitbox")
 metadata/_custom_type_script = "uid://bbww34oiexbx2"
 
-[node name="FireballDetection" type="Node" parent="Enemy" node_paths=PackedStringArray("hitbox")]
+[node name="FireballDetection" type="Node" parent="Enemy" unique_id=800611906 node_paths=PackedStringArray("hitbox")]
 script = ExtResource("13_yygs4")
 hitbox = NodePath("../Hitbox")
 play_sfx_on_hit = true
 metadata/_custom_type_script = "uid://dri2d5jtu0fbq"
 
-[node name="EnemyPlayerDetection" type="Node" parent="Enemy" node_paths=PackedStringArray("hitbox")]
+[node name="EnemyPlayerDetection" type="Node" parent="Enemy" unique_id=2087289718 node_paths=PackedStringArray("hitbox")]
 script = ExtResource("14_bokto")
 hitbox = NodePath("../Hitbox")
 metadata/_custom_type_script = "uid://chj8hu207lrh"
 
-[node name="Timer" type="Timer" parent="Enemy"]
+[node name="Timer" type="Timer" parent="Enemy" unique_id=1553773707]
 wait_time = 3.0
 one_shot = true
 
-[node name="GibSpawner" type="Node" parent="Enemy" node_paths=PackedStringArray("visuals")]
+[node name="GibSpawner" type="Node" parent="Enemy" unique_id=1125692141 node_paths=PackedStringArray("visuals")]
 script = ExtResource("15_yygs4")
 visuals = NodePath("../Sprite")
 metadata/_custom_type_script = "uid://c3gg32ivrlq8n"
 
-[node name="IcicleDetection" type="Node" parent="Enemy" node_paths=PackedStringArray("hitbox")]
+[node name="IcicleDetection" type="Node" parent="Enemy" unique_id=531367057 node_paths=PackedStringArray("hitbox")]
 script = ExtResource("16_11y13")
 hitbox = NodePath("../Hitbox")
 metadata/_custom_type_script = "uid://dq860i312isk"
 
-[node name="ExplosionDetection" type="Node" parent="Enemy" node_paths=PackedStringArray("hitbox")]
+[node name="ExplosionDetection" type="Node" parent="Enemy" unique_id=492585211 node_paths=PackedStringArray("hitbox")]
 script = ExtResource("17_7dmm8")
 hitbox = NodePath("../Hitbox")
 metadata/_custom_type_script = "uid://ba18grqjixded"

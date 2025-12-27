@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://r6dlmokkdyar" path="res://Scenes/Prefabs/Entities/Enemies/GreenKoopaTroopa.tscn" id="1_j41ky"]
 
-[node name="GreenKoopaTroopa" instance=ExtResource("1_j41ky")]
+[node name="GreenKoopaTroopa" unique_id=1977911019 instance=ExtResource("1_j41ky")]
 winged = true
 
 [node name="Wing" parent="Sprite" index="1"]

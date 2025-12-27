@@ -2,6 +2,6 @@
 
 [ext_resource type="PackedScene" uid="uid://duptcik2j0b04" path="res://Scenes/Prefabs/Entities/Enemies/Bowser.tscn" id="1_176p2"]
 
-[node name="HammerBowser" instance=ExtResource("1_176p2")]
+[node name="HammerBowser" unique_id=490193452 instance=ExtResource("1_176p2")]
 can_hammer = true
 can_fire = false

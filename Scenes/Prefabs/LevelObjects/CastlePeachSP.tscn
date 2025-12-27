@@ -1,22 +1,17 @@
-[gd_scene load_steps=3 format=3 uid="uid://o573jl3f2hvk"]
+[gd_scene load_steps=2 format=3 uid="uid://o573jl3f2hvk"]
 
 [ext_resource type="PackedScene" uid="uid://ckrna543ixu1b" path="res://Scenes/Prefabs/LevelObjects/CastlePeach.tscn" id="1_v6xdq"]
-[ext_resource type="Script" uid="uid://dt2p68xl462v2" path="res://Scripts/Parts/TextShadowColourChanger.gd" id="2_1smyj"]
 
-[node name="CastlePeach" instance=ExtResource("1_v6xdq")]
+[node name="CastlePeach" unique_id=1642858636 instance=ExtResource("1_v6xdq")]
 
 [node name="ThankYou" parent="StandardMSG" index="0"]
 text = "CUTSCENE_SP_PEACH_1"
 
-[node name="AnotherCastle4" parent="EndingSpeech" index="0"]
+[node name="AnotherCastle4" parent="EndingSpeech" parent_id_path=PackedInt32Array(1443762879) index="0" unique_id=786280292]
 text = "CUTSCENE_SP_PEACH_2"
 
-[node name="AnotherCastle5" parent="EndingSpeech" index="1"]
+[node name="AnotherCastle5" parent="EndingSpeech" parent_id_path=PackedInt32Array(1443762879) index="1" unique_id=408914055]
 text = "CUTSCENE_SP_PEACH_3"
 
-[node name="AnotherCastle6" parent="EndingSpeech" index="2"]
+[node name="AnotherCastle6" parent="EndingSpeech" parent_id_path=PackedInt32Array(1443762879) index="2" unique_id=1776557786]
 text = ""
-
-[node name="TextShadowColourChanger" parent="." index="5"]
-script = ExtResource("2_1smyj")
-metadata/_custom_type_script = "uid://dt2p68xl462v2"

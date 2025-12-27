@@ -16,10 +16,10 @@ gravity = Vector3(0, 98, 0)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5den3"]
 size = Vector2(80, 306)
 
-[node name="WaterCurrentArea" type="Node2D"]
+[node name="WaterCurrentArea" type="Node2D" unique_id=1630974859]
 script = ExtResource("1_5b2n0")
 
-[node name="Particles" type="GPUParticles2D" parent="."]
+[node name="Particles" type="GPUParticles2D" parent="." unique_id=214642302]
 visibility_layer = 2
 amount = 32
 texture = ExtResource("1_sh54q")
@@ -28,8 +28,8 @@ preprocess = 5.0
 randomness = 1.0
 process_material = SubResource("ParticleProcessMaterial_ssveo")
 
-[node name="Hitbox" type="Area2D" parent="."]
+[node name="Hitbox" type="Area2D" parent="." unique_id=469638199]
 
-[node name="Shape" type="CollisionShape2D" parent="Hitbox"]
+[node name="Shape" type="CollisionShape2D" parent="Hitbox" unique_id=700973086]
 position = Vector2(0, 143)
 shape = SubResource("RectangleShape2D_5den3")

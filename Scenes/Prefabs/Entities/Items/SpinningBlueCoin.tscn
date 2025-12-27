@@ -4,7 +4,7 @@
 [ext_resource type="JSON" path="res://Assets/Sprites/Items/BlueCoin.json" id="2_da77p"]
 [ext_resource type="PackedScene" uid="uid://2j5gl64gxbgy" path="res://Scenes/Prefabs/Particles/BlueCoinSparkle.tscn" id="2_vxiva"]
 
-[node name="SpinningCoin" instance=ExtResource("1_8si4e")]
+[node name="SpinningCoin" unique_id=958559339 instance=ExtResource("1_8si4e")]
 particle = ExtResource("2_vxiva")
 
 [node name="Sprite" parent="." index="0"]

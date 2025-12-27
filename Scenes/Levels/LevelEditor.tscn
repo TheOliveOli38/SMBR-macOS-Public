@@ -1,4 +1,4 @@
-[gd_scene load_steps=274 format=3 uid="uid://gbcmqonky63j"]
+[gd_scene load_steps=275 format=3 uid="uid://gbcmqonky63j"]
 
 [ext_resource type="Script" uid="uid://c2lnc7vnq3xth" path="res://Scripts/Classes/Editor/LevelEditor.gd" id="1_0qbyu"]
 [ext_resource type="Texture2D" uid="uid://cbha2l6hg1kfo" path="res://Assets/Sprites/UI/EditorGrid.png" id="2_8q7yr"]
@@ -102,6 +102,7 @@
 [ext_resource type="JSON" path="res://Assets/Sprites/Blocks/BlueOnOffBlock.json" id="109_c84f5"]
 [ext_resource type="JSON" path="res://Assets/Sprites/Tilesets/OnOffPlatform.json" id="111_cr6gn"]
 [ext_resource type="Texture2D" uid="uid://cke2nve5v64am" path="res://Assets/Sprites/Editor/PlatformIcons/Falling.png" id="111_dsu6a"]
+[ext_resource type="Texture2D" uid="uid://iwtwy2g6bjrn" path="res://Assets/Sprites/Tilesets/TrackPlatformEngine.png" id="112_dl3il"]
 [ext_resource type="Script" uid="uid://dja6281w30iv0" path="res://Scripts/UI/TextValidator.gd" id="114_cjvlm"]
 [ext_resource type="Texture2D" uid="uid://bi13n4mw0to20" path="res://Assets/Sprites/Blocks/TimedBooBlock.png" id="114_swqrt"]
 [ext_resource type="Texture2D" uid="uid://cv27sth0k3amk" path="res://Assets/Sprites/Blocks/SwitchSpike.png" id="118_xde7w"]
@@ -4619,6 +4620,18 @@ icon_texture = ExtResource("104_111c4")
 icon_region_override = Rect2(0, 0, 16, 16)
 secondary_icon_texture = ExtResource("111_dsu6a")
 entity_id = "DO"
+
+[node name="Track" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Objects/MarginContainer/GridContainer/Platforms" unique_id=130580354 groups=["Selectors"] instance=ExtResource("8_wkmjk")]
+layout_mode = 0
+offset_right = 16.0
+offset_bottom = 16.0
+tile_name = "OBJ_TRACK_RIDING_PLATFORM"
+type = 1
+icon_texture = ExtResource("104_111c4")
+icon_region_override = Rect2(0, 0, 16, 16)
+secondary_icon_texture = ExtResource("112_dl3il")
+secondary_icon_region_override = Rect2(0, 0, 16, 16)
+entity_id = "DR"
 
 [node name="TextureRect" type="TextureRect" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Objects/MarginContainer/GridContainer/Platforms" unique_id=1433900642]
 layout_mode = 1

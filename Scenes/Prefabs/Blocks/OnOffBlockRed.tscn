@@ -31,7 +31,7 @@ animations = [{
 "speed": 15.0
 }]
 
-[node name="OnOffBlock" instance=ExtResource("1_x3cu1")]
+[node name="OnOffBlock" unique_id=426313715 instance=ExtResource("1_x3cu1")]
 
 [node name="Sprite" parent="." index="0"]
 sprite_frames = SubResource("SpriteFrames_boqyf")

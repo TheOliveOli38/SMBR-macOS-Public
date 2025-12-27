@@ -9,7 +9,7 @@ script = ExtResource("3_gyxu7")
 Overworld = ExtResource("2_gyxu7")
 metadata/_custom_type_script = "uid://cmvlgsjmsk0v5"
 
-[node name="Miss" instance=ExtResource("1_xms3k")]
+[node name="Miss" unique_id=709943000 instance=ExtResource("1_xms3k")]
 reset_level = true
 has_menu = false
 

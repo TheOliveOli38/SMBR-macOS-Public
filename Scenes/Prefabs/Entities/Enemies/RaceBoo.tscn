@@ -288,11 +288,11 @@ _data = {
 &"RESET": SubResource("Animation_2ic4s")
 }
 
-[node name="RaceBoo" type="Node2D" groups=["Enemies"]]
+[node name="RaceBoo" type="Node2D" unique_id=1550724871 groups=["Enemies"]]
 physics_interpolation_mode = 2
 script = ExtResource("1_d640j")
 
-[node name="Sprite" type="AnimatedSprite2D" parent="."]
+[node name="Sprite" type="AnimatedSprite2D" parent="." unique_id=730351172]
 process_mode = 3
 position = Vector2(0, -16)
 sprite_frames = SubResource("SpriteFrames_f71ce")
@@ -301,25 +301,25 @@ flip_h = true
 script = ExtResource("3_4ikdy")
 metadata/_custom_type_script = "uid://caq1qiwmy0mox"
 
-[node name="Animation" type="AnimationPlayer" parent="Sprite"]
+[node name="Animation" type="AnimationPlayer" parent="Sprite" unique_id=1918464196]
 libraries = {
 &"": SubResource("AnimationLibrary_4ikdy")
 }
-autoplay = "Bob"
+autoplay = &"Bob"
 
-[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="Sprite"]
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="Sprite" unique_id=21416663]
 
-[node name="ResourceSetterNew" type="Node" parent="Sprite" node_paths=PackedStringArray("node_to_affect")]
+[node name="ResourceSetterNew" type="Node" parent="Sprite" unique_id=1932970901 node_paths=PackedStringArray("node_to_affect")]
 script = ExtResource("4_6dgmd")
 node_to_affect = NodePath("..")
 property_name = "sprite_frames"
 resource_json = ExtResource("5_6dgmd")
 metadata/_custom_type_script = "uid://cbal8ms2oe1ik"
 
-[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Sprite"]
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Sprite" unique_id=683791973]
 remote_path = NodePath("../../GoldParticles")
 
-[node name="OffScreenIcon" type="Sprite2D" parent="."]
+[node name="OffScreenIcon" type="Sprite2D" parent="." unique_id=978422345]
 physics_interpolation_mode = 2
 visible = false
 top_level = true
@@ -330,12 +330,12 @@ region_rect = Rect2(0, 0, 16, 16)
 script = ExtResource("7_sfl3g")
 metadata/_custom_type_script = "uid://364rywt44hy6"
 
-[node name="Animation" type="AnimationPlayer" parent="OffScreenIcon"]
+[node name="Animation" type="AnimationPlayer" parent="OffScreenIcon" unique_id=2068917994]
 libraries = {
 &"": SubResource("AnimationLibrary_sfl3g")
 }
 
-[node name="GoldParticles" type="GPUParticles2D" parent="."]
+[node name="GoldParticles" type="GPUParticles2D" parent="." unique_id=1148949648]
 z_index = 1
 material = SubResource("CanvasItemMaterial_sfl3g")
 position = Vector2(0, -16)
@@ -343,17 +343,17 @@ texture = ExtResource("6_6dgmd")
 randomness = 0.12
 process_material = SubResource("ParticleProcessMaterial_f71ce")
 
-[node name="ResourceSetter" type="Node" parent="GoldParticles" node_paths=PackedStringArray("node_to_affect")]
+[node name="ResourceSetter" type="Node" parent="GoldParticles" unique_id=839591783 node_paths=PackedStringArray("node_to_affect")]
 script = ExtResource("9_xux50")
 node_to_affect = NodePath("..")
 property_name = "texture"
 themed_resource = SubResource("Resource_2ic4s")
 metadata/_custom_type_script = "uid://cq6f682453q6o"
 
-[node name="Warning" type="CanvasLayer" parent="."]
+[node name="Warning" type="CanvasLayer" parent="." unique_id=1468632741]
 visible = false
 
-[node name="TextureRect" type="TextureRect" parent="Warning"]
+[node name="TextureRect" type="TextureRect" parent="Warning" unique_id=567961003]
 anchors_preset = 3
 anchor_left = 1.0
 anchor_top = 1.0
@@ -366,9 +366,9 @@ grow_vertical = 0
 texture = ExtResource("12_4hd5m")
 stretch_mode = 3
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Warning"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Warning" unique_id=136088899]
 libraries = {
 &"": SubResource("AnimationLibrary_it5le")
 }
-autoplay = "Blink"
+autoplay = &"Blink"
 speed_scale = 1.5

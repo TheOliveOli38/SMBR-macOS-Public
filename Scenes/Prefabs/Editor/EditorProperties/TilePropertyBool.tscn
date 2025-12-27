@@ -23,17 +23,17 @@ region = Rect2(16, 0, 16, 16)
 atlas = ExtResource("3_qo1tt")
 region = Rect2(0, 0, 16, 16)
 
-[node name="TilePropertyBOOL" type="HBoxContainer"]
+[node name="TilePropertyBOOL" type="HBoxContainer" unique_id=978291941]
 script = ExtResource("1_gida3")
 
-[node name="Label" type="Label" parent="."]
+[node name="Label" type="Label" parent="." unique_id=796083320]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 text = "PROPERTY_NAME:"
 uppercase = true
 
-[node name="CheckBox" type="CheckBox" parent="."]
+[node name="CheckBox" type="CheckBox" parent="." unique_id=819276354]
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0

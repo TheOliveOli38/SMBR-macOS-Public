@@ -58,14 +58,14 @@ size = Vector2(6, 6)
 [sub_resource type="CircleShape2D" id="CircleShape2D_srvot"]
 radius = 3.0
 
-[node name="WrenchProjectile" type="CharacterBody2D" groups=["Enemies"]]
+[node name="WrenchProjectile" type="CharacterBody2D" unique_id=118680446 groups=["Enemies"]]
 collision_layer = 0
 collision_mask = 2
 script = SubResource("GDScript_5s4r1")
 MOVE_SPEED = 80
 metadata/_custom_type_script = "uid://c5elnt7uap15b"
 
-[node name="Sprite" type="AnimatedSprite2D" parent="."]
+[node name="Sprite" type="AnimatedSprite2D" parent="." unique_id=1238193579]
 sprite_frames = SubResource("SpriteFrames_4d740")
 animation = &"Spin"
 autoplay = "Spin"
@@ -74,27 +74,27 @@ script = ExtResource("2_wtsxo")
 do_offset = false
 metadata/_custom_type_script = "uid://caq1qiwmy0mox"
 
-[node name="ResourceSetterNew" type="Node" parent="Sprite" node_paths=PackedStringArray("node_to_affect")]
+[node name="ResourceSetterNew" type="Node" parent="Sprite" unique_id=978781804 node_paths=PackedStringArray("node_to_affect")]
 script = ExtResource("3_7wlxe")
 node_to_affect = NodePath("..")
 property_name = "sprite_frames"
 resource_json = ExtResource("4_5s4r1")
 metadata/_custom_type_script = "uid://cbal8ms2oe1ik"
 
-[node name="Collision" type="CollisionShape2D" parent="."]
+[node name="Collision" type="CollisionShape2D" parent="." unique_id=1356480120]
 shape = SubResource("RectangleShape2D_wtsxo")
 
-[node name="Hitbox" type="Area2D" parent="."]
+[node name="Hitbox" type="Area2D" parent="." unique_id=791635058]
 
-[node name="Shape" type="CollisionShape2D" parent="Hitbox"]
+[node name="Shape" type="CollisionShape2D" parent="Hitbox" unique_id=1153420464]
 shape = SubResource("CircleShape2D_srvot")
 
-[node name="EnemyPlayerDetection" type="Node" parent="." node_paths=PackedStringArray("hitbox")]
+[node name="EnemyPlayerDetection" type="Node" parent="." unique_id=55054619 node_paths=PackedStringArray("hitbox")]
 script = ExtResource("4_7wlxe")
 hitbox = NodePath("../Hitbox")
 metadata/_custom_type_script = "uid://chj8hu207lrh"
 
-[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
+[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="." unique_id=1096789589]
 
 [connection signal="player_hit" from="EnemyPlayerDetection" to="." method="damage_player"]
 [connection signal="player_stomped_below" from="EnemyPlayerDetection" to="." method="damage_player"]

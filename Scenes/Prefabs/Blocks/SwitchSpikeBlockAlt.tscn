@@ -85,7 +85,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="SwitchSpikeBlock" instance=ExtResource("1_nuql5")]
+[node name="SwitchSpikeBlock" unique_id=512003315 instance=ExtResource("1_nuql5")]
 active = true
 
 [node name="Sprite" parent="." index="0"]
@@ -94,5 +94,5 @@ sprite_frames = SubResource("SpriteFrames_twrdj")
 [node name="ResourceSetter" parent="Sprite" index="0"]
 resource_json = ExtResource("3_s2uey")
 
-[node name="CollisionShape2D" parent="PlayerHurtBox" index="0"]
+[node name="CollisionShape2D" parent="PlayerHurtBox" parent_id_path=PackedInt32Array(2052825988) index="0" unique_id=1545913678]
 disabled = false

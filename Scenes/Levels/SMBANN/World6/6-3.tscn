@@ -1,31 +1,13 @@
 [gd_scene load_steps=4 format=3 uid="uid://b1bh0quotvg4c"]
-
 [ext_resource type="PackedScene" uid="uid://cd4g6h6nvjowy" path="res://Scenes/Levels/SMB1/World6/6-3.tscn" id="1_y8doy"]
 [ext_resource type="Script" uid="uid://bjs5mlc3xrxud" path="res://Scripts/Parts/DiscoLevel.gd" id="2_8h8q6"]
 [ext_resource type="PackedScene" uid="uid://doguqwqut2s5e" path="res://Scenes/Prefabs/Entities/Enemies/RedKoopaParaTroopa.tscn" id="3_8h8q6"]
-
 [node name="6-3" unique_id=2136897115 instance=ExtResource("1_y8doy")]
 campaign = "SMBANN"
-
 [node name="DiscoLevel" type="Node" parent="." index="31" unique_id=1063761900]
 script = ExtResource("2_8h8q6")
 combo_meter_rate = 0.7
 max_combo = 1
 metadata/_custom_type_script = "uid://bjs5mlc3xrxud"
-
 [node name="RedKoopaTroopa" parent="." index="32" unique_id=176127882 instance=ExtResource("3_8h8q6")]
 position = Vector2(1384, -112)
-
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://cpwloakvp672a" path="res://Scripts/Parts/EditorVisibleNode.gd" id="1_t3iyn"]
 [ext_resource type="Texture2D" uid="uid://d08xv46j8rdhn" path="res://Assets/Sprites/Editor/PitWarp.png" id="2_q3icm"]
 [ext_resource type="Script" uid="uid://cnheej0sxmoxg" path="res://Scripts/Parts/PlayerDetection.gd" id="3_kr6ep"]
-[ext_resource type="Script" path="res://Scripts/Classes/Components/AmountLimiter.gd" id="5_kr6ep"]
+[ext_resource type="Script" uid="uid://bjdkv7qdyewc4" path="res://Scripts/Classes/Components/AmountLimiter.gd" id="5_kr6ep"]
 [ext_resource type="Script" uid="uid://ctfbuoxtnnl0q" path="res://Scripts/Classes/Components/EditorPropertyExposer.gd" id="6_qmaow"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_qmaow"]

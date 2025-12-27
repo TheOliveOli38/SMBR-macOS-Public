@@ -6,5 +6,5 @@
 [node name="SuperballFlower" unique_id=701089051 instance=ExtResource("1_nibwi")]
 power_up_state = "Superball"
 
-[node name="ResourceSetterNew" parent="Sprite" index="0"]
+[node name="ResourceSetterNew" parent="Sprite" parent_id_path=PackedInt32Array(929899976) index="0" unique_id=1815355599]
 resource_json = ExtResource("2_d6erm")

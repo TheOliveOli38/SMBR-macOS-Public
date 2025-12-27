@@ -1,28 +1,10 @@
 [gd_scene load_steps=3 format=3 uid="uid://c6ch6t70x1atb"]
-
 [ext_resource type="PackedScene" uid="uid://c5x75iaysnlfp" path="res://Scenes/Levels/SMB1/World2/2-1a.tscn" id="1_c7lld"]
 [ext_resource type="Script" uid="uid://bjs5mlc3xrxud" path="res://Scripts/Parts/DiscoLevel.gd" id="2_crd66"]
-
-[node name="1-1A" instance=ExtResource("1_c7lld")]
+[node name="1-1A" unique_id=2048464923 instance=ExtResource("1_c7lld")]
 campaign = "SMBANN"
-
-[node name="PipeArea" parent="." index="4"]
+[node name="PipeArea" parent="." index="4" unique_id=1355773512]
 target_level = "uid://d15yk25wa62rw"
-
-[node name="DiscoLevel" type="Node" parent="." index="7"]
+[node name="DiscoLevel" type="Node" parent="." index="7" unique_id=52474124]
 script = ExtResource("2_crd66")
 metadata/_custom_type_script = "uid://bjs5mlc3xrxud"
-
-
-
-
-
-
-
-
-
-
-
-
-
-

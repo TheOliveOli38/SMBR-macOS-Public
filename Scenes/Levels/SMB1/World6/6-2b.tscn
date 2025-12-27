@@ -1,26 +1,8 @@
 [gd_scene load_steps=2 format=3 uid="uid://baaf3ey6vytx0"]
-
 [ext_resource type="PackedScene" uid="uid://gqb87lodntxp" path="res://Scenes/Levels/SMB1/World5/5-2a.tscn" id="1_ed8p1"]
-
-[node name="5-2a" instance=ExtResource("1_ed8p1")]
-
-[node name="PipeArea" parent="." index="19"]
+[node name="5-2a" unique_id=15849020 instance=ExtResource("1_ed8p1")]
+[node name="PipeArea" parent="." index="19" unique_id=2087006892]
 pipe_id = 2
 target_level = "uid://iinenbioxht"
-
-[node name="RedCoin" parent="ChallengeNodes" index="0"]
+[node name="RedCoin" parent="ChallengeNodes" parent_id_path=PackedInt32Array(1165949006) index="0" unique_id=1704650233]
 position = Vector2(-1336, -360)
-
-
-
-
-
-
-
-
-
-
-
-
-
-

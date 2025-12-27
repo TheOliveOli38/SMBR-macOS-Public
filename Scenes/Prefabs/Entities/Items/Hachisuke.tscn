@@ -16,17 +16,17 @@ size = Vector2(16, 16)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8f4k7"]
 size = Vector2(12, 12)
 
-[node name="Hachisuke" type="CharacterBody2D"]
+[node name="Hachisuke" type="CharacterBody2D" unique_id=753362576]
 collision_layer = 8
 collision_mask = 6
 script = ExtResource("1_d7uck")
 metadata/_custom_type_script = "uid://cjkurwybsaywm"
 
-[node name="Sprite" type="Sprite2D" parent="."]
+[node name="Sprite" type="Sprite2D" parent="." unique_id=489002939]
 position = Vector2(0, -8)
 texture = SubResource("AtlasTexture_qj4fn")
 
-[node name="ResourceSetterNew" type="Node" parent="Sprite" node_paths=PackedStringArray("node_to_affect")]
+[node name="ResourceSetterNew" type="Node" parent="Sprite" unique_id=311639593 node_paths=PackedStringArray("node_to_affect")]
 script = ExtResource("3_3unjp")
 node_to_affect = NodePath("..")
 property_name = "texture"
@@ -34,19 +34,19 @@ mode = 1
 resource_json = ExtResource("4_db2kr")
 metadata/_custom_type_script = "uid://cbal8ms2oe1ik"
 
-[node name="ScoreNoteSpawner" type="Node" parent="."]
+[node name="ScoreNoteSpawner" type="Node" parent="." unique_id=1538843862]
 script = ExtResource("3_eh4yc")
 add_score = true
 metadata/_custom_type_script = "uid://5octqlf4ohel"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1440155439]
 position = Vector2(0, -8)
 shape = SubResource("RectangleShape2D_6c253")
 
-[node name="Hitbox" type="Area2D" parent="."]
+[node name="Hitbox" type="Area2D" parent="." unique_id=1557427382]
 position = Vector2(0, -8)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=50718406]
 shape = SubResource("RectangleShape2D_8f4k7")
 
 [connection signal="area_entered" from="Hitbox" to="." method="on_area_entered"]

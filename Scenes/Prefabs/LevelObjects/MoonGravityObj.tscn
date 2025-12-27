@@ -4,13 +4,13 @@
 [ext_resource type="Script" uid="uid://cpwloakvp672a" path="res://Scripts/Parts/EditorVisibleNode.gd" id="1_xeodu"]
 [ext_resource type="Texture2D" uid="uid://dfurem6jj7gso" path="res://Assets/Sprites/Editor/MoonGravity.png" id="3_7t04y"]
 
-[node name="MoonGravityOBJ" type="Node2D"]
+[node name="MoonGravityOBJ" type="Node2D" unique_id=1655843848]
 script = ExtResource("1_xeodu")
 metadata/_custom_type_script = "uid://cpwloakvp672a"
 
-[node name="MoonGravity" type="Node" parent="."]
+[node name="MoonGravity" type="Node" parent="." unique_id=1638037622]
 script = ExtResource("1_ewtau")
 metadata/_custom_type_script = "uid://dhtqnyrj3ndnj"
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1355508647]
 texture = ExtResource("3_7t04y")

@@ -6,16 +6,16 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f01e0"]
 size = Vector2(24, 8)
 
-[node name="ElevatorPlatform" instance=ExtResource("1_oa2jg")]
+[node name="ElevatorPlatform" unique_id=467309165 instance=ExtResource("1_oa2jg")]
 top = -176
 
-[node name="Sprite" parent="." index="0"]
+[node name="Sprite" parent="." index="0" unique_id=756329120]
 offset_left = -12.0
 offset_right = 12.0
 texture = ExtResource("2_f01e0")
 
-[node name="Collision" parent="." index="1"]
+[node name="Collision" parent="." index="1" unique_id=747923764]
 shape = SubResource("RectangleShape2D_f01e0")
 
-[node name="SecondQuestReplacer" parent="." index="2"]
+[node name="SecondQuestReplacer" parent="." index="2" unique_id=1785300407]
 new_scene = ""

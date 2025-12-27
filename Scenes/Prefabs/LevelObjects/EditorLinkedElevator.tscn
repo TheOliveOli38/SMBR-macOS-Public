@@ -28,15 +28,15 @@ func update() -> void:
 	%LPlatform._process(-1)
 "
 
-[node name="EditorLinkedElevator" type="Node2D"]
+[node name="EditorLinkedElevator" type="Node2D" unique_id=1412513806]
 script = ExtResource("1_0yjq3")
 
-[node name="CornerL" type="Sprite2D" parent="."]
+[node name="CornerL" type="Sprite2D" parent="." unique_id=1054020067]
 texture = ExtResource("2_lcqnt")
 region_enabled = true
 region_rect = Rect2(160, 128, 16, 16)
 
-[node name="ResourceSetterNew" type="Node" parent="CornerL" node_paths=PackedStringArray("node_to_affect")]
+[node name="ResourceSetterNew" type="Node" parent="CornerL" unique_id=2063634915 node_paths=PackedStringArray("node_to_affect")]
 script = ExtResource("3_5tm0t")
 node_to_affect = NodePath("..")
 property_name = "texture"
@@ -44,7 +44,7 @@ mode = 1
 resource_json = ExtResource("4_ohybb")
 metadata/_custom_type_script = "uid://cbal8ms2oe1ik"
 
-[node name="Middle" type="NinePatchRect" parent="."]
+[node name="Middle" type="NinePatchRect" parent="." unique_id=596877453]
 offset_left = 8.0
 offset_top = -8.0
 offset_right = 48.0
@@ -53,7 +53,7 @@ texture = ExtResource("2_lcqnt")
 region_rect = Rect2(176, 128, 16, 16)
 axis_stretch_horizontal = 1
 
-[node name="ResourceSetterNew" type="Node" parent="Middle" node_paths=PackedStringArray("node_to_affect")]
+[node name="ResourceSetterNew" type="Node" parent="Middle" unique_id=873720073 node_paths=PackedStringArray("node_to_affect")]
 script = ExtResource("3_5tm0t")
 node_to_affect = NodePath("..")
 property_name = "texture"
@@ -61,13 +61,13 @@ mode = 1
 resource_json = ExtResource("4_ohybb")
 metadata/_custom_type_script = "uid://cbal8ms2oe1ik"
 
-[node name="CornerR" type="Sprite2D" parent="."]
+[node name="CornerR" type="Sprite2D" parent="." unique_id=1811570415]
 position = Vector2(56, 0)
 texture = ExtResource("2_lcqnt")
 region_enabled = true
 region_rect = Rect2(192, 128, 16, 16)
 
-[node name="ResourceSetterNew" type="Node" parent="CornerR" node_paths=PackedStringArray("node_to_affect")]
+[node name="ResourceSetterNew" type="Node" parent="CornerR" unique_id=443664553 node_paths=PackedStringArray("node_to_affect")]
 script = ExtResource("3_5tm0t")
 node_to_affect = NodePath("..")
 property_name = "texture"
@@ -75,22 +75,22 @@ mode = 1
 resource_json = ExtResource("4_ohybb")
 metadata/_custom_type_script = "uid://cbal8ms2oe1ik"
 
-[node name="RPlatform" parent="CornerR" node_paths=PackedStringArray("linked_platform") instance=ExtResource("5_5qwbh")]
+[node name="RPlatform" parent="CornerR" unique_id=1016031752 node_paths=PackedStringArray("linked_platform") instance=ExtResource("5_5qwbh")]
 unique_name_in_owner = true
 position = Vector2(0, 16)
 linked_platform = NodePath("../../LPlatform")
 
-[node name="LPlatform" parent="." node_paths=PackedStringArray("linked_platform") instance=ExtResource("5_5qwbh")]
+[node name="LPlatform" parent="." unique_id=1973596100 node_paths=PackedStringArray("linked_platform") instance=ExtResource("5_5qwbh")]
 unique_name_in_owner = true
 position = Vector2(0, 64)
 linked_platform = NodePath("../CornerR/RPlatform")
 
-[node name="EditorPropertyExposer" type="Node" parent="."]
+[node name="EditorPropertyExposer" type="Node" parent="." unique_id=1858502840]
 script = ExtResource("6_lcqnt")
 properties = Array[String](["width", "left_height", "right_height"])
 metadata/_custom_type_script = "uid://ctfbuoxtnnl0q"
 
-[node name="Node" type="Node" parent="."]
+[node name="Node" type="Node" parent="." unique_id=1998864420]
 process_mode = 3
 script = SubResource("GDScript_0yjq3")
 

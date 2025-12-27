@@ -1,5 +1,4 @@
 [gd_scene load_steps=40 format=4 uid="uid://ci1065naoop7s"]
-
 [ext_resource type="PackedScene" uid="uid://bdd0jj88igduv" path="res://Scenes/Levels/SMBLL/CoinHeavens/1.tscn" id="1_h888k"]
 [ext_resource type="Texture2D" uid="uid://dt0qtxu2l646n" path="res://Assets/Sprites/Tilesets/Terrain/Overworld.png" id="2_ixoj0"]
 [ext_resource type="PackedScene" uid="uid://dsa8lpl7n8ge0" path="res://Scenes/Prefabs/Blocks/BrickBlocks/BrickBlock.tscn" id="3_5c81w"]
@@ -25,31 +24,22 @@
 [ext_resource type="Texture2D" uid="uid://clbmg515rgdhs" path="res://Assets/Sprites/Tilesets/Liquids.png" id="23_a8e6f"]
 [ext_resource type="Texture2D" uid="uid://cntkcqc74qp50" path="res://Assets/Sprites/Tilesets/Deco/OverworldDeco.png" id="24_7yvps"]
 [ext_resource type="Texture2D" uid="uid://cfk7rvu4in71u" path="res://Assets/Sprites/Blocks/ConveyorBelt.png" id="25_swx45"]
-
 [sub_resource type="TileMapPattern" id="TileMapPattern_b6qiv"]
 tile_data = PackedInt32Array(0, 524288, 0, 1, 589824, 0)
-
 [sub_resource type="TileMapPattern" id="TileMapPattern_d4nyf"]
 tile_data = PackedInt32Array(0, 524288, 1, 1, 589824, 1)
-
 [sub_resource type="TileMapPattern" id="TileMapPattern_ls3wh"]
 tile_data = PackedInt32Array(0, 524288, 2, 1, 589824, 2)
-
 [sub_resource type="TileMapPattern" id="TileMapPattern_vt0hv"]
 tile_data = PackedInt32Array(0, 524288, 3, 1, 589824, 3)
-
 [sub_resource type="TileMapPattern" id="TileMapPattern_xj38k"]
 tile_data = PackedInt32Array(0, 524288, 4, 1, 589824, 4)
-
 [sub_resource type="TileMapPattern" id="TileMapPattern_o5705"]
 tile_data = PackedInt32Array(0, 524288, 5, 1, 589824, 5)
-
 [sub_resource type="TileMapPattern" id="TileMapPattern_ra18v"]
 tile_data = PackedInt32Array(0, 524288, 6, 1, 589824, 6)
-
 [sub_resource type="TileMapPattern" id="TileMapPattern_7cpm5"]
 tile_data = PackedInt32Array(0, 524288, 7, 1, 589824, 7)
-
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ryf0d"]
 resource_name = "Terrain"
 texture = ExtResource("2_ixoj0")
@@ -716,7 +706,6 @@ texture = ExtResource("2_ixoj0")
 13:10/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 11:10/0 = 0
 11:10/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
-
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_0uqus"]
 scenes/1/scene = ExtResource("3_5c81w")
 scenes/2/scene = ExtResource("14_5hxno")
@@ -738,7 +727,6 @@ scenes/17/scene = ExtResource("11_sudrr")
 scenes/18/scene = ExtResource("12_vyd6e")
 scenes/19/scene = ExtResource("13_xt5re")
 scenes/20/scene = ExtResource("15_xorry")
-
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_oyfva"]
 texture = ExtResource("23_a8e6f")
 0:0/next_alternative_id = 2
@@ -835,7 +823,6 @@ texture = ExtResource("23_a8e6f")
 &"type": 14
 }
 0:7/1 = 1
-
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3vmf0"]
 texture = ExtResource("24_7yvps")
 0:0/0 = 0
@@ -858,7 +845,6 @@ texture = ExtResource("24_7yvps")
 3:0/0/z_index = -10
 4:0/0 = 0
 4:0/0/z_index = -10
-
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hxbd5"]
 texture = ExtResource("25_swx45")
 0:0/next_alternative_id = 3
@@ -941,7 +927,6 @@ texture = ExtResource("25_swx45")
 8: [17],
 &"type": 17
 }
-
 [sub_resource type="TileSet" id="TileSet_dexhc"]
 resource_local_to_scene = true
 physics_layer_0/collision_layer = 2
@@ -1016,23 +1001,7 @@ metadata/_better_terrain = {
 }]],
 &"version": "0.2"
 }
-
-[node name="Level" instance=ExtResource("1_h888k")]
-
-[node name="Tiles" parent="." index="1"]
+[node name="Level" unique_id=1756374794 instance=ExtResource("1_h888k")]
+[node name="Tiles" parent="." index="1" unique_id=1674661667]
 tile_map_data = PackedByteArray("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")
 tile_set = SubResource("TileSet_dexhc")
-
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -13,7 +13,7 @@ script = ExtResource("3_6t2fx")
 Overworld = ExtResource("2_dij8c")
 metadata/_custom_type_script = "uid://cmvlgsjmsk0v5"
 
-[node name="SuperTrampoline" instance=ExtResource("1_6t2fx")]
+[node name="SuperTrampoline" unique_id=1489413708 instance=ExtResource("1_6t2fx")]
 trampoline_type = "SUPER_TRAMPOLINE"
 
 [node name="Sprite" parent="." index="0"]

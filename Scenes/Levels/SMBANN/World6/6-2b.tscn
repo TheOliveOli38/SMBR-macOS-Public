@@ -1,28 +1,10 @@
 [gd_scene load_steps=3 format=3 uid="uid://cqfkbtt7jnxo8"]
-
 [ext_resource type="PackedScene" uid="uid://baaf3ey6vytx0" path="res://Scenes/Levels/SMB1/World6/6-2b.tscn" id="1_ogmio"]
 [ext_resource type="Script" uid="uid://bjs5mlc3xrxud" path="res://Scripts/Parts/DiscoLevel.gd" id="2_a8j7w"]
-
-[node name="5-2a" instance=ExtResource("1_ogmio")]
-
-[node name="PipeArea" parent="." index="19"]
+[node name="5-2a" unique_id=1402962054 instance=ExtResource("1_ogmio")]
+[node name="PipeArea" parent="." index="19" unique_id=2087006892]
 target_level = "uid://s4bmrdp6dxjl"
-
-[node name="DiscoLevel" type="Node" parent="." index="21"]
+[node name="DiscoLevel" type="Node" parent="." index="21" unique_id=1741895772]
 script = ExtResource("2_a8j7w")
 combo_meter_rate = 0.5
 metadata/_custom_type_script = "uid://bjs5mlc3xrxud"
-
-
-
-
-
-
-
-
-
-
-
-
-
-

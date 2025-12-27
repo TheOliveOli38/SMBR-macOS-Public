@@ -1,5 +1,4 @@
 [gd_scene load_steps=41 format=3 uid="uid://dq3axnned8s60"]
-
 [ext_resource type="PackedScene" uid="uid://1j5xfkmge06g" path="res://Scenes/Levels/SMB1/CoinHeavens/2.tscn" id="1_tke4q"]
 [ext_resource type="Texture2D" uid="uid://dt0qtxu2l646n" path="res://Assets/Sprites/Tilesets/Terrain/Overworld.png" id="2_d37qs"]
 [ext_resource type="PackedScene" uid="uid://dsa8lpl7n8ge0" path="res://Scenes/Prefabs/Blocks/BrickBlocks/BrickBlock.tscn" id="3_plp52"]
@@ -26,31 +25,22 @@
 [ext_resource type="Texture2D" uid="uid://cntkcqc74qp50" path="res://Assets/Sprites/Tilesets/Deco/OverworldDeco.png" id="24_6du3h"]
 [ext_resource type="Texture2D" uid="uid://cfk7rvu4in71u" path="res://Assets/Sprites/Blocks/ConveyorBelt.png" id="25_6vttl"]
 [ext_resource type="Script" uid="uid://bjs5mlc3xrxud" path="res://Scripts/Parts/DiscoLevel.gd" id="26_5amn8"]
-
 [sub_resource type="TileMapPattern" id="TileMapPattern_b6qiv"]
 tile_data = PackedInt32Array(0, 524288, 0, 1, 589824, 0)
-
 [sub_resource type="TileMapPattern" id="TileMapPattern_d4nyf"]
 tile_data = PackedInt32Array(0, 524288, 1, 1, 589824, 1)
-
 [sub_resource type="TileMapPattern" id="TileMapPattern_ls3wh"]
 tile_data = PackedInt32Array(0, 524288, 2, 1, 589824, 2)
-
 [sub_resource type="TileMapPattern" id="TileMapPattern_vt0hv"]
 tile_data = PackedInt32Array(0, 524288, 3, 1, 589824, 3)
-
 [sub_resource type="TileMapPattern" id="TileMapPattern_xj38k"]
 tile_data = PackedInt32Array(0, 524288, 4, 1, 589824, 4)
-
 [sub_resource type="TileMapPattern" id="TileMapPattern_o5705"]
 tile_data = PackedInt32Array(0, 524288, 5, 1, 589824, 5)
-
 [sub_resource type="TileMapPattern" id="TileMapPattern_ra18v"]
 tile_data = PackedInt32Array(0, 524288, 6, 1, 589824, 6)
-
 [sub_resource type="TileMapPattern" id="TileMapPattern_7cpm5"]
 tile_data = PackedInt32Array(0, 524288, 7, 1, 589824, 7)
-
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_663fv"]
 resource_name = "Terrain"
 texture = ExtResource("2_d37qs")
@@ -717,7 +707,6 @@ texture = ExtResource("2_d37qs")
 13:10/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 11:10/0 = 0
 11:10/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
-
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_2xxfp"]
 scenes/1/scene = ExtResource("3_plp52")
 scenes/2/scene = ExtResource("14_1h1ms")
@@ -739,7 +728,6 @@ scenes/17/scene = ExtResource("11_2ce42")
 scenes/18/scene = ExtResource("12_a4m87")
 scenes/19/scene = ExtResource("13_ot7oh")
 scenes/20/scene = ExtResource("15_dram4")
-
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xvpm0"]
 texture = ExtResource("23_xj4hg")
 0:0/next_alternative_id = 2
@@ -836,7 +824,6 @@ texture = ExtResource("23_xj4hg")
 &"type": 14
 }
 0:7/1 = 1
-
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0itdn"]
 texture = ExtResource("24_6du3h")
 0:0/0 = 0
@@ -859,7 +846,6 @@ texture = ExtResource("24_6du3h")
 3:0/0/z_index = -10
 4:0/0 = 0
 4:0/0/z_index = -10
-
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_p0mxa"]
 texture = ExtResource("25_6vttl")
 0:0/next_alternative_id = 3
@@ -942,7 +928,6 @@ texture = ExtResource("25_6vttl")
 8: [17],
 &"type": 17
 }
-
 [sub_resource type="TileSet" id="TileSet_3ipl0"]
 resource_local_to_scene = true
 physics_layer_0/collision_layer = 2
@@ -1017,32 +1002,14 @@ metadata/_better_terrain = {
 }]],
 &"version": "0.2"
 }
-
-[node name="Level" instance=ExtResource("1_tke4q")]
+[node name="Level" unique_id=488868149 instance=ExtResource("1_tke4q")]
 theme_time = "Night"
 campaign = "SMBANN"
-
-[node name="Tiles" parent="." index="1"]
+[node name="Tiles" parent="." index="1" unique_id=1674661667]
 tile_set = SubResource("TileSet_3ipl0")
-
-[node name="LevelBG" parent="." index="8"]
+[node name="LevelBG" parent="." index="8" unique_id=458182856]
 time_of_day = 1
-
-[node name="DiscoLevel" type="Node" parent="." index="10"]
+[node name="DiscoLevel" type="Node" parent="." index="10" unique_id=1944176096]
 script = ExtResource("26_5amn8")
 combo_meter_rate = 0.0
 metadata/_custom_type_script = "uid://bjs5mlc3xrxud"
-
-
-
-
-
-
-
-
-
-
-
-
-
-

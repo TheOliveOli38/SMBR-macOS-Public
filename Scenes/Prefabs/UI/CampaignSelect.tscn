@@ -40,7 +40,7 @@ anchors_preset = 0
 offset_right = 256.0
 offset_bottom = 128.0
 script = ExtResource("1_ngr5x")
-campaign_icons = Array[Texture2D]([SubResource("AtlasTexture_6ft85"), SubResource("AtlasTexture_uaivh"), SubResource("AtlasTexture_l766q"), SubResource("AtlasTexture_n66kg"), SubResource("AtlasTexture_q8lhv")])
+campaign_icons = Array[Texture]([SubResource("AtlasTexture_6ft85"), SubResource("AtlasTexture_uaivh"), SubResource("AtlasTexture_l766q"), SubResource("AtlasTexture_n66kg"), SubResource("AtlasTexture_q8lhv")])
 campaign = ["SMB1", "SMBLL", "SMBS", "SMBANN", "SMB1"]
 
 [node name="PanelContainer" type="PanelContainer" parent="." unique_id=1199319149]

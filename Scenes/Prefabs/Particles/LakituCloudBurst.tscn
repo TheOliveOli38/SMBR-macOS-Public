@@ -40,18 +40,18 @@ animations = [{
 "speed": 10.0
 }]
 
-[node name="LakituCloudBurst" type="AnimatedSprite2D"]
+[node name="LakituCloudBurst" type="AnimatedSprite2D" unique_id=459643830]
 z_index = 5
 sprite_frames = SubResource("SpriteFrames_xs1ui")
 autoplay = "default"
 frame = 3
 frame_progress = 1.0
 
-[node name="Timer" type="Timer" parent="."]
+[node name="Timer" type="Timer" parent="." unique_id=12844225]
 wait_time = 10.0
 autostart = true
 
-[node name="ResourceSetterNew" type="Node" parent="." node_paths=PackedStringArray("node_to_affect")]
+[node name="ResourceSetterNew" type="Node" parent="." unique_id=365006018 node_paths=PackedStringArray("node_to_affect")]
 script = ExtResource("2_cic8a")
 node_to_affect = NodePath("..")
 property_name = "sprite_frames"

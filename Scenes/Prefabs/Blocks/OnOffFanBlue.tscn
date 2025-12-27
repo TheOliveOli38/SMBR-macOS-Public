@@ -52,7 +52,7 @@ animations = [{
 "speed": 30.0
 }]
 
-[node name="OnOffFanBlue" instance=ExtResource("1_d1mvb")]
+[node name="OnOffFanBlue" unique_id=1173693154 instance=ExtResource("1_d1mvb")]
 active = true
 
 [node name="Sprite" parent="." index="1"]

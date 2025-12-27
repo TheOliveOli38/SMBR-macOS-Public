@@ -65,11 +65,11 @@ _data = {
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tbo6k"]
 
-[node name="Bumper" type="AnimatableBody2D"]
+[node name="Bumper" type="AnimatableBody2D" unique_id=596604281]
 sync_to_physics = false
 script = ExtResource("1_yguea")
 
-[node name="Sprite" type="AnimatedSprite2D" parent="."]
+[node name="Sprite" type="AnimatedSprite2D" parent="." unique_id=1338692711]
 sprite_frames = SubResource("SpriteFrames_tbo6k")
 animation = &"Idle"
 autoplay = "Idle"
@@ -77,34 +77,34 @@ script = ExtResource("2_yguea")
 do_offset = false
 metadata/_custom_type_script = "uid://caq1qiwmy0mox"
 
-[node name="ResourceSetterNew" type="Node" parent="Sprite" node_paths=PackedStringArray("node_to_affect")]
+[node name="ResourceSetterNew" type="Node" parent="Sprite" unique_id=599551413 node_paths=PackedStringArray("node_to_affect")]
 script = ExtResource("4_cgc3p")
 node_to_affect = NodePath("..")
 property_name = "sprite_frames"
 resource_json = ExtResource("5_ix70v")
 metadata/_custom_type_script = "uid://cbal8ms2oe1ik"
 
-[node name="PlayerDetection" type="Area2D" parent="."]
+[node name="PlayerDetection" type="Area2D" parent="." unique_id=1226755632]
 collision_layer = 255
 script = ExtResource("3_cgc3p")
 metadata/_custom_type_script = "uid://cnheej0sxmoxg"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetection"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetection" unique_id=1551483350]
 shape = SubResource("CircleShape2D_tbo6k")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=998790596]
 libraries = {
 &"": SubResource("AnimationLibrary_cgc3p")
 }
-autoplay = "RESET"
+autoplay = &"RESET"
 
-[node name="TrackJoint" type="Node" parent="."]
+[node name="TrackJoint" type="Node" parent="." unique_id=408055058]
 script = ExtResource("7_tbo6k")
 offset = Vector2(0, 0)
 disable_physics = false
 metadata/_custom_type_script = "uid://d4a7yp6e55u8t"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1664391252]
 shape = SubResource("RectangleShape2D_tbo6k")
 
 [connection signal="player_entered" from="PlayerDetection" to="." method="bounce_player"]

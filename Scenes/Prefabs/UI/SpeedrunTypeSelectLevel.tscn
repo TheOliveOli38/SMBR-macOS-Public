@@ -9,11 +9,11 @@ region = Rect2(96, 32, 8, 8)
 
 [node name="SpeedrunTypeSelect" unique_id=985065137 instance=ExtResource("1_lkwun")]
 
-[node name="TextureRect" parent="Panel/VBoxContainer/Warpless" index="2"]
+[node name="TextureRect" parent="Panel/VBoxContainer/Warpless" parent_id_path=PackedInt32Array(1599187849) index="2" unique_id=698667744]
 texture = SubResource("AtlasTexture_in3fl")
 
-[node name="Any" parent="Panel/VBoxContainer/Warpless" index="3"]
+[node name="Any" parent="Panel/VBoxContainer/Warpless" parent_id_path=PackedInt32Array(1599187849) index="3" unique_id=603641441]
 text = "TO FLAGPOLE"
 
-[node name="Any" parent="Panel/VBoxContainer/Any" index="3"]
+[node name="Any" parent="Panel/VBoxContainer/Any" parent_id_path=PackedInt32Array(641274277) index="3" unique_id=1526349318]
 text = "TO WARP ZONE"

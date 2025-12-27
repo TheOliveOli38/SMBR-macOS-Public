@@ -172,12 +172,13 @@ func handle_offsets(delta: float) -> void:
 		true_velocity.x = 0
 	if Global.current_level.can_backscroll:
 		if true_vel_dir != 0 and abs(true_velocity.x) > 80:
-			if abs(camera_position.x - global_position.x) <= 64:
+			if abs(camera_position.x - global_position.x) <= 64 and camera_position.x + camera_offset.x < -256 and camera_position.x + camera_offset.x < camera_right_limit:
 				camera_offset.x = move_toward(camera_offset.x, 8 * true_vel_dir, abs(true_velocity.x) / 200)
 	else:
 		camera_offset.x = 8
 
 func do_limits() -> void:
+	var true_pos = camera_position + camera_offset
 	camera_right_limit = clamp(Player.camera_right_limit, -256 + (get_viewport().get_visible_rect().size.x), INF)
 	camera_position.x = clamp(camera_position.x, point_to_camera_limit(-256 - camera_offset.x, -1), point_to_camera_limit(camera_right_limit - camera_offset.x, 1))
 	camera_position.y = clamp(camera_position.y, point_to_camera_limit_y(Global.current_level.vertical_height, -1), point_to_camera_limit_y(32, 1))
@@ -191,8 +192,8 @@ func do_limits() -> void:
 		level_exit = owner.state_machine.state.name == "LevelExit"
 	$"../CameraCenterJoint/RightWall".set_collision_layer_value(1, wall_enabled and level_exit == false)
 	
-func point_to_camera_limit(point := 0, point_dir := -1) -> float:
+func point_to_camera_limit(point := 0, point_dir := -1) -> int:
 	return point + ((get_viewport_rect().size.x / 2.0) * -point_dir)
 
-func point_to_camera_limit_y(point := 0, point_dir := -1) -> float:
+func point_to_camera_limit_y(point := 0, point_dir := -1) -> int:
 	return point + ((get_viewport_rect().size.y / 2.0) * -point_dir)

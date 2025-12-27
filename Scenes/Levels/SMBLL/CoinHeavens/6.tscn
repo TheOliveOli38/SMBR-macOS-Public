@@ -1,5 +1,4 @@
 [gd_scene load_steps=40 format=3 uid="uid://dp44r5a5yge23"]
-
 [ext_resource type="PackedScene" uid="uid://ci1065naoop7s" path="res://Scenes/Levels/SMBLL/CoinHeavens/2.tscn" id="1_n70wp"]
 [ext_resource type="Texture2D" uid="uid://dt0qtxu2l646n" path="res://Assets/Sprites/Tilesets/Terrain/Overworld.png" id="2_w3e2v"]
 [ext_resource type="PackedScene" uid="uid://dsa8lpl7n8ge0" path="res://Scenes/Prefabs/Blocks/BrickBlocks/BrickBlock.tscn" id="3_atax6"]
@@ -25,31 +24,22 @@
 [ext_resource type="Texture2D" uid="uid://clbmg515rgdhs" path="res://Assets/Sprites/Tilesets/Liquids.png" id="23_dqhhk"]
 [ext_resource type="Texture2D" uid="uid://cntkcqc74qp50" path="res://Assets/Sprites/Tilesets/Deco/OverworldDeco.png" id="24_e6hoh"]
 [ext_resource type="Texture2D" uid="uid://cfk7rvu4in71u" path="res://Assets/Sprites/Blocks/ConveyorBelt.png" id="25_e654f"]
-
 [sub_resource type="TileMapPattern" id="TileMapPattern_b6qiv"]
 tile_data = PackedInt32Array(0, 524288, 0, 1, 589824, 0)
-
 [sub_resource type="TileMapPattern" id="TileMapPattern_d4nyf"]
 tile_data = PackedInt32Array(0, 524288, 1, 1, 589824, 1)
-
 [sub_resource type="TileMapPattern" id="TileMapPattern_ls3wh"]
 tile_data = PackedInt32Array(0, 524288, 2, 1, 589824, 2)
-
 [sub_resource type="TileMapPattern" id="TileMapPattern_vt0hv"]
 tile_data = PackedInt32Array(0, 524288, 3, 1, 589824, 3)
-
 [sub_resource type="TileMapPattern" id="TileMapPattern_xj38k"]
 tile_data = PackedInt32Array(0, 524288, 4, 1, 589824, 4)
-
 [sub_resource type="TileMapPattern" id="TileMapPattern_o5705"]
 tile_data = PackedInt32Array(0, 524288, 5, 1, 589824, 5)
-
 [sub_resource type="TileMapPattern" id="TileMapPattern_ra18v"]
 tile_data = PackedInt32Array(0, 524288, 6, 1, 589824, 6)
-
 [sub_resource type="TileMapPattern" id="TileMapPattern_7cpm5"]
 tile_data = PackedInt32Array(0, 524288, 7, 1, 589824, 7)
-
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1he5q"]
 resource_name = "Terrain"
 texture = ExtResource("2_w3e2v")
@@ -716,7 +706,6 @@ texture = ExtResource("2_w3e2v")
 13:10/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 11:10/0 = 0
 11:10/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
-
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_1xcif"]
 scenes/1/scene = ExtResource("3_atax6")
 scenes/2/scene = ExtResource("14_e8q66")
@@ -738,7 +727,6 @@ scenes/17/scene = ExtResource("11_qtwlu")
 scenes/18/scene = ExtResource("12_y5vrk")
 scenes/19/scene = ExtResource("13_asexg")
 scenes/20/scene = ExtResource("15_dossg")
-
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ygr5y"]
 texture = ExtResource("23_dqhhk")
 0:0/next_alternative_id = 2
@@ -835,7 +823,6 @@ texture = ExtResource("23_dqhhk")
 &"type": 14
 }
 0:7/1 = 1
-
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_53oea"]
 texture = ExtResource("24_e6hoh")
 0:0/0 = 0
@@ -858,7 +845,6 @@ texture = ExtResource("24_e6hoh")
 3:0/0/z_index = -10
 4:0/0 = 0
 4:0/0/z_index = -10
-
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_oeth2"]
 texture = ExtResource("25_e654f")
 0:0/next_alternative_id = 3
@@ -941,7 +927,6 @@ texture = ExtResource("25_e654f")
 8: [17],
 &"type": 17
 }
-
 [sub_resource type="TileSet" id="TileSet_t837q"]
 resource_local_to_scene = true
 physics_layer_0/collision_layer = 2
@@ -1016,26 +1001,9 @@ metadata/_better_terrain = {
 }]],
 &"version": "0.2"
 }
-
-[node name="Level" instance=ExtResource("1_n70wp")]
+[node name="Level" unique_id=394751171 instance=ExtResource("1_n70wp")]
 theme_time = "Night"
-
-[node name="Tiles" parent="." index="1"]
+[node name="Tiles" parent="." index="1" unique_id=1674661667]
 tile_set = SubResource("TileSet_t837q")
-
-[node name="LevelBG" parent="." index="8"]
+[node name="LevelBG" parent="." index="8" unique_id=458182856]
 time_of_day = 1
-
-
-
-
-
-
-
-
-
-
-
-
-
-

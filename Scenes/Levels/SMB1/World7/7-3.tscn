@@ -1,5 +1,4 @@
 [gd_scene load_steps=43 format=3 uid="uid://bpbs3060xjy06"]
-
 [ext_resource type="PackedScene" uid="uid://brwg107knciu1" path="res://Scenes/Levels/SMB1/World2/2-3.tscn" id="1_at5iw"]
 [ext_resource type="Texture2D" uid="uid://dt0qtxu2l646n" path="res://Assets/Sprites/Tilesets/Terrain/Overworld.png" id="2_ak7co"]
 [ext_resource type="JSON" path="res://Assets/Audio/BGM/Jungle.json" id="2_rdo6i"]
@@ -28,31 +27,22 @@
 [ext_resource type="Texture2D" uid="uid://clbmg515rgdhs" path="res://Assets/Sprites/Tilesets/Liquids.png" id="23_yguhx"]
 [ext_resource type="Texture2D" uid="uid://cntkcqc74qp50" path="res://Assets/Sprites/Tilesets/Deco/OverworldDeco.png" id="24_mrefd"]
 [ext_resource type="Texture2D" uid="uid://cfk7rvu4in71u" path="res://Assets/Sprites/Blocks/ConveyorBelt.png" id="25_4iqk6"]
-
 [sub_resource type="TileMapPattern" id="TileMapPattern_b6qiv"]
 tile_data = PackedInt32Array(0, 524288, 0, 1, 589824, 0)
-
 [sub_resource type="TileMapPattern" id="TileMapPattern_d4nyf"]
 tile_data = PackedInt32Array(0, 524288, 1, 1, 589824, 1)
-
 [sub_resource type="TileMapPattern" id="TileMapPattern_ls3wh"]
 tile_data = PackedInt32Array(0, 524288, 2, 1, 589824, 2)
-
 [sub_resource type="TileMapPattern" id="TileMapPattern_vt0hv"]
 tile_data = PackedInt32Array(0, 524288, 3, 1, 589824, 3)
-
 [sub_resource type="TileMapPattern" id="TileMapPattern_xj38k"]
 tile_data = PackedInt32Array(0, 524288, 4, 1, 589824, 4)
-
 [sub_resource type="TileMapPattern" id="TileMapPattern_o5705"]
 tile_data = PackedInt32Array(0, 524288, 5, 1, 589824, 5)
-
 [sub_resource type="TileMapPattern" id="TileMapPattern_ra18v"]
 tile_data = PackedInt32Array(0, 524288, 6, 1, 589824, 6)
-
 [sub_resource type="TileMapPattern" id="TileMapPattern_7cpm5"]
 tile_data = PackedInt32Array(0, 524288, 7, 1, 589824, 7)
-
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mpoml"]
 resource_name = "Terrain"
 texture = ExtResource("2_ak7co")
@@ -719,7 +709,6 @@ texture = ExtResource("2_ak7co")
 13:10/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 11:10/0 = 0
 11:10/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
-
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_2wclh"]
 scenes/1/scene = ExtResource("3_rdo6i")
 scenes/2/scene = ExtResource("14_a2moh")
@@ -741,7 +730,6 @@ scenes/17/scene = ExtResource("11_vraqn")
 scenes/18/scene = ExtResource("12_q13d0")
 scenes/19/scene = ExtResource("13_8d7sh")
 scenes/20/scene = ExtResource("15_8e5p3")
-
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6ao5y"]
 texture = ExtResource("23_yguhx")
 0:0/next_alternative_id = 2
@@ -838,7 +826,6 @@ texture = ExtResource("23_yguhx")
 &"type": 14
 }
 0:7/1 = 1
-
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_43ch6"]
 texture = ExtResource("24_mrefd")
 0:0/0 = 0
@@ -861,7 +848,6 @@ texture = ExtResource("24_mrefd")
 3:0/0/z_index = -10
 4:0/0 = 0
 4:0/0/z_index = -10
-
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ae805"]
 texture = ExtResource("25_4iqk6")
 0:0/next_alternative_id = 3
@@ -944,7 +930,6 @@ texture = ExtResource("25_4iqk6")
 8: [17],
 &"type": 17
 }
-
 [sub_resource type="TileSet" id="TileSet_cg58p"]
 resource_local_to_scene = true
 physics_layer_0/collision_layer = 2
@@ -1019,80 +1004,47 @@ metadata/_better_terrain = {
 }]],
 &"version": "0.2"
 }
-
-[node name="7-3" instance=ExtResource("1_at5iw")]
+[node name="7-3" unique_id=436089411 instance=ExtResource("1_at5iw")]
 music = ExtResource("2_rdo6i")
 theme = "Jungle"
 theme_time = "Night"
 world_id = 7
-
-[node name="LevelBG" parent="." index="0"]
+[node name="LevelBG" parent="." index="0" unique_id=1505286432]
 time_of_day = 1
 primary_layer = 1
-
-[node name="Tiles" parent="." index="2"]
+[node name="Tiles" parent="." index="2" unique_id=918083686]
 tile_set = SubResource("TileSet_cg58p")
-
-[node name="ChallengeNodes" parent="." index="9" node_paths=PackedStringArray("nodes_to_delete")]
+[node name="ChallengeNodes" parent="." index="9" unique_id=1297324198 node_paths=PackedStringArray("nodes_to_delete")]
 nodes_to_delete = []
-
-[node name="RedCoin" parent="ChallengeNodes" index="0"]
+[node name="RedCoin" parent="ChallengeNodes" index="0" unique_id=1002999350]
 position = Vector2(-72, -136)
-
-[node name="RedCoin2" parent="ChallengeNodes" index="1"]
+[node name="RedCoin2" parent="ChallengeNodes" index="1" unique_id=755541897]
 position = Vector2(1176, -168)
-
-[node name="RedCoin3" parent="ChallengeNodes" index="2"]
+[node name="RedCoin3" parent="ChallengeNodes" index="2" unique_id=961726557]
 position = Vector2(2536, -136)
-
-[node name="RedCoin4" parent="ChallengeNodes" index="3"]
+[node name="RedCoin4" parent="ChallengeNodes" index="3" unique_id=1239491140]
 position = Vector2(2600, -56)
-
-[node name="RedCoin5" parent="ChallengeNodes" index="4"]
+[node name="RedCoin5" parent="ChallengeNodes" index="4" unique_id=1610736891]
 position = Vector2(2976, -96)
-
-[node name="InvisibleQuestionBlock" parent="ChallengeNodes" index="5"]
+[node name="InvisibleQuestionBlock" parent="ChallengeNodes" index="5" unique_id=892051605]
 position = Vector2(504, -104)
-
-[node name="InvisibleQuestionBlock3" parent="ChallengeNodes" index="6" instance=ExtResource("3_dfskb")]
+[node name="InvisibleQuestionBlock3" parent="ChallengeNodes" index="6" unique_id=1581930835 instance=ExtResource("3_dfskb")]
 position = Vector2(1176, -104)
-
-[node name="Enemies" type="Node" parent="." index="13"]
-
-[node name="GreenKoopaTroopa" parent="Enemies" index="0" instance=ExtResource("4_perlb")]
+[node name="Enemies" type="Node" parent="." index="13" unique_id=909139993]
+[node name="GreenKoopaTroopa" parent="Enemies" index="0" unique_id=2049606671 instance=ExtResource("4_perlb")]
 position = Vector2(376, -48)
-
-[node name="GreenKoopaTroopa2" parent="Enemies" index="1" instance=ExtResource("4_perlb")]
+[node name="GreenKoopaTroopa2" parent="Enemies" index="1" unique_id=1723082435 instance=ExtResource("4_perlb")]
 position = Vector2(584, -48)
 winged = true
-
-[node name="GreenKoopaTroopa4" parent="Enemies" index="2" instance=ExtResource("4_perlb")]
+[node name="GreenKoopaTroopa4" parent="Enemies" index="2" unique_id=795459091 instance=ExtResource("4_perlb")]
 position = Vector2(1992, -80)
 winged = true
-
-[node name="GreenKoopaTroopa5" parent="Enemies" index="3" instance=ExtResource("4_perlb")]
+[node name="GreenKoopaTroopa5" parent="Enemies" index="3" unique_id=63041752 instance=ExtResource("4_perlb")]
 position = Vector2(2248, -48)
 winged = true
-
-[node name="RedKoopaTroopa" parent="Enemies" index="4" instance=ExtResource("5_2bmpu")]
+[node name="RedKoopaTroopa" parent="Enemies" index="4" unique_id=1095586511 instance=ExtResource("5_2bmpu")]
 position = Vector2(1016, -48)
-
-[node name="RedKoopaTroopa2" parent="Enemies" index="5" instance=ExtResource("5_2bmpu")]
+[node name="RedKoopaTroopa2" parent="Enemies" index="5" unique_id=1010459961 instance=ExtResource("5_2bmpu")]
 position = Vector2(1272, -48)
-
-[node name="RedKoopaTroopa3" parent="Enemies" index="6" instance=ExtResource("5_2bmpu")]
+[node name="RedKoopaTroopa3" parent="Enemies" index="6" unique_id=64696328 instance=ExtResource("5_2bmpu")]
 position = Vector2(1656, 0)
-
-
-
-
-
-
-
-
-
-
-
-
-
-

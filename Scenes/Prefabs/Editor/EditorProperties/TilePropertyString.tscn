@@ -70,34 +70,34 @@ expand_margin_top = 1.0
 expand_margin_right = 1.0
 expand_margin_bottom = 1.0
 
-[node name="TilePropertyBOOL" type="HBoxContainer"]
+[node name="TilePropertyBOOL" type="HBoxContainer" unique_id=1024856683]
 offset_right = 184.0
 offset_bottom = 16.0
 script = ExtResource("1_yptip")
 tile_property_name = "text"
 
-[node name="Label" type="Label" parent="."]
+[node name="Label" type="Label" parent="." unique_id=261754132]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 text = "PROPERTY_NAME:"
 uppercase = true
 
-[node name="Value" type="Label" parent="."]
+[node name="Value" type="Label" parent="." unique_id=1585528963]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 text_overrun_behavior = 3
 uppercase = true
 
-[node name="Button" type="Button" parent="."]
+[node name="Button" type="Button" parent="." unique_id=1643189906]
 layout_mode = 2
 text = "…"
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1722542032]
 visible = false
 
-[node name="Panel" type="PanelContainer" parent="CanvasLayer"]
+[node name="Panel" type="PanelContainer" parent="CanvasLayer" unique_id=174368620]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -111,15 +111,15 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = ExtResource("2_4ea2j")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Panel"]
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Panel" unique_id=1502928035]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="CanvasLayer/Panel/VBoxContainer"]
+[node name="Label" type="Label" parent="CanvasLayer/Panel/VBoxContainer" unique_id=1816237637]
 layout_mode = 2
 size_flags_horizontal = 4
 text = "EDIT TEXT"
 
-[node name="HSeparator" type="HSeparator" parent="CanvasLayer/Panel/VBoxContainer/Label"]
+[node name="HSeparator" type="HSeparator" parent="CanvasLayer/Panel/VBoxContainer/Label" unique_id=874759884]
 layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0
@@ -130,7 +130,7 @@ grow_horizontal = 2
 grow_vertical = 0
 theme_override_styles/separator = SubResource("StyleBoxLine_yptip")
 
-[node name="TextEdit" type="TextEdit" parent="CanvasLayer/Panel/VBoxContainer"]
+[node name="TextEdit" type="TextEdit" parent="CanvasLayer/Panel/VBoxContainer" unique_id=22472612]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_fonts/font = SubResource("FontFile_yptip")
@@ -141,12 +141,12 @@ context_menu_enabled = false
 emoji_menu_enabled = false
 caret_blink = true
 
-[node name="Button" type="Button" parent="CanvasLayer/Panel/VBoxContainer"]
+[node name="Button" type="Button" parent="CanvasLayer/Panel/VBoxContainer" unique_id=1731897814]
 layout_mode = 2
 theme_override_styles/normal = ExtResource("3_yptip")
 text = "SUBMIT"
 
-[node name="TextValidator" type="Node" parent="."]
+[node name="TextValidator" type="Node" parent="." unique_id=1041004227]
 script = ExtResource("4_ibhoq")
 metadata/_custom_type_script = "uid://dja6281w30iv0"
 

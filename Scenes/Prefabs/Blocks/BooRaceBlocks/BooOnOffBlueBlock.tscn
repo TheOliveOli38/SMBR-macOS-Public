@@ -99,15 +99,15 @@ animations = [{
 "speed": 15.0
 }]
 
-[node name="BooOnOffBlock" instance=ExtResource("1_snfqb")]
+[node name="BooOnOffBlock" unique_id=1887646809 instance=ExtResource("1_snfqb")]
 active = true
 
-[node name="Sprite" parent="." index="0"]
+[node name="Sprite" parent="." index="0" unique_id=2047715053]
 sprite_frames = SubResource("SpriteFrames_yh3se")
 animation = &"Off"
 
-[node name="ResourceSetter" parent="Sprite" index="0"]
+[node name="ResourceSetter" parent="Sprite" index="0" unique_id=873755014]
 resource_json = ExtResource("3_yech7")
 
-[node name="Collision" parent="." index="1"]
+[node name="Collision" parent="." index="1" unique_id=687421064]
 disabled = false

@@ -9,7 +9,7 @@ size = Vector2(32, 8)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ch841"]
 size = Vector2(32, 8)
 
-[node name="CloudPlatform" instance=ExtResource("1_dv323")]
+[node name="CloudPlatform" unique_id=721403253 instance=ExtResource("1_dv323")]
 
 [node name="Sprite" parent="." index="0"]
 offset_left = -16.0

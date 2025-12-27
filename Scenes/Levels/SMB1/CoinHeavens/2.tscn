@@ -1,5 +1,4 @@
 [gd_scene load_steps=40 format=4 uid="uid://1j5xfkmge06g"]
-
 [ext_resource type="PackedScene" uid="uid://cnn6e523gkoa0" path="res://Scenes/Levels/SMB1/CoinHeavens/1.tscn" id="1_hpa5h"]
 [ext_resource type="Texture2D" uid="uid://dt0qtxu2l646n" path="res://Assets/Sprites/Tilesets/Terrain/Overworld.png" id="2_d8wvm"]
 [ext_resource type="PackedScene" uid="uid://dsa8lpl7n8ge0" path="res://Scenes/Prefabs/Blocks/BrickBlocks/BrickBlock.tscn" id="3_syjdb"]
@@ -25,31 +24,22 @@
 [ext_resource type="Texture2D" uid="uid://clbmg515rgdhs" path="res://Assets/Sprites/Tilesets/Liquids.png" id="23_o6or0"]
 [ext_resource type="Texture2D" uid="uid://cntkcqc74qp50" path="res://Assets/Sprites/Tilesets/Deco/OverworldDeco.png" id="24_v11m8"]
 [ext_resource type="Texture2D" uid="uid://cfk7rvu4in71u" path="res://Assets/Sprites/Blocks/ConveyorBelt.png" id="25_oyy1i"]
-
 [sub_resource type="TileMapPattern" id="TileMapPattern_b6qiv"]
 tile_data = PackedInt32Array(0, 524288, 0, 1, 589824, 0)
-
 [sub_resource type="TileMapPattern" id="TileMapPattern_d4nyf"]
 tile_data = PackedInt32Array(0, 524288, 1, 1, 589824, 1)
-
 [sub_resource type="TileMapPattern" id="TileMapPattern_ls3wh"]
 tile_data = PackedInt32Array(0, 524288, 2, 1, 589824, 2)
-
 [sub_resource type="TileMapPattern" id="TileMapPattern_vt0hv"]
 tile_data = PackedInt32Array(0, 524288, 3, 1, 589824, 3)
-
 [sub_resource type="TileMapPattern" id="TileMapPattern_xj38k"]
 tile_data = PackedInt32Array(0, 524288, 4, 1, 589824, 4)
-
 [sub_resource type="TileMapPattern" id="TileMapPattern_o5705"]
 tile_data = PackedInt32Array(0, 524288, 5, 1, 589824, 5)
-
 [sub_resource type="TileMapPattern" id="TileMapPattern_ra18v"]
 tile_data = PackedInt32Array(0, 524288, 6, 1, 589824, 6)
-
 [sub_resource type="TileMapPattern" id="TileMapPattern_7cpm5"]
 tile_data = PackedInt32Array(0, 524288, 7, 1, 589824, 7)
-
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_tq7mc"]
 resource_name = "Terrain"
 texture = ExtResource("2_d8wvm")
@@ -716,7 +706,6 @@ texture = ExtResource("2_d8wvm")
 13:10/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 11:10/0 = 0
 11:10/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
-
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_r0brg"]
 scenes/1/scene = ExtResource("3_syjdb")
 scenes/2/scene = ExtResource("14_0qxkj")
@@ -738,7 +727,6 @@ scenes/17/scene = ExtResource("11_n1nt6")
 scenes/18/scene = ExtResource("12_4lvn8")
 scenes/19/scene = ExtResource("13_gsf6o")
 scenes/20/scene = ExtResource("15_wjffo")
-
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_n64oy"]
 texture = ExtResource("23_o6or0")
 0:0/next_alternative_id = 2
@@ -835,7 +823,6 @@ texture = ExtResource("23_o6or0")
 &"type": 14
 }
 0:7/1 = 1
-
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_m1hb4"]
 texture = ExtResource("24_v11m8")
 0:0/0 = 0
@@ -858,7 +845,6 @@ texture = ExtResource("24_v11m8")
 3:0/0/z_index = -10
 4:0/0 = 0
 4:0/0/z_index = -10
-
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hnm3j"]
 texture = ExtResource("25_oyy1i")
 0:0/next_alternative_id = 3
@@ -941,7 +927,6 @@ texture = ExtResource("25_oyy1i")
 8: [17],
 &"type": 17
 }
-
 [sub_resource type="TileSet" id="TileSet_hfunl"]
 resource_local_to_scene = true
 physics_layer_0/collision_layer = 2
@@ -1016,26 +1001,9 @@ metadata/_better_terrain = {
 }]],
 &"version": "0.2"
 }
-
-[node name="Level" instance=ExtResource("1_hpa5h")]
-
-[node name="Tiles" parent="." index="1"]
+[node name="Level" unique_id=1189179858 instance=ExtResource("1_hpa5h")]
+[node name="Tiles" parent="." index="1" unique_id=1674661667]
 tile_map_data = PackedByteArray("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")
 tile_set = SubResource("TileSet_hfunl")
-
-[node name="CameraRightLimit" parent="." index="7"]
+[node name="CameraRightLimit" parent="." index="7" unique_id=1562605601]
 position = Vector2(1248, -8)
-
-
-
-
-
-
-
-
-
-
-
-
-
-

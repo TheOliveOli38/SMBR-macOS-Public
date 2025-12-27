@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://ck3y3ywkefn6"]
+[gd_scene load_steps=11 format=3 uid="uid://ck3y3ywkefn6"]
 
 [ext_resource type="PackedScene" uid="uid://cuh62hlq8errh" path="res://Scenes/Prefabs/Entities/Player.tscn" id="1_vt2g7"]
 [ext_resource type="Texture2D" uid="uid://cqnw2x27uxb8i" path="res://Assets/Sprites/Players/InvinciblePalettes/Overworld.png" id="2_1hctd"]
@@ -471,33 +471,17 @@ func exit() -> void:
 resource_local_to_scene = true
 size = Vector2(9.2, 14)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_3sapf"]
-resource_local_to_scene = true
-size = Vector2(9.2, 29.5)
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dwu0w"]
 resource_local_to_scene = true
 size = Vector2(6, 15.5)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_dyxme"]
-resource_local_to_scene = true
-size = Vector2(6, 29.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_02il1"]
 resource_local_to_scene = true
 size = Vector2(10, 16.5)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_rbmw1"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vt2g7"]
 resource_local_to_scene = true
-size = Vector2(10, 30.5)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_yr8mu"]
-resource_local_to_scene = true
-size = Vector2(4, 6.75)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ctk0h"]
-resource_local_to_scene = true
-size = Vector2(4, 12)
+size = Vector2(8, 8)
 
 [node name="Player" unique_id=1190317973 instance=ExtResource("1_vt2g7")]
 scale = Vector2(2, 2)
@@ -508,47 +492,21 @@ material = SubResource("ShaderMaterial_jund5")
 [node name="Normal" parent="States" parent_id_path=PackedInt32Array(2000324112) index="0" unique_id=1029242467]
 script = SubResource("GDScript_0nl40")
 
-[node name="SmallShape" parent="Hitbox" parent_id_path=PackedInt32Array(2054851719) index="0" unique_id=2041618811]
+[node name="Shape" parent="Hitbox" parent_id_path=PackedInt32Array(2054851719) index="0" unique_id=2041618811]
+position = Vector2(0, -7)
 shape = SubResource("RectangleShape2D_ml2oh")
 
-[node name="BigShape" parent="Hitbox" parent_id_path=PackedInt32Array(2054851719) index="1" unique_id=3638387]
-shape = SubResource("RectangleShape2D_3sapf")
-
-[node name="FireShape" parent="Hitbox" parent_id_path=PackedInt32Array(2054851719) index="2" unique_id=1097949057]
-shape = SubResource("RectangleShape2D_3sapf")
-
-[node name="SmallShape" parent="WaterDetect" parent_id_path=PackedInt32Array(764842293) index="0" unique_id=1492110389]
+[node name="Shape" parent="WaterDetect" parent_id_path=PackedInt32Array(764842293) index="0" unique_id=1492110389]
+position = Vector2(0, -7.75)
 shape = SubResource("RectangleShape2D_dwu0w")
 
-[node name="BigShape" parent="WaterDetect" parent_id_path=PackedInt32Array(764842293) index="1" unique_id=1296858438]
-shape = SubResource("RectangleShape2D_dyxme")
-
-[node name="FireShape" parent="WaterDetect" parent_id_path=PackedInt32Array(764842293) index="2" unique_id=1215268052]
-shape = SubResource("RectangleShape2D_dyxme")
-
-[node name="SmallShape" parent="LavaDetect" parent_id_path=PackedInt32Array(272558444) index="0" unique_id=1361790950]
+[node name="Shape" parent="LavaDetect" parent_id_path=PackedInt32Array(272558444) index="0" unique_id=1361790950]
+position = Vector2(0, -8.25)
 shape = SubResource("RectangleShape2D_02il1")
 
-[node name="BigShape" parent="LavaDetect" parent_id_path=PackedInt32Array(272558444) index="1" unique_id=1514277755]
-shape = SubResource("RectangleShape2D_rbmw1")
-
-[node name="FireShape" parent="LavaDetect" parent_id_path=PackedInt32Array(272558444) index="2" unique_id=1396306359]
-shape = SubResource("RectangleShape2D_rbmw1")
-
-[node name="SmallShape" parent="PoisonDetect" parent_id_path=PackedInt32Array(949078937) index="0" unique_id=1435651111]
+[node name="Shape" parent="PoisonDetect" parent_id_path=PackedInt32Array(949078937) index="0" unique_id=1435651111]
+position = Vector2(0, -8.25)
 shape = SubResource("RectangleShape2D_02il1")
 
-[node name="BigShape" parent="PoisonDetect" parent_id_path=PackedInt32Array(949078937) index="1" unique_id=422639108]
-shape = SubResource("RectangleShape2D_rbmw1")
-
-[node name="FireShape" parent="PoisonDetect" parent_id_path=PackedInt32Array(949078937) index="2" unique_id=1691775462]
-shape = SubResource("RectangleShape2D_rbmw1")
-
-[node name="SmallShape" parent="BlockCollision" parent_id_path=PackedInt32Array(1507773990) index="0" unique_id=15466727]
-shape = SubResource("RectangleShape2D_yr8mu")
-
-[node name="BigShape" parent="BlockCollision" parent_id_path=PackedInt32Array(1507773990) index="1" unique_id=484585453]
-shape = SubResource("RectangleShape2D_ctk0h")
-
-[node name="FireShape" parent="BlockCollision" parent_id_path=PackedInt32Array(1507773990) index="2" unique_id=1401818493]
-shape = SubResource("RectangleShape2D_ctk0h")
+[node name="Shape" parent="BlockCollision" parent_id_path=PackedInt32Array(183752720) index="0" unique_id=2092768561]
+shape = SubResource("RectangleShape2D_vt2g7")

@@ -1,5 +1,4 @@
 [gd_scene load_steps=41 format=3 uid="uid://bb3k81dx6dyyc"]
-
 [ext_resource type="PackedScene" uid="uid://cnn6e523gkoa0" path="res://Scenes/Levels/SMB1/CoinHeavens/1.tscn" id="1_dycrl"]
 [ext_resource type="Texture2D" uid="uid://dt0qtxu2l646n" path="res://Assets/Sprites/Tilesets/Terrain/Overworld.png" id="2_gt5vl"]
 [ext_resource type="PackedScene" uid="uid://dsa8lpl7n8ge0" path="res://Scenes/Prefabs/Blocks/BrickBlocks/BrickBlock.tscn" id="3_isldh"]
@@ -26,31 +25,22 @@
 [ext_resource type="Texture2D" uid="uid://cntkcqc74qp50" path="res://Assets/Sprites/Tilesets/Deco/OverworldDeco.png" id="24_ygyo8"]
 [ext_resource type="Texture2D" uid="uid://cfk7rvu4in71u" path="res://Assets/Sprites/Blocks/ConveyorBelt.png" id="25_rc7ld"]
 [ext_resource type="Script" uid="uid://bjs5mlc3xrxud" path="res://Scripts/Parts/DiscoLevel.gd" id="26_lyois"]
-
 [sub_resource type="TileMapPattern" id="TileMapPattern_b6qiv"]
 tile_data = PackedInt32Array(0, 524288, 0, 1, 589824, 0)
-
 [sub_resource type="TileMapPattern" id="TileMapPattern_d4nyf"]
 tile_data = PackedInt32Array(0, 524288, 1, 1, 589824, 1)
-
 [sub_resource type="TileMapPattern" id="TileMapPattern_ls3wh"]
 tile_data = PackedInt32Array(0, 524288, 2, 1, 589824, 2)
-
 [sub_resource type="TileMapPattern" id="TileMapPattern_vt0hv"]
 tile_data = PackedInt32Array(0, 524288, 3, 1, 589824, 3)
-
 [sub_resource type="TileMapPattern" id="TileMapPattern_xj38k"]
 tile_data = PackedInt32Array(0, 524288, 4, 1, 589824, 4)
-
 [sub_resource type="TileMapPattern" id="TileMapPattern_o5705"]
 tile_data = PackedInt32Array(0, 524288, 5, 1, 589824, 5)
-
 [sub_resource type="TileMapPattern" id="TileMapPattern_ra18v"]
 tile_data = PackedInt32Array(0, 524288, 6, 1, 589824, 6)
-
 [sub_resource type="TileMapPattern" id="TileMapPattern_7cpm5"]
 tile_data = PackedInt32Array(0, 524288, 7, 1, 589824, 7)
-
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kiedu"]
 resource_name = "Terrain"
 texture = ExtResource("2_gt5vl")
@@ -717,7 +707,6 @@ texture = ExtResource("2_gt5vl")
 13:10/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 11:10/0 = 0
 11:10/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
-
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_mcbwg"]
 scenes/1/scene = ExtResource("3_isldh")
 scenes/2/scene = ExtResource("14_urgu2")
@@ -739,7 +728,6 @@ scenes/17/scene = ExtResource("11_xae5u")
 scenes/18/scene = ExtResource("12_1yrl0")
 scenes/19/scene = ExtResource("13_khfyp")
 scenes/20/scene = ExtResource("15_tgbjv")
-
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_n1pyu"]
 texture = ExtResource("23_wvyba")
 0:0/next_alternative_id = 2
@@ -836,7 +824,6 @@ texture = ExtResource("23_wvyba")
 &"type": 14
 }
 0:7/1 = 1
-
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7xmnd"]
 texture = ExtResource("24_ygyo8")
 0:0/0 = 0
@@ -859,7 +846,6 @@ texture = ExtResource("24_ygyo8")
 3:0/0/z_index = -10
 4:0/0 = 0
 4:0/0/z_index = -10
-
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8w378"]
 texture = ExtResource("25_rc7ld")
 0:0/next_alternative_id = 3
@@ -942,7 +928,6 @@ texture = ExtResource("25_rc7ld")
 8: [17],
 &"type": 17
 }
-
 [sub_resource type="TileSet" id="TileSet_atxut"]
 resource_local_to_scene = true
 physics_layer_0/collision_layer = 2
@@ -1017,33 +1002,15 @@ metadata/_better_terrain = {
 }]],
 &"version": "0.2"
 }
-
-[node name="Level" instance=ExtResource("1_dycrl")]
+[node name="Level" unique_id=1781201704 instance=ExtResource("1_dycrl")]
 theme_time = "Night"
 campaign = "SMBANN"
-
-[node name="Tiles" parent="." index="1"]
+[node name="Tiles" parent="." index="1" unique_id=1674661667]
 tile_set = SubResource("TileSet_atxut")
-
-[node name="LevelBG" parent="." index="8"]
+[node name="LevelBG" parent="." index="8" unique_id=458182856]
 time_of_day = 1
-
-[node name="DiscoLevel" type="Node" parent="." index="10"]
+[node name="DiscoLevel" type="Node" parent="." index="10" unique_id=793632843]
 script = ExtResource("26_lyois")
 combo_meter_rate = 0.0
 max_combo = 1.0
 metadata/_custom_type_script = "uid://bjs5mlc3xrxud"
-
-
-
-
-
-
-
-
-
-
-
-
-
-

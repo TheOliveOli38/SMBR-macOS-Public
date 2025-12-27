@@ -213,9 +213,8 @@ script = ExtResource("3_5qjsg")
 hitbox = NodePath("../Hitbox")
 metadata/_custom_type_script = "uid://chj8hu207lrh"
 
-[node name="Movement" type="Node" parent="." unique_id=1519658784 node_paths=PackedStringArray("visuals")]
+[node name="Movement" type="Node" parent="." unique_id=1519658784]
 script = ExtResource("4_70th7")
-visuals = NodePath("../ScaleJoint/Sprite")
 
 [node name="ShellDetection" type="Node" parent="." unique_id=1837271726 node_paths=PackedStringArray("hitbox")]
 script = ExtResource("6_j3rs3")

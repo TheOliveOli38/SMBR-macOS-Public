@@ -787,4 +787,8 @@
 		"res://Scenes/Prefabs/Entities/Objects/SmallGrinder.tscn",
 		"8,8"
 	],
+	"DR": [
+		"res://Scenes/Prefabs/Entities/Objects/TrackPlatform.tscn",
+		"0,0"
+	]
 }

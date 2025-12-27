@@ -6,7 +6,7 @@
 [ext_resource type="Script" uid="uid://cb0spbe0l8mof" path="res://Scripts/Classes/Components/AnimationPauser.gd" id="3_iy32g"]
 [ext_resource type="Script" uid="uid://364rywt44hy6" path="res://Scripts/Classes/UI/PackSprite.gd" id="4_0jnxm"]
 
-[node name="OnOffSidewaysPlatform" instance=ExtResource("1_nwvxx")]
+[node name="OnOffSidewaysPlatform" unique_id=705799312 instance=ExtResource("1_nwvxx")]
 
 [node name="Sprite" parent="AnimatableBody2D" index="0"]
 offset_left = -20.0
@@ -17,7 +17,7 @@ region_rect = Rect2(0, 0, 24, 8)
 [node name="ResourceSetter" parent="AnimatableBody2D/Sprite" index="0"]
 resource_json = ExtResource("3_50hv7")
 
-[node name="Sprite2D" type="Sprite2D" parent="AnimatableBody2D/Sprite" index="1"]
+[node name="Sprite2D" type="Sprite2D" parent="AnimatableBody2D/Sprite" index="1" unique_id=1627706176]
 position = Vector2(16, 0)
 texture = ExtResource("2_iy32g")
 centered = false
@@ -27,7 +27,10 @@ region_rect = Rect2(24, 0, 16, 8)
 script = ExtResource("4_0jnxm")
 metadata/_custom_type_script = "uid://364rywt44hy6"
 
-[node name="AnimationPauser" type="Node" parent="." index="4" node_paths=PackedStringArray("animation_player") groups=["BooBlocks"]]
+[node name="AnimationPlayer" parent="." index="1"]
+autoplay = &"Move"
+
+[node name="AnimationPauser" type="Node" parent="." index="4" unique_id=608336505 node_paths=PackedStringArray("animation_player") groups=["BooBlocks"]]
 script = ExtResource("3_iy32g")
 animation_player = NodePath("../AnimationPlayer")
 paused = true

@@ -114,11 +114,11 @@ _data = {
 &"RESET": SubResource("Animation_ybxan")
 }
 
-[node name="ClockItem" type="CharacterBody2D"]
+[node name="ClockItem" type="CharacterBody2D" unique_id=2127510826]
 script = ExtResource("1_heiyr")
 metadata/_custom_type_script = "uid://cjkurwybsaywm"
 
-[node name="Sprite" type="AnimatedSprite2D" parent="."]
+[node name="Sprite" type="AnimatedSprite2D" parent="." unique_id=1067188433]
 position = Vector2(0, -8)
 sprite_frames = SubResource("SpriteFrames_qa2fo")
 offset = Vector2(0, 1)
@@ -126,19 +126,19 @@ script = ExtResource("2_heiyr")
 do_offset = false
 metadata/_custom_type_script = "uid://caq1qiwmy0mox"
 
-[node name="ResourceSetterNew" type="Node" parent="Sprite" node_paths=PackedStringArray("node_to_affect")]
+[node name="ResourceSetterNew" type="Node" parent="Sprite" unique_id=634309988 node_paths=PackedStringArray("node_to_affect")]
 script = ExtResource("3_ov4xw")
 node_to_affect = NodePath("..")
 property_name = "sprite_frames"
 resource_json = ExtResource("4_newwu")
 metadata/_custom_type_script = "uid://cbal8ms2oe1ik"
 
-[node name="Hitbox" type="Area2D" parent="Sprite"]
+[node name="Hitbox" type="Area2D" parent="Sprite" unique_id=260905225]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite/Hitbox"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite/Hitbox" unique_id=841244052]
 shape = SubResource("RectangleShape2D_ydslq")
 
-[node name="Label" type="Label" parent="."]
+[node name="Label" type="Label" parent="." unique_id=400974309]
 visible = false
 offset_left = -24.0
 offset_top = -8.0
@@ -148,17 +148,17 @@ text = "+100"
 horizontal_alignment = 1
 uppercase = true
 
-[node name="TextShadowColourChanger" type="Node" parent="Label" node_paths=PackedStringArray("labels")]
+[node name="TextShadowColourChanger" type="Node" parent="Label" unique_id=453302842 node_paths=PackedStringArray("labels")]
 script = ExtResource("6_ggci8")
 labels = [NodePath("..")]
 metadata/_custom_type_script = "uid://dt2p68xl462v2"
 
-[node name="LabelFontChanger" type="Node" parent="Label" node_paths=PackedStringArray("labels")]
+[node name="LabelFontChanger" type="Node" parent="Label" unique_id=1023586092 node_paths=PackedStringArray("labels")]
 script = ExtResource("7_eol0e")
 labels = [NodePath("..")]
 metadata/_custom_type_script = "uid://co6tjg3w6qpd8"
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Label"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Label" unique_id=39453831]
 libraries = {
 &"": SubResource("AnimationLibrary_ov4xw")
 }

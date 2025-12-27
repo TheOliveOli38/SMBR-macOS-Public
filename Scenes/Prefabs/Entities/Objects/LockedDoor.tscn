@@ -64,12 +64,12 @@ animations = [{
 locked = true
 start_locked = true
 
-[node name="Sprite" parent="." index="1"]
+[node name="Sprite" parent="." index="1" unique_id=2013555801]
 sprite_frames = SubResource("SpriteFrames_1efep")
 animation = &"Locked"
 autoplay = "Locked"
 frame = 0
 frame_progress = 0.0
 
-[node name="ResourceSetterNew" parent="Sprite" index="0"]
+[node name="ResourceSetterNew" parent="Sprite" index="0" unique_id=1666477828]
 resource_json = ExtResource("2_0bcyf")

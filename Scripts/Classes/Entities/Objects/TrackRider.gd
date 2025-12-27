@@ -23,11 +23,6 @@ var can_move := true
 
 var moving := false
 
-func _ready() -> void:
-	start()
-	await get_tree().physics_frame
-	if attached_entity != null:
-		attach_to_joint(attached_entity)
 
 func start() -> void:
 	if $SignalExposer.total_inputs > 0:
@@ -38,6 +33,8 @@ func start() -> void:
 		can_move = false
 	if Global.level_editor_is_editing() == false:
 		global_position += Vector2.DOWN * 0.1
+	if attached_entity != null:
+		attach_to_joint(attached_entity)
 
 func check_for_entities() -> void:
 	for i in $Hitbox.get_overlapping_bodies():

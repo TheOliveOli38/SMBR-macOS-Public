@@ -1,5 +1,4 @@
 [gd_scene load_steps=41 format=3 uid="uid://d0eoxuntnuej5"]
-
 [ext_resource type="PackedScene" uid="uid://bpbs3060xjy06" path="res://Scenes/Levels/SMB1/World7/7-3.tscn" id="1_41ghk"]
 [ext_resource type="JSON" path="res://Assets/Audio/BGM/Overworld.json" id="2_llbsp"]
 [ext_resource type="Texture2D" uid="uid://dt0qtxu2l646n" path="res://Assets/Sprites/Tilesets/Terrain/Overworld.png" id="2_qwk22"]
@@ -26,31 +25,22 @@
 [ext_resource type="Texture2D" uid="uid://clbmg515rgdhs" path="res://Assets/Sprites/Tilesets/Liquids.png" id="23_sql82"]
 [ext_resource type="Texture2D" uid="uid://cntkcqc74qp50" path="res://Assets/Sprites/Tilesets/Deco/OverworldDeco.png" id="24_6x3u2"]
 [ext_resource type="Texture2D" uid="uid://cfk7rvu4in71u" path="res://Assets/Sprites/Blocks/ConveyorBelt.png" id="25_l5p8y"]
-
 [sub_resource type="TileMapPattern" id="TileMapPattern_b6qiv"]
 tile_data = PackedInt32Array(0, 524288, 0, 1, 589824, 0)
-
 [sub_resource type="TileMapPattern" id="TileMapPattern_d4nyf"]
 tile_data = PackedInt32Array(0, 524288, 1, 1, 589824, 1)
-
 [sub_resource type="TileMapPattern" id="TileMapPattern_ls3wh"]
 tile_data = PackedInt32Array(0, 524288, 2, 1, 589824, 2)
-
 [sub_resource type="TileMapPattern" id="TileMapPattern_vt0hv"]
 tile_data = PackedInt32Array(0, 524288, 3, 1, 589824, 3)
-
 [sub_resource type="TileMapPattern" id="TileMapPattern_xj38k"]
 tile_data = PackedInt32Array(0, 524288, 4, 1, 589824, 4)
-
 [sub_resource type="TileMapPattern" id="TileMapPattern_o5705"]
 tile_data = PackedInt32Array(0, 524288, 5, 1, 589824, 5)
-
 [sub_resource type="TileMapPattern" id="TileMapPattern_ra18v"]
 tile_data = PackedInt32Array(0, 524288, 6, 1, 589824, 6)
-
 [sub_resource type="TileMapPattern" id="TileMapPattern_7cpm5"]
 tile_data = PackedInt32Array(0, 524288, 7, 1, 589824, 7)
-
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_oifvu"]
 resource_name = "Terrain"
 texture = ExtResource("2_qwk22")
@@ -717,7 +707,6 @@ texture = ExtResource("2_qwk22")
 13:10/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 11:10/0 = 0
 11:10/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
-
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_14sbk"]
 scenes/1/scene = ExtResource("3_llbsp")
 scenes/2/scene = ExtResource("14_j5rtp")
@@ -739,7 +728,6 @@ scenes/17/scene = ExtResource("11_uc57t")
 scenes/18/scene = ExtResource("12_2ioj2")
 scenes/19/scene = ExtResource("13_bk50m")
 scenes/20/scene = ExtResource("15_8med7")
-
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wfgjv"]
 texture = ExtResource("23_sql82")
 0:0/next_alternative_id = 2
@@ -836,7 +824,6 @@ texture = ExtResource("23_sql82")
 &"type": 14
 }
 0:7/1 = 1
-
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lt042"]
 texture = ExtResource("24_6x3u2")
 0:0/0 = 0
@@ -859,7 +846,6 @@ texture = ExtResource("24_6x3u2")
 3:0/0/z_index = -10
 4:0/0 = 0
 4:0/0/z_index = -10
-
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_dk1q7"]
 texture = ExtResource("25_l5p8y")
 0:0/next_alternative_id = 3
@@ -942,7 +928,6 @@ texture = ExtResource("25_l5p8y")
 8: [17],
 &"type": 17
 }
-
 [sub_resource type="TileSet" id="TileSet_02lmb"]
 resource_local_to_scene = true
 physics_layer_0/collision_layer = 2
@@ -1017,7 +1002,6 @@ metadata/_better_terrain = {
 }]],
 &"version": "0.2"
 }
-
 [node name="7-3" unique_id=1490926858 instance=ExtResource("1_41ghk")]
 music = ExtResource("2_llbsp")
 theme = "Overworld"
@@ -1025,24 +1009,8 @@ theme_time = "Day"
 time_limit = 85
 world_id = -1
 level_id = 2
-
-[node name="LevelBG" parent="." index="0"]
+[node name="LevelBG" parent="." index="0" unique_id=1505286432]
 primary_layer = 0
 liquid_layer = 2
-
-[node name="Tiles" parent="." index="2"]
+[node name="Tiles" parent="." index="2" unique_id=918083686]
 tile_set = SubResource("TileSet_02lmb")
-
-
-
-
-
-
-
-
-
-
-
-
-
-

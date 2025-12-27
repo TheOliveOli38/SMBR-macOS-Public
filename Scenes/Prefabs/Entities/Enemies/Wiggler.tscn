@@ -89,7 +89,7 @@ animations = [{
 "speed": 15.0
 }]
 
-[node name="Wiggler" type="CharacterBody2D"]
+[node name="Wiggler" type="CharacterBody2D" unique_id=601622491]
 collision_layer = 16
 collision_mask = 18
 floor_stop_on_slope = false
@@ -100,49 +100,49 @@ floor_snap_length = 4.0
 script = ExtResource("1_h7jtn")
 metadata/_custom_type_script = "uid://bpydbpyjk1mt4"
 
-[node name="BasicEnemyMovement" type="Node" parent="." node_paths=PackedStringArray("ledge_detection_cast")]
+[node name="BasicEnemyMovement" type="Node" parent="." unique_id=1301769216 node_paths=PackedStringArray("ledge_detection_cast")]
 script = ExtResource("2_sf3o5")
 ledge_detection_cast = NodePath("../LedgeDetectionCast")
 auto_call = false
 metadata/_custom_type_script = "uid://dlq6o2rg1x7in"
 
-[node name="Parts" type="Node" parent="."]
+[node name="Parts" type="Node" parent="." unique_id=1948478502]
 
-[node name="Body4" parent="Parts" instance=ExtResource("3_0grne")]
+[node name="Body4" parent="Parts" unique_id=1504230147 instance=ExtResource("3_0grne")]
 position = Vector2(32, 0)
 
-[node name="Body3" parent="Parts" instance=ExtResource("3_0grne")]
+[node name="Body3" parent="Parts" unique_id=1877164420 instance=ExtResource("3_0grne")]
 position = Vector2(24, 0)
 
-[node name="Body2" parent="Parts" instance=ExtResource("3_0grne")]
+[node name="Body2" parent="Parts" unique_id=1031707851 instance=ExtResource("3_0grne")]
 position = Vector2(16, 0)
 
-[node name="Body1" parent="Parts" instance=ExtResource("3_0grne")]
+[node name="Body1" parent="Parts" unique_id=1171997030 instance=ExtResource("3_0grne")]
 position = Vector2(8, 0)
 
-[node name="Head" parent="Parts" instance=ExtResource("3_0grne")]
+[node name="Head" parent="Parts" unique_id=1352796773 instance=ExtResource("3_0grne")]
 
-[node name="Sprite" parent="Parts/Head" index="0"]
+[node name="Sprite" parent="Parts/Head" index="0" unique_id=1106356999]
 position = Vector2(0, -16)
 sprite_frames = SubResource("SpriteFrames_c4iu3")
 frame_progress = 0.0
 
-[node name="ResourceSetterNew" parent="Parts/Head/Sprite" index="0"]
+[node name="ResourceSetterNew" parent="Parts/Head/Sprite" index="0" unique_id=1164057203]
 resource_json = ExtResource("8_h7jtn")
 
-[node name="LedgeDetectionCast" type="RayCast2D" parent="."]
+[node name="LedgeDetectionCast" type="RayCast2D" parent="." unique_id=1863642363]
 position = Vector2(-4, -5)
 target_position = Vector2(0, 8)
 collision_mask = 2
 script = ExtResource("9_h7jtn")
 
-[node name="Collision" type="CollisionShape2D" parent="."]
+[node name="Collision" type="CollisionShape2D" parent="." unique_id=1867799206]
 position = Vector2(0, -4)
 shape = SubResource("RectangleShape2D_h7jtn")
 
-[node name="Timer" type="Timer" parent="."]
+[node name="Timer" type="Timer" parent="." unique_id=1721336106]
 
-[node name="FlowerPoof" type="AnimatedSprite2D" parent="."]
+[node name="FlowerPoof" type="AnimatedSprite2D" parent="." unique_id=1850175411]
 position = Vector2(4, -20)
 sprite_frames = SubResource("SpriteFrames_n20q3")
 frame = 4

@@ -6,13 +6,13 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_usqbd"]
 size = Vector2(16, 48)
 
-[node name="PickAPathPoint" type="Node2D"]
+[node name="PickAPathPoint" type="Node2D" unique_id=422045706]
 script = ExtResource("1_ix7da")
 
-[node name="Hitbox" type="Area2D" parent="."]
+[node name="Hitbox" type="Area2D" parent="." unique_id=2132951636]
 script = ExtResource("2_eadvl")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=177216845]
 shape = SubResource("RectangleShape2D_usqbd")
 
 [connection signal="player_entered" from="Hitbox" to="." method="on_player_entered"]

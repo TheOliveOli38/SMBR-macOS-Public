@@ -9,14 +9,15 @@
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_nj8xm"]
 shader = ExtResource("2_ovt7x")
+shader_parameter/transparent_colour = Color(0, 0, 0, 0)
 
-[node name="PlayerGhost" type="Node2D"]
+[node name="PlayerGhost" type="Node2D" unique_id=812783550]
 process_mode = 3
 physics_interpolation_mode = 1
 visibility_layer = 2
 script = ExtResource("1_nj8xm")
 
-[node name="PlayerSprite" type="AnimatedSprite2D" parent="." node_paths=PackedStringArray("resource_setter")]
+[node name="PlayerSprite" type="AnimatedSprite2D" parent="." unique_id=1020111335 node_paths=PackedStringArray("resource_setter")]
 modulate = Color(1, 1, 1, 0.75)
 clip_children = 2
 material = SubResource("ShaderMaterial_nj8xm")
@@ -29,7 +30,7 @@ script = ExtResource("3_r56m0")
 resource_setter = NodePath("ResourceSetterNew")
 metadata/_custom_type_script = "uid://b08qfwj5jk6g1"
 
-[node name="Tint" type="ColorRect" parent="PlayerSprite"]
+[node name="Tint" type="ColorRect" parent="PlayerSprite" unique_id=764885984]
 visible = false
 offset_left = -521.0
 offset_top = -482.0
@@ -37,11 +38,11 @@ offset_right = 478.0
 offset_bottom = 517.0
 color = Color(0.968627, 0.223529, 0.0627451, 1)
 
-[node name="ResourceSetterNew" type="Node" parent="PlayerSprite"]
+[node name="ResourceSetterNew" type="Node" parent="PlayerSprite" unique_id=1910088194]
 script = ExtResource("4_nj8xm")
 metadata/_custom_type_script = "uid://cbal8ms2oe1ik"
 
-[node name="Label" type="Label" parent="."]
+[node name="Label" type="Label" parent="." unique_id=1417608817]
 visible = false
 offset_left = -11.0
 offset_top = -27.0
@@ -50,7 +51,7 @@ offset_bottom = -19.0
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 text = "PB"
 
-[node name="LabelFontChanger" type="Node" parent="Label" node_paths=PackedStringArray("labels")]
+[node name="LabelFontChanger" type="Node" parent="Label" unique_id=1669010271 node_paths=PackedStringArray("labels")]
 script = ExtResource("5_r56m0")
 labels = [NodePath("..")]
 metadata/_custom_type_script = "uid://co6tjg3w6qpd8"

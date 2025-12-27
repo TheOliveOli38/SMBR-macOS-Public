@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://b32rbwuvfqn6x" path="res://Scripts/UI/GameBananaLevelDisplay.gd" id="1_tdprq"]
 
-[node name="GameBananaLevelDisplay" type="Control"]
+[node name="GameBananaLevelDisplay" type="Control" unique_id=1191052903]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -11,7 +11,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_tdprq")
 
-[node name="PanelContainer" type="PanelContainer" parent="."]
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=191996922]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -19,5 +19,5 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ItemList" type="ItemList" parent="PanelContainer"]
+[node name="ItemList" type="ItemList" parent="PanelContainer" unique_id=1074851076]
 layout_mode = 2

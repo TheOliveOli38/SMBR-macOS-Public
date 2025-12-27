@@ -45,11 +45,11 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fh7wk"]
 size = Vector2(16, 16)
 
-[node name="SpinningTurnBlock" type="Node2D"]
+[node name="SpinningTurnBlock" type="Node2D" unique_id=578803092]
 z_index = -1
 script = ExtResource("2_aiilm")
 
-[node name="Sprite" type="AnimatedSprite2D" parent="."]
+[node name="Sprite" type="AnimatedSprite2D" parent="." unique_id=1733536279]
 sprite_frames = SubResource("SpriteFrames_rksv1")
 autoplay = "default"
 frame = 1
@@ -57,21 +57,21 @@ script = ExtResource("3_aiilm")
 do_offset = false
 metadata/_custom_type_script = "uid://caq1qiwmy0mox"
 
-[node name="ResourceSetterNew" type="Node" parent="Sprite" node_paths=PackedStringArray("node_to_affect")]
+[node name="ResourceSetterNew" type="Node" parent="Sprite" unique_id=565338739 node_paths=PackedStringArray("node_to_affect")]
 script = ExtResource("4_pd7sm")
 node_to_affect = NodePath("..")
 property_name = "sprite_frames"
 resource_json = ExtResource("5_gaxhp")
 metadata/_custom_type_script = "uid://cbal8ms2oe1ik"
 
-[node name="Timer" type="Timer" parent="."]
+[node name="Timer" type="Timer" parent="." unique_id=1705238311]
 wait_time = 5.0
 one_shot = true
 autostart = true
 
-[node name="PlayerDetectionArea" type="Area2D" parent="."]
+[node name="PlayerDetectionArea" type="Area2D" parent="." unique_id=1636077064]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetectionArea"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetectionArea" unique_id=293832926]
 shape = SubResource("RectangleShape2D_fh7wk")
 
 [connection signal="timeout" from="Timer" to="." method="on_timeout"]

@@ -4,17 +4,17 @@
 [ext_resource type="JSON" path="res://Assets/Sprites/Tilesets/PDoors.json" id="2_fprkw"]
 [ext_resource type="Script" uid="uid://bul1nbd2in1gn" path="res://Scripts/Classes/Components/PSwitcher.gd" id="3_fprkw"]
 
-[node name="Door" instance=ExtResource("1_ovd7t")]
+[node name="Door" unique_id=1201846047 instance=ExtResource("1_ovd7t")]
 
-[node name="Sprite" parent="." index="1"]
+[node name="Sprite" parent="." index="1" unique_id=2013555801]
 animation = &"Idle"
 frame = 0
 frame_progress = 0.0
 
-[node name="ResourceSetterNew" parent="Sprite" index="0"]
+[node name="ResourceSetterNew" parent="Sprite" index="0" unique_id=1666477828]
 resource_json = ExtResource("2_fprkw")
 
-[node name="PSwitcher" type="Node" parent="." index="6"]
+[node name="PSwitcher" type="Node" parent="." index="6" unique_id=48010562]
 script = ExtResource("3_fprkw")
 new_scene = "uid://c4wvocqpy0w66"
 metadata/_custom_type_script = "uid://bul1nbd2in1gn"

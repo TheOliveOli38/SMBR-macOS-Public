@@ -47,10 +47,10 @@ animations = [{
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_d5sl2"]
 normal = Vector2(-1, 0)
 
-[node name="CastleToad" type="Node2D" groups=["CastleNPCs"]]
+[node name="CastleToad" type="Node2D" unique_id=364721407 groups=["CastleNPCs"]]
 script = ExtResource("1_hytso")
 
-[node name="Sprite" type="AnimatedSprite2D" parent="."]
+[node name="Sprite" type="AnimatedSprite2D" parent="." unique_id=1713929806]
 position = Vector2(24, -16)
 sprite_frames = SubResource("SpriteFrames_jvnky")
 animation = &"Emote"
@@ -60,17 +60,17 @@ offset = Vector2(0, 1)
 script = ExtResource("3_puq45")
 metadata/_custom_type_script = "uid://caq1qiwmy0mox"
 
-[node name="ResourceSetterNew" type="Node" parent="Sprite" node_paths=PackedStringArray("node_to_affect")]
+[node name="ResourceSetterNew" type="Node" parent="Sprite" unique_id=1786679475 node_paths=PackedStringArray("node_to_affect")]
 script = ExtResource("4_ccewg")
 node_to_affect = NodePath("..")
 property_name = "sprite_frames"
 resource_json = ExtResource("5_i6fb7")
 metadata/_custom_type_script = "uid://cbal8ms2oe1ik"
 
-[node name="StandardMSG" type="Node2D" parent="."]
+[node name="StandardMSG" type="Node2D" parent="." unique_id=1180436761]
 unique_name_in_owner = true
 
-[node name="ThankYou" type="Label" parent="StandardMSG"]
+[node name="ThankYou" type="Label" parent="StandardMSG" unique_id=581752424]
 visible = false
 visibility_layer = 2
 offset_left = -96.0
@@ -83,7 +83,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 uppercase = true
 
-[node name="AnotherCastle" type="Label" parent="StandardMSG"]
+[node name="AnotherCastle" type="Label" parent="StandardMSG" unique_id=1939182112]
 visible = false
 visibility_layer = 2
 offset_left = -96.0
@@ -96,10 +96,10 @@ vertical_alignment = 3
 autowrap_mode = 2
 uppercase = true
 
-[node name="SpeedrunMSG" type="Node2D" parent="."]
+[node name="SpeedrunMSG" type="Node2D" parent="." unique_id=1585784247]
 unique_name_in_owner = true
 
-[node name="ThankYou" type="Label" parent="SpeedrunMSG"]
+[node name="ThankYou" type="Label" parent="SpeedrunMSG" unique_id=1564476775]
 visible = false
 visibility_layer = 2
 offset_left = -112.0
@@ -111,7 +111,7 @@ text = "CUTSCENE_MARATHON_PEACH_1"
 horizontal_alignment = 1
 uppercase = true
 
-[node name="Time" type="Label" parent="SpeedrunMSG"]
+[node name="Time" type="Label" parent="SpeedrunMSG" unique_id=1470519972]
 unique_name_in_owner = true
 visible = false
 visibility_layer = 2
@@ -126,7 +126,7 @@ vertical_alignment = 3
 autowrap_mode = 2
 uppercase = true
 
-[node name="PBMessage" type="Label" parent="SpeedrunMSG"]
+[node name="PBMessage" type="Label" parent="SpeedrunMSG" unique_id=1534218892]
 unique_name_in_owner = true
 visible = false
 visibility_layer = 2
@@ -141,26 +141,26 @@ vertical_alignment = 3
 autowrap_mode = 2
 uppercase = true
 
-[node name="CameraRightLimit" type="Node2D" parent="."]
+[node name="CameraRightLimit" type="Node2D" parent="." unique_id=105448341]
 position = Vector2(128, -80)
 script = ExtResource("4_griru")
 set_on_load = false
 metadata/_custom_type_script = "uid://bdq0373j5n5o0"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CameraRightLimit"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CameraRightLimit" unique_id=475953003]
 shape = SubResource("WorldBoundaryShape2D_d5sl2")
 
-[node name="TextShadowColourChanger" type="Node" parent="." node_paths=PackedStringArray("labels")]
+[node name="TextShadowColourChanger" type="Node" parent="." unique_id=1755592823 node_paths=PackedStringArray("labels")]
 script = ExtResource("11_ccewg")
 labels = [NodePath("../StandardMSG/ThankYou"), NodePath("../StandardMSG/AnotherCastle"), NodePath("../SpeedrunMSG/ThankYou"), NodePath("../SpeedrunMSG/Time"), NodePath("../SpeedrunMSG/PBMessage")]
 metadata/_custom_type_script = "uid://dt2p68xl462v2"
 
-[node name="LabelFontChanger" type="Node" parent="." node_paths=PackedStringArray("labels")]
+[node name="LabelFontChanger" type="Node" parent="." unique_id=1540408817 node_paths=PackedStringArray("labels")]
 script = ExtResource("11_i6fb7")
 labels = [NodePath("../StandardMSG/ThankYou"), NodePath("../StandardMSG/AnotherCastle"), NodePath("../SpeedrunMSG/ThankYou"), NodePath("../SpeedrunMSG/Time"), NodePath("../SpeedrunMSG/PBMessage")]
 metadata/_custom_type_script = "uid://co6tjg3w6qpd8"
 
-[node name="LevelEditorToggleDetection" type="Node" parent="." groups=["CastleBridges", "Flagpole"]]
+[node name="LevelEditorToggleDetection" type="Node" parent="." unique_id=2030107873 groups=["CastleBridges", "Flagpole"]]
 script = ExtResource("13_euu1x")
 metadata/_custom_type_script = "uid://b8vmbtoaaq5nc"
 

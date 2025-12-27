@@ -1,29 +1,11 @@
 [gd_scene load_steps=3 format=3 uid="uid://vn44k5wyhbje"]
-
 [ext_resource type="PackedScene" uid="uid://camnpk6u3cfdr" path="res://Scenes/Levels/SMB1/World4/4-2b.tscn" id="1_3wlad"]
 [ext_resource type="Script" uid="uid://bjs5mlc3xrxud" path="res://Scripts/Parts/DiscoLevel.gd" id="2_5lkk8"]
-
-[node name="4-2b" instance=ExtResource("1_3wlad")]
+[node name="4-2b" unique_id=271297656 instance=ExtResource("1_3wlad")]
 theme_time = "Night"
 campaign = "SMBANN"
-
-[node name="LevelBG" parent="." index="0"]
+[node name="LevelBG" parent="." index="0" unique_id=1685460183]
 time_of_day = 1
-
-[node name="DiscoLevel" type="Node" parent="." index="10"]
+[node name="DiscoLevel" type="Node" parent="." index="10" unique_id=1445129485]
 script = ExtResource("2_5lkk8")
 metadata/_custom_type_script = "uid://bjs5mlc3xrxud"
-
-
-
-
-
-
-
-
-
-
-
-
-
-

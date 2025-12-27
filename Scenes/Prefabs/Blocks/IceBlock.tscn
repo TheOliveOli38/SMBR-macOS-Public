@@ -5,13 +5,13 @@
 [ext_resource type="PackedScene" uid="uid://bugxh43j6muyh" path="res://Scenes/Prefabs/Particles/IceBlockDestructionParticles.tscn" id="2_i6r1m"]
 [ext_resource type="JSON" path="res://Assets/Sprites/Blocks/IceBlock.json" id="2_kvfhy"]
 
-[node name="EmptyBlock" instance=ExtResource("1_m6ehi")]
+[node name="EmptyBlock" unique_id=1647283603 instance=ExtResource("1_m6ehi")]
 collision_layer = 518
 destruction_particle_scene = ExtResource("2_i6r1m")
 
-[node name="Sprite" parent="." index="0"]
+[node name="Sprite" parent="." index="0" unique_id=814992240]
 texture = ExtResource("2_de2f5")
 region_enabled = false
 
-[node name="ResourceSetterNew" parent="Sprite" index="0"]
+[node name="ResourceSetterNew" parent="Sprite" index="0" unique_id=2120461870]
 resource_json = ExtResource("2_kvfhy")

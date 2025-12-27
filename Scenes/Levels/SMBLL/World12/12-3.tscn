@@ -1,43 +1,22 @@
 [gd_scene load_steps=4 format=3 uid="uid://dtvgovawrcnq2"]
-
 [ext_resource type="PackedScene" uid="uid://baq2lkf1x4yb5" path="res://Scenes/Levels/SMBLL/World7/7-3.tscn" id="1_qcqt4"]
 [ext_resource type="JSON" path="res://Assets/Audio/BGM/Sky.json" id="2_qcqt4"]
 [ext_resource type="PackedScene" uid="uid://4bb81eil6a4c" path="res://Scenes/Prefabs/Entities/Enemies/Lakitu.tscn" id="11_wyr2l"]
-
-[node name="C-3" instance=ExtResource("1_qcqt4")]
+[node name="C-3" unique_id=540398162 instance=ExtResource("1_qcqt4")]
 music = ExtResource("2_qcqt4")
 theme = "Skyland"
 theme_time = "Day"
 world_id = 12
-
-[node name="Lakitu" parent="Enemies" index="6" instance=ExtResource("11_wyr2l")]
+[node name="Lakitu" parent="Enemies" parent_id_path=PackedInt32Array(1273351390) index="6" unique_id=1785209267 instance=ExtResource("11_wyr2l")]
 position = Vector2(688, -80)
-
-[node name="Lakitu2" parent="Enemies" index="7" instance=ExtResource("11_wyr2l")]
+[node name="Lakitu2" parent="Enemies" parent_id_path=PackedInt32Array(1273351390) index="7" unique_id=1080536574 instance=ExtResource("11_wyr2l")]
 position = Vector2(1200, -80)
-
-[node name="Lakitu3" parent="Enemies" index="8" instance=ExtResource("11_wyr2l")]
+[node name="Lakitu3" parent="Enemies" parent_id_path=PackedInt32Array(1273351390) index="8" unique_id=1808202321 instance=ExtResource("11_wyr2l")]
 position = Vector2(1968, -80)
-
-[node name="Firebar3" parent="." index="14"]
+[node name="Firebar3" parent="." index="14" unique_id=686562353]
 scale = Vector2(-1, 1)
-
-[node name="LevelBG" parent="." index="20"]
+[node name="LevelBG" parent="." index="20" unique_id=2001088570]
 time_of_day = 0
 primary_layer = 0
 second_layer_offset = Vector2(0, -32)
 overlay_clouds = true
-
-
-
-
-
-
-
-
-
-
-
-
-
-

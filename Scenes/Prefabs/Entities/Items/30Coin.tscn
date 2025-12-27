@@ -6,5 +6,5 @@
 [node name="30Coin" unique_id=1133717281 instance=ExtResource("1_6xebq")]
 amount = 30
 
-[node name="ResourceSetterNew" parent="Node2D/Sprite" parent_id_path=PackedInt32Array(1158279776) index="0" unique_id=465438140]
+[node name="ResourceSetterNew" parent="Sprite" parent_id_path=PackedInt32Array(1158279776) index="0" unique_id=465438140]
 resource_json = ExtResource("2_vbgog")

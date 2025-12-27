@@ -31,7 +31,7 @@ animations = [{
 "speed": 15.0
 }]
 
-[node name="OnOffBlock" instance=ExtResource("1_gov4d")]
+[node name="OnOffBlock" unique_id=2038729255 instance=ExtResource("1_gov4d")]
 active = true
 
 [node name="Sprite" parent="." index="0"]
