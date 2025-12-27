@@ -7,11 +7,12 @@ extends Node2D
 
 var amount := 0
 
-func _ready() -> void:
-	$Timer.start()
+func start() -> void:
+	if $SignalExposer.total_inputs <= 0:
+		$Timer.start()
 
 func shoot() -> void:
-	if amount >= 3 or $Head/Raycast.is_colliding():
+	if (amount >= 3 or $Head/Raycast.is_colliding()) and $SignalExposer.total_inputs <= 0:
 		return
 	var node = item.instantiate()
 	var direction_vector = [Vector2.UP, Vector2(1, -1), Vector2.RIGHT, Vector2(1, 1), Vector2.DOWN, Vector2(-1, 1), Vector2.LEFT, Vector2(-1, -1), Vector2.UP][head_angle]
@@ -26,3 +27,4 @@ func shoot() -> void:
 	amount += 1
 	AudioManager.play_sfx("cannon", global_position)
 	add_sibling(node)
+	node.z_index = -1

@@ -7,7 +7,10 @@ signal turned_off
 
 func toggle() -> void:
 	powered = not powered
+	update()
+
+func update() -> void:
 	[turned_off, turned_on][int(powered)].emit()
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	$Sprite2D.frame = int(powered)

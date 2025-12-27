@@ -2,9 +2,11 @@
 
 [ext_resource type="Script" uid="uid://dlnm31ghtd415" path="res://Scripts/UI/EditorGuide.gd" id="1_1mv3v"]
 [ext_resource type="StyleBox" uid="uid://comkghpj0djcl" path="res://Resources/UI/Panel.tres" id="1_ua084"]
-[ext_resource type="VideoStream" uid="uid://71qskyteiy7y" path="res://Assets/Videos/Fuck.ogv" id="3_arq4g"]
 
 [sub_resource type="StyleBoxLine" id="StyleBoxLine_ua084"]
+color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_1mv3v"]
 color = Color(1, 1, 1, 1)
 
 [node name="EditorGuide" type="Control" unique_id=578106112]
@@ -57,15 +59,18 @@ size_flags_vertical = 3
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_styles/panel = ExtResource("1_ua084")
-item_count = 8
+item_count = 11
 item_0/text = "INTRODUCTION"
 item_1/text = "CONTROLS"
 item_2/text = "MODIFYING TILES"
-item_3/text = "SHORTCUTS"
-item_4/text = "PIPES"
-item_5/text = "WARPS"
-item_6/text = "GIZMOS"
-item_7/text = "TIPS & TRICKS"
+item_3/text = "MASS PLACING"
+item_4/text = "SHORTCUTS"
+item_5/text = "PIPES"
+item_6/text = "WARPS"
+item_7/text = "GIZMOS"
+item_8/text = "MULTI-SELECTING"
+item_9/text = "BLUEPRINTS"
+item_10/text = "TIPS & TRICKS"
 
 [node name="PanelContainer" type="PanelContainer" parent="MarginContainer/PanelContainer/MarginContainer/HSplitContainer" unique_id=119690840]
 layout_mode = 2
@@ -82,7 +87,6 @@ theme_override_constants/margin_right = -4
 theme_override_constants/margin_bottom = -4
 
 [node name="Introduction" type="VBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer/HSplitContainer/PanelContainer/Guides" unique_id=1931494966]
-visible = false
 layout_mode = 2
 
 [node name="Title" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/HSplitContainer/PanelContainer/Guides/Introduction" unique_id=534263787]
@@ -129,6 +133,7 @@ autowrap_mode = 2
 uppercase = true
 
 [node name="Controls" type="VBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer/HSplitContainer/PanelContainer/Guides" unique_id=1225722736]
+visible = false
 layout_mode = 2
 
 [node name="Title" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/HSplitContainer/PanelContainer/Guides/Controls" unique_id=1987339254]
@@ -162,24 +167,149 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
+[node name="Heading" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/HSplitContainer/PanelContainer/Guides/Controls/ScrollContainer/VBoxContainer" unique_id=493315102]
+layout_mode = 2
+size_flags_vertical = 0
+text = "PLACING / REMOVING TILES"
+horizontal_alignment = 1
+autowrap_mode = 2
+uppercase = true
+
+[node name="HSeparator" type="HSeparator" parent="MarginContainer/PanelContainer/MarginContainer/HSplitContainer/PanelContainer/Guides/Controls/ScrollContainer/VBoxContainer/Heading" unique_id=850018061]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -4.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/separator = SubResource("StyleBoxLine_1mv3v")
+
 [node name="Label" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/HSplitContainer/PanelContainer/Guides/Controls/ScrollContainer/VBoxContainer" unique_id=227857286]
 layout_mode = 2
-size_flags_vertical = 3
+size_flags_vertical = 1
 text = "To place tiles, simply use left click, you can hold down left click, and drag the mouse around, to use it as a brush. to remove tiles, simply use right click."
 autowrap_mode = 2
 uppercase = true
 
-[node name="AspectRatioContainer" type="AspectRatioContainer" parent="MarginContainer/PanelContainer/MarginContainer/HSplitContainer/PanelContainer/Guides/Controls/ScrollContainer/VBoxContainer" unique_id=1941997257]
+[node name="Control" type="Control" parent="MarginContainer/PanelContainer/MarginContainer/HSplitContainer/PanelContainer/Guides/Controls/ScrollContainer/VBoxContainer" unique_id=753956884]
+custom_minimum_size = Vector2(0, 4)
 layout_mode = 2
+
+[node name="Heading2" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/HSplitContainer/PanelContainer/Guides/Controls/ScrollContainer/VBoxContainer" unique_id=37648190]
+layout_mode = 2
+size_flags_vertical = 0
+text = "CAMERA"
+horizontal_alignment = 1
+autowrap_mode = 2
+uppercase = true
+
+[node name="HSeparator" type="HSeparator" parent="MarginContainer/PanelContainer/MarginContainer/HSplitContainer/PanelContainer/Guides/Controls/ScrollContainer/VBoxContainer/Heading2" unique_id=877972936]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -4.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/separator = SubResource("StyleBoxLine_1mv3v")
+
+[node name="Label2" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/HSplitContainer/PanelContainer/Guides/Controls/ScrollContainer/VBoxContainer" unique_id=1743356377]
+layout_mode = 2
+size_flags_vertical = 1
+text = "You can move the camera around using WASD, and speed up the movement of it by holding down SHIFT."
+autowrap_mode = 2
+uppercase = true
+
+[node name="Control2" type="Control" parent="MarginContainer/PanelContainer/MarginContainer/HSplitContainer/PanelContainer/Guides/Controls/ScrollContainer/VBoxContainer" unique_id=1252213533]
+custom_minimum_size = Vector2(0, 8)
+layout_mode = 2
+
+[node name="ModifyingTiles" type="VBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer/HSplitContainer/PanelContainer/Guides" unique_id=370212560]
+visible = false
+layout_mode = 2
+
+[node name="Title" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/HSplitContainer/PanelContainer/Guides/ModifyingTiles" unique_id=1848735960]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Modifying Tiles"
+uppercase = true
+
+[node name="HSeparator" type="HSeparator" parent="MarginContainer/PanelContainer/MarginContainer/HSplitContainer/PanelContainer/Guides/ModifyingTiles/Title" unique_id=824613877]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -4.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/separator = SubResource("StyleBoxLine_ua084")
+
+[node name="Control" type="Control" parent="MarginContainer/PanelContainer/MarginContainer/HSplitContainer/PanelContainer/Guides/ModifyingTiles" unique_id=527826553]
+custom_minimum_size = Vector2(0, 4)
+layout_mode = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/PanelContainer/MarginContainer/HSplitContainer/PanelContainer/Guides/ModifyingTiles" unique_id=1970274604]
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer/HSplitContainer/PanelContainer/Guides/ModifyingTiles/ScrollContainer" unique_id=1200190913]
+layout_mode = 2
+size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="MarginContainer/PanelContainer/MarginContainer/HSplitContainer/PanelContainer/Guides/Controls/ScrollContainer/VBoxContainer/AspectRatioContainer" unique_id=2044254361]
+[node name="Label" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/HSplitContainer/PanelContainer/Guides/ModifyingTiles/ScrollContainer/VBoxContainer" unique_id=264407336]
+layout_mode = 2
+size_flags_vertical = 1
+text = "YOU CAN EDIT THE PROPERTIES OF VARIOUS OBJECTS, BY SHIFT + LEFT CLICKING THEM. THIS WILL OPEN UP A MENU, WHICH ALLOWS YOU TO EDIT ALL THE VARIOUS PROPERTIES AVAILABLE, TO CLOSE THE MENU SIMPLY PRESS E."
+autowrap_mode = 2
+uppercase = true
+
+[node name="MassPlacing" type="VBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer/HSplitContainer/PanelContainer/Guides" unique_id=296641742]
+visible = false
+layout_mode = 2
+
+[node name="Title" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/HSplitContainer/PanelContainer/Guides/MassPlacing" unique_id=353803534]
+layout_mode = 2
+text = "MASS PLACING / REMOVING"
+horizontal_alignment = 1
+autowrap_mode = 2
+uppercase = true
+
+[node name="HSeparator" type="HSeparator" parent="MarginContainer/PanelContainer/MarginContainer/HSplitContainer/PanelContainer/Guides/MassPlacing/Title" unique_id=162682365]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -4.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/separator = SubResource("StyleBoxLine_ua084")
+
+[node name="Control" type="Control" parent="MarginContainer/PanelContainer/MarginContainer/HSplitContainer/PanelContainer/Guides/MassPlacing" unique_id=1853909831]
+custom_minimum_size = Vector2(0, 4)
+layout_mode = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/PanelContainer/MarginContainer/HSplitContainer/PanelContainer/Guides/MassPlacing" unique_id=1210896719]
 layout_mode = 2
 size_flags_vertical = 3
-stream = ExtResource("3_arq4g")
-volume_db = -80.0
-autoplay = true
-expand = true
-loop = true
+horizontal_scroll_mode = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer/HSplitContainer/PanelContainer/Guides/MassPlacing/ScrollContainer" unique_id=1489244214]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/HSplitContainer/PanelContainer/Guides/MassPlacing/ScrollContainer/VBoxContainer" unique_id=549098254]
+layout_mode = 2
+size_flags_vertical = 1
+text = "IF YOU NEED TO PLACE OUT OR REMOVE A LARGE AREA OF A SINGLE OBJECT, YOU CAN DO SO, BY SIMPLY HOLDING DOWN CTRL, AND DRAGGING OUT AN AREA USING EITHER LEFT OR RIGHT CLICK, TO PLACE OR REMOVE AN AREA QUICKLY."
+autowrap_mode = 2
+uppercase = true
 
 [connection signal="item_selected" from="MarginContainer/PanelContainer/MarginContainer/HSplitContainer/ScrollContainer/VBoxContainer/ItemList" to="." method="on_item_selected"]

@@ -33,6 +33,7 @@ func damage() -> void:
 
 func fireball_hit() -> void:
 	fireball_hits += 1
+	AudioManager.play_sfx("kick", global_position)
 	%DamageAnimation.play("DamageFlash")
 	if fireball_hits >= 5:
 		fireball_hits = 0

@@ -1,4 +1,4 @@
-[gd_scene load_steps=78 format=3 uid="uid://cuh62hlq8errh"]
+[gd_scene load_steps=83 format=3 uid="uid://cuh62hlq8errh"]
 
 [ext_resource type="Script" uid="uid://dt4rosa5o35xr" path="res://Scripts/Classes/Entities/Player.gd" id="1_f6bau"]
 [ext_resource type="Script" uid="uid://uribh0f1jttq" path="res://Scripts/Classes/States/StateMachine.gd" id="2_1y62l"]
@@ -22,10 +22,12 @@
 [ext_resource type="Script" uid="uid://c7kmriol0gj16" path="res://Scripts/Classes/States/Player/Climb.gd" id="10_shhao"]
 [ext_resource type="JSON" path="res://Assets/Sprites/Players/Mario/ColourPalette.json" id="10_xy8gq"]
 [ext_resource type="Script" uid="uid://b10ui1x45l6ly" path="res://Scripts/Classes/States/Player/WallSlide.gd" id="11_057py"]
+[ext_resource type="Texture2D" uid="uid://dht3hx742rrim" path="res://Assets/Sprites/Particles/ShakeLines.png" id="11_pm4ir"]
 [ext_resource type="Texture2D" uid="uid://bqra7e5xsdg5r" path="res://Assets/Sprites/Particles/SkidParticles.png" id="11_vijl6"]
 [ext_resource type="Texture2D" uid="uid://dq58glgwf2l3" path="res://Assets/Sprites/UI/CheckpointIcon.png" id="13_uo1a1"]
 [ext_resource type="Script" uid="uid://ugfx3sb3h6rj" path="res://Scripts/Classes/States/Player/NoClip.gd" id="16_cekpg"]
 [ext_resource type="Texture2D" uid="uid://daaycq24wiiph" path="res://Assets/Sprites/UI/ControllerOverlay.png" id="19_bc3q3"]
+[ext_resource type="Script" uid="uid://con7f8whb65cc" path="res://Scripts/Classes/States/Player/Stunned.gd" id="19_pm4ir"]
 [ext_resource type="Texture2D" uid="uid://c6pd7cdhx78od" path="res://Assets/Sprites/UI/Tab.png" id="20_34tqy"]
 [ext_resource type="Script" uid="uid://dgmaoklmc0wfa" path="res://Scripts/Parts/CameraHandler.gd" id="20_d7xah"]
 [ext_resource type="Script" uid="uid://cp1bh6fi6tpa5" path="res://Scripts/Classes/Components/ScalableCollisionShape.gd" id="21_jl70t"]
@@ -296,6 +298,44 @@ _data = {
 &"Shrink": SubResource("Animation_pm4ir")
 }
 
+[sub_resource type="Animation" id="Animation_ny1wd"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_2t4xr"]
+resource_name = "Shake"
+length = 0.05
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.2, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_o5ef6"]
+_data = {
+&"RESET": SubResource("Animation_ny1wd"),
+&"Shake": SubResource("Animation_2t4xr")
+}
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nbkfn"]
 resource_local_to_scene = true
 size = Vector2(8, 16)
@@ -486,7 +526,7 @@ power_state = NodePath("PowerStates/Small")
 unique_name_in_owner = true
 physics_interpolation_mode = 2
 material = SubResource("ShaderMaterial_4ojwh")
-position = Vector2(0, -16)
+position = Vector2(0, -24)
 sprite_frames = ExtResource("23_445e4")
 animation = &"Idle"
 offset = Vector2(0, 1)
@@ -563,6 +603,25 @@ libraries = {
 &"": SubResource("AnimationLibrary_pm4ir")
 }
 
+[node name="ShakeLines" type="Node2D" parent="SpriteScaleJoint" unique_id=1569410648]
+unique_name_in_owner = true
+visible = false
+
+[node name="L" type="Sprite2D" parent="SpriteScaleJoint/ShakeLines" unique_id=727740936]
+position = Vector2(-10, -9)
+texture = ExtResource("11_pm4ir")
+
+[node name="R" type="Sprite2D" parent="SpriteScaleJoint/ShakeLines" unique_id=472341527]
+position = Vector2(10, -9)
+texture = ExtResource("11_pm4ir")
+flip_h = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="SpriteScaleJoint/ShakeLines" unique_id=1495713129]
+libraries = {
+&"": SubResource("AnimationLibrary_o5ef6")
+}
+autoplay = &"Shake"
+
 [node name="States" type="Node" parent="." unique_id=2000324112 node_paths=PackedStringArray("state")]
 script = ExtResource("2_1y62l")
 state = NodePath("Normal")
@@ -588,6 +647,10 @@ metadata/_custom_type_script = "uid://cnjpqn05bfm57"
 
 [node name="Freeze" type="Node" parent="States" unique_id=670414873]
 script = ExtResource("6_8f1du")
+metadata/_custom_type_script = "uid://cnjpqn05bfm57"
+
+[node name="Stunned" type="Node" parent="States" unique_id=1938465764]
+script = ExtResource("19_pm4ir")
 metadata/_custom_type_script = "uid://cnjpqn05bfm57"
 
 [node name="Climb" type="Node" parent="States" unique_id=1696444454]

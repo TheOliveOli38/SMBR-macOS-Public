@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://bc1mrna4kybhv"]
+[gd_scene load_steps=19 format=3 uid="uid://bc1mrna4kybhv"]
 
 [ext_resource type="Script" uid="uid://b5ejlbl0vp1gm" path="res://Scripts/Classes/Blocks/BlockClass.gd" id="1_bxree"]
 [ext_resource type="Texture2D" uid="uid://uh7uhdkv3e6s" path="res://Assets/Sprites/Blocks/QuestionBlock.png" id="1_wt4d5"]
@@ -9,6 +9,7 @@
 [ext_resource type="JSON" path="res://Assets/Sprites/Blocks/QuestionBlock.json" id="5_mkj8t"]
 [ext_resource type="Script" uid="uid://ctfbuoxtnnl0q" path="res://Scripts/Classes/Components/EditorPropertyExposer.gd" id="7_aekuo"]
 [ext_resource type="Script" uid="uid://d4a7yp6e55u8t" path="res://Scripts/Classes/Components/TrackJoint.gd" id="8_ov42f"]
+[ext_resource type="PackedScene" uid="uid://dse5pwhodrqcr" path="res://Scenes/Prefabs/Editor/EditorProperties/TilePropertyIntRangeSpin.tscn" id="9_5lgug"]
 [ext_resource type="Script" uid="uid://maqpreddu5kg" path="res://Scripts/Classes/Components/LevelPersistance.gd" id="9_j1txv"]
 [ext_resource type="Script" uid="uid://b3bokos5jcpr7" path="res://Scripts/Classes/Components/SignalExposer.gd" id="11_pslic"]
 
@@ -84,6 +85,9 @@ script = ExtResource("7_aekuo")
 properties = Array[String](["item", "item_amount", "mushroom_if_small"])
 filters = Dictionary[String, String]({
 "item": "can_be_stored"
+})
+properties_force_selector = Dictionary[String, PackedScene]({
+"item_amount": ExtResource("9_5lgug")
 })
 
 [node name="TrackJoint" type="Node" parent="." unique_id=760300484]

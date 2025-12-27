@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://b4uqa4y5o63xy"]
+[gd_scene load_steps=9 format=3 uid="uid://b4uqa4y5o63xy"]
 
 [ext_resource type="PackedScene" uid="uid://bxvcax2wc48xh" path="res://Scenes/Prefabs/Blocks/NoteBlock.tscn" id="1_2p7lf"]
 [ext_resource type="Script" uid="uid://2gxl5hj6mf6a" path="res://Scripts/Classes/Blocks/MusicNoteBlock.gd" id="2_1gaxc"]
@@ -7,8 +7,6 @@
 [ext_resource type="Texture2D" uid="uid://b8su0m8876337" path="res://Assets/Sprites/Editor/NoteBlockNotes.png" id="4_d6amy"]
 [ext_resource type="Script" uid="uid://d4a7yp6e55u8t" path="res://Scripts/Classes/Components/TrackJoint.gd" id="6_gpide"]
 [ext_resource type="Script" uid="uid://b3bokos5jcpr7" path="res://Scripts/Classes/Components/SignalExposer.gd" id="7_430f0"]
-
-[sub_resource type="AudioStreamGenerator" id="AudioStreamGenerator_1gaxc"]
 
 [sub_resource type="GDScript" id="GDScript_lw6l2"]
 script/source = "extends Node
@@ -34,8 +32,7 @@ properties = Array[String](["instrument", "note", "octave", "play_on_load"])
 
 [node name="Instrument" type="AudioStreamPlayer2D" parent="." index="4" unique_id=1822676565]
 process_mode = 3
-stream = SubResource("AudioStreamGenerator_1gaxc")
-volume_db = 24.0
+volume_db = 10.0
 bus = &"SFX"
 
 [node name="LevelEditorVisibleNode" type="Node2D" parent="." index="5" unique_id=1827809346]

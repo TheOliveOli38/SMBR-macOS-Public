@@ -4,6 +4,8 @@ var active := false
 
 static var has_hit := false
 
+signal changed
+
 func _ready() -> void:
 	can_hit = true
 	has_hit = false
@@ -25,6 +27,7 @@ func on_switch_hit() -> void:
 		$Sprite.play("On")
 	else:
 		$Sprite.play("Off")
+	changed.emit()
 
 func on_boo_hit() -> void:
 	if active:

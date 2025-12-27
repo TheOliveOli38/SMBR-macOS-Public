@@ -61,7 +61,6 @@ func _ready() -> void:
 		owner.remove_meta("save_string")
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	show_behind_parent = true
-	owner.z_index = -5
 	z_index = -10
 	var pos_save = global_position
 	top_level = true
@@ -74,6 +73,11 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	if editing:
 		queue_redraw()
+	elif Global.level_editor_is_editing() == false:
+		for x in connections:
+			var target_node = get_node_from_tile(x[0], x[1])
+			if target_node is TrackRider:
+				queue_redraw()
 
 func _draw() -> void:
 	if editing:

@@ -6,6 +6,7 @@ var old_x = 0
 
 func enter(_msg := {}) -> void:
 	old_x = player.sprite.position.x
+	player.velocity.x = 0
 	%ShakeLines.show()
 	player.play_animation("Stunned")
 	if await wait(1.5) == false:

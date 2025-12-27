@@ -71,9 +71,10 @@ resource_json = ExtResource("3_xglou")
 
 [node name="SignalExposer" type="Node2D" parent="." index="3" unique_id=985513204]
 script = ExtResource("4_cs2ia")
-can_output = false
+do_animation = false
 metadata/_custom_type_script = "uid://b3bokos5jcpr7"
 
+[connection signal="changed" from="." to="SignalExposer" method="emit_pulse"]
 [connection signal="shell_block_hit" from="." to="." method="on_block_hit" unbinds=1]
 [connection signal="shell_block_hit" from="." to="BlockAnimations" method="bounce_block" unbinds=1]
 [connection signal="recieved_power" from="SignalExposer" to="." method="on_block_hit"]

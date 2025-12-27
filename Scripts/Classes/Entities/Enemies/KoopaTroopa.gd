@@ -21,8 +21,13 @@ func _physics_process(delta: float) -> void:
 		handle_fly_movement(delta)
 	else:
 		$BasicEnemyMovement.bounce_on_land = winged
+		if winged:
+			if is_on_floor():
+				play_animation("Hop")
+		else:
+			play_animation("Walk")
 		$BasicEnemyMovement.handle_movement(delta)
-	$Sprite.play("Walk")
+			
 	%Wing.visible = winged
 	$Sprite.scale.x = direction
 
@@ -30,6 +35,7 @@ func handle_fly_movement(delta: float) -> void:
 	velocity = Vector2.ZERO
 	fly_wave += delta
 	var old_x = global_position.x
+	play_animation("Fly")
 	if has_meta("fly_2"):
 		global_position.x = starting_position.x + (cos(fly_wave) * 48) - 48
 		global_position.y = starting_position.y + (sin(fly_wave * 4) * 2)
@@ -39,6 +45,12 @@ func handle_fly_movement(delta: float) -> void:
 
 func _exit_tree() -> void:
 	pass
+
+func play_animation(animation_name := "") -> void:
+	if $Sprite.sprite_frames.has_animation(animation_name):
+		$Sprite.play(animation_name)
+	else:
+		$Sprite.play("Walk")
 
 func stomped_on(player: Player) -> void:
 	if dead:

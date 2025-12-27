@@ -44,5 +44,6 @@ script = ExtResource("6_62713")
 metadata/_custom_type_script = "uid://b3bokos5jcpr7"
 
 [connection signal="toggled" from="LevelEditorToggleDetection" to="." method="start"]
+[connection signal="lost_power" from="SignalExposer" to="." method="stop_moving"]
 [connection signal="recieved_power" from="SignalExposer" to="." method="start_moving"]
-[connection signal="recieved_pulse" from="SignalExposer" to="." method="start_moving"]
+[connection signal="recieved_pulse" from="SignalExposer" to="." method="toggle"]

@@ -778,5 +778,13 @@
 	"DO": [
 		"res://Scenes/Prefabs/Entities/Objects/FallingPlatformOBJ.tscn",
 		"0,-8"
-	]
+	],
+	"DP": [
+		"res://Scenes/Prefabs/Entities/Objects/Grinder.tscn",
+		"0,0"
+	],
+	"DQ": [
+		"res://Scenes/Prefabs/Entities/Objects/SmallGrinder.tscn",
+		"8,8"
+	],
 }

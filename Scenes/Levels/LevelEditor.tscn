@@ -1,4 +1,4 @@
-[gd_scene load_steps=272 format=3 uid="uid://gbcmqonky63j"]
+[gd_scene load_steps=274 format=3 uid="uid://gbcmqonky63j"]
 
 [ext_resource type="Script" uid="uid://c2lnc7vnq3xth" path="res://Scripts/Classes/Editor/LevelEditor.gd" id="1_0qbyu"]
 [ext_resource type="Texture2D" uid="uid://cbha2l6hg1kfo" path="res://Assets/Sprites/UI/EditorGrid.png" id="2_8q7yr"]
@@ -112,7 +112,9 @@
 [ext_resource type="JSON" path="res://Assets/Sprites/Blocks/Fan.json" id="132_o0k3u"]
 [ext_resource type="Texture2D" uid="uid://c8ir37jmcm4f4" path="res://Assets/Sprites/Editor/CameraLock.png" id="134_q440o"]
 [ext_resource type="JSON" path="res://Assets/Sprites/Blocks/OnFan.json" id="134_vlioy"]
+[ext_resource type="JSON" path="res://Assets/Sprites/Enemies/Grinder.json" id="135_51g7s"]
 [ext_resource type="JSON" path="res://Assets/Sprites/Blocks/FrozenBrickBlock.json" id="135_cm3b2"]
+[ext_resource type="JSON" path="res://Assets/Sprites/Enemies/SmallGrinder.json" id="136_jt16h"]
 [ext_resource type="JSON" path="res://Assets/Sprites/Blocks/OffFan.json" id="136_ym1gn"]
 [ext_resource type="JSON" path="res://Assets/Sprites/Blocks/FrozenCoin.json" id="137_0lb7j"]
 [ext_resource type="JSON" path="res://Assets/Sprites/Players/ToadNPC.json" id="137_jmysq"]
@@ -914,6 +916,7 @@ color = Color(1, 0.486275, 0, 1)
 
 [node name="SelectedAreaRect" type="Panel" parent="TileCursor" unique_id=1927552544]
 unique_name_in_owner = true
+visible = false
 top_level = true
 visibility_layer = 2
 z_index = 4096
@@ -934,6 +937,7 @@ color = Color(1, 1, 0, 0.289)
 
 [node name="MultiSelectRect" type="Panel" parent="TileCursor" unique_id=746921897]
 unique_name_in_owner = true
+visible = false
 top_level = true
 visibility_layer = 2
 z_index = 4096
@@ -1793,6 +1797,68 @@ grow_horizontal = 0
 mouse_filter = 2
 texture = ExtResource("22_3cjpb")
 
+[node name="CastleTiles" type="Control" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Tiles/MarginContainer/GridContainer" unique_id=847207374]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+mouse_force_pass_scroll_events = false
+script = ExtResource("20_jc7xg")
+
+[node name="LWindow" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Tiles/MarginContainer/GridContainer/CastleTiles" unique_id=937752968 groups=["Selectors"] instance=ExtResource("8_wkmjk")]
+layout_mode = 0
+offset_right = 16.0
+offset_bottom = 16.0
+tile_name = "TILE_LWINDOW"
+icon_texture = ExtResource("10_vhlvp")
+icon_region_override = Rect2(48, 160, 16, 16)
+tile_coords = Vector2i(3, 10)
+
+[node name="RWindow" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Tiles/MarginContainer/GridContainer/CastleTiles" unique_id=373690282 groups=["Selectors"] instance=ExtResource("8_wkmjk")]
+layout_mode = 0
+offset_right = 16.0
+offset_bottom = 16.0
+tile_name = "TILE_RWINDOW"
+icon_texture = ExtResource("10_vhlvp")
+icon_region_override = Rect2(64, 160, 16, 16)
+tile_coords = Vector2i(4, 10)
+
+[node name="WallBase" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Tiles/MarginContainer/GridContainer/CastleTiles" unique_id=1757367783 groups=["Selectors"] instance=ExtResource("8_wkmjk")]
+layout_mode = 0
+offset_right = 16.0
+offset_bottom = 16.0
+tile_name = "TILE_WALLBASE"
+icon_texture = ExtResource("10_vhlvp")
+icon_region_override = Rect2(80, 160, 16, 16)
+tile_coords = Vector2i(5, 10)
+
+[node name="Arch" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Tiles/MarginContainer/GridContainer/CastleTiles" unique_id=2073215210 groups=["Selectors"] instance=ExtResource("8_wkmjk")]
+layout_mode = 0
+offset_right = 16.0
+offset_bottom = 16.0
+tile_name = "TILE_ARCH"
+icon_texture = ExtResource("10_vhlvp")
+icon_region_override = Rect2(96, 160, 16, 16)
+tile_coords = Vector2i(6, 10)
+
+[node name="BG" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Tiles/MarginContainer/GridContainer/CastleTiles" unique_id=868080485 groups=["Selectors"] instance=ExtResource("8_wkmjk")]
+layout_mode = 0
+offset_right = 16.0
+offset_bottom = 16.0
+tile_name = "TILE_CASTLE_BG"
+icon_texture = ExtResource("10_vhlvp")
+icon_region_override = Rect2(224, 128, 16, 16)
+tile_coords = Vector2i(14, 8)
+
+[node name="TextureRect" type="TextureRect" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Tiles/MarginContainer/GridContainer/CastleTiles" unique_id=233392982]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -16.0
+offset_bottom = 16.0
+grow_horizontal = 0
+mouse_filter = 2
+texture = ExtResource("22_3cjpb")
+
 [node name="CloudBlock" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Tiles/MarginContainer/GridContainer" unique_id=227376168 groups=["Selectors"] instance=ExtResource("8_wkmjk")]
 layout_mode = 2
 tile_name = "TILE_CLOUD"
@@ -1814,7 +1880,7 @@ icon_texture = ExtResource("10_vhlvp")
 icon_region_override = Rect2(112, 96, 16, 16)
 tile_coords = Vector2i(7, 6)
 
-[node name="Sign" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Tiles/MarginContainer/GridContainer" unique_id=937752968 groups=["Selectors"] instance=ExtResource("8_wkmjk")]
+[node name="Sign" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Tiles/MarginContainer/GridContainer" unique_id=452210109 groups=["Selectors"] instance=ExtResource("8_wkmjk")]
 layout_mode = 2
 tile_name = "TILE_SIGN"
 type = 1
@@ -5049,6 +5115,45 @@ icon_region_override = Rect2(16, 0, 16, 16)
 secondary_icon_region_override = Rect2(24, 0, 16, 16)
 entity_id = "B1"
 
+[node name="Grinders" type="Control" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Objects/MarginContainer/GridContainer" unique_id=1513131317]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+mouse_force_pass_scroll_events = false
+script = ExtResource("20_jc7xg")
+
+[node name="Grinder" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Objects/MarginContainer/GridContainer/Grinders" unique_id=545828280 groups=["Selectors"] instance=ExtResource("8_wkmjk")]
+layout_mode = 0
+offset_right = 16.0
+offset_bottom = 16.0
+tile_name = "OBJ_GRINDER"
+type = 1
+icon_texture = ExtResource("135_51g7s")
+icon_region_override = Rect2(0, 0, 16, 16)
+secondary_icon_region_override = Rect2(24, 0, 16, 16)
+entity_id = "DP"
+
+[node name="SmallGrinder" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Objects/MarginContainer/GridContainer/Grinders" unique_id=1052276053 groups=["Selectors"] instance=ExtResource("8_wkmjk")]
+layout_mode = 0
+offset_right = 16.0
+offset_bottom = 16.0
+tile_name = "OBJ_GRINDER_SMALL"
+type = 1
+icon_texture = ExtResource("136_jt16h")
+icon_region_override = Rect2(0, 0, 16, 16)
+secondary_icon_region_override = Rect2(24, 0, 16, 16)
+entity_id = "DQ"
+
+[node name="TextureRect" type="TextureRect" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Objects/MarginContainer/GridContainer/Grinders" unique_id=2088044182]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -16.0
+offset_bottom = 16.0
+grow_horizontal = 0
+mouse_filter = 2
+texture = ExtResource("22_3cjpb")
+
 [node name="OneWays" type="Control" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Objects/MarginContainer/GridContainer" unique_id=1627995701]
 custom_minimum_size = Vector2(16, 16)
 layout_mode = 2
@@ -6904,6 +7009,10 @@ wait_time = 0.25
 [node name="PlayerTrail" type="Node2D" parent="." unique_id=2144528200]
 visible = false
 
+[node name="Timer" type="Timer" parent="." unique_id=1206061399]
+wait_time = 300.0
+autostart = true
+
 [connection signal="connection_node_found" from="." to="CanvasLayer/TileModifierMenu" method="connect_signal"]
 [connection signal="open_scene_ref_tile_menu" from="CanvasLayer/TileModifierMenu" to="." method="open_tile_selection_menu_scene_ref"]
 [connection signal="mouse_entered" from="CanvasLayer/Tools" to="." method="on_mouse_entered"]
@@ -7019,3 +7128,4 @@ visible = false
 [connection signal="pressed" from="Info/SaveBlueprint/VBoxContainer/HBoxContainer/Button" to="." method="save_blueprint"]
 [connection signal="pressed" from="Info/SaveBlueprint/VBoxContainer/HBoxContainer/Button" to="Info/SaveBlueprint" method="hide"]
 [connection signal="pressed" from="Info/SaveBlueprint/VBoxContainer/HBoxContainer/Cancel" to="Info/SaveBlueprint" method="hide"]
+[connection signal="timeout" from="Timer" to="." method="save_reminder"]

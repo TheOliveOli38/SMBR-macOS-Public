@@ -151,3 +151,11 @@ func detach_from_rail() -> void:
 func start_moving() -> void:
 	started.emit()
 	can_move = true
+
+func stop_moving() -> void:
+	can_move = false
+
+func toggle() -> void:
+	can_move = not can_move
+	if can_move:
+		started.emit()

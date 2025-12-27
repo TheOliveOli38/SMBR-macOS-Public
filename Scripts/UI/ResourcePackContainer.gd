@@ -14,12 +14,15 @@ var config := {}
 
 var config_path := ""
 
+var old_idx := -1
+
 signal resource_pack_selected()
 
 signal open_config(pack: ResourcePackContainer)
 
 func _ready() -> void:
 	setup_visuals()
+	old_idx = get_index()
 
 func setup_visuals() -> void:
 	%Title.text = pack_json.name.to_upper()
@@ -78,3 +81,4 @@ func select() -> void:
 		AudioManager.play_global_sfx("coin")
 	else:
 		AudioManager.play_global_sfx("bump")
+	grab_focus()

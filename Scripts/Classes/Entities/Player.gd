@@ -532,6 +532,8 @@ const ANIMATION_FALLBACKS := {
 	"FlyAttack": "SwimAttack",
 	"FlyBump": "SwimBump",
 
+	"Stunned": "Idle",
+
 	# --- Death States ---
 	"DieFreeze": "DieFall",
 	"DieIdle": "DieFall",
@@ -1381,6 +1383,10 @@ func go_to_exit_pipe(pipe: PipeArea) -> void:
 		global_position.x -= 8 * pipe.get_vector(pipe.enter_direction).x
 	reset_physics_interpolation()
 	hide()
+
+func do_earthquake() -> void:
+	if is_on_floor():
+		state_machine.transition_to("Stunned")
 
 func exit_pipe(pipe: PipeArea) -> void:
 	show()

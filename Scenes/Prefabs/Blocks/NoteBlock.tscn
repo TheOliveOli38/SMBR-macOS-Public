@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://bxvcax2wc48xh"]
+[gd_scene load_steps=16 format=3 uid="uid://bxvcax2wc48xh"]
 
 [ext_resource type="Script" uid="uid://c0diue1hemrxq" path="res://Scripts/Classes/Blocks/NoteBlock.gd" id="1_lhrvd"]
 [ext_resource type="Script" uid="uid://cbal8ms2oe1ik" path="res://Scripts/Classes/Components/ResourceSetterNew.gd" id="2_jg54v"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://bk4q17a2esuy1" path="res://Assets/Sprites/Blocks/NoteBlock.png" id="4_pp28j"]
 [ext_resource type="Script" uid="uid://d4a7yp6e55u8t" path="res://Scripts/Classes/Components/TrackJoint.gd" id="6_4015b"]
 [ext_resource type="Script" uid="uid://ctfbuoxtnnl0q" path="res://Scripts/Classes/Components/EditorPropertyExposer.gd" id="6_jg54v"]
+[ext_resource type="PackedScene" uid="uid://dse5pwhodrqcr" path="res://Scenes/Prefabs/Editor/EditorProperties/TilePropertyIntRangeSpin.tscn" id="6_pp28j"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ibsa0"]
 atlas = ExtResource("4_pp28j")
@@ -140,6 +141,9 @@ script = ExtResource("6_jg54v")
 properties = Array[String](["item", "item_amount"])
 filters = Dictionary[String, String]({
 "item": "can_note_store"
+})
+properties_force_selector = Dictionary[String, PackedScene]({
+"item_amount": ExtResource("6_pp28j")
 })
 
 [node name="TrackJoint" type="Node" parent="." unique_id=2136886396]

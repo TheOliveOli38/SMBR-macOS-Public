@@ -409,8 +409,6 @@ func handle_tile_cursor() -> void:
 					target_mouse_icon = (CURSOR_PENCIL)
 			
 		if Input.is_action_pressed("mb_right"):
-			multi_select_start()
-			multi_selecting = false
 			if Input.is_action_pressed("editor_select") and not area_selecting:
 				area_select_start(tile_position)
 				target_mouse_icon = (CURSOR_RULER)
@@ -418,6 +416,9 @@ func handle_tile_cursor() -> void:
 				area_selecting = false
 				remove_tile(tile_position)
 				target_mouse_icon = (CURSOR_ERASOR)
+			elif not area_selecting and not multi_selecting:
+				multi_select_start()
+				multi_selecting = false
 		
 		if Input.is_action_just_pressed("scroll_up"):
 			selected_tile_index -= 1
@@ -1185,3 +1186,7 @@ func get_blueprints() -> void:
 		container.path = blueprint_path.path_join(i)
 		%Blueprints.add_child(container)
 		container.blueprint_selected.connect(load_blueprint)
+
+func save_reminder() -> void:
+	Global.log_comment("Remember to save!")
+	AudioManager.play_global_sfx("pause")

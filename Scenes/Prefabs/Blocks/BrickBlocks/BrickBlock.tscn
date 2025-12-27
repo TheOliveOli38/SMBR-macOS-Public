@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://dsa8lpl7n8ge0"]
+[gd_scene load_steps=14 format=3 uid="uid://dsa8lpl7n8ge0"]
 
 [ext_resource type="Script" uid="uid://y53avulrmfx1" path="res://Scripts/Classes/Blocks/BrickBlock.gd" id="1_ci56s"]
 [ext_resource type="PackedScene" uid="uid://55lw62f6ol33" path="res://Scenes/Prefabs/Particles/BrickDestructionParticles.tscn" id="2_x80g6"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" uid="uid://ctfbuoxtnnl0q" path="res://Scripts/Classes/Components/EditorPropertyExposer.gd" id="6_e3l5j"]
 [ext_resource type="Script" uid="uid://bul1nbd2in1gn" path="res://Scripts/Classes/Components/PSwitcher.gd" id="7_43oa6"]
 [ext_resource type="Script" uid="uid://d4a7yp6e55u8t" path="res://Scripts/Classes/Components/TrackJoint.gd" id="8_7ej1a"]
+[ext_resource type="PackedScene" uid="uid://dse5pwhodrqcr" path="res://Scenes/Prefabs/Editor/EditorProperties/TilePropertyIntRangeSpin.tscn" id="8_ndaqu"]
 [ext_resource type="Script" uid="uid://maqpreddu5kg" path="res://Scripts/Classes/Components/LevelPersistance.gd" id="9_10eph"]
 [ext_resource type="Script" uid="uid://b3bokos5jcpr7" path="res://Scripts/Classes/Components/SignalExposer.gd" id="11_5lt17"]
 
@@ -49,6 +50,9 @@ script = ExtResource("6_e3l5j")
 properties = Array[String](["item", "item_amount", "mushroom_if_small"])
 filters = Dictionary[String, String]({
 "item": "can_be_stored"
+})
+properties_force_selector = Dictionary[String, PackedScene]({
+"item_amount": ExtResource("8_ndaqu")
 })
 
 [node name="PSwitcher" type="Node" parent="." unique_id=1535009918]
