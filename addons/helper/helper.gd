@@ -11,3 +11,8 @@ func _enter_tree() -> void:
 
 func _exit_tree() -> void:
 	remove_control_from_docks(helper)
+
+func _build() -> bool:
+	if helper != null:
+		helper.remove_tile_signals()
+	return true

@@ -39,7 +39,7 @@ func remove_tile_signals() -> void:
 		scenes.append_array(get_directories(base_path + campaign))
 	for scene in scenes:
 		var file = FileAccess.open(scene, FileAccess.READ).get_as_text()
-		var lines = file.split("\n")
+		var lines = file.split("\n", false)
 		var idx := 0
 		var new_string = ""
 		for line in lines:
@@ -48,6 +48,7 @@ func remove_tile_signals() -> void:
 			new_string += line + "\n"
 		file = FileAccess.open(scene, FileAccess.WRITE).store_string(new_string)
 	print("Done")
+
 func get_directories(path := "", array_to_use := []) -> Array:
 	for i in DirAccess.get_directories_at(path):
 		get_directories(path + "/" + i + "/", array_to_use)

@@ -1018,7 +1018,7 @@ metadata/_better_terrain = {
 &"version": "0.2"
 }
 
-[node name="Level" unique_id=1697871512 instance=ExtResource("1_5wa3d")]
+[node name="Level2" unique_id=1697871512 instance=ExtResource("1_5wa3d")]
 theme_time = "Night"
 campaign = "SMBANN"
 
@@ -1041,7 +1041,6 @@ position = Vector2(1544, 96)
 [node name="DiscoLevel" type="Node" parent="." index="14" unique_id=188347506]
 script = ExtResource("3_k13jy")
 metadata/_custom_type_script = "uid://bjs5mlc3xrxud"
-
 
 
 
