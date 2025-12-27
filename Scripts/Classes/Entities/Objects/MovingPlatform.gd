@@ -31,13 +31,14 @@ func _physics_process(delta: float) -> void:
 	%Projection.size.x = %Sprite.size.x
 	%Sprite.position.x = -(%Sprite.size.x / 2)
 	$CollisionShape2D.shape.size.x = %Sprite.size.x
-	match type:
-		0:
-			handle_back_forth_movement(delta)
-		1:
-			handle_looping_movement(delta)
-		2:
-			handle_falling_movement(delta)
+	if get_tree().paused == false:
+		match type:
+			0:
+				handle_back_forth_movement(delta)
+			1:
+				handle_looping_movement(delta)
+			2:
+				handle_falling_movement(delta)
 
 func handle_back_forth_movement(delta: float) -> void:
 	var target_point = starting_position + Vector2(target_x, target_y)

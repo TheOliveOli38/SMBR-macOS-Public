@@ -1011,7 +1011,7 @@ linked_control = NodePath("../../PanelContainer/BG")
 [node name="Blueprints" parent="TileMenu/MarginContainer/VBoxContainer/TabButtons" unique_id=2014317728 node_paths=PackedStringArray("linked_control") instance=ExtResource("11_dp0ao")]
 layout_mode = 2
 icon = SubResource("AtlasTexture_xde7w")
-title = "EDITOR_MENU_BLUEPRINT"
+title = "EDITOR_MENU_BLUEPRINTS"
 linked_control = NodePath("../../PanelContainer/Blueprints")
 
 [node name="Bindings" type="Button" parent="TileMenu/MarginContainer/VBoxContainer/TabButtons" unique_id=834950599]
@@ -6633,10 +6633,20 @@ theme_override_constants/margin_bottom = -4
 [node name="VBoxContainer" type="VBoxContainer" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/Blueprints" unique_id=562188212]
 layout_mode = 2
 
-[node name="Button" type="Button" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/Blueprints/VBoxContainer" unique_id=1242165372]
+[node name="HBoxContainer" type="HBoxContainer" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/Blueprints/VBoxContainer" unique_id=784055747]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="Button" type="Button" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/Blueprints/VBoxContainer/HBoxContainer" unique_id=1242165372]
 layout_mode = 2
 size_flags_horizontal = 0
 text = "REFRESH LIST"
+alignment = 0
+
+[node name="Button2" type="Button" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/Blueprints/VBoxContainer/HBoxContainer" unique_id=97974041]
+layout_mode = 2
+size_flags_horizontal = 10
+text = "OPEN FOLDER"
 alignment = 0
 
 [node name="ScrollContainer" type="ScrollContainer" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/Blueprints/VBoxContainer" unique_id=1497148269]
@@ -7010,7 +7020,7 @@ wait_time = 0.25
 visible = false
 
 [node name="Timer" type="Timer" parent="." unique_id=1206061399]
-wait_time = 300.0
+wait_time = 600.0
 autostart = true
 
 [connection signal="connection_node_found" from="." to="CanvasLayer/TileModifierMenu" method="connect_signal"]
@@ -7115,7 +7125,8 @@ autostart = true
 [connection signal="item_selected" from="TileMenu/MarginContainer/VBoxContainer/PanelContainer/BG/ScrollContainer/VBoxContainer/HBoxContainer5/Particles" to="." method="set_bg_value" binds= ["particles"]]
 [connection signal="item_selected" from="TileMenu/MarginContainer/VBoxContainer/PanelContainer/BG/ScrollContainer/VBoxContainer/HBoxContainer6/LiquidLayer" to="." method="set_bg_value" binds= ["liquid_layer"]]
 [connection signal="toggled" from="TileMenu/MarginContainer/VBoxContainer/PanelContainer/BG/ScrollContainer/VBoxContainer/HBoxContainer3/OverlayClouds" to="." method="set_bg_value" binds= ["overlay_clouds"]]
-[connection signal="pressed" from="TileMenu/MarginContainer/VBoxContainer/PanelContainer/Blueprints/VBoxContainer/Button" to="." method="get_blueprints"]
+[connection signal="pressed" from="TileMenu/MarginContainer/VBoxContainer/PanelContainer/Blueprints/VBoxContainer/HBoxContainer/Button" to="." method="get_blueprints"]
+[connection signal="pressed" from="TileMenu/MarginContainer/VBoxContainer/PanelContainer/Blueprints/VBoxContainer/HBoxContainer/Button2" to="." method="open_blueprint_folder"]
 [connection signal="pressed" from="Info/QuitDialog/Yes" to="." method="save_level_before_exit"]
 [connection signal="pressed" from="Info/QuitDialog/No" to="." method="go_back_to_menu"]
 [connection signal="pressed" from="Info/QuitDialog/Cancel" to="Info/QuitDialog" method="hide"]

@@ -75,4 +75,16 @@ libraries = {
 script = ExtResource("3_4owni")
 metadata/_custom_type_script = "uid://b8vmbtoaaq5nc"
 
+[node name="Label" type="Label" parent="." unique_id=1683324224]
+visibility_layer = 2
+offset_left = -112.0
+offset_top = 8.0
+offset_right = 112.0
+offset_bottom = 72.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 0
+text = "THIS IS VERY UNFINISHED! ONLY LEAVING IT TO SEE IF PEOPLE ARE ACTUALLY INTERESTED IN HAVING IT AS AN ACTUAL THING"
+horizontal_alignment = 1
+autowrap_mode = 2
+
 [connection signal="level_start" from="LevelEditorToggleDetection" to="." method="add_nodes"]

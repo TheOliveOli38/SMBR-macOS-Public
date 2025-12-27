@@ -1187,6 +1187,9 @@ func get_blueprints() -> void:
 		%Blueprints.add_child(container)
 		container.blueprint_selected.connect(load_blueprint)
 
+func open_blueprint_folder() -> void:
+	OS.shell_show_in_file_manager(ProjectSettings.globalize_path(Global.config_path.path_join("blueprints")), true)
+
 func save_reminder() -> void:
 	Global.log_comment("Remember to save!")
 	AudioManager.play_global_sfx("pause")
