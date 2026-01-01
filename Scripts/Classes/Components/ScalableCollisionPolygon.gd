@@ -6,6 +6,8 @@ extends CollisionPolygon2D
 
 var crouching := false
 
+var sloped_floor_corner := false
+
 func _physics_process(_delta: float) -> void:
 	update()
 
@@ -26,6 +28,12 @@ func update_polygon() -> void:
 	
 	polygon[2].x = (hitbox.x / 2) - 3
 	polygon[3].x = -(hitbox.x / 2) + 3
+	
+	var corner_height := 0
+	if sloped_floor_corner:
+		corner_height = -3
+	polygon[5].y = corner_height
+	polygon[0].y = corner_height
 	
 	polygon[2].y = -hitbox.y
 	polygon[3].y = -hitbox.y

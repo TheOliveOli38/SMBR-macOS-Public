@@ -20,6 +20,8 @@ var editing := false
 var track_texture: Texture = null
 var invis_track_texture: Texture = null
 
+var baked_path: Curve2D = null
+
 var last_direction := Vector2i.ZERO
 
 @export_storage var placed_pieces := false
@@ -99,6 +101,7 @@ func update_pieces() -> void:
 	looping = $PlacePreview.position == Vector2.ZERO and length > 0
 	$Point.visible = not looping
 	$End.visible = not looping
+	baked_path = construct_path()
 
 func add_piece(new_direction := Vector2i.ZERO, add_to_arr := true) -> void:
 	placed_pieces = true
@@ -154,3 +157,16 @@ func _draw() -> void:
 		current_position += i * 16
 	if path.size() > 0:
 		draw_texture_rect_region(texture, Rect2(current_position, Vector2(16, 16)), Rect2(TrackPiece.SPRITE_COORDS[Vector2i(-path[path.size() - 1])], Vector2(16, 16)))
+
+func construct_path() -> Curve2D:
+	var curve = Curve2D.new()
+	curve.bake_interval = 16
+	var point_pos := global_position
+	var current_direction = Vector2i.ZERO
+	for i in path:
+		if i != current_direction:
+			current_direction = i
+			curve.add_point((point_pos))
+		point_pos += Vector2(i) * 16
+	curve.add_point(point_pos)
+	return curve

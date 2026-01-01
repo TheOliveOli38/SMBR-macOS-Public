@@ -13,6 +13,8 @@ extends Node
 enum ResourceMode {SPRITE_FRAMES, TEXTURE, AUDIO, RAW, FONT}
 @export var use_cache := true
 
+@export var sync: Array[ResourceSetterNew] = []
+
 static var cache := {}
 static var property_cache := {}
 static var active_flags := []
@@ -94,6 +96,7 @@ func get_resource(json_file: JSON) -> Resource:
 	while finished == false:
 		if json.has("variations"):
 			json = get_variation_json(json.variations)
+			sync_metadata()
 			if json.has("source"):
 				if json.get("source") is String:
 					source_resource_path = json_file.resource_path.replace(json_file.resource_path.get_file(), json.source)
@@ -256,7 +259,13 @@ func get_variation_json(json := {}) -> Dictionary:
 	
 	if json.has("choices"):
 		is_random = true
-		var random_json = json.choices.pick_random()
+		var idx := randi_range(0, json.choices.size() - 1)
+		if has_meta("RNGChoice"):
+			idx = get_meta("RNGChoice", -1)
+			print(idx)
+		else:
+			set_meta("RNGChoice", idx)
+		var random_json = json.choices[idx]
 		if random_json.has("link"):
 			json = get_variation_json(json[random_json.get("link")])
 		else:
@@ -319,7 +328,6 @@ func get_variation_json(json := {}) -> Dictionary:
 			json = get_variation_json(json[json.get(boo).get("link")])
 		else:
 			json = get_variation_json(json[boo])
-	
 	return json
 
 func get_config_file(resource_pack := "") -> void:
@@ -387,3 +395,11 @@ func load_audio_from_path(path := "") -> AudioStream:
 	elif path.contains(".ogg"):
 		stream = AudioStreamOggVorbis.load_from_file(path)
 	return stream
+
+func sync_metadata() -> void:
+	for i in sync:
+		copy_meta(i)
+
+func copy_meta(new_node: Node) -> void:
+	for meta in get_meta_list():
+		new_node.set_meta(meta, get_meta(meta))

@@ -58,7 +58,7 @@ size = Vector2(24, 31)
 size = Vector2(20, 30)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gvuxk"]
-size = Vector2(16, 1)
+size = Vector2(16, 5)
 
 [node name="Thwomp" type="CharacterBody2D" unique_id=344085046 node_paths=PackedStringArray("on_screen_enabler", "score_note_adder") groups=["Enemies"]]
 collision_layer = 16
@@ -120,7 +120,7 @@ collision_layer = 0
 collision_mask = 6
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BlockBreakingHitbox" unique_id=1969875531]
-position = Vector2(0, 0.5)
+position = Vector2(0, 2.5)
 shape = SubResource("RectangleShape2D_gvuxk")
 
 [node name="FireballDetection" type="Node" parent="." unique_id=253188674 node_paths=PackedStringArray("hitbox")]

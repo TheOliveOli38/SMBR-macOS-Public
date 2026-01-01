@@ -11,6 +11,7 @@ resource_local_to_scene = true
 size = Vector2(32, 8)
 
 [node name="MovingPlatform" unique_id=285771311 instance=ExtResource("1_52hcw")]
+type = 3
 
 [node name="Sprite" parent="." index="0" unique_id=1840586283]
 offset_top = -8.0
@@ -19,6 +20,9 @@ offset_bottom = 0.0
 [node name="CollisionShape2D" parent="." index="1" unique_id=1046612248]
 position = Vector2(0, -4)
 shape = SubResource("RectangleShape2D_m3c1m")
+
+[node name="EditorPropertyExposer" parent="." index="2" unique_id=1975160876]
+properties = Array[String](["length"])
 
 [node name="Line" parent="." index="3" unique_id=531388326]
 visible = false

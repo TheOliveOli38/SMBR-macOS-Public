@@ -473,7 +473,7 @@
 	],
 	"Bq": [
 		"res://Scenes/Prefabs/LevelObjects/EditorLinkedElevator.tscn",
-		"0, 0"
+		"0,0"
 	],
 	"Br": [
 		"res://Scenes/Prefabs/Entities/Items/Hachisuke.tscn",
@@ -789,6 +789,14 @@
 	],
 	"DR": [
 		"res://Scenes/Prefabs/Entities/Objects/TrackPlatform.tscn",
+		"0,0"
+	],
+	"DS": [
+		"res://Scenes/Prefabs/Gizmos/Inputs/InputDetection.tscn",
+		"0,0"
+	],
+	"DT": [
+		"res://Scenes/Prefabs/LevelObjects/EditorLinkedElevatorBlue.tscn",
 		"0,0"
 	]
 }

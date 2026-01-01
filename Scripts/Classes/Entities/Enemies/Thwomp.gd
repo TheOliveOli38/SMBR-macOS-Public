@@ -40,13 +40,17 @@ func handle_falling(delta: float) -> void:
 	velocity.y += (15 / delta) * delta
 	velocity.y = clamp(velocity.y, -INF, Global.entity_max_fall_speed)
 	handle_block_breaking()
-	if is_on_floor():
+	if is_on_floor() and velocity.y > 0:
 		land()
 
 func handle_block_breaking() -> void:
 	for i in %BlockBreakingHitbox.get_overlapping_bodies():
 		if i is Block and i.get("destructable") == true:
 			i.destroy()
+			land()
+		if i is Crate:
+			i.destroy(false)
+			velocity.y = 0
 
 func land() -> void:
 	AudioManager.play_sfx("thwomp_land", global_position)

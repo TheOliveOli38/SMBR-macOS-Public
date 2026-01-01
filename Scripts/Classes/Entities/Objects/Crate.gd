@@ -1,3 +1,4 @@
+class_name Crate
 extends CharacterBody2D
 
 @export var item: PackedScene = null
@@ -42,12 +43,12 @@ func apply_gravity(delta: float) -> void:
 func splash() -> void:
 	velocity.y = clamp(velocity.y / 1.25, 20, INF)
 
-func destroy() -> void:
+func destroy(dispense_item := true) -> void:
 	Global.score += 50
 	AudioManager.play_sfx("block_break", global_position)
 	summon_particles()
 	if item != null:
-		summon_item()
+		summon_item(not dispense_item)
 	queue_free()
 	
 const SMOKE_PARTICLE = preload("uid://d08nv4qtfouv1")
@@ -60,13 +61,15 @@ func summon_particles() -> void:
 	smoke.global_position = global_position
 	add_sibling(smoke)
 
-func summon_item() -> void:
+func summon_item(kill := false) -> void:
 	var node = item.instantiate()
 	node.global_position = global_position - Vector2(0, 1)
 	var direction = [-1, 1].pick_random()
 	node.set("velocity", Vector2(80 * direction, -150))
 	node.set("direction", direction)
 	add_sibling(node)
+	if kill and node is Enemy:
+		node.die()
 
 
 func on_player_entered(player: Player) -> void:

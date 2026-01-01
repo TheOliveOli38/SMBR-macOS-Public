@@ -53,6 +53,7 @@ func open() -> void:
 	update_minimum_size()
 	show()
 	editing_node.tree_exiting.connect(close)
+	
 
 func clear_nodes() -> void:
 	for i in property_nodes:
@@ -151,10 +152,9 @@ func set_value(node: Node, value_name := "", value = null) -> void:
 	node.get_node("EditorPropertyExposer").modifier_applied.emit()
 
 func close() -> void:
-	clear_nodes()
-	hide()
-	editing_node.tree_exiting.disconnect(close)
 	active = false
+	clear_nodes()
+	editing_node.tree_exiting.disconnect(close)
 	properties.clear()
 	if get_tree() == null: return
 	if Global.level_editor.quick_connecting:
@@ -162,6 +162,7 @@ func close() -> void:
 	else:
 		await get_tree().create_timer(0.03).timeout
 	Global.level_editor.current_state = LevelEditor.EditorState.IDLE
+	hide()
 
 var old_scale = Vector2.ONE
 

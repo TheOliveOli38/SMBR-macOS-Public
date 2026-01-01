@@ -514,7 +514,7 @@ collision_layer = 0
 collision_mask = 3
 collision_priority = 10000000.0
 slide_on_ceiling = false
-floor_max_angle = 1.3089969
+floor_max_angle = 0.80285144
 floor_snap_length = 4.0
 platform_on_leave = 2
 script = ExtResource("1_f6bau")
@@ -561,6 +561,7 @@ metadata/_custom_type_script = "uid://cbal8ms2oe1ik"
 
 [node name="HammerHitbox" type="Area2D" parent="SpriteScaleJoint/Sprite/Hammer" unique_id=1387928444]
 unique_name_in_owner = true
+visible = false
 position = Vector2(0, 16)
 collision_layer = 0
 collision_mask = 0
@@ -707,6 +708,7 @@ editor_draw_limits = true
 editor_draw_drag_margin = true
 
 [node name="Hitbox" type="Area2D" parent="." unique_id=2054851719]
+visible = false
 collision_mask = 5
 
 [node name="Shape" type="CollisionShape2D" parent="Hitbox" unique_id=2041618811]
@@ -1049,10 +1051,10 @@ metadata/_custom_type_script = "uid://cbal8ms2oe1ik"
 
 [node name="Collision" type="CollisionPolygon2D" parent="." unique_id=1622259203]
 unique_name_in_owner = true
-polygon = PackedVector2Array(4, -2, 4, -8, 1, -14, -1, -14, -4, -8, -4, -2, -2, 0, 2, 0)
+polygon = PackedVector2Array(4, 0, 4, -26, 1, -32, -1, -32, -4, -26, -4, 0, -2, 0, 2, 0)
 one_way_collision = true
 script = ExtResource("35_nbkfn")
-hitbox = Vector2(8, 14)
+hitbox = Vector2(8, 32)
 
 [node name="FootL" type="CollisionShape2D" parent="." unique_id=449333133 groups=["StepCollision"]]
 position = Vector2(-6, -4)
@@ -1072,7 +1074,8 @@ script = SubResource("GDScript_hu5lw")
 
 [node name="CameraHandler" type="Node2D" parent="." unique_id=378009359 node_paths=PackedStringArray("camera", "camera_center_joint")]
 unique_name_in_owner = true
-process_mode = 3
+process_mode = 1
+top_level = true
 script = ExtResource("20_d7xah")
 camera = NodePath("../Camera")
 camera_center_joint = NodePath("../CameraCenterJoint")
@@ -1129,6 +1132,7 @@ hit_from_inside = true
 
 [node name="BlockCollision" type="Area2D" parent="." unique_id=183752720]
 unique_name_in_owner = true
+visible = false
 position = Vector2(0, -30)
 collision_layer = 0
 collision_mask = 4

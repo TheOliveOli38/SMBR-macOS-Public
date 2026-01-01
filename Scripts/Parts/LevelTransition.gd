@@ -125,7 +125,11 @@ func value_cleanup() -> void:
 		Door.unlocked_doors = Checkpoint.unlocked_doors.duplicate()
 		KeyItem.total_collected = Checkpoint.keys_collected
 		LevelPersistance.active_nodes = Checkpoint.old_state.duplicate(true)
+		GlobalCounter.amounts = Checkpoint.global_counters.duplicate()
+		Broadcaster.active_channels = Checkpoint.broadcasters.duplicate()
 	else:
+		GlobalCounter.amounts.clear()
+		Broadcaster.active_channels.clear()
 		LevelPersistance.reset_states()
 		Door.unlocked_doors = []
 		KeyItem.total_collected = 0

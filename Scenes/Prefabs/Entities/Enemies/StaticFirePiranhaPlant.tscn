@@ -69,10 +69,11 @@ remote_path = NodePath("../../Collision")
 position = Vector2(0, -5)
 shape = SubResource("RectangleShape2D_5rcfe")
 
-[node name="FirePiranhaStuff" type="Node" parent="." unique_id=1539652917]
+[node name="FirePiranhaStuff" type="Node" parent="." unique_id=1539652917 node_paths=PackedStringArray("plant")]
 process_mode = 1
 script = ExtResource("5_x6gyp")
 fireball_scene = ExtResource("6_5rcfe")
+plant = NodePath("..")
 
 [node name="Node" type="Node" parent="." unique_id=598357536]
 process_mode = 3

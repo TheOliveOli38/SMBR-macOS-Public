@@ -191,6 +191,8 @@ func handle_speedrun_timer() -> void:
 	%Time.hide()
 	%Stopwatch.show()
 	%ModernStopwatch.show()
+	%IGT.show()
+	%IGT.text = "⏲" + str(Global.time).pad_zeros(3)
 	var late = SpeedrunHandler.timer > SpeedrunHandler.best_time
 	var diff = SpeedrunHandler.best_time - SpeedrunHandler.timer
 	%PB.visible = SpeedrunHandler.best_time > 0 and (SpeedrunHandler.timer > 0 or Global.current_level != null)

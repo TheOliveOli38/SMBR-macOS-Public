@@ -144,7 +144,7 @@ var connected_players := 1
 
 const CAMPAIGNS := ["SMB1", "SMBLL", "SMBS", "SMBANN"]
 
-var player_characters := [0, 0, 0, 0]:
+var player_characters := [0, 1, 2, 3]:
 	set(value):
 		player_characters = value
 		player_characters_changed.emit()

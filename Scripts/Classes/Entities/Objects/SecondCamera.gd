@@ -6,6 +6,8 @@ var active := false
 
 static var taken := false
 
+var tween = null
+
 func _ready() -> void:
 	$Camera2D.global_position = global_position
 	$NinePatchRect.size = get_viewport().get_visible_rect().size
@@ -44,8 +46,9 @@ func toggle() -> void:
 		call_deferred("return_to_old_camera")
 
 func return_to_old_camera() -> void:
-	if taken:
+	if taken or not active:
 		return
+	active = false
 	var trans_cam = Camera2D.new()
 	for i in ["limit_left", "limit_right", "limit_top", "limit_bottom"]:
 		trans_cam.set(i, $Camera2D.get(i))
@@ -54,11 +57,17 @@ func return_to_old_camera() -> void:
 	trans_cam.position = trans_cam.to_local(global_position)
 	trans_cam.reset_physics_interpolation()
 	trans_cam.reset_smoothing()
-	await create_tween().set_trans(Tween.TRANS_CUBIC).tween_property(trans_cam, "position", Vector2.ZERO, 0.25).finished
-	get_tree().get_first_node_in_group("Players").camera_make_current()
+	tween = create_tween().set_trans(Tween.TRANS_CUBIC).tween_property(trans_cam, "position", Vector2.ZERO, 0.25)
+	await tween.finished
 	trans_cam.queue_free()
+	taken = false
+	if active == false:
+		get_tree().get_first_node_in_group("Players").camera_make_current()
+	else:
+		transition_to_self()
 
 func transition_to_self() -> void:
+	active = true
 	taken = true
 	var trans_cam = Camera2D.new()
 	for i in ["limit_left", "limit_right", "limit_top", "limit_bottom"]:
@@ -69,10 +78,14 @@ func transition_to_self() -> void:
 	trans_cam.global_position = (old_cam.get_screen_center_position())
 	trans_cam.reset_physics_interpolation()
 	trans_cam.reset_smoothing()
-	await create_tween().set_trans(Tween.TRANS_CUBIC).tween_property(trans_cam, "position", Vector2.ZERO, 0.25).finished
-	activate()
+	tween = create_tween().set_trans(Tween.TRANS_CUBIC).tween_property(trans_cam, "position", Vector2.ZERO, 0.25)
+	await tween.finished
 	trans_cam.queue_free()
 	taken = false
+	if active:
+		activate()
+	else:
+		return_to_old_camera()
 
 func _exit_tree() -> void:
 	taken = false

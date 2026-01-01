@@ -8,6 +8,8 @@ extends Node
 
 @export var animate_change := true
 
+@export var editing_scale := Vector2(1, 1)
+
 const base64_charset := "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/"
 
 static var entity_map := {}

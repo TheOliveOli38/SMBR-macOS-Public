@@ -1,4 +1,4 @@
-[gd_scene load_steps=275 format=3 uid="uid://gbcmqonky63j"]
+[gd_scene load_steps=278 format=3 uid="uid://gbcmqonky63j"]
 
 [ext_resource type="Script" uid="uid://c2lnc7vnq3xth" path="res://Scripts/Classes/Editor/LevelEditor.gd" id="1_0qbyu"]
 [ext_resource type="Texture2D" uid="uid://cbha2l6hg1kfo" path="res://Assets/Sprites/UI/EditorGrid.png" id="2_8q7yr"]
@@ -111,6 +111,7 @@
 [ext_resource type="JSON" path="res://Assets/Sprites/Blocks/TrickBlock.json" id="126_606p5"]
 [ext_resource type="JSON" path="res://Assets/Sprites/Items/Clock.json" id="131_514ei"]
 [ext_resource type="JSON" path="res://Assets/Sprites/Blocks/Fan.json" id="132_o0k3u"]
+[ext_resource type="JSON" path="res://Assets/Sprites/Tilesets/BluePlatform.json" id="133_numt2"]
 [ext_resource type="Texture2D" uid="uid://c8ir37jmcm4f4" path="res://Assets/Sprites/Editor/CameraLock.png" id="134_q440o"]
 [ext_resource type="JSON" path="res://Assets/Sprites/Blocks/OnFan.json" id="134_vlioy"]
 [ext_resource type="JSON" path="res://Assets/Sprites/Enemies/Grinder.json" id="135_51g7s"]
@@ -163,6 +164,7 @@
 [ext_resource type="Texture2D" uid="uid://w2bfti6riv20" path="res://Assets/Sprites/Editor/Gizmos/Timer.png" id="172_xde7w"]
 [ext_resource type="Texture2D" uid="uid://dimtvmmic8y1u" path="res://Assets/Sprites/Editor/WindGenerator.png" id="173_6c7k7"]
 [ext_resource type="Texture2D" uid="uid://dleyxhhngy3r5" path="res://Assets/Sprites/Editor/Gizmos/TilePlacer.png" id="173_a6wyw"]
+[ext_resource type="Texture2D" uid="uid://xpyvr8u3dn1y" path="res://Assets/Sprites/Editor/Gizmos/InputDetection.png" id="173_x027r"]
 [ext_resource type="Texture2D" uid="uid://db8e2n65pq1ik" path="res://Assets/Sprites/Editor/Gizmos/Repeater.png" id="173_yjk03"]
 [ext_resource type="PackedScene" uid="uid://bo3sr1fjh6pcq" path="res://Scenes/Prefabs/Gizmos/Outputs/Repeater.tscn" id="174_2vwpv"]
 [ext_resource type="Texture2D" uid="uid://b4dgfpxq1x2lq" path="res://Assets/Sprites/Editor/Gizmos/GlobalCounter.png" id="174_qebwb"]
@@ -275,6 +277,18 @@ region_rect = Rect2(72, 12, 12, 12)
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_h8f07"]
 texture = ExtResource("4_thawd")
 region_rect = Rect2(72, 0, 12, 12)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dl3il"]
+draw_center = false
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 1, 0.46963003, 1)
+expand_margin_left = 1.0
+expand_margin_top = 1.0
+expand_margin_right = 1.0
+expand_margin_bottom = 1.0
 
 [sub_resource type="Shader" id="Shader_xde7w"]
 code = "shader_type canvas_item;
@@ -836,22 +850,50 @@ one_shot = true
 
 [node name="Previews" type="Node2D" parent="TileCursor" unique_id=1544727333]
 visible = false
-show_behind_parent = true
-z_index = 10
-z_as_relative = false
+z_index = 4096
 
 [node name="Panel" type="Panel" parent="TileCursor/Previews" unique_id=414343517]
 modulate = Color(1, 1, 1, 0.509804)
-offset_left = -48.0
+offset_left = -64.0
 offset_top = -16.0
-offset_right = 48.0
+offset_right = 64.0
 offset_bottom = 16.0
 theme_override_styles/panel = ExtResource("139_ydoon")
 
-[node name="-2" type="NinePatchRect" parent="TileCursor/Previews" unique_id=2117031030]
-offset_left = -40.0
+[node name="Label" type="Label" parent="TileCursor/Previews" unique_id=782026313]
+offset_left = 7.0
+offset_top = -2.0
+offset_right = 23.0
+offset_bottom = 14.0
+rotation = 3.1415927
+text = "^"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="TileCursor/Previews" unique_id=422422352]
+offset_left = -8.0
+offset_top = 2.0
+offset_right = 8.0
+offset_bottom = 18.0
+text = "^"
+horizontal_alignment = 1
+
+[node name="-3" type="NinePatchRect" parent="TileCursor/Previews" unique_id=584039018]
+modulate = Color(0.70380783, 0.70380783, 0.70380783, 1)
+offset_left = -58.0
 offset_top = -8.0
-offset_right = -24.0
+offset_right = -42.0
+offset_bottom = 8.0
+
+[node name="Overlay" type="NinePatchRect" parent="TileCursor/Previews/-3" unique_id=809810459]
+layout_mode = 0
+offset_right = 16.0
+offset_bottom = 16.0
+
+[node name="-2" type="NinePatchRect" parent="TileCursor/Previews" unique_id=2117031030]
+modulate = Color(0.70380783, 0.70380783, 0.70380783, 1)
+offset_left = -42.0
+offset_top = -8.0
+offset_right = -26.0
 offset_bottom = 8.0
 
 [node name="Overlay" type="NinePatchRect" parent="TileCursor/Previews/-2" unique_id=532666497]
@@ -860,9 +902,10 @@ offset_right = 16.0
 offset_bottom = 16.0
 
 [node name="-1" type="NinePatchRect" parent="TileCursor/Previews" unique_id=407091894]
-offset_left = -24.0
+modulate = Color(0.70380783, 0.70380783, 0.70380783, 1)
+offset_left = -26.0
 offset_top = -8.0
-offset_right = -8.0
+offset_right = -10.0
 offset_bottom = 8.0
 
 [node name="Overlay" type="NinePatchRect" parent="TileCursor/Previews/-1" unique_id=263268083]
@@ -881,10 +924,20 @@ layout_mode = 0
 offset_right = 16.0
 offset_bottom = 16.0
 
+[node name="Panel" type="Panel" parent="TileCursor/Previews/0" unique_id=1862963740]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_dl3il")
+
 [node name="1" type="NinePatchRect" parent="TileCursor/Previews" unique_id=294061155]
-offset_left = 8.0
+modulate = Color(0.70380783, 0.70380783, 0.70380783, 1)
+offset_left = 10.0
 offset_top = -8.0
-offset_right = 24.0
+offset_right = 26.0
 offset_bottom = 8.0
 
 [node name="Overlay" type="NinePatchRect" parent="TileCursor/Previews/1" unique_id=1996805784]
@@ -893,12 +946,25 @@ offset_right = 16.0
 offset_bottom = 16.0
 
 [node name="2" type="NinePatchRect" parent="TileCursor/Previews" unique_id=497217096]
-offset_left = 24.0
+modulate = Color(0.70380783, 0.70380783, 0.70380783, 1)
+offset_left = 26.0
 offset_top = -8.0
-offset_right = 40.0
+offset_right = 42.0
 offset_bottom = 8.0
 
 [node name="Overlay" type="NinePatchRect" parent="TileCursor/Previews/2" unique_id=1264378405]
+layout_mode = 0
+offset_right = 16.0
+offset_bottom = 16.0
+
+[node name="3" type="NinePatchRect" parent="TileCursor/Previews" unique_id=131560903]
+modulate = Color(0.70380783, 0.70380783, 0.70380783, 1)
+offset_left = 42.0
+offset_top = -8.0
+offset_right = 58.0
+offset_bottom = 8.0
+
+[node name="Overlay" type="NinePatchRect" parent="TileCursor/Previews/3" unique_id=934910575]
 layout_mode = 0
 offset_right = 16.0
 offset_bottom = 16.0
@@ -5082,13 +5148,44 @@ grow_horizontal = 0
 mouse_filter = 2
 texture = ExtResource("22_3cjpb")
 
-[node name="RopeElevator" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Objects/MarginContainer/GridContainer" unique_id=2087182305 groups=["Selectors"] instance=ExtResource("8_wkmjk")]
+[node name="RopeElevators" type="Control" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Objects/MarginContainer/GridContainer" unique_id=1222278299]
+custom_minimum_size = Vector2(16, 16)
 layout_mode = 2
+mouse_force_pass_scroll_events = false
+script = ExtResource("20_jc7xg")
+
+[node name="RopeElevator" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Objects/MarginContainer/GridContainer/RopeElevators" unique_id=2087182305 groups=["Selectors"] instance=ExtResource("8_wkmjk")]
+layout_mode = 0
+offset_right = 16.0
+offset_bottom = 16.0
 tile_name = "OBJ_ROPE_ELEVATOR"
 type = 1
 icon_texture = ExtResource("10_vhlvp")
 icon_region_override = Rect2(160, 128, 16, 16)
 entity_id = "Bq"
+
+[node name="RopeElevatorBlue" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Objects/MarginContainer/GridContainer/RopeElevators" unique_id=374605904 groups=["Selectors"] instance=ExtResource("8_wkmjk")]
+layout_mode = 0
+offset_right = 16.0
+offset_bottom = 16.0
+tile_name = "OBJ_ROPE_ELEVATOR_BLUE"
+type = 1
+icon_texture = ExtResource("10_vhlvp")
+icon_region_override = Rect2(160, 128, 16, 16)
+secondary_icon_texture = ExtResource("133_numt2")
+secondary_icon_region_override = Rect2(0, 0, 8, 8)
+entity_id = "DT"
+
+[node name="TextureRect" type="TextureRect" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Objects/MarginContainer/GridContainer/RopeElevators" unique_id=525698903]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -16.0
+offset_bottom = 16.0
+grow_horizontal = 0
+mouse_filter = 2
+texture = ExtResource("22_3cjpb")
 
 [node name="Cannon" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Objects/MarginContainer/GridContainer" unique_id=1309638940 groups=["Selectors"] instance=ExtResource("8_wkmjk")]
 layout_mode = 2
@@ -5676,6 +5773,28 @@ mouse_filter = 2
 texture = ExtResource("22_3cjpb")
 expand_mode = 1
 stretch_mode = 3
+
+[node name="InputDetection" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Gizmos/MarginContainer/VBoxContainer/Inputs" unique_id=954674848 groups=["Selectors"] instance=ExtResource("8_wkmjk")]
+layout_mode = 2
+tile_name = "Input Detection"
+tile_desc = "Will turn on, if a specific input is either held down. OR will emit a pulse, if a specific input is pressed (configurable)"
+type = 1
+icon_texture = ExtResource("173_x027r")
+icon_region_override = Rect2(0, 0, 16, 16)
+secondary_icon_region_override = Rect2(0, 0, 16, 16)
+entity_id = "DS"
+entity_scene = ExtResource("158_5yjx1")
+metadata/can_be_stored = true
+
+[node name="TextureRect" type="TextureRect" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Gizmos/MarginContainer/VBoxContainer/Inputs/InputDetection" unique_id=326243026]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("194_24ald")
 
 [node name="EnemyStuff" type="Control" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Gizmos/MarginContainer/VBoxContainer/Inputs" unique_id=1281915632]
 custom_minimum_size = Vector2(16, 16)

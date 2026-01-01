@@ -15,6 +15,8 @@ static var sublevel_id := 0
 static var keys_collected := 0
 static var old_state := [[], []]
 static var unlocked_doors := []
+static var broadcasters := []
+static var global_counters := {}
 
 static var passed_checkpoints := []
 
@@ -44,7 +46,6 @@ func _ready() -> void:
 			i.reset_physics_interpolation()
 			await get_tree().physics_frame
 			i.recenter_camera()
-		KeyItem.total_collected = keys_collected
 		respawned.emit()
 
 
@@ -60,6 +61,8 @@ func on_area_entered(area: Area2D) -> void:
 		keys_collected = KeyItem.total_collected
 		old_state = LevelPersistance.active_nodes.duplicate(true)
 		unlocked_doors = Door.unlocked_doors.duplicate()
+		global_counters = GlobalCounter.amounts.duplicate()
+		broadcasters = Broadcaster.active_channels.duplicate()
 		Level.start_level_path = Global.current_level.scene_file_path
 		if Global.current_game_mode == Global.GameMode.LEVEL_EDITOR:
 			sublevel_id = Global.level_editor.sub_level_id

@@ -10,6 +10,7 @@ signal gib_about_to_spawn
 
 @export var global_parent := false
 
+
 func summon_gib(direction := 1, play_sfx := play_death_sfx, override_gib_type := gib_type) -> void:
 	gib_about_to_spawn.emit()
 	if play_sfx:
@@ -19,8 +20,6 @@ func summon_gib(direction := 1, play_sfx := play_death_sfx, override_gib_type :=
 		return
 	var node = ENTITY_GIB.instantiate()
 	visuals.show()
-	if visuals.has_node("ResourceSetterNew"):
-		visuals.get_node("ResourceSetterNew").update_on_spawn = false
 	node.visuals = visuals.duplicate()
 	node.visuals.set_process(false)
 	node.global_position = visuals.global_position

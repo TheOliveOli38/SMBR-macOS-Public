@@ -9,7 +9,6 @@ const MOVE_SPEED := 160
 const AIR_MOVE_SPEED := 80
 
 var combo := 0
-@export var colour := "Green"
 var flipped := false
 
 

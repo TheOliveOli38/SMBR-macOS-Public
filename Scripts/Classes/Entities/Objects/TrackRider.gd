@@ -13,7 +13,6 @@ var last_position := Vector2.ZERO
 var direction_vector := Vector2i.ZERO
 
 var current_track: Track = null
-var track_idx := -1
 var can_attach := true
 var travelling_on_rail := false
 
@@ -23,16 +22,19 @@ var can_move := true
 
 var moving := false
 
+var point_idx := 0.0
+
+@onready var path := Curve2D.new()
 
 func start() -> void:
 	if $SignalExposer.total_inputs > 0:
 		can_move = false
 	current_track = null
-	track_idx = -1
+	point_idx = 0
 	if auto_move == false:
 		can_move = false
 	if Global.level_editor_is_editing() == false:
-		global_position += Vector2.DOWN * 0.1
+		global_position += Vector2.ZERO
 	if attached_entity != null:
 		attach_to_joint(attached_entity)
 
@@ -54,7 +56,8 @@ func _physics_process(delta: float) -> void:
 		velocity.y += 10
 		global_position += velocity * delta
 		check_for_rail()
-		last_position = global_position
+	elif path != null and is_instance_valid(current_track):
+		handle_moving(delta)
 
 func attach_to_joint(node: Node2D) -> void:
 	var joint = node.get_node("TrackJoint")
@@ -68,10 +71,34 @@ func attach_to_joint(node: Node2D) -> void:
 	if joint.get_parent().has_node("GibSpawner"):
 		joint.get_parent().get_node("GibSpawner").global_parent = true
 	joint.rider = self
-	node.physics_interpolation_mode = Node.PHYSICS_INTERPOLATION_MODE_OFF
 	node.reparent($Joint, false)
 	node.position = joint.offset
 	attached_entity = node
+
+func handle_moving(delta: float) -> void:
+	var point = global_position
+	if point_idx >= path.get_baked_length() - (2) and direction == 0:
+		if current_track.looping:
+			point_idx = 0
+		elif current_track.end_point == 0:
+			direction = !direction
+			bounce()
+		else:
+			detach_from_rail()
+			return
+	elif point_idx <= 4 and direction == 1:
+		if current_track.looping:
+			point_idx = path.get_baked_length()
+		elif current_track.start_point == 0:
+			direction = !direction
+			bounce()
+		else:
+			detach_from_rail()
+			return
+	point_idx += speed * 32 * delta * [1, -1][direction]
+	var new_point = path.sample_baked(point_idx)
+	velocity = (new_point - point) / delta
+	global_position += velocity * delta
 
 func check_for_rail() -> void:
 	if travelling_on_rail == false and can_attach:
@@ -82,53 +109,15 @@ func check_for_rail() -> void:
 					continue
 				global_position = piece.global_position
 				travelling_on_rail = true
-				current_track = piece.owner
-				track_idx = piece.idx
-				if track_idx >= current_track.path.size():
-					direction = 1
-				if direction == 1:
-					track_idx -= 1
-				track_idx = clamp(track_idx, 0, current_track.path.size() - 1)
-	if travelling_on_rail:
-		direction_vector = current_track.path[track_idx] * [1, -1][direction]
-		if current_track != null:
-			if can_move == false:
-				await started
-			if moving == false:
 				attached_entity.get_node("TrackJoint").started_moving.emit()
-			move_tween(Vector2(direction_vector))
+				current_track = piece.owner
+				path = current_track.baked_path
+				point_idx = path.get_closest_offset(global_position)
+				if velocity.length() > 10:
+					var track_direction = (current_track.baked_path.sample_baked(point_idx + (0.01 * [1, -1][direction])) - current_track.baked_path.sample_baked(point_idx)).normalized()
+					if velocity.normalized().dot(track_direction) > 0:
+						direction = !direction
 
-func move_tween(new_direction := Vector2.ZERO) -> void:
-	moving = true
-	var tween = create_tween()
-	tween.tween_property(self, "global_position", global_position + (new_direction * 16), float(1.0 if new_direction.is_normalized() else 1.414) / (speed * 2))
-	await tween.finished
-	track_idx += [1, -1][direction]
-
-
-	if track_idx >= current_track.length and direction == 0:
-		if current_track.looping:
-			track_idx = 0
-		else:
-			track_idx = current_track.length - 1
-			if current_track.end_point == 0:
-				bounce()
-				direction = 1
-			else:
-				detach_from_rail()
-				return
-	if track_idx < 0 and direction == 1:
-		if current_track.looping:
-			track_idx = current_track.length - 1
-		else:
-			track_idx = 0
-			if current_track.start_point == 0:
-				bounce()
-				direction = 0
-			else:
-				detach_from_rail()
-				return
-	check_for_rail()
 
 func bounce() -> void:
 	if is_instance_valid(attached_entity) == false:
@@ -140,9 +129,8 @@ func bounce() -> void:
 func detach_from_rail() -> void:
 	can_attach = false
 	travelling_on_rail = false
-	track_idx = -1
-	velocity = direction_vector * speed * 48
-	await get_tree().create_timer(0.1, false).timeout
+	point_idx = 0
+	path = null
 	can_attach = true
 
 func start_moving() -> void:

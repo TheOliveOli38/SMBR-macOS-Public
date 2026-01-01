@@ -53,7 +53,8 @@ sprite_frames = SubResource("SpriteFrames_sax2u")
 autoplay = "default"
 frame_progress = 0.710764
 
-[node name="ResourceSetterNew" type="Node" parent="Sprite" unique_id=1393776669 node_paths=PackedStringArray("node_to_affect", "property_node")]
+[node name="ResourceSetter" type="Node" parent="Sprite" unique_id=1393776669 node_paths=PackedStringArray("node_to_affect", "property_node")]
+unique_name_in_owner = true
 script = ExtResource("3_7mdmn")
 node_to_affect = NodePath("..")
 property_node = NodePath("../..")

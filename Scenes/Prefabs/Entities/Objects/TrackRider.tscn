@@ -8,7 +8,7 @@
 [ext_resource type="Script" uid="uid://b3bokos5jcpr7" path="res://Scripts/Classes/Components/SignalExposer.gd" id="6_62713"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xlgar"]
-size = Vector2(12, 12)
+size = Vector2(4, 4)
 
 [node name="TrackRider" type="Node2D" unique_id=794638291]
 z_index = -1

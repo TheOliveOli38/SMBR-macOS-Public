@@ -159,7 +159,6 @@ layer = 0
 script = ExtResource("1_f34v2")
 
 [node name="Main" type="HBoxContainer" parent="." unique_id=44479889]
-visible = false
 custom_minimum_size = Vector2(256, 32)
 anchors_preset = 10
 anchor_right = 1.0
@@ -560,7 +559,6 @@ offset_top = 8.0
 offset_right = 56.0
 offset_bottom = 40.0
 theme_override_constants/separation = -8
-alignment = 1
 
 [node name="Stopwatch" type="Label" parent="Main/TimeDisplay/TimeLabel/VBoxContainer" unique_id=319182652]
 unique_name_in_owner = true
@@ -595,6 +593,7 @@ custom_minimum_size = Vector2(24, 0)
 layout_mode = 2
 
 [node name="ModernHUD" type="Control" parent="." unique_id=1753823889]
+visible = false
 custom_minimum_size = Vector2(256, 0)
 layout_mode = 3
 anchors_preset = 10

@@ -36,7 +36,7 @@ func deactivate_all_generators() -> void:
 	get_tree().call_group("Enemies", "start_retreat") # Lakitus
 
 func deactivate() -> void:
-	pass
+	active = false
 
 func spawn_entity() -> void:
 	if entity_scene == null: return

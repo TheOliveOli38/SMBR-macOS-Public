@@ -2,7 +2,6 @@ class_name Broadcaster
 extends Node2D
 
 static var active_channels := []
-static var recieved_broadcasters := []
 
 @export_range(0, 99) var channel := 0
 @export_enum("Send and Recieve", "Send Only", "Recieve Only") var mode := 0

@@ -80,6 +80,7 @@ func summon_shell(flipped := false, launch := false) -> void:
 		return
 	DiscoLevel.combo_amount += 1
 	var shell = load(shell_scene).instantiate()
+	%SpriteSetter.copy_meta(shell.get_node("%ResourceSetter"))
 	shell.flipped = flipped
 	shell.times_kicked = times_kicked
 	shell.old_entity = self.duplicate()

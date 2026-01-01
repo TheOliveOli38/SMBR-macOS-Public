@@ -524,7 +524,7 @@ func open_tile_properties(tile: Node2D) -> void:
 	current_state = EditorState.MODIFYING_TILE
 	await get_tree().process_frame
 	%TileModifierMenu.update_minimum_size()
-	%TileModifierMenu.position = tile.get_global_transform_with_canvas().origin
+	%TileModifierMenu.position = tile.get_global_transform_with_canvas().origin - Vector2(tile.get_meta("tile_offset"))
 	%TileModifierMenu.position.x = clamp(%TileModifierMenu.position.x, 0, get_viewport().get_visible_rect().size.x - %TileModifierMenu.size.x - 2)
 	%TileModifierMenu.position.y = clamp(%TileModifierMenu.position.y, 0, get_viewport().get_visible_rect().size.y - %TileModifierMenu.size.y - 2)
 
@@ -677,6 +677,8 @@ func copy_tile(tile_position := Vector2i.ZERO, layer_num := current_layer) -> vo
 	copied_tile_info = []
 	if entity_tiles[layer_num].has(tile_position):
 		copied_tile = entity_tiles[layer_num][tile_position].duplicate()
+		if copied_tile.has_node("SignalExposer"):
+			copied_tile.get_node("SignalExposer").connections.clear()
 		copied_tile_info = [copied_tile.get_meta("tile_offset")]
 	elif tile_layer_nodes[layer_num].get_used_cells().has(tile_position):
 		if BetterTerrain.get_cell(tile_layer_nodes[layer_num], tile_position) >= 0:
@@ -778,7 +780,7 @@ func is_tile_in_area(top_corner := Vector2i.ZERO, select_start := Vector2i.ZERO,
 
 func show_scroll_preview() -> void:
 	$TileCursor/Previews.show()
-	for i in [$"TileCursor/Previews/-2", $"TileCursor/Previews/-1", $"TileCursor/Previews/0", $"TileCursor/Previews/1", $"TileCursor/Previews/2"]:
+	for i in [$"TileCursor/Previews/-3", $"TileCursor/Previews/-2", $"TileCursor/Previews/-1", $"TileCursor/Previews/0", $"TileCursor/Previews/1", $"TileCursor/Previews/2", $"TileCursor/Previews/3"]:
 		var position = selected_tile_index + int(i.name)
 		var selector = tile_list[wrap(position, 0, tile_list.size())]
 		i.texture = selector.get_node("%Icon").texture
@@ -898,6 +900,8 @@ func place_tile(tile_position := Vector2i.ZERO, layer_num := current_layer, tile
 	elif tile_to_place is Node:
 		tile_to_place = tile_to_place.duplicate()
 		var spawn_offset := Vector2i.ZERO
+		tile_to_place.set_meta("tile_position", tile_position)
+		tile_to_place.set_meta("layer", layer_num)
 		if info.size() > 0:
 			spawn_offset = info[0]
 		tile_to_place.global_position = (tile_position * 16) + (Vector2i(8, 8) + spawn_offset)
@@ -928,13 +932,13 @@ func check_connect_boundary_tiles(tile_position := Vector2i.ZERO, layer := 0) ->
 	if tile_position.y > 0 and tile_position.x <= -16:
 		tile_layer_nodes[layer].set_cell(tile_position + Vector2i.LEFT + Vector2i.DOWN, 6, BOUNDARY_CONNECT_TILE)
 
-func remove_tile(tile_position := Vector2i.ZERO, layer_num := current_layer, save_action := true) -> void:
+func remove_tile(tile_position := Vector2i.ZERO, layer_num := current_layer, save_action := true) -> bool:
 	$TileCursor/Previews.hide()
 	var old_tile = null
 	var info := []
 	if entity_tiles[layer_num].get(tile_position) != null:
 		if entity_tiles[layer_num].get(tile_position) is Player:
-			return
+			return false
 		if save_action:
 			old_tile = entity_tiles[layer_num].get(tile_position).duplicate()
 			info = [old_tile.get_meta("tile_offset")]
@@ -953,6 +957,7 @@ func remove_tile(tile_position := Vector2i.ZERO, layer_num := current_layer, sav
 		undo_redo.add_do_method(remove_tile.bind(tile_position, layer_num, false))
 		undo_redo.add_undo_method(place_tile.bind(tile_position, layer_num, old_tile, info, false))
 		undo_redo.commit_action(false)
+	return old_tile != null
 
 func global_position_to_tile_position(position := Vector2.ZERO) -> Vector2i:
 	return Vector2i(position / 16)

@@ -34,6 +34,7 @@ func collect() -> void:
 func summon_block_coin() -> void:
 	var node = spinning_coin_scene.instantiate()
 	node.global_position = global_position
+	%ResourceSetter.copy_meta(node.get_node("%ResourceSetter"))
 	add_sibling(node)
 	queue_free()
 	if get_parent() is TileMapLayer:

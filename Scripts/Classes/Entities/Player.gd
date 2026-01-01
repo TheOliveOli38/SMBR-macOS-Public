@@ -16,7 +16,7 @@ extends CharacterBody2D
 		"CAN_AIR_TURN": false,             # Determines if the player can turn in mid-air.
 		"CAN_BREAK_BRICKS": true,          # Determines if the player can break bricks in their current form.
 		"CAN_BE_WALL_EJECTED": true,       # Determines if the player gets pushed out of blocks if inside of them.
-		
+		"ROUNDED_FLOOR_COLLISION": false,
 		"JUMP_WALK_THRESHOLD": 60.0,       # The minimum velocity the player must move at to perform a walking jump.
 		"JUMP_RUN_THRESHOLD": 135.0,       # The minimum velocity the player must move at to perform a running jump.
 		
@@ -108,7 +108,7 @@ extends CharacterBody2D
 		"CAN_AIR_TURN": false,             # Determines if the player can turn in mid-air.
 		"CAN_BREAK_BRICKS": true,          # Determines if the player can break bricks in their current form.
 		"CAN_BE_WALL_EJECTED": true,       # Determines if the player gets pushed out of blocks if inside of them.
-		
+		"ROUNDED_FLOOR_COLLISION": true,
 		"JUMP_WALK_THRESHOLD": 60.0,       # The minimum velocity the player must move at to perform a walking jump.
 		"JUMP_RUN_THRESHOLD": 135.0,       # The minimum velocity the player must move at to perform a running jump.
 		"JUMP_BUFFER": 2,
@@ -998,6 +998,7 @@ func handle_collision_shapes() -> void:
 	collision_size = Vector2(collision_size[0], collision_size[1])
 	collision_size.x = max(collision_size.x, 6)
 	collision_size.y = max(collision_size.y, 8)
+	%Collision.sloped_floor_corner = physics_params("ROUNDED_FLOOR_COLLISION")
 	%Collision.hitbox = collision_size
 	$Hitbox/Shape.shape.size = collision_size + Vector2(0.2, 0.2)
 	%BlockCollision.position.y = -collision_size.y
@@ -1011,12 +1012,14 @@ func handle_step_collision() -> void:
 	for i in get_tree().get_nodes_in_group("StepCollision"):
 		var on_wall := false
 		for x in [$StepWallChecks/LWall, $StepWallChecks/RWall]:
-			x.position.x = ((collision_size.x / 2) + 2) * sign(x.position.x)
+			x.position.x = ((collision_size.x / 2) + 1) * sign(x.position.x)
 			if x.is_colliding():
 				on_wall = true
 		var step_enabled = (not on_wall and air_frames < 4 and actual_velocity_y() >= 0 and abs(velocity.x) >= 50)
 		i.set_deferred("disabled", not step_enabled)
-		i.position.x = ((collision_size.x / 2) + 2) * sign(i.position.x)
+		i.position.x = ((collision_size.x / 2)) * sign(i.position.x)
+		if physics_params("ROUNDED_FLOOR_COLLISION") == false:
+			i.position.x += 1 * sign(i.position.x)
 
 func handle_star(delta:float) -> void:
 	star_meter -= delta

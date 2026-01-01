@@ -49,7 +49,8 @@ const WIRE_COLOURS := [
 
 func _ready() -> void:
 	add_child(recursive_check)
-	recursive_check.wait_time = get_process_delta_time()
+	if get_process_delta_time() > 0:
+		recursive_check.wait_time = get_process_delta_time()
 	recursive_check.timeout.connect(on_recursive_timeout)
 	recursive_check.start()
 	set_visibility_layer_bit(0, false)
@@ -62,9 +63,7 @@ func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	show_behind_parent = true
 	z_index = -10
-	var pos_save = global_position
 	top_level = true
-	global_position = pos_save
 	call_deferred("connect_pre_existing_signals")
 	queue_redraw()
 	if Global.current_game_mode == Global.GameMode.CUSTOM_LEVEL:
@@ -81,11 +80,11 @@ func _process(_delta: float) -> void:
 
 func _draw() -> void:
 	if editing:
-		draw_square_line(Vector2.ZERO, to_local(get_global_mouse_position()).snapped(Vector2(16, 16)), WIRE_COLOURS[connections.size()])
+		draw_square_line(owner.global_position, (get_global_mouse_position() + Vector2(-8, -8)).snapped(Vector2(16, 16)) + Vector2(8, 8), WIRE_COLOURS[connections.size()])
 	var idx := 0
 	for x in connections:
 		var target_node = get_node_from_tile(x[0], x[1])
-		draw_square_line(Vector2.ZERO, to_local(target_node.global_position), WIRE_COLOURS[idx % (WIRE_COLOURS.size())])
+		draw_square_line(owner.global_position, to_local(target_node.global_position), WIRE_COLOURS[idx % (WIRE_COLOURS.size())])
 		idx += 1
 
 func draw_square_line(from := Vector2.ZERO, to := Vector2.ZERO, colour := Color.RED) -> void:

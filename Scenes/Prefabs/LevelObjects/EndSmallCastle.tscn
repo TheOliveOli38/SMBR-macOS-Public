@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=4 uid="uid://byqmn8yi7iuac"]
+[gd_scene load_steps=23 format=4 uid="uid://byqmn8yi7iuac"]
 
 [ext_resource type="Script" uid="uid://qq26qw7ltflb" path="res://Scripts/Parts/EndCastle.gd" id="1_4yifo"]
 [ext_resource type="Script" uid="uid://caq1qiwmy0mox" path="res://Scripts/Parts/BetterAnimatedSprite.gd" id="2_l3xjf"]
@@ -12,6 +12,7 @@
 [ext_resource type="JSON" path="res://Assets/Sprites/Tilesets/Terrain/TerrainTiles.json" id="9_oyrq2"]
 [ext_resource type="Texture2D" uid="uid://dbacecqyfwr1m" path="res://Assets/Sprites/Tilesets/EndingCastleSprite.png" id="11_2hcdu"]
 [ext_resource type="JSON" path="res://Assets/Sprites/Tilesets/SmallCastle.json" id="12_xg4af"]
+[ext_resource type="Script" uid="uid://5octqlf4ohel" path="res://Scripts/Classes/Components/ScoreNoteSpawner.gd" id="14_76jrx"]
 [ext_resource type="Script" uid="uid://b8vmbtoaaq5nc" path="res://Scripts/Parts/EditorToggleDetection.gd" id="14_oyrq2"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_7xlhl"]
@@ -188,5 +189,9 @@ metadata/_custom_type_script = "uid://cbal8ms2oe1ik"
 [node name="LevelEditorToggleDetection" type="Node" parent="." unique_id=948683029]
 script = ExtResource("14_oyrq2")
 metadata/_custom_type_script = "uid://b8vmbtoaaq5nc"
+
+[node name="ScoreNoteSpawner" type="Node" parent="." unique_id=1995546534]
+script = ExtResource("14_76jrx")
+metadata/_custom_type_script = "uid://5octqlf4ohel"
 
 [connection signal="timeout" from="Framerule" to="." method="on_timeout"]
