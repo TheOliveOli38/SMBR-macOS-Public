@@ -9,6 +9,10 @@ func toggle() -> void:
 	powered = not powered
 	update()
 
+func start() -> void:
+	if powered:
+		update()
+
 func update() -> void:
 	[turned_off, turned_on][int(powered)].emit()
 

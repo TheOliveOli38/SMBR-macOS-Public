@@ -164,6 +164,10 @@ func _ready() -> void:
 	%LevelName.text = level_name
 	%LevelAuthor.text = level_author
 	%Description.text = level_desc
+	if Settings.file.game.editor_seen_guide == false:
+		open_bindings_menu()
+		Settings.file.game.editor_seen_guide = true
+		Settings.save_settings()
 
 var last_recorded_frame := Vector2.ZERO
 
@@ -234,10 +238,11 @@ func go_back_to_menu() -> void:
 	Global.transition_to_scene("res://Scenes/Levels/CustomLevelMenu.tscn")
 
 func open_bindings_menu() -> void:
-	$TileMenu/EditorKeybindsView.open()
+	%EditorGuide.show()
+	$TileMenu.hide()
 	current_state = EditorState.SAVE_MENU
-	await $TileMenu/EditorKeybindsView.closed
-	current_state = EditorState.TILE_MENU
+	await %EditorGuide.visibility_changed
+	current_state = EditorState.IDLE
 
 func open_save_dialog() -> void:
 	current_state = EditorState.SAVE_MENU

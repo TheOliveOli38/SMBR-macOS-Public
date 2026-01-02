@@ -30,7 +30,6 @@ func update() -> void:
 	condition_filled = test_condition
 
 func get_condition() -> bool:
-	print([total_inputs, $SignalExposer.total_inputs])
 	match type:
 		0:
 			return total_inputs >= $SignalExposer.total_inputs

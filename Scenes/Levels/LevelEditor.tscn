@@ -196,8 +196,8 @@
 [ext_resource type="JSON" path="res://Assets/Sprites/Items/BlueCoin.json" id="206_ofliq"]
 [ext_resource type="JSON" path="res://Assets/Sprites/Tilesets/PDoors.json" id="207_sucb6"]
 [ext_resource type="Texture2D" uid="uid://ejdm7k30661p" path="res://Assets/Sprites/Editor/SecondCamera.png" id="208_ji0c6"]
-[ext_resource type="PackedScene" uid="uid://d25r3nxm3p463" path="res://Scenes/Prefabs/UI/EditorKeybindsView.tscn" id="209_dl3il"]
 [ext_resource type="JSON" path="res://Assets/Sprites/Items/Hachisuke.json" id="211_fe6cg"]
+[ext_resource type="PackedScene" uid="uid://k4bgruingvi0" path="res://Scenes/Prefabs/UI/EditorGuide.tscn" id="211_numt2"]
 [ext_resource type="JSON" path="res://Assets/Sprites/Items/WingItem.json" id="221_o0k3u"]
 [ext_resource type="JSON" path="res://Assets/Sprites/Items/LuckyStar.json" id="224_vjdbd"]
 [ext_resource type="JSON" path="res://Assets/Sprites/Items/Key.json" id="229_u1728"]
@@ -6796,9 +6796,6 @@ size_flags_vertical = 3
 [node name="ThemeSelect" parent="TileMenu" unique_id=1361028610 instance=ExtResource("206_dsu6a")]
 visible = false
 
-[node name="EditorKeybindsView" parent="TileMenu" unique_id=1170775153 instance=ExtResource("209_dl3il")]
-visible = false
-
 [node name="Info" type="CanvasLayer" parent="." unique_id=1889936080]
 
 [node name="Label" type="Label" parent="Info" unique_id=479473848]
@@ -7075,8 +7072,8 @@ modulate = Color(1, 1, 1, 0)
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -120.0
-offset_bottom = 18.25
+offset_left = -152.0
+offset_bottom = 16.0
 grow_horizontal = 0
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 text = "\"level.lvl\" saved."
@@ -7125,6 +7122,21 @@ text = "SAVE"
 layout_mode = 2
 size_flags_horizontal = 3
 text = "CANCEL"
+
+[node name="EditorGuide" parent="Info" unique_id=578106112 instance=ExtResource("211_numt2")]
+unique_name_in_owner = true
+visible = false
+
+[node name="ColorRect" type="ColorRect" parent="Info/EditorGuide" unique_id=232458549]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 0.34300002)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1300473587]
 

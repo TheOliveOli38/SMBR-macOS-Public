@@ -69,6 +69,8 @@ func return_to_old_camera() -> void:
 func transition_to_self() -> void:
 	active = true
 	taken = true
+	if get_viewport() == null:
+		return
 	var trans_cam = Camera2D.new()
 	for i in ["limit_left", "limit_right", "limit_top", "limit_bottom"]:
 		trans_cam.set(i, $Camera2D.get(i))

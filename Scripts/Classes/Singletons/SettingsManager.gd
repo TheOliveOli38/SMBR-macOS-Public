@@ -25,7 +25,8 @@ var file := {
 	},
 	"game": {
 		"campaign": "SMB1",
-		"lang": "en"
+		"lang": "en",
+		"editor_seen_guide": false,
 	},
 	"keyboard":
 	{
