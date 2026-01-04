@@ -60,8 +60,8 @@ func _ready() -> void:
 		%Default.hide()
 		%CustomLevelAuthor.text = "By " + LevelEditor.level_author
 		%CustomLevelName.text = LevelEditor.level_name
-		
 	await get_tree().create_timer(0.1, false).timeout
+	$TextShadowColourChanger.queue_free()
 	begin_transition_wait()
 
 func begin_transition_wait() -> void:
@@ -85,6 +85,7 @@ func begin_transition_wait() -> void:
 				var json = JSON.parse_string(FileAccess.open(path, FileAccess.READ).get_as_text())
 				NewLevelBuilder.load_level(json)
 		else:
+			$Timer.start()
 			await get_tree().create_timer(0.1, false).timeout
 			can_transition = true
 

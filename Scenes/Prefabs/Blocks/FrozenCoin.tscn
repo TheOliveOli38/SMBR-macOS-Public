@@ -11,4 +11,4 @@ melted_scene = ExtResource("2_n3k5x")
 resource_json = ExtResource("3_kmv6y")
 
 [node name="PSwitcher" parent="." index="3" unique_id=115134147]
-new_scene = "uid://bk5iue67nh4f3"
+new_scene = "uid://6vykxewvvp2e"

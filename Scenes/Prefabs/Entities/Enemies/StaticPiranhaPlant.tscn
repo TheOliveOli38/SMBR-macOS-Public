@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://csw2u3q38xrq0"]
+[gd_scene load_steps=22 format=3 uid="uid://csw2u3q38xrq0"]
 
 [ext_resource type="Script" uid="uid://cvqh3d3x1aicv" path="res://Scripts/Classes/Entities/Enemies/StaticPiranhaPlant.gd" id="1_w45fi"]
 [ext_resource type="Texture2D" uid="uid://dbq6cn2hp6ijx" path="res://Assets/Sprites/Enemies/PiranhaPlant.png" id="2_oy87v"]
@@ -14,6 +14,7 @@
 [ext_resource type="Script" uid="uid://cmg61722ktg2m" path="res://Scripts/Classes/Components/BlockBouncingDetection.gd" id="10_q1mv6"]
 [ext_resource type="Script" uid="uid://c3gg32ivrlq8n" path="res://Scripts/Classes/Components/GibSpawner.gd" id="13_bc7fo"]
 [ext_resource type="Script" uid="uid://ctfbuoxtnnl0q" path="res://Scripts/Classes/Components/EditorPropertyExposer.gd" id="13_w45fi"]
+[ext_resource type="Script" uid="uid://chj8hu207lrh" path="res://Scripts/Classes/Components/EnemyPlayerDetection.gd" id="15_2s76u"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_64ore"]
 atlas = ExtResource("2_oy87v")
@@ -51,7 +52,7 @@ func _physics_process(_delta: float) -> void:
 	$\"../RotationJoint\".position = [Vector2.ZERO, Vector2(0, -16), Vector2(8, -8), Vector2(-8, -8)][owner.pipe_direction]
 "
 
-[node name="StaticPiranhaPlant" type="CharacterBody2D" unique_id=1453745756 node_paths=PackedStringArray("on_screen_enabler", "score_note_adder")]
+[node name="StaticPiranhaPlant" type="CharacterBody2D" unique_id=1453745756 node_paths=PackedStringArray("on_screen_enabler", "score_note_adder") groups=["Enemies"]]
 collision_layer = 16
 collision_mask = 2
 script = ExtResource("1_w45fi")
@@ -88,6 +89,9 @@ shape = SubResource("RectangleShape2D_oy87v")
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="RotationJoint" unique_id=584721705]
 position = Vector2(0, -5)
 remote_path = NodePath("../../Collision")
+
+[node name="SmokeParticleJoint" type="Node2D" parent="RotationJoint" unique_id=1035438801]
+position = Vector2(0, -8)
 
 [node name="Collision" type="CollisionShape2D" parent="." unique_id=1294483231]
 position = Vector2(0, -5)
@@ -130,7 +134,7 @@ metadata/_custom_type_script = "uid://cmg61722ktg2m"
 
 [node name="GibSpawner" type="Node" parent="." unique_id=2085030428 node_paths=PackedStringArray("visuals")]
 script = ExtResource("13_bc7fo")
-visuals = NodePath("../RotationJoint/Sprite")
+visuals = NodePath("../RotationJoint/SmokeParticleJoint")
 gib_type = 2
 metadata/_custom_type_script = "uid://c3gg32ivrlq8n"
 
@@ -143,8 +147,12 @@ script = ExtResource("13_w45fi")
 properties = Array[String](["pipe_direction", "gravity_enabled"])
 metadata/_custom_type_script = "uid://ctfbuoxtnnl0q"
 
+[node name="EnemyPlayerDetection" type="Node" parent="." unique_id=652251952 node_paths=PackedStringArray("hitbox")]
+script = ExtResource("15_2s76u")
+hitbox = NodePath("../RotationJoint/Hitbox")
+metadata/_custom_type_script = "uid://chj8hu207lrh"
+
 [connection signal="killed" from="." to="GibSpawner" method="summon_gib"]
-[connection signal="player_entered" from="RotationJoint/Hitbox" to="." method="damage_player"]
 [connection signal="explosion_entered" from="ExplosionDetection" to="." method="die_from_object"]
 [connection signal="explosion_entered" from="ExplosionDetection" to="ScoreNoteSpawner" method="spawn_note" binds= [200]]
 [connection signal="fireball_hit" from="FireballDetection" to="." method="die_from_object"]
@@ -152,3 +160,9 @@ metadata/_custom_type_script = "uid://ctfbuoxtnnl0q"
 [connection signal="moving_shell_entered" from="ShellDetection" to="." method="die_from_object"]
 [connection signal="block_bounced" from="BlockBouncingDetection" to="." method="die_from_object"]
 [connection signal="block_bounced" from="BlockBouncingDetection" to="ScoreNoteSpawner" method="spawn_note" binds= [200]]
+[connection signal="hammer_player_hit" from="EnemyPlayerDetection" to="." method="die_from_hammer"]
+[connection signal="invincible_player_hit" from="EnemyPlayerDetection" to="." method="die_from_object"]
+[connection signal="invincible_player_hit" from="EnemyPlayerDetection" to="ScoreNoteSpawner" method="spawn_note" binds= [200]]
+[connection signal="player_hit" from="EnemyPlayerDetection" to="." method="damage_player"]
+[connection signal="player_stomped_below" from="EnemyPlayerDetection" to="." method="damage_player"]
+[connection signal="player_stomped_on" from="EnemyPlayerDetection" to="." method="damage_player"]

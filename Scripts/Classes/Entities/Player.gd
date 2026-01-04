@@ -1471,6 +1471,7 @@ func super_star() -> void:
 	has_star = true
 	sprite.material.set_shader_parameter("speed", physics_params("RAINBOW_STAR_FX_SPEED", COSMETIC_PARAMETERS))
 	star_meter = clamp(physics_params("STAR_TIME", POWER_PARAMETERS) - 2, 0, INF)
+	$CanvasLayer/Control2/MarginContainer/Timers/StarTimer/TimerSprite.max_value = star_meter
 	DiscoLevel.combo_meter += 1
 	AudioManager.set_music_override(AudioManager.MUSIC_OVERRIDES.STAR, 1, false)
 

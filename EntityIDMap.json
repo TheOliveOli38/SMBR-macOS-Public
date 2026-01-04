@@ -513,7 +513,7 @@
 	],
 	"CA": [
 		"res://Scenes/Prefabs/Entities/Enemies/FirePiranhaPlant.tscn",
-		"0,8"
+		"8,8"
 	],
 	"CB": [
 		"res://Scenes/Prefabs/Entities/Enemies/FireRedPiranhaPlant.tscn",
@@ -529,7 +529,7 @@
 	],
 	"CE": [
 		"res://Scenes/Prefabs/Entities/Enemies/HomingBill.tscn",
-		"0,8"
+		"0,0"
 	],
 	"CF": [
 		"res://Scenes/Prefabs/Blocks/FrozenMuncher.tscn",

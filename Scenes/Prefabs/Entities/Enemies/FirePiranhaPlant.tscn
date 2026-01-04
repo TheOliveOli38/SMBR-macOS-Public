@@ -27,8 +27,8 @@ fireball_scene = ExtResource("3_t5jdg")
 plant = NodePath("../../../..")
 
 [node name="EditorVisibleNode" type="Node2D" parent="RotationJoint" parent_id_path=PackedInt32Array(1388609852) index="1" unique_id=1557828344]
-position = Vector2(0, -15)
 script = ExtResource("3_ltyw1")
+is_gizmo = false
 
 [node name="BetterAnimatedSprite2D" type="AnimatedSprite2D" parent="RotationJoint/EditorVisibleNode" index="0" unique_id=468538896]
 script = ExtResource("4_f4y8b")

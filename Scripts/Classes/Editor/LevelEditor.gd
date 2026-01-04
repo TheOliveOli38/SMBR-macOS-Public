@@ -841,9 +841,10 @@ func place_tile(tile_position := Vector2i.ZERO, layer_num := current_layer, tile
 	$TileCursor/Previews.hide()
 	var old_tile = null
 	var old_tile_info = []
-	print(tile_to_place, info)
 	if entity_tiles[layer_num].get(tile_position) != null:
 		var overlapping_tile = entity_tiles[layer_num][tile_position]
+		if overlapping_tile is Player:
+			return
 		old_tile = overlapping_tile.duplicate()
 		old_tile_info = [overlapping_tile.get_meta("tile_offset"), overlapping_tile.get_meta("ID", "")]
 	elif BetterTerrain.get_cell(tile_layer_nodes[layer_num], tile_position) >= 0:

@@ -51,8 +51,11 @@ func _physics_process(delta: float) -> void:
 	set_deferred("last_position", player.global_position)
 
 func handle_camera(delta: float) -> void:
-	
+	if get_tree().get_first_node_in_group("Players") == null:
+		return
 	for i in get_tree().get_nodes_in_group("Players"):
+		if is_instance_valid(player) == false:
+			player = i
 		if i != player:
 			if i.velocity.x > player.velocity.x:
 				if i.global_position.x + (i.velocity.x * delta * 60) > player.global_position.x:
@@ -168,6 +171,8 @@ func tween_ahead() -> void:
 	tween.tween_property(self, "camera_position:x", camera_position.x + (32 * cam_direction), 0.25)
 
 func recenter_camera() -> void:
+	if is_instance_valid(player) == false:
+		player = owner
 	camera_position = player.global_position
 	last_position = camera_position
 	camera_position += camera_offset

@@ -962,7 +962,6 @@ value_name = "star_meter"
 object = 1
 warn_sfx = NodePath("../../../../../../TimerWarn")
 threshold_type = 1
-warn_threshold = 0.0
 metadata/_custom_type_script = "uid://dn5efttgugwvb"
 
 [node name="WingTimer" type="Control" parent="CanvasLayer/Control2/MarginContainer/Timers" unique_id=1717265316]

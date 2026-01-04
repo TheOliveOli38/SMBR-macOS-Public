@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://epltraxjntji"]
+[gd_scene load_steps=18 format=3 uid="uid://epltraxjntji"]
 
 [ext_resource type="Script" uid="uid://dehhxend1vj2m" path="res://Scripts/Classes/Entities/Enemies/SpikeTop.gd" id="1_ol6o0"]
 [ext_resource type="Texture2D" uid="uid://drww2yy32q3qv" path="res://Assets/Sprites/Enemies/SpikeTop.png" id="2_7s4ia"]
@@ -11,6 +11,7 @@
 [ext_resource type="Script" uid="uid://cmg61722ktg2m" path="res://Scripts/Classes/Components/BlockBouncingDetection.gd" id="9_bxsyc"]
 [ext_resource type="Script" uid="uid://bbww34oiexbx2" path="res://Scripts/Classes/Components/ShellDetection.gd" id="10_aexo1"]
 [ext_resource type="Script" uid="uid://c3gg32ivrlq8n" path="res://Scripts/Classes/Components/GibSpawner.gd" id="11_5smfw"]
+[ext_resource type="Script" uid="uid://ctfbuoxtnnl0q" path="res://Scripts/Classes/Components/EditorPropertyExposer.gd" id="12_dwwms"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_as5ol"]
 atlas = ExtResource("2_7s4ia")
@@ -159,6 +160,11 @@ metadata/_custom_type_script = "uid://c3gg32ivrlq8n"
 
 [node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="." unique_id=93872714]
 
+[node name="EditorPropertyExposer" type="Node" parent="." unique_id=1564801947]
+script = ExtResource("12_dwwms")
+properties = Array[String](["starting_direction", "movement_direction"])
+metadata/_custom_type_script = "uid://ctfbuoxtnnl0q"
+
 [connection signal="killed" from="." to="GibSpawner" method="summon_gib"]
 [connection signal="level_start" from="LevelEditorToggleDetection" to="." method="_ready"]
 [connection signal="hammer_player_hit" from="EnemyPlayerDetection" to="." method="die_from_hammer"]
@@ -168,3 +174,4 @@ metadata/_custom_type_script = "uid://c3gg32ivrlq8n"
 [connection signal="explosion_entered" from="ExplosionDetection" to="." method="die_from_object"]
 [connection signal="block_bounced" from="BlockBouncingDetection" to="." method="die_from_object"]
 [connection signal="moving_shell_entered" from="ShellDetection" to="." method="die_from_object"]
+[connection signal="modifier_applied" from="EditorPropertyExposer" to="." method="on_modifier_applied"]

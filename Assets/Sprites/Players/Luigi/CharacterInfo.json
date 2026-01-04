@@ -235,7 +235,7 @@
 		},
 		"COSMETIC_PARAMETERS": {
 			"Default": {
-				"WING_OFFSET": [0.0, 0.0],
+				"WING_OFFSET": [0.0, 10.0],
 				"HAMMER_OFFSET": [0.0, -8.0],
 				
 				"MOVE_ANIM_SPEED_DIV": 32,

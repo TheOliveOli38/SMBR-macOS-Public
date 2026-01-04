@@ -30,9 +30,8 @@ resource_json = ExtResource("3_d6amy")
 [node name="EditorPropertyExposer" parent="." index="3" unique_id=1570804738]
 properties = Array[String](["instrument", "note", "octave", "play_on_load"])
 
-[node name="Instrument" type="AudioStreamPlayer2D" parent="." index="4" unique_id=1822676565]
+[node name="Instrument" type="AudioStreamPlayer" parent="." index="4" unique_id=830912558]
 process_mode = 3
-volume_db = 10.0
 bus = &"SFX"
 
 [node name="LevelEditorVisibleNode" type="Node2D" parent="." index="5" unique_id=1827809346]

@@ -347,7 +347,7 @@ metadata/_custom_type_script = "uid://co6tjg3w6qpd8"
 
 [node name="TextShadowColourChanger" type="Node" parent="." unique_id=1399323806 node_paths=PackedStringArray("labels", "shadow_node")]
 script = ExtResource("10_abjth")
-labels = [NodePath("../BG/Control/Default/World"), NodePath("../BG/Control/Default/LivesCount"), NodePath("../BG/Control/Marathon/MarathonPB"), NodePath("../BG/Control/Default/WorldNum"), NodePath("../BG/Control/CustomLevel/CustomLevelName"), NodePath("../BG/Control/CustomLevel/CustomLevelAuthor"), NodePath("../BG/Control/ChallengeMode/ChallengeScoreText"), NodePath("../BG/Control/ChallengeMode/ChallengeScore"), NodePath("../BG/Control/ChallengeMode/ChallengeScoreText/Target"), NodePath("../BG/Control/ChallengeMode/ChallengeCoins2"), NodePath("../BG/Control/CustomLevel/Loading")]
+labels = [NodePath("../BG/Control/Default/World"), NodePath("../BG/Control/Default/LivesCount"), NodePath("../BG/Control/Marathon/MarathonPB"), NodePath("../BG/Control/Default/WorldNum"), NodePath("../BG/Control/CustomLevel/CustomLevelName"), NodePath("../BG/Control/CustomLevel/CustomLevelAuthor"), NodePath("../BG/Control/ChallengeMode/ChallengeScoreText"), NodePath("../BG/Control/ChallengeMode/ChallengeScore"), NodePath("../BG/Control/ChallengeMode/ChallengeScoreText/Target"), NodePath("../BG/Control/ChallengeMode/ChallengeCoins2"), NodePath("../BG/Control/CustomLevel/Loading"), NodePath("../BG/Control/CustomLevel/DeathCount")]
 shadow_node = NodePath("../BG/Control/ChallengeMode/ChallengeCoins/1/Shadow")
 metadata/_custom_type_script = "uid://dt2p68xl462v2"
 

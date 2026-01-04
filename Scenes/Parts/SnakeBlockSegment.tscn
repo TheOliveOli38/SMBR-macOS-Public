@@ -35,7 +35,7 @@ animations = [{
 size = Vector2(16, 16)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fgnxe"]
-size = Vector2(12, 10)
+size = Vector2(10, 10)
 
 [node name="SnakeBlockSegment" type="StaticBody2D" unique_id=1396098118]
 collision_layer = 6

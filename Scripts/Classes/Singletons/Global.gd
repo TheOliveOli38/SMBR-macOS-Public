@@ -562,24 +562,26 @@ func get_version_num_int(ver_num := "0.0.0") -> int:
 
 func load_default_translations() -> void:
 	for i in lang_codes:
-		create_translation_from_json(i, "res://Assets/Locale/" + i + ".json")
+		if i != "gal":
+			create_translation_from_json(i)
 	create_gal_translation("res://Assets/Locale/en.json")
 
-func create_translation_from_json(locale := "", json_path := "") -> void:
+func create_translation_from_json(locale := "") -> void:
+	var locale_json := {}
+	for resource_pack in Settings.file.visuals.resource_packs:
+		var path = $ResourceSetterNew.get_resource_pack_path("res://Assets/Locale/" + locale + ".json", resource_pack)
+		var file_json = JSON.parse_string(FileAccess.open(path, FileAccess.READ).get_as_text())
+		for i in file_json.keys():
+			var value = file_json[i]
+			if value is Dictionary:
+				value = $ResourceSetterNew.get_variation_json(value).source
+			if locale_json.has(i) == false:
+				locale_json[i] = value
 	var trans = Translation.new()
 	trans.locale = locale
-	json_path = ResourceGetter.new().get_resource_path(json_path)
-	var file = FileAccess.open(json_path, FileAccess.READ)
-	if file == null:
-		return
-	var json = JSON.parse_string(file.get_as_text())
-	for i in json.keys():
-		var value = json[i]
-		if value is Dictionary:
-			value = $ResourceSetterNew.get_variation_json(value).source
-		trans.add_message(i, value.to_upper())
-	if TranslationServer.get_translation_object(locale) != null:
-		TranslationServer.remove_translation(TranslationServer.get_translation_object(locale))
+	for i in locale_json.keys():
+		trans.add_message(i, locale_json[i])
+	TranslationServer.remove_translation(TranslationServer.get_translation_object(locale))
 	TranslationServer.add_translation(trans)
 
 func create_gal_translation(en_json_path := "") -> void:

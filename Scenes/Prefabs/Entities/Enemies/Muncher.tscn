@@ -1,6 +1,6 @@
-[gd_scene load_steps=15 format=3 uid="uid://bi1hb03wk001p"]
+[gd_scene load_steps=16 format=3 uid="uid://bi1hb03wk001p"]
 
-[ext_resource type="Script" uid="uid://bpydbpyjk1mt4" path="res://Scripts/Classes/Entities/Enemy.gd" id="1_cgdwi"]
+[ext_resource type="Script" uid="uid://ds8c6k5lfx6hi" path="res://Scripts/Classes/Entities/Enemies/Muncher.gd" id="1_3kryf"]
 [ext_resource type="Texture2D" uid="uid://dg7yxoq44gaae" path="res://Assets/Sprites/Enemies/Muncher.png" id="2_ad4wf"]
 [ext_resource type="Script" uid="uid://caq1qiwmy0mox" path="res://Scripts/Parts/BetterAnimatedSprite.gd" id="2_fcan1"]
 [ext_resource type="Script" uid="uid://cbal8ms2oe1ik" path="res://Scripts/Classes/Components/ResourceSetterNew.gd" id="4_6tj01"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" uid="uid://bx6r8sjar6cwr" path="res://Scripts/Classes/Components/BasicStaticMovement.gd" id="8_3kryf"]
 [ext_resource type="Script" uid="uid://chj8hu207lrh" path="res://Scripts/Classes/Components/EnemyPlayerDetection.gd" id="8_cgdwi"]
 [ext_resource type="Script" uid="uid://d4a7yp6e55u8t" path="res://Scripts/Classes/Components/TrackJoint.gd" id="9_3kryf"]
+[ext_resource type="Script" uid="uid://ctfbuoxtnnl0q" path="res://Scripts/Classes/Components/EditorPropertyExposer.gd" id="10_6gi78"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_r7ue2"]
 atlas = ExtResource("2_ad4wf")
@@ -42,7 +43,7 @@ size = Vector2(17, 18.5)
 disable_mode = 1
 collision_layer = 22
 collision_mask = 4114
-script = ExtResource("1_cgdwi")
+script = ExtResource("1_3kryf")
 on_screen_enabler = NodePath("VisibleOnScreenEnabler2D")
 score_note_adder = NodePath("ScoreNoteSpawner")
 metadata/_custom_type_script = "uid://bpydbpyjk1mt4"
@@ -80,6 +81,7 @@ metadata/_custom_type_script = "uid://5octqlf4ohel"
 
 [node name="Movement" type="Node" parent="." unique_id=16833409]
 script = ExtResource("8_3kryf")
+auto_call = false
 
 [node name="EnemyPlayerDetection" type="Node" parent="." unique_id=538826205 node_paths=PackedStringArray("hitbox")]
 script = ExtResource("8_cgdwi")
@@ -92,6 +94,12 @@ offset = Vector2(0, 0)
 movement_node = NodePath("../Movement")
 metadata/_custom_type_script = "uid://d4a7yp6e55u8t"
 
+[node name="EditorPropertyExposer" type="Node" parent="." unique_id=1637093453]
+script = ExtResource("10_6gi78")
+properties = Array[String](["facing_direction", "enable_gravity"])
+metadata/_custom_type_script = "uid://ctfbuoxtnnl0q"
+
 [connection signal="player_hit" from="EnemyPlayerDetection" to="." method="damage_player"]
 [connection signal="player_stomped_below" from="EnemyPlayerDetection" to="." method="damage_player"]
 [connection signal="player_stomped_on" from="EnemyPlayerDetection" to="." method="damage_player"]
+[connection signal="modifier_applied" from="EditorPropertyExposer" to="." method="on_modifier_applied"]

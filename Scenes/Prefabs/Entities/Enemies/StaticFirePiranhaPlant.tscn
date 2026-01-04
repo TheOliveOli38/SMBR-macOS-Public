@@ -25,7 +25,7 @@ func _process(_delta: float) -> void:
 	$\"../RotationJoint\".position = OFFSETS[owner.pipe_direction]
 "
 
-[node name="StaticFirePiranhaPlant" type="CharacterBody2D" unique_id=949055995]
+[node name="StaticFirePiranhaPlant" type="CharacterBody2D" unique_id=949055995 groups=["Enemies"]]
 collision_layer = 16
 collision_mask = 2
 script = ExtResource("1_wftkx")

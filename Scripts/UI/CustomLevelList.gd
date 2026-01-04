@@ -12,6 +12,8 @@ var containers := []
 
 var selected_lvl_idx := -1
 
+var search_check := ""
+
 func open(refresh_list := true) -> void:
 	show()
 	if refresh_list:
@@ -28,7 +30,7 @@ func open_folder() -> void:
 	OS.shell_show_in_file_manager(ProjectSettings.globalize_path(custom_level_path))
 
 func _process(_delta: float) -> void:
-	if Input.is_action_just_pressed("ui_back"):
+	if Input.is_action_just_pressed("ui_back") and CustomLineEdit.editing == false:
 		closed.emit()
 
 func close() -> void:
@@ -85,9 +87,22 @@ const LEVEL_PACK_CONTAINER = preload("uid://buj10cxh15fnd")
 func update_show(new_type := 0) -> void:
 	for i in containers:
 		i.visible = i.current_type == new_type or new_type == 0
-	%SavedLevels.visible = new_type == CustomLevelContainer.Type.SAVED or new_type == 0
-	%DownloadedLevels.visible = new_type == CustomLevelContainer.Type.DOWNLOADED or new_type == 0
+		if search_check != "" and i.visible:
+			i.visible = i.level_name.contains(search_check)
+	%SavedLevels.visible = (new_type == CustomLevelContainer.Type.SAVED or new_type == 0) and get_visible_containers(CustomLevelContainer.Type.SAVED) > 0
+	%DownloadedLevels.visible = (new_type == CustomLevelContainer.Type.DOWNLOADED or new_type == 0) and get_visible_containers(CustomLevelContainer.Type.DOWNLOADED) > 0
+	
 
+func get_visible_containers(type := 0) -> int:
+	var vis_child := 0
+	for i in containers:
+		if i.visible and i.current_type == type:
+			vis_child += 1
+	return vis_child
+
+func search_submitted(search_query := "") -> void:
+	search_check = search_query
+	update_show()
 
 func container_selected(container: CustomLevelContainer) -> void:
 	level_selected.emit(container)

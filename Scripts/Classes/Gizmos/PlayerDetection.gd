@@ -22,7 +22,9 @@ func run_check() -> void:
 	var save = object_in_area
 	object_in_area = false
 	for i in $Hitbox.get_overlapping_areas():
-		if i.owner.get_parent() != get_parent():
+		var parent = i.owner.get_parent()
+		var node_layer = get_meta("layer", -1)
+		if node_layer != i.owner.get_meta("layer", -2):
 			continue
 		var node_owner = i.owner
 		if node_owner is TrackRider:

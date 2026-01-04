@@ -14,6 +14,8 @@ var can_move := true
 
 var active = false
 
+static var physics_warning_shown := false
+
 signal opened
 
 func _process(_delta: float) -> void:
@@ -29,6 +31,8 @@ func _process(_delta: float) -> void:
 		containers[i].active = category_index == i and active
 		if SelectableInputOption.rebinding_input == false:
 			containers[i].can_input = can_move
+			for x in containers[i].options:
+				x.focus_mode = 2 if can_move else 0
 	for i in disabled_containers:
 		i.active = false
 	if category_select_active and active and can_move:
@@ -37,9 +41,15 @@ func _process(_delta: float) -> void:
 		close()
 
 func show_physics_warning(value := 0) -> void:
-	if value == 0:
-		AudioManager.play_global_sfx("bump")
+	if physics_warning_shown:
+		return
 	$CanvasLayer.visible = not value
+	if value == 0:
+		physics_warning_shown = true
+		AudioManager.play_global_sfx("bump")
+		can_move = false
+		await $CanvasLayer.visibility_changed
+		can_move = true
 
 func handle_inputs() -> void:
 	var direction := 0

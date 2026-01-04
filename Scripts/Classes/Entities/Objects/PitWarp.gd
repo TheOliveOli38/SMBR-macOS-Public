@@ -13,7 +13,10 @@ func warp_back(player: Player) -> void:
 	player.state_machine.transition_to("Freeze")
 	await get_tree().create_timer(1, false).timeout
 	PipeArea.exiting_pipe_id = -1
-	Global.level_editor.transition_to_sublevel(target_sub_level)
+	if Global.level_editor != null:
+		Global.level_editor.transition_to_sublevel(target_sub_level)
+	else:
+		Global.transition_to_scene(NewLevelBuilder.sub_levels[target_sub_level])
 
 func _exit_tree() -> void:
 	get_tree().get_first_node_in_group("Players").auto_death_pit = true

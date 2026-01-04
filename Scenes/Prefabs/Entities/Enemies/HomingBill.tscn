@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://csmgewjk06lkj"]
+[gd_scene load_steps=20 format=3 uid="uid://csmgewjk06lkj"]
 
 [ext_resource type="Script" uid="uid://bmgyaho01qb1u" path="res://Scripts/Classes/Entities/Enemies/HomingBill.gd" id="1_ulw4f"]
 [ext_resource type="Texture2D" uid="uid://ckjjqcfoutqyp" path="res://Assets/Sprites/Enemies/HomingBill.png" id="2_d4aew"]
@@ -50,6 +50,9 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_oohm8"]
 size = Vector2(12, 12)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wwst8"]
+size = Vector2(12, 12)
+
 [node name="HomingBill" type="CharacterBody2D" unique_id=1363697095]
 collision_layer = 16
 collision_mask = 6
@@ -91,6 +94,9 @@ shape = SubResource("RectangleShape2D_oohm8")
 
 [node name="Hitbox" type="Area2D" parent="." unique_id=1483912271]
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=203111523]
+shape = SubResource("RectangleShape2D_wwst8")
+
 [node name="EnemyPlayerDetection" type="Node" parent="." unique_id=1229523225 node_paths=PackedStringArray("hitbox")]
 script = ExtResource("4_wwst8")
 hitbox = NodePath("../Hitbox")
@@ -124,4 +130,9 @@ script = ExtResource("10_16ltl")
 
 [node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="." unique_id=974955505]
 
+[connection signal="hammer_player_hit" from="EnemyPlayerDetection" to="." method="die_from_hammer"]
+[connection signal="invincible_player_hit" from="EnemyPlayerDetection" to="." method="die_from_object"]
+[connection signal="player_hit" from="EnemyPlayerDetection" to="." method="damage_player"]
+[connection signal="player_stomped_below" from="EnemyPlayerDetection" to="." method="damage_player"]
+[connection signal="player_stomped_on" from="EnemyPlayerDetection" to="GibSpawner" method="stomp_die"]
 [connection signal="screen_exited" from="VisibleOnScreenEnabler2D" to="OffScreenDespawner" method="on_screen_exited"]

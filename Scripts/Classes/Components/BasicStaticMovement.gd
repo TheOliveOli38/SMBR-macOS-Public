@@ -4,7 +4,6 @@ extends Node
 @export var auto_call := true
 
 func _physics_process(delta: float) -> void:
-	print(auto_call)
 	if auto_call:
 		handle_movement(delta)
 

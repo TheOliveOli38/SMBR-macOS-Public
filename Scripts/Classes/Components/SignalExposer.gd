@@ -252,7 +252,7 @@ const EXPLOSION = preload("uid://clbvyne1cr8gp")
 func explode() -> void:
 	await get_tree().process_frame
 	var node = EXPLOSION.instantiate()
-	node.global_position = global_position
+	node.global_position = owner.global_position
 	owner.add_sibling(node)
 	AudioManager.play_sfx("explode", global_position)
 	owner.queue_free()

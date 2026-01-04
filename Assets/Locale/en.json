@@ -141,6 +141,7 @@
 	"DESC_LEVEL_DESIGN_1": "Level design is adjusted to be much fairer.",
 	"DESC_TIME_0": "There is no time limit in levels.",
 	"DESC_TIME_1": "There is a time limit in all levels.",
+	"DESC_TIME_2": "There is a time limit in all levels, however each unit is one second long.",
 	"DESC_BACKSCROLL_0": "You cannot move backwards in levels (unless a custom level allows it), Intended Experience",
 	"DESC_BACKSCROLL_1": "You can move backwards in all levels (unless a custom level prevents it)",
 	"DESC_LAKITU_0": "Lakitu will throw spiny's straight upwards, exactly like in the original games. (was due to a bug)",

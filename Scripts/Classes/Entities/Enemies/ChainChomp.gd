@@ -19,6 +19,7 @@ var floor := 0.0
 func _ready() -> void:
 	$Enemy.add_collision_exception_with($Post)
 	$Enemy/Timer.start()
+	Global.level_theme_changed.connect(queue_redraw)
 
 func _physics_process(delta: float) -> void:
 	if can_move:
