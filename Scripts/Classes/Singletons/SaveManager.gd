@@ -57,7 +57,6 @@ func load_save(campaign := "SMB1") -> Dictionary:
 		write_save(campaign)
 	var file = FileAccess.open(SAVE_DIR.replace("CAMPAIGN", campaign), FileAccess.READ)
 	var json = JSON.parse_string(file.get_as_text())
-	print(file.get_as_text())
 	current_file = json
 	file.close()
 	return json

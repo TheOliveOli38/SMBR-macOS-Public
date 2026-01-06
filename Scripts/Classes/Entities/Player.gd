@@ -1412,6 +1412,7 @@ func jump() -> void:
 	gravity = calculate_speed_param("JUMP_GRAVITY")
 	AudioManager.play_sfx(physics_params("JUMP_SFX", COSMETIC_PARAMETERS), global_position)
 	has_jumped = true
+	jump_cancelled = false
 	jumped.emit()
 	await get_tree().physics_frame
 	has_jumped = true

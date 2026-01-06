@@ -625,7 +625,7 @@
 	],
 	"Cc": [
 		"res://Scenes/Prefabs/Entities/Items/Vine.tscn",
-		"0,8"
+		"0,0"
 	],
 	"Cd": [
 		"res://Scenes/Prefabs/LevelObjects/WarpVine.tscn",

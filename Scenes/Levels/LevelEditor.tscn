@@ -1,4 +1,4 @@
-[gd_scene load_steps=278 format=3 uid="uid://gbcmqonky63j"]
+[gd_scene load_steps=279 format=3 uid="uid://gbcmqonky63j"]
 
 [ext_resource type="Script" uid="uid://c2lnc7vnq3xth" path="res://Scripts/Classes/Editor/LevelEditor.gd" id="1_0qbyu"]
 [ext_resource type="Texture2D" uid="uid://cbha2l6hg1kfo" path="res://Assets/Sprites/UI/EditorGrid.png" id="2_8q7yr"]
@@ -525,6 +525,10 @@ region = Rect2(24, 0, 8, 8)
 [sub_resource type="AtlasTexture" id="AtlasTexture_dl3il"]
 atlas = ExtResource("11_24ald")
 region = Rect2(32, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vlioy"]
+atlas = ExtResource("11_24ald")
+region = Rect2(48, 0, 8, 8)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jt16h"]
 content_margin_left = 0.0
@@ -5687,12 +5691,12 @@ theme_override_constants/separation = 0
 
 [node name="TextureRect" type="TextureRect" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Gizmos/Title/HBoxContainer" unique_id=1668090001]
 layout_mode = 2
-texture = SubResource("AtlasTexture_dl3il")
+texture = SubResource("AtlasTexture_vlioy")
 stretch_mode = 3
 
 [node name="Label" type="Label" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Gizmos/Title/HBoxContainer" unique_id=891641896]
 layout_mode = 2
-text = "EDITOR_MENU_PARTS_5"
+text = "EDITOR_MENU_PARTS_6"
 uppercase = true
 
 [node name="HSeparator" type="HSeparator" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Gizmos/Title" unique_id=789832579]

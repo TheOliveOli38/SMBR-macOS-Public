@@ -32,6 +32,7 @@ func fire() -> void:
 	var node = item.instantiate()
 	node.global_position = global_position + Vector2(0, 8)
 	node.set("direction", direction)
+	node.set_meta("no_persist", true)
 	if node is CharacterBody2D:
 		node.position.x += 8 * direction
 	node.set("velocity", Vector2(100 * direction, 0))

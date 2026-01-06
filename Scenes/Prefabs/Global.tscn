@@ -274,7 +274,6 @@ func _ready() -> void:
 	Global.level_theme_changed.connect(update_texture)
 
 func update_texture() -> void:
-	print(name)
 	panel.texture = resource_getter.get_resource(texture)
 "
 

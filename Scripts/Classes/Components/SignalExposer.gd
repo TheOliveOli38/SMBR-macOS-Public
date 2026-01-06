@@ -19,6 +19,7 @@ var turned_on := false
 
 @export var can_input := true
 @export var can_output := true
+const ARROW = preload("res://Assets/Sprites/Editor/Gizmos/ConnectionArrow.png")
 
 var editing := false
 
@@ -62,7 +63,6 @@ func _ready() -> void:
 		owner.remove_meta("save_string")
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	show_behind_parent = true
-	z_index = -10
 	top_level = true
 	call_deferred("connect_pre_existing_signals")
 	queue_redraw()
@@ -84,30 +84,68 @@ func _draw() -> void:
 	var idx := 0
 	for x in connections:
 		var target_node = get_node_from_tile(x[0], x[1])
-		draw_square_line(owner.global_position, to_local(target_node.global_position), WIRE_COLOURS[idx % (WIRE_COLOURS.size())])
+		draw_square_line(owner.global_position, to_local(target_node.global_position), WIRE_COLOURS[idx % (WIRE_COLOURS.size())], true)
 		idx += 1
 
-func draw_square_line(from := Vector2.ZERO, to := Vector2.ZERO, colour := Color.RED) -> void:
+func draw_square_line(from := Vector2.ZERO, to := Vector2.ZERO, colour := Color.RED, offset := false) -> void:
 	var dist_x = abs(from.x - to.x)
 	var dist_y = abs(from.y - to.y)
 	if turned_on:
-			if dist_x == dist_y and dist_x > 16:
-				draw_line(from, to, colour, 2, false)
-			elif dist_x > dist_y:
-				draw_line(from, Vector2(to.x, from.y), colour, 2) 
-				draw_line(Vector2(to.x, from.y), to, colour, 2)
-			else:
-				draw_line(from, Vector2(from.x, to.y), colour, 2)
-				draw_line(Vector2(from.x, to.y), to, colour, 2)
+		if (dist_y == 0 or dist_x == 0):
+			draw_line(from, to, colour, 1, false)
+			draw_arrow_head(from, to, colour, offset)
+		elif dist_x == dist_y and dist_x > 16:
+			draw_line(from, to, colour, 2, false)
+			draw_arrow_head(from, to, colour, offset)
+		elif dist_x > dist_y:
+			draw_line(from, Vector2(to.x, from.y), colour, 2) 
+			var direction = (to - Vector2(to.x, from.y)).normalized()
+			if offset:
+				to -= direction * 8
+			draw_line(Vector2(to.x, from.y), to, colour, 2)
+			draw_arrow_head(Vector2(to.x, from.y), to, colour, offset)
+		else:
+			draw_line(from, Vector2(from.x, to.y), colour, 2)
+			draw_line(Vector2(from.x, to.y), to, colour, 2)
+			var direction = (to - Vector2(from.x, to.y)).normalized()
+			if offset:
+				to -= direction * 8
+			draw_arrow_head(Vector2(from.x, to.y), to, colour, offset)
 	else:
-		if dist_x == dist_y and dist_x > 16:
+		if (dist_y == 0 or dist_x == 0):
+			draw_dashed_line(from, to, colour, 1)
+			draw_arrow_head(from, to, colour, offset)
+		elif (dist_x == dist_y and dist_x > 16):
 			draw_dashed_line(from, to, colour, 1.5, 2.0, false)
+			draw_arrow_head(from, to, colour, offset)
 		elif dist_x > dist_y:
 			draw_dashed_line(from, Vector2(to.x, from.y), colour, 1)
+			var direction = (to - Vector2(to.x, from.y)).normalized()
+			if offset:
+				to -= direction * 8
 			draw_dashed_line(Vector2(to.x, from.y), to, colour, 1)
+			draw_arrow_head(Vector2(to.x, from.y), to, colour, offset)
 		else:
 			draw_dashed_line(from, Vector2(from.x, to.y), colour, 1)
+			var direction = (to - Vector2(from.x, to.y)).normalized()
+			if offset:
+				to -= direction * 8
 			draw_dashed_line(Vector2(from.x, to.y), to, colour, 1)
+			draw_arrow_head(Vector2(from.x, to.y), to, colour, offset)
+
+func draw_arrow_head(from := Vector2.ZERO, point := Vector2.ZERO, color := Color.RED, offset := false) -> void:
+	var direction = (point - from).normalized()
+	if offset:
+		point -= direction * 1
+	else:
+		point -= direction * 3
+	var head = (direction * 2)
+	var left_point = (-direction * 4).rotated(deg_to_rad(-45)) + direction
+	var right_point = (-direction * 4).rotated(deg_to_rad(45)) + direction
+	head += point + direction
+	left_point += point + direction
+	right_point += point + direction
+	draw_polygon([head, left_point, right_point], [color, color, color])
 
 func begin_connecting() -> void:
 	update_animation(1.0, 1.2)

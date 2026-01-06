@@ -63,8 +63,11 @@ func _physics_process(delta: float) -> void:
 		visuals.size.y += SPEED * delta
 		collision.shape.size.y += SPEED * delta
 		collision.position.y += (SPEED / 2) * delta
+		if %CeilingCheck.is_colliding():
+			can_stop = false
+			stopped.emit()
+			can_grow = false
 	elif can_stop:
-		print("FUCK", global_position.y, " ", top_point)
 		can_stop = false
 		stopped.emit()
 	
@@ -74,7 +77,7 @@ func _physics_process(delta: float) -> void:
 func handle_player_interaction(delta: float) -> void:
 	for i in hitbox.get_overlapping_areas():
 		if i.owner is Player:
-			if Global.player_action_pressed("move_up", i.owner.player_id) and i.owner.state_machine.state.name == "Normal":
+			if Input.get_axis("move_up_0", "move_down_0") * i.owner.gravity_vector.y < 0 and i.owner.state_machine.state.name == "Normal":
 				i.owner.state_machine.transition_to("Climb", {"Vine": self})
 			elif i.owner.state_machine.state.name == "Climb" and global_position.y >= top_point and can_grow:
 				i.owner.global_position.y -= SPEED * delta

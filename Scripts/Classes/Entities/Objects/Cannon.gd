@@ -25,6 +25,7 @@ func shoot() -> void:
 	amount += 1
 	AudioManager.play_sfx("cannon", global_position)
 	add_sibling(node)
+	node.set_meta("no_persist", true)
 	if node is CharacterBody2D:
 		var old_z = node.z_index
 		node.z_index = -1

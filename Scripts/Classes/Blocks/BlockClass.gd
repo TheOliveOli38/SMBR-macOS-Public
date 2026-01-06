@@ -44,6 +44,7 @@ func dispense_item() -> void:
 	var item_to_dispense = player_mushroom_check(get_tree().get_first_node_in_group("Players"))
 	var node = item_to_dispense.instantiate()
 	node.set_meta("block_item", true)
+	node.set_meta("no_persist", true)
 	if node is PowerUpItem or node.has_meta("is_item"):
 		for i in get_tree().get_nodes_in_group("Players"):
 			node.position = position + Vector2(0, -1)

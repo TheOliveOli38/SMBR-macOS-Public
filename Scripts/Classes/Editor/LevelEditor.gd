@@ -495,17 +495,22 @@ func paste_area(tile_position := Vector2i.ZERO, area := copied_area, layer_num :
 		undo_redo.commit_action(false)
 
 func pick_tile(tile_position := Vector2i.ZERO) -> void:
-	if tile_layer_nodes[current_layer].get_used_cells().has(tile_position):
-		var terrain_id = BetterTerrain.get_cell(tile_layer_nodes[current_layer], tile_position)
-		if terrain_id != -2:
-			mode = 2
-			current_terrain_id = terrain_id
+	var tile = null
+	if entity_tiles[current_layer].has(tile_position):
+		tile = entity_tiles[current_layer][tile_position]
+		if tile is Player:
 			return
-		mode = 0
-		current_tile_source = tile_layer_nodes[current_layer].get_cell_source_id(tile_position)
-		current_tile_coords = tile_layer_nodes[current_layer].get_cell_atlas_coords(tile_position)
-	elif entity_tiles[current_layer].has(tile_position) and entity_tiles[current_layer][tile_position] is not Player:
-		mode = 1
+		current_tile_type = TileType.ENTITY
+		current_entity_id = tile.get_meta("ID")
+	elif tile_layer_nodes[current_layer].get_used_cells().has(tile_position):
+		var terrain_id := BetterTerrain.get_cell(tile_layer_nodes[current_layer], tile_position)
+		if terrain_id >= 0:
+			current_tile_type = TileType.TERRAIN
+			current_terrain_id = terrain_id
+		else:
+			current_tile_type = TileType.TILE
+			current_tile_coords = tile_layer_nodes[current_layer].get_cell_atlas_coords(tile_position)
+			current_tile_source = tile_layer_nodes[current_layer].get_cell_source_id(tile_position)
 
 func handle_inspection(tile_position := Vector2i.ZERO) -> void:
 	Input.set_custom_mouse_cursor(CURSOR_INSPECT)

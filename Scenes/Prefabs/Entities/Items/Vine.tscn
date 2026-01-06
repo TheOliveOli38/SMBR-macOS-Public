@@ -63,6 +63,12 @@ mode = 1
 resource_json = ExtResource("4_q1cik")
 metadata/_custom_type_script = "uid://cbal8ms2oe1ik"
 
+[node name="CeilingCheck" type="RayCast2D" parent="Visuals" unique_id=699406085]
+unique_name_in_owner = true
+position = Vector2(8, 16)
+target_position = Vector2(0, -8)
+collision_mask = 2
+
 [node name="Hitbox" type="Area2D" parent="." unique_id=1558826366]
 position = Vector2(-8, -8)
 

@@ -11,7 +11,6 @@ extends Enemy
 func _ready() -> void:
 	$Animation.play("RESET")
 	$Animation.play("Hide")
-	upside_down_hitbox.set_deferred("disabled", is_equal_approx(abs(global_rotation_degrees), 180) == false)
 	if abs(global_rotation_degrees) >= 178:
 		pipe_direction = 1
 		global_rotation_degrees = 0
@@ -20,7 +19,7 @@ func _ready() -> void:
 	$Timer.start()
 
 func on_timeout() -> void:
-	upside_down_hitbox.set_deferred("disabled", is_equal_approx(abs(global_rotation_degrees), 180) == false)
+	upside_down_hitbox.set_deferred("disabled", abs($RotationJoint.global_rotation_degrees) > 90 == false)
 	var player = get_tree().get_first_node_in_group("Players")
 	if pipe_direction < 2:
 		if abs(player.global_position.x - global_position.x) >= player_range:

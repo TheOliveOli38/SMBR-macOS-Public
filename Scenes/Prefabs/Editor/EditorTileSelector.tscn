@@ -53,12 +53,14 @@ show_behind_parent = true
 layout_mode = 0
 offset_right = 16.0
 offset_bottom = 16.0
+axis_stretch_vertical = 2
 
 [node name="SecondaryIcon" type="NinePatchRect" parent="Button/Icon" unique_id=833052772]
 unique_name_in_owner = true
 layout_mode = 0
 offset_right = 16.0
 offset_bottom = 16.0
+axis_stretch_vertical = 2
 
 [node name="ResourceSetterNew" type="Node" parent="." unique_id=633166499 node_paths=PackedStringArray("node_to_affect")]
 script = ExtResource("3_bh0ve")
