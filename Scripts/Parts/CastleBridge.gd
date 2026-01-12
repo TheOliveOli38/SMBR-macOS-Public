@@ -21,10 +21,11 @@ func _ready() -> void:
 	$Axe/CameraRightLimit._enter_tree()
 
 func on_area_entered(area: Area2D) -> void:
-	if area.owner is Player:
+	if area.owner is Player and ConditionalClear.valid:
 		destroy_bridge(area.owner)
 
 func destroy_bridge(player: Player) -> void:
+	process_mode = Node.PROCESS_MODE_ALWAYS
 	Global.can_pause = false
 	for i in get_tree().get_nodes_in_group("Enemies"):
 		if i is Projectile:
@@ -89,6 +90,8 @@ func _physics_process(delta: float) -> void:
 	if cam_move and $Camera.global_position.x < Player.camera_right_limit:
 		$Camera.global_position.x += 96 * delta
 	$Camera.global_position.x = clamp($Camera.global_position.x, -INF, Player.camera_right_limit)
+	if (%Invalid):
+		%Invalid.visible = not ConditionalClear.valid
 
 func victory_sequence(player: Player) -> void:
 	get_tree().call_group("Enemies", "flag_die")

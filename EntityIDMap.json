@@ -517,7 +517,7 @@
 	],
 	"CB": [
 		"res://Scenes/Prefabs/Entities/Enemies/FireRedPiranhaPlant.tscn",
-		"0,8"
+		"8,8"
 	],
 	"CC": [
 		"res://Scenes/Prefabs/Entities/Enemies/StaticFirePiranhaPlant.tscn",
@@ -797,6 +797,10 @@
 	],
 	"DT": [
 		"res://Scenes/Prefabs/LevelObjects/EditorLinkedElevatorBlue.tscn",
+		"0,0"
+	],
+	"DU": [
+		"res://Scenes/Prefabs/Gizmos/Outputs/Warper.tscn",
 		"0,0"
 	]
 }

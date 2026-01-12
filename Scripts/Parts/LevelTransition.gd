@@ -60,6 +60,10 @@ func _ready() -> void:
 		%Default.hide()
 		%CustomLevelAuthor.text = "By " + LevelEditor.level_author
 		%CustomLevelName.text = LevelEditor.level_name
+	if Global.current_game_mode == Global.GameMode.MARATHON_PRACTICE:
+		%LivesCount.hide()
+		%Marathon.show()
+		show_best_time()
 	await get_tree().create_timer(0.1, false).timeout
 	$TextShadowColourChanger.queue_free()
 	begin_transition_wait()
@@ -122,6 +126,8 @@ func value_cleanup() -> void:
 	Lakitu.present = false
 	Door.exiting_door_id = -1
 	Global.p_switch_timer = -1
+	ConditionalClear.valid = true
+	ConditionalClear.checked = false
 	if Checkpoint.passed_checkpoints.is_empty() == false:
 		Door.unlocked_doors = Checkpoint.unlocked_doors.duplicate()
 		KeyItem.total_collected = Checkpoint.keys_collected
@@ -161,10 +167,10 @@ func transition() -> void:
 func show_best_time() -> void:
 	var best_time = SpeedrunHandler.best_time
 	if SpeedrunHandler.best_time <= 0:
-		$BG/Control/MarathonPB.text = "\nNO PB"
+		%MarathonPB.text = "\nNO PB"
 		return
 	var string = "PB\n" + SpeedrunHandler.gen_time_string(SpeedrunHandler.format_time(SpeedrunHandler.best_time))
-	$BG/Control/MarathonPB.text = string
+	%MarathonPB.text = string
 
 func _process(_delta: float) -> void:
 	if can_transition:

@@ -137,9 +137,11 @@ func encode_to_base64_2char(value: int) -> String:
 
 func save_level_data(level: CustomLevel) -> void:
 	var string := ""
-	for i in [Level.THEME_IDXS.find(level.theme), ["Day", "Night"].find(level.theme_time), editor.bgm_id, ["SMB1", "SMBLL", "SMBS", "SMBANN"].find(level.campaign), level.can_backscroll, abs(level.vertical_height), level.time_limit]:
+	for i in [Level.THEME_IDXS.find(level.theme), ["Day", "Night"].find(level.theme_time), editor.bgm_id, ["SMB1", "SMBLL", "SMBS", "SMBANN"].find(level.campaign), level.can_backscroll, abs(level.vertical_height), level.time_limit, level.enforce_resolution]:
 		var key := ""
-		if int(i) >= 64:
+		if i is Vector2:
+			key = encode_to_base64_2char(i.x) + "=" + encode_to_base64_2char(i.y)
+		elif int(i) >= 64:
 			key = encode_to_base64_2char(int(i))
 		else:
 			key = base64_charset[int(i)]

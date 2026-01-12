@@ -34,11 +34,13 @@ func do_cutscene() -> void:
 	global_position.y = 40
 	$SFX.play()
 	can_grow = true
+	can_tele = false
 	for i in get_tree().get_nodes_in_group("Players"):
 		i.global_position = Vector2(global_position.x, 64)
 		i.hide()
 		i.state_machine.transition_to("Freeze")
 	await stopped
+	can_tele = false
 	for i: Player in get_tree().get_nodes_in_group("Players"):
 		i.show()
 		for x in [1, 2]:
@@ -63,13 +65,17 @@ func _physics_process(delta: float) -> void:
 		visuals.size.y += SPEED * delta
 		collision.shape.size.y += SPEED * delta
 		collision.position.y += (SPEED / 2) * delta
-		if %CeilingCheck.is_colliding():
+		if %CeilingCheck.is_colliding() and not cutscene:
 			can_stop = false
 			stopped.emit()
 			can_grow = false
+			can_tele = false
+			return
 	elif can_stop:
 		can_stop = false
 		stopped.emit()
+		if (Level.vine_warp_level != "" or CoinHeavenWarpPoint.subarea_to_warp_to != -1) and not cutscene:
+			can_tele = true
 	
 	handle_player_interaction(delta)
 	$WarpHitbox/CollisionShape2D.set_deferred("disabled", global_position.y > top_point)
@@ -84,6 +90,7 @@ func handle_player_interaction(delta: float) -> void:
 
 
 func on_player_entered(_player: Player) -> void:
+	print(can_tele)
 	if can_tele == false:
 		return
 	Level.vine_return_level = Global.current_level.scene_file_path

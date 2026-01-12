@@ -581,13 +581,13 @@ process_mode = 1
 visibility_layer = 2
 scroll_scale = Vector2(0.4, 1)
 scroll_offset = Vector2(0, 64)
-repeat_size = Vector2(512, 512)
+repeat_size = Vector2(512, 0)
 repeat_times = 4
 
 [node name="Trees" type="AnimatedSprite2D" parent="SecondaryLayer" unique_id=2048034587]
 process_mode = 1
 clip_children = 2
-position = Vector2(0, -32)
+position = Vector2(0, -544)
 sprite_frames = SubResource("SpriteFrames_t06j2")
 centered = false
 script = ExtResource("7_y7xk0")
@@ -596,7 +596,6 @@ metadata/_custom_type_script = "uid://caq1qiwmy0mox"
 
 [node name="Tint" type="ColorRect" parent="SecondaryLayer/Trees" unique_id=1963838185]
 process_mode = 1
-visible = false
 modulate = Color(1, 1, 1, 0.7)
 offset_right = 512.0
 offset_bottom = 512.0
@@ -629,9 +628,8 @@ metadata/_custom_type_script = "uid://cbal8ms2oe1ik"
 
 [node name="Mushrooms" type="AnimatedSprite2D" parent="SecondaryLayer" unique_id=978660926]
 process_mode = 1
-visible = false
 clip_children = 2
-position = Vector2(0, -32)
+position = Vector2(0, -544)
 sprite_frames = SubResource("SpriteFrames_aw4cr")
 centered = false
 script = ExtResource("7_y7xk0")

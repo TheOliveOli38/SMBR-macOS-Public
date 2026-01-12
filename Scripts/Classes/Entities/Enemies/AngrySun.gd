@@ -21,7 +21,8 @@ var old_dive_position := Vector2.ZERO
 var new_dive_position := Vector2.ZERO
 
 func _ready() -> void:
-	$IdleMeter.start()
+	if $SignalExposer.total_inputs <= 0:
+		$IdleMeter.start()
 
 func _physics_process(delta: float) -> void:
 	screen_center_pos = get_viewport().get_camera_2d().get_screen_center_position()

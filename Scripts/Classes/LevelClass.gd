@@ -82,6 +82,7 @@ static var in_vine_level := false
 
 static var can_set_time := true
 
+@export_storage var enforce_resolution := Vector2.ZERO
 
 func _enter_tree() -> void:
 	Global.current_level = self
@@ -95,6 +96,7 @@ func _enter_tree() -> void:
 	if first_load:
 		start_level_path = scene_file_path
 		Global.can_time_tick = true
+		inf_time_check()
 		Global.level_num = level_id
 		Global.world_num = world_id
 		PlayerGhost.idx = 0
@@ -113,7 +115,25 @@ func _enter_tree() -> void:
 	Global.current_campaign = campaign
 	await get_tree().process_frame
 	AudioManager.stop_music_override(AudioManager.MUSIC_OVERRIDES.NONE, true)
+	apply_resolution_enforcement()
+	tree_exiting.connect(reset_resolution)
 
+func inf_time_check() -> void:
+	Global.inf_time = false
+	if time_limit >= 999:
+		Global.can_time_tick = false
+		Global.inf_time = true
+
+func apply_resolution_enforcement() -> void:
+	if enforce_resolution != Vector2.ZERO:
+		get_tree().root.content_scale_size = enforce_resolution
+		get_tree().root.content_scale_aspect = Window.CONTENT_SCALE_ASPECT_KEEP
+	else:
+		reset_resolution()
+
+func reset_resolution() -> void:
+	get_tree().root.content_scale_size = Vector2(256, 240)
+	get_tree().root.content_scale_aspect = Window.CONTENT_SCALE_ASPECT_EXPAND if Settings.file.video.size == 1 else Window.CONTENT_SCALE_ASPECT_KEEP
 
 func spawn_in_extra_players() -> void:
 	# Fuck you lmao, no multiplayer

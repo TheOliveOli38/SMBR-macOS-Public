@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://13vxk381k4gt"]
+[gd_scene load_steps=14 format=3 uid="uid://13vxk381k4gt"]
 
 [ext_resource type="Script" uid="uid://cxtekxsaprq8c" path="res://Scripts/Classes/Entities/Enemies/AngrySun.gd" id="1_b44wu"]
 [ext_resource type="Texture2D" uid="uid://dki2sbbbcsje0" path="res://Assets/Sprites/Enemies/AngrySun.png" id="2_4q5i4"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://cbal8ms2oe1ik" path="res://Scripts/Classes/Components/ResourceSetterNew.gd" id="3_yfrhs"]
 [ext_resource type="JSON" path="res://Assets/Sprites/Enemies/AngrySun.json" id="4_vwhva"]
 [ext_resource type="Script" uid="uid://5octqlf4ohel" path="res://Scripts/Classes/Components/ScoreNoteSpawner.gd" id="6_2ut7f"]
+[ext_resource type="Script" uid="uid://b3bokos5jcpr7" path="res://Scripts/Classes/Components/SignalExposer.gd" id="7_q5u7b"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2ut7f"]
 atlas = ExtResource("2_4q5i4")
@@ -103,9 +104,16 @@ rect = Rect2(-16, -16, 32, 32)
 script = ExtResource("6_2ut7f")
 metadata/_custom_type_script = "uid://5octqlf4ohel"
 
+[node name="SignalExposer" type="Node2D" parent="." unique_id=1486714035]
+script = ExtResource("7_q5u7b")
+can_output = false
+metadata/_custom_type_script = "uid://b3bokos5jcpr7"
+
 [connection signal="timeout" from="IdleMeter" to="." method="start_charging"]
 [connection signal="timeout" from="ChargeMeter" to="." method="start_diving"]
 [connection signal="hammer_player_hit" from="EnemyPlayerDetection" to="." method="die_from_hammer"]
 [connection signal="invincible_player_hit" from="EnemyPlayerDetection" to="." method="die_from_object"]
 [connection signal="player_hit" from="EnemyPlayerDetection" to="." method="damage_player"]
 [connection signal="player_stomped_on" from="EnemyPlayerDetection" to="." method="damage_player" flags=18]
+[connection signal="recieved_power" from="SignalExposer" to="." method="start_idle"]
+[connection signal="recieved_pulse" from="SignalExposer" to="." method="start_idle"]

@@ -480,7 +480,7 @@ size_flags_vertical = 3
 [node name="Label" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/HSplitContainer/PanelContainer/Guides/Layers/ScrollContainer/VBoxContainer" unique_id=1504448045]
 layout_mode = 2
 size_flags_vertical = 1
-text = "Each Level has up to 5 layers, which you can use to place anything inside of. Layers are ordered from front-most to back-most (Layer 1 = Front, Layer 5 = Back). You can change layers by using the Page UP and Page DOWN keys, or by using CTRL+UP or CTRL+DOWN Arrows.
+text = "Each Level has up to 5 layers, which you can use to place anything inside of. Layers are ordered from front-most to back-most (Layer 1 is Front, Layer 5 is Back). You can change layers by using the Page UP and Page DOWN keys, or by using CTRL+UP or CTRL+DOWN Arrows.
 
 Some objects take advantage of the layers, such as with the Track Rider object, which will attach any object that is placed either ontop of it, or behind it, on a different layer. Some Gizmos which detect certain objects may also only detect objects which are on the same layer as it, allowing you to easily filter certain objects."
 autowrap_mode = 2

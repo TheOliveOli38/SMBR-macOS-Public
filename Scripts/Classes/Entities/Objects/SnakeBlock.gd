@@ -4,10 +4,15 @@ extends Node2D
 @export var path := []
 @export_range(4, 12) var length := 6
 @export_range(1, 4) var speed := 1
+@export var can_fall := false
+
+var falling := false
 
 var editing := false
 
 var moving := false
+
+var shake := 0.0
 
 const DIRECTIONS := [
 	Vector2i.UP, # 0
@@ -21,14 +26,18 @@ var looping := false
 var mouse_in_areas := 0
 var last_direction := Vector2i.RIGHT
 
+@onready var pieces := [$Pieces/SnakeBlockSegment1, $Pieces/SnakeBlockSegment2, $Pieces/SnakeBlockSegment3, $Pieces/SnakeBlockSegment4, $Pieces/SnakeBlockSegment5, $Pieces/SnakeBlockSegment6, $Pieces/SnakeBlockSegment7, $Pieces/SnakeBlockSegment8, $Pieces/SnakeBlockSegment9, $Pieces/SnakeBlockSegment10, $Pieces/SnakeBlockSegment11, $Pieces/SnakeBlockSegment12, %Head, $Tail]
+
 func _ready() -> void:
-	for i in get_tree().get_nodes_in_group("SnakePieces"):
+	for i in pieces:
 		i.get_node("PlayerDetection").player_entered.connect(start_travelling.unbind(1))
 	print(path)
 	update_pieces()
+	update_sprites()
 
 func update_pieces() -> void:
 	var pos := Vector2i.ZERO
+	
 	$PlacePreview.position = pos
 	if path.size() <= 0:
 		return
@@ -40,7 +49,7 @@ func update_pieces() -> void:
 		i.modulate = Color.RED if -last_direction == DIRECTIONS[i.get_index()] else Color.YELLOW
 	queue_redraw()
 
-func _physics_process(_delta: float) -> void:
+func _physics_process(delta: float) -> void:
 	if Global.level_editor != null:
 		if Global.level_editor.current_state != LevelEditor.EditorState.PLAYTESTING:
 			handle_editor_stuff()
@@ -48,9 +57,12 @@ func _physics_process(_delta: float) -> void:
 			pass
 	else:
 		pass
+	for i in pieces:
+		handle_piece_velocity(i, delta)
 
 func handle_editor_stuff() -> void:
 	$PlacePreview.visible = editing
+	print(editing, mouse_in_areas)
 	if Input.is_action_pressed("mb_left") and editing and mouse_in_areas > 0:
 		for i in 8:
 			if is_mouse_in_area(i):
@@ -100,8 +112,8 @@ func start_travelling() -> void:
 	moving = true
 	var idx := 0
 	var move_speed = 1.0 / (speed * 1.5)
-	for i in get_tree().get_nodes_in_group("SnakePieces"):
-		i.get_node("Sprite").play("Moving")
+	for i in pieces:
+		i.get_node("Sprite").play("Moving" if can_fall == false else "MovingRed")
 	for i in (path.size()) - (length - 1):
 		var head_dir = path[idx + length - 1]
 		var tail_dir = path[idx]
@@ -110,5 +122,43 @@ func start_travelling() -> void:
 		await tail_tween.finished
 		$Pieces.get_child(idx % (length - 1)).position = $Head.position
 		idx += 1
-	for i in get_tree().get_nodes_in_group("SnakePieces"):
-		i.get_node("Sprite").play("Stopped")
+	stop_moving()
+	if can_fall:
+		fall(idx)
+
+func stop_moving() -> void:
+	for i in pieces:
+		i.get_node("Sprite").play("Stopped" if can_fall == false else "StoppedRed")
+
+func fall(idx := 0) -> void:
+	falling = true
+	await get_tree().create_timer(0.5, false).timeout
+	$Tail.set_meta("velocity", 0)
+	for i in length - 1:
+		await get_tree().create_timer(0.1, false).timeout
+		var node = $Pieces.get_child(idx % (length - 1))
+		idx += 1
+		node.set_meta("velocity", 0)
+	$Head.set_meta("velocity", 0)
+	await get_tree().create_timer(5, false).timeout
+	queue_free()
+
+func handle_piece_velocity(node: Node2D, delta: float) -> void:
+	var velocity = node.get_meta("velocity", -1)
+	if falling:
+		node.get_node("Sprite").position = Vector2(randf_range(-1, 1), randf_range(-1, 1))
+	else:
+		node.get_node("Sprite").position = Vector2.ZERO
+	if velocity < 0:
+		return
+	node.get_node("Sprite").position = Vector2.ZERO
+	node.set_meta("velocity", min(velocity + Global.entity_gravity, Global.entity_max_fall_speed))
+	node.global_position.y += velocity * delta
+
+func on_modifier_applied() -> void:
+	update_sprites()
+
+func update_sprites() -> void:
+	for i in pieces:
+		i.get_node("Sprite").position = Vector2.ZERO
+		i.get_node("Sprite").play("Idle" if can_fall == false else "IdleRed")

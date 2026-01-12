@@ -11,7 +11,22 @@
 			"loop": false
 		},
 		"Stopped": {
+			"frames": [[0, 16, 16, 16]],
+			"speed": 5.0,
+			"loop": false,
+		},
+		"IdleRed": {
 			"frames": [[16, 0, 16, 16]],
+			"speed": 5.0,
+			"loop": true
+		},
+		"MovingRed": {
+			"frames": [[16, 0, 16, 16]],
+			"speed": 5.0,
+			"loop": false
+		},
+		"StoppedRed": {
+			"frames": [[16, 16, 16, 16]],
 			"speed": 5.0,
 			"loop": false,
 		}

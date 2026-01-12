@@ -27,6 +27,7 @@ signal block_hit
 signal block_emptied
 signal block_destroyed
 
+
 func _enter_tree() -> void:
 	z_index = start_z
 	sync_to_physics = false
@@ -47,9 +48,10 @@ func dispense_item() -> void:
 	node.set_meta("no_persist", true)
 	if node is PowerUpItem or node.has_meta("is_item"):
 		for i in get_tree().get_nodes_in_group("Players"):
-			node.position = position + Vector2(0, -1)
-			node.hide()
 			add_sibling(node)
+			node.global_position = global_position - Vector2(0, 1)
+			node.hide()
+			node.reset_physics_interpolation()
 			if node is PowerUpItem:
 				if Global.connected_players > 1:
 					AudioManager.play_sfx("item_appear", global_position)

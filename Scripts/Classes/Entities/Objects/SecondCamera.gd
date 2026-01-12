@@ -8,10 +8,15 @@ static var taken := false
 
 var tween = null
 
+static var frame_one := false
+
 func _ready() -> void:
 	$Camera2D.global_position = global_position
 	$NinePatchRect.size = get_viewport().get_visible_rect().size
 	$NinePatchRect.position = -($NinePatchRect.size / 2)
+	for i in 4:
+		await get_tree().physics_frame
+	frame_one = true
 
 func level_start() -> void:
 	if auto_activate:
@@ -74,15 +79,16 @@ func transition_to_self() -> void:
 	var trans_cam = Camera2D.new()
 	for i in ["limit_left", "limit_right", "limit_top", "limit_bottom"]:
 		trans_cam.set(i, $Camera2D.get(i))
-	add_child(trans_cam)
-	var old_cam = get_viewport().get_camera_2d()
-	trans_cam.make_current()
-	trans_cam.global_position = (old_cam.get_screen_center_position())
-	trans_cam.reset_physics_interpolation()
-	trans_cam.reset_smoothing()
-	tween = create_tween().set_trans(Tween.TRANS_CUBIC).tween_property(trans_cam, "position", Vector2.ZERO, 0.25)
-	await tween.finished
-	trans_cam.queue_free()
+	if frame_one:
+		add_child(trans_cam)
+		var old_cam = get_viewport().get_camera_2d()
+		trans_cam.make_current()
+		trans_cam.global_position = (old_cam.get_screen_center_position())
+		trans_cam.reset_physics_interpolation()
+		trans_cam.reset_smoothing()
+		tween = create_tween().set_trans(Tween.TRANS_CUBIC).tween_property(trans_cam, "position", Vector2.ZERO, 0.25)
+		await tween.finished
+		trans_cam.queue_free()
 	taken = false
 	if active:
 		activate()
@@ -91,3 +97,4 @@ func transition_to_self() -> void:
 
 func _exit_tree() -> void:
 	taken = false
+	frame_one = false

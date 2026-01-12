@@ -1,12 +1,12 @@
 {
-	"properites": {
-		"can_rotate": true
+	"properties": {
+		"can_rotate": false
 	},
 	"animations": {
 		"default": {
-			"frames": [[0, 0, 48, 48]],
-			"speed": 5.0,
-			"loop": false
+			"frames": [[0, 0, 48, 48], [48, 0, 48, 48]],
+			"speed": 10.0,
+			"loop": true
 		}
 	},
 	"variations": {

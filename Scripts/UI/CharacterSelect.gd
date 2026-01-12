@@ -51,6 +51,13 @@ func get_custom_characters() -> void:
 		var char_info_path = char_path.path_join("CharacterInfo.json")
 		if FileAccess.file_exists(char_info_path):
 			var json = JSON.parse_string(FileAccess.open(char_path.path_join("CharacterInfo.json"), FileAccess.READ).get_as_text())
+			if json == null:
+				continue
+			if json.has("physics"):
+				if json.physics.has("PHYSICS_PARAMETERS") == false:
+					json = CustomCharacterUpdater.update_json(json)
+					Global.log_comment("Updated CharacterInfo for: " + i)
+					FileAccess.open(char_path.path_join("CharacterInfo.json"), FileAccess.WRITE).store_string((JSON.stringify(json, "\t", false)))
 			Player.CHARACTERS.append(i)
 			Player.CHARACTER_NAMES.append(json.name)
 			

@@ -53,7 +53,7 @@ func handle_main_hud() -> void:
 	%LevelNum.text = world_num + "-" + str(Global.level_num)
 	%Crown.visible = Global.second_quest
 	%Time.text = " " + str(Global.time).pad_zeros(3)
-	if Settings.file.difficulty.time_limit == 0:
+	if Settings.file.difficulty.time_limit == 0 or Global.inf_time:
 		%Time.text = " ---"
 	%Time.visible = get_tree().get_first_node_in_group("Players") != null
 	handle_modern_hud()
@@ -89,7 +89,7 @@ func handle_modern_hud() -> void:
 		$ModernHUD/TopLeft/LifeCount.show()
 		%DeathCountLabel.hide()
 		%ModernLifeCount.text = "*" + (str(Global.lives).pad_zeros(2) if Settings.file.difficulty.inf_lives == 0 else "∞")
-	if get_tree().get_first_node_in_group("Players") == null or Settings.file.difficulty.time_limit == 0:
+	if get_tree().get_first_node_in_group("Players") == null or Settings.file.difficulty.time_limit == 0 or Global.inf_time:
 		%ModernTime.text = "⏲---"
 
 func handle_disco_combo() -> void:
@@ -228,7 +228,7 @@ func activate_pause_menu() -> void:
 const HURRY_UP = preload("res://Assets/Audio/BGM/HurryUp.mp3")
 
 func on_timeout() -> void:
-	if Global.can_time_tick and is_instance_valid(Global.current_level) and Settings.file.difficulty.time_limit > 0:
+	if Global.can_time_tick and is_instance_valid(Global.current_level) and Settings.file.difficulty.time_limit > 0 and not Global.inf_time:
 		if Global.level_editor != null:
 			if Global.level_editor.current_state != LevelEditor.EditorState.PLAYTESTING:
 				return

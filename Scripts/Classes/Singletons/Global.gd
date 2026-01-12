@@ -94,6 +94,7 @@ var coins := 0:
 				AudioManager.play_sfx("1_up", get_viewport().get_camera_2d().get_screen_center_position())
 			coins = coins % 100
 var time := 300
+var inf_time := false
 var lives := 3
 var world_num := 1
 
@@ -267,6 +268,10 @@ func _process(delta: float) -> void:
 		TranslationServer.reload_pseudolocalization()
 		log_comment("Reloaded resource packs!")
 	
+	## Imagine being such a shit game engine, that you somehow BROKE ALT-F4, SERIOUSLY.
+	if Input.is_key_pressed(KEY_ALT) and Input.is_key_pressed(KEY_4):
+		get_tree().quit()
+	
 	if Input.is_action_just_pressed("toggle_fps_count"):
 		%FPSCount.visible = !%FPSCount.visible
 	%FPSCount.text = str(int(Engine.get_frames_per_second())) + " FPS"
@@ -384,6 +389,7 @@ func reset_values() -> void:
 	KeyItem.total_collected = 0
 	Checkpoint.keys_collected = 0
 	Broadcaster.active_channels = []
+	Warper.target_channel = -1
 	ConditionalClear.valid = true
 	ConditionalClear.checked = false
 	GlobalCounter.amounts = {}
@@ -575,6 +581,7 @@ func create_translation_from_json(locale := "") -> void:
 			var value = file_json[i]
 			if value is Dictionary:
 				value = $ResourceSetterNew.get_variation_json(value).source
+			value = remove_cryllic_characters(value)
 			if locale_json.has(i) == false:
 				locale_json[i] = value
 	var trans = Translation.new()
@@ -583,6 +590,15 @@ func create_translation_from_json(locale := "") -> void:
 		trans.add_message(i, locale_json[i])
 	TranslationServer.remove_translation(TranslationServer.get_translation_object(locale))
 	TranslationServer.add_translation(trans)
+
+func remove_cryllic_characters(message := "") -> String:
+	const cryllic := "авекмнорстух"
+	const latin := "abekmhopctyx"
+	var idx := 0
+	for i in cryllic:
+		message = message.replace(i, latin[idx])
+		idx += 1
+	return message
 
 func create_gal_translation(en_json_path := "") -> void:
 	var en_json = JSON.parse_string(FileAccess.open(en_json_path, FileAccess.READ).get_as_text())
@@ -612,3 +628,43 @@ func merge_dict(target: Dictionary, source: Dictionary) -> void:
 			merge_dict(target[key], source[key])
 		else:
 			target[key] = source[key]
+
+func nice_json_format(json_string := "") -> String:
+	var inside_array := 0
+	var inside_obj := 0
+	var indents := 0
+	var end_reached := false
+	for i in json_string.length():
+		if json_string[i] == "{":
+			inside_obj += 1
+			if json_string[i + 1] != "}":
+				indents += 1
+				json_string = json_string.insert(i + 1, "\n")
+				i += 1
+				for x in indents:
+					json_string = json_string.insert(i + 2, "\t")
+					i += 1
+		if json_string[i] == "[":
+			inside_array += 1
+			if inside_array > 1:
+				indents += 1
+		if json_string[i] == "]":
+			inside_array -= 1
+			if inside_array > 1:
+				indents -= 1
+		if json_string[i] == "}":
+			if inside_obj > 0:
+				indents -= 1
+				json_string = json_string.insert(i + 1, "\n")
+				i += 1
+				for x in indents:
+					json_string = json_string.insert(i - 1, "\t")
+					i += 1
+		if json_string[i] == ",":
+			if inside_array <= 0:
+				json_string = json_string.insert(i + 1, "\n")
+				i += 1
+				for x in indents:
+					json_string = json_string.insert(i + 2, "\t")
+					i += 1
+	return json_string

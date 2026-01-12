@@ -34,12 +34,12 @@ func block_bounce_up(block: Node2D) -> void:
 func block_dispense_tween() -> void:
 	var old_z = z_index
 	z_index = -2
-	show()
-	reset_physics_interpolation()
 	AudioManager.play_sfx("item_appear", global_position)
 	set_physics_process(false)
 	set_process(false)
 	global_position.y += 8
+	show()
+	reset_physics_interpolation()
 	var time := 1
 	var tween = create_tween().tween_property(self, "position:y", position.y - 15, time)
 	await tween.finished

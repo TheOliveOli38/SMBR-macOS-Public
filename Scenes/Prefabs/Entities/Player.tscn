@@ -1050,10 +1050,10 @@ metadata/_custom_type_script = "uid://cbal8ms2oe1ik"
 
 [node name="Collision" type="CollisionPolygon2D" parent="." unique_id=1622259203]
 unique_name_in_owner = true
-polygon = PackedVector2Array(4, 0, 4, -26, 1, -32, -1, -32, -4, -26, -4, 0, -2, 0, 2, 0)
+polygon = PackedVector2Array(4, 0, 4, -2, 1, -8, -1, -8, -4, -2, -4, 0, -2, 0, 2, 0)
 one_way_collision = true
 script = ExtResource("35_nbkfn")
-hitbox = Vector2(8, 32)
+hitbox = Vector2(8, 8)
 
 [node name="FootL" type="CollisionShape2D" parent="." unique_id=449333133 groups=["StepCollision"]]
 position = Vector2(-6, -4)
@@ -1066,6 +1066,7 @@ shape = SubResource("SeparationRayShape2D_6ws8x")
 [node name="EditorPropertyExposer" type="Node" parent="." unique_id=954587357]
 script = ExtResource("28_hu5lw")
 properties = Array[String](["starting_power_state"])
+animate_change = false
 
 [node name="Node" type="Node" parent="." unique_id=543824886]
 process_mode = 3
@@ -1145,5 +1146,4 @@ shape = SubResource("RectangleShape2D_fqdtv")
 [connection signal="sprite_frames_changed" from="SpriteScaleJoint/Sprite" to="SpriteScaleJoint/Sprite" method="on_frame_changed"]
 [connection signal="area_entered" from="Hitbox" to="." method="on_area_entered"]
 [connection signal="area_exited" from="Hitbox" to="." method="on_area_exited"]
-[connection signal="body_entered" from="LavaDetect" to="." method="fire_die" unbinds=1]
-[connection signal="body_entered" from="PoisonDetect" to="." method="die" unbinds=1]
+[connection signal="modifier_applied" from="EditorPropertyExposer" to="." method="on_modifier_applied"]

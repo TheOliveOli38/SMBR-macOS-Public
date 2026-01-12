@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://n2e3jgmkilvt"]
+[gd_scene load_steps=14 format=3 uid="uid://n2e3jgmkilvt"]
 
 [ext_resource type="Script" uid="uid://djuvlj1dt0aay" path="res://Scripts/UI/MarathonResults.gd" id="1_1ama0"]
 [ext_resource type="StyleBox" uid="uid://comkghpj0djcl" path="res://Resources/UI/Panel.tres" id="1_xyd63"]
@@ -22,6 +22,10 @@ region = Rect2(96, 16, 24, 8)
 
 [sub_resource type="StyleBoxLine" id="StyleBoxLine_v87cy"]
 color = Color(1, 1, 1, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nvyky"]
+atlas = ExtResource("2_1ama0")
+region = Rect2(96, 32, 8, 8)
 
 [node name="MarathonResults" type="Control" unique_id=782696400]
 layout_mode = 3
@@ -205,6 +209,15 @@ layout_mode = 1
 visible = false
 layout_mode = 1
 
+[node name="TextureRect" parent="SpeedrunTypeSelectLevelSelect/Panel/VBoxContainer/Warpless" parent_id_path=PackedInt32Array(1223353015, 1599187849) index="2" unique_id=698667744]
+texture = SubResource("AtlasTexture_nvyky")
+
+[node name="Any" parent="SpeedrunTypeSelectLevelSelect/Panel/VBoxContainer/Warpless" parent_id_path=PackedInt32Array(1223353015, 1599187849) index="3" unique_id=603641441]
+text = "TO FLAGPOLE"
+
+[node name="Any" parent="SpeedrunTypeSelectLevelSelect/Panel/VBoxContainer/Any" parent_id_path=PackedInt32Array(1223353015, 641274277) index="3" unique_id=1526349318]
+text = "TO WARP ZONE"
+
 [connection signal="pressed" from="PanelContainer/VBoxContainer/MarginContainer/VBoxContainer/Restart" to="." method="check_for_warp"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/MarginContainer/VBoxContainer/Restart" to="." method="set_focus" binds= [false]]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/MarginContainer/VBoxContainer/LevelSelect" to="WorldSelect" method="open"]
@@ -222,3 +235,5 @@ layout_mode = 1
 [connection signal="cancelled" from="SpeedrunTypeSelectLevelSelect" to="." method="return_focus"]
 [connection signal="cancelled" from="SpeedrunTypeSelectLevelSelect" to="." method="set_focus" binds= [true]]
 [connection signal="selected" from="SpeedrunTypeSelectLevelSelect" to="." method="restart_level"]
+
+[editable path="SpeedrunTypeSelectLevelSelect"]

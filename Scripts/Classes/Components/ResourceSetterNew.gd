@@ -262,7 +262,6 @@ func get_variation_json(json := {}) -> Dictionary:
 		var idx := randi_range(0, json.choices.size() - 1)
 		if has_meta("RNGChoice"):
 			idx = get_meta("RNGChoice", -1)
-			print(idx)
 		else:
 			set_meta("RNGChoice", idx)
 		var random_json = json.choices[idx]
@@ -336,8 +335,6 @@ func get_config_file(resource_pack := "") -> void:
 		if config_to_use == null:
 			Global.log_error("Error parsing Config File! (" + resource_pack + ")")
 			config_to_use = {}
-	else:
-		print("resource pack to use: " + resource_pack)
 
 func get_resource_pack_path(res_path := "", resource_pack := "") -> String:
 	var user_path := res_path.replace("res://Assets", Global.config_path.path_join("resource_packs/" + resource_pack))
@@ -357,7 +354,7 @@ func create_sprite_frames_from_image(image: Resource, animation_json := {}) -> S
 		for frame in animation_json[anim_name].frames:
 			var frame_texture = AtlasTexture.new()
 			frame_texture.atlas = image
-			frame_texture.region = Rect2(frame[0], frame[1], frame[2], frame[3])
+			frame_texture.region = Rect2(int(frame[0]), int(frame[1]), int(frame[2]), int(frame[3]))
 			frame_texture.filter_clip = true
 			sprite_frames.add_frame(anim_name, frame_texture)
 		sprite_frames.set_animation_loop(anim_name, animation_json[anim_name].loop)
@@ -399,6 +396,10 @@ func load_audio_from_path(path := "") -> AudioStream:
 func sync_metadata() -> void:
 	for i in sync:
 		copy_meta(i)
+
+func clear_metadata() -> void:
+	for meta in get_meta_list():
+		remove_meta(meta)
 
 func copy_meta(new_node: Node) -> void:
 	for meta in get_meta_list():

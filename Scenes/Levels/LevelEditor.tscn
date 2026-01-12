@@ -1,4 +1,4 @@
-[gd_scene load_steps=279 format=3 uid="uid://gbcmqonky63j"]
+[gd_scene load_steps=278 format=3 uid="uid://gbcmqonky63j"]
 
 [ext_resource type="Script" uid="uid://c2lnc7vnq3xth" path="res://Scripts/Classes/Editor/LevelEditor.gd" id="1_0qbyu"]
 [ext_resource type="Texture2D" uid="uid://cbha2l6hg1kfo" path="res://Assets/Sprites/UI/EditorGrid.png" id="2_8q7yr"]
@@ -194,6 +194,7 @@
 [ext_resource type="JSON" path="res://Assets/Sprites/Tilesets/LockedDoors.json" id="205_gsewy"]
 [ext_resource type="PackedScene" uid="uid://bdctqn5p6wxna" path="res://Scenes/Prefabs/UI/ThemeSelect.tscn" id="206_dsu6a"]
 [ext_resource type="JSON" path="res://Assets/Sprites/Items/BlueCoin.json" id="206_ofliq"]
+[ext_resource type="Texture2D" uid="uid://bwqwdrxx2t2tb" path="res://Assets/Sprites/Editor/Warper.png" id="207_7a43i"]
 [ext_resource type="JSON" path="res://Assets/Sprites/Tilesets/PDoors.json" id="207_sucb6"]
 [ext_resource type="Texture2D" uid="uid://ejdm7k30661p" path="res://Assets/Sprites/Editor/SecondCamera.png" id="208_ji0c6"]
 [ext_resource type="JSON" path="res://Assets/Sprites/Items/Hachisuke.json" id="211_fe6cg"]
@@ -201,10 +202,8 @@
 [ext_resource type="JSON" path="res://Assets/Sprites/Items/WingItem.json" id="221_o0k3u"]
 [ext_resource type="JSON" path="res://Assets/Sprites/Items/LuckyStar.json" id="224_vjdbd"]
 [ext_resource type="JSON" path="res://Assets/Sprites/Items/Key.json" id="229_u1728"]
-[ext_resource type="Texture2D" uid="uid://d08xv46j8rdhn" path="res://Assets/Sprites/Editor/PitWarp.png" id="234_6sfog"]
 [ext_resource type="Texture2D" uid="uid://d3km1t0r7dcg3" path="res://Assets/Sprites/Editor/VineWarp.png" id="235_d5512"]
 [ext_resource type="Texture2D" uid="uid://duxkbhsbnmrvs" path="res://Assets/Sprites/Editor/Darkness.png" id="236_i73lv"]
-[ext_resource type="Texture2D" uid="uid://d2x6hms8qycyd" path="res://Assets/Sprites/Editor/PitWarpOutput.png" id="236_ksxb5"]
 [ext_resource type="Script" uid="uid://codql1f5eca56" path="res://Scripts/Classes/Editor/OptionButtonThatIsntFuckingBlurry.gd" id="241_8au2b"]
 [ext_resource type="JSON" path="res://Assets/Sprites/Blocks/OneWayPanel.json" id="241_kwldt"]
 [ext_resource type="JSON" path="res://Assets/Sprites/Blocks/SmallOneWayPanel.json" id="247_6mp6g"]
@@ -1833,13 +1832,13 @@ grow_horizontal = 0
 mouse_filter = 2
 texture = ExtResource("22_3cjpb")
 
-[node name="CastleWall" type="Control" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Tiles/MarginContainer/GridContainer" unique_id=1769469065]
+[node name="CastleTiles" type="Control" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Tiles/MarginContainer/GridContainer" unique_id=847207374]
 custom_minimum_size = Vector2(16, 16)
 layout_mode = 2
 mouse_force_pass_scroll_events = false
 script = ExtResource("20_jc7xg")
 
-[node name="Top" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Tiles/MarginContainer/GridContainer/CastleWall" unique_id=572034437 groups=["Selectors"] instance=ExtResource("8_wkmjk")]
+[node name="Top" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Tiles/MarginContainer/GridContainer/CastleTiles" unique_id=572034437 groups=["Selectors"] instance=ExtResource("8_wkmjk")]
 layout_mode = 0
 offset_right = 16.0
 offset_bottom = 16.0
@@ -1848,7 +1847,7 @@ icon_texture = ExtResource("10_vhlvp")
 icon_region_override = Rect2(96, 112, 16, 16)
 tile_coords = Vector2i(6, 7)
 
-[node name="Base" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Tiles/MarginContainer/GridContainer/CastleWall" unique_id=640630728 groups=["Selectors"] instance=ExtResource("8_wkmjk")]
+[node name="Base" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Tiles/MarginContainer/GridContainer/CastleTiles" unique_id=640630728 groups=["Selectors"] instance=ExtResource("8_wkmjk")]
 layout_mode = 0
 offset_right = 16.0
 offset_bottom = 16.0
@@ -1856,23 +1855,6 @@ tile_name = "TILE_WALL_BASE"
 icon_texture = ExtResource("10_vhlvp")
 icon_region_override = Rect2(112, 112, 16, 16)
 tile_coords = Vector2i(7, 7)
-
-[node name="TextureRect" type="TextureRect" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Tiles/MarginContainer/GridContainer/CastleWall" unique_id=2024549025]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -16.0
-offset_bottom = 16.0
-grow_horizontal = 0
-mouse_filter = 2
-texture = ExtResource("22_3cjpb")
-
-[node name="CastleTiles" type="Control" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Tiles/MarginContainer/GridContainer" unique_id=847207374]
-custom_minimum_size = Vector2(16, 16)
-layout_mode = 2
-mouse_force_pass_scroll_events = false
-script = ExtResource("20_jc7xg")
 
 [node name="LWindow" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Tiles/MarginContainer/GridContainer/CastleTiles" unique_id=937752968 groups=["Selectors"] instance=ExtResource("8_wkmjk")]
 layout_mode = 0
@@ -5113,45 +5095,6 @@ icon_region_override = Rect2(0, 0, 16, 16)
 secondary_icon_region_override = Rect2(24, 0, 16, 16)
 entity_id = "CT"
 
-[node name="PitWarps" type="Control" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Objects/MarginContainer/GridContainer" unique_id=568352651]
-custom_minimum_size = Vector2(16, 16)
-layout_mode = 2
-mouse_force_pass_scroll_events = false
-script = ExtResource("20_jc7xg")
-
-[node name="PitWarp" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Objects/MarginContainer/GridContainer/PitWarps" unique_id=1756115168 groups=["Selectors"] instance=ExtResource("8_wkmjk")]
-layout_mode = 0
-offset_right = 16.0
-offset_bottom = 16.0
-tile_name = "OBJ_PITWARP"
-type = 1
-icon_texture = ExtResource("234_6sfog")
-icon_region_override = Rect2(0, 0, 16, 16)
-secondary_icon_region_override = Rect2(24, 0, 16, 16)
-entity_id = "CU"
-
-[node name="PitWarp2" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Objects/MarginContainer/GridContainer/PitWarps" unique_id=260335672 groups=["Selectors"] instance=ExtResource("8_wkmjk")]
-layout_mode = 0
-offset_right = 16.0
-offset_bottom = 16.0
-tile_name = "OBJ_PITWARP_RETURN"
-type = 1
-icon_texture = ExtResource("236_ksxb5")
-icon_region_override = Rect2(0, 0, 16, 16)
-secondary_icon_region_override = Rect2(24, 0, 16, 16)
-entity_id = "CV"
-
-[node name="TextureRect" type="TextureRect" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Objects/MarginContainer/GridContainer/PitWarps" unique_id=174511619]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -16.0
-offset_bottom = 16.0
-grow_horizontal = 0
-mouse_filter = 2
-texture = ExtResource("22_3cjpb")
-
 [node name="RopeElevators" type="Control" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Objects/MarginContainer/GridContainer" unique_id=1222278299]
 custom_minimum_size = Vector2(16, 16)
 layout_mode = 2
@@ -6145,12 +6088,6 @@ type = 1
 icon_texture = ExtResource("163_hiqwy")
 entity_id = "Cn"
 entity_scene = ExtResource("164_f5y2p")
-metadata/can_be_stored = true
-metadata/can_note_store = false
-metadata/cannon_ammo = false
-metadata/can_lakitu_throw = false
-metadata/can_pipe_gen = false
-metadata/can_crate_store = false
 
 [node name="TextureRect" type="TextureRect" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Gizmos/MarginContainer/VBoxContainer/Logic/Gates2/AND" unique_id=1908360192]
 layout_mode = 1
@@ -6172,12 +6109,6 @@ type = 1
 icon_texture = ExtResource("165_gq8kq")
 entity_id = "Co"
 entity_scene = ExtResource("166_upqx4")
-metadata/can_be_stored = true
-metadata/can_note_store = false
-metadata/cannon_ammo = false
-metadata/can_lakitu_throw = false
-metadata/can_pipe_gen = false
-metadata/can_crate_store = false
 
 [node name="TextureRect" type="TextureRect" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Gizmos/MarginContainer/VBoxContainer/Logic/Gates2/OR" unique_id=357113452]
 layout_mode = 1
@@ -6199,12 +6130,6 @@ type = 1
 icon_texture = ExtResource("167_snabn")
 entity_id = "Cp"
 entity_scene = ExtResource("168_chiiq")
-metadata/can_be_stored = true
-metadata/can_note_store = false
-metadata/cannon_ammo = false
-metadata/can_lakitu_throw = false
-metadata/can_pipe_gen = false
-metadata/can_crate_store = false
 
 [node name="TextureRect" type="TextureRect" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Gizmos/MarginContainer/VBoxContainer/Logic/Gates2/NOT" unique_id=1518606766]
 layout_mode = 1
@@ -6226,12 +6151,6 @@ type = 1
 icon_texture = ExtResource("169_a6wyw")
 entity_id = "Cq"
 entity_scene = ExtResource("170_wc8ue")
-metadata/can_be_stored = true
-metadata/can_note_store = false
-metadata/cannon_ammo = false
-metadata/can_lakitu_throw = false
-metadata/can_pipe_gen = false
-metadata/can_crate_store = false
 
 [node name="TextureRect" type="TextureRect" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Gizmos/MarginContainer/VBoxContainer/Logic/Gates2/XOR" unique_id=1292957715]
 layout_mode = 1
@@ -6380,6 +6299,28 @@ entity_scene = ExtResource("176_uggri")
 metadata/can_be_stored = true
 
 [node name="TextureRect" type="TextureRect" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Gizmos/MarginContainer/VBoxContainer/Output/ConditionalClear" unique_id=236414212]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("194_24ald")
+
+[node name="Warper" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Gizmos/MarginContainer/VBoxContainer/Output" unique_id=991496675 groups=["Selectors"] instance=ExtResource("8_wkmjk")]
+layout_mode = 2
+tile_name = "Room Warper"
+tile_desc = "Will transition to a different room, when powered. Use matching channels on other Room Warpers, to define positions upon warping."
+type = 1
+icon_texture = ExtResource("207_7a43i")
+icon_region_override = Rect2(0, 0, 16, 16)
+secondary_icon_region_override = Rect2(0, 0, 16, 16)
+entity_id = "DU"
+entity_scene = ExtResource("176_uggri")
+metadata/can_be_stored = true
+
+[node name="TextureRect" type="TextureRect" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Gizmos/MarginContainer/VBoxContainer/Output/Warper" unique_id=725773224]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -6581,6 +6522,19 @@ min_value = 10.0
 max_value = 999.0
 value = 400.0
 script = ExtResource("204_idval")
+
+[node name="HBoxContainer9" type="HBoxContainer" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/LEVEL/ScrollContainer/VBoxContainer" unique_id=732379775]
+layout_mode = 2
+
+[node name="HeightLimit" type="Label" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/LEVEL/ScrollContainer/VBoxContainer/HBoxContainer9" unique_id=1355462951]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "LEVEL_SETTINGS_ENFORCE_SCREEN_SIZE"
+uppercase = true
+
+[node name="BackScroll" type="CheckBox" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/LEVEL/ScrollContainer/VBoxContainer/HBoxContainer9" unique_id=232739858]
+layout_mode = 2
+size_flags_horizontal = 10
 
 [node name="BG" type="MarginContainer" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer" unique_id=1795380557]
 visible = false
@@ -7266,6 +7220,7 @@ autostart = true
 [connection signal="toggled" from="TileMenu/MarginContainer/VBoxContainer/PanelContainer/LEVEL/ScrollContainer/VBoxContainer/HBoxContainer3/BackScroll" to="." method="backscroll_toggled"]
 [connection signal="value_changed" from="TileMenu/MarginContainer/VBoxContainer/PanelContainer/LEVEL/ScrollContainer/VBoxContainer/HBoxContainer4/HeightLimit" to="." method="height_limit_changed"]
 [connection signal="value_changed" from="TileMenu/MarginContainer/VBoxContainer/PanelContainer/LEVEL/ScrollContainer/VBoxContainer/HBoxContainer6/TimeLimit" to="." method="time_limit_changed"]
+[connection signal="toggled" from="TileMenu/MarginContainer/VBoxContainer/PanelContainer/LEVEL/ScrollContainer/VBoxContainer/HBoxContainer9/BackScroll" to="." method="res_enforce_changed"]
 [connection signal="item_selected" from="TileMenu/MarginContainer/VBoxContainer/PanelContainer/BG/ScrollContainer/VBoxContainer/HBoxContainer/PrimaryLayer" to="." method="set_bg_value" binds= ["primary_layer"]]
 [connection signal="item_selected" from="TileMenu/MarginContainer/VBoxContainer/PanelContainer/BG/ScrollContainer/VBoxContainer/HBoxContainer2/SecondLayer" to="." method="set_bg_value" binds= ["second_layer"]]
 [connection signal="item_selected" from="TileMenu/MarginContainer/VBoxContainer/PanelContainer/BG/ScrollContainer/VBoxContainer/HBoxContainer7/SecondLayerOrder" to="." method="set_bg_value" binds= ["second_layer_order"]]

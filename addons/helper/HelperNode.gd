@@ -56,3 +56,20 @@ func get_directories(path := "", array_to_use := []) -> Array:
 		if i.get_extension() == "tscn":
 			array_to_use.append(path + "/" + i)
 	return array_to_use
+
+var delta_enabled := false
+
+func update_value(new_text := "") -> void:
+	if new_text.length() != 5:
+		%ConvertedSubPixelToDecimal.text = ""
+		return
+	var value := 0.0
+	var idx := 0
+	value = float(new_text.hex_to_int()) / 4096
+	if delta_enabled:
+		value *= 60
+	%ConvertedSubPixelToDecimal.text = "Converted: " + str(value)
+
+func toggle_delta(toggled := false) -> void:
+	delta_enabled = toggled
+	update_value(%InitValue.text)

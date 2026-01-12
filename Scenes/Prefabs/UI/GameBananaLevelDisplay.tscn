@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://b32rbwuvfqn6x" path="res://Scripts/UI/GameBananaLevelDisplay.gd" id="1_tdprq"]
 
-[node name="GameBananaLevelDisplay" type="Control" unique_id=1191052903]
+[node name="GameBananaModMenu" type="Control" unique_id=1191052903]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -19,5 +19,11 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ItemList" type="ItemList" parent="PanelContainer" unique_id=1074851076]
+[node name="ScrollContainer" type="ScrollContainer" parent="PanelContainer" unique_id=1758143602]
 layout_mode = 2
+
+[node name="Container" type="HFlowContainer" parent="PanelContainer/ScrollContainer" unique_id=981671671]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3

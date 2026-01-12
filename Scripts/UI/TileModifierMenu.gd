@@ -156,11 +156,13 @@ func close() -> void:
 	clear_nodes()
 	editing_node.tree_exiting.disconnect(close)
 	properties.clear()
+	closed.emit()
 	if get_tree() == null: return
 	if Global.level_editor.quick_connecting:
 		await left_click_release
 	else:
 		await get_tree().create_timer(0.03).timeout
+	Global.level_editor.current_inspect_tile = null
 	Global.level_editor.current_state = LevelEditor.EditorState.IDLE
 	hide()
 

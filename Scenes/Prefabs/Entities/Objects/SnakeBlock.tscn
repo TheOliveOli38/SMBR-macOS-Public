@@ -84,7 +84,7 @@ script = SubResource("GDScript_r8seh")
 
 [node name="EditorPropertyExposer" type="Node" parent="." unique_id=1694400623]
 script = ExtResource("3_fuc5y")
-properties = Array[String](["length", "speed", "path"])
+properties = Array[String](["length", "speed", "path", "can_fall"])
 properties_force_selector = Dictionary[String, PackedScene]({
 "path": ExtResource("4_7bkk4")
 })
@@ -158,6 +158,7 @@ process_mode = 1
 script = ExtResource("8_46787")
 metadata/_custom_type_script = "uid://b3bokos5jcpr7"
 
+[connection signal="modifier_applied" from="EditorPropertyExposer" to="." method="on_modifier_applied"]
 [connection signal="mouse_entered" from="PlacePreview/N/MouseArea" to="." method="on_mouse_entered" binds= [0]]
 [connection signal="mouse_exited" from="PlacePreview/N/MouseArea" to="." method="on_mouse_exited" binds= [0]]
 [connection signal="mouse_entered" from="PlacePreview/E/MouseArea" to="." method="on_mouse_entered" binds= [1]]

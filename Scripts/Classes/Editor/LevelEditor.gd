@@ -290,6 +290,8 @@ func play_level() -> void:
 	update_music()
 	reset_values_for_play()
 	%Camera.enabled = false
+	level.apply_resolution_enforcement()
+	level.inf_time_check()
 	level_start.emit()
 	if gizmos_visible == false:
 		get_tree().call_group("Gizmos", "hide")
@@ -313,11 +315,12 @@ func return_to_editor() -> void:
 	level.process_mode = Node.PROCESS_MODE_DISABLED
 	handle_hud()
 
+var zoom := 1.0
 
 func handle_camera(delta: float) -> void:
 	var input_vector = Input.get_vector("editor_cam_left", "editor_cam_right", "editor_cam_up", "editor_cam_down")
 	%Camera.global_position += input_vector * (CAM_MOVE_SPEED_FAST if Input.is_action_pressed("editor_cam_fast") else CAM_MOVE_SPEED_SLOW) * delta
-	%Camera.global_position.y = clamp(%Camera.global_position.y, level.vertical_height + (get_viewport().get_visible_rect().size.y / 2), 32 - (get_viewport().get_visible_rect().size.y / 2))
+	%Camera.global_position.y = clamp(%Camera.global_position.y, level.vertical_height + ((get_viewport().get_visible_rect().size.y / 2) * %Camera.zoom.y) / %Camera.zoom.y, 32 - (get_viewport().get_visible_rect().size.y / 2))
 	%Camera.global_position.x = clamp(%Camera.global_position.x, -256 + (get_viewport().get_visible_rect().size.x / 2), INF)
 
 func handle_layers() -> void:
@@ -390,6 +393,10 @@ func handle_tile_cursor() -> void:
 	inspect_mode = Input.is_action_pressed("editor_inspect") and not area_selecting and not multi_selecting
 	if inspect_mode and current_state == EditorState.IDLE:
 		handle_inspection(tile_position)
+		if current_inspect_tile == null:
+			Input.set_custom_mouse_cursor(CURSOR_INSPECT)
+		else:
+			Input.set_custom_mouse_cursor(null)
 		return
 	if current_state == EditorState.IDLE:
 		if Input.is_action_pressed("mb_left"):
@@ -464,8 +471,12 @@ func handle_tile_cursor() -> void:
 	
 	if not multi_selecting:
 		handle_area_selecting(tile_position)
+		if area_selecting:
+			target_mouse_icon = CURSOR_RULER
 	if not area_selecting:
 		handle_multi_selecting(tile_position)
+		if multi_selecting:
+			target_mouse_icon = CURSOR_RULER
 	if old_index != selected_tile_index:
 		selected_tile_index = wrap(selected_tile_index, 0, tile_list.size())
 		on_tile_selected(tile_list[selected_tile_index])
@@ -479,8 +490,8 @@ func handle_tile_cursor() -> void:
 						quick_connecting = true
 						%TileModifierMenu.editing_node = entity_tiles[current_layer][tile_position]
 						%TileModifierMenu.begin_signal_connection()
-	
 	Input.set_custom_mouse_cursor(target_mouse_icon)
+
 
 func paste_area(tile_position := Vector2i.ZERO, area := copied_area, layer_num := current_layer, bounds := pasting_bounds, save_action := true) -> void:
 	var corner = tile_position - Vector2i(bounds.size / 2)
@@ -513,7 +524,6 @@ func pick_tile(tile_position := Vector2i.ZERO) -> void:
 			current_tile_source = tile_layer_nodes[current_layer].get_cell_source_id(tile_position)
 
 func handle_inspection(tile_position := Vector2i.ZERO) -> void:
-	Input.set_custom_mouse_cursor(CURSOR_INSPECT)
 	if Input.is_action_just_pressed("mb_left"):
 		if entity_tiles[current_layer].get(tile_position) != null:
 			open_tile_properties(entity_tiles[current_layer][tile_position])
@@ -534,7 +544,7 @@ func open_tile_properties(tile: Node2D) -> void:
 	current_state = EditorState.MODIFYING_TILE
 	await get_tree().process_frame
 	%TileModifierMenu.update_minimum_size()
-	%TileModifierMenu.position = tile.get_global_transform_with_canvas().origin - Vector2(tile.get_meta("tile_offset"))
+	%TileModifierMenu.position = tile.get_global_transform_with_canvas().origin - Vector2(tile.get_meta("tile_offset", Vector2i.ZERO))
 	%TileModifierMenu.position.x = clamp(%TileModifierMenu.position.x, 0, get_viewport().get_visible_rect().size.x - %TileModifierMenu.size.x - 2)
 	%TileModifierMenu.position.y = clamp(%TileModifierMenu.position.y, 0, get_viewport().get_visible_rect().size.y - %TileModifierMenu.size.y - 2)
 
@@ -555,7 +565,6 @@ func handle_area_selecting(tile_position := Vector2i.ZERO) -> void:
 	%AreaSelectRect.global_position = top_corner * 16
 	%AreaSelectRect.size = abs(select_end - select_start) * 16 + Vector2i(16, 16)
 	if area_selecting:
-		Input.set_custom_mouse_cursor(CURSOR_RULER)
 		if Input.is_action_just_released("mb_left"): 
 			match current_tile_type:
 				TileType.TILE:
@@ -614,7 +623,6 @@ func handle_multi_selecting(tile_position := Vector2i.ZERO) -> void:
 			%SaveBlueprint.show()
 			current_state = EditorState.SAVE_MENU
 	if multi_selecting:
-		Input.set_custom_mouse_cursor(CURSOR_RULER)
 		if Input.is_action_just_released("mb_left"): 
 			selected_area = false
 			if is_tile_in_area(top_corner, select_start, select_end, current_layer):
@@ -938,9 +946,11 @@ func place_tile(tile_position := Vector2i.ZERO, layer_num := current_layer, tile
 func check_connect_boundary_tiles(tile_position := Vector2i.ZERO, layer := 0) -> void:
 	if tile_position.y > 0:
 		tile_layer_nodes[layer].set_cell(tile_position + Vector2i.DOWN, 6, BOUNDARY_CONNECT_TILE)
+		tile_layer_nodes[layer].set_cell(tile_position + Vector2i.DOWN + Vector2i.LEFT, 6, BOUNDARY_CONNECT_TILE)
+		tile_layer_nodes[layer].set_cell(tile_position + Vector2i.DOWN + Vector2i.RIGHT, 6, BOUNDARY_CONNECT_TILE)
 	if tile_position.x <= -16:
 		tile_layer_nodes[layer].set_cell(tile_position + Vector2i.LEFT, 6, BOUNDARY_CONNECT_TILE)
-	if tile_position.y > 0 and tile_position.x <= -16:
+		tile_layer_nodes[layer].set_cell(tile_position + Vector2i.LEFT + Vector2i.UP, 6, BOUNDARY_CONNECT_TILE)
 		tile_layer_nodes[layer].set_cell(tile_position + Vector2i.LEFT + Vector2i.DOWN, 6, BOUNDARY_CONNECT_TILE)
 
 func remove_tile(tile_position := Vector2i.ZERO, layer_num := current_layer, save_action := true) -> bool:
@@ -1006,6 +1016,12 @@ func height_limit_changed(new_value := 0) -> void:
 func time_limit_changed(new_value := 0) -> void:
 	level.time_limit = new_value
 
+func res_enforce_changed(new_value := false) -> void:
+	if new_value:
+		level.enforce_resolution = get_viewport().get_visible_rect().size
+	else:
+		level.enforce_resolution = Vector2.ZERO
+
 func low_gravity_toggled(new_value := false) -> void:
 	Global.entity_gravity = 10 if new_value == false else 5
 	for i: Player in get_tree().get_nodes_in_group("Players"):
@@ -1017,7 +1033,8 @@ func transition_to_sublevel(sub_lvl_idx := 0) -> void:
 	Global.can_pause = false
 	if Global.level_editor_is_playtesting():
 		Global.do_fake_transition()
-		await get_tree().physics_frame
+		for i in 2:
+			await get_tree().physics_frame
 	else:
 		save_current_level()
 		Global.reset_values()
@@ -1116,7 +1133,7 @@ func set_bg_value(value := 0, value_name := "") -> void:
 	level.get_node("LevelBG").update_visuals()
 
 func on_tree_exited() -> void:
-	pass # Replace with function body.
+	Input.set_custom_mouse_cursor(null)
 
 
 var cursor_in_toolbar := false

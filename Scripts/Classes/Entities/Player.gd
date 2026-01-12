@@ -123,8 +123,15 @@ extends CharacterBody2D
 		"JUMP_HOLD_SPEED_THRESHOLD": 0.0,  # When the player's Y velocity goes past this value while jumping, their gravity switches to FALL_GRAVITY.
 		
 		"CLASSIC_BOUNCE_BEHAVIOR": true,   # Determines if the player can only get extra height from a bounce with upward velocity, as opposed to holding jump.
-		"BOUNCE_SPEED": 248.0,             # The strength at which the player bounces off enemies without any extra input, measured in px/sec.
-		"BOUNCE_JUMP_SPEED": 310.0,        # The strength at which the player bounces off enemies while holding jump, measured in px/sec.
+		
+		"BOUNCE_SPEED": {
+			"SMB1": {"value": 248.0},
+			"SMBLL": {"value": 370.0}
+		},
+		"BOUNCE_JUMP_SPEED": {
+			"SMB1": {"value": 310.0},
+			"SMBLL": {"value": 370.0}
+		},                                 # The strength at which the player bounces off enemies without any extra input, measured in px/sec.   # The strength at which the player bounces off enemies while holding jump, measured in px/sec.
 		
 		"FALL_GRAVITY_PREDETERMINED": true,          # Determines if the player's gravity is determined by their last X velocity from leaving the ground rather than their current X velocity.
 		"FALL_GRAVITY_IDLE": 26.25,        # The player's gravity while falling from an idle state, measured in px/frame.
@@ -1015,7 +1022,7 @@ func handle_step_collision() -> void:
 			x.position.x = ((collision_size.x / 2) + 1) * sign(x.position.x)
 			if x.is_colliding():
 				on_wall = true
-		var step_enabled = (not on_wall and air_frames < 4 and actual_velocity_y() >= 0 and abs(velocity.x) >= 50)
+		var step_enabled = (not on_wall and (actual_velocity_y()) >= 0 and abs(velocity.x) > 5)
 		i.set_deferred("disabled", not step_enabled)
 		i.position.x = ((collision_size.x / 2)) * sign(i.position.x)
 		if physics_params("ROUNDED_FLOOR_COLLISION") == false:
@@ -1127,6 +1134,8 @@ func die(pit: bool = false, type: String = "") -> void:
 	get_tree().paused = true
 	Level.can_set_time = true
 	Level.first_load = true
+	if Global.current_game_mode == Global.GameMode.MARATHON_PRACTICE:
+		SpeedrunHandler.timer_active = false
 	if physics_params("DEATH_HANG_TIMER", DEATH_PARAMETERS) > 0:
 		AudioManager.set_music_override(AudioManager.MUSIC_OVERRIDES.SILENCE, 999, false)
 		await get_tree().create_timer(physics_params("DEATH_HANG_TIMER", DEATH_PARAMETERS)).timeout
@@ -1271,6 +1280,7 @@ func power_up_animation(new_power_state := "") -> void:
 		else: anim_name = ""
 	else:
 		anim_name = "Shrink" if shrinking else "Grow"
+	handle_invincible_palette()
 	if hitbox_changed and anim_name != "":
 		if Settings.file.visuals.transform_style == 0:
 			sprite.speed_scale = 3
@@ -1320,7 +1330,7 @@ func power_up_animation(new_power_state := "") -> void:
 			transforming = false
 			if rainbow:
 				sprite.material.set_shader_parameter("enabled", false)
-
+	sprite.play("Idle")
 	get_tree().paused = false
 	sprite.process_mode = Node.PROCESS_MODE_INHERIT
 
@@ -1443,7 +1453,7 @@ func teleport_player(new_position := Vector2.ZERO) -> void:
 	await get_tree().create_timer(0.5, false).timeout
 	state_machine.transition_to(old_state)
 	show()
-	velocity.y = 0
+	velocity = Vector2.ZERO
 	do_smoke_effect()
 
 func do_smoke_effect() -> void:
@@ -1533,3 +1543,7 @@ func on_area_exited(area: Area2D) -> void:
 
 func water_entered() -> void:
 	velocity.y = max(-physics_params("SWIM_HEIGHT"), velocity.y)
+
+
+func on_modifier_applied() -> void:
+	pass

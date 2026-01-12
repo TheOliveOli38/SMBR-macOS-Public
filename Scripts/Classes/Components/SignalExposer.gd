@@ -48,6 +48,8 @@ const WIRE_COLOURS := [
 
 @onready var recursive_check := Timer.new()
 
+var no_moving = null
+
 func _ready() -> void:
 	add_child(recursive_check)
 	if get_process_delta_time() > 0:
@@ -72,11 +74,13 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	if editing:
 		queue_redraw()
-	elif Global.level_editor_is_editing() == false:
+	elif Global.level_editor_is_editing() == false and no_moving != true:
+		no_moving = true
 		for x in connections:
 			var target_node = get_node_from_tile(x[0], x[1])
 			if target_node is TrackRider:
 				queue_redraw()
+				no_moving = false
 
 func _draw() -> void:
 	if editing:
@@ -84,6 +88,8 @@ func _draw() -> void:
 	var idx := 0
 	for x in connections:
 		var target_node = get_node_from_tile(x[0], x[1])
+		if target_node == null:
+			continue
 		draw_square_line(owner.global_position, to_local(target_node.global_position), WIRE_COLOURS[idx % (WIRE_COLOURS.size())], true)
 		idx += 1
 

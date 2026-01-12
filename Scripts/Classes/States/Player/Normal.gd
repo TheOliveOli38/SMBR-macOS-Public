@@ -250,7 +250,7 @@ func handle_animations() -> void:
 		player.direction = player.input_direction
 	var animation = get_animation_name()
 	player.sprite.speed_scale = 1
-	if ["Walk", "Move", "Run"].has(animation):
+	if ["Walk", "Move", "Run", "Jog"].has(animation):
 		player.sprite.speed_scale = abs(player.velocity.x) / player.physics_params("MOVE_ANIM_SPEED_DIV", player.COSMETIC_PARAMETERS)
 		if player.on_ice:
 			player.sprite.speed_scale *= player.physics_params("ICE_SPEED_MOD", player.COSMETIC_PARAMETERS)
@@ -333,7 +333,12 @@ func get_animation_name() -> String:
 		if moving:
 			if state_context != "":
 				return state.call("Move")
-			return "Run" if running else "Walk"
+			if running:
+				return "Run"
+			elif abs(vel_x) > player.physics_params("WALK_SPEED") and player.sprite.sprite_frames.has_animation("Jog"):
+				return "Jog"
+			else:
+				return "Walk"
 		# Idle States
 		if player.looking_up:
 			return state.call("LookUp")

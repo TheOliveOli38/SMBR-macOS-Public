@@ -5,7 +5,7 @@ var direction := Vector2(-1, 1)
 var target_player: Player = null
 
 var shooting := false
-
+var aiming := false
 @export var shoot_amount := 1
 @export var fireball_scene: PackedScene = null
 @export var plant: Node2D = null
@@ -36,21 +36,30 @@ func handle_aiming() -> void:
 	sprite.scale.x = direction.x
 	if shooting:
 		sprite.play("ShootUp" if direction.y == -1 else "ShootDown")
-	else:
+	elif aiming:
 		sprite.play("AimUp" if direction.y == -1 else "AimDown")
+	else:
+		sprite.play("IdleUp" if direction.y == -1 else "IdleDown")
 
 func shoot() -> void:
+	aiming = true
+	await get_tree().create_timer(0.75, false).timeout
 	shooting = true
 	for i in shoot_amount:
 		handle_aiming()
 		spawn_fireball()
-		await get_tree().create_timer(0.25, false).timeout
-	await get_tree().create_timer(1, false).timeout
+		await get_tree().create_timer(0.75, false).timeout
 	shooting = false
+	aiming = false
+	plant.get_node("Timer").start()
 
 func spawn_fireball() -> void:
 	var node = fireball_scene.instantiate()
 	node.global_position = %Sprite.global_position
-	var shoot_direction = node.global_position.direction_to(target_player.global_position)
-	node.direction = shoot_direction
+	var shoot_angle = node.global_position.direction_to(target_player.global_position).angle()
+	if direction.x > 0:
+		shoot_angle = clamp(shoot_angle, deg_to_rad(-45), deg_to_rad(45))
+	else:
+		shoot_angle = clamp(shoot_angle, deg_to_rad(-135), deg_to_rad(135))
+	node.direction = Vector2.from_angle(shoot_angle)
 	plant.add_sibling(node)

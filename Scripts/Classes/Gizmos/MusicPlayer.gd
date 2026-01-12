@@ -26,7 +26,7 @@ func update_queue() -> void:
 	if Global.level_editor_is_editing():
 		return
 	if song_queue.size() > 0:
-		Global.current_level.music = load(Global.level_editor.music_track_list[song_queue.back()])
+		Global.current_level.music = load(LevelEditor.music_track_list[song_queue.back()])
 	else:
 		Global.current_level.music = old_song
 	print(song_queue)

@@ -12,7 +12,7 @@ func _physics_process(delta: float) -> void:
 	var collision_enabled = velocity.length() < 10 or is_on_floor()
 	$Collision.set_deferred("one_way_collision", collision_enabled == false)
 	if is_on_floor() or is_on_wall() or is_on_ceiling():
-		if last_velocity.length() >= 280:
+		if last_velocity.length() >= 500:
 			destroy()
 
 

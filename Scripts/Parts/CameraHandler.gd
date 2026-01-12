@@ -48,7 +48,8 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	sp_screen_scroll = Settings.file.visuals.smbs_scroll > 0
 	handle_camera.call_deferred(delta)
-	set_deferred("last_position", player.global_position)
+	if is_instance_valid(player):
+		set_deferred("last_position", player.global_position)
 
 func handle_camera(delta: float) -> void:
 	if get_tree().get_first_node_in_group("Players") == null:
@@ -106,7 +107,9 @@ func handle_horizontal_scrolling(delta: float) -> void:
 			var offset = 0
 			if camera_position.x <= player.global_position.x - 4:
 				offset = camera_position.x - player.global_position.x + abs(true_velocity.x * delta)
+				offset += abs(true_velocity.x) * delta / 2
 			scrolling = true
+			
 			camera_position.x = player.global_position.x + offset
 		elif player.global_position.x >= camera.get_screen_center_position().x - get_viewport().get_visible_rect().size.x / 5 and (player.velocity.x) > 20:
 			camera_position.x += min(abs(player.velocity.x), 40) * delta
@@ -198,7 +201,11 @@ func handle_offsets(delta: float) -> void:
 		camera_offset.x = 8
 
 func do_limits() -> void:
-	camera_right_limit = clamp(Player.camera_right_limit, -256 + (get_viewport().get_visible_rect().size.x), INF)
+	if get_viewport() == null: return
+	var viewport_size = get_viewport().get_visible_rect().size
+	if Global.current_level.enforce_resolution != Vector2.ZERO:
+		viewport_size = Global.current_level.enforce_resolution
+	camera_right_limit = clamp(Player.camera_right_limit, -256 + (viewport_size.x), INF)
 	camera_position.x = clamp(camera_position.x, point_to_camera_limit(-256 - camera_offset.x, -1), point_to_camera_limit(camera_right_limit - camera_offset.x, 1))
 	camera_position.y = clamp(camera_position.y, point_to_camera_limit_y(Global.current_level.vertical_height, -1), point_to_camera_limit_y(32, 1))
 	var wall_enabled := true

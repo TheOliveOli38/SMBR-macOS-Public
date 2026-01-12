@@ -528,6 +528,7 @@
 	"LEVEL_SETTINGS_HEIGHT": "Height Limit:",
 	"LEVEL_SETTINGS_TIMELIMIT": "Time Limit:",
 	"LEVEL_SETTINGS_ROOM": "Current Room:",
+	"LEVEL_SETTINGS_ENFORCE_SCREEN_SIZE": "Enforce Screen Size:",
 	"TITLE_SMB1_CLEAR": "Your princess is in this castle!",
 	"TITLE_SMBLL_CLEAR": "Peace is paved!",
 	"TITLE_SMBS_CLEAR": "A special quest…",

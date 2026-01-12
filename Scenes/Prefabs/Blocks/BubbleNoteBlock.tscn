@@ -9,6 +9,9 @@
 [node name="ResourceSetterNew" parent="Sprite" parent_id_path=PackedInt32Array(147779313) index="0" unique_id=1722141441]
 resource_json = ExtResource("2_0vh5c")
 
+[node name="EditorPropertyExposer" parent="." index="3" unique_id=1570804738]
+properties = Array[String](["item"])
+
 [node name="Particles" type="CPUParticles2D" parent="." index="5" unique_id=1019502777]
 visibility_layer = 2
 emitting = false
