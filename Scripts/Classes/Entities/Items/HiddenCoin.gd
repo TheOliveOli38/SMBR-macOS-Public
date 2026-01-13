@@ -1,11 +1,13 @@
 extends Node2D
 
-@export var coin_scene: PackedScene = null
+@export var coin: Node2D = null
 
 func spawn_coin() -> void:
-	var node = coin_scene.instantiate()
-	node.global_position = global_position
-	add_sibling(node)
+	coin.get_node("PSwitcher").enabled = true
+	coin.show()
+	coin.reparent(get_parent())
+	coin.global_position = global_position
+	coin.get_node("PSwitcher")._ready.call_deferred()
 	queue_free()
 
 

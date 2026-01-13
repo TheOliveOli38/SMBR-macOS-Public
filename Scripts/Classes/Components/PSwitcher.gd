@@ -1,7 +1,7 @@
 class_name PSwitcher
 extends Node
 
-var enabled := true
+@export var enabled := true
 @export_file("*.tscn") var new_scene := ""
 @export var new_offset := Vector2.ZERO
 

@@ -20,10 +20,10 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vyvor"]
 size = Vector2(12, 12)
 
-[node name="HiddenCoin" type="Node2D" unique_id=1887619981]
+[node name="HiddenCoin" type="Node2D" unique_id=1887619981 node_paths=PackedStringArray("coin")]
 visibility_layer = 2
 script = ExtResource("1_c15kk")
-coin_scene = ExtResource("2_6dt4v")
+coin = NodePath("Coin")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="." unique_id=1195877251]
 sprite_frames = SubResource("SpriteFrames_6dt4v")
@@ -39,4 +39,13 @@ metadata/_custom_type_script = "uid://cnheej0sxmoxg"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetection" unique_id=620618147]
 shape = SubResource("RectangleShape2D_vyvor")
 
+[node name="Coin" parent="." unique_id=1340449955 instance=ExtResource("2_6dt4v")]
+visible = false
+position = Vector2(0, 9999999)
+
+[node name="PSwitcher" parent="Coin" index="4" unique_id=27976043]
+enabled = false
+
 [connection signal="player_entered" from="PlayerDetection" to="." method="on_player_entered" flags=6]
+
+[editable path="Coin"]

@@ -32,6 +32,8 @@ func damage() -> void:
 		die()
 
 func fireball_hit() -> void:
+	if $States.state.name == "Shell":
+		return
 	fireball_hits += 1
 	AudioManager.play_sfx("kick", global_position)
 	%DamageAnimation.play("DamageFlash")

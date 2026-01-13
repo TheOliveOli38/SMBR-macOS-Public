@@ -27,7 +27,10 @@ func kick(object: Node2D) -> void:
 	if object is Player:
 		object.kick_anim()
 	var kick_dir = sign(global_position.x - object.global_position.x)
-	velocity.x = 150 * kick_dir
+	var kick_amount = 150
+	if object is not Player:
+		kick_amount = 100
+	velocity.x = kick_amount * kick_dir
 	direction = kick_dir
 	velocity.y = -100
 

@@ -246,8 +246,9 @@ script = ExtResource("13_tv0mo")
 hitbox = NodePath("../Hitbox")
 metadata/_custom_type_script = "uid://ba18grqjixded"
 
-[node name="FireDetection" type="Node" parent="." unique_id=1234543982]
+[node name="FireDetection" type="Node" parent="." unique_id=1234543982 node_paths=PackedStringArray("hitbox")]
 script = ExtResource("13_2cg8p")
+hitbox = NodePath("../Hitbox")
 metadata/_custom_type_script = "uid://da45dj0tx6jfd"
 
 [connection signal="killed" from="." to="GibSpawner" method="summon_gib"]

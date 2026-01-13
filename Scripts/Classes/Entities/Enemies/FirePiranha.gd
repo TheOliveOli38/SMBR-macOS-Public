@@ -43,12 +43,18 @@ func handle_aiming() -> void:
 
 func shoot() -> void:
 	aiming = true
-	await get_tree().create_timer(0.75, false).timeout
+	if shoot_amount <= 1:
+		await get_tree().create_timer(0.75, false).timeout
+	else:
+		await get_tree().create_timer(0.25, false).timeout
 	shooting = true
 	for i in shoot_amount:
 		handle_aiming()
 		spawn_fireball()
-		await get_tree().create_timer(0.75, false).timeout
+		if shoot_amount > 1:
+			await get_tree().create_timer(0.25, false).timeout
+		else:
+			await get_tree().create_timer(0.75, false).timeout
 	shooting = false
 	aiming = false
 	plant.get_node("Timer").start()
