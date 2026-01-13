@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://13td5gfryp7k"]
+
+[ext_resource type="PackedScene" uid="uid://bikdod5ra10ra" path="res://Scenes/Parts/LargeCastleVisual.tscn" id="1_aerfi"]
+
+[node name="SmallCastleVisual" unique_id=671792054 instance=ExtResource("1_aerfi")]

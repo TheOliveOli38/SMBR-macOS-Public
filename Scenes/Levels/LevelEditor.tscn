@@ -1,4 +1,4 @@
-[gd_scene load_steps=278 format=3 uid="uid://gbcmqonky63j"]
+[gd_scene load_steps=280 format=3 uid="uid://gbcmqonky63j"]
 
 [ext_resource type="Script" uid="uid://c2lnc7vnq3xth" path="res://Scripts/Classes/Editor/LevelEditor.gd" id="1_0qbyu"]
 [ext_resource type="Texture2D" uid="uid://cbha2l6hg1kfo" path="res://Assets/Sprites/UI/EditorGrid.png" id="2_8q7yr"]
@@ -99,7 +99,9 @@
 [ext_resource type="Texture2D" uid="uid://dg3rrr0n878nm" path="res://Assets/Sprites/Blocks/SuperTrampoline.png" id="108_adqgr"]
 [ext_resource type="JSON" path="res://Assets/Sprites/Enemies/HappyMoon.json" id="108_fvohb"]
 [ext_resource type="JSON" path="res://Assets/Sprites/Enemies/SpikeTop.json" id="108_ji0c6"]
+[ext_resource type="Texture2D" uid="uid://bcexym1q4xr6p" path="res://Assets/Sprites/Editor/SmallStartCastle.png" id="109_7a43i"]
 [ext_resource type="JSON" path="res://Assets/Sprites/Blocks/BlueOnOffBlock.json" id="109_c84f5"]
+[ext_resource type="Texture2D" uid="uid://dvnpnxpkvnb6o" path="res://Assets/Sprites/Editor/LargeStartCastle.png" id="110_606p5"]
 [ext_resource type="JSON" path="res://Assets/Sprites/Tilesets/OnOffPlatform.json" id="111_cr6gn"]
 [ext_resource type="Texture2D" uid="uid://cke2nve5v64am" path="res://Assets/Sprites/Editor/PlatformIcons/Falling.png" id="111_dsu6a"]
 [ext_resource type="Texture2D" uid="uid://iwtwy2g6bjrn" path="res://Assets/Sprites/Tilesets/TrackPlatformEngine.png" id="112_dl3il"]
@@ -4622,6 +4624,42 @@ icon_texture = ExtResource("98_2umvb")
 entity_id = "Aq"
 
 [node name="TextureRect" type="TextureRect" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Objects/MarginContainer/GridContainer/EndCastle" unique_id=1206695792]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("22_3cjpb")
+expand_mode = 1
+stretch_mode = 3
+
+[node name="StartCastle" type="Control" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Objects/MarginContainer/GridContainer" unique_id=440912916]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+mouse_force_pass_scroll_events = false
+script = ExtResource("20_jc7xg")
+
+[node name="SmallCastle" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Objects/MarginContainer/GridContainer/StartCastle" unique_id=85855067 groups=["Selectors"] instance=ExtResource("8_wkmjk")]
+layout_mode = 0
+offset_right = 16.0
+offset_bottom = 16.0
+tile_name = "OBJ_STARTCASTLE_SMALL"
+type = 1
+icon_texture = ExtResource("109_7a43i")
+entity_id = "DV"
+
+[node name="BigCastle" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Objects/MarginContainer/GridContainer/StartCastle" unique_id=1610039560 groups=["Selectors"] instance=ExtResource("8_wkmjk")]
+layout_mode = 0
+offset_right = 16.0
+offset_bottom = 16.0
+tile_name = "OBJ_STARTCASTLE_BIG"
+type = 1
+icon_texture = ExtResource("110_606p5")
+entity_id = "DW"
+
+[node name="TextureRect" type="TextureRect" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Objects/MarginContainer/GridContainer/StartCastle" unique_id=430737844]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0

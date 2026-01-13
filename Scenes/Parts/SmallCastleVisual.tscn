@@ -4,8 +4,8 @@
 [ext_resource type="Texture2D" uid="uid://dt0qtxu2l646n" path="res://Assets/Sprites/Tilesets/Terrain/Overworld.png" id="2_tt5sy"]
 [ext_resource type="Script" uid="uid://73oviwf6bbys" path="res://Scripts/Classes/Components/TilesetTextureSetter.gd" id="2_ulvy5"]
 [ext_resource type="JSON" path="res://Assets/Sprites/Tilesets/Terrain/TerrainTiles.json" id="5_my1op"]
+[ext_resource type="JSON" path="res://Assets/Sprites/Tilesets/SmallStartCastle.json" id="6_oxmfh"]
 [ext_resource type="Script" uid="uid://cbal8ms2oe1ik" path="res://Scripts/Classes/Components/ResourceSetterNew.gd" id="7_vjwyw"]
-[ext_resource type="JSON" path="res://Assets/Sprites/Tilesets/SmallCastle.json" id="8_tt5sy"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_80q5s"]
 texture = ExtResource("2_tt5sy")
@@ -86,5 +86,5 @@ node_to_affect = NodePath("..")
 property_node = NodePath("../..")
 property_name = "texture"
 mode = 1
-resource_json = ExtResource("8_tt5sy")
+resource_json = ExtResource("6_oxmfh")
 metadata/_custom_type_script = "uid://cbal8ms2oe1ik"

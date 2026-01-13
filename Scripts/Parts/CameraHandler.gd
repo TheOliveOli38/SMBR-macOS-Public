@@ -196,7 +196,6 @@ func handle_offsets(delta: float) -> void:
 			var right_bound = camera_position.x + 8 <= point_to_camera_limit(camera_right_limit, 1)
 			if abs(camera_position.x - player.global_position.x) <= 16 and left_bound and right_bound:
 				camera_offset.x = move_toward(camera_offset.x, 8 * true_vel_dir, abs(true_velocity.x) / 200)
-				print("offsetting")
 	else:
 		camera_offset.x = 8
 

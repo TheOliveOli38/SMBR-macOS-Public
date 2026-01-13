@@ -802,5 +802,13 @@
 	"DU": [
 		"res://Scenes/Prefabs/Gizmos/Outputs/Warper.tscn",
 		"0,0"
+	],
+	"DV": [
+		"res://Scenes/Parts/StartCastle.tscn",
+		"0,-32"
+	],
+	"DW": [
+		"res://Scenes/Parts/LargeStartCastle.tscn",
+		"0,-32"
 	]
 }

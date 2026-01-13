@@ -67,6 +67,7 @@ shape = SubResource("CircleShape2D_dhdpv")
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=410308720]
 
 [node name="Timer" type="Timer" parent="." unique_id=422163393]
+process_mode = 1
 wait_time = 5.0
 one_shot = true
 autostart = true
