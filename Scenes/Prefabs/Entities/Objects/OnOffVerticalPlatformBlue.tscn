@@ -4,7 +4,7 @@
 
 [node name="OnOffSidewaysPlatform" unique_id=904986469 instance=ExtResource("1_pd2fy")]
 
-[node name="Sprite" parent="AnimatableBody2D" index="0"]
+[node name="Sprite" parent="AnimatableBody2D" parent_id_path=PackedInt32Array(1298238089) index="0" unique_id=1526890355]
 region_rect = Rect2(0, 8, 24, 8)
 
 [node name="Sprite2D" parent="AnimatableBody2D/Sprite" index="1" unique_id=1627706176]
@@ -13,3 +13,6 @@ region_rect = Rect2(24, 8, 16, 8)
 
 [node name="AnimationPauser" parent="." index="4" unique_id=608336505]
 paused = false
+
+[node name="OnOffSwitcher" parent="." index="5" unique_id=1963753984]
+invert = true

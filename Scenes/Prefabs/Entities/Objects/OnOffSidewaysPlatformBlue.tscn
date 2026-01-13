@@ -13,3 +13,6 @@ region_rect = Rect2(24, 8, 16, 8)
 
 [node name="AnimationPauser" parent="." index="4" unique_id=742086155]
 paused = false
+
+[node name="OnOffSwitcher" parent="." index="5" unique_id=2037754299]
+invert = true

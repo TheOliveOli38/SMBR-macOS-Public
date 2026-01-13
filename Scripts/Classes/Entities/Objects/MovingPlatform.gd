@@ -78,6 +78,10 @@ func is_player(area: Area2D) -> bool:
 		return area.owner.is_on_floor() and area.owner.global_position.y - 4 <= global_position.y
 	return false
 
-func on_switch_hit() -> void:
-	moving = !moving
+func turn_on() -> void:
+	moving = true
+	$OnOffToggle.frame = int(moving)
+
+func turn_off() -> void:
+	moving = false
 	$OnOffToggle.frame = int(moving)

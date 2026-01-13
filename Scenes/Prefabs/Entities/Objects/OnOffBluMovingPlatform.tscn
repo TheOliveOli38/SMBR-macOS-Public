@@ -21,3 +21,6 @@ region_rect = Rect2(0, 8, 24, 8)
 [node name="OnOffToggle" parent="." index="6" unique_id=175323262]
 frame = 1
 region_rect = Rect2(24, 8, 16, 8)
+
+[node name="OnOffSwitcher" parent="." index="7" unique_id=1836842981]
+invert = true

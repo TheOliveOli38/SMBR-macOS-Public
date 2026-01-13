@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://dgq7enviy1qhw"]
+[gd_scene load_steps=22 format=3 uid="uid://dgq7enviy1qhw"]
 
 [ext_resource type="Script" uid="uid://du5hnwdhv7x66" path="res://Scripts/Classes/Blocks/TimedBooBlock.gd" id="1_hessd"]
 [ext_resource type="Script" uid="uid://cbal8ms2oe1ik" path="res://Scripts/Classes/Components/ResourceSetterNew.gd" id="3_5y3wt"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://bi13n4mw0to20" path="res://Assets/Sprites/Blocks/TimedBooBlock.png" id="3_46g6h"]
 [ext_resource type="JSON" path="res://Assets/Sprites/Blocks/TimedBooBlock.json" id="4_7bqom"]
 [ext_resource type="PackedScene" uid="uid://cijkvfkthetn5" path="res://Scenes/Parts/BlockAnimations.tscn" id="4_tgrgf"]
+[ext_resource type="Script" uid="uid://q45b31h6356r" path="res://Scripts/Classes/Components/OnOffSwitcher.gd" id="7_megl7"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_slvan"]
 atlas = ExtResource("3_46g6h")
@@ -167,8 +168,16 @@ shape = SubResource("RectangleShape2D_ce8wa")
 
 [node name="BlockAnimations" parent="." unique_id=1569117138 instance=ExtResource("4_tgrgf")]
 
+[node name="OnOffSwitcher" type="Node" parent="." unique_id=1166051288 node_paths=PackedStringArray("sprite")]
+script = ExtResource("7_megl7")
+sprite = NodePath("../Sprite")
+metadata/_custom_type_script = "uid://q45b31h6356r"
+
 [connection signal="player_block_hit" from="." to="." method="on_block_hit" unbinds=1]
 [connection signal="player_block_hit" from="." to="BlockAnimations" method="bounce_block" unbinds=1]
 [connection signal="shell_block_hit" from="." to="." method="on_block_hit" flags=3 unbinds=1]
 [connection signal="shell_block_hit" from="." to="BlockAnimations" method="bounce_block" unbinds=1]
+[connection signal="switched" from="." to="OnOffSwitcher" method="switch"]
 [connection signal="timeout" from="Timer" to="." method="on_timeout"]
+[connection signal="switched_off" from="OnOffSwitcher" to="." method="set_active" binds= [false]]
+[connection signal="switched_on" from="OnOffSwitcher" to="." method="set_active" binds= [true]]
