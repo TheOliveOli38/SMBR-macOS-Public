@@ -185,6 +185,7 @@ func _exit_tree() -> void:
 	signals_recieved = 0
 
 func emit_pulse() -> void:
+	if get_tree() == null: return
 	if accepting_inputs == false: return
 	signals_recieved += 1
 	if check_recursive() == false:

@@ -383,6 +383,7 @@ func reset_values() -> void:
 	Checkpoint.passed_checkpoints.clear()
 	Checkpoint.sublevel_id = 0
 	total_deaths = 0
+	OnOffSwitcher.active = false
 	Door.unlocked_doors = []
 	Door.exiting_door_id = -1
 	Checkpoint.unlocked_doors = []

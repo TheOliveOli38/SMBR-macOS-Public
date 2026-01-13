@@ -96,8 +96,6 @@ Players=""
 Pipes=""
 Enemies=""
 PlayerGhosts=""
-BooBlocks=""
-BooSwitchBlocks=""
 Blocks=""
 EntityGenerators=""
 Bowser=""
@@ -116,6 +114,8 @@ SignalExposers=""
 Broadcasters=""
 EndCastles="Defines all ending castles."
 CastleNPCs="Defines all castle NPCs which appear at the end of castle levels."
+OnOffSwitches=""
+BooSwitches=""
 
 [gui]
 

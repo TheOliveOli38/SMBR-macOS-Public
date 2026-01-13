@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://by6ndsjhlkmbt"]
+[gd_scene load_steps=22 format=3 uid="uid://by6ndsjhlkmbt"]
 
 [ext_resource type="Texture2D" uid="uid://coe8j7vfyvmh8" path="res://Assets/Sprites/Blocks/BooOnOffBlock.png" id="1_j75mb"]
 [ext_resource type="Script" uid="uid://be2x40pxmueyo" path="res://Scripts/Classes/Blocks/BooOnOffBlock.gd" id="1_mttsc"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://cbal8ms2oe1ik" path="res://Scripts/Classes/Components/ResourceSetterNew.gd" id="3_sf1e4"]
 [ext_resource type="JSON" path="res://Assets/Sprites/Blocks/BooOnOffBlockRed.json" id="4_ofstd"]
 [ext_resource type="Script" uid="uid://d4a7yp6e55u8t" path="res://Scripts/Classes/Components/TrackJoint.gd" id="6_y6qjl"]
+[ext_resource type="Script" uid="uid://q45b31h6356r" path="res://Scripts/Classes/Components/OnOffSwitcher.gd" id="7_oe2r8"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mttsc"]
 atlas = ExtResource("1_j75mb")
@@ -108,7 +109,7 @@ size = Vector2(16, 16)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ds5j0"]
 size = Vector2(12, 12)
 
-[node name="BooOnOffBlock" type="AnimatableBody2D" unique_id=1872905456 groups=["BooBlocks"]]
+[node name="BooOnOffBlock" type="AnimatableBody2D" unique_id=1872905456]
 collision_layer = 6
 collision_mask = 0
 sync_to_physics = false
@@ -144,5 +145,11 @@ script = ExtResource("6_y6qjl")
 offset = Vector2(0, 0)
 metadata/_custom_type_script = "uid://d4a7yp6e55u8t"
 
+[node name="OnOffSwitcher" type="Node" parent="." unique_id=1468268568]
+script = ExtResource("7_oe2r8")
+metadata/_custom_type_script = "uid://q45b31h6356r"
+
 [connection signal="player_entered" from="PlayerDetection" to="." method="on_player_entered"]
 [connection signal="player_exited" from="PlayerDetection" to="." method="on_player_exited"]
+[connection signal="switched_off" from="OnOffSwitcher" to="." method="turned_off"]
+[connection signal="switched_on" from="OnOffSwitcher" to="." method="turned_on"]

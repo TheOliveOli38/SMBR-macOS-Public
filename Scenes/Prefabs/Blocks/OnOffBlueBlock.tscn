@@ -34,13 +34,16 @@ animations = [{
 [node name="OnOffBlock" unique_id=2038729255 instance=ExtResource("1_gov4d")]
 active = true
 
-[node name="Sprite" parent="." index="0"]
+[node name="Sprite" parent="." index="0" unique_id=2047715053]
 sprite_frames = SubResource("SpriteFrames_m455b")
 animation = &"On"
 autoplay = "On"
 
-[node name="ResourceSetter" parent="Sprite" index="0"]
+[node name="ResourceSetter" parent="Sprite" index="0" unique_id=873755014]
 resource_json = ExtResource("3_pg6um")
 
-[node name="Collision" parent="." index="1"]
+[node name="Collision" parent="." index="1" unique_id=687421064]
 disabled = false
+
+[node name="OnOffSwitcher" parent="." index="4" unique_id=1468268568]
+invert = true

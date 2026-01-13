@@ -86,13 +86,15 @@ animations = [{
 }]
 
 [node name="SwitchSpikeBlock" unique_id=512003315 instance=ExtResource("1_nuql5")]
-active = true
 
-[node name="Sprite" parent="." index="0"]
+[node name="Sprite" parent="." index="0" unique_id=2047715053]
 sprite_frames = SubResource("SpriteFrames_twrdj")
 
-[node name="ResourceSetter" parent="Sprite" index="0"]
+[node name="ResourceSetter" parent="Sprite" index="0" unique_id=873755014]
 resource_json = ExtResource("3_s2uey")
 
 [node name="CollisionShape2D" parent="PlayerHurtBox" parent_id_path=PackedInt32Array(2052825988) index="0" unique_id=1545913678]
 disabled = false
+
+[node name="OnOffSwitcher" parent="." index="5" unique_id=1468268568]
+invert = true

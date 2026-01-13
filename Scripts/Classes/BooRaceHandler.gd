@@ -108,4 +108,7 @@ func on_timeout() -> void:
 		boo.play_laugh_animation()
 		AudioManager.play_global_sfx("boo_laugh")
 		await get_tree().create_timer(1, false).timeout
-		get_tree().call_group("BooSwitchBlocks", "on_boo_hit")
+		var switch = get_tree().get_first_node_in_group("BooSwitches")
+		if switch != null:
+			if switch.active == false:
+				switch.switch()

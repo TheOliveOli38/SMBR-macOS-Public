@@ -117,6 +117,7 @@ func _enter_tree() -> void:
 	AudioManager.stop_music_override(AudioManager.MUSIC_OVERRIDES.NONE, true)
 	apply_resolution_enforcement()
 	tree_exiting.connect(reset_resolution)
+	tree_exiting.connect(func(): OnOffSwitcher.active = false)
 
 func inf_time_check() -> void:
 	Global.inf_time = false

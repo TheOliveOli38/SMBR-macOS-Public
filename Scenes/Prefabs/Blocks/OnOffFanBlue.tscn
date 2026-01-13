@@ -55,10 +55,13 @@ animations = [{
 [node name="OnOffFanBlue" unique_id=1173693154 instance=ExtResource("1_d1mvb")]
 active = true
 
-[node name="Sprite" parent="." index="1"]
+[node name="Sprite" parent="." index="1" unique_id=1105200194]
 sprite_frames = SubResource("SpriteFrames_riapl")
 animation = &"On"
 frame_progress = 0.6434357
 
-[node name="ResourceSetterNew" parent="Sprite" index="0"]
+[node name="ResourceSetterNew" parent="Sprite" index="0" unique_id=1589738587]
 resource_json = ExtResource("3_doyjh")
+
+[node name="OnOffSwitcher" parent="." index="9" unique_id=1639367544]
+invert = true
