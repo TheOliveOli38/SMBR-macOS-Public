@@ -286,6 +286,12 @@ func create_stream_from_json(json_path := "") -> AudioStream:
 		elif path.contains("res://"):
 			return load(path)
 	$ResourceSetterNew.clear_metadata()
+			
+	for i in Settings.file.visuals.resource_packs:
+		var new_path = $ResourceSetterNew.get_resource_pack_path(ResourceSetter.get_pure_resource_path(json_path), i)
+		if ResourceSetter.get_pure_resource_path(json_path) != new_path or $ResourceSetterNew.current_resource_pack == "":
+			$ResourceSetterNew.current_resource_pack = i
+			
 	var bgm_file = $ResourceSetterNew.get_variation_json(JSON.parse_string(FileAccess.open(ResourceSetter.get_pure_resource_path(json_path), FileAccess.READ).get_as_text()).variations).source
 	path = ResourceSetter.get_pure_resource_path(json_path.replace(json_path.get_file(), bgm_file))
 	var stream = null

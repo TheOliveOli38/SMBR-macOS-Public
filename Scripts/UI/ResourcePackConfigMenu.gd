@@ -59,6 +59,7 @@ func update_json() -> void:
 func close() -> void:
 	ResourceSetter.cache.clear()
 	ResourceSetterNew.clear_cache()
+	AudioManager.current_level_theme = ""
 	Global.level_theme_changed.emit()
 	closed.emit()
 	clear_options()
