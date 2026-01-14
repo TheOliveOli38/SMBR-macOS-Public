@@ -44,9 +44,16 @@ func player_touch(player: Player) -> void:
 	else:
 		AudioManager.set_music_override(AudioManager.MUSIC_OVERRIDES.LEVEL_COMPLETE, 99, false)
 	Global.level_complete_begin.emit()
+	deactivate_all_generators()
 	await get_tree().create_timer(1, false).timeout
 	if [Global.GameMode.BOO_RACE].has(Global.current_game_mode) == false:
 		Global.tally_time()
+
+func deactivate_all_generators() -> void:
+	for i in get_tree().get_nodes_in_group("EntityGenerators"):
+		i.active = false
+		i.deactivate()
+	get_tree().call_group("Enemies", "start_retreat") # Lakitus
 
 func _physics_process(_delta: float) -> void:
 	$Hollow.visible = not ConditionalClear.valid

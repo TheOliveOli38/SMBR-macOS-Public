@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://c6tkq2iq7h0fp"]
+[gd_scene load_steps=29 format=3 uid="uid://c6tkq2iq7h0fp"]
 
 [ext_resource type="Script" uid="uid://bevv8nl7j1g12" path="res://Scripts/Classes/Entities/Enemies/BowserJr.gd" id="1_1afx3"]
 [ext_resource type="Texture2D" uid="uid://ut3rh6i17fwg" path="res://Assets/Sprites/Enemies/BowserJr.png" id="2_1afx3"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://cbal8ms2oe1ik" path="res://Scripts/Classes/Components/ResourceSetterNew.gd" id="3_1afx3"]
 [ext_resource type="JSON" path="res://Assets/Sprites/Enemies/BowserJr.json" id="4_6tdax"]
 [ext_resource type="Script" uid="uid://uribh0f1jttq" path="res://Scripts/Classes/States/StateMachine.gd" id="6_2tcuk"]
+[ext_resource type="Script" uid="uid://dn07g2yvk1unf" path="res://Scripts/Classes/States/State.gd" id="7_i31gk"]
 [ext_resource type="Script" uid="uid://c8q1hojob800c" path="res://Scripts/Classes/States/BowserJr/Idle.gd" id="7_ydwtc"]
 [ext_resource type="Script" uid="uid://dy82kbxn523w3" path="res://Scripts/Classes/States/BowserJr/Fire.gd" id="8_27q2o"]
 [ext_resource type="Script" uid="uid://bx6r8sjar6cwr" path="res://Scripts/Classes/Components/BasicStaticMovement.gd" id="8_ydwtc"]
@@ -19,6 +20,7 @@
 [ext_resource type="Script" uid="uid://dri2d5jtu0fbq" path="res://Scripts/Classes/Components/FireballDetection.gd" id="17_pb3hb"]
 [ext_resource type="Script" uid="uid://ba18grqjixded" path="res://Scripts/Classes/Components/ExplosionDetection.gd" id="18_skp4o"]
 [ext_resource type="Script" uid="uid://5octqlf4ohel" path="res://Scripts/Classes/Components/ScoreNoteSpawner.gd" id="19_5tta2"]
+[ext_resource type="Script" uid="uid://b8vmbtoaaq5nc" path="res://Scripts/Parts/EditorToggleDetection.gd" id="21_6vsdc"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0hxd7"]
 atlas = ExtResource("2_1afx3")
@@ -150,9 +152,17 @@ libraries = {
 &"": SubResource("AnimationLibrary_u4ob4")
 }
 
-[node name="Collision" type="CollisionShape2D" parent="." unique_id=585397973]
+[node name="CollisionL" type="CollisionShape2D" parent="." unique_id=585397973]
 position = Vector2(0, -6)
+rotation = 1.5707964
 shape = SubResource("RectangleShape2D_2ye24")
+one_way_collision = true
+
+[node name="CollisionR" type="CollisionShape2D" parent="." unique_id=1463773233]
+position = Vector2(0, -6)
+rotation = -1.5707964
+shape = SubResource("RectangleShape2D_2ye24")
+one_way_collision = true
 
 [node name="Hitbox" type="Area2D" parent="." unique_id=642840846]
 unique_name_in_owner = true
@@ -163,8 +173,12 @@ shape = SubResource("RectangleShape2D_6tdax")
 
 [node name="States" type="Node" parent="." unique_id=2100203079 node_paths=PackedStringArray("state")]
 script = ExtResource("6_2tcuk")
-state = NodePath("Idle")
+state = NodePath("Spawn")
 metadata/_custom_type_script = "uid://uribh0f1jttq"
+
+[node name="Spawn" type="Node" parent="States" unique_id=990344137]
+script = ExtResource("7_i31gk")
+metadata/_custom_type_script = "uid://dn07g2yvk1unf"
 
 [node name="Idle" type="Node" parent="States" unique_id=1556314933]
 script = ExtResource("7_ydwtc")
@@ -240,6 +254,7 @@ metadata/_custom_type_script = "uid://bbww34oiexbx2"
 [node name="FireballDetection" type="Node" parent="." unique_id=1356549921 node_paths=PackedStringArray("hitbox")]
 script = ExtResource("17_pb3hb")
 hitbox = NodePath("../Hitbox")
+play_sfx_on_hit = true
 metadata/_custom_type_script = "uid://dri2d5jtu0fbq"
 
 [node name="ExplosionDetection" type="Node" parent="." unique_id=58420440]
@@ -251,6 +266,10 @@ script = ExtResource("19_5tta2")
 add_score = true
 metadata/_custom_type_script = "uid://5octqlf4ohel"
 
+[node name="LevelEditorToggleDetection" type="Node" parent="." unique_id=704295158]
+script = ExtResource("21_6vsdc")
+metadata/_custom_type_script = "uid://b8vmbtoaaq5nc"
+
 [connection signal="killed" from="." to="GibSpawner" method="summon_gib"]
 [connection signal="killed" from="." to="ScoreNoteSpawner" method="spawn_note" binds= [4000]]
 [connection signal="hammer_player_hit" from="EnemyPlayerDetection" to="." method="die_from_hammer"]
@@ -261,3 +280,4 @@ metadata/_custom_type_script = "uid://5octqlf4ohel"
 [connection signal="moving_shell_entered" from="ShellDetection" to="." method="damage" unbinds=1]
 [connection signal="fireball_hit" from="FireballDetection" to="." method="fireball_hit" unbinds=1]
 [connection signal="explosion_entered" from="ExplosionDetection" to="." method="damage" unbinds=1]
+[connection signal="level_start" from="LevelEditorToggleDetection" to="." method="start"]

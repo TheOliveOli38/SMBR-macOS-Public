@@ -67,6 +67,8 @@ signal close_confirm(save: bool)
 
 signal connection_node_found(new_node: Node)
 
+var current_connection_type := SignalExposer.ConnectType.SIGNAL
+
 var quick_connecting := false
 
 var sub_level_id := 0
@@ -341,7 +343,7 @@ func handle_layers() -> void:
 		for i in entity_tiles:
 			for x in i.keys():
 				if is_instance_valid(i[x]) == false: continue
-				i[x].modulate = Color.WHITE if i[x].has_node("SignalExposer") and i[x].get_node("SignalExposer").can_input or %TileModifierMenu.editing_node == i[x] or current_state != EditorState.CONNECTING else Color.DIM_GRAY
+				i[x].modulate = Color.WHITE if i[x].has_node("SignalExposer") and i[x].get_node("SignalExposer").can_input or %TileModifierMenu.editing_node == i[x] or current_state != EditorState.CONNECTING or current_connection_type == SignalExposer.ConnectType.REFERENCE else Color.DIM_GRAY
 		for i in tile_layer_nodes:
 			i.self_modulate = Color.WHITE if current_state != EditorState.CONNECTING else Color.DIM_GRAY
 		level.get_node("LevelBG").modulate = Color.WHITE if current_state != EditorState.CONNECTING else Color.DIM_GRAY
@@ -826,8 +828,9 @@ func open_tile_selection_menu_scene_ref(selector: TilePropertySceneRef) -> void:
 	close_tile_menu()
 	current_state = EditorState.MODIFYING_TILE
 
-func start_signal_connection(node: Node, signal_name := "") -> void:
+func start_signal_connection(node: Node, connection_type := SignalExposer.ConnectType.SIGNAL) -> void:
 	current_state = LevelEditor.EditorState.CONNECTING
+	current_connection_type = connection_type
 
 func on_tile_selected(selector: EditorTileSelector) -> void:
 	current_tile_type = selector.type

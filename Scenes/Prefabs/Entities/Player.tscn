@@ -1146,4 +1146,6 @@ shape = SubResource("RectangleShape2D_fqdtv")
 [connection signal="sprite_frames_changed" from="SpriteScaleJoint/Sprite" to="SpriteScaleJoint/Sprite" method="on_frame_changed"]
 [connection signal="area_entered" from="Hitbox" to="." method="on_area_entered"]
 [connection signal="area_exited" from="Hitbox" to="." method="on_area_exited"]
+[connection signal="body_entered" from="LavaDetect" to="." method="fire_die" unbinds=1]
+[connection signal="body_entered" from="PoisonDetect" to="." method="fire_die" unbinds=1]
 [connection signal="modifier_applied" from="EditorPropertyExposer" to="." method="on_modifier_applied"]

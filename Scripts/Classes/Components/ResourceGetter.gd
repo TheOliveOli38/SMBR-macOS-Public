@@ -69,3 +69,11 @@ func get_resource_path(resource_path := "") -> String:
 		if FileAccess.file_exists(test):
 			return test
 	return resource_path
+
+static func get_resource_pack_from_path(path := "") -> String:
+	if path.contains("res://"):
+		return ""
+	var resource_pack := ""
+	var split_1 = path.split("resource_packs")
+	resource_pack = split_1[1].get_slice("/", 1)
+	return resource_pack

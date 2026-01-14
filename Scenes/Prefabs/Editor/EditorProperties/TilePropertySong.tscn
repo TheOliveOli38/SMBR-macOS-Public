@@ -7,7 +7,7 @@ script/source = "extends TilePropertyContainer
 
 func _ready() -> void:
 	for i in Global.level_editor.music_track_names:
-		$OptionButton.add_item(tr(i))
+		$OptionButton.add_item(tr(i).to_upper())
 "
 
 [node name="TilePropertyEnum" type="HBoxContainer" unique_id=1027774900]

@@ -27,7 +27,13 @@ func run_check() -> void:
 		warped.emit()
 		saved_velocity = Vector2.ZERO
 
+func _exit_tree() -> void:
+	warping = false
+
 func warp() -> void:
+	if warping:
+		return
+	warping = true
 	target_channel = channel
 	var player = get_tree().get_first_node_in_group("Players")
 	saved_velocity = player.velocity

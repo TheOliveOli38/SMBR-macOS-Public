@@ -6,13 +6,13 @@
 [node name="CastleToad" unique_id=854605359 instance=ExtResource("1_ln8qg")]
 play_end_music = true
 
-[node name="ResourceSetterNew" parent="Sprite" index="0"]
+[node name="ResourceSetterNew" parent="Sprite" parent_id_path=PackedInt32Array(1713929806) index="0" unique_id=1786679475]
 resource_json = ExtResource("2_dujhx")
 
-[node name="ThankYou" parent="StandardMSG" index="0"]
+[node name="ThankYou" parent="StandardMSG" parent_id_path=PackedInt32Array(1180436761) index="0" unique_id=581752424]
 text = "CUTSCENE_CASTLE_PEACH_1"
 
-[node name="AnotherCastle" parent="StandardMSG" index="1"]
+[node name="AnotherCastle" parent="StandardMSG" parent_id_path=PackedInt32Array(1180436761) index="1" unique_id=1939182112]
 text = ""
 
 [node name="EndingSpeech" type="Node2D" parent="." index="2" unique_id=1443762879]
@@ -59,8 +59,8 @@ vertical_alignment = 3
 autowrap_mode = 2
 uppercase = true
 
-[node name="TextShadowColourChanger" parent="." index="5" node_paths=PackedStringArray("labels")]
+[node name="TextShadowColourChanger" parent="." index="5" unique_id=1755592823 node_paths=PackedStringArray("labels")]
 labels = [NodePath("../StandardMSG/ThankYou"), NodePath("../StandardMSG/AnotherCastle"), NodePath("../SpeedrunMSG/ThankYou"), NodePath("../SpeedrunMSG/Time"), NodePath("../SpeedrunMSG/PBMessage"), NodePath("../EndingSpeech/AnotherCastle4"), NodePath("../EndingSpeech/AnotherCastle5"), NodePath("../EndingSpeech/AnotherCastle6")]
 
-[node name="LabelFontChanger" parent="." index="6" node_paths=PackedStringArray("labels")]
+[node name="LabelFontChanger" parent="." index="6" unique_id=1540408817 node_paths=PackedStringArray("labels")]
 labels = [NodePath("../StandardMSG/ThankYou"), NodePath("../StandardMSG/AnotherCastle"), NodePath("../EndingSpeech/AnotherCastle4"), NodePath("../EndingSpeech/AnotherCastle5"), NodePath("../EndingSpeech/AnotherCastle6"), NodePath("../SpeedrunMSG/ThankYou"), NodePath("../SpeedrunMSG/Time"), NodePath("../SpeedrunMSG/PBMessage")]

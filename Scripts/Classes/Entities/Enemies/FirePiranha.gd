@@ -62,6 +62,7 @@ func shoot() -> void:
 func spawn_fireball() -> void:
 	var node = fireball_scene.instantiate()
 	node.global_position = %Sprite.global_position
+	AudioManager.play_sfx("fireball", node.global_position)
 	var shoot_angle = node.global_position.direction_to(target_player.global_position).angle()
 	if direction.x > 0:
 		shoot_angle = clamp(shoot_angle, deg_to_rad(-45), deg_to_rad(45))

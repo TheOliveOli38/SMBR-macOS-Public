@@ -260,4 +260,4 @@ metadata/_custom_type_script = "uid://da45dj0tx6jfd"
 [connection signal="moving_shell_entered" from="ShellDetection" to="." method="die_from_object"]
 [connection signal="block_bounced" from="BlockBouncingDetection" to="." method="kick"]
 [connection signal="explosion_entered" from="ExplosionDetection" to="." method="explode" unbinds=1]
-[connection signal="fiery_object_hit" from="FireDetection" to="." method="kick"]
+[connection signal="fireball_hit" from="FireDetection" to="." method="kick"]

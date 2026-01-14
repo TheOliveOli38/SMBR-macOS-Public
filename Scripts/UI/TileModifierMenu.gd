@@ -123,7 +123,7 @@ func begin_signal_connection() -> void:
 	can_exit = false
 	editing_node.get_node("SignalExposer").begin_connecting()
 	hide()
-	Global.level_editor.start_signal_connection(editing_node)
+	Global.level_editor.start_signal_connection(editing_node, editing_node.get_node("SignalExposer").connect_type)
 
 func cancel_connection() -> void:
 	Global.level_editor.current_state = LevelEditor.EditorState.MODIFYING_TILE

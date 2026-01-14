@@ -55,12 +55,10 @@ script = ExtResource("1_eahip")
 [node name="Post" type="StaticBody2D" parent="." unique_id=517068257]
 z_index = -1
 position = Vector2(0, -8)
-collision_layer = 2
 collision_mask = 0
 
 [node name="Collision" type="CollisionShape2D" parent="Post" unique_id=314640276]
 shape = SubResource("RectangleShape2D_48u40")
-one_way_collision = true
 
 [node name="Sprite" type="Sprite2D" parent="Post" unique_id=1690434846]
 texture = ExtResource("2_agulk")

@@ -30,6 +30,7 @@ func stomped_on(player: Player) -> void:
 		hit(player)
 
 func damage(object: Node2D) -> void:
+	hit_count -= 1
 	if hit_count <= 0:
 		die_from_object(object)
 		$ScoreNoteSpawner.spawn_note(200)
@@ -40,7 +41,6 @@ func damage(object: Node2D) -> void:
 
 func hit(object: Node2D) -> void:
 	direction = sign(global_position.x - object.global_position.x)
-	hit_count -= 1
 	$Sprite.play("Angry")
 	$BasicEnemyMovement.move_speed *= move_speed_mult_on_hit
 

@@ -95,7 +95,8 @@ func handle_moving(delta: float) -> void:
 		else:
 			detach_from_rail()
 			return
-	point_idx += speed * 32 * delta * [1, -1][direction]
+	if can_move:
+		point_idx += speed * 32 * delta * [1, -1][direction]
 	var new_point = path.sample_baked(point_idx)
 	velocity = (new_point - point) / delta
 	global_position += velocity * delta

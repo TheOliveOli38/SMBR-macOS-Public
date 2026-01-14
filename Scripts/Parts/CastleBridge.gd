@@ -93,11 +93,19 @@ func _physics_process(delta: float) -> void:
 	if (%Invalid):
 		%Invalid.visible = not ConditionalClear.valid
 
+func deactivate_all_generators() -> void:
+	for i in get_tree().get_nodes_in_group("EntityGenerators"):
+		i.active = false
+		i.deactivate()
+	get_tree().call_group("Enemies", "start_retreat") # Lakitus
+
 func victory_sequence(player: Player) -> void:
 	get_tree().call_group("Enemies", "flag_die")
+	deactivate_all_generators()
 	Global.level_complete_begin.emit()
 	victory_begin.emit()
 	cam_move = true
+	$Camera.enabled = true
 	$Camera.limit_right = Player.camera_right_limit
 	$Camera.global_position = get_viewport().get_camera_2d().get_screen_center_position()
 	$Camera.reset_physics_interpolation()

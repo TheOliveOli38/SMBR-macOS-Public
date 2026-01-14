@@ -48,5 +48,6 @@ func handle_visuals() -> void:
 func hit_solid() -> void:
 	var explosion = explosion_scene.instantiate()
 	explosion.global_position = global_position
+	AudioManager.play_sfx("explode", global_position)
 	add_sibling(explosion)
 	queue_free()

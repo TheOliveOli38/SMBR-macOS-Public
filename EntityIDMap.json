@@ -810,5 +810,9 @@
 	"DW": [
 		"res://Scenes/Parts/LargeStartCastle.tscn",
 		"0,-32"
+	],
+	"DX": [
+		"res://Scenes/Prefabs/Gizmos/Outputs/Linker.tscn",
+		"0,0"
 	]
 }

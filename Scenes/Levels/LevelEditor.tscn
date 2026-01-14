@@ -5712,7 +5712,6 @@ icon_texture = ExtResource("153_gf7vd")
 icon_region_override = Rect2(0, 0, 16, 16)
 entity_id = "Ci"
 entity_scene = ExtResource("154_nxlms")
-metadata/can_be_stored = true
 
 [node name="TextureRect" type="TextureRect" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Gizmos/MarginContainer/VBoxContainer/Inputs/PlayerStuff/PlayerDetection" unique_id=737811648]
 layout_mode = 1
@@ -5735,7 +5734,6 @@ icon_texture = ExtResource("155_k5kal")
 icon_region_override = Rect2(0, 0, 16, 16)
 entity_id = "Cz"
 entity_scene = ExtResource("156_6c7k7")
-metadata/can_be_stored = true
 
 [node name="TextureRect" type="TextureRect" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Gizmos/MarginContainer/VBoxContainer/Inputs/PlayerStuff/PlayerEventDetection2" unique_id=50838470]
 layout_mode = 1
@@ -5769,7 +5767,6 @@ icon_region_override = Rect2(0, 0, 16, 16)
 secondary_icon_region_override = Rect2(0, 0, 16, 16)
 entity_id = "DS"
 entity_scene = ExtResource("158_5yjx1")
-metadata/can_be_stored = true
 
 [node name="TextureRect" type="TextureRect" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Gizmos/MarginContainer/VBoxContainer/Inputs/InputDetection" unique_id=326243026]
 layout_mode = 1
@@ -5799,7 +5796,6 @@ icon_region_override = Rect2(0, 0, 16, 16)
 secondary_icon_region_override = Rect2(0, 0, 16, 16)
 entity_id = "Cy"
 entity_scene = ExtResource("158_adqgr")
-metadata/can_be_stored = true
 
 [node name="TextureRect" type="TextureRect" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Gizmos/MarginContainer/VBoxContainer/Inputs/EnemyStuff/EnemyDetection" unique_id=1181466747]
 layout_mode = 1
@@ -5823,7 +5819,6 @@ icon_region_override = Rect2(0, 0, 16, 16)
 secondary_icon_region_override = Rect2(0, 0, 16, 16)
 entity_id = "Cu"
 entity_scene = ExtResource("178_0bfpc")
-metadata/can_be_stored = true
 
 [node name="TextureRect" type="TextureRect" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Gizmos/MarginContainer/VBoxContainer/Inputs/EnemyStuff/EnemyDefeatDetect" unique_id=1247852792]
 layout_mode = 1
@@ -5857,7 +5852,6 @@ icon_region_override = Rect2(0, 0, 16, 16)
 secondary_icon_region_override = Rect2(0, 0, 16, 16)
 entity_id = "Cv"
 entity_scene = ExtResource("158_5yjx1")
-metadata/can_be_stored = true
 
 [node name="TextureRect" type="TextureRect" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Gizmos/MarginContainer/VBoxContainer/Inputs/Broadcaster" unique_id=1785510386]
 layout_mode = 1
@@ -5879,7 +5873,6 @@ icon_region_override = Rect2(0, 0, 16, 16)
 secondary_icon_region_override = Rect2(0, 0, 16, 16)
 entity_id = "DH"
 entity_scene = ExtResource("158_5yjx1")
-metadata/can_be_stored = true
 
 [node name="TextureRect" type="TextureRect" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Gizmos/MarginContainer/VBoxContainer/Inputs/ItemCollectDetection" unique_id=2104253654]
 layout_mode = 1
@@ -5903,7 +5896,6 @@ icon_texture = ExtResource("157_26a4w")
 icon_region_override = Rect2(0, 0, 16, 16)
 entity_id = "Ck"
 entity_scene = ExtResource("158_26a4w")
-metadata/can_be_stored = true
 
 [node name="TextureRect" type="TextureRect" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Gizmos/MarginContainer/VBoxContainer/Logic/Switch" unique_id=1240622347]
 layout_mode = 1
@@ -5926,7 +5918,6 @@ secondary_icon_texture = ExtResource("160_da57p")
 secondary_icon_region_override = Rect2(0, 0, 16, 16)
 entity_id = "DG"
 entity_scene = ExtResource("182_3c4c7")
-metadata/can_be_stored = true
 
 [node name="TextureRect" type="TextureRect" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Gizmos/MarginContainer/VBoxContainer/Logic/Trigger" unique_id=1812007616]
 layout_mode = 1
@@ -5969,7 +5960,6 @@ secondary_icon_texture = ExtResource("160_da57p")
 secondary_icon_region_override = Rect2(0, 0, 16, 16)
 entity_id = "Cl"
 entity_scene = ExtResource("161_1i68c")
-metadata/can_be_stored = true
 
 [node name="TextureRect" type="TextureRect" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Gizmos/MarginContainer/VBoxContainer/Logic/Counters/Counter" unique_id=2026079846]
 layout_mode = 1
@@ -5994,7 +5984,6 @@ secondary_icon_texture = ExtResource("160_da57p")
 secondary_icon_region_override = Rect2(0, 0, 16, 16)
 entity_id = "DJ"
 entity_scene = ExtResource("161_1i68c")
-metadata/can_be_stored = true
 
 [node name="TextureRect" type="TextureRect" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Gizmos/MarginContainer/VBoxContainer/Logic/Counters/GlobalCounter" unique_id=1756230515]
 layout_mode = 1
@@ -6029,7 +6018,6 @@ secondary_icon_texture = ExtResource("160_da57p")
 secondary_icon_region_override = Rect2(0, 0, 16, 16)
 entity_id = "Cm"
 entity_scene = ExtResource("162_da57p")
-metadata/can_be_stored = true
 
 [node name="TextureRect" type="TextureRect" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Gizmos/MarginContainer/VBoxContainer/Logic/Timer" unique_id=843245579]
 layout_mode = 1
@@ -6052,7 +6040,6 @@ secondary_icon_texture = ExtResource("160_da57p")
 secondary_icon_region_override = Rect2(0, 0, 16, 16)
 entity_id = "Cw"
 entity_scene = ExtResource("174_2vwpv")
-metadata/can_be_stored = true
 
 [node name="TextureRect" type="TextureRect" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Gizmos/MarginContainer/VBoxContainer/Logic/Repeater" unique_id=2013092546]
 layout_mode = 1
@@ -6075,7 +6062,6 @@ secondary_icon_texture = ExtResource("160_da57p")
 secondary_icon_region_override = Rect2(0, 0, 16, 16)
 entity_id = "Cx"
 entity_scene = ExtResource("176_adqgr")
-metadata/can_be_stored = true
 
 [node name="TextureRect" type="TextureRect" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Gizmos/MarginContainer/VBoxContainer/Logic/Fuse" unique_id=629881542]
 layout_mode = 1
@@ -6098,7 +6084,6 @@ secondary_icon_texture = ExtResource("160_da57p")
 secondary_icon_region_override = Rect2(0, 0, 16, 16)
 entity_id = "DA"
 entity_scene = ExtResource("182_3c4c7")
-metadata/can_be_stored = true
 
 [node name="TextureRect" type="TextureRect" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Gizmos/MarginContainer/VBoxContainer/Logic/Dice" unique_id=189219645]
 layout_mode = 1
@@ -6224,7 +6209,6 @@ icon_texture = ExtResource("155_wo43l")
 icon_region_override = Rect2(16, 0, 16, 16)
 entity_id = "Cj"
 entity_scene = ExtResource("156_7xqm2")
-metadata/can_be_stored = true
 
 [node name="TextureRect" type="TextureRect" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Gizmos/MarginContainer/VBoxContainer/Output/Lamp" unique_id=229729106]
 layout_mode = 1
@@ -6246,7 +6230,6 @@ icon_region_override = Rect2(0, 0, 16, 16)
 secondary_icon_region_override = Rect2(0, 0, 16, 16)
 entity_id = "Cs"
 entity_scene = ExtResource("174_wc8ue")
-metadata/can_be_stored = true
 
 [node name="TextureRect" type="TextureRect" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Gizmos/MarginContainer/VBoxContainer/Output/Placer" unique_id=157246982]
 layout_mode = 1
@@ -6268,7 +6251,6 @@ icon_region_override = Rect2(0, 0, 16, 16)
 secondary_icon_region_override = Rect2(0, 0, 16, 16)
 entity_id = "Ct"
 entity_scene = ExtResource("176_uggri")
-metadata/can_be_stored = true
 
 [node name="TextureRect" type="TextureRect" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Gizmos/MarginContainer/VBoxContainer/Output/Teleporter" unique_id=1202098081]
 layout_mode = 1
@@ -6290,7 +6272,6 @@ icon_region_override = Rect2(0, 0, 16, 16)
 secondary_icon_region_override = Rect2(0, 0, 16, 16)
 entity_id = "DB"
 entity_scene = ExtResource("176_uggri")
-metadata/can_be_stored = true
 
 [node name="TextureRect" type="TextureRect" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Gizmos/MarginContainer/VBoxContainer/Output/Speaker" unique_id=1461127604]
 layout_mode = 1
@@ -6312,7 +6293,6 @@ icon_region_override = Rect2(0, 0, 16, 16)
 secondary_icon_region_override = Rect2(0, 0, 16, 16)
 entity_id = "DK"
 entity_scene = ExtResource("176_uggri")
-metadata/can_be_stored = true
 
 [node name="TextureRect" type="TextureRect" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Gizmos/MarginContainer/VBoxContainer/Output/MusicPlayer" unique_id=137829531]
 layout_mode = 1
@@ -6334,7 +6314,6 @@ icon_region_override = Rect2(0, 0, 16, 16)
 secondary_icon_region_override = Rect2(0, 0, 16, 16)
 entity_id = "DI"
 entity_scene = ExtResource("176_uggri")
-metadata/can_be_stored = true
 
 [node name="TextureRect" type="TextureRect" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Gizmos/MarginContainer/VBoxContainer/Output/ConditionalClear" unique_id=236414212]
 layout_mode = 1
@@ -6356,7 +6335,6 @@ icon_region_override = Rect2(0, 0, 16, 16)
 secondary_icon_region_override = Rect2(0, 0, 16, 16)
 entity_id = "DU"
 entity_scene = ExtResource("176_uggri")
-metadata/can_be_stored = true
 
 [node name="TextureRect" type="TextureRect" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Gizmos/MarginContainer/VBoxContainer/Output/Warper" unique_id=725773224]
 layout_mode = 1

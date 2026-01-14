@@ -18,6 +18,7 @@ score_note_adder = NodePath("ScoreNoteSpawner")
 metadata/_custom_type_script = "uid://bpydbpyjk1mt4"
 
 [node name="Sprite" type="Sprite2D" parent="." unique_id=656162126]
+position = Vector2(0, -8)
 
 [node name="ResourceSetterNew" type="Node" parent="Sprite" unique_id=1871647489 node_paths=PackedStringArray("node_to_affect")]
 script = ExtResource("2_yim3j")
@@ -28,6 +29,7 @@ resource_json = ExtResource("3_874xq")
 metadata/_custom_type_script = "uid://cbal8ms2oe1ik"
 
 [node name="Hitbox" type="Area2D" parent="." unique_id=1243784899]
+position = Vector2(0, -8)
 
 [node name="Shape" type="CollisionShape2D" parent="Hitbox" unique_id=2030171393]
 shape = SubResource("RectangleShape2D_yim3j")
@@ -44,6 +46,7 @@ visuals = NodePath("../Sprite")
 metadata/_custom_type_script = "uid://c3gg32ivrlq8n"
 
 [node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="." unique_id=1285109388]
+position = Vector2(0, -8)
 
 [node name="ScoreNoteSpawner" type="Node" parent="." unique_id=1187085759]
 script = ExtResource("5_il73j")

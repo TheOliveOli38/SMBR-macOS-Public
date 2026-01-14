@@ -9,10 +9,14 @@ const BOWSER_JR_FIREBALL = preload("uid://b3c6eemy8dmsf")
 
 var target_player: Player = null
 
+func start() -> void:
+	$States.transition_to("Idle")
+
 func _physics_process(_delta: float) -> void:
 	target_player = get_tree().get_first_node_in_group("Players")
 	if target_player != null:
-		direction = sign(target_player.global_position.x - global_position.x)
+		var target_direction = sign(target_player.global_position.x - global_position.x)
+		if target_direction != 0: direction = target_direction
 	%Sprite.scale.x = direction
 
 func player_stomped_on(player: Player) -> void:
@@ -43,6 +47,7 @@ func fireball_hit() -> void:
 
 func shoot_fire() -> void:
 	var fireball = BOWSER_JR_FIREBALL.instantiate()
+	AudioManager.play_sfx("fireball", global_position)
 	fireball.global_position = global_position + Vector2(8 * direction, -12)
 	fireball.direction = global_position.direction_to(target_player.global_position)
 	add_sibling(fireball)

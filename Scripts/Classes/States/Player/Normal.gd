@@ -373,5 +373,4 @@ func get_animation_name() -> String:
 		return "Fall"
 
 func exit() -> void:
-	player.stop_all_timers()
 	owner.skidding = false

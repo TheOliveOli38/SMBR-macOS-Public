@@ -221,6 +221,7 @@ metadata/_custom_type_script = "uid://cq6f682453q6o"
 
 [node name="Camera" type="Camera2D" parent="." unique_id=1968732919]
 position = Vector2(216, -56)
+enabled = false
 process_callback = 0
 limit_left = -256
 limit_top = -208

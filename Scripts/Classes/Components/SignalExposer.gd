@@ -19,7 +19,10 @@ var turned_on := false
 
 @export var can_input := true
 @export var can_output := true
+@export var connect_type := ConnectType.SIGNAL
 const ARROW = preload("res://Assets/Sprites/Editor/Gizmos/ConnectionArrow.png")
+
+enum ConnectType{SIGNAL, REFERENCE}
 
 var editing := false
 
@@ -210,16 +213,17 @@ func connect_pre_existing_signals() -> void:
 func connect_to_node(node_to_recieve := []) -> void:
 	has_output = true
 	var node: Node = get_node_from_tile(node_to_recieve[0], node_to_recieve[1])
-	pulse_emitted.connect(node.get_node("SignalExposer").on_recieve_pulse)
-	powered_on.connect(node.get_node("SignalExposer").on_recieve_power)
-	powered_off.connect(node.get_node("SignalExposer").on_lost_power)
-	node.get_node("SignalExposer").has_input = true
-	node.get_node("SignalExposer").total_inputs += 1
-	node.get_node("SignalExposer").update_animation(1.2, 1.0, true)
 	node.tree_exiting.connect(remove_node_connection.bind(node_to_recieve))
-	tree_exiting.connect(node.get_node("SignalExposer").input_removed)
 	if connections.has(node_to_recieve) == false:
 		connections.append(node_to_recieve.duplicate())
+	if connect_type == ConnectType.SIGNAL:
+		pulse_emitted.connect(node.get_node("SignalExposer").on_recieve_pulse)
+		powered_on.connect(node.get_node("SignalExposer").on_recieve_power)
+		powered_off.connect(node.get_node("SignalExposer").on_lost_power)
+		node.get_node("SignalExposer").has_input = true
+		node.get_node("SignalExposer").total_inputs += 1
+		node.get_node("SignalExposer").update_animation(1.2, 1.0, true)
+		tree_exiting.connect(node.get_node("SignalExposer").input_removed)
 	signal_connected.emit()
 
 func remove_node_connection(node := []) -> void:
