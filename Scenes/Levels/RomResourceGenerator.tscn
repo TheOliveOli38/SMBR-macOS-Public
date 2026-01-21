@@ -49,6 +49,22 @@ text = "EXTRACTING ASSETS..."
 horizontal_alignment = 1
 uppercase = true
 
+[node name="Label2" type="Label" parent="MarginContainer/ProgressBar" unique_id=33401225]
+modulate = Color(0.3403393, 0.34033933, 0.3403393, 1)
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 48.0
+offset_bottom = 112.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "IF YOUR ASSETS ARE CORRUPTED, YOU CAN RE-EXTRACT THEM BY RE-VERIFYING YOUR ROM, IN THE SETTINGS MENU."
+horizontal_alignment = 1
+autowrap_mode = 2
+uppercase = true
+
 [node name="Error" type="Label" parent="MarginContainer" unique_id=2019481542]
 unique_name_in_owner = true
 visible = false
