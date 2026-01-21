@@ -1,4 +1,4 @@
-[gd_scene load_steps=59 format=3 uid="uid://ct5rrpa7uehkk"]
+[gd_scene load_steps=60 format=3 uid="uid://ct5rrpa7uehkk"]
 
 [ext_resource type="Texture2D" uid="uid://y0c3ajq7uoei" path="res://Assets/Sprites/Tilesets/Terrain/TerrainTemplate.png" id="1_vdakf"]
 [ext_resource type="PackedScene" uid="uid://dsa8lpl7n8ge0" path="res://Scenes/Prefabs/Blocks/BrickBlocks/BrickBlock.tscn" id="2_5enc8"]
@@ -39,6 +39,7 @@
 [ext_resource type="Texture2D" uid="uid://dquurvxoax6p8" path="res://Assets/Sprites/Tilesets/Terrain/Desert.png" id="30_vdakf"]
 [ext_resource type="JSON" path="res://Assets/Sprites/Blocks/ConveyorBelt.json" id="33_ra18v"]
 [ext_resource type="JSON" path="res://Assets/Sprites/Blocks/OnOffConveyor.json" id="34_7cpm5"]
+[ext_resource type="Script" uid="uid://q45b31h6356r" path="res://Scripts/Classes/Components/OnOffSwitcher.gd" id="40_gg00r"]
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_b6qiv"]
 tile_data = PackedInt32Array(0, 524288, 0, 1, 589824, 0)
@@ -1747,6 +1748,8 @@ func on_switch_hit() -> void:
 	update_tiles()
 
 func update_tiles() -> void:
+	if is_instance_valid(tile_map) == false:
+		return
 	for i in tile_map.get_used_cells_by_id(5):
 		var y_coord = tile_map.get_cell_atlas_coords(i)
 		if y_coord.y > 2:
@@ -1862,8 +1865,12 @@ mode = 1
 resource_json = ExtResource("34_7cpm5")
 metadata/_custom_type_script = "uid://cbal8ms2oe1ik"
 
-[node name="OnOffConveyorHandler" type="Node" parent="." unique_id=590121252 groups=["BooBlocks"]]
+[node name="OnOffConveyorHandler" type="Node" parent="." unique_id=590121252]
 script = SubResource("GDScript_vt0hv")
+
+[node name="OnOffSwitcher" type="Node" parent="OnOffConveyorHandler" unique_id=1323877787]
+script = ExtResource("40_gg00r")
+metadata/_custom_type_script = "uid://q45b31h6356r"
 
 [node name="PipeReplacer" type="Node" parent="." unique_id=388259230]
 script = SubResource("GDScript_vdakf")
@@ -1872,3 +1879,4 @@ script = SubResource("GDScript_vdakf")
 script = SubResource("GDScript_hqc4a")
 
 [connection signal="child_entered_tree" from="." to="." method="on_child_entered_tree"]
+[connection signal="switched" from="OnOffConveyorHandler/OnOffSwitcher" to="OnOffConveyorHandler" method="on_switch_hit"]

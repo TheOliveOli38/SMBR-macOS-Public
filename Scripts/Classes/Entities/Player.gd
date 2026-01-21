@@ -47,21 +47,25 @@ extends CharacterBody2D
 		"WALK_SPEED": 96.0,                # The player's speed while walking, measured in px/sec.
 		"GROUND_WALK_ACCEL": 4.0,          # The player's acceleration while walking, measured in px/frame.
 		"WALK_SKID": 8.0,                  # The player's turning deceleration while running, measured in px/frame.
-		
 		"CAN_RUN_ACCEL_EARLY": false,      # Determines if the player can hold run before reaching walk speed to begin running.
 		"RUN_STOP_BUFFER": 0.0,            # Determines the amount of time in seconds before running will stop once its initiated.
 		"RUN_SPEED": 160.0,                # The player's speed while running, measured in px/sec.
 		"GROUND_RUN_ACCEL": 1.25,          # The player's acceleration while running, measured in px/frame.
-		"RUN_SKID": 8.0,                   # The player's turning deceleration while running, measured in px/frame.
+		"RUN_SKID": 8.0,     
+		"ICE_ACCEL_MOD": 0.25,
+		"ICE_DECEL_MOD": 0.25,
+		"ICE_SKID_MOD": 0.25,             # The player's turning deceleration while running, measured in px/frame.
 		
 		"CLASSIC_SKID_CONDITIONS": false,  # Determines if the player's speed must be over SKID_THRESHOLD to begin skidding.
 		"CAN_INSTANT_STOP_SKID": false,    # Determines if the player will instantly stop upon reaching the skid threshold.
 		"SKID_THRESHOLD": 100.0,           # The horizontal speed required, to be able to start skidding.
 		"SKID_STOP_THRESHOLD": 10.0,       # The maximum velocity required before the player will stop skidding.
 		
-		"GROUND_DECEL": 3.0,              # The player's grounded deceleration while no buttons are pressed, measured in px/frame.
+		"GROUND_WALK_DECEL": 3.0,          # The player's grounded deceleration while no buttons are pressed, measured in px/frame.
+		"GROUND_RUN_DECEL": 3.0,
 		"DECEL_THRESHOLD": 0, 
-		"AIR_DECEL": 0.0,                  # The player's airborne deceleration while no buttons are pressed, measured in px/frame.
+		"AIR_DECEL": 0.0,                 # The player's airborne deceleration while no buttons are pressed, measured in px/frame.
+					  
 		"AIR_WALK_ACCEL": 3.0,             # The player's usual acceleration while in midair, measured in px/frame.
 		"AIR_WALK_SKID_ACCEL": 4.5,        # The player's usual skid acceleration while in midair, measured in px/frame.
 		"AIR_RUN_ACCEL": 3.0,              # The player's running acceleration while in midair, measured in px/frame.
@@ -158,7 +162,8 @@ extends CharacterBody2D
 		"SKID_THRESHOLD": 100.0,           # The horizontal speed required, to be able to start skidding.
 		"SKID_STOP_THRESHOLD": 33.75,      # The maximum velocity required before the player will stop skidding.
 		
-		"GROUND_DECEL": 3.05,   
+		"GROUND_WALK_DECEL": 3.05,   
+		"GROUND_RUN_DECEL": 3.05,
 		"DECEL_THRESHOLD": 33.75,           # The player's grounded deceleration while no buttons are pressed, measured in px/frame.
 		
 		"AIR_DECEL": 0.0,                  # The player's airborne deceleration while no buttons are pressed, measured in px/frame.
@@ -312,13 +317,13 @@ extends CharacterBody2D
 		"RAINBOW_STAR_SLOW_FX_SPEED": 7.5, # Determines the speed of the rainbow effect nearing the end of a star's duration, measured in cycles/sec
 		"RAINBOW_POWERUP_FX": true,        # Determines whether or not the player will play the rainbow effect when powering up.
 		"RAINBOW_FX_SPEED": 15.0,          # Determines the speed of the rainbow effect in other scenarios, measured in cycles/sec
-		
+		"ICE_SPEED_MOD": 1.5,
 		"WALK_SFX": "walk",                # Determines which sound effect to play when walking.
 		"RUN_SFX": "run",                  # Determines which sound effect to play when running.
 		"SKID_SFX": "skid",            # Determines which sound effect to play when skidding.
 		"JUMP_SFX": "big_jump",            # Determines which sound effect to play when jumping.
 		"TRAMPOLINE_SFX": "big_trampoline",          # Determines which sound effect to play when bouncing on a trampoline.
-		"TRAMPOLINE_USE_SFX": "big_used_trampoline", # Determines which sound effect to play when actively using a trampoline.
+		"TRAMPOLINE_USED_SFX": "big_used_trampoline", # Determines which sound effect to play when actively using a trampoline.
 		"GROUNDED_WALK_SFX": true,         # Forces walk sounds to only play when on the ground.
 		"GROUNDED_RUN_SFX": true,          # Forces run sounds to only play when on the ground.
 	},
@@ -1344,9 +1349,13 @@ func dispense_stored_item() -> void:
 	add_sibling(RESERVE_ITEM.instantiate())
 
 func get_character_sprite_path(power_stateto_use := power_state.state_name) -> String:
+	character = Player.CHARACTERS[Global.player_characters[player_id]]
 	var path = "res://Assets/Sprites/Players/" + character + "/" + power_stateto_use + ".json"
 	if int(Global.player_characters[player_id]) > 3:
 		path = path.replace("res://Assets/Sprites/Players", Global.config_path.path_join("custom_characters/"))
+		if FileAccess.file_exists(path) == false:
+			path = "res://Assets/Sprites/Players/Mario/" + power_stateto_use + ".json"
+			Global.log_error("No sprite found for: " + character + "/" + power_stateto_use  + "!")
 	return path
 
 func enter_pipe(pipe: PipeArea, warp_to_level := true) -> void:

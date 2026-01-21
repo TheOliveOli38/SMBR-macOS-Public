@@ -178,9 +178,10 @@ hframes = 2
 frame = 1
 region_rect = Rect2(0, 80, 80, 80)
 
-[node name="ResourceSetterNew" type="Node" parent="OverlaySprite" unique_id=1207966391 node_paths=PackedStringArray("node_to_affect")]
+[node name="ResourceSetterNew" type="Node" parent="OverlaySprite" unique_id=1207966391 node_paths=PackedStringArray("node_to_affect", "property_node")]
 script = ExtResource("3_7xlhl")
 node_to_affect = NodePath("..")
+property_node = NodePath("../..")
 property_name = "texture"
 mode = 1
 resource_json = ExtResource("12_xg4af")

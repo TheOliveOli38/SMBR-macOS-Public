@@ -189,9 +189,9 @@ func _physics_process(delta: float) -> void:
 					record_frame(get_tree().get_first_node_in_group("Players"))
 	else:
 		paused_time = 0
-	if ghost_active and ghost_enabled and (Global.game_paused == false):
-		ghost_idx += 1
-		print(ghost_path)
+	if ghost_active and ghost_enabled:
+		if (Global.game_paused == false):
+			ghost_idx += 1
 		if ghost_idx >= ghost_path.size():
 			ghost_active = false
 			return

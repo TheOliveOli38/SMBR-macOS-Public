@@ -1,10 +1,11 @@
 class_name WarpVine
 extends Node2D
 
-func _physics_process(delta: float) -> void:
-	$VineJoint.global_position.y = 40
+func _physics_process(_delta: float) -> void:
 	$VineJoint/Vine.top_point = global_position.y
 
-func _ready() -> void:
-	if Global.level_editor_is_playtesting():
-		$VineJoint/Vine.do_cutscene()
+func start() -> void:
+	$VineJoint/Vine.can_stop = false
+	await get_tree().process_frame
+	$VineJoint/Vine.cutscene = true
+	$VineJoint/Vine.do_cutscene.call_deferred()

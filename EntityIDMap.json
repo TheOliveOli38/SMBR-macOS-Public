@@ -629,7 +629,7 @@
 	],
 	"Cd": [
 		"res://Scenes/Prefabs/LevelObjects/WarpVine.tscn",
-		"0,8"
+		"0,0"
 	],
 	"Ce": [
 		"res://Scenes/Prefabs/Blocks/IceBlock.tscn",
@@ -813,6 +813,10 @@
 	],
 	"DX": [
 		"res://Scenes/Prefabs/Gizmos/Outputs/Linker.tscn",
+		"0,0"
+	],
+	"DY": [
+		"res://Scenes/Prefabs/LevelObjects/WaterArea.tscn",
 		"0,0"
 	]
 }

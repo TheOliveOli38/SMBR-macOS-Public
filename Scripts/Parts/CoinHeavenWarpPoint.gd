@@ -13,7 +13,7 @@ static var subarea_return := -1
 func _ready() -> void:
 	Level.vine_warp_level = heaven_scene
 	subarea_to_warp_to = target_subarea
-	if Level.in_vine_level:
+	if Level.in_vine_level and Global.level_editor_is_editing() == false:
 		Level.in_vine_level = false
 		if PipeArea.exiting_pipe_id == -1:
 			for i in get_tree().get_nodes_in_group("Players"):

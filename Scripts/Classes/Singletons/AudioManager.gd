@@ -23,7 +23,7 @@ const DEFAULT_SFX_LIBRARY := {
 	"pswitch_pressed": ("res://Assets/Audio/SFX/Cannon.wav"),
 	"thwomp_land": ("res://Assets/Audio/SFX/Cannon.wav"),
 	"checkpoint": ("res://Assets/Audio/SFX/Checkpoint.wav"),
-	"flag_slide": ("res://Assets/Audio/SFX/FlagSlide.json"),
+	"flag_slide": ("res://Assets/Audio/SFX/FlagSlide.wav"),
 	"magic": ("res://Assets/Audio/SFX/Magic.wav"),
 	"beep": ("res://Assets/Audio/SFX/Score.wav"),
 	"switch": ("res://Assets/Audio/SFX/Switch.wav"),

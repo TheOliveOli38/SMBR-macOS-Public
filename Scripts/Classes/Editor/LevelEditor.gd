@@ -256,7 +256,7 @@ func stop_testing() -> void:
 	if current_state == EditorState.IDLE:
 		return
 	cleanup()
-	return_to_editor()
+	return_to_editor.call_deferred()
 
 
 func cleanup() -> void:

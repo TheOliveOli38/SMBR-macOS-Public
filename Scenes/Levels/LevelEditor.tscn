@@ -1,4 +1,4 @@
-[gd_scene load_steps=280 format=3 uid="uid://gbcmqonky63j"]
+[gd_scene load_steps=281 format=3 uid="uid://gbcmqonky63j"]
 
 [ext_resource type="Script" uid="uid://c2lnc7vnq3xth" path="res://Scripts/Classes/Editor/LevelEditor.gd" id="1_0qbyu"]
 [ext_resource type="Texture2D" uid="uid://cbha2l6hg1kfo" path="res://Assets/Sprites/UI/EditorGrid.png" id="2_8q7yr"]
@@ -112,6 +112,7 @@
 [ext_resource type="Texture2D" uid="uid://bd25s0rlv8axh" path="res://Assets/Sprites/Blocks/SuperSpringBlock.png" id="120_i2jbr"]
 [ext_resource type="JSON" path="res://Assets/Sprites/Blocks/TrickBlock.json" id="126_606p5"]
 [ext_resource type="JSON" path="res://Assets/Sprites/Items/Clock.json" id="131_514ei"]
+[ext_resource type="Texture2D" uid="uid://bdb7ua7lnmwn" path="res://Assets/Sprites/Editor/WaterLevel.png" id="131_606p5"]
 [ext_resource type="JSON" path="res://Assets/Sprites/Blocks/Fan.json" id="132_o0k3u"]
 [ext_resource type="JSON" path="res://Assets/Sprites/Tilesets/BluePlatform.json" id="133_numt2"]
 [ext_resource type="Texture2D" uid="uid://c8ir37jmcm4f4" path="res://Assets/Sprites/Editor/CameraLock.png" id="134_q440o"]
@@ -5115,6 +5116,14 @@ icon_texture = ExtResource("199_klg4c")
 icon_region_override = Rect2(0, 0, 16, 16)
 entity_id = "B7"
 
+[node name="WaterArea" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Objects/MarginContainer/GridContainer" unique_id=2019926222 groups=["Selectors"] instance=ExtResource("8_wkmjk")]
+layout_mode = 2
+tile_name = "WATER_AREA"
+type = 1
+icon_texture = ExtResource("131_606p5")
+icon_region_override = Rect2(0, 0, 16, 16)
+entity_id = "DY"
+
 [node name="VineWarp" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Objects/MarginContainer/GridContainer" unique_id=1577454237 groups=["Selectors"] instance=ExtResource("8_wkmjk")]
 layout_mode = 2
 tile_name = "OBJ_VINEWARP"
@@ -5125,6 +5134,7 @@ secondary_icon_region_override = Rect2(24, 0, 16, 16)
 entity_id = "CS"
 
 [node name="VineWarp2" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Objects/MarginContainer/GridContainer" unique_id=1678274714 groups=["Selectors"] instance=ExtResource("8_wkmjk")]
+visible = false
 layout_mode = 2
 tile_name = "OBJ_DARKNESS"
 type = 1

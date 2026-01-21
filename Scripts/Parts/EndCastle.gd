@@ -10,7 +10,7 @@ var music_finished := false
 var tree = null
 var show_walls := false
 var doing_sequence := false
-
+var use_sprite := false
 var can_transition := false
 
 static var is_transitioning := false
@@ -19,8 +19,8 @@ func _ready() -> void:
 	Global.level_sequence_captured = false
 	await Global.level_complete_begin
 	Global.level_sequence_captured = true
-	$Overlay.show()
-	$OverlaySprite.show()
+	$Overlay.visible = not use_sprite
+	$OverlaySprite.visible = use_sprite
 	$Overlay/PlayerDetection.set_collision_layer_value(1, true)
 	Global.score_tally_finished.connect(on_tally_finished)
 	if Global.current_game_mode == Global.GameMode.BOO_RACE:

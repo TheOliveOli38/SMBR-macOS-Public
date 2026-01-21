@@ -1,0 +1,37 @@
+[gd_scene load_steps=2 format=3 uid="uid://dnhums3a20trw"]
+
+[ext_resource type="Texture2D" uid="uid://3ai0ggxah360" path="res://Assets/Sprites/UI/MenuBorder.png" id="1_flpig"]
+
+[node name="NinePatchRect" type="NinePatchRect" unique_id=1543549467]
+offset_right = 160.0
+offset_bottom = 48.0
+texture = ExtResource("1_flpig")
+region_rect = Rect2(0, 0, 32, 32)
+patch_margin_left = 8
+patch_margin_top = 8
+patch_margin_right = 8
+patch_margin_bottom = 8
+axis_stretch_horizontal = 2
+axis_stretch_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=672348905]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.12156863, 0.12156863, 0.12156863, 1)
+
+[node name="Label" type="Label" parent="." unique_id=762423074]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "10, 30, 50 Coins"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true

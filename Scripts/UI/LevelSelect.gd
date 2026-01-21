@@ -41,7 +41,7 @@ const SMB1_ICONS := [
 		["night", [0,0]],["night", [0,2]],["night", [1,1]],["night", [1,4]],
 	],
 	[
-		["night", [0,3]],["night", [0,4]],["night", [1,2]],["night", [1,5]],
+		["night", [0,3]],["night", [3,1]],["night", [1,2]],["night", [1,5]],
 	],
 	[
 		["night", [0,1]],["night", [0,3]],["night", [2,0]],["night", [1,6]],

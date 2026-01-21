@@ -1,4 +1,4 @@
-[gd_scene load_steps=68 format=4 uid="uid://dnlgawye840rs"]
+[gd_scene load_steps=69 format=4 uid="uid://dnlgawye840rs"]
 
 [ext_resource type="Script" uid="uid://bqetotvkgfpta" path="res://Scripts/Parts/TitleScreen.gd" id="1_1wpe0"]
 [ext_resource type="Texture2D" uid="uid://d01emqx4qafd7" path="res://Assets/Sprites/UI/TitleSMB1.png" id="2_1j3pg"]
@@ -44,6 +44,27 @@ script/source = "extends Label
 
 func _ready() -> void:
 	text = \"V\" + Global.version_number
+"
+
+[sub_resource type="GDScript" id="GDScript_wjo1g"]
+script/source = "extends Label
+
+func _process(_delta: float) -> void:
+	print([Global.server_version, Global.current_version])
+	if Global.server_version == -1:
+		return
+	if Global.server_version > Global.current_version:
+		modulate = Color.RED
+		text = \"OUTDATED!\"
+		set_process(false)
+	elif Global.server_version <= Global.current_version:
+		modulate = Color.GREEN
+		text = \"Latest!\"
+		set_process(false)
+	elif Global.server_version == -2:
+		modulate = Color.YELLOW
+		text = \"Error!\"
+		set_process(false)
 "
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qgapq"]
@@ -298,6 +319,84 @@ metadata/_custom_type_script = "uid://b08qfwj5jk6g1"
 script = ExtResource("6_100cl")
 use_cache = false
 metadata/_custom_type_script = "uid://cbal8ms2oe1ik"
+
+[node name="CanvasLayer2" type="CanvasLayer" parent="." unique_id=426157151]
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer2" unique_id=860450242]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -44.0
+offset_right = 56.0
+grow_vertical = 0
+alignment = 2
+
+[node name="VersionLabel" type="Label" parent="CanvasLayer2/VBoxContainer" unique_id=1359614741]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+text = "v1.0.0"
+uppercase = true
+script = SubResource("GDScript_8peil")
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer2/VBoxContainer/VersionLabel" unique_id=1002316436]
+visible = false
+modulate = Color(1, 1, 1, 0.50600004)
+show_behind_parent = true
+custom_minimum_size = Vector2(0, 8)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="VersionNotif" type="Label" parent="CanvasLayer2/VBoxContainer" unique_id=1055971179]
+unique_name_in_owner = true
+modulate = Color(0.32915837, 0.3291584, 0.3291584, 1)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+theme_override_colors/font_shadow_color = Color(0.12156863, 0.12156863, 0.12156863, 1)
+text = "Checking..."
+uppercase = true
+script = SubResource("GDScript_wjo1g")
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer2/VBoxContainer/VersionNotif" unique_id=48230772]
+visible = false
+modulate = Color(1, 1, 1, 0.50600004)
+show_behind_parent = true
+custom_minimum_size = Vector2(0, 8)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="DevBuildWarning" type="Label" parent="CanvasLayer2/VBoxContainer" unique_id=1652223342]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+text = "DEVELOPMENT BUILD! EXPECT BUGS!"
+uppercase = true
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer2/VBoxContainer/DevBuildWarning" unique_id=1506329783]
+modulate = Color(1, 1, 1, 0.50600004)
+show_behind_parent = true
+custom_minimum_size = Vector2(0, 8)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=509490881]
 
@@ -958,55 +1057,6 @@ unique_name_in_owner = true
 
 [node name="QuitDialog" parent="CanvasLayer" unique_id=2087177884 instance=ExtResource("22_wjo1g")]
 
-[node name="CanvasLayer2" type="CanvasLayer" parent="." unique_id=426157151]
-layer = 0
-
-[node name="VersionLabel" type="Label" parent="CanvasLayer2" unique_id=1359614741]
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_top = -16.0
-offset_right = 184.0
-grow_vertical = 0
-text = "v1.0.0"
-uppercase = true
-script = SubResource("GDScript_8peil")
-
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer2/VersionLabel" unique_id=1121928255]
-visible = false
-show_behind_parent = true
-custom_minimum_size = Vector2(0, 8)
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0, 0, 0, 1)
-
-[node name="Timer" type="Timer" parent="CanvasLayer2/VersionLabel" unique_id=1384206616]
-autostart = true
-
-[node name="DevBuildWarning" type="Label" parent="CanvasLayer2/VersionLabel" unique_id=1652223342]
-visible = false
-layout_mode = 1
-offset_top = 16.0
-offset_right = 56.0
-offset_bottom = 32.0
-text = "DEVELOPMENT BUILD! EXPECT BUGS!"
-uppercase = true
-
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer2/VersionLabel/DevBuildWarning" unique_id=1506329783]
-show_behind_parent = true
-custom_minimum_size = Vector2(0, 8)
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0, 0, 0, 1)
-
 [node name="DropShadow" parent="." unique_id=1607903221 instance=ExtResource("5_8t4ah")]
 
 [node name="CameraRightLimit" type="Node2D" parent="." unique_id=1457159072]
@@ -1015,12 +1065,12 @@ metadata/_custom_type_script = "uid://bdq0373j5n5o0"
 
 [node name="LabelFontChanger" type="Node" parent="." unique_id=1869650285 node_paths=PackedStringArray("labels")]
 script = ExtResource("21_qti1l")
-labels = [NodePath("../CanvasLayer/Options2/Story"), NodePath("../CanvasLayer/Options2/Challenges"), NodePath("../CanvasLayer/Options2/Marathon"), NodePath("../CanvasLayer/StoryMode/StoryOptions/New Game"), NodePath("../CanvasLayer/StoryMode/StoryOptions/Continue"), NodePath("../CanvasLayer/StoryMode/StoryOptions/HighScore"), NodePath("../CanvasLayer/Extras/Achiements"), NodePath("../CanvasLayer/Extras/Credits"), null, NodePath("../CanvasLayer/ChallengeOptions/BooRace"), NodePath("../CanvasLayer/ChallengeOptions/ChallengeHunt"), null, NodePath("../CanvasLayer2/VersionLabel"), NodePath("../CanvasLayer/Options1/PlayGame"), NodePath("../CanvasLayer/Options1/Settings"), NodePath("../CanvasLayer/Options1/Quit Game"), NodePath("../CanvasLayer2/VersionLabel"), NodePath("../CanvasLayer2/VersionLabel/DevBuildWarning")]
+labels = [NodePath("../CanvasLayer/Options2/Story"), NodePath("../CanvasLayer/Options2/Challenges"), NodePath("../CanvasLayer/Options2/Marathon"), NodePath("../CanvasLayer/StoryMode/StoryOptions/New Game"), NodePath("../CanvasLayer/StoryMode/StoryOptions/Continue"), NodePath("../CanvasLayer/StoryMode/StoryOptions/HighScore"), NodePath("../CanvasLayer/Extras/Achiements"), NodePath("../CanvasLayer/Extras/Credits"), null, NodePath("../CanvasLayer/ChallengeOptions/BooRace"), NodePath("../CanvasLayer/ChallengeOptions/ChallengeHunt"), null, NodePath("../CanvasLayer2/VBoxContainer/VersionLabel"), NodePath("../CanvasLayer/Options1/PlayGame"), NodePath("../CanvasLayer/Options1/Settings"), NodePath("../CanvasLayer/Options1/Quit Game"), NodePath("../CanvasLayer2/VBoxContainer/VersionLabel"), NodePath("../CanvasLayer2/VBoxContainer/DevBuildWarning")]
 metadata/_custom_type_script = "uid://co6tjg3w6qpd8"
 
 [node name="TextShadowColourChanger" type="Node" parent="." unique_id=6653263 node_paths=PackedStringArray("labels")]
 script = ExtResource("23_s06mt")
-labels = [NodePath("../CanvasLayer/Options2/Story"), NodePath("../CanvasLayer/Options2/Challenges"), NodePath("../CanvasLayer/Options2/Marathon"), NodePath("../CanvasLayer/StoryMode/StoryOptions/New Game"), NodePath("../CanvasLayer/StoryMode/StoryOptions/Continue"), NodePath("../CanvasLayer/StoryMode/StoryOptions/HighScore"), NodePath("../CanvasLayer/Extras/Achiements"), NodePath("../CanvasLayer/Extras/Credits"), NodePath("../CanvasLayer/StoryMode/CustomCampaign/New Game"), NodePath("../CanvasLayer/ChallengeOptions/BooRace"), NodePath("../CanvasLayer/ChallengeOptions/ChallengeHunt"), NodePath("../CanvasLayer/StoryMode/CustomCampaign/Continue"), NodePath("../CanvasLayer2/VersionLabel"), NodePath("../CanvasLayer/Options1/PlayGame"), NodePath("../CanvasLayer/Options1/Settings"), NodePath("../CanvasLayer/Options1/Quit Game"), NodePath("../CanvasLayer2/VersionLabel"), NodePath("../CanvasLayer/StoryMode/CustomCampaign/HighScore")]
+labels = [NodePath("../CanvasLayer/Options2/Story"), NodePath("../CanvasLayer/Options2/Challenges"), NodePath("../CanvasLayer/Options2/Marathon"), NodePath("../CanvasLayer/StoryMode/StoryOptions/New Game"), NodePath("../CanvasLayer/StoryMode/StoryOptions/Continue"), NodePath("../CanvasLayer/StoryMode/StoryOptions/HighScore"), NodePath("../CanvasLayer/Extras/Achiements"), NodePath("../CanvasLayer/Extras/Credits"), NodePath("../CanvasLayer/StoryMode/CustomCampaign/New Game"), NodePath("../CanvasLayer/ChallengeOptions/BooRace"), NodePath("../CanvasLayer/ChallengeOptions/ChallengeHunt"), NodePath("../CanvasLayer/StoryMode/CustomCampaign/Continue"), NodePath("../CanvasLayer2/VBoxContainer/VersionLabel"), NodePath("../CanvasLayer/Options1/PlayGame"), NodePath("../CanvasLayer/Options1/Settings"), NodePath("../CanvasLayer/Options1/Quit Game"), NodePath("../CanvasLayer2/VBoxContainer/VersionLabel"), NodePath("../CanvasLayer/StoryMode/CustomCampaign/HighScore")]
 
 [node name="Logo" type="AnimatedSprite2D" parent="." unique_id=978665035]
 position = Vector2(0, -120)
@@ -1688,7 +1738,6 @@ metadata/_custom_type_script = "uid://cbal8ms2oe1ik"
 [connection signal="selected" from="CanvasLayer/CampaignSelect" to="." method="campaign_selected"]
 [connection signal="cancelled" from="CanvasLayer/SaveDeletionWarning" to="CanvasLayer/StoryMode/StoryOptions" method="open"]
 [connection signal="cancelled" from="CanvasLayer/QuitDialog" to="CanvasLayer/Options1" method="open"]
-[connection signal="timeout" from="CanvasLayer2/VersionLabel/Timer" to="CanvasLayer2/VersionLabel" method="update"]
 [connection signal="updated" from="BGM/ResourceSetterNew" to="." method="play_bgm"]
 
 [editable path="CanvasLayer/SettingsMenu"]

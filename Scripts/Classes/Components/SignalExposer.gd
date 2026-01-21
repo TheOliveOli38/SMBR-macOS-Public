@@ -71,6 +71,8 @@ func _ready() -> void:
 	top_level = true
 	call_deferred("connect_pre_existing_signals")
 	queue_redraw()
+	if Global.level_editor != null:
+		Global.level_editor.level_start.connect(queue_redraw)
 	if Global.current_game_mode == Global.GameMode.CUSTOM_LEVEL:
 		get_tree().call_group("Gizmos", "hide")
 
@@ -86,6 +88,13 @@ func _process(_delta: float) -> void:
 				no_moving = false
 
 func _draw() -> void:
+	show()
+	var gizmo_visible = false
+	if Global.level_editor != null:
+		gizmo_visible = Global.level_editor.gizmos_visible
+	if Global.level_editor_is_editing() == false and gizmo_visible == false:
+		hide()
+		return
 	if editing:
 		draw_square_line(owner.global_position, (get_global_mouse_position() + Vector2(-8, -8)).snapped(Vector2(16, 16)) + Vector2(8, 8), WIRE_COLOURS[connections.size()])
 	var idx := 0

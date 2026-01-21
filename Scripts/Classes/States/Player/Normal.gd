@@ -16,6 +16,8 @@ var wall_pushing := false
 
 var can_wall_push := false
 
+var initial_decel_x := 0.0
+
 func enter(_msg := {}) -> void:
 	jump_queued = false
 
@@ -35,6 +37,8 @@ func handle_death_pits() -> void:
 		player.die(true)
 
 func handle_movement(delta: float) -> void:
+	if (player.is_actually_on_floor() or player.in_water or player.flight_meter > 0 or player.physics_params("CAN_AIR_TURN")) and player.input_direction != 0 and not player.crouching:
+		player.direction = player.input_direction
 	jump_buffer -= 1
 	run_buffer -= 1
 	if jump_buffer <= 0:
@@ -110,6 +114,7 @@ func handle_ground_movement(delta: float) -> void:
 		player.skidding = true # TODO: player skids regardless of current input direction, add it as a param
 	elif player.input_direction != 0 and not player.crouching:
 		ground_acceleration(delta)
+		initial_decel_x = player.velocity.x
 	else:
 		deceleration(delta)
 
@@ -137,7 +142,9 @@ func ground_acceleration(delta: float) -> void:
 func deceleration(delta: float, airborne := false) -> void:
 	var decel_type = player.physics_params("AIR_DECEL")
 	if not airborne:
-		decel_type = player.physics_params("GROUND_DECEL")
+		decel_type = player.physics_params("GROUND_WALK_DECEL")
+		if abs(initial_decel_x) > player.physics_params("WALK_SPEED"):
+			decel_type = player.physics_params("GROUND_RUN_DECEL")
 	elif player.in_water or player.has_wings:
 		decel_type = player.physics_params("SWIM_DECEL")
 	if player.on_ice:
@@ -147,7 +154,7 @@ func deceleration(delta: float, airborne := false) -> void:
 		player.velocity.x = 0
 	
 func ground_skid(delta: float) -> void:
-	var target_skid: float = player.physics_params("RUN_SKID") if (Global.player_action_pressed("run", player.player_id) or run_buffer > 0) and player.can_run else player.physics_params("WALK_SKID")
+	var target_skid: float = player.physics_params("RUN_SKID") if abs(initial_decel_x) > player.physics_params("WALK_SPEED") else player.physics_params("WALK_SKID")
 	if player.on_ice:
 		target_skid *= player.physics_params("ICE_SKID_MOD")
 	player.skid_frames += 1
@@ -246,8 +253,6 @@ func swim_up() -> void:
 	player.crouching = false
 
 func handle_animations() -> void:
-	if (player.is_actually_on_floor() or player.in_water or player.flight_meter > 0 or player.physics_params("CAN_AIR_TURN")) and player.input_direction != 0 and not player.crouching:
-		player.direction = player.input_direction
 	var animation = get_animation_name()
 	player.sprite.speed_scale = 1
 	if ["Walk", "Move", "Run", "Jog"].has(animation):

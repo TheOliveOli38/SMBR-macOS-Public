@@ -12,7 +12,6 @@ script = ExtResource("1_s8udo")
 [node name="VineJoint" type="Node2D" parent="." unique_id=2042075377]
 
 [node name="Vine" parent="VineJoint" unique_id=1927177956 instance=ExtResource("2_r0orp")]
-can_tele = false
 
 [node name="LevelEditorVisibleNode" type="Node2D" parent="." unique_id=1565848778]
 script = ExtResource("3_25uon")
@@ -29,4 +28,4 @@ texture = ExtResource("4_7urmc")
 script = ExtResource("5_r0orp")
 metadata/_custom_type_script = "uid://b8vmbtoaaq5nc"
 
-[connection signal="level_start" from="LevelEditorToggleDetection" to="VineJoint/Vine" method="do_cutscene"]
+[connection signal="level_start" from="LevelEditorToggleDetection" to="." method="start"]

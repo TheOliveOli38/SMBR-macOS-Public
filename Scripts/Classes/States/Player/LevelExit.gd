@@ -32,9 +32,11 @@ func physics_update(delta: float) -> void:
 	if player.is_posing:
 		player.velocity.x = 0
 		return
-	player.input_direction = 1
 	player.can_run = false
+	player.input_direction = 1
 	player.normal_state.handle_movement(delta)
+	player.input_direction = 1
+	player.direction = 1
 	player.normal_state.handle_animations()
 
 func get_npc_count(param: String, default: String):

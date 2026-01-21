@@ -14,7 +14,7 @@ signal level_time_changed
 
 const BASE64_CHARSET := "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/"
 
-const VERSION_CHECK_URL := "https://raw.githubusercontent.com/JHDev2006/smb1r-version/refs/heads/main/version.txt"
+const VERSION_CHECK_URL := "https://cdn.jsdelivr.net/gh/JHDev2006/Super-Mario-Bros.-Remastered-Public@main/version.txt"
 @onready var screen_shaker: Node = $ScreenShaker
 
 var entity_gravity := 10.0
@@ -326,8 +326,11 @@ func get_build_time() -> void:
 
 func get_version_number() -> int:
 	var number = (FileAccess.open("res://version.txt", FileAccess.READ).get_as_text())
-	version_number = str(number)
+	version_number = str(number).replace("\n", "")
 	return int(number)
+
+func get_int_version_num(version_num := "") -> int:
+	return int(version_num.replace(".", "").pad_zeros(3))
 
 func player_action_pressed(action := "", player_id = 0) -> bool:
 	if SpeedrunHandler.simulating_inputs:
@@ -487,8 +490,9 @@ func get_server_version() -> void:
 	http.request(VERSION_CHECK_URL, [], HTTPClient.METHOD_GET)
 
 func version_got(_result, response_code, _headers, body) -> void:
+	current_version = get_version_num_int(version_number)
 	if response_code == 200:
-		server_version = int(body.get_string_from_utf8())
+		server_version = int(get_version_num_int(body.get_string_from_utf8()))
 	else:
 		server_version = -2
 
@@ -593,8 +597,8 @@ func create_translation_from_json(locale := "") -> void:
 	TranslationServer.add_translation(trans)
 
 func remove_cryllic_characters(message := "") -> String:
-	const cryllic := "авекмнорстух"
-	const latin := "abekmhopctyx"
+	const cryllic := "авекмнорстух’"
+	const latin := "abekmhopctyx'"
 	var idx := 0
 	for i in cryllic:
 		message = message.replace(i, latin[idx])

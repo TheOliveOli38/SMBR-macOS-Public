@@ -21,7 +21,7 @@ var can_grow := false
 @export_range(2, 16) var length := 3.0
 
 func _ready() -> void:
-	if cutscene:
+	if cutscene and Global.level_editor_is_editing() == false:
 		do_cutscene()
 	if has_meta("block_item"):
 		$SFX.play()
@@ -29,15 +29,18 @@ func _ready() -> void:
 		global_position.y -= 1
 
 func do_cutscene() -> void:
+	Level.in_vine_level = true
 	if owner is WarpVine:
 		top_point = global_position.y
 	global_position.y = 40
 	$SFX.play()
 	can_grow = true
 	can_tele = false
-	for i in get_tree().get_nodes_in_group("Players"):
+	can_stop = true
+	for i: Player in get_tree().get_nodes_in_group("Players"):
 		i.global_position = Vector2(global_position.x, 64)
 		i.hide()
+		i.auto_death_pit = false
 		i.state_machine.transition_to("Freeze")
 	await stopped
 	can_tele = false
@@ -49,6 +52,7 @@ func do_cutscene() -> void:
 		var climb_state = i.get_node("States/Climb")
 		climb_state.climb_direction = -1
 		var distance = abs(i.global_position.y - (top_point + 24))
+		print([i.global_position.y, top_point])
 		var climb_time = distance / (50)
 		print([distance, climb_time])
 		await get_tree().create_timer(climb_time, false).timeout
@@ -56,6 +60,7 @@ func do_cutscene() -> void:
 		climb_state.climb_direction = 0
 		await get_tree().create_timer(0.5, false).timeout
 		i.state_machine.transition_to("Normal")
+		i.auto_death_pit = true
 		for x in [1, 2]:
 			i.set_collision_mask_value(x, true)
 
