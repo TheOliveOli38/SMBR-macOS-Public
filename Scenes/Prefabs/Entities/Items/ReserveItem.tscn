@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://1a8j44cmswcj"]
+[gd_scene format=3 uid="uid://1a8j44cmswcj"]
 
 [ext_resource type="Script" uid="uid://bbeh6dsp1hpan" path="res://Scripts/Classes/Entities/Items/ReserveItem.gd" id="1_ik5mc"]
 
@@ -58,9 +58,7 @@ wait_time = 8.0
 autostart = true
 
 [node name="Animation" type="AnimationPlayer" parent="." unique_id=712200808]
-libraries = {
-&"": SubResource("AnimationLibrary_flkw7")
-}
+libraries/ = SubResource("AnimationLibrary_flkw7")
 autoplay = &"Flash"
 speed_scale = 2.0
 

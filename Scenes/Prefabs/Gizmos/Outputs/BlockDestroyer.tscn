@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://qr3r007ycaye"]
+[gd_scene format=3 uid="uid://qr3r007ycaye"]
 
 [ext_resource type="Script" uid="uid://cla6sm4iau5kc" path="res://Scripts/Classes/Gizmos/BlockDestroyer.gd" id="1_aassf"]
 [ext_resource type="Texture2D" uid="uid://byl13xpy37d7h" path="res://Assets/Sprites/Editor/Gizmos/BlockBreak.png" id="2_5gu88"]

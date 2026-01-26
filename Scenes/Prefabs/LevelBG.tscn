@@ -1,4 +1,4 @@
-[gd_scene load_steps=81 format=4 uid="uid://bksxgpygrdjl7"]
+[gd_scene format=4 uid="uid://bksxgpygrdjl7"]
 
 [ext_resource type="Script" uid="uid://erdjx03phltn" path="res://Scripts/Classes/LevelBGNew.gd" id="1_pkg8e"]
 [ext_resource type="Script" uid="uid://cq6f682453q6o" path="res://Scripts/Classes/Components/ResourceSetter.gd" id="3_6m0f5"]
@@ -478,17 +478,13 @@ metadata/_custom_type_script = "uid://ca3bew33g45eq"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="DiscoBits/Rainbow/Joint/DiscoRainbow" unique_id=117685159]
 process_mode = 1
-libraries = {
-&"": SubResource("AnimationLibrary_joqdr")
-}
+libraries/ = SubResource("AnimationLibrary_joqdr")
 autoplay = &"Rainbow"
 speed_scale = 0.1
 
 [node name="Rhythm" type="AnimationPlayer" parent="DiscoBits/Rainbow/Joint/DiscoRainbow" unique_id=481626478]
 process_mode = 1
-libraries = {
-&"": SubResource("AnimationLibrary_lvidp")
-}
+libraries/ = SubResource("AnimationLibrary_lvidp")
 autoplay = &"Bob"
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="DiscoBits/Rainbow/Joint/DiscoRainbow" unique_id=79591709]
@@ -523,9 +519,7 @@ flip_h = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="DiscoBits/SpotLights" unique_id=74051779]
 process_mode = 1
-libraries = {
-&"": SubResource("AnimationLibrary_34fd5")
-}
+libraries/ = SubResource("AnimationLibrary_34fd5")
 autoplay = &"Turn"
 speed_scale = 0.2
 

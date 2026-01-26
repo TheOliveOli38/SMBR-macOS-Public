@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=3 uid="uid://bpbs3060xjy06"]
+[gd_scene format=3 uid="uid://bpbs3060xjy06"]
 [ext_resource type="PackedScene" uid="uid://brwg107knciu1" path="res://Scenes/Levels/SMB1/World2/2-3.tscn" id="1_at5iw"]
 [ext_resource type="Texture2D" uid="uid://dt0qtxu2l646n" path="res://Assets/Sprites/Tilesets/Terrain/Overworld.png" id="2_ak7co"]
 [ext_resource type="JSON" path="res://Assets/Audio/BGM/Jungle.json" id="2_rdo6i"]
@@ -930,7 +930,7 @@ texture = ExtResource("25_4iqk6")
 8: [17],
 &"type": 17
 }
-[sub_resource type="TileSet" id="TileSet_cg58p"]
+[sub_resource type="TileSet" id="TileSet_rdo6i"]
 resource_local_to_scene = true
 physics_layer_0/collision_layer = 2
 physics_layer_0/collision_mask = 0
@@ -1013,7 +1013,7 @@ world_id = 7
 time_of_day = 1
 primary_layer = 1
 [node name="Tiles" parent="." index="2" unique_id=918083686]
-tile_set = SubResource("TileSet_cg58p")
+tile_set = SubResource("TileSet_rdo6i")
 [node name="ChallengeNodes" parent="." index="9" unique_id=1297324198 node_paths=PackedStringArray("nodes_to_delete")]
 nodes_to_delete = []
 [node name="RedCoin" parent="ChallengeNodes" index="0" unique_id=1002999350]

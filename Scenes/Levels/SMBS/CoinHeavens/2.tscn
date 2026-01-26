@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=4 uid="uid://c35b7tv73rfqm"]
+[gd_scene format=4 uid="uid://c35b7tv73rfqm"]
 [ext_resource type="PackedScene" uid="uid://b25x1t17eeod4" path="res://Scenes/Levels/SMBS/CoinHeavens/1.tscn" id="1_868j5"]
 [ext_resource type="Texture2D" uid="uid://dt0qtxu2l646n" path="res://Assets/Sprites/Tilesets/Terrain/Overworld.png" id="2_xgmee"]
 [ext_resource type="PackedScene" uid="uid://dsa8lpl7n8ge0" path="res://Scenes/Prefabs/Blocks/BrickBlocks/BrickBlock.tscn" id="3_ssfvk"]
@@ -928,7 +928,7 @@ texture = ExtResource("25_dquhd")
 8: [17],
 &"type": 17
 }
-[sub_resource type="TileSet" id="TileSet_3gyma"]
+[sub_resource type="TileSet" id="TileSet_vt4yp"]
 resource_local_to_scene = true
 physics_layer_0/collision_layer = 2
 physics_layer_0/collision_mask = 0
@@ -1007,7 +1007,7 @@ metadata/_better_terrain = {
 position = Vector2(-88, -48)
 [node name="Tiles" parent="." index="1" unique_id=1674661667]
 tile_map_data = PackedByteArray("AADz/wAAAAAIAAEAAAD1/wAAAAAEAAEAAAD2/wAAAAAEAAEAAAD3/wAAAAAEAAEAAAD4/wAAAAAEAAEAAAD5/wAAAAAEAAEAAAD6/wAAAAAEAAEAAAD7/wAAAAAEAAEAAAD8/wAAAAAEAAEAAAD9/wAAAAAEAAEAAAD+/wAAAAAEAAEAAAD//wAAAAAEAAEAAAAAAAAAAAAEAAEAAAABAAAAAAAEAAEAAAACAAAAAAAEAAEAAAADAAAAAAAEAAEAAAAEAAAAAAAEAAEAAAAFAAAAAAAEAAEAAAAGAAAAAAAEAAEAAAAHAAAAAAAEAAEAAAAIAAAAAAAEAAEAAAAJAAAAAAAEAAEAAAAKAAAAAAAEAAEAAAALAAAAAAAEAAEAAAAMAAAAAAAEAAEAAAANAAAAAAAEAAEAAAAOAAAAAAAEAAEAAAAPAAAAAAAEAAEAAAAQAAAAAAAEAAEAAAARAAAAAAAEAAEAAAASAAAAAAAEAAEAAAAaAAAAAQAAAAAAAwAbAAAAAQAAAAAAAwAcAAAAAQAAAAAAAwAUAPj/AQAAAAAAAwADAPn/AQAAAAAAAwAEAPn/AQAAAAAAAwAFAPn/AQAAAAAAAwAGAPn/AQAAAAAAAwAHAPn/AQAAAAAAAwAIAPn/AQAAAAAAAwAJAPn/AQAAAAAAAwAKAPn/AQAAAAAAAwAMAPj/AQAAAAAAAwANAPj/AQAAAAAAAwAOAPj/AQAAAAAAAwD5//r/AQAAAAAAAwD6//r/AQAAAAAAAwD7//r/AQAAAAAAAwD8//r/AQAAAAAAAwD9//r/AQAAAAAAAwD+//r/AQAAAAAAAwD///r/AQAAAAAAAwAAAPr/AQAAAAAAAwABAPr/AQAAAAAAAwAPAPj/AQAAAAAAAwAQAPj/AQAAAAAAAwARAPj/AQAAAAAAAwASAPj/AQAAAAAAAwATAPj/AQAAAAAAAwDz//7/AAAIAAAAAADz////AAAIAAEAAAD0//7/AAAJAAAAAAD0////AAAJAAEAAAD0/wAAAAAJAAEAAADz/wEAAAAIAAEAAAD0/wEAAAAJAAEAAAA=")
-tile_set = SubResource("TileSet_3gyma")
+tile_set = SubResource("TileSet_vt4yp")
 [node name="Player" parent="." index="2" unique_id=995531091]
 position = Vector2(-192, -32)
 [node name="Vine" parent="." index="3" unique_id=1099555624]

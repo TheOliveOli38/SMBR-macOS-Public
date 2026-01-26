@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://cs8iql18nkljw"]
+[gd_scene format=3 uid="uid://cs8iql18nkljw"]
 
 [ext_resource type="PackedScene" uid="uid://bhmlkk0b6od2o" path="res://Scenes/Parts/WarpPipeArea.tscn" id="1_cqjry"]
 [ext_resource type="Script" uid="uid://b0scyyxg64wbp" path="res://Scripts/Parts/WarpZone.gd" id="1_ngmjk"]

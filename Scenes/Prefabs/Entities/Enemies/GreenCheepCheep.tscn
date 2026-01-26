@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://bdirphnfabey8"]
+[gd_scene format=3 uid="uid://bdirphnfabey8"]
 
 [ext_resource type="Texture2D" uid="uid://dbq7oso3fo4n6" path="res://Assets/Sprites/Enemies/CheepCheep.png" id="1_123qd"]
 [ext_resource type="Script" uid="uid://b475vfhcp2f30" path="res://Scripts/Classes/Entities/Enemies/SwimmingCheepCheep.gd" id="1_a3qb1"]
@@ -152,9 +152,7 @@ resource_json = ExtResource("5_8m1k0")
 metadata/_custom_type_script = "uid://cbal8ms2oe1ik"
 
 [node name="Animations" type="AnimationPlayer" parent="." unique_id=1193360541]
-libraries = {
-&"": SubResource("AnimationLibrary_a5qfu")
-}
+libraries/ = SubResource("AnimationLibrary_a5qfu")
 autoplay = &"Swim"
 
 [node name="EnemyPlayerDetection" type="Node" parent="." unique_id=158974708 node_paths=PackedStringArray("hitbox")]
@@ -163,9 +161,7 @@ hitbox = NodePath("../Sprite/Hitbox")
 metadata/_custom_type_script = "uid://chj8hu207lrh"
 
 [node name="WaveAnimations" type="AnimationPlayer" parent="." unique_id=1758554296]
-libraries = {
-&"": SubResource("AnimationLibrary_reflr")
-}
+libraries/ = SubResource("AnimationLibrary_reflr")
 
 [node name="FireballDetection" type="Node" parent="." unique_id=2076017409 node_paths=PackedStringArray("hitbox")]
 script = ExtResource("4_cd02n")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://58uk17ixtt4r"]
+[gd_scene format=3 uid="uid://58uk17ixtt4r"]
 
 [ext_resource type="PackedScene" uid="uid://bc1mrna4kybhv" path="res://Scenes/Prefabs/Blocks/QuestionBlocks/QuestionBlock.tscn" id="1_8myna"]
 [ext_resource type="Texture2D" uid="uid://bylhrj768sua2" path="res://Assets/Sprites/Blocks/InvisibleBlock.png" id="2_qh1vn"]

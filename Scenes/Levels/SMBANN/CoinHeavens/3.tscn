@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=3 uid="uid://dq3axnned8s60"]
+[gd_scene format=3 uid="uid://dq3axnned8s60"]
 [ext_resource type="PackedScene" uid="uid://1j5xfkmge06g" path="res://Scenes/Levels/SMB1/CoinHeavens/2.tscn" id="1_tke4q"]
 [ext_resource type="Texture2D" uid="uid://dt0qtxu2l646n" path="res://Assets/Sprites/Tilesets/Terrain/Overworld.png" id="2_d37qs"]
 [ext_resource type="PackedScene" uid="uid://dsa8lpl7n8ge0" path="res://Scenes/Prefabs/Blocks/BrickBlocks/BrickBlock.tscn" id="3_plp52"]
@@ -928,7 +928,7 @@ texture = ExtResource("25_6vttl")
 8: [17],
 &"type": 17
 }
-[sub_resource type="TileSet" id="TileSet_3ipl0"]
+[sub_resource type="TileSet" id="TileSet_5amn8"]
 resource_local_to_scene = true
 physics_layer_0/collision_layer = 2
 physics_layer_0/collision_mask = 0
@@ -1006,7 +1006,7 @@ metadata/_better_terrain = {
 theme_time = "Night"
 campaign = "SMBANN"
 [node name="Tiles" parent="." index="1" unique_id=1674661667]
-tile_set = SubResource("TileSet_3ipl0")
+tile_set = SubResource("TileSet_5amn8")
 [node name="LevelBG" parent="." index="8" unique_id=458182856]
 time_of_day = 1
 [node name="DiscoLevel" type="Node" parent="." index="10" unique_id=1944176096]

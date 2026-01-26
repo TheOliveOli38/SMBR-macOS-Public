@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://dk2ng6xfg0nt0"]
+[gd_scene format=3 uid="uid://dk2ng6xfg0nt0"]
 
 [ext_resource type="Script" uid="uid://cn4ofhpylbaoi" path="res://Scripts/Classes/Gizmos/GlobalCounter.gd" id="1_ll5pm"]
 [ext_resource type="Texture2D" uid="uid://b4dgfpxq1x2lq" path="res://Assets/Sprites/Editor/Gizmos/GlobalCounter.png" id="2_ll5pm"]

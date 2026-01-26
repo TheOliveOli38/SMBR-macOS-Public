@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=4 uid="uid://c3mq7g1t148ob"]
+[gd_scene format=4 uid="uid://c3mq7g1t148ob"]
 [ext_resource type="Script" uid="uid://bcqr1v25ygedb" path="res://Scripts/Classes/LevelClass.gd" id="1_oqfsp"]
 [ext_resource type="PackedScene" uid="uid://bksxgpygrdjl7" path="res://Scenes/Prefabs/LevelBG.tscn" id="2_5k4q3"]
 [ext_resource type="JSON" path="res://Assets/Audio/BGM/Pipeland.json" id="2_oqfsp"]

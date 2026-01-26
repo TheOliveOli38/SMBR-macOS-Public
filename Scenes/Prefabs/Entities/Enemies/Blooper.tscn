@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://b6drci0vml1as"]
+[gd_scene format=3 uid="uid://b6drci0vml1as"]
 
 [ext_resource type="Script" uid="uid://coocdv3t4548x" path="res://Scripts/Classes/Entities/Enemies/Blooper.gd" id="1_qryyi"]
 [ext_resource type="Script" uid="uid://cbal8ms2oe1ik" path="res://Scripts/Classes/Components/ResourceSetterNew.gd" id="3_6d25s"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://bhx2adtdkahoa"]
+[gd_scene format=3 uid="uid://bhx2adtdkahoa"]
 
 [ext_resource type="PackedScene" uid="uid://dvmr3r2uub283" path="res://Scenes/Prefabs/Entities/Objects/TrackRider.tscn" id="1_y3dga"]
 [ext_resource type="Script" uid="uid://cdx37y58vp4u0" path="res://Scripts/Classes/Entities/Objects/RailPlatform.gd" id="2_wkfgu"]

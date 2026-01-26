@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://cassl51oehlb6"]
+[gd_scene format=3 uid="uid://cassl51oehlb6"]
 
 [ext_resource type="Script" uid="uid://hk6ml16axmcc" path="res://Scripts/Classes/Entities/Objects/CheckpointFlag.gd" id="1_5d61x"]
 [ext_resource type="Script" uid="uid://dtdc4oaygllfa" path="res://Scripts/Parts/Checkpoint.gd" id="1_dai6d"]

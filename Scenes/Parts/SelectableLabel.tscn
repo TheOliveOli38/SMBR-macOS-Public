@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://bmn81e10obpjv"]
+[gd_scene format=3 uid="uid://bmn81e10obpjv"]
 
 [ext_resource type="Script" uid="uid://c8xv30jxw6uum" path="res://Scripts/UI/SelectableLabel.gd" id="1_bg4p8"]
 [ext_resource type="Texture2D" uid="uid://3p2l7rec0gh5" path="res://Assets/Sprites/UI/Cursor.png" id="2_rfswy"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://c6x7gv2lqeu1x"]
+[gd_scene format=3 uid="uid://c6x7gv2lqeu1x"]
 
 [ext_resource type="Texture2D" uid="uid://bk0p52ttwojml" path="res://Assets/Sprites/Tilesets/Platform.png" id="1_sh7r3"]
 [ext_resource type="Script" uid="uid://cbal8ms2oe1ik" path="res://Scripts/Classes/Components/ResourceSetterNew.gd" id="2_sxeqe"]
@@ -75,9 +75,7 @@ position = Vector2(0, 4)
 shape = SubResource("RectangleShape2D_mq7me")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1545031201]
-libraries = {
-&"": SubResource("AnimationLibrary_kqk52")
-}
+libraries/ = SubResource("AnimationLibrary_kqk52")
 autoplay = &"Move"
 
 [node name="LevelEditorVisibleNode" type="Node2D" parent="." unique_id=1611952820]

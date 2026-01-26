@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://csmgewjk06lkj"]
+[gd_scene format=3 uid="uid://csmgewjk06lkj"]
 
 [ext_resource type="Script" uid="uid://bmgyaho01qb1u" path="res://Scripts/Classes/Entities/Enemies/HomingBill.gd" id="1_ulw4f"]
 [ext_resource type="Texture2D" uid="uid://ckjjqcfoutqyp" path="res://Assets/Sprites/Enemies/HomingBill.png" id="2_d4aew"]

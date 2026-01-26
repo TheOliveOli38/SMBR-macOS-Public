@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://l8qvjfxryj6m"]
+[gd_scene format=3 uid="uid://l8qvjfxryj6m"]
 
 [ext_resource type="Script" uid="uid://dncadgefbc4c0" path="res://Scripts/Parts/TilePropertySignal.gd" id="1_vwolr"]
 [ext_resource type="Texture2D" uid="uid://bnv2ocqgws3p7" path="res://Assets/Sprites/UI/Panel.png" id="2_vy2or"]

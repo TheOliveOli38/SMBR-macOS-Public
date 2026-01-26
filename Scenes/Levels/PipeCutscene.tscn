@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=4 uid="uid://b1cgn0pwii7yq"]
+[gd_scene format=4 uid="uid://b1cgn0pwii7yq"]
 
 [ext_resource type="Script" uid="uid://b5jr4tsdixg1w" path="res://Scripts/Parts/PipeCutscene.gd" id="1_16rwd"]
 [ext_resource type="PackedScene" uid="uid://ct5rrpa7uehkk" path="res://Scenes/Parts/Tiles.tscn" id="2_hx3rw"]
@@ -147,9 +147,7 @@ script = ExtResource("6_00pvh")
 metadata/_custom_type_script = "uid://cbal8ms2oe1ik"
 
 [node name="Animation" type="AnimationPlayer" parent="." unique_id=480760234]
-libraries = {
-&"": SubResource("AnimationLibrary_00pvh")
-}
+libraries/ = SubResource("AnimationLibrary_00pvh")
 autoplay = &"new_animation"
 
 [node name="Music" type="AudioStreamPlayer" parent="." unique_id=1401418820]

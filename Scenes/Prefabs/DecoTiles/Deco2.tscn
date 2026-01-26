@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=4 uid="uid://bch3ww1n42g7v"]
+[gd_scene format=4 uid="uid://bch3ww1n42g7v"]
 
 [ext_resource type="Texture2D" uid="uid://cnexuteg5rvye" path="res://Assets/Sprites/Tilesets/Deco/DecoTemplate.png" id="1_fb4vb"]
 [ext_resource type="Script" uid="uid://73oviwf6bbys" path="res://Scripts/Classes/Components/TilesetTextureSetter.gd" id="2_fb4vb"]

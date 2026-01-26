@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://c3m38c2skawpj"]
+[gd_scene format=3 uid="uid://c3m38c2skawpj"]
 
 [ext_resource type="Script" uid="uid://bfsh8bhcmknkh" path="res://Scripts/Classes/Entities/Enemies/RockyWrench.gd" id="1_pl7bt"]
 [ext_resource type="Texture2D" uid="uid://bfora2lrmtyj4" path="res://Assets/Sprites/Enemies/RockyWrench.png" id="2_8y80u"]
@@ -341,9 +341,7 @@ script = ExtResource("5_8y80u")
 metadata/_custom_type_script = "uid://bx6r8sjar6cwr"
 
 [node name="Animations" type="AnimationPlayer" parent="." unique_id=8877567]
-libraries = {
-&"": SubResource("AnimationLibrary_3dqyr")
-}
+libraries/ = SubResource("AnimationLibrary_3dqyr")
 
 [node name="AnimatableBody2D" type="AnimatableBody2D" parent="." unique_id=439700727]
 position = Vector2(0, -2)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://coephittbrnw7"]
+[gd_scene format=3 uid="uid://coephittbrnw7"]
 
 [ext_resource type="Texture2D" uid="uid://duxkbhsbnmrvs" path="res://Assets/Sprites/Editor/Darkness.png" id="1_5kpm8"]
 [ext_resource type="Script" uid="uid://ck3usg0sqgnoa" path="res://Scripts/Classes/Entities/Objects/DarknessEffect.gd" id="1_5svaq"]
@@ -67,9 +67,7 @@ color = Color(0, 0, 0, 1)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer" unique_id=1091307709]
 root_node = NodePath("../CanvasGroup")
-libraries = {
-&"": SubResource("AnimationLibrary_3hppk")
-}
+libraries/ = SubResource("AnimationLibrary_3hppk")
 
 [node name="LevelEditorToggleDetection" type="Node" parent="." unique_id=202866656]
 script = ExtResource("3_4owni")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://ccgskwqm418q0"]
+[gd_scene format=3 uid="uid://ccgskwqm418q0"]
 
 [ext_resource type="PackedScene" uid="uid://bbrkol4k3yobq" path="res://Scenes/Prefabs/Entities/Enemies/RaceBoo.tscn" id="1_gu5ge"]
 [ext_resource type="Script" uid="uid://d4a7yp6e55u8t" path="res://Scripts/Classes/Components/TrackJoint.gd" id="2_pcxou"]

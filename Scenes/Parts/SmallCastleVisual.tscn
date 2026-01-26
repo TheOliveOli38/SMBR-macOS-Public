@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=4 uid="uid://qn4g0qkjcuiy"]
+[gd_scene format=4 uid="uid://qn4g0qkjcuiy"]
 
 [ext_resource type="Script" uid="uid://cdvxqkeqa7en5" path="res://Scripts/Parts/CastleVisual.gd" id="1_oxmfh"]
 [ext_resource type="Texture2D" uid="uid://dt0qtxu2l646n" path="res://Assets/Sprites/Tilesets/Terrain/Overworld.png" id="2_tt5sy"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://t5vu4gl0ra8x"]
+[gd_scene format=3 uid="uid://t5vu4gl0ra8x"]
 
 [ext_resource type="PackedScene" uid="uid://c6x7gv2lqeu1x" path="res://Scenes/Prefabs/Entities/Objects/VerticalPlatform.tscn" id="1_nwvxx"]
 [ext_resource type="Texture2D" uid="uid://dfpbjnd1o5tig" path="res://Assets/Sprites/Tilesets/OnOffPlatform.png" id="2_iy32g"]

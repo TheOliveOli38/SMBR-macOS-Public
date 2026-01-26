@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=4 uid="uid://d0na80svnjvy6"]
+[gd_scene format=4 uid="uid://d0na80svnjvy6"]
 [ext_resource type="PackedScene" uid="uid://2ianqfjihktc" path="res://Scenes/Levels/SMB1/World2/2-4.tscn" id="1_xwtdg"]
 [ext_resource type="Script" uid="uid://bjs5mlc3xrxud" path="res://Scripts/Parts/DiscoLevel.gd" id="2_6spaw"]
 [ext_resource type="PackedScene" uid="uid://iq86u4w60yee" path="res://Scenes/Prefabs/Entities/Objects/Firebar.tscn" id="3_6spaw"]

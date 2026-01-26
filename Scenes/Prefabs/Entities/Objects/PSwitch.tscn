@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://ciddq8ctlj453"]
+[gd_scene format=3 uid="uid://ciddq8ctlj453"]
 
 [ext_resource type="Script" uid="uid://df20kjawaoqcl" path="res://Scripts/Classes/Entities/Objects/PSwitch.gd" id="1_v4mdn"]
 [ext_resource type="Texture2D" uid="uid://y81rhybgt7kb" path="res://Assets/Sprites/Items/PSwitch.png" id="1_x602l"]
@@ -169,9 +169,7 @@ play_death_sfx = false
 metadata/_custom_type_script = "uid://c3gg32ivrlq8n"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1620868009]
-libraries = {
-&"": SubResource("AnimationLibrary_eeyhw")
-}
+libraries/ = SubResource("AnimationLibrary_eeyhw")
 
 [node name="LCollision" type="CollisionShape2D" parent="." unique_id=1654539811]
 position = Vector2(0, -6)

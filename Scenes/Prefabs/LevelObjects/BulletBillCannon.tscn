@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://bqhtste1il47d"]
+[gd_scene format=3 uid="uid://bqhtste1il47d"]
 
 [ext_resource type="Script" uid="uid://0btfo4kjnnrg" path="res://Scripts/Parts/BulletBillCannon.gd" id="1_je07o"]
 [ext_resource type="Script" uid="uid://cpwloakvp672a" path="res://Scripts/Parts/EditorVisibleNode.gd" id="2_vkq2x"]

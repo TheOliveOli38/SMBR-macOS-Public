@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://bj86ruaswego"]
+[gd_scene format=3 uid="uid://bj86ruaswego"]
 [ext_resource type="PackedScene" uid="uid://8gl7bfh13471" path="res://Scenes/Levels/SMBLL/World4/4-4.tscn" id="1_mxym3"]
 [ext_resource type="Script" uid="uid://bjs5mlc3xrxud" path="res://Scripts/Parts/DiscoLevel.gd" id="2_mpkel"]
 [ext_resource type="PackedScene" uid="uid://1rxw4k4wq3ni" path="res://Scenes/Prefabs/Entities/Enemies/PiranhaPlant.tscn" id="3_qw7d2"]

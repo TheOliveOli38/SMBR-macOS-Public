@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://bumvqjhs2xxka"]
+[gd_scene format=3 uid="uid://bumvqjhs2xxka"]
 
 [ext_resource type="Script" uid="uid://bfdtqldkrv4dn" path="res://Scripts/Classes/Entities/Enemies/CannonBall.gd" id="1_yim3j"]
 [ext_resource type="Script" uid="uid://cbal8ms2oe1ik" path="res://Scripts/Classes/Components/ResourceSetterNew.gd" id="2_yim3j"]

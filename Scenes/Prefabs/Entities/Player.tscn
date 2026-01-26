@@ -1,4 +1,4 @@
-[gd_scene load_steps=83 format=3 uid="uid://cuh62hlq8errh"]
+[gd_scene format=3 uid="uid://cuh62hlq8errh"]
 
 [ext_resource type="Script" uid="uid://dt4rosa5o35xr" path="res://Scripts/Classes/Entities/Player.gd" id="1_f6bau"]
 [ext_resource type="Script" uid="uid://uribh0f1jttq" path="res://Scripts/Classes/States/StateMachine.gd" id="2_1y62l"]
@@ -546,9 +546,7 @@ region_enabled = true
 region_rect = Rect2(0, 0, 16, 16)
 
 [node name="Animation" type="AnimationPlayer" parent="SpriteScaleJoint/Sprite/Hammer/HammerSprite" unique_id=1993102241]
-libraries = {
-&"": SubResource("AnimationLibrary_bl5al")
-}
+libraries/ = SubResource("AnimationLibrary_bl5al")
 autoplay = &"Swing"
 
 [node name="ResourceSetterNew" type="Node" parent="SpriteScaleJoint/Sprite/Hammer/HammerSprite" unique_id=1507131769 node_paths=PackedStringArray("node_to_affect")]
@@ -594,15 +592,11 @@ resource_json = ExtResource("9_o70e0")
 metadata/_custom_type_script = "uid://cbal8ms2oe1ik"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="SpriteScaleJoint/Sprite/Wings" unique_id=305580541]
-libraries = {
-&"": SubResource("AnimationLibrary_nbkfn")
-}
+libraries/ = SubResource("AnimationLibrary_nbkfn")
 
 [node name="GrowAnimation" type="AnimationPlayer" parent="SpriteScaleJoint/Sprite" unique_id=70684433]
 unique_name_in_owner = true
-libraries = {
-&"": SubResource("AnimationLibrary_pm4ir")
-}
+libraries/ = SubResource("AnimationLibrary_pm4ir")
 
 [node name="ShakeLines" type="Node2D" parent="SpriteScaleJoint" unique_id=1569410648]
 unique_name_in_owner = true
@@ -618,9 +612,7 @@ texture = ExtResource("11_pm4ir")
 flip_h = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="SpriteScaleJoint/ShakeLines" unique_id=1495713129]
-libraries = {
-&"": SubResource("AnimationLibrary_o5ef6")
-}
+libraries/ = SubResource("AnimationLibrary_o5ef6")
 autoplay = &"Shake"
 
 [node name="States" type="Node" parent="." unique_id=2000324112 node_paths=PackedStringArray("state")]
@@ -794,9 +786,7 @@ position = Vector2(0, -40)
 texture = ExtResource("13_uo1a1")
 
 [node name="Animation" type="AnimationPlayer" parent="Checkpoint" unique_id=422213166]
-libraries = {
-&"": SubResource("AnimationLibrary_f873f")
-}
+libraries/ = SubResource("AnimationLibrary_f873f")
 speed_scale = 2.0
 
 [node name="Label" type="Label" parent="Checkpoint" unique_id=1875402602]

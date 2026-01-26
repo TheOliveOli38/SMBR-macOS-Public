@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://3pvbcy3lkl7r"]
+[gd_scene format=3 uid="uid://3pvbcy3lkl7r"]
 
 [ext_resource type="PackedScene" uid="uid://lglmgqp3emy4" path="res://Scenes/Prefabs/Blocks/OnOffFanRed.tscn" id="1_d1mvb"]
 [ext_resource type="Texture2D" uid="uid://d0o6wgsrow8t1" path="res://Assets/Sprites/Blocks/OnOffFan.png" id="2_doyjh"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://buj10cxh15fnd"]
+[gd_scene format=3 uid="uid://buj10cxh15fnd"]
 
 [ext_resource type="StyleBox" uid="uid://comkghpj0djcl" path="res://Resources/UI/Panel.tres" id="1_hb2fw"]
 [ext_resource type="StyleBox" uid="uid://dlbdmqmnl30sq" path="res://Resources/UI/PanelSelected.tres" id="2_i7nao"]

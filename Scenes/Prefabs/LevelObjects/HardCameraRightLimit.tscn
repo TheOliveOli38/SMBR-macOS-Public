@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://ds5iugeocqd6a"]
+[gd_scene format=3 uid="uid://ds5iugeocqd6a"]
 
 [ext_resource type="Script" uid="uid://bdq0373j5n5o0" path="res://Scripts/Parts/CameraRightLimit.gd" id="1_f6lpd"]
 [ext_resource type="Script" uid="uid://cpwloakvp672a" path="res://Scripts/Parts/EditorVisibleNode.gd" id="2_gtkaw"]

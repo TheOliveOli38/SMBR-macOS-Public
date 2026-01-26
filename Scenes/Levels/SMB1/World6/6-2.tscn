@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=4 uid="uid://iinenbioxht"]
+[gd_scene format=4 uid="uid://iinenbioxht"]
 [ext_resource type="Script" uid="uid://bcqr1v25ygedb" path="res://Scripts/Classes/LevelClass.gd" id="1_akw71"]
 [ext_resource type="JSON" path="res://Assets/Audio/BGM/Snow.json" id="2_v8ufo"]
 [ext_resource type="PackedScene" uid="uid://cuh62hlq8errh" path="res://Scenes/Prefabs/Entities/Player.tscn" id="2_yq0sr"]

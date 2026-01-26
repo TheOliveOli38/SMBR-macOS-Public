@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://b6sqq06q4dhnc"]
+[gd_scene format=3 uid="uid://b6sqq06q4dhnc"]
 
 [ext_resource type="PackedScene" uid="uid://13vxk381k4gt" path="res://Scenes/Prefabs/Entities/Enemies/AngrySun.tscn" id="1_7nval"]
 [ext_resource type="JSON" path="res://Assets/Sprites/Enemies/HappyMoon.json" id="2_qmw72"]

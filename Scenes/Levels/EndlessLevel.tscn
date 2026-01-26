@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=4 uid="uid://4livv5qmwy2x"]
+[gd_scene format=4 uid="uid://4livv5qmwy2x"]
 
 [ext_resource type="Script" uid="uid://bcqr1v25ygedb" path="res://Scripts/Classes/LevelClass.gd" id="1_o1m72"]
 [ext_resource type="PackedScene" uid="uid://githt8ci1xal" path="res://Scenes/Parts/StartCastle.tscn" id="3_j12wv"]

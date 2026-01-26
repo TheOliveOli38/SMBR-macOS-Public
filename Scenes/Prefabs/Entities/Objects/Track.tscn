@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://dijxmmwdyjbjc"]
+[gd_scene format=3 uid="uid://dijxmmwdyjbjc"]
 
 [ext_resource type="Script" uid="uid://3heyyx506fnu" path="res://Scripts/Classes/Entities/Objects/Track.gd" id="1_5apin"]
 [ext_resource type="Texture2D" uid="uid://50hm4xgnw8ks" path="res://Assets/Sprites/Tilesets/Tracks.png" id="1_jn31b"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://b5o0j3kfv2xys"]
+[gd_scene format=3 uid="uid://b5o0j3kfv2xys"]
 
 [ext_resource type="PackedScene" uid="uid://bney0cc8cfm5s" path="res://Scenes/Prefabs/LevelObjects/EndFinalCastle.tscn" id="1_fa5ur"]
 [ext_resource type="Texture2D" uid="uid://gnqt7rl36kxy" path="res://Assets/Sprites/Tilesets/CastleFlag.png" id="2_jp1ee"]

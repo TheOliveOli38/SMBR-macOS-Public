@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://bns36dxghle7h"]
+[gd_scene format=3 uid="uid://bns36dxghle7h"]
 
 [ext_resource type="PackedScene" uid="uid://b2r255cb4tt7t" path="res://Scenes/Prefabs/Gizmos/Inputs/BaseInput.tscn" id="1_ls4vr"]
 [ext_resource type="Script" uid="uid://bh02gxmetuqxk" path="res://Scripts/Classes/Gizmos/Warper.gd" id="2_qamsa"]

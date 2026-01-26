@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://cnr4hhk0kgrxu"]
+[gd_scene format=3 uid="uid://cnr4hhk0kgrxu"]
 
 [ext_resource type="PackedScene" uid="uid://e3wkbwtm7sh" path="res://Scenes/Parts/WaterArea.tscn" id="1_m0o0e"]
 [ext_resource type="Texture2D" uid="uid://bdb7ua7lnmwn" path="res://Assets/Sprites/Editor/WaterLevel.png" id="2_ft5si"]

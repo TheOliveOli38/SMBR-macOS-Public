@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=4 uid="uid://b0omfelsiothx"]
+[gd_scene format=4 uid="uid://b0omfelsiothx"]
 [ext_resource type="Script" uid="uid://caugelxhwlvl0" path="res://Scripts/Parts/LostLevelsEnding.gd" id="1_qmhaw"]
 [ext_resource type="JSON" path="res://Assets/Audio/BGM/Ending.json" id="2_k7rel"]
 [ext_resource type="SpriteFrames" uid="uid://df4enjjl84mji" path="res://Resources/SpriteFrames/Player/Mario/Small.tres" id="4_fxsfu"]
@@ -423,14 +423,10 @@ metadata/_custom_type_script = "uid://cbal8ms2oe1ik"
 z_as_relative = false
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1375737612]
 [node name="TextAnimation" type="AnimationPlayer" parent="." unique_id=937665763]
-libraries = {
-&"": SubResource("AnimationLibrary_k7rel")
-}
+libraries/ = SubResource("AnimationLibrary_k7rel")
 speed_scale = 0.5
 [node name="MainSequence" type="AnimationPlayer" parent="." unique_id=1651003073]
-libraries = {
-&"": SubResource("AnimationLibrary_3n3sl")
-}
+libraries/ = SubResource("AnimationLibrary_3n3sl")
 autoplay = &"Main"
 [node name="Peach" parent="." unique_id=780318776 instance=ExtResource("9_k7rel")]
 position = Vector2(-8, -1)

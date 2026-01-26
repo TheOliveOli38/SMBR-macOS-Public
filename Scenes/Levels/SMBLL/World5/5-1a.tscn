@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=4 uid="uid://bgb4bwm3c5djx"]
+[gd_scene format=4 uid="uid://bgb4bwm3c5djx"]
 [ext_resource type="PackedScene" uid="uid://dyfa8fmitefqi" path="res://Scenes/Levels/SMBLL/World7/7-2a.tscn" id="1_2ib1i"]
 [ext_resource type="PackedScene" uid="uid://cqvr7a6e84oti" path="res://Scenes/Prefabs/Blocks/BrickBlocks/CoinBrickBlock.tscn" id="2_keohv"]
 [ext_resource type="Script" uid="uid://cgm3opb5qudc1" path="res://Scripts/Parts/ChallengeModeNodes.gd" id="3_lba4e"]
@@ -14,19 +14,19 @@ target_level = "uid://tc2mnokvkmyd"
 script = ExtResource("3_lba4e")
 nodes_to_delete = [NodePath("../Blocks")]
 metadata/_custom_type_script = "uid://cgm3opb5qudc1"
-[node name="ChallengeNodes" parent="." index="9"]
+[node name="ChallengeNodes" parent="." index="9" unique_id=20885656]
 force_on = true
 [node name="BrickBlock2" parent="ChallengeNodes" index="0" unique_id=1874180912 instance=ExtResource("2_keohv")]
 position = Vector2(72, -168)
 metadata/red_coin = 0
 metadata/r_coin_id = 2
-[node name="RedCoin" parent="ChallengeNodes" index="1"]
+[node name="RedCoin" parent="ChallengeNodes" index="1" unique_id=1823091636]
 position = Vector2(217, 101)
-[node name="BrickBlock" parent="ChallengeNodes" index="2"]
+[node name="BrickBlock" parent="ChallengeNodes" index="2" unique_id=395404281]
 position = Vector2(84, 70)
-[node name="BrickBlock2" parent="Blocks" index="0" unique_id=125864000 instance=ExtResource("2_keohv")]
+[node name="BrickBlock2" parent="Blocks" parent_id_path=PackedInt32Array(118950643) index="0" unique_id=125864000 instance=ExtResource("2_keohv")]
 position = Vector2(72, -168)
-[node name="Coin" parent="Blocks" index="1"]
+[node name="Coin" parent="Blocks" parent_id_path=PackedInt32Array(118950643) index="1" unique_id=1255006182]
 position = Vector2(26, 115)
-[node name="BrickBlock" parent="Blocks" index="2"]
+[node name="BrickBlock" parent="Blocks" parent_id_path=PackedInt32Array(118950643) index="2" unique_id=1691616596]
 position = Vector2(84, 70)

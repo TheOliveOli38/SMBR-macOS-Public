@@ -1,4 +1,4 @@
-[gd_resource type="AudioStreamInteractive" load_steps=2 format=3 uid="uid://bqykbqti0ndjr"]
+[gd_resource type="AudioStreamInteractive" format=3 uid="uid://bqykbqti0ndjr"]
 
 [ext_resource type="AudioStream" uid="uid://cp25ce8lgwrad" path="res://Assets/Audio/BGM/FinalBowser.mp3" id="1_monqx"]
 

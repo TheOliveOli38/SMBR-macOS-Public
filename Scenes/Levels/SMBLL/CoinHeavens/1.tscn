@@ -1,4 +1,4 @@
-[gd_scene load_steps=2 format=4 uid="uid://bdd0jj88igduv"]
+[gd_scene format=4 uid="uid://bdd0jj88igduv"]
 [ext_resource type="PackedScene" uid="uid://cnn6e523gkoa0" path="res://Scenes/Levels/SMB1/CoinHeavens/1.tscn" id="1_t7wvw"]
 [node name="Level" unique_id=942521007 instance=ExtResource("1_t7wvw")]
 campaign = "SMBLL"

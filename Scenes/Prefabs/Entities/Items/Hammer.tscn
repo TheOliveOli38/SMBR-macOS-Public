@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://hqrc7ujinbcq"]
+[gd_scene format=3 uid="uid://hqrc7ujinbcq"]
 
 [ext_resource type="Script" uid="uid://s1utdly4mtbi" path="res://Scripts/Classes/Entities/Items/Hammer.gd" id="1_sp1e8"]
 [ext_resource type="Texture2D" uid="uid://3xmhfi556p3s" path="res://Assets/Sprites/Items/Hammer.png" id="2_7yb3k"]
@@ -76,9 +76,7 @@ resource_json = ExtResource("4_2dg23")
 metadata/_custom_type_script = "uid://cbal8ms2oe1ik"
 
 [node name="Animations" type="AnimationPlayer" parent="." unique_id=1562732192]
-libraries = {
-&"": SubResource("AnimationLibrary_k3c6x")
-}
+libraries/ = SubResource("AnimationLibrary_k3c6x")
 autoplay = &"Rotate"
 
 [node name="Collision" type="CollisionShape2D" parent="." unique_id=597767872]

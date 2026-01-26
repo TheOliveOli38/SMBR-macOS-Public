@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://c6tkq2iq7h0fp"]
+[gd_scene format=3 uid="uid://c6tkq2iq7h0fp"]
 
 [ext_resource type="Script" uid="uid://bevv8nl7j1g12" path="res://Scripts/Classes/Entities/Enemies/BowserJr.gd" id="1_1afx3"]
 [ext_resource type="Texture2D" uid="uid://ut3rh6i17fwg" path="res://Assets/Sprites/Enemies/BowserJr.png" id="2_1afx3"]
@@ -148,9 +148,7 @@ color = Color(1, 0, 0, 1)
 [node name="DamageAnimation" type="AnimationPlayer" parent="ScaleJoint" unique_id=1652153026]
 unique_name_in_owner = true
 root_node = NodePath("../Sprite")
-libraries = {
-&"": SubResource("AnimationLibrary_u4ob4")
-}
+libraries/ = SubResource("AnimationLibrary_u4ob4")
 
 [node name="CollisionL" type="CollisionShape2D" parent="." unique_id=585397973]
 position = Vector2(0, -6)

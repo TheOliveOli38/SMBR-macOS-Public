@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://dsa8lpl7n8ge0"]
+[gd_scene format=3 uid="uid://dsa8lpl7n8ge0"]
 
 [ext_resource type="Script" uid="uid://y53avulrmfx1" path="res://Scripts/Classes/Blocks/BrickBlock.gd" id="1_ci56s"]
 [ext_resource type="PackedScene" uid="uid://55lw62f6ol33" path="res://Scenes/Prefabs/Particles/BrickDestructionParticles.tscn" id="2_x80g6"]

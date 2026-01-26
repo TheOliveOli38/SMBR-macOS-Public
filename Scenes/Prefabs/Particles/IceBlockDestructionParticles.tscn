@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://bugxh43j6muyh"]
+[gd_scene format=3 uid="uid://bugxh43j6muyh"]
 
 [ext_resource type="PackedScene" uid="uid://b4cf70v1da8cb" path="res://Scenes/Prefabs/Particles/DecoBlockDestructionParticles.tscn" id="1_1il6h"]
 [ext_resource type="JSON" path="res://Assets/Sprites/Particles/IceBlockDestructionParticles.json" id="2_gf11f"]

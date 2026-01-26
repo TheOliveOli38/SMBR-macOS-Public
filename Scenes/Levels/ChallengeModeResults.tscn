@@ -1,4 +1,4 @@
-[gd_scene load_steps=64 format=3 uid="uid://blv1d12smlibh"]
+[gd_scene format=3 uid="uid://blv1d12smlibh"]
 
 [ext_resource type="Script" uid="uid://bqhrq7sabq811" path="res://Scripts/UI/ChallengeModeResults.gd" id="1_3x4fv"]
 [ext_resource type="Texture2D" uid="uid://116yaio262mj" path="res://Assets/Sprites/UI/ChallengeResultsTemplate.png" id="3_um36a"]
@@ -789,9 +789,7 @@ resource_json = ExtResource("12_y63tt")
 metadata/_custom_type_script = "uid://cbal8ms2oe1ik"
 
 [node name="MainSequence" type="AnimationPlayer" parent="." unique_id=877815898]
-libraries = {
-&"": SubResource("AnimationLibrary_nud7a")
-}
+libraries/ = SubResource("AnimationLibrary_nud7a")
 autoplay = &"Main"
 speed_scale = 0.8
 

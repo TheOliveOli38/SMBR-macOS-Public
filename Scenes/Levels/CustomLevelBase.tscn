@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://broeyye3effot"]
+[gd_scene format=3 uid="uid://broeyye3effot"]
 
 [ext_resource type="Script" uid="uid://c0kflqgd1w6sg" path="res://Scripts/Classes/CustomLevel.gd" id="1_8pu80"]
 [ext_resource type="PackedScene" uid="uid://bksxgpygrdjl7" path="res://Scenes/Prefabs/LevelBG.tscn" id="2_f32q3"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://df2mpmmdeumgo"]
+[gd_scene format=3 uid="uid://df2mpmmdeumgo"]
 
 [ext_resource type="Script" uid="uid://cbctt5c645m8m" path="res://Scripts/Classes/Gizmos/Broadcaster.gd" id="1_6hhbr"]
 [ext_resource type="Texture2D" uid="uid://62t4606wn3sw" path="res://Assets/Sprites/Editor/Gizmos/Broadcaster.png" id="2_pw874"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://c1xle3fplnxtr"]
+[gd_scene format=3 uid="uid://c1xle3fplnxtr"]
 
 [ext_resource type="PackedScene" uid="uid://by6ndsjhlkmbt" path="res://Scenes/Prefabs/Blocks/BooRaceBlocks/BooOnOffBlock.tscn" id="1_snfqb"]
 [ext_resource type="Texture2D" uid="uid://coe8j7vfyvmh8" path="res://Assets/Sprites/Blocks/BooOnOffBlock.png" id="2_vdgbk"]

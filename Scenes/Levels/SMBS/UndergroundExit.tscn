@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=4 uid="uid://b2qq2was4fdnx"]
+[gd_scene format=4 uid="uid://b2qq2was4fdnx"]
 [ext_resource type="PackedScene" uid="uid://bgbkyhmcfa8l6" path="res://Scenes/Levels/UndergroundExit.tscn" id="1_tma1r"]
 [ext_resource type="Script" uid="uid://cybpwmw4ywoow" path="res://Scripts/Parts/TileMapConverter.gd" id="2_tma1r"]
 [node name="UndergroundExit" unique_id=771927093 instance=ExtResource("1_tma1r")]

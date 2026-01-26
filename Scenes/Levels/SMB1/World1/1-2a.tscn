@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=4 uid="uid://duc0y2qt8vug6"]
+[gd_scene format=4 uid="uid://duc0y2qt8vug6"]
 [ext_resource type="PackedScene" uid="uid://d3lsxfuwgmtdt" path="res://Scenes/Levels/SMB1/World1/1-1a.tscn" id="1_o86io"]
 [ext_resource type="PackedScene" uid="uid://cqvr7a6e84oti" path="res://Scenes/Prefabs/Blocks/BrickBlocks/CoinBrickBlock.tscn" id="5_a507d"]
 [ext_resource type="Script" uid="uid://cgm3opb5qudc1" path="res://Scripts/Parts/ChallengeModeNodes.gd" id="5_bprld"]

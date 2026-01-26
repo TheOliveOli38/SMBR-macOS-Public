@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://csngpd6px3dt4"]
+[gd_scene format=3 uid="uid://csngpd6px3dt4"]
 
 [ext_resource type="PackedScene" uid="uid://bn1kect7h2dlp" path="res://Scenes/Prefabs/LevelObjects/BulletBillGenerator.tscn" id="1_p6gmx"]
 [ext_resource type="Texture2D" uid="uid://cyohkov1cy2vb" path="res://Assets/Sprites/Editor/GeneratorStop.png" id="2_bd4qu"]

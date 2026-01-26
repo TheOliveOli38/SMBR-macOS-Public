@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://pruasw0bikqc"]
+[gd_scene format=3 uid="uid://pruasw0bikqc"]
 
 [ext_resource type="Texture2D" uid="uid://dkebo0uw0dkkw" path="res://Assets/Sprites/Particles/CoinSparkle.png" id="1_0guw6"]
 [ext_resource type="Script" uid="uid://cbal8ms2oe1ik" path="res://Scripts/Classes/Components/ResourceSetterNew.gd" id="2_wdqt2"]
@@ -20,6 +20,7 @@ anim_speed_max = 2.0
 
 [node name="CoinSparkle" type="GPUParticles2D" unique_id=426407593]
 material = SubResource("CanvasItemMaterial_0guw6")
+emitting = false
 amount = 3
 texture = ExtResource("1_0guw6")
 lifetime = 0.5

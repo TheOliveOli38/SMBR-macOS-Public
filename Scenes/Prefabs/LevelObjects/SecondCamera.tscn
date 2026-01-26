@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://b7l1or6o4absh"]
+[gd_scene format=3 uid="uid://b7l1or6o4absh"]
 
 [ext_resource type="Texture2D" uid="uid://ejdm7k30661p" path="res://Assets/Sprites/Editor/SecondCamera.png" id="1_54xm2"]
 [ext_resource type="Script" uid="uid://hs44d1hdb3uf" path="res://Scripts/Classes/Entities/Objects/SecondCamera.gd" id="1_gxl3e"]

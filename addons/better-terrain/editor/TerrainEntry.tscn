@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://u2y444hj182c"]
+[gd_scene format=3 uid="uid://u2y444hj182c"]
 
 [ext_resource type="Script" uid="uid://c2qfovpuj58b7" path="res://addons/better-terrain/editor/TerrainEntry.gd" id="1_o2na3"]
 [ext_resource type="Texture2D" uid="uid://kmypxsqhynyv" path="res://addons/better-terrain/icons/Decoration.svg" id="2_ossyj"]

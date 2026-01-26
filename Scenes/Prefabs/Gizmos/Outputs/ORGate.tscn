@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://ukg5xikl8n2i"]
+[gd_scene format=3 uid="uid://ukg5xikl8n2i"]
 
 [ext_resource type="PackedScene" uid="uid://b5gs47nvw8q1k" path="res://Scenes/Prefabs/Gizmos/Outputs/ANDGate.tscn" id="1_p1oh5"]
 [ext_resource type="Texture2D" uid="uid://das61c03dnben" path="res://Assets/Sprites/Editor/Gizmos/OR.png" id="2_xfbfj"]

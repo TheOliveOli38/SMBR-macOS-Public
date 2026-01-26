@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=3 uid="uid://d0eoxuntnuej5"]
+[gd_scene format=3 uid="uid://d0eoxuntnuej5"]
 [ext_resource type="PackedScene" uid="uid://bpbs3060xjy06" path="res://Scenes/Levels/SMB1/World7/7-3.tscn" id="1_41ghk"]
 [ext_resource type="JSON" path="res://Assets/Audio/BGM/Overworld.json" id="2_llbsp"]
 [ext_resource type="Texture2D" uid="uid://dt0qtxu2l646n" path="res://Assets/Sprites/Tilesets/Terrain/Overworld.png" id="2_qwk22"]
@@ -928,7 +928,7 @@ texture = ExtResource("25_l5p8y")
 8: [17],
 &"type": 17
 }
-[sub_resource type="TileSet" id="TileSet_02lmb"]
+[sub_resource type="TileSet" id="TileSet_llbsp"]
 resource_local_to_scene = true
 physics_layer_0/collision_layer = 2
 physics_layer_0/collision_mask = 0
@@ -1013,4 +1013,4 @@ level_id = 2
 primary_layer = 0
 liquid_layer = 2
 [node name="Tiles" parent="." index="2" unique_id=918083686]
-tile_set = SubResource("TileSet_02lmb")
+tile_set = SubResource("TileSet_llbsp")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://vax1sabjimuj"]
+[gd_scene format=3 uid="uid://vax1sabjimuj"]
 
 [ext_resource type="PackedScene" uid="uid://cllscucqyd033" path="res://Scenes/Prefabs/Gizmos/Outputs/BaseOutput.tscn" id="1_srjh2"]
 [ext_resource type="Script" uid="uid://c21dyd6ackh38" path="res://Scripts/Classes/Gizmos/ConditionalClear.gd" id="2_1cpyg"]
@@ -334,9 +334,7 @@ text = "CONDITION FAILED."
 uppercase = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer" index="4" unique_id=1089556272]
-libraries = {
-&"": SubResource("AnimationLibrary_ed4dd")
-}
+libraries/ = SubResource("AnimationLibrary_ed4dd")
 
 [connection signal="recieved_power" from="SignalExposer" to="." method="powered"]
 [connection signal="recieved_pulse" from="SignalExposer" to="." method="powered"]

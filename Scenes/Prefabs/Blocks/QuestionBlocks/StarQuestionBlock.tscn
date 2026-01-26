@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://urrtgm0h110y"]
+[gd_scene format=3 uid="uid://urrtgm0h110y"]
 
 [ext_resource type="PackedScene" uid="uid://cmgahojpgp2cq" path="res://Scenes/Prefabs/Blocks/QuestionBlocks/PowerUpQuestionBlock.tscn" id="1_t6w6o"]
 [ext_resource type="Script" uid="uid://dbeg86pjflojw" path="res://Scripts/Classes/Entities/Items/SuperStar.gd" id="2_2y0ea"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=4 uid="uid://dw0nndcqxf18f"]
+[gd_scene format=4 uid="uid://dw0nndcqxf18f"]
 [ext_resource type="PackedScene" uid="uid://dwbp7ip3l3snl" path="res://Scenes/Levels/SMBLL/World1/1-1a.tscn" id="1_h5gaw"]
 [ext_resource type="PackedScene" uid="uid://cmbpqnq10arts" path="res://Scenes/Prefabs/Entities/Items/RedCoin.tscn" id="2_m5skd"]
 [ext_resource type="PackedScene" uid="uid://chjxyhlwohmi6" path="res://Scenes/Prefabs/Entities/Items/Coin.tscn" id="3_mvrae"]

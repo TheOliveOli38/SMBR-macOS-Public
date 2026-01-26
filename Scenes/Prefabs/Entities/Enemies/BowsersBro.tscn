@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://bjysym6bhxljv"]
+[gd_scene format=3 uid="uid://bjysym6bhxljv"]
 
 [ext_resource type="PackedScene" uid="uid://pfhvflypjq6y" path="res://Scenes/Prefabs/Entities/Enemies/TrueBowser.tscn" id="1_qcxx5"]
 [ext_resource type="JSON" path="res://Assets/Sprites/Enemies/BowsersBro.json" id="2_qcxx5"]

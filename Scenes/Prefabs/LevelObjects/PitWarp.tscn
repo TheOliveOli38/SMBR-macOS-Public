@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://c6fdpk8ktl2go"]
+[gd_scene format=3 uid="uid://c6fdpk8ktl2go"]
 
 [ext_resource type="Script" uid="uid://dpd88tvdaw0xv" path="res://Scripts/Classes/Entities/Objects/PitWarp.gd" id="1_q3icm"]
 [ext_resource type="Script" uid="uid://cpwloakvp672a" path="res://Scripts/Parts/EditorVisibleNode.gd" id="1_t3iyn"]

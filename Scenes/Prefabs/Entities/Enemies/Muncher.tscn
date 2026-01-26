@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://bi1hb03wk001p"]
+[gd_scene format=3 uid="uid://bi1hb03wk001p"]
 
 [ext_resource type="Script" uid="uid://ds8c6k5lfx6hi" path="res://Scripts/Classes/Entities/Enemies/Muncher.gd" id="1_3kryf"]
 [ext_resource type="Texture2D" uid="uid://dg7yxoq44gaae" path="res://Assets/Sprites/Enemies/Muncher.png" id="2_ad4wf"]

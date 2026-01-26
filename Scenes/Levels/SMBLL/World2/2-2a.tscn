@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=4 uid="uid://cwgqwi6qaffu4"]
+[gd_scene format=4 uid="uid://cwgqwi6qaffu4"]
 [ext_resource type="PackedScene" uid="uid://dwbp7ip3l3snl" path="res://Scenes/Levels/SMBLL/World1/1-1a.tscn" id="1_n4vks"]
 [ext_resource type="Script" uid="uid://cybpwmw4ywoow" path="res://Scripts/Parts/TileMapConverter.gd" id="2_2x8pq"]
 [ext_resource type="PackedScene" uid="uid://58uk17ixtt4r" path="res://Scenes/Prefabs/Blocks/InvisibleBlocks/InvisibleQuestionBlock.tscn" id="2_3j4ie"]

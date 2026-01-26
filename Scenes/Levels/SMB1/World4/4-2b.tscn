@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=4 uid="uid://camnpk6u3cfdr"]
+[gd_scene format=4 uid="uid://camnpk6u3cfdr"]
 [ext_resource type="Script" uid="uid://bcqr1v25ygedb" path="res://Scripts/Classes/LevelClass.gd" id="1_u6xxb"]
 [ext_resource type="JSON" path="res://Assets/Audio/BGM/Jungle.json" id="2_y1xcp"]
 [ext_resource type="PackedScene" uid="uid://cuh62hlq8errh" path="res://Scenes/Prefabs/Entities/Player.tscn" id="5_11n83"]
@@ -36,7 +36,6 @@ tile_map_data = PackedByteArray("AADw/wAAAAACAAAAAADw/wEAAAACAAEAAADx/wAAAAACAAA
 position = Vector2(-184, 40)
 top_point = -56
 cutscene = true
-can_tele = false
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=230064770]
 position = Vector2(768, -200)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=2013727989]

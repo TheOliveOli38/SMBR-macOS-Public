@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://dw4til11bai1h"]
+[gd_scene format=3 uid="uid://dw4til11bai1h"]
 
 [ext_resource type="PackedScene" uid="uid://cllscucqyd033" path="res://Scenes/Prefabs/Gizmos/Outputs/BaseOutput.tscn" id="1_v3orh"]
 [ext_resource type="Script" uid="uid://d31os0pwf8c2e" path="res://Scripts/Classes/Gizmos/MusicPlayer.gd" id="2_lh1kc"]
@@ -54,9 +54,7 @@ texture = ExtResource("2_u63ov")
 hframes = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite2D" index="0" unique_id=65671592]
-libraries = {
-&"": SubResource("AnimationLibrary_w6c3q")
-}
+libraries/ = SubResource("AnimationLibrary_w6c3q")
 
 [node name="EditorPropertyExposer" type="Node" parent="." index="2" unique_id=1130002375]
 script = ExtResource("4_lh1kc")

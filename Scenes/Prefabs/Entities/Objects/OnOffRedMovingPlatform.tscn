@@ -1,10 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://27kpnmk5wqlb"]
+[gd_scene format=3 uid="uid://27kpnmk5wqlb"]
 
 [ext_resource type="PackedScene" uid="uid://cx2310jyd3fnv" path="res://Scenes/Prefabs/Entities/Objects/MovingPlatform.tscn" id="1_wrm8c"]
 [ext_resource type="JSON" path="res://Assets/Sprites/Tilesets/OnOffPlatform.json" id="2_c3e6f"]
 [ext_resource type="Script" uid="uid://q45b31h6356r" path="res://Scripts/Classes/Components/OnOffSwitcher.gd" id="3_3tder"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_c3e6f"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3tder"]
 resource_local_to_scene = true
 size = Vector2(32, 8)
 
@@ -19,7 +19,7 @@ region_rect = Rect2(0, 0, 24, 8)
 resource_json = ExtResource("2_c3e6f")
 
 [node name="CollisionShape2D" parent="." index="1" unique_id=1046612248]
-shape = SubResource("RectangleShape2D_c3e6f")
+shape = SubResource("RectangleShape2D_3tder")
 
 [node name="Projection" parent="." index="4" unique_id=1165185292]
 region_rect = Rect2(0, 0, 24, 8)

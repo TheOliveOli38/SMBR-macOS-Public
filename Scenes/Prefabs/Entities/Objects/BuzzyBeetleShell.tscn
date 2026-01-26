@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://csdbt4vd14fsg"]
+[gd_scene format=3 uid="uid://csdbt4vd14fsg"]
 
 [ext_resource type="PackedScene" uid="uid://bowadxqfmg636" path="res://Scenes/Prefabs/Entities/Objects/GreenKoopaShell.tscn" id="1_1cla3"]
 [ext_resource type="Script" uid="uid://by2qbddawq4yv" path="res://Scripts/Classes/Components/SignalDisconnector.gd" id="3_b84mm"]

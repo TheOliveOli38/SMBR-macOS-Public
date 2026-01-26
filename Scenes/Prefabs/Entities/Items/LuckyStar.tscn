@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://dhd0gp2xvl53l"]
+[gd_scene format=3 uid="uid://dhd0gp2xvl53l"]
 
 [ext_resource type="Script" uid="uid://bafdl3y53ly60" path="res://Scripts/Classes/UI/PackAnimatedSprite2D.gd" id="2_724cb"]
 [ext_resource type="Texture2D" uid="uid://bbdcmhyxmc3pu" path="res://Assets/Sprites/Items/SPItems.png" id="2_wnlnm"]

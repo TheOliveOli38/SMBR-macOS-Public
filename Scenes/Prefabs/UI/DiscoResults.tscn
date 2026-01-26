@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://b85i7uni0twpe"]
+[gd_scene format=3 uid="uid://b85i7uni0twpe"]
 
 [ext_resource type="StyleBox" uid="uid://comkghpj0djcl" path="res://Resources/UI/Panel.tres" id="1_nfk08"]
 [ext_resource type="Script" uid="uid://b5u7ht2124lfs" path="res://Scripts/UI/DiscoResults.gd" id="1_up7vl"]

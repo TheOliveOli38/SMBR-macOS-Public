@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://dh2fvaypdfgsl"]
+[gd_scene format=3 uid="uid://dh2fvaypdfgsl"]
 
 [ext_resource type="Texture2D" uid="uid://cwvkbxng585yv" path="res://Assets/Sprites/Blocks/DeathBlock.png" id="1_sauix"]
 [ext_resource type="Script" uid="uid://caq1qiwmy0mox" path="res://Scripts/Parts/BetterAnimatedSprite.gd" id="2_6cjqp"]

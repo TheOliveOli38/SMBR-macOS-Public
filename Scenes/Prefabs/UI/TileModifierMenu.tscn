@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://kag5i607liua"]
+[gd_scene format=3 uid="uid://kag5i607liua"]
 
 [ext_resource type="Script" uid="uid://dxjp3pfd77xxa" path="res://Scripts/UI/TileModifierMenu.gd" id="2_0slfq"]
 [ext_resource type="PackedScene" uid="uid://l8qvjfxryj6m" path="res://Scenes/Prefabs/Editor/EditorProperties/SignalProperty.tscn" id="2_n7jgg"]

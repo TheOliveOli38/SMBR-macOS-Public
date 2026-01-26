@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="ThemedResource" load_steps=9 format=3 uid="uid://cmlds1yc6l5tq"]
+[gd_resource type="Resource" script_class="ThemedResource" format=3 uid="uid://cmlds1yc6l5tq"]
 
 [ext_resource type="Script" uid="uid://cixtosud3mfaq" path="res://Scripts/Classes/Resources/CampaignResource.gd" id="3_g6rlj"]
 [ext_resource type="Script" uid="uid://cmvlgsjmsk0v5" path="res://Scripts/Classes/Resources/ThemedResource.gd" id="4_fw0kt"]

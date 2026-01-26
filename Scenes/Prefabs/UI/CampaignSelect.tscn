@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://c7w8dmlmj0hoh"]
+[gd_scene format=3 uid="uid://c7w8dmlmj0hoh"]
 
 [ext_resource type="Script" uid="uid://cae4v54jq1gs3" path="res://Scripts/UI/CampaignSelect.gd" id="1_ngr5x"]
 [ext_resource type="StyleBox" uid="uid://comkghpj0djcl" path="res://Resources/UI/Panel.tres" id="2_36wrd"]

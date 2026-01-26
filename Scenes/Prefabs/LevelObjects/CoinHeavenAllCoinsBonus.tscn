@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://cm6nbstl2uceh"]
+[gd_scene format=3 uid="uid://cm6nbstl2uceh"]
 
 [ext_resource type="Script" uid="uid://ds3idw2a2udai" path="res://Scripts/Parts/CoinHeavenAllCoinsBonus.gd" id="1_pr18t"]
 [ext_resource type="Script" uid="uid://co6tjg3w6qpd8" path="res://Scripts/Parts/LabelFontChanger.gd" id="1_rbqyi"]

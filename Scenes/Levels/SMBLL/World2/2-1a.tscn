@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=4 uid="uid://dohke0uql0hv5"]
+[gd_scene format=4 uid="uid://dohke0uql0hv5"]
 [ext_resource type="PackedScene" uid="uid://d3lsxfuwgmtdt" path="res://Scenes/Levels/SMB1/World1/1-1a.tscn" id="1_h4uet"]
 [ext_resource type="Script" uid="uid://cgm3opb5qudc1" path="res://Scripts/Parts/ChallengeModeNodes.gd" id="3_0lsxa"]
 [ext_resource type="Script" uid="uid://cybpwmw4ywoow" path="res://Scripts/Parts/TileMapConverter.gd" id="3_lkles"]

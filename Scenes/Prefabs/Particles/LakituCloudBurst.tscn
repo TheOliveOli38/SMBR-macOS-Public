@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dybfmrawthall"]
+[gd_scene format=3 uid="uid://dybfmrawthall"]
 
 [ext_resource type="Texture2D" uid="uid://boongcly3e2cl" path="res://Assets/Sprites/Particles/LakituCloudBurst.png" id="1_3jvpp"]
 [ext_resource type="Script" uid="uid://cbal8ms2oe1ik" path="res://Scripts/Classes/Components/ResourceSetterNew.gd" id="2_cic8a"]

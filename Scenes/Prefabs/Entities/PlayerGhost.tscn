@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://btiev75x1wtvk"]
+[gd_scene format=3 uid="uid://btiev75x1wtvk"]
 
 [ext_resource type="Script" uid="uid://0cmcgxyt0akj" path="res://Scripts/Parts/PlayerGhost.gd" id="1_nj8xm"]
 [ext_resource type="Shader" uid="uid://cjfd0fbhvx370" path="res://Scenes/Parts/DitheredTransparency.gdshader" id="2_ovt7x"]

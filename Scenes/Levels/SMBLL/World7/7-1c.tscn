@@ -1,4 +1,4 @@
-[gd_scene load_steps=2 format=4 uid="uid://b771bk4w514rc"]
+[gd_scene format=4 uid="uid://b771bk4w514rc"]
 [ext_resource type="PackedScene" uid="uid://3cvtloqujpwd" path="res://Scenes/Levels/SMBLL/World5/5-3a.tscn" id="1_fcebj"]
 [node name="7-1c" unique_id=252209160 instance=ExtResource("1_fcebj")]
 [node name="Tiles" parent="." index="1" unique_id=1944056097]

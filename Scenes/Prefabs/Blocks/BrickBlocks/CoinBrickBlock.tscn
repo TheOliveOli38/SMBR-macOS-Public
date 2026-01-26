@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://cqvr7a6e84oti"]
+[gd_scene format=3 uid="uid://cqvr7a6e84oti"]
 
 [ext_resource type="PackedScene" uid="uid://dsa8lpl7n8ge0" path="res://Scenes/Prefabs/Blocks/BrickBlocks/BrickBlock.tscn" id="1_ihag5"]
 [ext_resource type="PackedScene" uid="uid://clxssds8sj8pf" path="res://Scenes/Prefabs/Entities/Items/SpinningCoin.tscn" id="2_1q8s7"]

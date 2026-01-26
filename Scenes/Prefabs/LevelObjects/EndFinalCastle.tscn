@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=4 uid="uid://bney0cc8cfm5s"]
+[gd_scene format=4 uid="uid://bney0cc8cfm5s"]
 
 [ext_resource type="Script" uid="uid://qq26qw7ltflb" path="res://Scripts/Parts/EndCastle.gd" id="1_hwcne"]
 [ext_resource type="Script" uid="uid://caq1qiwmy0mox" path="res://Scripts/Parts/BetterAnimatedSprite.gd" id="2_1kswc"]
@@ -99,9 +99,7 @@ metadata/_custom_type_script = "uid://caq1qiwmy0mox"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="FlagJoint/Flag" unique_id=693779683]
 root_node = NodePath("../..")
-libraries = {
-&"": SubResource("AnimationLibrary_fnvmm")
-}
+libraries/ = SubResource("AnimationLibrary_fnvmm")
 
 [node name="ResourceSetterNew" type="Node" parent="FlagJoint/Flag" unique_id=311970280 node_paths=PackedStringArray("node_to_affect")]
 script = ExtResource("3_gbn2t")

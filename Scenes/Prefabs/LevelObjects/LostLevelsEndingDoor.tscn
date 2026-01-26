@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://k1krjice0kia"]
+[gd_scene format=3 uid="uid://k1krjice0kia"]
 
 [ext_resource type="Script" uid="uid://d23r1hm6jbgox" path="res://Scripts/Parts/LostLevelsEndingDoor.gd" id="1_nwrya"]
 [ext_resource type="Texture2D" uid="uid://dhpa5y7jlbyia" path="res://Assets/Sprites/Items/LostLevelsDoor.png" id="2_jriqu"]

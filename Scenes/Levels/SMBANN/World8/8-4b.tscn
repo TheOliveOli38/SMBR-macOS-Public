@@ -1,14 +1,14 @@
-[gd_scene load_steps=4 format=3 uid="uid://ck5d1abcduiku"]
+[gd_scene format=3 uid="uid://ck5d1abcduiku"]
 [ext_resource type="PackedScene" uid="uid://d4acncmmxvgk3" path="res://Scenes/Levels/SMBLL/World8/8-4b.tscn" id="1_equhn"]
 [ext_resource type="Script" uid="uid://bjs5mlc3xrxud" path="res://Scripts/Parts/DiscoLevel.gd" id="2_xpiw0"]
 [ext_resource type="PackedScene" uid="uid://1rxw4k4wq3ni" path="res://Scenes/Prefabs/Entities/Enemies/PiranhaPlant.tscn" id="3_fwhwj"]
 [node name="8-4b" unique_id=384146652 instance=ExtResource("1_equhn")]
 campaign = "SMBANN"
-[node name="RedPirannhaPlant" parent="." index="2"]
+[node name="RedPirannhaPlant" parent="." index="2" unique_id=1542327062]
 position = Vector2(-208, 160)
-[node name="RedPirannhaPlant2" parent="." index="3"]
+[node name="RedPirannhaPlant2" parent="." index="3" unique_id=3307598]
 position = Vector2(-96, 160)
-[node name="PipeArea2" parent="." index="5"]
+[node name="PipeArea2" parent="." index="5" unique_id=736874074]
 target_level = "uid://ctyblojrhejbx"
 [node name="DiscoLevel" type="Node" parent="." index="11" unique_id=1261184198]
 script = ExtResource("2_xpiw0")

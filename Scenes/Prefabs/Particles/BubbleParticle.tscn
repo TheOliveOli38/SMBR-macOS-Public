@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://bwjae1h1airtr"]
+[gd_scene format=3 uid="uid://bwjae1h1airtr"]
 
 [ext_resource type="Script" uid="uid://denfttv4kn7f6" path="res://Scripts/Parts/BubbleParticle.gd" id="1_kkawp"]
 [ext_resource type="Texture2D" uid="uid://b7h6b0yqyi2kh" path="res://Assets/Sprites/Particles/Bubble.png" id="2_ky4x1"]

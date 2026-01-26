@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=3 uid="uid://b7no88iaujhh3"]
+[gd_scene format=3 uid="uid://b7no88iaujhh3"]
 
 [ext_resource type="Script" uid="uid://b08qfwj5jk6g1" path="res://Scripts/Parts/PlayerSprite.gd" id="1_0b6w1"]
 [ext_resource type="Script" uid="uid://b3ol0iyjcb5n1" path="res://Scripts/UI/BooRaceMenu.gd" id="1_nk4wu"]
@@ -696,9 +696,7 @@ position = Vector2(172, 96)
 
 [node name="WaveAnimation" type="AnimationPlayer" parent="PanelContainer/Boos" unique_id=195580067]
 root_node = NodePath("../0")
-libraries = {
-&"": SubResource("AnimationLibrary_nk4wu")
-}
+libraries/ = SubResource("AnimationLibrary_nk4wu")
 autoplay = &"Wave"
 
 [node name="0" type="AnimatedSprite2D" parent="PanelContainer/Boos" unique_id=1878361704]

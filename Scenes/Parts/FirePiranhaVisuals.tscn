@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://i18ohs6q5xbh"]
+[gd_scene format=3 uid="uid://i18ohs6q5xbh"]
 
 [ext_resource type="PackedScene" uid="uid://cwqicj07wkd0n" path="res://Scenes/Parts/PiranhaPlantVisuals.tscn" id="1_bcek3"]
 [ext_resource type="Script" uid="uid://caq1qiwmy0mox" path="res://Scripts/Parts/BetterAnimatedSprite.gd" id="2_sa2nn"]

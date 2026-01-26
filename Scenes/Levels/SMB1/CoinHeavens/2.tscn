@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=4 uid="uid://1j5xfkmge06g"]
+[gd_scene format=4 uid="uid://1j5xfkmge06g"]
 [ext_resource type="PackedScene" uid="uid://cnn6e523gkoa0" path="res://Scenes/Levels/SMB1/CoinHeavens/1.tscn" id="1_hpa5h"]
 [ext_resource type="Texture2D" uid="uid://dt0qtxu2l646n" path="res://Assets/Sprites/Tilesets/Terrain/Overworld.png" id="2_d8wvm"]
 [ext_resource type="PackedScene" uid="uid://dsa8lpl7n8ge0" path="res://Scenes/Prefabs/Blocks/BrickBlocks/BrickBlock.tscn" id="3_syjdb"]
@@ -40,7 +40,7 @@ tile_data = PackedInt32Array(0, 524288, 5, 1, 589824, 5)
 tile_data = PackedInt32Array(0, 524288, 6, 1, 589824, 6)
 [sub_resource type="TileMapPattern" id="TileMapPattern_7cpm5"]
 tile_data = PackedInt32Array(0, 524288, 7, 1, 589824, 7)
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_tq7mc"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_d8wvm"]
 resource_name = "Terrain"
 texture = ExtResource("2_d8wvm")
 0:0/0 = 0
@@ -706,7 +706,7 @@ texture = ExtResource("2_d8wvm")
 13:10/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 11:10/0 = 0
 11:10/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
-[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_r0brg"]
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_syjdb"]
 scenes/1/scene = ExtResource("3_syjdb")
 scenes/2/scene = ExtResource("14_0qxkj")
 scenes/3/scene = ExtResource("16_yayjo")
@@ -727,7 +727,7 @@ scenes/17/scene = ExtResource("11_n1nt6")
 scenes/18/scene = ExtResource("12_4lvn8")
 scenes/19/scene = ExtResource("13_gsf6o")
 scenes/20/scene = ExtResource("15_wjffo")
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_n64oy"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3xp8e"]
 texture = ExtResource("23_o6or0")
 0:0/next_alternative_id = 2
 0:0/animation_speed = 8.0
@@ -823,7 +823,7 @@ texture = ExtResource("23_o6or0")
 &"type": 14
 }
 0:7/1 = 1
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_m1hb4"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6c31t"]
 texture = ExtResource("24_v11m8")
 0:0/0 = 0
 0:0/0/z_index = -10
@@ -845,7 +845,7 @@ texture = ExtResource("24_v11m8")
 3:0/0/z_index = -10
 4:0/0 = 0
 4:0/0/z_index = -10
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hnm3j"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vcgv1"]
 texture = ExtResource("25_oyy1i")
 0:0/next_alternative_id = 3
 0:0/animation_speed = 20.0
@@ -927,7 +927,7 @@ texture = ExtResource("25_oyy1i")
 8: [17],
 &"type": 17
 }
-[sub_resource type="TileSet" id="TileSet_hfunl"]
+[sub_resource type="TileSet" id="TileSet_0rggs"]
 resource_local_to_scene = true
 physics_layer_0/collision_layer = 2
 physics_layer_0/collision_mask = 0
@@ -942,11 +942,11 @@ terrain_set_0/terrain_0/name = "Ground"
 terrain_set_0/terrain_0/color = Color(0.5, 0.34375, 0.25, 1)
 custom_data_layer_0/name = "OneWay"
 custom_data_layer_0/type = 1
-sources/0 = SubResource("TileSetAtlasSource_tq7mc")
-sources/1 = SubResource("TileSetScenesCollectionSource_r0brg")
-sources/2 = SubResource("TileSetAtlasSource_n64oy")
-sources/3 = SubResource("TileSetAtlasSource_m1hb4")
-sources/4 = SubResource("TileSetAtlasSource_hnm3j")
+sources/0 = SubResource("TileSetAtlasSource_d8wvm")
+sources/1 = SubResource("TileSetScenesCollectionSource_syjdb")
+sources/2 = SubResource("TileSetAtlasSource_3xp8e")
+sources/3 = SubResource("TileSetAtlasSource_6c31t")
+sources/4 = SubResource("TileSetAtlasSource_vcgv1")
 pattern_0 = SubResource("TileMapPattern_b6qiv")
 pattern_1 = SubResource("TileMapPattern_d4nyf")
 pattern_2 = SubResource("TileMapPattern_ls3wh")
@@ -1004,6 +1004,6 @@ metadata/_better_terrain = {
 [node name="Level" unique_id=1189179858 instance=ExtResource("1_hpa5h")]
 [node name="Tiles" parent="." index="1" unique_id=1674661667]
 tile_map_data = PackedByteArray("AADw/wAAAAAEAAEAAADx/wAAAAAEAAEAAADy/wAAAAAEAAEAAADz/wAAAAAEAAEAAAD1/wAAAAAEAAEAAAD2/wAAAAAEAAEAAAD3/wAAAAAEAAEAAAD4/wAAAAAEAAEAAAD5/wAAAAAEAAEAAAD6/wAAAAAEAAEAAAD7/wAAAAAEAAEAAAD8/wAAAAAEAAEAAAD9/wAAAAAEAAEAAAD+/wAAAAAEAAEAAAD//wAAAAAEAAEAAAAAAAAAAAAEAAEAAAABAAAAAAAEAAEAAAACAAAAAAAEAAEAAAADAAAAAAAEAAEAAAAEAAAAAAAEAAEAAAAFAAAAAAAEAAEAAAAGAAAAAAAEAAEAAAAHAAAAAAAEAAEAAAAIAAAAAAAEAAEAAAAJAAAAAAAEAAEAAAAKAAAAAAAEAAEAAAALAAAAAAAEAAEAAAAMAAAAAAAEAAEAAAANAAAAAAAEAAEAAAAOAAAAAAAEAAEAAAAPAAAAAAAEAAEAAAAQAAAAAAAEAAEAAAARAAAAAAAEAAEAAAASAAAAAAAEAAEAAAATAAAAAAAEAAEAAAAUAAAAAAAEAAEAAAAVAAAAAAAEAAEAAAAWAAAAAAAEAAEAAAAXAAAAAAAEAAEAAAAYAAAAAAAEAAEAAAAZAAAAAAAEAAEAAAAaAAAAAAAEAAEAAAAbAAAAAAAEAAEAAAAcAAAAAAAEAAEAAAAdAAAAAAAEAAEAAAAeAAAAAAAEAAEAAAAfAAAAAAAEAAEAAAAgAAAAAAAEAAEAAAAhAAAAAAAEAAEAAAAiAAAAAAAEAAEAAAAjAAAAAAAEAAEAAAAkAAAAAAAEAAEAAAAlAAAAAAAEAAEAAAAmAAAAAAAEAAEAAAAnAAAAAAAEAAEAAAAoAAAAAAAEAAEAAAApAAAAAAAEAAEAAAAqAAAAAAAEAAEAAAArAAAAAAAEAAEAAAAsAAAAAAAEAAEAAAAtAAAAAAAEAAEAAAD///n/AQAAAAAAAwAAAPn/AQAAAAAAAwABAPn/AQAAAAAAAwACAPn/AQAAAAAAAwADAPn/AQAAAAAAAwAEAPn/AQAAAAAAAwAFAPn/AQAAAAAAAwAGAPn/AQAAAAAAAwAHAPn/AQAAAAAAAwAIAPn/AQAAAAAAAwAJAPn/AQAAAAAAAwAKAPn/AQAAAAAAAwALAPn/AQAAAAAAAwAMAPn/AQAAAAAAAwANAPn/AQAAAAAAAwAOAPn/AQAAAAAAAwAuAAAAAAAEAAEAAAAvAAAAAAAEAAEAAAAwAAAAAAAEAAEAAAAxAAAAAAAEAAEAAAAyAAAAAAAEAAEAAAAzAAAAAAAEAAEAAAA0AAAAAAAEAAEAAAA1AAAAAAAEAAEAAAA2AAAAAAAEAAEAAAA3AAAAAAAEAAEAAAA4AAAAAAAEAAEAAAA5AAAAAAAEAAEAAAA6AAAAAAAEAAEAAAA7AAAAAAAEAAEAAAA8AAAAAAAEAAEAAAA9AAAAAAAEAAEAAAA+AAAAAAAEAAEAAAA/AAAAAAAEAAEAAABAAAAAAAAEAAEAAABBAAAAAAAEAAEAAABCAAAAAAAEAAEAAAAQAPv/AAAEAAEAAAAjAPr/AAAEAAEAAAAjAPv/AAAEAAEAAAAtAPr/AAAEAAEAAAAtAPv/AAAEAAEAAAAzAPn/AAAEAAEAAAA0APn/AAAEAAEAAAA3APn/AAAEAAEAAAA5APn/AAAEAAEAAAA7APn/AAAEAAEAAAA9APn/AAAEAAEAAAA/APn/AAAEAAEAAAASAPn/AQAAAAAAAwATAPn/AQAAAAAAAwAUAPn/AQAAAAAAAwAVAPn/AQAAAAAAAwAWAPn/AQAAAAAAAwAXAPn/AQAAAAAAAwAYAPn/AQAAAAAAAwAZAPn/AQAAAAAAAwAaAPn/AQAAAAAAAwAbAPn/AQAAAAAAAwAcAPn/AQAAAAAAAwAdAPn/AQAAAAAAAwAeAPn/AQAAAAAAAwAfAPn/AQAAAAAAAwAgAPn/AQAAAAAAAwAhAPn/AQAAAAAAAwAmAPj/AQAAAAAAAwAnAPj/AQAAAAAAAwAoAPj/AQAAAAAAAwApAPj/AQAAAAAAAwAqAPj/AQAAAAAAAwArAPj/AQAAAAAAAwAlAPj/AQAAAAAAAwA3APj/AQAAAAAAAwA4APj/AQAAAAAAAwA5APj/AQAAAAAAAwA6APj/AQAAAAAAAwA7APj/AQAAAAAAAwA8APj/AQAAAAAAAwA9APj/AQAAAAAAAwA+APj/AQAAAAAAAwA/APj/AQAAAAAAAwBAAPj/AQAAAAAAAwBFAP7/AQAAAAAAAwBGAP7/AQAAAAAAAwBHAP7/AQAAAAAAAwA=")
-tile_set = SubResource("TileSet_hfunl")
+tile_set = SubResource("TileSet_0rggs")
 [node name="CameraRightLimit" parent="." index="7" unique_id=1562605601]
 position = Vector2(1248, -8)

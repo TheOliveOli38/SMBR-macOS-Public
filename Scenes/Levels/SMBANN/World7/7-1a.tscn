@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://b8sq068wewbli"]
+[gd_scene format=3 uid="uid://b8sq068wewbli"]
 [ext_resource type="PackedScene" uid="uid://7fjlyr5m2b4i" path="res://Scenes/Levels/SMB1/World7/7-1a.tscn" id="1_xa76y"]
 [ext_resource type="Script" uid="uid://bjs5mlc3xrxud" path="res://Scripts/Parts/DiscoLevel.gd" id="2_85g2a"]
 [node name="1-1A" unique_id=1316106234 instance=ExtResource("1_xa76y")]

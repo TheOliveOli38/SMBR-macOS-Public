@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bn1kect7h2dlp"]
+[gd_scene format=3 uid="uid://bn1kect7h2dlp"]
 
 [ext_resource type="Script" uid="uid://bq0pc2vhp35t2" path="res://Scripts/Parts/EntityGenerator.gd" id="1_k54ss"]
 [ext_resource type="PackedScene" uid="uid://c1wl10xa3jara" path="res://Scenes/Prefabs/Entities/Enemies/BulletBill.tscn" id="2_8rftf"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://bxsay5e6dhcqb"]
+[gd_scene format=3 uid="uid://bxsay5e6dhcqb"]
 
 [ext_resource type="Script" uid="uid://n123x5yuqpjd" path="res://Scripts/Classes/Entities/Enemies/DryBones.gd" id="1_8c647"]
 [ext_resource type="Texture2D" uid="uid://c5snfukhcacyf" path="res://Assets/Sprites/Enemies/DryBones.png" id="2_qya46"]
@@ -185,9 +185,7 @@ hitbox = NodePath("../Hitbox")
 metadata/_custom_type_script = "uid://bbww34oiexbx2"
 
 [node name="ShakeAnimation" type="AnimationPlayer" parent="." unique_id=244462432]
-libraries = {
-&"": SubResource("AnimationLibrary_kio7v")
-}
+libraries/ = SubResource("AnimationLibrary_kio7v")
 
 [node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="." unique_id=1966620743]
 position = Vector2(0, -9)

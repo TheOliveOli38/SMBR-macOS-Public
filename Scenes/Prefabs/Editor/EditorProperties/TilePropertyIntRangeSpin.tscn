@@ -1,4 +1,4 @@
-[gd_scene load_steps=2 format=3 uid="uid://dse5pwhodrqcr"]
+[gd_scene format=3 uid="uid://dse5pwhodrqcr"]
 
 [sub_resource type="GDScript" id="GDScript_ok74a"]
 script/source = "extends TilePropertyContainer

@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://bgjgx4nyvg7rf"]
+[gd_scene format=3 uid="uid://bgjgx4nyvg7rf"]
 
 [ext_resource type="Texture2D" uid="uid://ckpp4sxwfvnvm" path="res://icon.png" id="1_8a3n0"]
 [ext_resource type="Script" uid="uid://bi34vu3riirlk" path="res://Scripts/Classes/UI/GameBananaModContainer.gd" id="1_powvh"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://gw1a8atigo5f"]
+[gd_scene format=3 uid="uid://gw1a8atigo5f"]
 
 [ext_resource type="Script" uid="uid://bx6ts0cjrp7pg" path="res://Scripts/Classes/Entities/Enemies/Grinder.gd" id="1_rvu4a"]
 [ext_resource type="Script" uid="uid://cbal8ms2oe1ik" path="res://Scripts/Classes/Components/ResourceSetterNew.gd" id="2_rvu4a"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://de8b6h6ieal7r"]
+[gd_scene format=3 uid="uid://de8b6h6ieal7r"]
 
 [ext_resource type="Script" uid="uid://ynajlxcomlkc" path="res://addons/better-terrain/editor/Dock.gd" id="1_raoha"]
 [ext_resource type="Texture2D" uid="uid://c6lxq2y7mpb18" path="res://addons/better-terrain/icons/EditType.svg" id="2_cpm2t"]
@@ -274,6 +274,7 @@ flat = true
 [node name="HSplit" type="HSplitContainer" parent="VBox" unique_id=658603685]
 layout_mode = 2
 size_flags_vertical = 3
+split_offsets = PackedInt32Array(325)
 split_offset = 325
 
 [node name="Terrains" type="VBoxContainer" parent="VBox/HSplit" unique_id=334470100]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://crdxibqdds04v"]
+[gd_scene format=3 uid="uid://crdxibqdds04v"]
 
 [ext_resource type="PackedScene" uid="uid://b07v70sioegsj" path="res://Scenes/Prefabs/Entities/Enemies/BobOmb.tscn" id="1_w8ebw"]
 [ext_resource type="PackedScene" uid="uid://d075e1520ngrv" path="res://Scenes/Prefabs/Entities/Objects/BobOmbHeld.tscn" id="2_i60fb"]

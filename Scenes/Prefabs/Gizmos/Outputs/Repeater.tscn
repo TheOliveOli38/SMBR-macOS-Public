@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://bo3sr1fjh6pcq"]
+[gd_scene format=3 uid="uid://bo3sr1fjh6pcq"]
 
 [ext_resource type="Script" uid="uid://d0nee6pslgrsd" path="res://Scripts/Classes/Gizmos/Repeater.gd" id="1_830em"]
 [ext_resource type="Texture2D" uid="uid://db8e2n65pq1ik" path="res://Assets/Sprites/Editor/Gizmos/Repeater.png" id="2_8lanu"]

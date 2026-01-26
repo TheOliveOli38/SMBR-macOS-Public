@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://bxvcax2wc48xh"]
+[gd_scene format=3 uid="uid://bxvcax2wc48xh"]
 
 [ext_resource type="Script" uid="uid://c0diue1hemrxq" path="res://Scripts/Classes/Blocks/NoteBlock.gd" id="1_lhrvd"]
 [ext_resource type="Script" uid="uid://cbal8ms2oe1ik" path="res://Scripts/Classes/Components/ResourceSetterNew.gd" id="2_jg54v"]
@@ -132,9 +132,7 @@ shape = SubResource("RectangleShape2D_4015b")
 
 [node name="Animations" type="AnimationPlayer" parent="." unique_id=1715730946]
 unique_name_in_owner = true
-libraries = {
-&"": SubResource("AnimationLibrary_pp28j")
-}
+libraries/ = SubResource("AnimationLibrary_pp28j")
 
 [node name="EditorPropertyExposer" type="Node" parent="." unique_id=1570804738]
 script = ExtResource("6_jg54v")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://bbrkol4k3yobq"]
+[gd_scene format=3 uid="uid://bbrkol4k3yobq"]
 
 [ext_resource type="Script" uid="uid://b43onpjaw542l" path="res://Scripts/Classes/Entities/Enemies/RaceBoo.gd" id="1_d640j"]
 [ext_resource type="Texture2D" uid="uid://c3l6ynlufxcfp" path="res://Assets/Sprites/Enemies/Boo.png" id="2_5odtl"]
@@ -302,9 +302,7 @@ script = ExtResource("3_4ikdy")
 metadata/_custom_type_script = "uid://caq1qiwmy0mox"
 
 [node name="Animation" type="AnimationPlayer" parent="Sprite" unique_id=1918464196]
-libraries = {
-&"": SubResource("AnimationLibrary_4ikdy")
-}
+libraries/ = SubResource("AnimationLibrary_4ikdy")
 autoplay = &"Bob"
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="Sprite" unique_id=21416663]
@@ -331,9 +329,7 @@ script = ExtResource("7_sfl3g")
 metadata/_custom_type_script = "uid://364rywt44hy6"
 
 [node name="Animation" type="AnimationPlayer" parent="OffScreenIcon" unique_id=2068917994]
-libraries = {
-&"": SubResource("AnimationLibrary_sfl3g")
-}
+libraries/ = SubResource("AnimationLibrary_sfl3g")
 
 [node name="GoldParticles" type="GPUParticles2D" parent="." unique_id=1148949648]
 z_index = 1
@@ -367,8 +363,6 @@ texture = ExtResource("12_4hd5m")
 stretch_mode = 3
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Warning" unique_id=136088899]
-libraries = {
-&"": SubResource("AnimationLibrary_it5le")
-}
+libraries/ = SubResource("AnimationLibrary_it5le")
 autoplay = &"Blink"
 speed_scale = 1.5

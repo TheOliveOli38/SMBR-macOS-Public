@@ -1,4 +1,4 @@
-[gd_scene load_steps=2 format=4 uid="uid://bxqjvtqtj4p1w"]
+[gd_scene format=4 uid="uid://bxqjvtqtj4p1w"]
 [ext_resource type="PackedScene" uid="uid://d26v7spik6ixs" path="res://Scenes/Levels/SMBLL/World6/6-1a.tscn" id="1_wqdk4"]
 [node name="8-1a" unique_id=1926313809 instance=ExtResource("1_wqdk4")]
 theme = "CastleWater"

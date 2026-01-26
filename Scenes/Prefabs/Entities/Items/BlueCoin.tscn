@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://dplnidrqshecd"]
+[gd_scene format=3 uid="uid://dplnidrqshecd"]
 
 [ext_resource type="PackedScene" uid="uid://chjxyhlwohmi6" path="res://Scenes/Prefabs/Entities/Items/Coin.tscn" id="1_iq4uk"]
 [ext_resource type="PackedScene" uid="uid://bxuxtgn5wg108" path="res://Scenes/Prefabs/Entities/Items/SpinningBlueCoin.tscn" id="2_4rq0g"]
@@ -14,7 +14,7 @@ animation = &"Idle"
 autoplay = "Idle"
 frame_progress = 0.0
 
-[node name="ResourceSetterNew" parent="Sprite" index="0" unique_id=829518313]
+[node name="ResourceSetter" parent="Sprite" index="0" unique_id=829518313]
 resource_json = ExtResource("2_r2p65")
 
 [node name="PSwitcher" parent="." index="4" unique_id=27976043]

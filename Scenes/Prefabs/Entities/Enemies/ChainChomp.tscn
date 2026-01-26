@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://cmu6ii610jyfx"]
+[gd_scene format=3 uid="uid://cmu6ii610jyfx"]
 
 [ext_resource type="Script" uid="uid://bpydbpyjk1mt4" path="res://Scripts/Classes/Entities/Enemy.gd" id="1_50rwk"]
 [ext_resource type="Script" uid="uid://bpx2wod4fnuts" path="res://Scripts/Classes/Entities/Enemies/ChainChomp.gd" id="1_eahip"]

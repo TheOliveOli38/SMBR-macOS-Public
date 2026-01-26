@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://cbs645wiwmaxq"]
+[gd_scene format=3 uid="uid://cbs645wiwmaxq"]
 
 [ext_resource type="Script" uid="uid://clareynx710qb" path="res://Scripts/Classes/Entities/Objects/Burner.gd" id="1_4fveq"]
 [ext_resource type="Texture2D" uid="uid://dhk5jdqjqo77p" path="res://Assets/Sprites/Blocks/BurnerFlame.png" id="1_vrk50"]

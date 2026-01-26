@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://bym2j03wxhk3t"]
+[gd_scene format=3 uid="uid://bym2j03wxhk3t"]
 
 [ext_resource type="Script" uid="uid://dw05x347cr8jj" path="res://Scripts/Classes/Entities/Enemies/MontyMole.gd" id="1_pcto2"]
 [ext_resource type="Texture2D" uid="uid://c6c6uh8sicml2" path="res://Assets/Sprites/Enemies/MontyMole.png" id="2_pcto2"]

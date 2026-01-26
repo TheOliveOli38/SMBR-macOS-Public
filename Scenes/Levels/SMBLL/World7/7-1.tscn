@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=4 uid="uid://cxtralqph1reo"]
+[gd_scene format=4 uid="uid://cxtralqph1reo"]
 [ext_resource type="Script" uid="uid://bcqr1v25ygedb" path="res://Scripts/Classes/LevelClass.gd" id="1_ed6ec"]
 [ext_resource type="JSON" path="res://Assets/Audio/BGM/Jungle.json" id="2_4kj7h"]
 [ext_resource type="PackedScene" uid="uid://cuh62hlq8errh" path="res://Scenes/Prefabs/Entities/Player.tscn" id="5_ovdh5"]

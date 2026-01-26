@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://iq86u4w60yee"]
+[gd_scene format=3 uid="uid://iq86u4w60yee"]
 
 [ext_resource type="Texture2D" uid="uid://b7n5kp30whnb3" path="res://Assets/Sprites/Blocks/FireBar.png" id="1_e2e05"]
 [ext_resource type="Script" uid="uid://caq1qiwmy0mox" path="res://Scripts/Parts/BetterAnimatedSprite.gd" id="2_kpo86"]
@@ -238,9 +238,7 @@ do_offset = false
 metadata/_custom_type_script = "uid://caq1qiwmy0mox"
 
 [node name="Animation" type="AnimationPlayer" parent="Fireballs/Fireball1" unique_id=2008692661]
-libraries = {
-&"": SubResource("AnimationLibrary_ytedt")
-}
+libraries/ = SubResource("AnimationLibrary_ytedt")
 autoplay = &"Spin"
 
 [node name="ResourceSetter" type="Node" parent="Fireballs/Fireball1" unique_id=745166207 node_paths=PackedStringArray("node_to_affect")]
@@ -257,9 +255,7 @@ do_offset = false
 metadata/_custom_type_script = "uid://caq1qiwmy0mox"
 
 [node name="Animation" type="AnimationPlayer" parent="Fireballs/Fireball2" unique_id=1609711069]
-libraries = {
-&"": SubResource("AnimationLibrary_ytedt")
-}
+libraries/ = SubResource("AnimationLibrary_ytedt")
 autoplay = &"Spin"
 
 [node name="ResourceSetter" type="Node" parent="Fireballs/Fireball2" unique_id=323314887 node_paths=PackedStringArray("node_to_affect")]
@@ -276,9 +272,7 @@ do_offset = false
 metadata/_custom_type_script = "uid://caq1qiwmy0mox"
 
 [node name="Animation" type="AnimationPlayer" parent="Fireballs/Fireball3" unique_id=1371803672]
-libraries = {
-&"": SubResource("AnimationLibrary_ytedt")
-}
+libraries/ = SubResource("AnimationLibrary_ytedt")
 autoplay = &"Spin"
 
 [node name="ResourceSetter" type="Node" parent="Fireballs/Fireball3" unique_id=1208242176 node_paths=PackedStringArray("node_to_affect")]
@@ -295,9 +289,7 @@ do_offset = false
 metadata/_custom_type_script = "uid://caq1qiwmy0mox"
 
 [node name="Animation" type="AnimationPlayer" parent="Fireballs/Fireball4" unique_id=139371026]
-libraries = {
-&"": SubResource("AnimationLibrary_ytedt")
-}
+libraries/ = SubResource("AnimationLibrary_ytedt")
 autoplay = &"Spin"
 
 [node name="ResourceSetter" type="Node" parent="Fireballs/Fireball4" unique_id=451910668 node_paths=PackedStringArray("node_to_affect")]
@@ -314,9 +306,7 @@ do_offset = false
 metadata/_custom_type_script = "uid://caq1qiwmy0mox"
 
 [node name="Animation" type="AnimationPlayer" parent="Fireballs/Fireball5" unique_id=793462387]
-libraries = {
-&"": SubResource("AnimationLibrary_ytedt")
-}
+libraries/ = SubResource("AnimationLibrary_ytedt")
 autoplay = &"Spin"
 
 [node name="ResourceSetter" type="Node" parent="Fireballs/Fireball5" unique_id=2040520298 node_paths=PackedStringArray("node_to_affect")]
@@ -333,9 +323,7 @@ do_offset = false
 metadata/_custom_type_script = "uid://caq1qiwmy0mox"
 
 [node name="Animation" type="AnimationPlayer" parent="Fireballs/Fireball6" unique_id=7621543]
-libraries = {
-&"": SubResource("AnimationLibrary_ytedt")
-}
+libraries/ = SubResource("AnimationLibrary_ytedt")
 autoplay = &"Spin"
 
 [node name="ResourceSetter" type="Node" parent="Fireballs/Fireball6" unique_id=942118478 node_paths=PackedStringArray("node_to_affect")]
@@ -353,9 +341,7 @@ do_offset = false
 metadata/_custom_type_script = "uid://caq1qiwmy0mox"
 
 [node name="Animation" type="AnimationPlayer" parent="Fireballs/Fireball7" unique_id=1938494496]
-libraries = {
-&"": SubResource("AnimationLibrary_ytedt")
-}
+libraries/ = SubResource("AnimationLibrary_ytedt")
 autoplay = &"Spin"
 
 [node name="ResourceSetter" type="Node" parent="Fireballs/Fireball7" unique_id=1333085127 node_paths=PackedStringArray("node_to_affect")]
@@ -373,9 +359,7 @@ do_offset = false
 metadata/_custom_type_script = "uid://caq1qiwmy0mox"
 
 [node name="Animation" type="AnimationPlayer" parent="Fireballs/Fireball8" unique_id=51299967]
-libraries = {
-&"": SubResource("AnimationLibrary_ytedt")
-}
+libraries/ = SubResource("AnimationLibrary_ytedt")
 autoplay = &"Spin"
 
 [node name="ResourceSetter" type="Node" parent="Fireballs/Fireball8" unique_id=1020039322 node_paths=PackedStringArray("node_to_affect")]
@@ -393,9 +377,7 @@ do_offset = false
 metadata/_custom_type_script = "uid://caq1qiwmy0mox"
 
 [node name="Animation" type="AnimationPlayer" parent="Fireballs/Fireball9" unique_id=1008757284]
-libraries = {
-&"": SubResource("AnimationLibrary_ytedt")
-}
+libraries/ = SubResource("AnimationLibrary_ytedt")
 autoplay = &"Spin"
 
 [node name="ResourceSetter" type="Node" parent="Fireballs/Fireball9" unique_id=1056263920 node_paths=PackedStringArray("node_to_affect")]
@@ -413,9 +395,7 @@ do_offset = false
 metadata/_custom_type_script = "uid://caq1qiwmy0mox"
 
 [node name="Animation" type="AnimationPlayer" parent="Fireballs/Fireball10" unique_id=873249760]
-libraries = {
-&"": SubResource("AnimationLibrary_ytedt")
-}
+libraries/ = SubResource("AnimationLibrary_ytedt")
 autoplay = &"Spin"
 
 [node name="ResourceSetter" type="Node" parent="Fireballs/Fireball10" unique_id=1179461711 node_paths=PackedStringArray("node_to_affect")]
@@ -433,9 +413,7 @@ do_offset = false
 metadata/_custom_type_script = "uid://caq1qiwmy0mox"
 
 [node name="Animation" type="AnimationPlayer" parent="Fireballs/Fireball11" unique_id=1963082607]
-libraries = {
-&"": SubResource("AnimationLibrary_ytedt")
-}
+libraries/ = SubResource("AnimationLibrary_ytedt")
 autoplay = &"Spin"
 
 [node name="ResourceSetter" type="Node" parent="Fireballs/Fireball11" unique_id=873826303 node_paths=PackedStringArray("node_to_affect")]
@@ -453,9 +431,7 @@ do_offset = false
 metadata/_custom_type_script = "uid://caq1qiwmy0mox"
 
 [node name="Animation" type="AnimationPlayer" parent="Fireballs/Fireball12" unique_id=1185841752]
-libraries = {
-&"": SubResource("AnimationLibrary_ytedt")
-}
+libraries/ = SubResource("AnimationLibrary_ytedt")
 autoplay = &"Spin"
 
 [node name="ResourceSetter" type="Node" parent="Fireballs/Fireball12" unique_id=558398335 node_paths=PackedStringArray("node_to_affect")]
@@ -473,9 +449,7 @@ do_offset = false
 metadata/_custom_type_script = "uid://caq1qiwmy0mox"
 
 [node name="Animation" type="AnimationPlayer" parent="Fireballs/Fireball13" unique_id=679488103]
-libraries = {
-&"": SubResource("AnimationLibrary_ytedt")
-}
+libraries/ = SubResource("AnimationLibrary_ytedt")
 autoplay = &"Spin"
 
 [node name="ResourceSetter" type="Node" parent="Fireballs/Fireball13" unique_id=1805229981 node_paths=PackedStringArray("node_to_affect")]
@@ -493,9 +467,7 @@ do_offset = false
 metadata/_custom_type_script = "uid://caq1qiwmy0mox"
 
 [node name="Animation" type="AnimationPlayer" parent="Fireballs/Fireball14" unique_id=2082890334]
-libraries = {
-&"": SubResource("AnimationLibrary_ytedt")
-}
+libraries/ = SubResource("AnimationLibrary_ytedt")
 autoplay = &"Spin"
 
 [node name="ResourceSetter" type="Node" parent="Fireballs/Fireball14" unique_id=345182671 node_paths=PackedStringArray("node_to_affect")]
@@ -513,9 +485,7 @@ do_offset = false
 metadata/_custom_type_script = "uid://caq1qiwmy0mox"
 
 [node name="Animation" type="AnimationPlayer" parent="Fireballs/Fireball15" unique_id=1026622121]
-libraries = {
-&"": SubResource("AnimationLibrary_ytedt")
-}
+libraries/ = SubResource("AnimationLibrary_ytedt")
 autoplay = &"Spin"
 
 [node name="ResourceSetter" type="Node" parent="Fireballs/Fireball15" unique_id=509059337 node_paths=PackedStringArray("node_to_affect")]
@@ -533,9 +503,7 @@ do_offset = false
 metadata/_custom_type_script = "uid://caq1qiwmy0mox"
 
 [node name="Animation" type="AnimationPlayer" parent="Fireballs/Fireball16" unique_id=402723640]
-libraries = {
-&"": SubResource("AnimationLibrary_ytedt")
-}
+libraries/ = SubResource("AnimationLibrary_ytedt")
 autoplay = &"Spin"
 
 [node name="ResourceSetter" type="Node" parent="Fireballs/Fireball16" unique_id=867411557 node_paths=PackedStringArray("node_to_affect")]
@@ -553,9 +521,7 @@ do_offset = false
 metadata/_custom_type_script = "uid://caq1qiwmy0mox"
 
 [node name="Animation" type="AnimationPlayer" parent="Fireballs/Fireball17" unique_id=860798124]
-libraries = {
-&"": SubResource("AnimationLibrary_ytedt")
-}
+libraries/ = SubResource("AnimationLibrary_ytedt")
 autoplay = &"Spin"
 
 [node name="ResourceSetter" type="Node" parent="Fireballs/Fireball17" unique_id=1933128934 node_paths=PackedStringArray("node_to_affect")]
@@ -573,9 +539,7 @@ do_offset = false
 metadata/_custom_type_script = "uid://caq1qiwmy0mox"
 
 [node name="Animation" type="AnimationPlayer" parent="Fireballs/Fireball18" unique_id=886109890]
-libraries = {
-&"": SubResource("AnimationLibrary_ytedt")
-}
+libraries/ = SubResource("AnimationLibrary_ytedt")
 autoplay = &"Spin"
 
 [node name="ResourceSetter" type="Node" parent="Fireballs/Fireball18" unique_id=1596550400 node_paths=PackedStringArray("node_to_affect")]

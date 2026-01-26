@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://cmgahojpgp2cq"]
+[gd_scene format=3 uid="uid://cmgahojpgp2cq"]
 
 [ext_resource type="PackedScene" uid="uid://bc1mrna4kybhv" path="res://Scenes/Prefabs/Blocks/QuestionBlocks/QuestionBlock.tscn" id="1_gy3k6"]
 [ext_resource type="PackedScene" uid="uid://dbjqtjhb2t4cn" path="res://Scenes/Prefabs/Entities/Items/FireFlower.tscn" id="2_h6l2a"]

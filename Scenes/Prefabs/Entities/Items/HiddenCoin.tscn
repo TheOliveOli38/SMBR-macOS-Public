@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://detac2nekw5ru"]
+[gd_scene format=3 uid="uid://detac2nekw5ru"]
 
 [ext_resource type="Script" uid="uid://dn5uiu8f7b20m" path="res://Scripts/Classes/Entities/Items/HiddenCoin.gd" id="1_c15kk"]
 [ext_resource type="Texture2D" uid="uid://74j72n7433km" path="res://Assets/Sprites/Items/HiddenCoin.png" id="1_c588f"]
@@ -47,5 +47,6 @@ position = Vector2(0, 9999999)
 enabled = false
 
 [connection signal="player_entered" from="PlayerDetection" to="." method="on_player_entered" flags=6]
+[connection signal="area_entered" from="Coin/Hitbox" to="Coin" method="area_entered"]
 
 [editable path="Coin"]

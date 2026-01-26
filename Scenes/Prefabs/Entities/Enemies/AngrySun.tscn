@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://13vxk381k4gt"]
+[gd_scene format=3 uid="uid://13vxk381k4gt"]
 
 [ext_resource type="Script" uid="uid://cxtekxsaprq8c" path="res://Scripts/Classes/Entities/Enemies/AngrySun.gd" id="1_b44wu"]
 [ext_resource type="Texture2D" uid="uid://dki2sbbbcsje0" path="res://Assets/Sprites/Enemies/AngrySun.png" id="2_4q5i4"]

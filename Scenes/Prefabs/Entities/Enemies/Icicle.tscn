@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://b0gkypf5ow67f"]
+[gd_scene format=3 uid="uid://b0gkypf5ow67f"]
 
 [ext_resource type="Script" uid="uid://cx0ak5ctcg0mi" path="res://Scripts/Classes/Entities/Enemies/Icicle.gd" id="1_dnx1i"]
 [ext_resource type="Texture2D" uid="uid://rbln0ee0fknc" path="res://Assets/Sprites/Enemies/Icicle.png" id="2_1h8cl"]
@@ -80,9 +80,7 @@ self_modulate = Color(1, 1, 1, 0)
 position = Vector2(0, -8)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=277092153]
-libraries = {
-&"": SubResource("AnimationLibrary_2sios")
-}
+libraries/ = SubResource("AnimationLibrary_2sios")
 
 [connection signal="killed" from="." to="." method="destroy" unbinds=1]
 [connection signal="hammer_player_hit" from="EnemyPlayerDetection" to="." method="die_from_hammer"]

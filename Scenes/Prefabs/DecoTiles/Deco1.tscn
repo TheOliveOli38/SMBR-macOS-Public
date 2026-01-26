@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=4 uid="uid://cw6ypkkhofyuq"]
+[gd_scene format=4 uid="uid://cw6ypkkhofyuq"]
 
 [ext_resource type="Texture2D" uid="uid://cntkcqc74qp50" path="res://Assets/Sprites/Tilesets/Deco/OverworldDeco.png" id="1_l50eh"]
 [ext_resource type="Script" uid="uid://cve2q420hiur1" path="res://Scripts/Parts/Tileset.gd" id="2_j65d4"]

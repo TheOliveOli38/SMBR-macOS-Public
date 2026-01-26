@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://bod0jkf7jc5pm"]
+[gd_scene format=3 uid="uid://bod0jkf7jc5pm"]
 
 [ext_resource type="Script" uid="uid://bjbd3a6su47si" path="res://Scripts/Classes/UI/GameHUD.gd" id="1_f34v2"]
 [ext_resource type="Script" uid="uid://caq1qiwmy0mox" path="res://Scripts/Parts/BetterAnimatedSprite.gd" id="2_cbrve"]
@@ -442,9 +442,7 @@ frame = 1
 region_rect = Rect2(0, 0, 8, 8)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Main/RedCoins/YoshiEgg/Radar" unique_id=1568296679]
-libraries = {
-&"": SubResource("AnimationLibrary_cfljn")
-}
+libraries/ = SubResource("AnimationLibrary_cfljn")
 
 [node name="ScoreMedal" type="Sprite2D" parent="Main/RedCoins" unique_id=263965405]
 position = Vector2(43, -2)
@@ -811,9 +809,7 @@ vframes = 3
 region_rect = Rect2(0, 0, 8, 8)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="ModernHUD/TopLeft/RedCoins/YoshiEgg/ModernRadar" unique_id=96297044]
-libraries = {
-&"": SubResource("AnimationLibrary_cfljn")
-}
+libraries/ = SubResource("AnimationLibrary_cfljn")
 
 [node name="ScoreMedal" type="Sprite2D" parent="ModernHUD/TopLeft/RedCoins" unique_id=229616805]
 position = Vector2(43, -2)

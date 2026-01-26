@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=4 uid="uid://2qtu2qil1238"]
+[gd_scene format=4 uid="uid://2qtu2qil1238"]
 [ext_resource type="PackedScene" uid="uid://b1cgn0pwii7yq" path="res://Scenes/Levels/PipeCutscene.tscn" id="1_mgpnp"]
 [ext_resource type="PackedScene" uid="uid://dn2oonncrmxb3" path="res://Scenes/Parts/LargeSPCastleDeco.tscn" id="2_wp0yq"]
 [node name="PipeCutscene" unique_id=1071908811 instance=ExtResource("1_mgpnp")]

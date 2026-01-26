@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=4 uid="uid://x0amyr0j3hoq"]
+[gd_scene format=4 uid="uid://x0amyr0j3hoq"]
 [ext_resource type="PackedScene" uid="uid://2ianqfjihktc" path="res://Scenes/Levels/SMB1/World2/2-4.tscn" id="1_3kd2m"]
 [ext_resource type="PackedScene" uid="uid://dsa8lpl7n8ge0" path="res://Scenes/Prefabs/Blocks/BrickBlocks/BrickBlock.tscn" id="3_hhnk4"]
 [ext_resource type="JSON" path="res://Assets/Sprites/Enemies/Lakitu.json" id="4_48qw5"]

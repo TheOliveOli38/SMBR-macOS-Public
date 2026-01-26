@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=4 uid="uid://cmittkgu8hhv1"]
+[gd_scene format=4 uid="uid://cmittkgu8hhv1"]
 [ext_resource type="PackedScene" uid="uid://4tuu5ri4mjla" path="res://Scenes/Levels/SMBS/World6/6-2a.tscn" id="1_oktnf"]
 [ext_resource type="PackedScene" uid="uid://58uk17ixtt4r" path="res://Scenes/Prefabs/Blocks/InvisibleBlocks/InvisibleQuestionBlock.tscn" id="2_o3th3"]
 [ext_resource type="PackedScene" uid="uid://d3gnwmvds4ors" path="res://Scenes/Prefabs/Entities/Items/SpinningRedCoin.tscn" id="3_35p3e"]

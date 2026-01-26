@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://dbob4iexex6yp"]
+[gd_scene format=3 uid="uid://dbob4iexex6yp"]
 
 [ext_resource type="Script" uid="uid://4isgtypd8yqc" path="res://Scripts/Classes/Entities/Enemies/Spike.gd" id="1_5cp2h"]
 [ext_resource type="Texture2D" uid="uid://drf0xqp7af1bx" path="res://Assets/Sprites/Enemies/Spike.png" id="2_dd7on"]
@@ -207,9 +207,7 @@ metadata/_custom_type_script = "uid://caq1qiwmy0mox"
 [node name="Animations" type="AnimationPlayer" parent="Sprite" unique_id=10085987]
 unique_name_in_owner = true
 root_node = NodePath("../..")
-libraries = {
-&"": SubResource("AnimationLibrary_px5di")
-}
+libraries/ = SubResource("AnimationLibrary_px5di")
 
 [node name="ResourceSetterNew" type="Node" parent="Sprite" unique_id=2072809490 node_paths=PackedStringArray("node_to_affect")]
 script = ExtResource("5_ddx5o")

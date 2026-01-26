@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://cf2jub5s18wrs"]
+[gd_scene format=3 uid="uid://cf2jub5s18wrs"]
 [ext_resource type="PackedScene" uid="uid://luvjp1hbt8ej" path="res://Scenes/Levels/SMB1/World1/1-4.tscn" id="1_ryiwt"]
 [ext_resource type="JSON" path="res://Assets/Sprites/Enemies/Blooper.json" id="2_1tffw"]
 [node name="6-4" unique_id=1421602951 instance=ExtResource("1_ryiwt")]

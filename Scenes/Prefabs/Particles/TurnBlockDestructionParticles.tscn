@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://fqeqexyd7j0j"]
+[gd_scene format=3 uid="uid://fqeqexyd7j0j"]
 
 [ext_resource type="PackedScene" uid="uid://cyw7kk1em8h16" path="res://Scenes/Parts/Particles/BlockDestructionParticles.tscn" id="1_yiy81"]
 [ext_resource type="JSON" path="res://Assets/Sprites/Particles/FlipBlockDestructionParticles.json" id="2_8wiln"]

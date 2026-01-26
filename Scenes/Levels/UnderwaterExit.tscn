@@ -1,4 +1,4 @@
-[gd_scene load_steps=2 format=3 uid="uid://bgejr6nyhwxlg"]
+[gd_scene format=3 uid="uid://bgejr6nyhwxlg"]
 
 [ext_resource type="PackedScene" uid="uid://bgbkyhmcfa8l6" path="res://Scenes/Levels/UndergroundExit.tscn" id="1_u86kc"]
 

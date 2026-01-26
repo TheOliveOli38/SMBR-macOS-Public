@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=4 uid="uid://dq8isb72miff4"]
+[gd_scene format=4 uid="uid://dq8isb72miff4"]
 [ext_resource type="PackedScene" uid="uid://d1bdp52vqxi6l" path="res://Scenes/Levels/SMB1/World4/4-4.tscn" id="1_0ylfj"]
 [ext_resource type="JSON" path="res://Assets/Audio/BGM/Underground.json" id="2_i20au"]
 [ext_resource type="PackedScene" uid="uid://b0peppjq7jrcp" path="res://Scenes/Parts/WarpZoneCameraLimit.tscn" id="4_734d4"]
@@ -25,13 +25,13 @@ position = Vector2(696, 216)
 position = Vector2(1576, 168)
 [node name="Firebar4" parent="." index="5" unique_id=493623274]
 position = Vector2(1688, 232)
-[node name="Sprite" parent="CastleToad" parent_id_path=PackedInt32Array(678873648) index="0"]
+[node name="Sprite" parent="CastleToad" parent_id_path=PackedInt32Array(678873648) index="0" unique_id=1713929806]
 visible = false
 rotation = 0.619592
 scale = Vector2(2.01, 2.01)
 flip_h = true
 flip_v = true
-[node name="CameraRightLimit" parent="CastleToad" parent_id_path=PackedInt32Array(678873648) index="3"]
+[node name="CameraRightLimit" parent="CastleToad" parent_id_path=PackedInt32Array(678873648) index="3" unique_id=105448341]
 position = Vector2(168, -80)
 [node name="CameraRightLimit" parent="CastleBridge/Axe" parent_id_path=PackedInt32Array(1751774818, 99773570) index="1" unique_id=1025344155]
 position = Vector2(376, 8)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://crl4v60uug4ho"]
+[gd_scene format=3 uid="uid://crl4v60uug4ho"]
 
 [ext_resource type="PackedScene" uid="uid://blv1d12smlibh" path="res://Scenes/Levels/ChallengeModeResults.tscn" id="1_vr3sy"]
 [ext_resource type="Texture2D" uid="uid://b650r4ep8ulqt" path="res://Assets/Sprites/Backgrounds/ChallengeModeResults/Castle3.png" id="2_h7wtw"]

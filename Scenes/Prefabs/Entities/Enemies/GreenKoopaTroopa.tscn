@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://r6dlmokkdyar"]
+[gd_scene format=3 uid="uid://r6dlmokkdyar"]
 
 [ext_resource type="Script" uid="uid://q8gx0l64pcjh" path="res://Scripts/Classes/Entities/Enemies/KoopaTroopa.gd" id="1_ykjo1"]
 [ext_resource type="Texture2D" uid="uid://cy6v7tdtxebs5" path="res://Assets/Sprites/Enemies/KoopaTroopa.png" id="2_ykjo1"]

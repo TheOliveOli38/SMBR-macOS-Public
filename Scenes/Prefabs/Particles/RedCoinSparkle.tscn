@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://ciif5kygsk0fu"]
+[gd_scene format=3 uid="uid://ciif5kygsk0fu"]
 
 [ext_resource type="Texture2D" uid="uid://c4ugewy0lof7v" path="res://Assets/Sprites/Particles/RedCoinSparkle.png" id="1_1cy2p"]
 [ext_resource type="Script" uid="uid://cbal8ms2oe1ik" path="res://Scripts/Classes/Components/ResourceSetterNew.gd" id="2_4yggt"]

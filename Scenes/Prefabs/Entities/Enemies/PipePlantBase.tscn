@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://bksfxqm6v1a4j"]
+[gd_scene format=3 uid="uid://bksfxqm6v1a4j"]
 
 [ext_resource type="Script" uid="uid://d23hoj2qc2whq" path="res://Scripts/Classes/Entities/Enemies/PiranhaPlant.gd" id="1_ruec0"]
 [ext_resource type="Script" uid="uid://c3gg32ivrlq8n" path="res://Scripts/Classes/Components/GibSpawner.gd" id="4_fs2ml"]
@@ -246,9 +246,7 @@ properties = Array[String](["pipe_direction"])
 metadata/_custom_type_script = "uid://ctfbuoxtnnl0q"
 
 [node name="Animation" type="AnimationPlayer" parent="." unique_id=1714542832]
-libraries = {
-&"": SubResource("AnimationLibrary_hjrfx")
-}
+libraries/ = SubResource("AnimationLibrary_hjrfx")
 autoplay = &"Hide"
 
 [node name="SecondQuestReplacer" type="Node" parent="." unique_id=1574329925]

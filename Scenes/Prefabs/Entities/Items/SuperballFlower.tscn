@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://ildroacg1kui"]
+[gd_scene format=3 uid="uid://ildroacg1kui"]
 
 [ext_resource type="PackedScene" uid="uid://dbjqtjhb2t4cn" path="res://Scenes/Prefabs/Entities/Items/FireFlower.tscn" id="1_nibwi"]
 [ext_resource type="JSON" path="res://Assets/Sprites/Items/SuperballFlower.json" id="2_d6erm"]

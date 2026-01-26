@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://ccwil8rmgvund"]
+[gd_scene format=3 uid="uid://ccwil8rmgvund"]
 
 [ext_resource type="Script" uid="uid://co6tjg3w6qpd8" path="res://Scripts/Parts/LabelFontChanger.gd" id="1_jxnhn"]
 [ext_resource type="Script" uid="uid://dt2p68xl462v2" path="res://Scripts/Parts/TextShadowColourChanger.gd" id="3_8hggr"]

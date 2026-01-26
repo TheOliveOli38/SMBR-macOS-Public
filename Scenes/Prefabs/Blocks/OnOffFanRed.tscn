@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://lglmgqp3emy4"]
+[gd_scene format=3 uid="uid://lglmgqp3emy4"]
 
 [ext_resource type="Script" uid="uid://bvplls3ae0oqr" path="res://Scripts/Classes/Entities/Objects/OnOffFanRed.gd" id="1_gfuw1"]
 [ext_resource type="Texture2D" uid="uid://d0o6wgsrow8t1" path="res://Assets/Sprites/Blocks/OnOffFan.png" id="1_y6e5m"]

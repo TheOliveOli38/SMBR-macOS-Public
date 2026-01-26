@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://cwv4ic558ayun"]
+[gd_scene format=3 uid="uid://cwv4ic558ayun"]
 
 [ext_resource type="AudioStream" uid="uid://chknkfu4c0gsp" path="res://Assets/Audio/BGM/Overworld.mp3" id="1_6s2eu"]
 [ext_resource type="Script" uid="uid://db0uolj5jvlca" path="res://Scripts/Classes/Singletons/AudioManager.gd" id="1_gwo7i"]

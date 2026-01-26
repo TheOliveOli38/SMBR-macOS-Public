@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://k4bgruingvi0"]
+[gd_scene format=3 uid="uid://k4bgruingvi0"]
 
 [ext_resource type="Script" uid="uid://dlnm31ghtd415" path="res://Scripts/UI/EditorGuide.gd" id="1_1mv3v"]
 [ext_resource type="StyleBox" uid="uid://comkghpj0djcl" path="res://Resources/UI/Panel.tres" id="1_ua084"]
@@ -52,6 +52,7 @@ theme_override_constants/margin_bottom = -4
 [node name="HSplitContainer" type="HSplitContainer" parent="MarginContainer/PanelContainer/MarginContainer" unique_id=591327134]
 layout_mode = 2
 theme_override_constants/separation = 8
+split_offsets = PackedInt32Array(-32)
 split_offset = -32
 
 [node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/PanelContainer/MarginContainer/HSplitContainer" unique_id=96769149]

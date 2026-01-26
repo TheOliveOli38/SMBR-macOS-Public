@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://btuv0dcfc8u7x"]
+[gd_scene format=3 uid="uid://btuv0dcfc8u7x"]
 
 [ext_resource type="Texture2D" uid="uid://ba2qk7svwdolv" path="res://Assets/Sprites/Editor/EditorBlip.png" id="1_fv2ky"]
 

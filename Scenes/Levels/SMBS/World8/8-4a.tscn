@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=4 uid="uid://cpyflvnie7ccb"]
+[gd_scene format=4 uid="uid://cpyflvnie7ccb"]
 [ext_resource type="Script" uid="uid://bcqr1v25ygedb" path="res://Scripts/Classes/LevelClass.gd" id="1_jf5yw"]
 [ext_resource type="JSON" path="res://Assets/Audio/BGM/Castle.json" id="2_4x8p3"]
 [ext_resource type="PackedScene" uid="uid://bksxgpygrdjl7" path="res://Scenes/Prefabs/LevelBG.tscn" id="3_4x8p3"]

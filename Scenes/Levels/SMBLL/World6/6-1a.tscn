@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=4 uid="uid://d26v7spik6ixs"]
+[gd_scene format=4 uid="uid://d26v7spik6ixs"]
 [ext_resource type="PackedScene" uid="uid://bm5jryrvbyyul" path="res://Scenes/Levels/SMBLL/World4/4-1a.tscn" id="1_jbual"]
 [ext_resource type="PackedScene" uid="uid://r6dlmokkdyar" path="res://Scenes/Prefabs/Entities/Enemies/GreenKoopaTroopa.tscn" id="2_27pw3"]
 [ext_resource type="PackedScene" uid="uid://doguqwqut2s5e" path="res://Scenes/Prefabs/Entities/Enemies/RedKoopaParaTroopa.tscn" id="3_us04x"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://c3mc7ptiywhvw"]
+[gd_scene format=3 uid="uid://c3mc7ptiywhvw"]
 
 [ext_resource type="Texture2D" uid="uid://dt0qtxu2l646n" path="res://Assets/Sprites/Tilesets/Terrain/Overworld.png" id="1_beitk"]
 [ext_resource type="Script" uid="uid://cbal8ms2oe1ik" path="res://Scripts/Classes/Components/ResourceSetterNew.gd" id="2_beitk"]

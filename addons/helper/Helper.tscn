@@ -1,4 +1,4 @@
-[gd_scene load_steps=2 format=3 uid="uid://kmvo4u8e3h77"]
+[gd_scene format=3 uid="uid://kmvo4u8e3h77"]
 
 [ext_resource type="Script" uid="uid://d3wnprr8r4yoo" path="res://addons/helper/HelperNode.gd" id="1_4xvsf"]
 

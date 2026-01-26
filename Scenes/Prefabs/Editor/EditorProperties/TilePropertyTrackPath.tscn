@@ -1,4 +1,4 @@
-[gd_scene load_steps=2 format=3 uid="uid://byv4sv3cayrmo"]
+[gd_scene format=3 uid="uid://byv4sv3cayrmo"]
 
 [ext_resource type="Script" uid="uid://ben0fq5kf141g" path="res://Scripts/Parts/TilePropertyTrackPath.gd" id="1_hlygm"]
 

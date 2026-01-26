@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=4 uid="uid://dwbp7ip3l3snl"]
+[gd_scene format=4 uid="uid://dwbp7ip3l3snl"]
 [ext_resource type="PackedScene" uid="uid://d3lsxfuwgmtdt" path="res://Scenes/Levels/SMB1/World1/1-1a.tscn" id="1_iyabe"]
 [ext_resource type="PackedScene" uid="uid://58uk17ixtt4r" path="res://Scenes/Prefabs/Blocks/InvisibleBlocks/InvisibleQuestionBlock.tscn" id="3_cjxa5"]
 [ext_resource type="PackedScene" uid="uid://n7nskl10ouem" path="res://Scenes/Prefabs/Entities/Items/PoisonMushroom.tscn" id="4_2671j"]

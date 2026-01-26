@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=4 uid="uid://ci1065naoop7s"]
+[gd_scene format=4 uid="uid://ci1065naoop7s"]
 [ext_resource type="PackedScene" uid="uid://bdd0jj88igduv" path="res://Scenes/Levels/SMBLL/CoinHeavens/1.tscn" id="1_h888k"]
 [ext_resource type="Texture2D" uid="uid://dt0qtxu2l646n" path="res://Assets/Sprites/Tilesets/Terrain/Overworld.png" id="2_ixoj0"]
 [ext_resource type="PackedScene" uid="uid://dsa8lpl7n8ge0" path="res://Scenes/Prefabs/Blocks/BrickBlocks/BrickBlock.tscn" id="3_5c81w"]
@@ -40,7 +40,7 @@ tile_data = PackedInt32Array(0, 524288, 5, 1, 589824, 5)
 tile_data = PackedInt32Array(0, 524288, 6, 1, 589824, 6)
 [sub_resource type="TileMapPattern" id="TileMapPattern_7cpm5"]
 tile_data = PackedInt32Array(0, 524288, 7, 1, 589824, 7)
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ryf0d"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ixoj0"]
 resource_name = "Terrain"
 texture = ExtResource("2_ixoj0")
 0:0/0 = 0
@@ -706,7 +706,7 @@ texture = ExtResource("2_ixoj0")
 13:10/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 11:10/0 = 0
 11:10/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
-[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_0uqus"]
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_5c81w"]
 scenes/1/scene = ExtResource("3_5c81w")
 scenes/2/scene = ExtResource("14_5hxno")
 scenes/3/scene = ExtResource("16_rpeb8")
@@ -727,7 +727,7 @@ scenes/17/scene = ExtResource("11_sudrr")
 scenes/18/scene = ExtResource("12_vyd6e")
 scenes/19/scene = ExtResource("13_xt5re")
 scenes/20/scene = ExtResource("15_xorry")
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_oyfva"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lc3wd"]
 texture = ExtResource("23_a8e6f")
 0:0/next_alternative_id = 2
 0:0/animation_speed = 8.0
@@ -823,7 +823,7 @@ texture = ExtResource("23_a8e6f")
 &"type": 14
 }
 0:7/1 = 1
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3vmf0"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3d5f2"]
 texture = ExtResource("24_7yvps")
 0:0/0 = 0
 0:0/0/z_index = -10
@@ -845,7 +845,7 @@ texture = ExtResource("24_7yvps")
 3:0/0/z_index = -10
 4:0/0 = 0
 4:0/0/z_index = -10
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hxbd5"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jtefc"]
 texture = ExtResource("25_swx45")
 0:0/next_alternative_id = 3
 0:0/animation_speed = 20.0
@@ -927,7 +927,7 @@ texture = ExtResource("25_swx45")
 8: [17],
 &"type": 17
 }
-[sub_resource type="TileSet" id="TileSet_dexhc"]
+[sub_resource type="TileSet" id="TileSet_po3om"]
 resource_local_to_scene = true
 physics_layer_0/collision_layer = 2
 physics_layer_0/collision_mask = 0
@@ -942,11 +942,11 @@ terrain_set_0/terrain_0/name = "Ground"
 terrain_set_0/terrain_0/color = Color(0.5, 0.34375, 0.25, 1)
 custom_data_layer_0/name = "OneWay"
 custom_data_layer_0/type = 1
-sources/0 = SubResource("TileSetAtlasSource_ryf0d")
-sources/1 = SubResource("TileSetScenesCollectionSource_0uqus")
-sources/2 = SubResource("TileSetAtlasSource_oyfva")
-sources/3 = SubResource("TileSetAtlasSource_3vmf0")
-sources/4 = SubResource("TileSetAtlasSource_hxbd5")
+sources/0 = SubResource("TileSetAtlasSource_ixoj0")
+sources/1 = SubResource("TileSetScenesCollectionSource_5c81w")
+sources/2 = SubResource("TileSetAtlasSource_lc3wd")
+sources/3 = SubResource("TileSetAtlasSource_3d5f2")
+sources/4 = SubResource("TileSetAtlasSource_jtefc")
 pattern_0 = SubResource("TileMapPattern_b6qiv")
 pattern_1 = SubResource("TileMapPattern_d4nyf")
 pattern_2 = SubResource("TileMapPattern_ls3wh")
@@ -1004,4 +1004,4 @@ metadata/_better_terrain = {
 [node name="Level" unique_id=1756374794 instance=ExtResource("1_h888k")]
 [node name="Tiles" parent="." index="1" unique_id=1674661667]
 tile_map_data = PackedByteArray("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")
-tile_set = SubResource("TileSet_dexhc")
+tile_set = SubResource("TileSet_po3om")

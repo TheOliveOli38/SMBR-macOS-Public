@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://c1slhdnlsv2qt"]
+[gd_scene format=3 uid="uid://c1slhdnlsv2qt"]
 
 [ext_resource type="Texture2D" uid="uid://dnfq6kug4x6o2" path="res://addons/discord-rpc-gd/nodes/assets/Checked.svg" id="2_q6tao"]
 [ext_resource type="Texture2D" uid="uid://compmm3kviqqe" path="res://addons/discord-rpc-gd/nodes/assets/Unchecked.svg" id="3_5cyem"]
@@ -255,9 +255,7 @@ pivot_offset = Vector2(29.0693, 29.0693)
 texture = ExtResource("3_goflf")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Panel/TextureRect" unique_id=669518593]
-libraries = {
-&"": SubResource("AnimationLibrary_a7ofc")
-}
+libraries/ = SubResource("AnimationLibrary_a7ofc")
 
 [connection signal="pressed" from="Panel/PrintCurrentUserOnConsole" to="." method="_on_print_current_user_on_console_pressed"]
 [connection signal="pressed" from="Panel/PrintFriends" to="." method="_on_print_friends_pressed"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://d1wjw5tobpb3w"]
+[gd_scene format=3 uid="uid://d1wjw5tobpb3w"]
 
 [ext_resource type="Script" uid="uid://toi3fh8d7cs4" path="res://Scripts/Classes/BooRaceHandler.gd" id="1_1pu8q"]
 [ext_resource type="Texture2D" uid="uid://d0jy2sbxh706d" path="res://Assets/Sprites/UI/RaceCountdown.png" id="2_csmob"]
@@ -196,9 +196,7 @@ script = ExtResource("7_reyer")
 metadata/_custom_type_script = "uid://dmtw1jesw1vl7"
 
 [node name="Animation" type="AnimationPlayer" parent="." unique_id=1647782066]
-libraries = {
-&"": SubResource("AnimationLibrary_qeaax")
-}
+libraries/ = SubResource("AnimationLibrary_qeaax")
 
 [node name="Timer" type="Timer" parent="." unique_id=669723632]
 process_mode = 1

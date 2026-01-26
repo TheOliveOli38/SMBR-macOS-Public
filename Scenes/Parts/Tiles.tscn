@@ -1,4 +1,4 @@
-[gd_scene load_steps=60 format=3 uid="uid://ct5rrpa7uehkk"]
+[gd_scene format=3 uid="uid://ct5rrpa7uehkk"]
 
 [ext_resource type="Texture2D" uid="uid://y0c3ajq7uoei" path="res://Assets/Sprites/Tilesets/Terrain/TerrainTemplate.png" id="1_vdakf"]
 [ext_resource type="PackedScene" uid="uid://dsa8lpl7n8ge0" path="res://Scenes/Prefabs/Blocks/BrickBlocks/BrickBlock.tscn" id="2_5enc8"]

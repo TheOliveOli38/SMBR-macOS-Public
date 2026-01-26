@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://ctx0nbkjf2osn"]
+[gd_scene format=3 uid="uid://ctx0nbkjf2osn"]
 
 [ext_resource type="Script" uid="uid://c0c5ctrmxhpk7" path="res://Scripts/Classes/Entities/Items/YoshiEgg.gd" id="1_byuma"]
 [ext_resource type="Texture2D" uid="uid://c7jq6t1d2mhur" path="res://Assets/Sprites/Items/YoshiEgg.png" id="1_xcoq2"]
@@ -368,9 +368,7 @@ position = Vector2(0, -5)
 shape = SubResource("RectangleShape2D_h0v6r")
 
 [node name="Animation" type="AnimationPlayer" parent="." unique_id=1092243369]
-libraries = {
-&"": SubResource("AnimationLibrary_byuma")
-}
+libraries/ = SubResource("AnimationLibrary_byuma")
 autoplay = &"new_animation"
 
 [node name="ScoreNoteSpawner" type="Node" parent="." unique_id=1701149318]

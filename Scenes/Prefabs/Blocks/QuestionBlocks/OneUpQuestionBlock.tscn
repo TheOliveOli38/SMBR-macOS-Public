@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://bao37nqa7h7cm"]
+[gd_scene format=3 uid="uid://bao37nqa7h7cm"]
 
 [ext_resource type="PackedScene" uid="uid://urrtgm0h110y" path="res://Scenes/Prefabs/Blocks/QuestionBlocks/StarQuestionBlock.tscn" id="1_ub15u"]
 [ext_resource type="PackedScene" uid="uid://beq7b3hp44onn" path="res://Scenes/Prefabs/Entities/Items/SuperMushroom.tscn" id="2_c153q"]
@@ -29,7 +29,7 @@ _bundled = {
 [node name="QuestionBlock" unique_id=769866425 instance=ExtResource("1_ub15u")]
 item = SubResource("PackedScene_dklm2")
 
-[node name="Sprite2D" parent="ItemPreview" index="0"]
+[node name="Sprite2D" parent="ItemPreview" parent_id_path=PackedInt32Array(592965828) index="0" unique_id=1817836391]
 region_rect = Rect2(16, 0, 16, 16)
 
 [editable path="BlockAnimations"]

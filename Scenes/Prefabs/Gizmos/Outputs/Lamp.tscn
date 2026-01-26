@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://cb7ydcmetjs8d"]
+[gd_scene format=3 uid="uid://cb7ydcmetjs8d"]
 
 [ext_resource type="Script" uid="uid://gq1qmk3xaf8k" path="res://Scripts/Classes/Gizmos/Lamp.gd" id="1_0525o"]
 [ext_resource type="Texture2D" uid="uid://bcns43fy5y3n7" path="res://Assets/Sprites/Editor/Gizmos/Lamp.png" id="2_tnn7x"]

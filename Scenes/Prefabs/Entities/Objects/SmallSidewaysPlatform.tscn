@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://b3or4h5ke6lni"]
+[gd_scene format=3 uid="uid://b3or4h5ke6lni"]
 
 [ext_resource type="PackedScene" uid="uid://c8m8455b6ikrn" path="res://Scenes/Prefabs/Entities/Objects/SidewaysPlatform.tscn" id="1_nuvyr"]
 

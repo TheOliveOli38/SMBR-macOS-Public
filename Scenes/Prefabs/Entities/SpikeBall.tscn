@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://c7il83r4ab05d"]
+[gd_scene format=3 uid="uid://c7il83r4ab05d"]
 
 [ext_resource type="Script" uid="uid://dlq222ogmfken" path="res://Scripts/Classes/Entities/Objects/SpikeBall.gd" id="1_orfe8"]
 [ext_resource type="Texture2D" uid="uid://dtn3el3cobo42" path="res://Assets/Sprites/Items/SpikeBall.png" id="2_2juko"]

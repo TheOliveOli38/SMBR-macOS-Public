@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bn66tnn8nlpi7"]
+[gd_scene format=3 uid="uid://bn66tnn8nlpi7"]
 
 [ext_resource type="Script" uid="uid://bjsdmqxwrb6sd" path="res://Scripts/Parts/Disclaimer.gd" id="1_esyiu"]
 [ext_resource type="AudioStream" uid="uid://o8wqcv7gjfkn" path="res://Assets/Audio/SFX/Pause.wav" id="3_x4k0q"]
@@ -153,9 +153,7 @@ grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1118163326]
-libraries = {
-&"": SubResource("AnimationLibrary_f4ecw")
-}
+libraries/ = SubResource("AnimationLibrary_f4ecw")
 autoplay = &"Go"
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=4424948]

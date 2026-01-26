@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://ccxhom4wrgfv4"]
+[gd_scene format=3 uid="uid://ccxhom4wrgfv4"]
 
 [ext_resource type="Texture2D" uid="uid://dy3p03djelkb3" path="res://Assets/Sprites/Particles/Leaves.png" id="1_0tjo2"]
 [ext_resource type="Script" uid="uid://d3kftxro4bfnv" path="res://Scripts/Classes/Entities/Objects/WindArea.gd" id="1_68lil"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://c1plxbl04na5g"]
+[gd_scene format=3 uid="uid://c1plxbl04na5g"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_ku7qa"]
 blend_mode = 2

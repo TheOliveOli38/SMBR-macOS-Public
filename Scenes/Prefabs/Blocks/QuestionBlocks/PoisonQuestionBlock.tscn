@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://um8m5iu20qj3"]
+[gd_scene format=3 uid="uid://um8m5iu20qj3"]
 
 [ext_resource type="PackedScene" uid="uid://bc1mrna4kybhv" path="res://Scenes/Prefabs/Blocks/QuestionBlocks/QuestionBlock.tscn" id="1_l2pjc"]
 [ext_resource type="PackedScene" uid="uid://beq7b3hp44onn" path="res://Scenes/Prefabs/Entities/Items/SuperMushroom.tscn" id="2_cyrh8"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://d2c5ut4rtjf3p"]
+[gd_scene format=3 uid="uid://d2c5ut4rtjf3p"]
 
 [ext_resource type="Script" uid="uid://cit6racuc8c60" path="res://Scripts/Parts/DropShadowRendererSmooth.gd" id="1_sh8t5"]
 

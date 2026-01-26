@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://csl71p1unsc8p"]
+[gd_scene format=3 uid="uid://csl71p1unsc8p"]
 
 [ext_resource type="PackedScene" uid="uid://bn1kect7h2dlp" path="res://Scenes/Prefabs/LevelObjects/BulletBillGenerator.tscn" id="1_3kjea"]
 [ext_resource type="PackedScene" uid="uid://cwyxi1uihf35y" path="res://Scenes/Prefabs/Entities/Enemies/LeapingCheepCheep.tscn" id="2_kcmvv"]

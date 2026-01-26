@@ -1,4 +1,4 @@
-[gd_scene load_steps=2 format=3 uid="uid://b8b0aytqelby0"]
+[gd_scene format=3 uid="uid://b8b0aytqelby0"]
 [ext_resource type="PackedScene" uid="uid://2mhrrmlohkat" path="res://Scenes/Levels/SMBLL/World10/10-1a.tscn" id="1_p6yb8"]
 [node name="D-1a" unique_id=1452251914 instance=ExtResource("1_p6yb8")]
 world_id = 13

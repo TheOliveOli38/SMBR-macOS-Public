@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://bowadxqfmg636"]
+[gd_scene format=3 uid="uid://bowadxqfmg636"]
 
 [ext_resource type="Script" uid="uid://b0mk8rdwt73w0" path="res://Scripts/Classes/Entities/ShellClass.gd" id="1_diywd"]
 [ext_resource type="Texture2D" uid="uid://cy6v7tdtxebs5" path="res://Assets/Sprites/Enemies/KoopaTroopa.png" id="2_hddfq"]

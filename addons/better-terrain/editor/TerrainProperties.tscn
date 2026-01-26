@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://fdjybw6e7whr"]
+[gd_scene format=3 uid="uid://fdjybw6e7whr"]
 
 [ext_resource type="Script" uid="uid://j81f0xo4p36y" path="res://addons/better-terrain/editor/TerrainProperties.gd" id="1_52nx8"]
 [ext_resource type="Texture2D" uid="uid://d1h1p7pcwdnjk" path="res://addons/better-terrain/icons/MatchTiles.svg" id="2_ncc5p"]

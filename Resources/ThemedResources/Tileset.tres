@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="ThemedResource" load_steps=32 format=3 uid="uid://b3uqx71poted1"]
+[gd_resource type="Resource" script_class="ThemedResource" format=3 uid="uid://b3uqx71poted1"]
 
 [ext_resource type="Texture2D" uid="uid://cnkidb1wdx000" path="res://Assets/Sprites/Tilesets/Terrain/Autumn.png" id="1_kopdp"]
 [ext_resource type="Texture2D" uid="uid://3flklmluw5rd" path="res://Assets/Sprites/Tilesets/Terrain/Space.png" id="2_67vvt"]

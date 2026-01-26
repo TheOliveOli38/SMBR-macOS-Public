@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://dkgu57is78lro"]
+[gd_scene format=3 uid="uid://dkgu57is78lro"]
 
 [ext_resource type="Texture2D" uid="uid://c8yio3lpcsvqu" path="res://Assets/Sprites/UI/PipeArrow.png" id="1_5qh6k"]
 [ext_resource type="Script" uid="uid://bqqbvhchdvhyv" path="res://Scripts/Classes/Entities/PipeArea.gd" id="1_w8y82"]

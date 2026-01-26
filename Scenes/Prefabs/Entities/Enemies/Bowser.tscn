@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://duptcik2j0b04"]
+[gd_scene format=3 uid="uid://duptcik2j0b04"]
 
 [ext_resource type="Texture2D" uid="uid://d3sxabber73q6" path="res://Assets/Sprites/Enemies/Bowser.png" id="1_8mi7o"]
 [ext_resource type="Script" uid="uid://wtypg4d0l6j2" path="res://Scripts/Classes/Entities/Enemies/Bowser.gd" id="1_ma5fd"]
@@ -282,9 +282,7 @@ color = Color(1, 0, 0, 1)
 
 [node name="HurtAnimation" type="AnimationPlayer" parent="SpriteScaleJoint" unique_id=1252199300]
 root_node = NodePath("../..")
-libraries = {
-&"": SubResource("AnimationLibrary_6fvct")
-}
+libraries/ = SubResource("AnimationLibrary_6fvct")
 
 [node name="DeathSprite" type="AnimatedSprite2D" parent="SpriteScaleJoint" unique_id=1311530935]
 visible = false
@@ -309,9 +307,7 @@ position = Vector2(0, -9)
 shape = SubResource("RectangleShape2D_va0n6")
 
 [node name="MoveAnimation" type="AnimationPlayer" parent="." unique_id=725232348]
-libraries = {
-&"": SubResource("AnimationLibrary_v5oyl")
-}
+libraries/ = SubResource("AnimationLibrary_v5oyl")
 autoplay = &"Move"
 
 [node name="JumpTimer" type="Timer" parent="." unique_id=508462891]

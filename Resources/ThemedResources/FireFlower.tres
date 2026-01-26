@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="ThemedResource" load_steps=12 format=3 uid="uid://bht771w4e6jpw"]
+[gd_resource type="Resource" script_class="ThemedResource" format=3 uid="uid://bht771w4e6jpw"]
 
 [ext_resource type="Script" uid="uid://cmvlgsjmsk0v5" path="res://Scripts/Classes/Resources/ThemedResource.gd" id="2_l1l8m"]
 

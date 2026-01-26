@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://d075e1520ngrv"]
+[gd_scene format=3 uid="uid://d075e1520ngrv"]
 
 [ext_resource type="Texture2D" uid="uid://c7g10h3o7nevn" path="res://Assets/Sprites/Enemies/BobOmb.png" id="1_etkhh"]
 [ext_resource type="Script" uid="uid://baie518kyfenr" path="res://Scripts/Classes/Entities/Objects/BobOmbHeld.gd" id="1_j3rs3"]
@@ -175,9 +175,7 @@ metadata/_custom_type_script = "uid://cbal8ms2oe1ik"
 
 [node name="FlashAnimation" type="AnimationPlayer" parent="ScaleJoint/Sprite" unique_id=2023667887]
 unique_name_in_owner = true
-libraries = {
-&"": SubResource("AnimationLibrary_tv0mo")
-}
+libraries/ = SubResource("AnimationLibrary_tv0mo")
 
 [node name="FlashSprite" type="AnimatedSprite2D" parent="ScaleJoint/Sprite" unique_id=1355971464]
 visible = false
@@ -229,9 +227,7 @@ can_change_direction = true
 metadata/_custom_type_script = "uid://cmg61722ktg2m"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=606844400]
-libraries = {
-&"": SubResource("AnimationLibrary_ll0jm")
-}
+libraries/ = SubResource("AnimationLibrary_ll0jm")
 
 [node name="GibSpawner" type="Node" parent="." unique_id=1425490902 node_paths=PackedStringArray("visuals")]
 script = ExtResource("9_yf454")

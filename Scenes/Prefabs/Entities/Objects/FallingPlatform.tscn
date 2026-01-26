@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bm8obwlkm56wb"]
+[gd_scene format=3 uid="uid://bm8obwlkm56wb"]
 
 [ext_resource type="Script" uid="uid://c4m157i8p54cf" path="res://Scripts/Classes/Entities/Objects/FallingPlatform.gd" id="1_krw4p"]
 [ext_resource type="Texture2D" uid="uid://bk0p52ttwojml" path="res://Assets/Sprites/Tilesets/Platform.png" id="2_p76vr"]

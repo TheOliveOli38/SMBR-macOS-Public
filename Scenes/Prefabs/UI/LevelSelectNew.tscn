@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://bsfkt344e6j38"]
+[gd_scene format=3 uid="uid://bsfkt344e6j38"]
 
 [ext_resource type="Script" uid="uid://bupc8brk48aqi" path="res://Scripts/UI/LevelSelect.gd" id="1_3dhxq"]
 [ext_resource type="StyleBox" uid="uid://comkghpj0djcl" path="res://Resources/UI/Panel.tres" id="2_k0wu2"]
@@ -921,7 +921,6 @@ process_material = SubResource("ParticleProcessMaterial_gxb4q")
 layout_mode = 2
 
 [node name="Cursor" type="Control" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer/SlotContainer/Slot4" unique_id=1764243599]
-visible = false
 custom_minimum_size = Vector2(0, 8)
 layout_mode = 2
 

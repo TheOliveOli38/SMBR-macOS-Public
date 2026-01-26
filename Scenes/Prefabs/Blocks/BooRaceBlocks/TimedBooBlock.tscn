@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://dgq7enviy1qhw"]
+[gd_scene format=3 uid="uid://dgq7enviy1qhw"]
 
 [ext_resource type="Script" uid="uid://du5hnwdhv7x66" path="res://Scripts/Classes/Blocks/TimedBooBlock.gd" id="1_hessd"]
 [ext_resource type="Script" uid="uid://cbal8ms2oe1ik" path="res://Scripts/Classes/Components/ResourceSetterNew.gd" id="3_5y3wt"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://doguqwqut2s5e"]
+[gd_scene format=3 uid="uid://doguqwqut2s5e"]
 
 [ext_resource type="PackedScene" uid="uid://cmvugag0kupgu" path="res://Scenes/Prefabs/Entities/Enemies/RedKoopaTroopa.tscn" id="1_7ppsp"]
 [ext_resource type="Script" uid="uid://cpwloakvp672a" path="res://Scripts/Parts/EditorVisibleNode.gd" id="2_7ppsp"]
@@ -21,3 +21,5 @@ points = PackedVector2Array(0, 0, 0, 96)
 width = 1.0
 texture = ExtResource("3_q8ix4")
 texture_mode = 1
+
+[connection signal="block_bounced" from="BlockBouncingDetection" to="." method="block_bounced" unbinds=1]

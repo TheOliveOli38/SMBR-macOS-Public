@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://4gxhnql5bjk6"]
+[gd_scene format=3 uid="uid://4gxhnql5bjk6"]
 
 [ext_resource type="Script" uid="uid://chhr6kgvstkod" path="res://Scripts/Classes/Entities/Objects/TrackPiece.gd" id="1_t2c2l"]
 

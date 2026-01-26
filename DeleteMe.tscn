@@ -1,4 +1,4 @@
-[gd_scene load_steps=2 format=3 uid="uid://dnhums3a20trw"]
+[gd_scene format=3 uid="uid://dnhums3a20trw"]
 
 [ext_resource type="Texture2D" uid="uid://3ai0ggxah360" path="res://Assets/Sprites/UI/MenuBorder.png" id="1_flpig"]
 

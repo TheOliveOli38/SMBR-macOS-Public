@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://c0tn1w5hd5uol"]
+[gd_scene format=3 uid="uid://c0tn1w5hd5uol"]
 
 [ext_resource type="Texture2D" uid="uid://brjkrkihadwnj" path="res://Assets/Sprites/Particles/FireballExplosion.png" id="1_04em8"]
 [ext_resource type="Script" uid="uid://cbal8ms2oe1ik" path="res://Scripts/Classes/Components/ResourceSetterNew.gd" id="2_5vou3"]

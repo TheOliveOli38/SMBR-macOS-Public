@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://cor5javglnirw"]
+[gd_scene format=3 uid="uid://cor5javglnirw"]
 
 [ext_resource type="PackedScene" uid="uid://dsa8lpl7n8ge0" path="res://Scenes/Prefabs/Blocks/BrickBlocks/BrickBlock.tscn" id="1_esw26"]
 [ext_resource type="PackedScene" uid="uid://dbjqtjhb2t4cn" path="res://Scenes/Prefabs/Entities/Items/FireFlower.tscn" id="2_2eoa6"]

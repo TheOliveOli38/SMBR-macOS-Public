@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://c108uri4ql2wh"]
+[gd_scene format=3 uid="uid://c108uri4ql2wh"]
 
 [ext_resource type="PackedScene" uid="uid://bn1kect7h2dlp" path="res://Scenes/Prefabs/LevelObjects/BulletBillGenerator.tscn" id="1_mpgoo"]
 [ext_resource type="Script" uid="uid://cxkh8cic78uog" path="res://Scripts/Parts/WindGenerator.gd" id="2_06nk3"]

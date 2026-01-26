@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://h2xlvyfa0ri2"]
+[gd_scene format=3 uid="uid://h2xlvyfa0ri2"]
 
 [ext_resource type="Script" uid="uid://codql1f5eca56" path="res://Scripts/Classes/Editor/OptionButtonThatIsntFuckingBlurry.gd" id="1_ebhu0"]
 

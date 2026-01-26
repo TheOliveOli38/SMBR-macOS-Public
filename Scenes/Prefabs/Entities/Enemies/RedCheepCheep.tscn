@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://d04e1qv3si8j"]
+[gd_scene format=3 uid="uid://d04e1qv3si8j"]
 
 [ext_resource type="PackedScene" uid="uid://bdirphnfabey8" path="res://Scenes/Prefabs/Entities/Enemies/GreenCheepCheep.tscn" id="1_ie2kx"]
 [ext_resource type="Texture2D" uid="uid://dbq7oso3fo4n6" path="res://Assets/Sprites/Enemies/CheepCheep.png" id="2_y5sv7"]

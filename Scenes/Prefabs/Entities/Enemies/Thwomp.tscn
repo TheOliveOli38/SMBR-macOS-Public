@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://dq6syqkg4qjf0"]
+[gd_scene format=3 uid="uid://dq6syqkg4qjf0"]
 
 [ext_resource type="Script" uid="uid://bxfc7hxw13s6q" path="res://Scripts/Classes/Entities/Enemies/Thwomp.gd" id="1_bl7l2"]
 [ext_resource type="Texture2D" uid="uid://dw5k3dr3kedw3" path="res://Assets/Sprites/Enemies/Thwomp.png" id="2_kdp37"]

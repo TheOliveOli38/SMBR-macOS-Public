@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://rruc6lnk16rr"]
+[gd_scene format=3 uid="uid://rruc6lnk16rr"]
 
 [ext_resource type="Script" uid="uid://dryofl8epgget" path="res://Scripts/Classes/Entities/Items/ClockItem.gd" id="1_heiyr"]
 [ext_resource type="Texture2D" uid="uid://dal8md4ms07j2" path="res://Assets/Sprites/Items/Clock.png" id="1_ybxan"]
@@ -159,8 +159,6 @@ labels = [NodePath("..")]
 metadata/_custom_type_script = "uid://co6tjg3w6qpd8"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Label" unique_id=39453831]
-libraries = {
-&"": SubResource("AnimationLibrary_ov4xw")
-}
+libraries/ = SubResource("AnimationLibrary_ov4xw")
 
 [connection signal="area_entered" from="Sprite/Hitbox" to="." method="on_area_entered"]

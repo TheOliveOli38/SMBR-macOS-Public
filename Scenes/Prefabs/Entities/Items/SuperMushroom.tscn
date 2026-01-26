@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://beq7b3hp44onn"]
+[gd_scene format=3 uid="uid://beq7b3hp44onn"]
 
 [ext_resource type="Script" uid="uid://dlrdjo1ksvp7q" path="res://Scripts/Classes/Entities/Items/SuperMushroom.gd" id="1_j8f56"]
 [ext_resource type="Texture2D" uid="uid://hfh5i32uji5t" path="res://Assets/Sprites/Items/SuperMushroom.png" id="2_kycr3"]

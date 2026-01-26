@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://b526l00ycqca3"]
+[gd_scene format=3 uid="uid://b526l00ycqca3"]
 
 [ext_resource type="Script" uid="uid://dv18do583a3x0" path="res://Scripts/Classes/Entities/Enemies/Goomba.gd" id="1_ngqvx"]
 [ext_resource type="Texture2D" uid="uid://dtqjo5uvw6s0g" path="res://Assets/Sprites/Enemies/Sigebou.png" id="2_jkcbp"]

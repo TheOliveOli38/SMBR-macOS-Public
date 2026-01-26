@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://dmxufw748fe32"]
+[gd_scene format=3 uid="uid://dmxufw748fe32"]
 
 [ext_resource type="Script" uid="uid://bpydbpyjk1mt4" path="res://Scripts/Classes/Entities/Enemy.gd" id="1_gcnju"]
 [ext_resource type="Texture2D" uid="uid://do13c2crob4td" path="res://Assets/Sprites/Blocks/SpikeBlock.png" id="2_dftxp"]

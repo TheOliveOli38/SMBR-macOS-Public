@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://b5gs47nvw8q1k"]
+[gd_scene format=3 uid="uid://b5gs47nvw8q1k"]
 
 [ext_resource type="PackedScene" uid="uid://cllscucqyd033" path="res://Scenes/Prefabs/Gizmos/Outputs/BaseOutput.tscn" id="1_slj37"]
 [ext_resource type="Script" uid="uid://dxm6yroq7u6sv" path="res://Scripts/Classes/Gizmos/ANDGate.gd" id="2_qa5b7"]

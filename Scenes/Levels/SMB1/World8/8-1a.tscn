@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=4 uid="uid://cvoo6f200qxpn"]
+[gd_scene format=4 uid="uid://cvoo6f200qxpn"]
 [ext_resource type="PackedScene" uid="uid://duc0y2qt8vug6" path="res://Scenes/Levels/SMB1/World1/1-2a.tscn" id="1_2bdfy"]
 [ext_resource type="PackedScene" uid="uid://dsa8lpl7n8ge0" path="res://Scenes/Prefabs/Blocks/BrickBlocks/BrickBlock.tscn" id="2_m0ga1"]
 [node name="1-2A" unique_id=1793642380 instance=ExtResource("1_2bdfy")]

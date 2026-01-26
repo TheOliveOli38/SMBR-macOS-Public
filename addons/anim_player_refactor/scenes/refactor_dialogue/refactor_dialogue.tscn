@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://cyfxysds8uhnx"]
+[gd_scene format=3 uid="uid://cyfxysds8uhnx"]
 
 [ext_resource type="Script" uid="uid://b4hyuuqfggra4" path="res://addons/anim_player_refactor/scenes/refactor_dialogue/refactor_dialogue.gd" id="1_nkqdl"]
 [ext_resource type="Script" uid="uid://dvca5vn0ny2k7" path="res://addons/anim_player_refactor/scenes/refactor_dialogue/components/anim_player_tree.gd" id="2_7pqfs"]

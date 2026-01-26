@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://bcnkeld24yt3b"]
+[gd_scene format=3 uid="uid://bcnkeld24yt3b"]
 [ext_resource type="PackedScene" uid="uid://1j5xfkmge06g" path="res://Scenes/Levels/SMB1/CoinHeavens/2.tscn" id="1_kd30c"]
 [ext_resource type="Texture2D" uid="uid://dt0qtxu2l646n" path="res://Assets/Sprites/Tilesets/Terrain/Overworld.png" id="2_w8w3k"]
 [ext_resource type="PackedScene" uid="uid://dsa8lpl7n8ge0" path="res://Scenes/Prefabs/Blocks/BrickBlocks/BrickBlock.tscn" id="3_t5tbe"]
@@ -927,7 +927,7 @@ texture = ExtResource("25_hui6x")
 8: [17],
 &"type": 17
 }
-[sub_resource type="TileSet" id="TileSet_3ipl0"]
+[sub_resource type="TileSet" id="TileSet_w8w3k"]
 resource_local_to_scene = true
 physics_layer_0/collision_layer = 2
 physics_layer_0/collision_mask = 0
@@ -1004,6 +1004,6 @@ metadata/_better_terrain = {
 [node name="Level" unique_id=884249059 instance=ExtResource("1_kd30c")]
 theme_time = "Night"
 [node name="Tiles" parent="." index="1" unique_id=1674661667]
-tile_set = SubResource("TileSet_3ipl0")
+tile_set = SubResource("TileSet_w8w3k")
 [node name="LevelBG" parent="." index="8" unique_id=458182856]
 time_of_day = 1

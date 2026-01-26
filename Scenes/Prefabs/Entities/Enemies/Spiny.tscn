@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://dinpjmg0q23rv"]
+[gd_scene format=3 uid="uid://dinpjmg0q23rv"]
 
 [ext_resource type="Script" uid="uid://bds7rntb0btee" path="res://Scripts/Classes/Entities/Enemies/Spiny.gd" id="1_u8w4p"]
 [ext_resource type="Texture2D" uid="uid://diemx33h3bxa2" path="res://Assets/Sprites/Enemies/Spiny.png" id="2_u8w4p"]

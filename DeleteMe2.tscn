@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://ciyn0kgyx2tjb"]
+[gd_scene format=3 uid="uid://ciyn0kgyx2tjb"]
 
 [ext_resource type="Theme" uid="uid://dtn507x2b5de7" path="res://Resources/Theme.tres" id="1_ohqax"]
 [ext_resource type="Texture2D" uid="uid://bhuybr2gtuco5" path="res://Assets/Sprites/UI/MenuBG.png" id="2_gt323"]
@@ -91,8 +91,6 @@ script = ExtResource("6_stacu")
 metadata/_custom_type_script = "uid://ca3bew33g45eq"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1358420694]
-libraries = {
-&"": SubResource("AnimationLibrary_gt323")
-}
+libraries/ = SubResource("AnimationLibrary_gt323")
 autoplay = &"new_animation"
 movie_quit_on_finish = true

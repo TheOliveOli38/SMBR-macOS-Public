@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://ufyrhwdt81u5"]
+[gd_scene format=3 uid="uid://ufyrhwdt81u5"]
 
 [ext_resource type="Script" uid="uid://bkkq8ocwdrls5" path="res://Scripts/Classes/UI/CustomLineEdit.gd" id="1_bhslb"]
 

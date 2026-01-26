@@ -1,4 +1,4 @@
-[gd_scene load_steps=59 format=4 uid="uid://cc8lgh8gbi5o4"]
+[gd_scene format=4 uid="uid://cc8lgh8gbi5o4"]
 [ext_resource type="Script" uid="uid://bcqr1v25ygedb" path="res://Scripts/Classes/LevelClass.gd" id="1_xm3qv"]
 [ext_resource type="JSON" path="res://Assets/Audio/BGM/Overworld.json" id="2_nhi67"]
 [ext_resource type="Texture2D" uid="uid://dt0qtxu2l646n" path="res://Assets/Sprites/Tilesets/Terrain/Overworld.png" id="4_07kt1"]

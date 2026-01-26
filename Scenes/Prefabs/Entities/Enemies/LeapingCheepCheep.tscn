@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://cwyxi1uihf35y"]
+[gd_scene format=3 uid="uid://cwyxi1uihf35y"]
 
 [ext_resource type="Script" uid="uid://mshpvsyuw15j" path="res://Scripts/Classes/Entities/Enemies/LeapingCheepCheep.gd" id="1_pbhdk"]
 [ext_resource type="Texture2D" uid="uid://dbq7oso3fo4n6" path="res://Assets/Sprites/Enemies/CheepCheep.png" id="2_pbhdk"]

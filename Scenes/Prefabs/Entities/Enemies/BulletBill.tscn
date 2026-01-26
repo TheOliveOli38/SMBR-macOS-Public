@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://c1wl10xa3jara"]
+[gd_scene format=3 uid="uid://c1wl10xa3jara"]
 
 [ext_resource type="Script" uid="uid://7b27p232kp7w" path="res://Scripts/Classes/Entities/Enemies/BulletBill.gd" id="1_52tat"]
 [ext_resource type="Script" uid="uid://caq1qiwmy0mox" path="res://Scripts/Parts/BetterAnimatedSprite.gd" id="2_dwbhe"]

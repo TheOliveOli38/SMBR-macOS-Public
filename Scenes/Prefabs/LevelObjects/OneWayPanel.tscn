@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://cfwnj3srwa7xh"]
+[gd_scene format=3 uid="uid://cfwnj3srwa7xh"]
 
 [ext_resource type="Texture2D" uid="uid://pougbopeo602" path="res://Assets/Sprites/Blocks/OneWayPanel.png" id="1_c4anl"]
 [ext_resource type="Script" uid="uid://caq1qiwmy0mox" path="res://Scripts/Parts/BetterAnimatedSprite.gd" id="1_ghoth"]
@@ -106,9 +106,7 @@ metadata/_custom_type_script = "uid://cbal8ms2oe1ik"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite" unique_id=354137571]
 root_node = NodePath("../..")
-libraries = {
-&"": SubResource("AnimationLibrary_ruvh4")
-}
+libraries/ = SubResource("AnimationLibrary_ruvh4")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1034277210]
 shape = SubResource("RectangleShape2D_tlcjw")

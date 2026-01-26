@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=4 uid="uid://dyfa8fmitefqi"]
+[gd_scene format=4 uid="uid://dyfa8fmitefqi"]
 [ext_resource type="PackedScene" uid="uid://d3lsxfuwgmtdt" path="res://Scenes/Levels/SMB1/World1/1-1a.tscn" id="1_prcii"]
 [ext_resource type="Script" uid="uid://cgm3opb5qudc1" path="res://Scripts/Parts/ChallengeModeNodes.gd" id="2_rbo4a"]
 [ext_resource type="PackedScene" uid="uid://cmbpqnq10arts" path="res://Scenes/Prefabs/Entities/Items/RedCoin.tscn" id="3_bhdjw"]

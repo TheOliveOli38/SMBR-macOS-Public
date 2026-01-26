@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://by6ndsjhlkmbt"]
+[gd_scene format=3 uid="uid://by6ndsjhlkmbt"]
 
 [ext_resource type="Texture2D" uid="uid://coe8j7vfyvmh8" path="res://Assets/Sprites/Blocks/BooOnOffBlock.png" id="1_j75mb"]
 [ext_resource type="Script" uid="uid://be2x40pxmueyo" path="res://Scripts/Classes/Blocks/BooOnOffBlock.gd" id="1_mttsc"]

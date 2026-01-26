@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=4 uid="uid://c4cfkemuv5p01"]
+[gd_scene format=4 uid="uid://c4cfkemuv5p01"]
 [ext_resource type="PackedScene" uid="uid://dsbbno622yoxo" path="res://Scenes/Levels/SMB1/World2/2-2.tscn" id="1_sqsuo"]
 [ext_resource type="Script" uid="uid://bjs5mlc3xrxud" path="res://Scripts/Parts/DiscoLevel.gd" id="2_1a8wv"]
 [ext_resource type="PackedScene" uid="uid://b6drci0vml1as" path="res://Scenes/Prefabs/Entities/Enemies/Blooper.tscn" id="2_5so3o"]

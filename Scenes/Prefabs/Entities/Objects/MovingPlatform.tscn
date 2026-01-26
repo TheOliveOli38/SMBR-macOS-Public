@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://cx2310jyd3fnv"]
+[gd_scene format=3 uid="uid://cx2310jyd3fnv"]
 
 [ext_resource type="Texture2D" uid="uid://bk0p52ttwojml" path="res://Assets/Sprites/Tilesets/Platform.png" id="1_637rn"]
 [ext_resource type="Script" uid="uid://dnptn1i31npjc" path="res://Scripts/Classes/Entities/Objects/MovingPlatform.gd" id="1_om2jg"]

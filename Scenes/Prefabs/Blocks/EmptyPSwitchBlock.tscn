@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://cn7wwtug5xman"]
+[gd_scene format=3 uid="uid://cn7wwtug5xman"]
 
 [ext_resource type="Texture2D" uid="uid://ln7uey6c4mf" path="res://Assets/Sprites/Blocks/PSwitchBlock.png" id="1_e8kpq"]
 [ext_resource type="Script" uid="uid://cq6f682453q6o" path="res://Scripts/Classes/Components/ResourceSetter.gd" id="2_tb55n"]

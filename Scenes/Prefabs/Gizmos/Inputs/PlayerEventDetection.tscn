@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://wuilwn5k1uqk"]
+[gd_scene format=3 uid="uid://wuilwn5k1uqk"]
 
 [ext_resource type="PackedScene" uid="uid://b2r255cb4tt7t" path="res://Scenes/Prefabs/Gizmos/Inputs/BaseInput.tscn" id="1_551by"]
 [ext_resource type="Script" uid="uid://cmh64hhtrkqcx" path="res://Scripts/Classes/Gizmos/PlayerEventDetection.gd" id="2_ubbg8"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://5qg8po86pew4"]
+[gd_scene format=3 uid="uid://5qg8po86pew4"]
 
 [ext_resource type="Script" uid="uid://dbeg86pjflojw" path="res://Scripts/Classes/Entities/Items/SuperStar.gd" id="1_aowox"]
 [ext_resource type="Texture2D" uid="uid://1o654l3577lv" path="res://Assets/Sprites/Items/SuperStar.png" id="1_gpwv4"]

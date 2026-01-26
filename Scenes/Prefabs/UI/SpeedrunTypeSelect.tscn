@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://bvgigoyn7lrc2"]
+[gd_scene format=3 uid="uid://bvgigoyn7lrc2"]
 
 [ext_resource type="Script" uid="uid://b8nv6ojpgvo0r" path="res://Scripts/UI/SpeedrunTypeSelect.gd" id="1_15lhk"]
 [ext_resource type="StyleBox" uid="uid://comkghpj0djcl" path="res://Resources/UI/Panel.tres" id="2_kdaqd"]

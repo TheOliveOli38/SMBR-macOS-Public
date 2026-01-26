@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://epltraxjntji"]
+[gd_scene format=3 uid="uid://epltraxjntji"]
 
 [ext_resource type="Script" uid="uid://dehhxend1vj2m" path="res://Scripts/Classes/Entities/Enemies/SpikeTop.gd" id="1_ol6o0"]
 [ext_resource type="Texture2D" uid="uid://drww2yy32q3qv" path="res://Assets/Sprites/Enemies/SpikeTop.png" id="2_7s4ia"]

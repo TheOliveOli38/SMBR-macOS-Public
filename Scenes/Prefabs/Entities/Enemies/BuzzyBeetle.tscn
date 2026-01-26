@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://doo8617qiyp77"]
+[gd_scene format=3 uid="uid://doo8617qiyp77"]
 
 [ext_resource type="PackedScene" uid="uid://r6dlmokkdyar" path="res://Scenes/Prefabs/Entities/Enemies/GreenKoopaTroopa.tscn" id="1_rps11"]
 [ext_resource type="Script" uid="uid://by2qbddawq4yv" path="res://Scripts/Classes/Components/SignalDisconnector.gd" id="2_lavm2"]

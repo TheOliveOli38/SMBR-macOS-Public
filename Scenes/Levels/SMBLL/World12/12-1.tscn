@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=4 uid="uid://bghw1xa6abwhu"]
+[gd_scene format=4 uid="uid://bghw1xa6abwhu"]
 [ext_resource type="Script" uid="uid://bcqr1v25ygedb" path="res://Scripts/Classes/LevelClass.gd" id="1_28xue"]
 [ext_resource type="JSON" path="res://Assets/Audio/BGM/Sky.json" id="2_q41pm"]
 [ext_resource type="PackedScene" uid="uid://ct5rrpa7uehkk" path="res://Scenes/Parts/Tiles.tscn" id="3_lggc1"]

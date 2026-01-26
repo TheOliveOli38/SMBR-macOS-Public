@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://p42vcj0qmhxl"]
+[gd_scene format=3 uid="uid://p42vcj0qmhxl"]
 
 [ext_resource type="Texture2D" uid="uid://cop8x5m20cqal" path="res://Assets/Sprites/Items/WrenchProjectile.png" id="1_bh1cs"]
 [ext_resource type="Script" uid="uid://caq1qiwmy0mox" path="res://Scripts/Parts/BetterAnimatedSprite.gd" id="2_wtsxo"]

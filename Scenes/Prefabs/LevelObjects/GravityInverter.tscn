@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://bbkh4k47ux3ve"]
+[gd_scene format=3 uid="uid://bbkh4k47ux3ve"]
 
 [ext_resource type="PackedScene" uid="uid://bn1kect7h2dlp" path="res://Scenes/Prefabs/LevelObjects/BulletBillGenerator.tscn" id="1_6m0au"]
 [ext_resource type="Script" uid="uid://dgqdo5cvl41l0" path="res://Scripts/Parts/GravityInverter.gd" id="2_yqpt8"]

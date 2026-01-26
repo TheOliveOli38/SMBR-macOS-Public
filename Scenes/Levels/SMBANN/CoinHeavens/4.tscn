@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=3 uid="uid://cc3v148pwttgg"]
+[gd_scene format=3 uid="uid://cc3v148pwttgg"]
 [ext_resource type="PackedScene" uid="uid://1j5xfkmge06g" path="res://Scenes/Levels/SMB1/CoinHeavens/2.tscn" id="1_tke4q"]
 [ext_resource type="Texture2D" uid="uid://dt0qtxu2l646n" path="res://Assets/Sprites/Tilesets/Terrain/Overworld.png" id="2_d37qs"]
 [ext_resource type="PackedScene" uid="uid://dsa8lpl7n8ge0" path="res://Scenes/Prefabs/Blocks/BrickBlocks/BrickBlock.tscn" id="3_plp52"]
@@ -928,7 +928,7 @@ texture = ExtResource("25_6vttl")
 8: [17],
 &"type": 17
 }
-[sub_resource type="TileSet" id="TileSet_oo8jl"]
+[sub_resource type="TileSet" id="TileSet_d37qs"]
 resource_local_to_scene = true
 physics_layer_0/collision_layer = 2
 physics_layer_0/collision_mask = 0
@@ -1006,7 +1006,7 @@ metadata/_better_terrain = {
 theme_time = "Night"
 campaign = "SMBANN"
 [node name="Tiles" parent="." index="1" unique_id=1674661667]
-tile_set = SubResource("TileSet_oo8jl")
+tile_set = SubResource("TileSet_d37qs")
 [node name="DiscoLevel" type="Node" parent="." index="10" unique_id=683765347]
 script = ExtResource("26_d37qs")
 combo_meter_rate = 0.0

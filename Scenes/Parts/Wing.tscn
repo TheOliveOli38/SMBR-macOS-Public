@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://bupy7th8ln45c"]
+[gd_scene format=3 uid="uid://bupy7th8ln45c"]
 
 [ext_resource type="Texture2D" uid="uid://tidb7wgqraj2" path="res://Assets/Sprites/Items/Wings.png" id="1_r7kgt"]
 [ext_resource type="Script" uid="uid://caq1qiwmy0mox" path="res://Scripts/Parts/BetterAnimatedSprite.gd" id="2_io3xw"]

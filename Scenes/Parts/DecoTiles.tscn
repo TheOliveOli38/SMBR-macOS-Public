@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://c145qqkvy8pr5"]
+[gd_scene format=3 uid="uid://c145qqkvy8pr5"]
 
 [ext_resource type="Texture2D" uid="uid://cnexuteg5rvye" path="res://Assets/Sprites/Tilesets/Deco/DecoTemplate.png" id="1_lawed"]
 [ext_resource type="Script" uid="uid://cbal8ms2oe1ik" path="res://Scripts/Classes/Components/ResourceSetterNew.gd" id="3_lawed"]

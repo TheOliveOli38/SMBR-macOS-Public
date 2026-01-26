@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://chfnuhi45nquf"]
+[gd_scene format=3 uid="uid://chfnuhi45nquf"]
 
 [ext_resource type="PackedScene" uid="uid://u3t1k5j28yap" path="res://Scenes/Prefabs/Entities/Objects/Door.tscn" id="1_t0orm"]
 [ext_resource type="JSON" path="res://Assets/Sprites/Tilesets/LockedDoors.json" id="2_0bcyf"]

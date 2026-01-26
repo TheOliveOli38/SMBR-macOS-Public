@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://bvwo8snk5ixaa"]
+[gd_scene format=3 uid="uid://bvwo8snk5ixaa"]
 
 [ext_resource type="Script" uid="uid://bosxtidiegjv0" path="res://Scripts/Classes/Entities/Objects/CloudPlatform.gd" id="1_s4l5y"]
 [ext_resource type="Texture2D" uid="uid://7g55o2cjwrap" path="res://Assets/Sprites/Tilesets/CloudPlatform.png" id="2_ikg3d"]

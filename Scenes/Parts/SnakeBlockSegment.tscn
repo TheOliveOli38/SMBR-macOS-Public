@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://br1hsfo0ihtxu"]
+[gd_scene format=3 uid="uid://br1hsfo0ihtxu"]
 
 [ext_resource type="Texture2D" uid="uid://occr5xsn1awv" path="res://Assets/Sprites/Blocks/SnakeBlock.png" id="1_737r0"]
 [ext_resource type="Script" uid="uid://caq1qiwmy0mox" path="res://Scripts/Parts/BetterAnimatedSprite.gd" id="2_twall"]

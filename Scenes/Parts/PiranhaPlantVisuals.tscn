@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://cwqicj07wkd0n"]
+[gd_scene format=3 uid="uid://cwqicj07wkd0n"]
 
 [ext_resource type="Texture2D" uid="uid://dbq6cn2hp6ijx" path="res://Assets/Sprites/Enemies/PiranhaPlant.png" id="1_x4w6w"]
 [ext_resource type="Script" uid="uid://cbal8ms2oe1ik" path="res://Scripts/Classes/Components/ResourceSetterNew.gd" id="2_w2s1w"]

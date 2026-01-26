@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://cpk6idjoxjotv"]
+[gd_scene format=3 uid="uid://cpk6idjoxjotv"]
 
 [ext_resource type="PackedScene" uid="uid://beq7b3hp44onn" path="res://Scenes/Prefabs/Entities/Items/SuperMushroom.tscn" id="1_g2ftd"]
 [ext_resource type="Script" uid="uid://5octqlf4ohel" path="res://Scripts/Classes/Components/ScoreNoteSpawner.gd" id="2_w8r6w"]

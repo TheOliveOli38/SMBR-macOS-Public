@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://60t5mugrgvlt"]
+[gd_scene format=3 uid="uid://60t5mugrgvlt"]
 
 [ext_resource type="StyleBox" uid="uid://comkghpj0djcl" path="res://Resources/UI/Panel.tres" id="1_14lst"]
 [ext_resource type="Script" uid="uid://bpqtkfuv6a2sx" path="res://Scripts/UI/MarathonSelect.gd" id="1_huaf4"]

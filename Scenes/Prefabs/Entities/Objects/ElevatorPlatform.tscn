@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://ctancgnvl58oc"]
+[gd_scene format=3 uid="uid://ctancgnvl58oc"]
 
 [ext_resource type="Script" uid="uid://bosinwppqswdr" path="res://Scripts/Classes/Entities/Objects/ElevatorPlatform.gd" id="1_dmv4g"]
 [ext_resource type="Texture2D" uid="uid://bk0p52ttwojml" path="res://Assets/Sprites/Tilesets/Platform.png" id="2_b0vbm"]

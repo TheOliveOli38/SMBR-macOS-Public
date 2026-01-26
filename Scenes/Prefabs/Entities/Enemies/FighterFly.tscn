@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://cwhvsfp31cuu6"]
+[gd_scene format=3 uid="uid://cwhvsfp31cuu6"]
 
 [ext_resource type="Script" uid="uid://cemetiu57dblq" path="res://Scripts/Classes/Entities/Enemies/FighterFly.gd" id="1_unlki"]
 [ext_resource type="Texture2D" uid="uid://gnac5qwog2ar" path="res://Assets/Sprites/Enemies/FighterFly.png" id="2_jslnt"]

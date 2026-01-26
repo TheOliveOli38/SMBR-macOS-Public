@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://r2n1ka3mc5v6"]
+[gd_scene format=3 uid="uid://r2n1ka3mc5v6"]
 
 [ext_resource type="Script" uid="uid://btp7od8thj3mk" path="res://Scripts/UI/GhostSelect.gd" id="1_jt66n"]
 [ext_resource type="StyleBox" uid="uid://comkghpj0djcl" path="res://Resources/UI/Panel.tres" id="1_riont"]

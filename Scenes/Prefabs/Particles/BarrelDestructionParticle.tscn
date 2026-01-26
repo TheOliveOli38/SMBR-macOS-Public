@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://b87qi66dabwwc"]
+[gd_scene format=3 uid="uid://b87qi66dabwwc"]
 
 [ext_resource type="PackedScene" uid="uid://cyw7kk1em8h16" path="res://Scenes/Parts/Particles/BlockDestructionParticles.tscn" id="1_5wce4"]
 [ext_resource type="Texture2D" uid="uid://ek2rv5igsr8y" path="res://Assets/Sprites/Particles/BarrelDestructionParticle.png" id="2_prr6m"]

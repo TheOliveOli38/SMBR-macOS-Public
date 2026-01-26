@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://b07v70sioegsj"]
+[gd_scene format=3 uid="uid://b07v70sioegsj"]
 
 [ext_resource type="Script" uid="uid://br4ltfynb4eqr" path="res://Scripts/Classes/Entities/Enemies/BobOmb.gd" id="1_v5mno"]
 [ext_resource type="Texture2D" uid="uid://c7g10h3o7nevn" path="res://Assets/Sprites/Enemies/BobOmb.png" id="2_3rlau"]

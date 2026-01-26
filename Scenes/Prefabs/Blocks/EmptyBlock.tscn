@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://dipap63c1nrnn"]
+[gd_scene format=3 uid="uid://dipap63c1nrnn"]
 
 [ext_resource type="Script" uid="uid://b5ejlbl0vp1gm" path="res://Scripts/Classes/Blocks/BlockClass.gd" id="1_c5ati"]
 [ext_resource type="Script" uid="uid://cbal8ms2oe1ik" path="res://Scripts/Classes/Components/ResourceSetterNew.gd" id="2_fuckyou"]

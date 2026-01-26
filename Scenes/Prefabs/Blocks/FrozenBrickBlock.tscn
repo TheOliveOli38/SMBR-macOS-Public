@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://6vykxewvvp2e"]
+[gd_scene format=3 uid="uid://6vykxewvvp2e"]
 
 [ext_resource type="Script" uid="uid://bbrnvyt4tpk6t" path="res://Scripts/Classes/Blocks/FrozenBlock.gd" id="1_d6n84"]
 [ext_resource type="Script" uid="uid://cbal8ms2oe1ik" path="res://Scripts/Classes/Components/ResourceSetterNew.gd" id="1_mkugf"]

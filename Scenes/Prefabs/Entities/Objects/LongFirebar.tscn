@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://033s0lgpb33l"]
+[gd_scene format=3 uid="uid://033s0lgpb33l"]
 
 [ext_resource type="PackedScene" uid="uid://iq86u4w60yee" path="res://Scenes/Prefabs/Entities/Objects/Firebar.tscn" id="1_m6o3e"]
 [ext_resource type="Texture2D" uid="uid://pidoncb5gcax" path="res://Assets/Sprites/Items/Fireball.png" id="2_s1hms"]
@@ -110,31 +110,21 @@ position = Vector2(56.5685, 56.5686)
 texture = ExtResource("2_s1hms")
 
 [node name="Animation2" type="AnimationPlayer" parent="Fireballs/Fireball7" parent_id_path=PackedInt32Array(1435697685) index="0" unique_id=399362434]
-libraries = {
-&"": SubResource("AnimationLibrary_ytedt")
-}
+libraries/ = SubResource("AnimationLibrary_ytedt")
 autoplay = &"Spin"
 
 [node name="Animation2" type="AnimationPlayer" parent="Fireballs/Fireball8" parent_id_path=PackedInt32Array(1860025908) index="0" unique_id=1957571352]
-libraries = {
-&"": SubResource("AnimationLibrary_ytedt")
-}
+libraries/ = SubResource("AnimationLibrary_ytedt")
 autoplay = &"Spin"
 
 [node name="Animation2" type="AnimationPlayer" parent="Fireballs/Fireball9" parent_id_path=PackedInt32Array(561753574) index="0" unique_id=1612047027]
-libraries = {
-&"": SubResource("AnimationLibrary_ytedt")
-}
+libraries/ = SubResource("AnimationLibrary_ytedt")
 autoplay = &"Spin"
 
 [node name="Animation2" type="AnimationPlayer" parent="Fireballs/Fireball10" parent_id_path=PackedInt32Array(1269472994) index="0" unique_id=241365362]
-libraries = {
-&"": SubResource("AnimationLibrary_ytedt")
-}
+libraries/ = SubResource("AnimationLibrary_ytedt")
 autoplay = &"Spin"
 
 [node name="Animation2" type="AnimationPlayer" parent="Fireballs/Fireball11" parent_id_path=PackedInt32Array(1267028039) index="0" unique_id=969670037]
-libraries = {
-&"": SubResource("AnimationLibrary_ytedt")
-}
+libraries/ = SubResource("AnimationLibrary_ytedt")
 autoplay = &"Spin"

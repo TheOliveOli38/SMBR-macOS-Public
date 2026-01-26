@@ -1,4 +1,4 @@
-[gd_scene load_steps=2 format=4 uid="uid://gxai71e28qm6"]
+[gd_scene format=4 uid="uid://gxai71e28qm6"]
 
 [ext_resource type="PackedScene" uid="uid://b1cgn0pwii7yq" path="res://Scenes/Levels/PipeCutscene.tscn" id="1_k54jk"]
 

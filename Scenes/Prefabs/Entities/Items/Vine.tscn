@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://dkxkrqflg46b2"]
+[gd_scene format=3 uid="uid://dkxkrqflg46b2"]
 
 [ext_resource type="Texture2D" uid="uid://ck2ac2a266r6i" path="res://Assets/Sprites/Items/Vine.png" id="1_pfdri"]
 [ext_resource type="AudioStream" uid="uid://bdm8wm7vy4r12" path="res://Assets/Audio/SFX/VineAppear.wav" id="2_ap2o3"]

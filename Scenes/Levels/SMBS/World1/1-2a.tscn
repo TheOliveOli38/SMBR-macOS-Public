@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=4 uid="uid://bgelxgitmqr0w"]
+[gd_scene format=4 uid="uid://bgelxgitmqr0w"]
 [ext_resource type="PackedScene" uid="uid://3cvtloqujpwd" path="res://Scenes/Levels/SMBLL/World5/5-3a.tscn" id="1_tm152"]
 [ext_resource type="Script" uid="uid://cybpwmw4ywoow" path="res://Scripts/Parts/TileMapConverter.gd" id="3_51jfh"]
 [ext_resource type="PackedScene" uid="uid://cmbpqnq10arts" path="res://Scenes/Prefabs/Entities/Items/RedCoin.tscn" id="3_gbxx3"]

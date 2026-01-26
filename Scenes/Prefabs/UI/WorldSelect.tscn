@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://dntk2js0tu3y2"]
+[gd_scene format=3 uid="uid://dntk2js0tu3y2"]
 
 [ext_resource type="Script" uid="uid://col2kvunpua7l" path="res://Scripts/UI/WorldSelect.gd" id="1_isg11"]
 [ext_resource type="StyleBox" uid="uid://comkghpj0djcl" path="res://Resources/UI/Panel.tres" id="2_otmop"]
@@ -302,7 +302,6 @@ texture = SubResource("AtlasTexture_n7c7e")
 script = ExtResource("5_6gt41")
 
 [node name="Cursor" type="MarginContainer" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer/SlotContainer/Slot1" unique_id=962917386]
-visible = false
 layout_mode = 2
 theme_override_constants/margin_top = -5
 theme_override_constants/margin_bottom = -4

@@ -1,4 +1,4 @@
-[gd_scene load_steps=2 format=3 uid="uid://bsbw8ygiek677"]
+[gd_scene format=3 uid="uid://bsbw8ygiek677"]
 
 [ext_resource type="PackedScene" uid="uid://biq8pga47n6wj" path="res://Scenes/Prefabs/LevelObjects/SnowStormWind.tscn" id="1_j6qfh"]
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://bbvaa4j1hsqem"]
+[gd_scene format=3 uid="uid://bbvaa4j1hsqem"]
 
 [ext_resource type="PackedScene" uid="uid://bhqyp8mia3mo3" path="res://Scenes/Prefabs/LevelObjects/EditorLinkedElevator.tscn" id="1_l7tnw"]
 [ext_resource type="JSON" path="res://Assets/Sprites/Tilesets/BluePlatform.json" id="2_x8gar"]

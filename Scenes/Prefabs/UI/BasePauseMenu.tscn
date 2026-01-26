@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dekuqrdjmnr1m"]
+[gd_scene format=3 uid="uid://dekuqrdjmnr1m"]
 
 [ext_resource type="Script" uid="uid://by48a8oa5hefr" path="res://Scripts/UI/StoryPause.gd" id="1_nyd8q"]
 [ext_resource type="StyleBox" uid="uid://comkghpj0djcl" path="res://Resources/UI/Panel.tres" id="2_owmu6"]

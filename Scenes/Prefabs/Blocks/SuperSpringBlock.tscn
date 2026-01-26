@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://b4al7s87fo1nd"]
+[gd_scene format=3 uid="uid://b4al7s87fo1nd"]
 
 [ext_resource type="PackedScene" uid="uid://bx23j813jg0bl" path="res://Scenes/Prefabs/Blocks/SpringBlock.tscn" id="1_uhtsl"]
 [ext_resource type="Texture2D" uid="uid://bd25s0rlv8axh" path="res://Assets/Sprites/Blocks/SuperSpringBlock.png" id="2_wkxon"]

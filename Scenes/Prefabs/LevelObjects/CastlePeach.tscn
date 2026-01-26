@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://ckrna543ixu1b"]
+[gd_scene format=3 uid="uid://ckrna543ixu1b"]
 
 [ext_resource type="PackedScene" uid="uid://c2ntyej6ddm72" path="res://Scenes/Prefabs/LevelObjects/CastleToad.tscn" id="1_ln8qg"]
 [ext_resource type="JSON" path="res://Assets/Sprites/Players/PeachNPC.json" id="2_dujhx"]

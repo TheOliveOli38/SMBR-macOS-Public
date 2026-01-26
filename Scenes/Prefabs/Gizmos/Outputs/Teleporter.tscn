@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://rvrkmp0wgg5w"]
+[gd_scene format=3 uid="uid://rvrkmp0wgg5w"]
 
 [ext_resource type="PackedScene" uid="uid://cllscucqyd033" path="res://Scenes/Prefabs/Gizmos/Outputs/BaseOutput.tscn" id="1_17o6d"]
 [ext_resource type="Script" uid="uid://cmgacy7u13l53" path="res://Scripts/Classes/Gizmos/PlayerTeleporter.gd" id="2_cvajl"]

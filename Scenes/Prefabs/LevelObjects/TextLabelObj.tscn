@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bri8d364obssw"]
+[gd_scene format=3 uid="uid://bri8d364obssw"]
 
 [ext_resource type="PackedScene" uid="uid://ccwil8rmgvund" path="res://Scenes/Prefabs/LevelObjects/TextLabel.tscn" id="1_lckm4"]
 [ext_resource type="Texture2D" uid="uid://guxs3fuqu0x8" path="res://Assets/Sprites/UI/TextBG.png" id="2_hiuu5"]

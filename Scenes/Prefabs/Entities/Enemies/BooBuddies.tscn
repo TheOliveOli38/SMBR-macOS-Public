@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://coasuq2vsmlce"]
+[gd_scene format=3 uid="uid://coasuq2vsmlce"]
 
 [ext_resource type="Script" uid="uid://djdtghrjbpv2i" path="res://Scripts/Classes/Entities/Enemies/BooBuddies.gd" id="1_vavt3"]
 [ext_resource type="Texture2D" uid="uid://dsncqqhfsnq6s" path="res://Assets/Sprites/Editor/RotationIcon.png" id="2_1eh5v"]

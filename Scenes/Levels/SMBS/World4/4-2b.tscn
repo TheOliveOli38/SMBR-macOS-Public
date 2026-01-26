@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=4 uid="uid://cileghchf6nh8"]
+[gd_scene format=4 uid="uid://cileghchf6nh8"]
 [ext_resource type="Script" uid="uid://bcqr1v25ygedb" path="res://Scripts/Classes/LevelClass.gd" id="1_ukpdq"]
 [ext_resource type="JSON" path="res://Assets/Audio/BGM/Mountain.json" id="2_0dpy4"]
 [ext_resource type="PackedScene" uid="uid://cuh62hlq8errh" path="res://Scenes/Prefabs/Entities/Player.tscn" id="4_qdrdb"]
@@ -38,7 +38,7 @@ metadata/_custom_type_script = "uid://bdq0373j5n5o0"
 position = Vector2(120, 0)
 [node name="EndSmallCastle" parent="." unique_id=1707507643 instance=ExtResource("8_6h2ch")]
 position = Vector2(216, 0)
-[node name="CameraRightLimit" parent="EndSmallCastle" index="1"]
+[node name="CameraRightLimit" parent="EndSmallCastle" index="1" unique_id=733835491]
 position = Vector2(808, 0)
 [node name="PipeArea" parent="." unique_id=1024724159 instance=ExtResource("10_or54s")]
 position = Vector2(-208, -64)

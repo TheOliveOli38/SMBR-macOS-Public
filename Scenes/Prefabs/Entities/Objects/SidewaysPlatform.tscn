@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://c8m8455b6ikrn"]
+[gd_scene format=3 uid="uid://c8m8455b6ikrn"]
 
 [ext_resource type="Texture2D" uid="uid://bk0p52ttwojml" path="res://Assets/Sprites/Tilesets/Platform.png" id="1_mnf3m"]
 [ext_resource type="Script" uid="uid://cbal8ms2oe1ik" path="res://Scripts/Classes/Components/ResourceSetterNew.gd" id="2_lvvvw"]
@@ -80,9 +80,7 @@ scale = Vector2(3.2, 1.2)
 enable_node_path = NodePath("../..")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=981341583]
-libraries = {
-&"": SubResource("AnimationLibrary_kqk52")
-}
+libraries/ = SubResource("AnimationLibrary_kqk52")
 autoplay = &"Move"
 
 [node name="LevelEditorVisibleNode" type="Node2D" parent="." unique_id=1115693752]

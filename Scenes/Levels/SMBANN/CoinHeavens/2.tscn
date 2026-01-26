@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=3 uid="uid://bvivssuqumkxf"]
+[gd_scene format=3 uid="uid://bvivssuqumkxf"]
 [ext_resource type="PackedScene" uid="uid://cnn6e523gkoa0" path="res://Scenes/Levels/SMB1/CoinHeavens/1.tscn" id="1_724qx"]
 [ext_resource type="Texture2D" uid="uid://dt0qtxu2l646n" path="res://Assets/Sprites/Tilesets/Terrain/Overworld.png" id="2_wq72k"]
 [ext_resource type="PackedScene" uid="uid://dsa8lpl7n8ge0" path="res://Scenes/Prefabs/Blocks/BrickBlocks/BrickBlock.tscn" id="3_dgrji"]
@@ -41,7 +41,7 @@ tile_data = PackedInt32Array(0, 524288, 5, 1, 589824, 5)
 tile_data = PackedInt32Array(0, 524288, 6, 1, 589824, 6)
 [sub_resource type="TileMapPattern" id="TileMapPattern_7cpm5"]
 tile_data = PackedInt32Array(0, 524288, 7, 1, 589824, 7)
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_p42hh"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wq72k"]
 resource_name = "Terrain"
 texture = ExtResource("2_wq72k")
 0:0/0 = 0
@@ -707,7 +707,7 @@ texture = ExtResource("2_wq72k")
 13:10/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 11:10/0 = 0
 11:10/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
-[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_flfed"]
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_dgrji"]
 scenes/1/scene = ExtResource("3_dgrji")
 scenes/2/scene = ExtResource("14_7v0e1")
 scenes/3/scene = ExtResource("16_8txha")
@@ -728,7 +728,7 @@ scenes/17/scene = ExtResource("11_vpvs3")
 scenes/18/scene = ExtResource("12_wa61k")
 scenes/19/scene = ExtResource("13_pxwt7")
 scenes/20/scene = ExtResource("15_c1k3v")
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_iygcq"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_felhs"]
 texture = ExtResource("23_naspq")
 0:0/next_alternative_id = 2
 0:0/animation_speed = 8.0
@@ -824,7 +824,7 @@ texture = ExtResource("23_naspq")
 &"type": 14
 }
 0:7/1 = 1
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ldmd3"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ck54c"]
 texture = ExtResource("24_kievr")
 0:0/0 = 0
 0:0/0/z_index = -10
@@ -846,7 +846,7 @@ texture = ExtResource("24_kievr")
 3:0/0/z_index = -10
 4:0/0 = 0
 4:0/0/z_index = -10
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6cf5n"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mhx7w"]
 texture = ExtResource("25_by2e2")
 0:0/next_alternative_id = 3
 0:0/animation_speed = 20.0
@@ -928,7 +928,7 @@ texture = ExtResource("25_by2e2")
 8: [17],
 &"type": 17
 }
-[sub_resource type="TileSet" id="TileSet_4xyrb"]
+[sub_resource type="TileSet" id="TileSet_81ot0"]
 resource_local_to_scene = true
 physics_layer_0/collision_layer = 2
 physics_layer_0/collision_mask = 0
@@ -943,11 +943,11 @@ terrain_set_0/terrain_0/name = "Ground"
 terrain_set_0/terrain_0/color = Color(0.5, 0.34375, 0.25, 1)
 custom_data_layer_0/name = "OneWay"
 custom_data_layer_0/type = 1
-sources/0 = SubResource("TileSetAtlasSource_p42hh")
-sources/1 = SubResource("TileSetScenesCollectionSource_flfed")
-sources/2 = SubResource("TileSetAtlasSource_iygcq")
-sources/3 = SubResource("TileSetAtlasSource_ldmd3")
-sources/4 = SubResource("TileSetAtlasSource_6cf5n")
+sources/0 = SubResource("TileSetAtlasSource_wq72k")
+sources/1 = SubResource("TileSetScenesCollectionSource_dgrji")
+sources/2 = SubResource("TileSetAtlasSource_felhs")
+sources/3 = SubResource("TileSetAtlasSource_ck54c")
+sources/4 = SubResource("TileSetAtlasSource_mhx7w")
 pattern_0 = SubResource("TileMapPattern_b6qiv")
 pattern_1 = SubResource("TileMapPattern_d4nyf")
 pattern_2 = SubResource("TileMapPattern_ls3wh")
@@ -1006,7 +1006,7 @@ metadata/_better_terrain = {
 theme_time = "Night"
 campaign = "SMBANN"
 [node name="Tiles" parent="." index="1" unique_id=1674661667]
-tile_set = SubResource("TileSet_4xyrb")
+tile_set = SubResource("TileSet_81ot0")
 [node name="LevelBG" parent="." index="8" unique_id=458182856]
 time_of_day = 1
 [node name="DiscoLevel" type="Node" parent="." index="10" unique_id=37992196]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://0xnuvrl7o0gm"]
+[gd_scene format=3 uid="uid://0xnuvrl7o0gm"]
 [ext_resource type="PackedScene" uid="uid://dsbbno622yoxo" path="res://Scenes/Levels/SMB1/World2/2-2.tscn" id="1_x8mfc"]
 [ext_resource type="PackedScene" uid="uid://b6drci0vml1as" path="res://Scenes/Prefabs/Entities/Enemies/Blooper.tscn" id="3_4huqm"]
 [node name="7-2" unique_id=655925877 instance=ExtResource("1_x8mfc")]

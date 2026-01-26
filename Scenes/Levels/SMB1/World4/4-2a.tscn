@@ -1,4 +1,4 @@
-[gd_scene load_steps=2 format=4 uid="uid://w7050isspkp5"]
+[gd_scene format=4 uid="uid://w7050isspkp5"]
 [ext_resource type="PackedScene" uid="uid://d3lsxfuwgmtdt" path="res://Scenes/Levels/SMB1/World1/1-1a.tscn" id="1_uekrc"]
 [node name="1-2A" unique_id=1440586396 instance=ExtResource("1_uekrc")]
 world_id = 4

@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://dlc5te716p4gw"]
+[gd_scene format=3 uid="uid://dlc5te716p4gw"]
 [ext_resource type="PackedScene" uid="uid://d05eoruff1i1m" path="res://Scenes/Levels/SMBLL/CoinHeavens/4.tscn" id="1_plfab"]
 [ext_resource type="Texture2D" uid="uid://dt0qtxu2l646n" path="res://Assets/Sprites/Tilesets/Terrain/Overworld.png" id="2_jn7wj"]
 [ext_resource type="PackedScene" uid="uid://dsa8lpl7n8ge0" path="res://Scenes/Prefabs/Blocks/BrickBlocks/BrickBlock.tscn" id="3_rrofo"]
@@ -927,7 +927,7 @@ texture = ExtResource("25_yddsj")
 8: [17],
 &"type": 17
 }
-[sub_resource type="TileSet" id="TileSet_ekjfq"]
+[sub_resource type="TileSet" id="TileSet_jn7wj"]
 resource_local_to_scene = true
 physics_layer_0/collision_layer = 2
 physics_layer_0/collision_mask = 0
@@ -1005,7 +1005,7 @@ metadata/_better_terrain = {
 theme = "Volcano"
 theme_time = "Night"
 [node name="Tiles" parent="." index="1" unique_id=1674661667]
-tile_set = SubResource("TileSet_ekjfq")
+tile_set = SubResource("TileSet_jn7wj")
 [node name="LevelBG" parent="." index="8" unique_id=458182856]
 time_of_day = 1
 particles = 3

@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://b7560x2o4qeuo"]
+[gd_scene format=3 uid="uid://b7560x2o4qeuo"]
 
 [ext_resource type="Script" uid="uid://bw7ada2n2vmww" path="res://Scripts/Parts/WaterCurrentArea.gd" id="1_5b2n0"]
 [ext_resource type="Texture2D" uid="uid://b7h6b0yqyi2kh" path="res://Assets/Sprites/Particles/Bubble.png" id="1_sh54q"]

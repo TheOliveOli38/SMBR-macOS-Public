@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://c2ntyej6ddm72"]
+[gd_scene format=3 uid="uid://c2ntyej6ddm72"]
 
 [ext_resource type="Script" uid="uid://j76u1aqhwey4" path="res://Scripts/Parts/CastleToad.gd" id="1_hytso"]
 [ext_resource type="Texture2D" uid="uid://dfildm0squweg" path="res://Assets/Sprites/Players/ToadNPC.png" id="2_griru"]

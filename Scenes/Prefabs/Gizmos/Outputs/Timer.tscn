@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://ivcbqb21gx8b"]
+[gd_scene format=3 uid="uid://ivcbqb21gx8b"]
 
 [ext_resource type="Script" uid="uid://wrtlstuv8bix" path="res://Scripts/Classes/Gizmos/Timer.gd" id="1_1xm48"]
 [ext_resource type="Texture2D" uid="uid://w2bfti6riv20" path="res://Assets/Sprites/Editor/Gizmos/Timer.png" id="2_855jj"]

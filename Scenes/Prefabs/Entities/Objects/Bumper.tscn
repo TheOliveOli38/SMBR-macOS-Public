@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://bh0c141mlkiff"]
+[gd_scene format=3 uid="uid://bh0c141mlkiff"]
 
 [ext_resource type="Texture2D" uid="uid://dleohmr2yvsea" path="res://Assets/Sprites/Blocks/Bumper.png" id="1_7osxe"]
 [ext_resource type="Script" uid="uid://biu4x75tbkfk3" path="res://Scripts/Classes/Entities/Objects/Bumper.gd" id="1_yguea"]
@@ -93,9 +93,7 @@ metadata/_custom_type_script = "uid://cnheej0sxmoxg"
 shape = SubResource("CircleShape2D_tbo6k")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=998790596]
-libraries = {
-&"": SubResource("AnimationLibrary_cgc3p")
-}
+libraries/ = SubResource("AnimationLibrary_cgc3p")
 autoplay = &"RESET"
 
 [node name="TrackJoint" type="Node" parent="." unique_id=408055058]

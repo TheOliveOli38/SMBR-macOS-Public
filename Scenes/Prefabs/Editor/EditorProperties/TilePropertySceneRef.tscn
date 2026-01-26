@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://clfxxcxk3fobh"]
+[gd_scene format=3 uid="uid://clfxxcxk3fobh"]
 
 [ext_resource type="Script" uid="uid://c1jo8djcruqbf" path="res://Scripts/Parts/TilePropertySceneRef.gd" id="1_p4kuk"]
 [ext_resource type="Texture2D" uid="uid://bnv2ocqgws3p7" path="res://Assets/Sprites/UI/Panel.png" id="2_xqybm"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://clxssds8sj8pf"]
+[gd_scene format=3 uid="uid://clxssds8sj8pf"]
 
 [ext_resource type="Script" uid="uid://dixhffcqfnyku" path="res://Scripts/Classes/Entities/Items/SpinningCoin.gd" id="1_pvx50"]
 [ext_resource type="Texture2D" uid="uid://bnomivkphlt60" path="res://Assets/Sprites/Items/SpinningCoin.png" id="2_6slgd"]

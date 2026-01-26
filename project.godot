@@ -26,6 +26,10 @@ boot_splash/use_filter=false
 config/icon="res://icon.png"
 use_discord=true
 
+[audio]
+
+buses/default_bus_layout="uid://bc65qkbkya885"
+
 [autoload]
 
 NewLevelBuilder="*res://Scenes/Prefabs/Autoload/NewLevelBuilder.gd"

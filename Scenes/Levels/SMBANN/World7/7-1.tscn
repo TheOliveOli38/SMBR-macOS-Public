@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=4 uid="uid://jc2mvk7km7qp"]
+[gd_scene format=4 uid="uid://jc2mvk7km7qp"]
 [ext_resource type="PackedScene" uid="uid://4ihnm4x02vwy" path="res://Scenes/Levels/SMB1/World7/7-1.tscn" id="1_8k3ko"]
 [ext_resource type="Script" uid="uid://bjs5mlc3xrxud" path="res://Scripts/Parts/DiscoLevel.gd" id="2_002ma"]
 [ext_resource type="PackedScene" uid="uid://dbjqtjhb2t4cn" path="res://Scenes/Prefabs/Entities/Items/FireFlower.tscn" id="2_4fyjs"]

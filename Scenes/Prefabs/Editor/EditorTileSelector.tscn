@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://knfs0rx7n1ry"]
+[gd_scene format=3 uid="uid://knfs0rx7n1ry"]
 
 [ext_resource type="Script" uid="uid://dx0yj4sc1lnpu" path="res://Scripts/Classes/Editor/EditorTileSelector.gd" id="1_ecw13"]
 [ext_resource type="Script" uid="uid://cbal8ms2oe1ik" path="res://Scripts/Classes/Components/ResourceSetterNew.gd" id="3_bh0ve"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=4 uid="uid://bn78ab1wvwh6"]
+[gd_scene format=4 uid="uid://bn78ab1wvwh6"]
 [ext_resource type="Script" uid="uid://bcqr1v25ygedb" path="res://Scripts/Classes/LevelClass.gd" id="1_q472v"]
 [ext_resource type="JSON" path="res://Assets/Audio/BGM/Overworld.json" id="2_uq4wx"]
 [ext_resource type="PackedScene" uid="uid://bksxgpygrdjl7" path="res://Scenes/Prefabs/LevelBG.tscn" id="3_1r6wu"]

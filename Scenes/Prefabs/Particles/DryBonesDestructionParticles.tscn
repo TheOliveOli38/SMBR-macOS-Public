@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://bhs5ly6bbaahk"]
+[gd_scene format=3 uid="uid://bhs5ly6bbaahk"]
 
 [ext_resource type="PackedScene" uid="uid://cyw7kk1em8h16" path="res://Scenes/Parts/Particles/BlockDestructionParticles.tscn" id="1_wkb5x"]
 [ext_resource type="Texture2D" uid="uid://6gt1kugyj6sb" path="res://Assets/Sprites/Particles/DryBonesDestructionParticles.png" id="2_x32ly"]

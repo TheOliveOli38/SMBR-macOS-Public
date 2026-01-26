@@ -1,8 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://df474c625gx75"]
+[gd_scene format=3 uid="uid://df474c625gx75"]
 
 [ext_resource type="PackedScene" uid="uid://27kpnmk5wqlb" path="res://Scenes/Prefabs/Entities/Objects/OnOffRedMovingPlatform.tscn" id="1_bxfwm"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_vl7vj"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bxfwm"]
 resource_local_to_scene = true
 size = Vector2(32, 8)
 
@@ -13,7 +13,7 @@ moving = true
 region_rect = Rect2(0, 8, 24, 8)
 
 [node name="CollisionShape2D" parent="." index="1" unique_id=1046612248]
-shape = SubResource("RectangleShape2D_vl7vj")
+shape = SubResource("RectangleShape2D_bxfwm")
 
 [node name="Projection" parent="." index="4" unique_id=1165185292]
 region_rect = Rect2(0, 8, 24, 8)

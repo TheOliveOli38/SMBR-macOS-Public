@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=4 uid="uid://rw3nm4d1su58"]
+[gd_scene format=4 uid="uid://rw3nm4d1su58"]
 [ext_resource type="Script" uid="uid://bcqr1v25ygedb" path="res://Scripts/Classes/LevelClass.gd" id="1_s01n7"]
 [ext_resource type="JSON" path="res://Assets/Audio/BGM/Underground.json" id="2_e7plg"]
 [ext_resource type="PackedScene" uid="uid://ct5rrpa7uehkk" path="res://Scenes/Parts/Tiles.tscn" id="4_t8dl2"]

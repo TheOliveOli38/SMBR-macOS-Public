@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://ckpuxdilk5u0"]
+[gd_scene format=3 uid="uid://ckpuxdilk5u0"]
 
 [ext_resource type="Script" uid="uid://vwe7y2scu8a1" path="res://Scripts/Parts/LevelTransition.gd" id="1_75ji3"]
 [ext_resource type="SpriteFrames" uid="uid://df4enjjl84mji" path="res://Resources/SpriteFrames/Player/Mario/Small.tres" id="3_y8ytj"]

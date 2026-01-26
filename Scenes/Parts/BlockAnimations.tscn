@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://cijkvfkthetn5"]
+[gd_scene format=3 uid="uid://cijkvfkthetn5"]
 
 [ext_resource type="Script" uid="uid://bna1qn33m01d5" path="res://Scripts/Parts/BlockAnimations.gd" id="1_j0pkw"]
 
@@ -68,9 +68,7 @@ _data = {
 script = ExtResource("1_j0pkw")
 
 [node name="Animations" type="AnimationPlayer" parent="." unique_id=569220834]
-libraries = {
-&"": SubResource("AnimationLibrary_tid1o")
-}
+libraries/ = SubResource("AnimationLibrary_tid1o")
 
 [node name="Joint" type="RemoteTransform2D" parent="." unique_id=1986163151]
 update_rotation = false

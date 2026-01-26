@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://bifdg1vybfkr5"]
+[gd_scene format=3 uid="uid://bifdg1vybfkr5"]
 
 [ext_resource type="PackedScene" uid="uid://bxvcax2wc48xh" path="res://Scenes/Prefabs/Blocks/NoteBlock.tscn" id="1_xv5gc"]
 [ext_resource type="JSON" path="res://Assets/Sprites/Blocks/BubbleNoteBlock.json" id="2_0vh5c"]

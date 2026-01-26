@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://gwruwvbe6duy"]
+[gd_scene format=3 uid="uid://gwruwvbe6duy"]
 
 [ext_resource type="PackedScene" uid="uid://6vykxewvvp2e" path="res://Scenes/Prefabs/Blocks/FrozenBrickBlock.tscn" id="1_tf1gj"]
 [ext_resource type="PackedScene" uid="uid://chjxyhlwohmi6" path="res://Scenes/Prefabs/Entities/Items/Coin.tscn" id="2_n3k5x"]

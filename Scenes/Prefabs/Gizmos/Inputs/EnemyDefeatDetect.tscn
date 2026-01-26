@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://dr5lmraq8gwtm"]
+[gd_scene format=3 uid="uid://dr5lmraq8gwtm"]
 
 [ext_resource type="PackedScene" uid="uid://b2r255cb4tt7t" path="res://Scenes/Prefabs/Gizmos/Inputs/BaseInput.tscn" id="1_2801w"]
 [ext_resource type="Script" uid="uid://beoyxnqswcvyy" path="res://Scripts/Classes/Gizmos/EnemyDefeatDetect.gd" id="2_n6x6h"]

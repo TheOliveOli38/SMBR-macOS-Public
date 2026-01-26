@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://b4uqa4y5o63xy"]
+[gd_scene format=3 uid="uid://b4uqa4y5o63xy"]
 
 [ext_resource type="PackedScene" uid="uid://bxvcax2wc48xh" path="res://Scenes/Prefabs/Blocks/NoteBlock.tscn" id="1_2p7lf"]
 [ext_resource type="Script" uid="uid://2gxl5hj6mf6a" path="res://Scripts/Classes/Blocks/MusicNoteBlock.gd" id="2_1gaxc"]

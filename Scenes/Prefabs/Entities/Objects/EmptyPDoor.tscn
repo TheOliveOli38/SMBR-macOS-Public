@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://c4wvocqpy0w66"]
+[gd_scene format=3 uid="uid://c4wvocqpy0w66"]
 
 [ext_resource type="Script" uid="uid://bul1nbd2in1gn" path="res://Scripts/Classes/Components/PSwitcher.gd" id="1_d6q2l"]
 [ext_resource type="Script" uid="uid://cbal8ms2oe1ik" path="res://Scripts/Classes/Components/ResourceSetterNew.gd" id="2_hj3mh"]

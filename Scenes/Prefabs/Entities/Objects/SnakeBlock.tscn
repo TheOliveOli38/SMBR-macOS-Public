@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://biupk6yel683f"]
+[gd_scene format=3 uid="uid://biupk6yel683f"]
 
 [ext_resource type="Script" uid="uid://c7qf2r1yve6nl" path="res://Scripts/Classes/Entities/Objects/SnakeBlock.gd" id="1_r8seh"]
 [ext_resource type="PackedScene" uid="uid://br1hsfo0ihtxu" path="res://Scenes/Parts/SnakeBlockSegment.tscn" id="2_fuc5y"]

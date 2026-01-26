@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://dxyecochur0lo"]
+[gd_scene format=3 uid="uid://dxyecochur0lo"]
 
 [ext_resource type="PackedScene" uid="uid://dtpyjucfl16sw" path="res://Scenes/Prefabs/LevelObjects/CastleBridge.tscn" id="1_j8urw"]
 [ext_resource type="Texture2D" uid="uid://boc6yagywb1lu" path="res://Assets/Sprites/Tilesets/Terrain/Castle.png" id="2_2iyqs"]

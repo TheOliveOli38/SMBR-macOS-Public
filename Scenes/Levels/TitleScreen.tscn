@@ -1,4 +1,4 @@
-[gd_scene load_steps=69 format=4 uid="uid://dnlgawye840rs"]
+[gd_scene format=4 uid="uid://dnlgawye840rs"]
 
 [ext_resource type="Script" uid="uid://bqetotvkgfpta" path="res://Scripts/Parts/TitleScreen.gd" id="1_1wpe0"]
 [ext_resource type="Texture2D" uid="uid://d01emqx4qafd7" path="res://Assets/Sprites/UI/TitleSMB1.png" id="2_1j3pg"]

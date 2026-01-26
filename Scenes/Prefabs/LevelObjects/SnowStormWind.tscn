@@ -1,4 +1,4 @@
-[gd_scene load_steps=2 format=3 uid="uid://biq8pga47n6wj"]
+[gd_scene format=3 uid="uid://biq8pga47n6wj"]
 
 [ext_resource type="PackedScene" uid="uid://ccxhom4wrgfv4" path="res://Scenes/Prefabs/LevelObjects/WindArea.tscn" id="1_trgsh"]
 

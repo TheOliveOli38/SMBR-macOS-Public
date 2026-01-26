@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://dtpyjucfl16sw"]
+[gd_scene format=3 uid="uid://dtpyjucfl16sw"]
 
 [ext_resource type="Script" uid="uid://drigdwsriqtma" path="res://Scripts/Parts/CastleBridge.gd" id="1_7m65m"]
 [ext_resource type="Texture2D" uid="uid://boc6yagywb1lu" path="res://Assets/Sprites/Tilesets/Terrain/Castle.png" id="1_030qv"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://b5feqg7nwyety"]
+[gd_scene format=3 uid="uid://b5feqg7nwyety"]
 
 [ext_resource type="FontVariation" uid="uid://cflgloiossd8a" path="res://Resources/ThemedResources/ScoreFont.tres" id="1_il157"]
 [ext_resource type="Script" uid="uid://dt2p68xl462v2" path="res://Scripts/Parts/TextShadowColourChanger.gd" id="2_il157"]
@@ -105,9 +105,7 @@ text = "8"
 
 [node name="Animation" type="AnimationPlayer" parent="." unique_id=2015772439]
 root_node = NodePath("../Container")
-libraries = {
-&"": SubResource("AnimationLibrary_uog6q")
-}
+libraries/ = SubResource("AnimationLibrary_uog6q")
 autoplay = &"Rise"
 speed_scale = 0.7
 

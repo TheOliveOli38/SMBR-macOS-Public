@@ -1,4 +1,4 @@
-[gd_scene load_steps=2 format=3 uid="uid://b0peppjq7jrcp"]
+[gd_scene format=3 uid="uid://b0peppjq7jrcp"]
 
 [ext_resource type="Script" uid="uid://cm3twgvpdyjbw" path="res://Scripts/Parts/WarpZoneCameraLimit.gd" id="1_0xtta"]
 

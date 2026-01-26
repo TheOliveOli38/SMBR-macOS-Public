@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dtiqcfrw110kd"]
+[gd_scene format=3 uid="uid://dtiqcfrw110kd"]
 
 [ext_resource type="Script" uid="uid://cufb1mxff7b8f" path="res://Scripts/UI/SelectableSliderNode.gd" id="1_ro726"]
 [ext_resource type="Texture2D" uid="uid://3p2l7rec0gh5" path="res://Assets/Sprites/UI/Cursor.png" id="2_rggaq"]

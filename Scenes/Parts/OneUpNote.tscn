@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://dopxwjj37gu0l"]
+[gd_scene format=3 uid="uid://dopxwjj37gu0l"]
 
 [ext_resource type="PackedScene" uid="uid://b5feqg7nwyety" path="res://Scenes/Parts/ScoreNote.tscn" id="1_t77qk"]
 [ext_resource type="Texture2D" uid="uid://b2674tr54wqw7" path="res://Assets/Sprites/UI/OneUpNote.png" id="2_btd7m"]
@@ -19,10 +19,10 @@ metadata/_custom_type_script = "uid://cmvlgsjmsk0v5"
 [node name="ScoreNote" unique_id=1623327547 instance=ExtResource("1_t77qk")]
 visibility_layer = 2
 
-[node name="Label" parent="Container" index="0"]
+[node name="Label" parent="Container" parent_id_path=PackedInt32Array(1802841653) index="0" unique_id=636342306]
 visible = false
 
-[node name="TextureRect" type="TextureRect" parent="Container" index="1" unique_id=154065164]
+[node name="TextureRect" type="TextureRect" parent="Container" parent_id_path=PackedInt32Array(1802841653) index="1" unique_id=154065164]
 layout_mode = 2
 texture = ExtResource("2_btd7m")
 
@@ -50,8 +50,5 @@ property_name = "texture"
 themed_resource = SubResource("Resource_q33f0")
 metadata/_custom_type_script = "uid://cq6f682453q6o"
 
-[node name="Animation" parent="." index="1"]
-autoplay = &"Rise"
-
-[node name="TextShadowColourChanger" parent="." index="2" node_paths=PackedStringArray("shadow_node")]
+[node name="TextShadowColourChanger" parent="." index="2" unique_id=402728311 node_paths=PackedStringArray("shadow_node")]
 shadow_node = NodePath("../Container/TextureRect/TextureRect2")

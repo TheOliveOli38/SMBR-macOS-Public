@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://d25r3nxm3p463"]
+[gd_scene format=3 uid="uid://d25r3nxm3p463"]
 
 [ext_resource type="Script" uid="uid://d1gpliy41d31n" path="res://Scripts/UI/EditorPopupMenu.gd" id="1_crqcj"]
 [ext_resource type="StyleBox" uid="uid://comkghpj0djcl" path="res://Resources/UI/Panel.tres" id="1_do11r"]

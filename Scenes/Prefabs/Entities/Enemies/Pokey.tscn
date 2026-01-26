@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://beggmeixrin75"]
+[gd_scene format=3 uid="uid://beggmeixrin75"]
 
 [ext_resource type="Script" uid="uid://b1b6aiai213ci" path="res://Scripts/Classes/Entities/Enemies/Pokey.gd" id="1_b54ls"]
 [ext_resource type="Texture2D" uid="uid://dj46y8vhqlqjw" path="res://Assets/Sprites/Enemies/Pokey.png" id="2_8aome"]

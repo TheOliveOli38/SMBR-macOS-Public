@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://bn8v1j5t12bpk"]
+[gd_scene format=3 uid="uid://bn8v1j5t12bpk"]
 
 [ext_resource type="Script" uid="uid://bg8681ssontei" path="res://Scripts/Parts/EntityTileContainer.gd" id="1_l30to"]
 

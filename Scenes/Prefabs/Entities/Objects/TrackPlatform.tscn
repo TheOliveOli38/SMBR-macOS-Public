@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://cmmv05bbjposs"]
+[gd_scene format=3 uid="uid://cmmv05bbjposs"]
 
 [ext_resource type="PackedScene" uid="uid://cx2310jyd3fnv" path="res://Scenes/Prefabs/Entities/Objects/MovingPlatform.tscn" id="1_52hcw"]
 [ext_resource type="Script" uid="uid://caq1qiwmy0mox" path="res://Scripts/Parts/BetterAnimatedSprite.gd" id="2_7dllu"]

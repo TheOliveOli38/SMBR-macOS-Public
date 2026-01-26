@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=4 uid="uid://ls0kol74m1wf"]
+[gd_scene format=4 uid="uid://ls0kol74m1wf"]
 [ext_resource type="PackedScene" uid="uid://dymk1dnfr53g2" path="res://Scenes/Levels/SMB1/World4/4-2.tscn" id="1_ay35x"]
 [ext_resource type="Script" uid="uid://bjs5mlc3xrxud" path="res://Scripts/Parts/DiscoLevel.gd" id="2_3j4oi"]
 [ext_resource type="PackedScene" uid="uid://r6dlmokkdyar" path="res://Scenes/Prefabs/Entities/Enemies/GreenKoopaTroopa.tscn" id="2_wmvx1"]

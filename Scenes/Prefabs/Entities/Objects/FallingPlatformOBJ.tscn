@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://khqcht24nms3"]
+[gd_scene format=3 uid="uid://khqcht24nms3"]
 
 [ext_resource type="PackedScene" uid="uid://cx2310jyd3fnv" path="res://Scenes/Prefabs/Entities/Objects/MovingPlatform.tscn" id="1_lmc3g"]
 [ext_resource type="Script" uid="uid://cnheej0sxmoxg" path="res://Scripts/Parts/PlayerDetection.gd" id="2_wuhh6"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://cfr2hr8jhkxry"]
+[gd_scene format=3 uid="uid://cfr2hr8jhkxry"]
 
 [ext_resource type="PackedScene" uid="uid://djve7q2o304w1" path="res://Scenes/Prefabs/Entities/Items/10Coin.tscn" id="1_6xebq"]
 [ext_resource type="JSON" path="res://Assets/Sprites/Items/30Coin.json" id="2_vbgog"]

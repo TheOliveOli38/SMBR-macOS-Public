@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://bxaeo8dtil8jy"]
+[gd_scene format=3 uid="uid://bxaeo8dtil8jy"]
 
 [ext_resource type="Script" uid="uid://d3jebf1trkaor" path="res://Scripts/UI/AchievementMenu.gd" id="1_85no8"]
 [ext_resource type="Theme" uid="uid://dtn507x2b5de7" path="res://Resources/Theme.tres" id="1_gq2qe"]

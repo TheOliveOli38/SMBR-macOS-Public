@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://fvhrbog40cpp"]
+[gd_scene format=3 uid="uid://fvhrbog40cpp"]
 
 [ext_resource type="Script" uid="uid://bxfr63s2j3ts7" path="res://Scripts/Classes/Entities/Objects/Cannon.gd" id="1_g2yj6"]
 [ext_resource type="Texture2D" uid="uid://x45kf055ej53" path="res://Assets/Sprites/Blocks/Cannon.png" id="2_yrqqx"]

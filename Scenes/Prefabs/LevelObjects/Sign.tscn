@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://bbefraegm6aq8"]
+[gd_scene format=3 uid="uid://bbefraegm6aq8"]
 
 [ext_resource type="Script" uid="uid://dv3hlv5ruebdb" path="res://Scripts/Classes/Entities/Objects/Sign.gd" id="1_k8vxl"]
 [ext_resource type="Texture2D" uid="uid://bdjuvdri4c27u" path="res://Assets/Sprites/Tilesets/Sign.png" id="1_rjgrf"]

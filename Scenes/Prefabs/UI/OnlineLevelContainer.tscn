@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://cr2pku7fjkgpo"]
+[gd_scene format=3 uid="uid://cr2pku7fjkgpo"]
 
 [ext_resource type="StyleBox" uid="uid://comkghpj0djcl" path="res://Resources/UI/Panel.tres" id="1_1k7iw"]
 [ext_resource type="StyleBox" uid="uid://dlbdmqmnl30sq" path="res://Resources/UI/PanelSelected.tres" id="2_h6n8u"]
@@ -111,9 +111,7 @@ visible_characters = 0
 visible_ratio = 0.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="MarginContainer/HBoxContainer/HSplitContainer/LeftHalf/LevelIcon/Label" unique_id=413413737]
-libraries = {
-&"": SubResource("AnimationLibrary_h6n8u")
-}
+libraries/ = SubResource("AnimationLibrary_h6n8u")
 autoplay = &"Load"
 
 [node name="Error" type="Label" parent="MarginContainer/HBoxContainer/HSplitContainer/LeftHalf/LevelIcon" unique_id=1126606813]

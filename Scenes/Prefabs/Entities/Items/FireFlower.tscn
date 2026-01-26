@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://dbjqtjhb2t4cn"]
+[gd_scene format=3 uid="uid://dbjqtjhb2t4cn"]
 
 [ext_resource type="Script" uid="uid://cjkurwybsaywm" path="res://Scripts/Classes/Entities/Items/PowerUpItem.gd" id="1_paqft"]
 [ext_resource type="Texture2D" uid="uid://qwqprcst4mtg" path="res://Assets/Sprites/Items/FireFlower.png" id="2_x8n8e"]

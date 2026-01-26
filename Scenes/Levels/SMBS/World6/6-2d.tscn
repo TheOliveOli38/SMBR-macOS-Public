@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=4 uid="uid://bvd0hneesomwk"]
+[gd_scene format=4 uid="uid://bvd0hneesomwk"]
 [ext_resource type="PackedScene" uid="uid://4tuu5ri4mjla" path="res://Scenes/Levels/SMBS/World6/6-2a.tscn" id="1_lhskc"]
 [ext_resource type="JSON" path="res://Assets/Audio/BGM/Underwater.json" id="2_ynxeu"]
 [ext_resource type="PackedScene" uid="uid://ct5rrpa7uehkk" path="res://Scenes/Parts/Tiles.tscn" id="3_lakbt"]

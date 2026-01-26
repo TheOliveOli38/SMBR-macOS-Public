@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://kr7i2kf6rew0"]
+[gd_scene format=3 uid="uid://kr7i2kf6rew0"]
 
 [ext_resource type="Script" uid="uid://b8gdlotx0at6x" path="res://Scripts/Classes/Entities/Enemies/HammerBro.gd" id="1_8mo24"]
 [ext_resource type="Texture2D" uid="uid://l3l3icupve4t" path="res://Assets/Sprites/Enemies/HammerBro.png" id="2_8mo24"]
@@ -223,9 +223,7 @@ resource_json = ExtResource("8_0w8yj")
 metadata/_custom_type_script = "uid://cbal8ms2oe1ik"
 
 [node name="MovementAnimations" type="AnimationPlayer" parent="." unique_id=1323223581]
-libraries = {
-&"": SubResource("AnimationLibrary_2vqj5")
-}
+libraries/ = SubResource("AnimationLibrary_2vqj5")
 
 [node name="Collision" type="CollisionShape2D" parent="." unique_id=1857978008]
 visible = false

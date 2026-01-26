@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://cdrgm3154qxxy"]
+[gd_scene format=3 uid="uid://cdrgm3154qxxy"]
 
 [ext_resource type="Texture2D" uid="uid://fy7jlabgyewp" path="res://Assets/Sprites/Blocks/Trampoline.png" id="1_83ba8"]
 [ext_resource type="Script" uid="uid://bof8ieprith1d" path="res://Scripts/Classes/Entities/Objects/Trampoline.gd" id="1_bwrr1"]
@@ -143,9 +143,7 @@ position = Vector2(0, -22)
 polygon = PackedVector2Array(7, 14, 7, -7, 8, -9, 8, -13, -8, -13, -8, -9, -7, -7, -7, 14)
 
 [node name="Animation" type="AnimationPlayer" parent="." unique_id=259274118]
-libraries = {
-&"": SubResource("AnimationLibrary_b27qj")
-}
+libraries/ = SubResource("AnimationLibrary_b27qj")
 
 [node name="Base" type="StaticBody2D" parent="." unique_id=1420720931]
 collision_layer = 3

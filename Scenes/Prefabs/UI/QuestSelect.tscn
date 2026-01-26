@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://bpx20uohhikd7"]
+[gd_scene format=3 uid="uid://bpx20uohhikd7"]
 
 [ext_resource type="Script" uid="uid://dwiic1tdol4wh" path="res://Scripts/UI/QuestSelect.gd" id="1_6lbpd"]
 [ext_resource type="StyleBox" uid="uid://comkghpj0djcl" path="res://Resources/UI/Panel.tres" id="2_6lbpd"]

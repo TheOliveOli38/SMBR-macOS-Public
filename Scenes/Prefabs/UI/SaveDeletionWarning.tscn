@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://br018ivvrtsjd"]
+[gd_scene format=3 uid="uid://br018ivvrtsjd"]
 
 [ext_resource type="Script" uid="uid://cqjtevrvgmcl0" path="res://Scripts/UI/SaveDeletionWarning.gd" id="1_13rbu"]
 [ext_resource type="Texture2D" uid="uid://bnv2ocqgws3p7" path="res://Assets/Sprites/UI/Panel.png" id="2_xoheo"]

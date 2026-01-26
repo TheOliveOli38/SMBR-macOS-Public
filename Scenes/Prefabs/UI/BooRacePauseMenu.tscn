@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://b4fv851s0h11f"]
+[gd_scene format=3 uid="uid://b4fv851s0h11f"]
 
 [ext_resource type="PackedScene" uid="uid://dekuqrdjmnr1m" path="res://Scenes/Prefabs/UI/BasePauseMenu.tscn" id="1_rf1ii"]
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=4 uid="uid://by2lk0a20jr7w"]
+[gd_scene format=4 uid="uid://by2lk0a20jr7w"]
 [ext_resource type="PackedScene" uid="uid://c6roqyktleixg" path="res://Scenes/Levels/SMB1/World3/3-1.tscn" id="1_fpw1o"]
 [ext_resource type="PackedScene" uid="uid://dsa8lpl7n8ge0" path="res://Scenes/Prefabs/Blocks/BrickBlocks/BrickBlock.tscn" id="2_stbo2"]
 [ext_resource type="PackedScene" uid="uid://dkxkrqflg46b2" path="res://Scenes/Prefabs/Entities/Items/Vine.tscn" id="3_6rh8b"]
@@ -30,9 +30,9 @@ position = Vector2(1792, 1904)
 position = Vector2(2400, 1904)
 [node name="BrickBlock5" parent="Blocks" parent_id_path=PackedInt32Array(316063746) index="9" unique_id=1942067782]
 position = Vector2(2080, 1952)
-[node name="PipeArea" parent="." index="9" unique_id=1951797722]
+[node name="PipeArea" parent="." index="8" unique_id=1951797722]
 target_level = "uid://crredk6b3dwes"
-[node name="CoinHeavenWarpPoint" parent="." index="12" unique_id=1346473781]
+[node name="CoinHeavenWarpPoint" parent="." index="11" unique_id=1346473781]
 heaven_scene = "uid://cc3v148pwttgg"
 [node name="BrickBlock" parent="ChallengeNodes" parent_id_path=PackedInt32Array(226625982) index="0" unique_id=1187343093]
 position = Vector2(192, 760)

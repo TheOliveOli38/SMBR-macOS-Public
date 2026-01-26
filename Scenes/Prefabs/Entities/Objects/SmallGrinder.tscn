@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://mf3ekx4nq7gc"]
+[gd_scene format=3 uid="uid://mf3ekx4nq7gc"]
 
 [ext_resource type="PackedScene" uid="uid://gw1a8atigo5f" path="res://Scenes/Prefabs/Entities/Objects/Grinder.tscn" id="1_o4mbm"]
 [ext_resource type="JSON" path="res://Assets/Sprites/Enemies/SmallGrinder.json" id="2_2e2s3"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://ny5glffi0suh"]
+[gd_scene format=3 uid="uid://ny5glffi0suh"]
 
 [ext_resource type="Texture2D" uid="uid://bagrao4ahra76" path="res://Assets/Sprites/Items/Key.png" id="1_883rn"]
 [ext_resource type="Script" uid="uid://cjgbt7iof66j0" path="res://Scripts/Classes/Entities/Items/KeyItem.gd" id="1_l02ex"]
@@ -152,9 +152,7 @@ position = Vector2(0, -8)
 shape = SubResource("RectangleShape2D_2u37r")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=296688612]
-libraries = {
-&"": SubResource("AnimationLibrary_e440m")
-}
+libraries/ = SubResource("AnimationLibrary_e440m")
 
 [node name="GoldParticles" type="GPUParticles2D" parent="." unique_id=954075066]
 z_index = 1

@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://n2e3jgmkilvt"]
+[gd_scene format=3 uid="uid://n2e3jgmkilvt"]
 
 [ext_resource type="Script" uid="uid://djuvlj1dt0aay" path="res://Scripts/UI/MarathonResults.gd" id="1_1ama0"]
 [ext_resource type="StyleBox" uid="uid://comkghpj0djcl" path="res://Resources/UI/Panel.tres" id="1_xyd63"]

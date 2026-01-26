@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://6rp3wgax4i51"]
+[gd_scene format=3 uid="uid://6rp3wgax4i51"]
 
 [ext_resource type="Script" uid="uid://brl0yede1msau" path="res://Scripts/Classes/Entities/Objects/RopeElevatorPlatform.gd" id="1_h7s5k"]
 [ext_resource type="Texture2D" uid="uid://bk0p52ttwojml" path="res://Assets/Sprites/Tilesets/Platform.png" id="2_j5n7v"]

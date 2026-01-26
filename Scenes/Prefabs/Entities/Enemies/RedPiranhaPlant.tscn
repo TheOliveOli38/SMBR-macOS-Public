@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://kj5pw3xhq8f7"]
+[gd_scene format=3 uid="uid://kj5pw3xhq8f7"]
 
 [ext_resource type="PackedScene" uid="uid://1rxw4k4wq3ni" path="res://Scenes/Prefabs/Entities/Enemies/PiranhaPlant.tscn" id="1_potth"]
 [ext_resource type="JSON" path="res://Assets/Sprites/Enemies/RedPiranhaPlant.json" id="2_6sjmx"]

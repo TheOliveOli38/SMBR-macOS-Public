@@ -1,4 +1,4 @@
-[gd_scene load_steps=281 format=3 uid="uid://gbcmqonky63j"]
+[gd_scene format=3 uid="uid://gbcmqonky63j"]
 
 [ext_resource type="Script" uid="uid://c2lnc7vnq3xth" path="res://Scripts/Classes/Editor/LevelEditor.gd" id="1_0qbyu"]
 [ext_resource type="Texture2D" uid="uid://cbha2l6hg1kfo" path="res://Assets/Sprites/UI/EditorGrid.png" id="2_8q7yr"]
@@ -7065,9 +7065,7 @@ uppercase = true
 
 [node name="SaveAnimation" type="AnimationPlayer" parent="Info/SaveDialog" unique_id=918877818]
 unique_name_in_owner = true
-libraries = {
-&"": SubResource("AnimationLibrary_k1rrh")
-}
+libraries/ = SubResource("AnimationLibrary_k1rrh")
 
 [node name="SaveBlueprint" type="PanelContainer" parent="Info" unique_id=1387712987]
 unique_name_in_owner = true

@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://ca2sgs2pk06hb"]
+[gd_scene format=3 uid="uid://ca2sgs2pk06hb"]
 
 [ext_resource type="Script" uid="uid://cbgvvngr0s1cc" path="res://Scripts/Classes/Entities/Items/SuperballProjectile.gd" id="1_e4hr8"]
 [ext_resource type="Script" uid="uid://caq1qiwmy0mox" path="res://Scripts/Parts/BetterAnimatedSprite.gd" id="2_6qxy6"]

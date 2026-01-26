@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=4 uid="uid://bxjdmt70ady6e"]
+[gd_scene format=4 uid="uid://bxjdmt70ady6e"]
 [ext_resource type="Script" uid="uid://caugelxhwlvl0" path="res://Scripts/Parts/LostLevelsEnding.gd" id="1_d3n3y"]
 [ext_resource type="PackedScene" uid="uid://ct5rrpa7uehkk" path="res://Scenes/Parts/Tiles.tscn" id="5_2k64g"]
 [ext_resource type="PackedScene" uid="uid://bksxgpygrdjl7" path="res://Scenes/Prefabs/LevelBG.tscn" id="6_cg4ss"]
@@ -354,14 +354,10 @@ metadata/_custom_type_script = "uid://b08qfwj5jk6g1"
 z_as_relative = false
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=455397204]
 [node name="TextAnimation" type="AnimationPlayer" parent="." unique_id=1252467016]
-libraries = {
-&"": SubResource("AnimationLibrary_k7rel")
-}
+libraries/ = SubResource("AnimationLibrary_k7rel")
 speed_scale = 0.5
 [node name="MainSequence" type="AnimationPlayer" parent="." unique_id=677484124]
-libraries = {
-&"": SubResource("AnimationLibrary_3n3sl")
-}
+libraries/ = SubResource("AnimationLibrary_3n3sl")
 autoplay = &"Main"
 [node name="Peach" parent="." unique_id=463369987 instance=ExtResource("7_1jjur")]
 position = Vector2(-8, -1)

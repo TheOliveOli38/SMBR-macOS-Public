@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://m5o0l71ne3u4"]
+[gd_scene format=3 uid="uid://m5o0l71ne3u4"]
 
 [ext_resource type="Texture2D" uid="uid://c6pd7cdhx78od" path="res://Assets/Sprites/UI/Tab.png" id="1_3ufth"]
 [ext_resource type="Script" uid="uid://kvlxhhkgtuk2" path="res://Scripts/UI/LevelEditorTab.gd" id="1_8b8gk"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://d1kedqb68p7vw"]
+[gd_scene format=3 uid="uid://d1kedqb68p7vw"]
 
 [ext_resource type="Script" uid="uid://bupc8brk48aqi" path="res://Scripts/UI/LevelSelect.gd" id="1_mvafj"]
 [ext_resource type="StyleBox" uid="uid://comkghpj0djcl" path="res://Resources/UI/Panel.tres" id="2_k7cgt"]

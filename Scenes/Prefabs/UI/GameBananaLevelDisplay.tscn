@@ -1,4 +1,4 @@
-[gd_scene load_steps=2 format=3 uid="uid://cpowgsvvunqcn"]
+[gd_scene format=3 uid="uid://cpowgsvvunqcn"]
 
 [ext_resource type="Script" uid="uid://b32rbwuvfqn6x" path="res://Scripts/UI/GameBananaLevelDisplay.gd" id="1_tdprq"]
 

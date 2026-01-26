@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dn2rawqxpuywe"]
+[gd_scene format=3 uid="uid://dn2rawqxpuywe"]
 
 [ext_resource type="Script" uid="uid://bb01xttxcem1c" path="res://Scripts/Classes/Entities/Items/Hachisuke.gd" id="1_d7uck"]
 [ext_resource type="Texture2D" uid="uid://bbdcmhyxmc3pu" path="res://Assets/Sprites/Items/SPItems.png" id="2_wdqsg"]

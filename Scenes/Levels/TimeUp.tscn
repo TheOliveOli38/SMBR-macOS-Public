@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://dyx8sm50s5kcu"]
+[gd_scene format=3 uid="uid://dyx8sm50s5kcu"]
 
 [ext_resource type="PackedScene" uid="uid://bjo3ghjnca7i5" path="res://Scenes/Levels/GameOver.tscn" id="1_fnhjq"]
 [ext_resource type="Script" uid="uid://cx10qj8eh8k8w" path="res://Scripts/Parts/TimeUp.gd" id="2_s8xim"]

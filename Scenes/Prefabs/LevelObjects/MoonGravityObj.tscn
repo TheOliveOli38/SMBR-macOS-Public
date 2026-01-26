@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://dy0tkfsy4wg8"]
+[gd_scene format=3 uid="uid://dy0tkfsy4wg8"]
 
 [ext_resource type="Script" uid="uid://dhtqnyrj3ndnj" path="res://Scripts/Parts/MoonGravity.gd" id="1_ewtau"]
 [ext_resource type="Script" uid="uid://ccffqvv55f48i" path="res://Scripts/Classes/Gizmos/MoonGravityObj.gd" id="1_lemkj"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://1rxw4k4wq3ni"]
+[gd_scene format=3 uid="uid://1rxw4k4wq3ni"]
 
 [ext_resource type="PackedScene" uid="uid://bksfxqm6v1a4j" path="res://Scenes/Prefabs/Entities/Enemies/PipePlantBase.tscn" id="1_74mxh"]
 [ext_resource type="PackedScene" uid="uid://cwqicj07wkd0n" path="res://Scenes/Parts/PiranhaPlantVisuals.tscn" id="2_nvpp7"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://dn1btottv42sd"]
+[gd_scene format=3 uid="uid://dn1btottv42sd"]
 
 [ext_resource type="PackedScene" uid="uid://dsa8lpl7n8ge0" path="res://Scenes/Prefabs/Blocks/BrickBlocks/BrickBlock.tscn" id="1_37s05"]
 [ext_resource type="PackedScene" uid="uid://beq7b3hp44onn" path="res://Scenes/Prefabs/Entities/Items/SuperMushroom.tscn" id="2_olu46"]

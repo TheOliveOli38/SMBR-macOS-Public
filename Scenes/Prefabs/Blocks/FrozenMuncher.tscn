@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://syvu2lf2cx0o"]
+[gd_scene format=3 uid="uid://syvu2lf2cx0o"]
 
 [ext_resource type="PackedScene" uid="uid://6vykxewvvp2e" path="res://Scenes/Prefabs/Blocks/FrozenBrickBlock.tscn" id="1_3d4v8"]
 [ext_resource type="PackedScene" uid="uid://bi1hb03wk001p" path="res://Scenes/Prefabs/Entities/Enemies/Muncher.tscn" id="2_m3wri"]

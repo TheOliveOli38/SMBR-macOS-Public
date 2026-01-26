@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=4 uid="uid://cryw04x1rhuek"]
+[gd_scene format=4 uid="uid://cryw04x1rhuek"]
 [ext_resource type="PackedScene" uid="uid://bgbkyhmcfa8l6" path="res://Scenes/Levels/UndergroundExit.tscn" id="1_2kijs"]
 [ext_resource type="PackedScene" uid="uid://c145qqkvy8pr5" path="res://Scenes/Parts/DecoTiles.tscn" id="3_esidh"]
 [ext_resource type="Script" uid="uid://cybpwmw4ywoow" path="res://Scripts/Parts/TileMapConverter.gd" id="4_hurmg"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://c6loucilra6da"]
+[gd_scene format=3 uid="uid://c6loucilra6da"]
 
 [ext_resource type="Script" uid="uid://dwfnvpioh2kvi" path="res://Scripts/Parts/EndFlagpole.gd" id="1_3rtm4"]
 [ext_resource type="Texture2D" uid="uid://3vg41a5plc4e" path="res://Assets/Sprites/Tilesets/FlagPole.png" id="1_hnd65"]
@@ -164,9 +164,7 @@ position = Vector2(0, -16)
 shape = SubResource("SegmentShape2D_hnd65")
 
 [node name="Animation" type="AnimationPlayer" parent="." unique_id=1311634048]
-libraries = {
-&"": SubResource("AnimationLibrary_62gix")
-}
+libraries/ = SubResource("AnimationLibrary_62gix")
 
 [node name="ScoreNoteSpawner" type="Node" parent="." unique_id=1669438609]
 script = ExtResource("5_dm4yn")
@@ -185,9 +183,7 @@ text = "5000"
 
 [node name="Animation2" type="AnimationPlayer" parent="Score" unique_id=685191019]
 root_node = NodePath("../..")
-libraries = {
-&"": SubResource("AnimationLibrary_jihtx")
-}
+libraries/ = SubResource("AnimationLibrary_jihtx")
 
 [node name="TextShadowColourChanger" type="Node" parent="Score" unique_id=1380205900 node_paths=PackedStringArray("labels")]
 script = ExtResource("9_jihtx")

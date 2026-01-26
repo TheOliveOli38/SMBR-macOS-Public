@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=4 uid="uid://dymk1dnfr53g2"]
+[gd_scene format=4 uid="uid://dymk1dnfr53g2"]
 [ext_resource type="Script" uid="uid://bcqr1v25ygedb" path="res://Scripts/Classes/LevelClass.gd" id="1_wuhcu"]
 [ext_resource type="JSON" path="res://Assets/Audio/BGM/Underground.json" id="2_rome3"]
 [ext_resource type="PackedScene" uid="uid://cuh62hlq8errh" path="res://Scenes/Prefabs/Entities/Player.tscn" id="5_pytfj"]

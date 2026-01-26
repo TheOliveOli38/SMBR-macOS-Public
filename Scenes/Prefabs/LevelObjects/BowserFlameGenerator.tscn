@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://dmv5rl1ckkwsk"]
+[gd_scene format=3 uid="uid://dmv5rl1ckkwsk"]
 
 [ext_resource type="PackedScene" uid="uid://csl71p1unsc8p" path="res://Scenes/Prefabs/LevelObjects/CheepCheepGenerator.tscn" id="1_4xckd"]
 [ext_resource type="PackedScene" uid="uid://blbarreyjem4l" path="res://Scenes/Prefabs/Entities/Enemies/BowserFlame.tscn" id="2_fevce"]

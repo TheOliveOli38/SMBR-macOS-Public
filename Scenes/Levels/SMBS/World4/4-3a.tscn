@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=4 uid="uid://b02283dgopw28"]
+[gd_scene format=4 uid="uid://b02283dgopw28"]
 [ext_resource type="Script" uid="uid://bcqr1v25ygedb" path="res://Scripts/Classes/LevelClass.gd" id="1_1y2g0"]
 [ext_resource type="JSON" path="res://Assets/Audio/BGM/CoinHeaven.json" id="2_5ym04"]
 [ext_resource type="PackedScene" uid="uid://bksxgpygrdjl7" path="res://Scenes/Prefabs/LevelBG.tscn" id="3_cp5jp"]

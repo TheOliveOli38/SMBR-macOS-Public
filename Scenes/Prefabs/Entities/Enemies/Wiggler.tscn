@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://dk2f45a0382vn"]
+[gd_scene format=3 uid="uid://dk2f45a0382vn"]
 
 [ext_resource type="Script" uid="uid://djwcuxm87xfrq" path="res://Scripts/Classes/Entities/Enemies/Wiggler.gd" id="1_h7jtn"]
 [ext_resource type="Script" uid="uid://dlq6o2rg1x7in" path="res://Scripts/Classes/Components/BasicEnemyMovement.gd" id="2_sf3o5"]

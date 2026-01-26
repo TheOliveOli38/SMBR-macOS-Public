@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://4bb81eil6a4c"]
+[gd_scene format=3 uid="uid://4bb81eil6a4c"]
 
 [ext_resource type="Texture2D" uid="uid://c3a7sv3y1fjja" path="res://Assets/Sprites/Enemies/LakituCloud.png" id="1_0ier6"]
 [ext_resource type="Script" uid="uid://bohpv3almqrvg" path="res://Scripts/Classes/Entities/Enemies/Lakitu.gd" id="1_iwyhq"]

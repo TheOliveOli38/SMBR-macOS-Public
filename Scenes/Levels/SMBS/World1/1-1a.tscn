@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=4 uid="uid://cy84limbl0qlf"]
+[gd_scene format=4 uid="uid://cy84limbl0qlf"]
 [ext_resource type="PackedScene" uid="uid://3cvtloqujpwd" path="res://Scenes/Levels/SMBLL/World5/5-3a.tscn" id="1_2e1ko"]
 [ext_resource type="Script" uid="uid://cybpwmw4ywoow" path="res://Scripts/Parts/TileMapConverter.gd" id="3_aaiuc"]
 [node name="5-3a" unique_id=866952089 instance=ExtResource("1_2e1ko")]

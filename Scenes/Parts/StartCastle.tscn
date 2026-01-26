@@ -1,4 +1,4 @@
-[gd_scene load_steps=2 format=3 uid="uid://githt8ci1xal"]
+[gd_scene format=3 uid="uid://githt8ci1xal"]
 
 [ext_resource type="PackedScene" uid="uid://blfbhjqxr2cnj" path="res://Scenes/Parts/SmallStartCastleVisual.tscn" id="1_ntu57"]
 

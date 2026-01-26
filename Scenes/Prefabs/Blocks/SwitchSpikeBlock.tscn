@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://d2ainv86lt68a"]
+[gd_scene format=3 uid="uid://d2ainv86lt68a"]
 
 [ext_resource type="PackedScene" uid="uid://by6ndsjhlkmbt" path="res://Scenes/Prefabs/Blocks/BooRaceBlocks/BooOnOffBlock.tscn" id="1_qn0kk"]
 [ext_resource type="Texture2D" uid="uid://cv27sth0k3amk" path="res://Assets/Sprites/Blocks/SwitchSpike.png" id="2_kmalu"]

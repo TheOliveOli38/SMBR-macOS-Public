@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://d4m3rae0x77vn"]
+[gd_scene format=3 uid="uid://d4m3rae0x77vn"]
 
 [ext_resource type="Script" uid="uid://cnheej0sxmoxg" path="res://Scripts/Parts/PlayerDetection.gd" id="1_eqrf8"]
 [ext_resource type="Script" uid="uid://c11i71w03bckd" path="res://Scripts/Classes/Entities/Objects/PlantFireball.gd" id="1_wo14a"]
@@ -78,9 +78,7 @@ scale = Vector2(-1, 1)
 sprite_frames = SubResource("SpriteFrames_ghtuo")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite" unique_id=1314762623]
-libraries = {
-&"": SubResource("AnimationLibrary_t6bbl")
-}
+libraries/ = SubResource("AnimationLibrary_t6bbl")
 autoplay = &"Spin"
 speed_scale = 2.0
 

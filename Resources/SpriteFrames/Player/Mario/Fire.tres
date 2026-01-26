@@ -1,4 +1,4 @@
-[gd_resource type="SpriteFrames" load_steps=27 format=3 uid="uid://lxdc7cop2doq"]
+[gd_resource type="SpriteFrames" format=3 uid="uid://lxdc7cop2doq"]
 
 [ext_resource type="Texture2D" uid="uid://24uoktknq4h2" path="res://Assets/Sprites/Players/Mario/Fire.png" id="1_8e63j"]
 [ext_resource type="Texture2D" uid="uid://d8g0ff0oepgy" path="res://Assets/Sprites/Players/Mario/Small.png" id="2_a6642"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://dvmr3r2uub283"]
+[gd_scene format=3 uid="uid://dvmr3r2uub283"]
 
 [ext_resource type="Script" uid="uid://cpwloakvp672a" path="res://Scripts/Parts/EditorVisibleNode.gd" id="1_n5i2x"]
 [ext_resource type="Script" uid="uid://dg16ltpjq1r4r" path="res://Scripts/Classes/Entities/Objects/TrackRider.gd" id="1_xlgar"]

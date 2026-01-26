@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://cabk5huwjo06p"]
+[gd_scene format=3 uid="uid://cabk5huwjo06p"]
 
 [ext_resource type="Script" uid="uid://bhplwsmbalqng" path="res://Scripts/UI/RomAssetEditor.gd" id="1_rj2ho"]
 [ext_resource type="Texture2D" uid="uid://biikrttwchk12" path="res://Assets/Sprites/UI/EditorGridSmall.png" id="2_ayc5w"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=4 uid="uid://byqmn8yi7iuac"]
+[gd_scene format=4 uid="uid://byqmn8yi7iuac"]
 
 [ext_resource type="Script" uid="uid://qq26qw7ltflb" path="res://Scripts/Parts/EndCastle.gd" id="1_4yifo"]
 [ext_resource type="Script" uid="uid://caq1qiwmy0mox" path="res://Scripts/Parts/BetterAnimatedSprite.gd" id="2_l3xjf"]
@@ -115,9 +115,7 @@ resource_json = ExtResource("4_7xlhl")
 metadata/_custom_type_script = "uid://cbal8ms2oe1ik"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="FlagJoint/Flag" unique_id=296074204]
-libraries = {
-&"": SubResource("AnimationLibrary_2hcdu")
-}
+libraries/ = SubResource("AnimationLibrary_2hcdu")
 
 [node name="CameraRightLimit" type="Node2D" parent="." unique_id=733835491]
 position = Vector2(128, 0)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://6ay8vxqqyw3v"]
+[gd_scene format=3 uid="uid://6ay8vxqqyw3v"]
 
 [ext_resource type="Script" uid="uid://ni7duf1botaj" path="res://Scripts/Classes/Entities/Objects/WarpVine.gd" id="1_s8udo"]
 [ext_resource type="PackedScene" uid="uid://dkxkrqflg46b2" path="res://Scenes/Prefabs/Entities/Items/Vine.tscn" id="2_r0orp"]

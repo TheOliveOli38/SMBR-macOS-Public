@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://bc1mrna4kybhv"]
+[gd_scene format=3 uid="uid://bc1mrna4kybhv"]
 
 [ext_resource type="Script" uid="uid://b5ejlbl0vp1gm" path="res://Scripts/Classes/Blocks/BlockClass.gd" id="1_bxree"]
 [ext_resource type="Texture2D" uid="uid://uh7uhdkv3e6s" path="res://Assets/Sprites/Blocks/QuestionBlock.png" id="1_wt4d5"]

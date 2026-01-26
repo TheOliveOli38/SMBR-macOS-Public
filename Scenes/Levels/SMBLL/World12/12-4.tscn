@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=4 uid="uid://cslo85tq3ve2c"]
+[gd_scene format=4 uid="uid://cslo85tq3ve2c"]
 [ext_resource type="PackedScene" uid="uid://7ijschult60q" path="res://Scenes/Levels/SMBLL/World7/7-4.tscn" id="1_yq5dk"]
 [ext_resource type="PackedScene" uid="uid://iq86u4w60yee" path="res://Scenes/Prefabs/Entities/Objects/Firebar.tscn" id="2_4m1ya"]
 [ext_resource type="JSON" path="res://Assets/Sprites/Enemies/BulletBill.json" id="2_yq5dk"]
