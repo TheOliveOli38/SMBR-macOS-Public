@@ -5,8 +5,6 @@ var can_menu := false
 const ENDING = preload("res://Assets/Audio/BGM/Ending.mp3")
 
 func _ready() -> void:
-	if $Sprite is AnimatedSprite2D and Global.current_campaign == "SMBANN":
-		$Sprite.play("Idle")
 	Global.level_complete_begin.connect(begin)
 	for i in [$SpeedrunMSG/ThankYou, $StandardMSG/ThankYou]:
 		i.text = tr(i.text).replace("{PLAYER}", tr(Player.CHARACTER_NAMES[int(Global.player_characters[0])]))
@@ -15,6 +13,7 @@ func _ready() -> void:
 		$EndingSpeech/AnotherCastle6.queue_free()
 
 func begin() -> void:
+	$Sprite.play("Await")
 	%PBMessage.modulate.a = int(SpeedrunHandler.timer < SpeedrunHandler.best_time)
 	if play_end_music:
 		Global.game_beaten = true
@@ -23,6 +22,7 @@ func begin() -> void:
 	%Time.text = tr(%Time.text).replace("{TIME}", SpeedrunHandler.gen_time_string(SpeedrunHandler.format_time(SpeedrunHandler.timer)))
 	$CameraRightLimit._enter_tree()
 	await get_tree().create_timer(3, false).timeout
+	$Sprite.play("Talk")
 	if Global.current_game_mode == Global.GameMode.MARATHON_PRACTICE or (Global.current_game_mode == Global.GameMode.MARATHON and play_end_music):
 		show_message($SpeedrunMSG)
 	else:

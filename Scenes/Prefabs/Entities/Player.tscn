@@ -1037,7 +1037,6 @@ metadata/_custom_type_script = "uid://cbal8ms2oe1ik"
 [node name="PlayerPalette" type="Sprite2D" parent="." unique_id=1481358352]
 visible = false
 position = Vector2(0, -8)
-scale = Vector2(8, 8)
 texture = ExtResource("3_x2idl")
 
 [node name="ResourceSetterNew" type="Node" parent="PlayerPalette" unique_id=714228866 node_paths=PackedStringArray("node_to_affect")]

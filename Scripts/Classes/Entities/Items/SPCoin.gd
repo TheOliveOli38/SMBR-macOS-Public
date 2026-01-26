@@ -6,6 +6,8 @@ signal collected
 
 var y_vel := 0.0
 
+var can_collect := true
+
 func _ready() -> void:
 	set_physics_process(false)
 
@@ -14,6 +16,9 @@ func _physics_process(delta: float) -> void:
 	global_position.y += y_vel * delta
 
 func collect() -> void:
+	if can_collect == false:
+		return
+	can_collect = false
 	set_physics_process(true)
 	y_vel = -250
 	$Sprite.play("Spin")

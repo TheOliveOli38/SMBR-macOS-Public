@@ -21,9 +21,9 @@
 [ext_resource type="JSON" path="res://Assets/Audio/BGM/ChallengeEnd.json" id="12_y63tt"]
 [ext_resource type="JSON" path="res://Assets/Sprites/Players/ToadNPC.json" id="14_sv6qk"]
 [ext_resource type="Texture2D" uid="uid://cxtan2ap83u3d" path="res://Assets/Sprites/UI/ChallengeMedals.png" id="14_woqpu"]
-[ext_resource type="Texture2D" uid="uid://c7jq6t1d2mhur" path="res://Assets/Sprites/Items/YoshiEgg.png" id="16_1h3k2"]
 [ext_resource type="AudioStream" uid="uid://bvyklj5qhjkvn" path="res://Assets/Audio/SFX/ChallengeMedalAward.wav" id="16_eupxr"]
 [ext_resource type="Texture2D" uid="uid://hdpdek7jitea" path="res://Assets/Sprites/Players/Yoshi.png" id="18_n4lt1"]
+[ext_resource type="Texture2D" uid="uid://sccnux5ovdi4" path="res://Assets/Sprites/UI/EggMedals.png" id="18_y63tt"]
 [ext_resource type="AudioStream" uid="uid://cl4e0p4fnpjn1" path="res://Assets/Audio/SFX/Yoshi.wav" id="19_n4lt1"]
 [ext_resource type="Texture2D" uid="uid://byy3k1pdrp77" path="res://Assets/Sprites/Particles/Smoke.png" id="20_n4lt1"]
 [ext_resource type="PackedScene" uid="uid://cinr6kcbmo6gr" path="res://Scenes/Parts/DropShadowRenderer.tscn" id="21_bob8r"]
@@ -950,11 +950,13 @@ script = ExtResource("3_xe6g7")
 metadata/_custom_type_script = "uid://364rywt44hy6"
 
 [node name="YoshiEgg" type="Sprite2D" parent="Sprite2D3" unique_id=1296085224]
+unique_name_in_owner = true
 visible = false
 position = Vector2(46, 12)
-texture = ExtResource("16_1h3k2")
+texture = ExtResource("18_y63tt")
 hframes = 2
-vframes = 4
+vframes = 2
+frame = 2
 script = ExtResource("3_xe6g7")
 metadata/_custom_type_script = "uid://364rywt44hy6"
 

@@ -57,7 +57,7 @@ project/assembly_name="SMB1R"
 
 [editor]
 
-movie_writer/movie_file="/home/joe/Videos/SMB1RUpdateTrailer/Footage/BG.avi"
+movie_writer/movie_file="/home/joe/Videos/SMB1RUpdateTrailer/Footage/BG3.avi"
 naming/default_signal_callback_name="on_{signal_name}"
 naming/default_signal_callback_to_self_name="on_{signal_name}"
 naming/scene_name_casing=1

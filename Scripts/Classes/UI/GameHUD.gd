@@ -174,6 +174,7 @@ func handle_yoshi_radar() -> void:
 		distance = (egg_position - player_position).length()
 		
 	%Radar.frame = Global.level_num
+	%ModernRadar.frame = Global.level_num
 		
 	if distance < 512:
 		%Radar.get_node("AnimationPlayer").speed_scale = (250 / distance)

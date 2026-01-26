@@ -428,6 +428,8 @@ func handle_tile_cursor() -> void:
 				target_mouse_icon = (CURSOR_RULER)
 			elif Input.is_action_pressed("editor_select") == false:
 				area_selecting = false
+				multi_select_start()
+				multi_selecting = false
 				remove_tile(tile_position)
 				target_mouse_icon = (CURSOR_ERASOR)
 			elif not area_selecting and not multi_selecting:
@@ -1186,6 +1188,7 @@ func clear_level() -> void:
 	sub_areas = [null, null, null, null, null]
 	level_file = BLANK_FILE.duplicate_deep()
 	load_level(0)
+	clear_trail()
 
 func set_state(state := EditorState.IDLE) -> void:
 	current_state = state

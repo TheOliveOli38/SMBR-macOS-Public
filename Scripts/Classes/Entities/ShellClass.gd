@@ -30,6 +30,10 @@ var times_kicked := 0
 
 func _ready() -> void:
 	$Sprite.flip_v = flipped
+	if abs(velocity.x) > 0:
+		moving = true
+		moving_time = 0.0
+		direction = sign(velocity.x)
 	if flipped:
 		$Sprite.offset.y = 1
 	for i in 4:

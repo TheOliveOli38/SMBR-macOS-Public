@@ -5,7 +5,15 @@
 			"speed": 5.0,
 			"loop": true
 		},
-		"Emote": {
+		"Await": {
+			"frames": [
+				[0, 0, 16, 32],
+				[16, 0, 16, 32]
+			],
+			"speed": 5.0,
+			"loop": true
+		},
+		"Talk": {
 			"frames": [
 				[0, 0, 16, 32],
 				[16, 0, 16, 32]

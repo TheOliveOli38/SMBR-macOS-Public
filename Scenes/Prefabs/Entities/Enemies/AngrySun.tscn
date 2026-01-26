@@ -58,6 +58,7 @@ animations = [{
 radius = 8.0
 
 [node name="AngrySun" type="CharacterBody2D" unique_id=797123896 node_paths=PackedStringArray("on_screen_enabler", "score_note_adder") groups=["Enemies"]]
+process_physics_priority = 1
 visibility_layer = 2
 script = ExtResource("1_b44wu")
 on_screen_enabler = NodePath("VisibleOnScreenEnabler2D")

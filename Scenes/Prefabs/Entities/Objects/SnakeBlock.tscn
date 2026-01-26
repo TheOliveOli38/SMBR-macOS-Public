@@ -88,6 +88,7 @@ properties = Array[String](["length", "speed", "path", "can_fall"])
 properties_force_selector = Dictionary[String, PackedScene]({
 "path": ExtResource("4_7bkk4")
 })
+animate_change = false
 metadata/_custom_type_script = "uid://ctfbuoxtnnl0q"
 
 [node name="PlacePreview" type="Node2D" parent="." unique_id=104556352]

@@ -17,6 +17,8 @@ var target_position := Vector2.ZERO
 
 var wave := 0.0
 
+var in_position := false
+
 var old_dive_position := Vector2.ZERO
 var new_dive_position := Vector2.ZERO
 
@@ -28,7 +30,7 @@ func _physics_process(delta: float) -> void:
 	screen_center_pos = get_viewport().get_camera_2d().get_screen_center_position()
 	screen_size = get_viewport().get_visible_rect().size
 	target_position = (screen_center_pos + Vector2((screen_size.x / 2) * screen_direction, -screen_size.y / 2)) + (margin * Vector2(-screen_direction, 1))
-	handle_states(delta)
+	handle_states.call_deferred(delta)
 
 func handle_states(delta: float) -> void:
 	match current_state:
@@ -44,7 +46,12 @@ func start_charging() -> void:
 	$ChargeMeter.start()
 
 func handle_idle(delta: float) -> void:
-	global_position = lerp(global_position, target_position, delta * 20)
+	if in_position:
+		global_position = lerp(global_position, target_position, 1)
+	else:
+		global_position = lerp(global_position, target_position, delta * 20)
+		if global_position.distance_to(target_position) <= 16:
+			in_position = true
 
 func start_diving() -> void:
 	%Sprite.play("Dive")
