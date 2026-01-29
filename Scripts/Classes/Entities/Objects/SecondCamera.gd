@@ -48,7 +48,8 @@ func toggle() -> void:
 	if active:
 		transition_to_self()
 	else:
-		call_deferred("return_to_old_camera")
+		active = true
+		return_to_old_camera.call_deferred()
 
 func return_to_old_camera() -> void:
 	if taken or not active:

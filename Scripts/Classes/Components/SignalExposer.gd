@@ -68,7 +68,9 @@ func _ready() -> void:
 		owner.remove_meta("save_string")
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	show_behind_parent = true
+	var pos_save = global_position
 	top_level = true
+	global_position = pos_save
 	call_deferred("connect_pre_existing_signals")
 	queue_redraw()
 	if Global.level_editor != null:
@@ -96,13 +98,13 @@ func _draw() -> void:
 		hide()
 		return
 	if editing:
-		draw_square_line(owner.global_position, (get_global_mouse_position() + Vector2(-8, -8)).snapped(Vector2(16, 16)) + Vector2(8, 8), WIRE_COLOURS[connections.size()])
+		draw_square_line(Vector2.ZERO, (get_local_mouse_position() + Vector2(0, 0)).snapped(Vector2(16, 16)) + Vector2(0, 0), WIRE_COLOURS[connections.size()])
 	var idx := 0
 	for x in connections:
 		var target_node = get_node_from_tile(x[0], x[1])
 		if target_node == null:
 			continue
-		draw_square_line(owner.global_position, to_local(target_node.global_position), WIRE_COLOURS[idx % (WIRE_COLOURS.size())], true)
+		draw_square_line(Vector2.ZERO, to_local(target_node.get_node("SignalExposer").global_position), WIRE_COLOURS[idx % (WIRE_COLOURS.size())], true)
 		idx += 1
 
 func draw_square_line(from := Vector2.ZERO, to := Vector2.ZERO, colour := Color.RED, offset := false) -> void:

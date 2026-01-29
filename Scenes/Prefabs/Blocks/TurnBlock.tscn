@@ -42,7 +42,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_2j2lx")
 }],
 "loop": true,
-"name": &"default",
+"name": &"Idle",
 "speed": 10.0
 }]
 
@@ -60,7 +60,7 @@ metadata/_custom_type_script = "uid://b5ejlbl0vp1gm"
 
 [node name="Sprite" type="AnimatedSprite2D" parent="." unique_id=1316079653]
 sprite_frames = SubResource("SpriteFrames_rlxbk")
-speed_scale = 0.0
+animation = &"Idle"
 
 [node name="ResourceSetterNew" type="Node" parent="Sprite" unique_id=195312103 node_paths=PackedStringArray("node_to_affect")]
 script = ExtResource("3_wx1p4")

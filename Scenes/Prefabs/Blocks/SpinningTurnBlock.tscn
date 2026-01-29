@@ -38,7 +38,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_2j2lx")
 }],
 "loop": true,
-"name": &"default",
+"name": &"Turn",
 "speed": 10.0
 }]
 
@@ -51,8 +51,8 @@ script = ExtResource("2_aiilm")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="." unique_id=1733536279]
 sprite_frames = SubResource("SpriteFrames_rksv1")
-autoplay = "default"
-frame = 1
+animation = &"Turn"
+autoplay = "Turn"
 script = ExtResource("3_aiilm")
 do_offset = false
 metadata/_custom_type_script = "uid://caq1qiwmy0mox"

@@ -83,6 +83,8 @@ func animate_hide() -> void:
 	var tween = create_tween()
 	var time = $TextLabel.text.length() * 0.01
 	tween.tween_property($TextLabel, \"visible_ratio\", 0, time)
+	await tween.finished
+	hide()
 "
 
 [node name="TextLabelOBJ" type="Node2D" unique_id=1072665822]

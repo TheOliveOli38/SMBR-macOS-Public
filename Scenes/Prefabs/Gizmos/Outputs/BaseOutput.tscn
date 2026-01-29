@@ -6,7 +6,7 @@
 
 [node name="BaseOutput" type="Node2D" unique_id=515746201 groups=["Gizmos"]]
 process_mode = 3
-z_index = 500
+z_index = -5
 z_as_relative = false
 script = ExtResource("1_fux1g")
 

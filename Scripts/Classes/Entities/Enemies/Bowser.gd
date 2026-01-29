@@ -6,7 +6,7 @@ const HAMMER = preload("res://Scenes/Prefabs/Entities/Items/Hammer.tscn")
 
 @export var can_hammer := false
 @export var can_fire := true
-@export var is_real := true
+@export var is_real := false
 @export var music_enabled := true
 
 var target_player: Player = null
@@ -80,7 +80,7 @@ func breathe_fire() -> void:
 	sprite.play("Idle")
 
 func bridge_fall() -> void:
-	$FallSFX.play()
+	AudioManager.play_global_sfx("bowser_fall")
 	ignore_flag_die = true
 	can_fall = true
 	$Collision.queue_free()
@@ -155,9 +155,9 @@ func on_timeout() -> void:
 
 func on_gib_about_to_spawn() -> void:
 	if is_real:
-		$FallSFX.play()
-		$FallSFX.finished.connect($FallSFX.queue_free)
-		$FallSFX.reparent(get_parent())
+		AudioManager.play_global_sfx("bowser_fall")
+	else:
+		$GibSpawner.gib_type = 0
 	# guzlad: ugly but it'll have to do until we move the metadata stuff to actual variables
 	if ((Global.current_game_mode == Global.GameMode.CUSTOM_LEVEL) or (Global.current_game_mode == Global.GameMode.LEVEL_EDITOR)) and !is_real:
 		$SpriteScaleJoint/DeathSprite/ResourceSetterNew.resource_json = load("res://Assets/Sprites/Enemies/Goomba.json")

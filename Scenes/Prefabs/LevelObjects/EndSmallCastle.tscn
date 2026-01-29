@@ -130,6 +130,9 @@ autostart = true
 [node name="SmallCastleVisual" parent="." unique_id=866852705 instance=ExtResource("5_an8pi")]
 position = Vector2(0, -40)
 
+[node name="ResourceSetterNew" parent="SmallCastleVisual/Sprite" parent_id_path=PackedInt32Array(866852705, 1275665957) index="0" unique_id=421162122]
+resource_json = ExtResource("12_xg4af")
+
 [node name="PlayerDetection" type="Area2D" parent="." unique_id=36552281]
 script = ExtResource("7_oyrq2")
 metadata/_custom_type_script = "uid://cnheej0sxmoxg"
@@ -194,3 +197,5 @@ script = ExtResource("14_76jrx")
 metadata/_custom_type_script = "uid://5octqlf4ohel"
 
 [connection signal="timeout" from="Framerule" to="." method="on_timeout"]
+
+[editable path="SmallCastleVisual"]

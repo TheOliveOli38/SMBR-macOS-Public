@@ -80,6 +80,7 @@ const DEFAULT_SFX_LIBRARY := {
 	"red_coin_5": "res://Assets/Audio/SFX/RedCoin5.wav",
 	"speak": "res://Assets/Audio/SFX/Speaking.wav",
 	"countdown": "res://Assets/Audio/SFX/RaceCountdown.wav",
+	"bowser_fall": "res://Assets/Audio/SFX/BowserFall.wav",
 }
 
 @onready var sfx_library = DEFAULT_SFX_LIBRARY.duplicate()

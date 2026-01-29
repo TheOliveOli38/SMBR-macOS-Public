@@ -11,6 +11,7 @@
 size = Vector2(16, 16)
 
 [node name="TilePlacer" type="Node2D" unique_id=1317617032]
+z_index = -5
 script = ExtResource("2_dlm7x")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=317190519 groups=["Gizmos"]]

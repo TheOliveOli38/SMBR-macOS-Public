@@ -4,6 +4,8 @@ extends Node2D
 var can_menu := false
 const ENDING = preload("res://Assets/Audio/BGM/Ending.mp3")
 
+var talking := false
+
 func _ready() -> void:
 	Global.level_complete_begin.connect(begin)
 	for i in [$SpeedrunMSG/ThankYou, $StandardMSG/ThankYou]:
@@ -88,3 +90,10 @@ func peach_level_exit() -> void:
 				CreditsLevel.go_to_title_screen = true
 				Global.transition_to_scene("res://Scenes/Levels/Credits.tscn")
 			else: Global.transition_to_scene("res://Scenes/Levels/TitleScreen.tscn")
+
+func toggle_talking() -> void:
+	talking = !talking
+	if talking:
+		$Sprite.play("Talk")
+	else:
+		$Sprite.play("Idle")

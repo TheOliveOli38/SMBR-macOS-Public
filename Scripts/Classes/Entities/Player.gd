@@ -821,11 +821,8 @@ func apply_character_sfx_map() -> void:
 	AudioManager.load_sfx_map(json)
 
 func refresh_hitbox() -> void:
-	$Hitbox.set_deferred("monitoring", false)
-	$Hitbox.set_deferred("monitorable", false)
-	await get_tree().physics_frame
-	$Hitbox.set_deferred("monitoring", true)
-	$Hitbox.set_deferred("monitorable", true)
+	for i in $Hitbox.get_overlapping_areas():
+		i.area_entered.emit($Hitbox)
 
 func is_actually_on_floor() -> bool:
 	if is_on_floor():

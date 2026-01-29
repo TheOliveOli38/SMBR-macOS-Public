@@ -72,8 +72,6 @@ func new_level() -> void:
 
 func back_to_title_screen() -> void:
 	clear_saved_stuff()
-	if Global.transitioning_scene:
-		await Global.transition_finished
 	Global.transition_to_scene("res://Scenes/Levels/TitleScreen.tscn")
 
 func edit_level() -> void:
