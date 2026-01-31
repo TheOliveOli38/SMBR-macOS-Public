@@ -22,13 +22,25 @@
 		}
 	},
 	"variations": {
-		"default": { "source": "LockedDoors.png", "rect": [0, 0, 64, 32] },
-		"Underground": { "source": "LockedDoors.png", "rect": [0, 32, 64, 32] },
-		"Bonus": { "link": "Underground" },
-		"Castle": { "link": "Underground" },
-		"GhostHouse": { "link": "Underground" },
-		"Space": { "link": "Underground" },
-		"Volcano": { "link": "Underground" },
-		"Snow": { "source": "LockedDoors.png", "rect": [0, 64, 64, 32] }
+		"SMB1": {
+			"default": { "source": "LockedDoors.png", "rect": [0, 0, 64, 32] },
+			"Underground": { "source": "LockedDoors.png", "rect": [0, 32, 64, 32] },
+			"Bonus": { "link": "Underground" },
+			"Castle": { "link": "Underground" },
+			"GhostHouse": { "link": "Underground" },
+			"Space": { "link": "Underground" },
+			"Volcano": { "link": "Underground" },
+			"Snow": { "source": "LockedDoors.png", "rect": [0, 64, 64, 32] }
+		},
+		"SMBLL": {
+			"default": { "source": "LLLockedDoors.png", "rect": [0, 0, 64, 32] },
+			"Underground": { "source": "LLLockedDoors.png", "rect": [0, 32, 64, 32] },
+			"Bonus": { "link": "Underground" },
+			"Castle": { "link": "Underground" },
+			"GhostHouse": { "link": "Underground" },
+			"Space": { "link": "Underground" },
+			"Volcano": { "link": "Underground" },
+			"Snow": { "source": "LLLockedDoors.png", "rect": [0, 64, 64, 32] }
+		}
 	}
 }
