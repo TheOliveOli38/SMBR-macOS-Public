@@ -137,9 +137,12 @@ func encode_to_base64_2char(value: int) -> String:
 
 func save_level_data(level: CustomLevel) -> void:
 	var string := ""
-	for i in [Level.THEME_IDXS.find(level.theme), ["Day", "Night"].find(level.theme_time), editor.bgm_id, ["SMB1", "SMBLL", "SMBS", "SMBANN"].find(level.campaign), level.can_backscroll, abs(level.vertical_height), level.time_limit, level.enforce_resolution]:
+	for i in [Level.THEME_IDXS.find(level.theme), ["Day", "Night"].find(level.theme_time), level.music, ["SMB1", "SMBLL", "SMBS", "SMBANN"].find(level.campaign), level.can_backscroll, abs(level.vertical_height), level.time_limit, level.enforce_resolution]:
 		var key := ""
-		if i is Vector2:
+		if i is JSON:
+			var id = editor.music_track_list.find(level.music.resource_path)
+			key = base64_charset[id]
+		elif i is Vector2:
 			key = encode_to_base64_2char(i.x) + "=" + encode_to_base64_2char(i.y)
 		elif int(i) >= 64:
 			key = encode_to_base64_2char(int(i))
@@ -150,8 +153,8 @@ func save_level_data(level: CustomLevel) -> void:
 
 func save_bg_data(level: Level) -> void:
 	var string := ""
-	var level_bg = level.get_node("LevelBG")
-	for i in [level_bg.primary_layer, level_bg.second_layer, level_bg.second_layer_offset.y, level_bg.time_of_day, level_bg.particles, level_bg.liquid_layer, level_bg.overlay_clouds]:
+	var level_bg: LevelBG = level.get_node("LevelBG")
+	for i in [level_bg.primary_layer, level_bg.second_layer, level_bg.second_layer_offset.y, level_bg.time_of_day, level_bg.particles, level_bg.liquid_layer, level_bg.overlay_clouds, level_bg.second_layer_order]:
 		var key := ""
 		i = int(i)
 		if abs(i) >= 64:

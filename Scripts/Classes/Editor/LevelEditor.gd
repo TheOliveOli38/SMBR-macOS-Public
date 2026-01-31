@@ -1132,6 +1132,15 @@ func update_menu_values() -> void:
 	%HeightLimit.value = abs(level.vertical_height)
 	%TimeLimit.value = level.time_limit
 	%SubLevelID.selected = sub_level_id
+	
+	var level_bg: LevelBG = level.get_node("LevelBG")
+	%SecondLayerOrder.selected = level_bg.second_layer_order
+	%PrimaryLayer.selected = level_bg.primary_layer
+	%SecondLayer.selected = level_bg.second_layer
+	%TimeOfDay.selected = level_bg.time_of_day
+	%Particles.selected = level_bg.particles
+	%LiquidLayer.selected = level_bg.liquid_layer
+	%OverlayClouds.set_pressed_no_signal(level_bg.overlay_clouds)
 
 func set_bg_value(value := 0, value_name := "") -> void:
 	level.get_node("LevelBG").set(value_name, value)

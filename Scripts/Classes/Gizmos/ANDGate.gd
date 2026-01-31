@@ -52,3 +52,7 @@ func pulse_recieved() -> void:
 func input_lost() -> void:
 	total_inputs -= 1
 	update()
+
+
+func on_visibility_changed() -> void:
+	pass # Replace with function body.

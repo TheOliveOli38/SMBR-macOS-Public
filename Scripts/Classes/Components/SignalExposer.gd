@@ -75,7 +75,7 @@ func _ready() -> void:
 	queue_redraw()
 	if Global.level_editor != null:
 		Global.level_editor.level_start.connect(queue_redraw)
-	if Global.current_game_mode == Global.GameMode.CUSTOM_LEVEL:
+	if Global.level_editor_is_editing() == false:
 		get_tree().call_group("Gizmos", "hide")
 
 func _process(_delta: float) -> void:

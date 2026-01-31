@@ -15,4 +15,7 @@ resource_json = ExtResource("2_6sjmx")
 [node name="Animation" parent="." index="4" unique_id=1714542832]
 speed_scale = 2.0
 
+[node name="SecondQuestReplacer" parent="." index="5" unique_id=1574329925]
+new_scene = ""
+
 [editable path="RotationJoint/PositionJoint/Visuals"]

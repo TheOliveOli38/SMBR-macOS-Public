@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://cl17n2obk214n"]
 
 [ext_resource type="PackedScene" uid="uid://cs40ecju70hnp" path="res://Scenes/Prefabs/Blocks/DecoBlock.tscn" id="1_m6ehi"]
-[ext_resource type="Texture2D" uid="uid://ctsptxfwdh7c4" path="res://Assets/Sprites/Blocks/IceBlock.png" id="2_de2f5"]
 [ext_resource type="PackedScene" uid="uid://bugxh43j6muyh" path="res://Scenes/Prefabs/Particles/IceBlockDestructionParticles.tscn" id="2_i6r1m"]
 [ext_resource type="JSON" path="res://Assets/Sprites/Blocks/IceBlock.json" id="2_kvfhy"]
 
@@ -9,9 +8,8 @@
 collision_layer = 518
 destruction_particle_scene = ExtResource("2_i6r1m")
 
-[node name="Sprite" parent="." index="0" unique_id=814992240]
-texture = ExtResource("2_de2f5")
-region_enabled = false
+[node name="Sprite" parent="." index="0" unique_id=1817343769]
+do_offset = false
 
 [node name="ResourceSetterNew" parent="Sprite" index="0" unique_id=2120461870]
 resource_json = ExtResource("2_kvfhy")

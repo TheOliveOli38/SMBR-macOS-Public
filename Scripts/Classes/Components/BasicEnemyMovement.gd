@@ -8,7 +8,7 @@ var can_move := true
 @export var auto_call := true
 
 @export var move_speed := 32
-@export var second_quest_speed := 36
+@export var second_quest_speed := 40
 
 @onready var current_speed := move_speed
 @export var bounce_on_land := false

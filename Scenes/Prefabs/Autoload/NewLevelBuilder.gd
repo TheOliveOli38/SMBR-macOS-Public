@@ -141,7 +141,7 @@ func apply_bg_data(level: Node, data := "") -> void:
 	var split = data.split("=", false)
 	var id := 0
 	
-	const BG_VALUES := ["primary_layer", "second_layer", "second_layer_offset", "time_of_day", "particles", "liquid_layer", "overlay_clouds"]
+	const BG_VALUES := ["primary_layer", "second_layer", "second_layer_offset", "time_of_day", "particles", "liquid_layer", "overlay_clouds", "second_layer_order"]
 	for i in split:
 		var value := 0
 		if i.length() > 1:
