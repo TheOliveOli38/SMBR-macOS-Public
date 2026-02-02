@@ -10,6 +10,8 @@ const SPEED := 75.0
 
 @export var explosion_scene: PackedScene = null
 
+var can_turn := true
+
 var can_explode := true
 
 func _ready() -> void:
@@ -18,6 +20,7 @@ func _ready() -> void:
 		direction_vector = Vector2.UP
 		await get_tree().create_timer(1, false).timeout
 		can_explode = true
+	$Timer.start()
 
 func _physics_process(delta: float) -> void:
 	handle_movement(delta)
@@ -25,13 +28,12 @@ func _physics_process(delta: float) -> void:
 
 func handle_movement(delta: float) -> void:
 	target_player = get_tree().get_first_node_in_group("Players")
-	direction_vector = lerp(direction_vector, ((target_player.global_position + Vector2(0, -8)) - global_position), delta / 15).normalized()
+	if can_turn:
+		direction_vector = lerp(direction_vector, ((target_player.global_position + Vector2(0, -8)) - global_position), delta).normalized()
 	if abs(direction_vector.x) > 0:
 		direction = sign(direction_vector.x)
 	velocity = SPEED * direction_vector
-	move_and_slide()
-	if is_on_wall() and can_explode:
-		hit_solid()
+	global_position += velocity * delta
 
 func handle_visuals() -> void:
 	var angle = snapped(rad_to_deg(direction_vector.angle()), 45)
@@ -51,3 +53,7 @@ func hit_solid() -> void:
 	AudioManager.play_sfx("explode", global_position)
 	add_sibling(explosion)
 	queue_free()
+
+
+func on_timeout() -> void:
+	can_turn = false
