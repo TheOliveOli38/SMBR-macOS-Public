@@ -6,6 +6,7 @@ var can_land := true
 
 func enter(_msg := {}) -> void:
 	player.stop_all_timers()
+	player.can_hurt = false
 	player.in_cutscene = true
 	player.direction = 1
 	player.stop_all_timers()

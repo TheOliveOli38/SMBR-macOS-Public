@@ -4,6 +4,8 @@ var target_player: Player = null
 const MOVE_SPEED := 30
 const SMOKE_PARTICLE = preload("uid://d08nv4qtfouv1")
 
+var can_turn := true
+
 @onready var old_position := global_position
 
 func _physics_process(delta: float) -> void:
@@ -15,8 +17,7 @@ func _physics_process(delta: float) -> void:
 		await get_tree().physics_frame
 		direction = sign(global_position.x - old_position.x)
 		$Sprite.play("Move")
-	print(direction)
-	if direction != 0:
+	if direction != 0 and can_turn:
 		$Sprite.scale.x = -direction
 
 func handle_movement(delta: float) -> void:

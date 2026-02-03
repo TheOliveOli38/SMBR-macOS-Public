@@ -85,6 +85,7 @@ var score := 0:
 				score = value
 		else:
 			score = value
+		score = clamp(score, 0, 9999990)
 var coins := 0:
 	set(value):
 		coins = value

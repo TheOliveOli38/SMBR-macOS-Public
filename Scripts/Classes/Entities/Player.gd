@@ -1002,14 +1002,18 @@ func handle_power_up_states(delta) -> void:
 
 func handle_collision_shapes() -> void:
 	var collision_size = physics_params("COLLISION_SIZE")
+	var hitbox_size = physics_params("COLLISION_SIZE")
 	if crouching:
 		collision_size = physics_params("CROUCH_COLLISION_SIZE")
+		if not normal_state.wall_pushing:
+			hitbox_size = physics_params("CROUCH_COLLISION_SIZE")
 	collision_size = Vector2(collision_size[0], collision_size[1])
+	hitbox_size = Vector2(hitbox_size[0], hitbox_size[1])
 	collision_size.x = max(collision_size.x, 6)
 	collision_size.y = max(collision_size.y, 8)
 	%Collision.sloped_floor_corner = physics_params("ROUNDED_FLOOR_COLLISION")
 	%Collision.hitbox = collision_size
-	$Hitbox/Shape.shape.size = collision_size + Vector2(0.2, 0.2)
+	$Hitbox/Shape.shape.size = hitbox_size + Vector2(0.2, 0.2)
 	%BlockCollision.position.y = -collision_size.y
 	$BlockCollision/Shape.shape.size.x = collision_size.x
 

@@ -52,9 +52,10 @@ sprite_frames = SubResource("SpriteFrames_i46bk")
 animation = &"WhiteIdle"
 flip_h = true
 
-[node name="ResourceSetterNew" type="Node" parent="Sprite" unique_id=1461041141 node_paths=PackedStringArray("node_to_affect")]
+[node name="ResourceSetterNew" type="Node" parent="Sprite" unique_id=1461041141 node_paths=PackedStringArray("node_to_affect", "property_node")]
 script = ExtResource("2_ilcde")
 node_to_affect = NodePath("..")
+property_node = NodePath("../..")
 property_name = "sprite_frames"
 resource_json = ExtResource("3_xhmhl")
 metadata/_custom_type_script = "uid://cbal8ms2oe1ik"
