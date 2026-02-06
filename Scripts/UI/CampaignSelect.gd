@@ -125,7 +125,10 @@ func select() -> void:
 		SpeedrunHandler.load_best_times()
 	Settings.save_settings()
 	if Global.in_custom_campaign():
-		Global.custom_pack = Global.custom_campaign_jsons[Global.current_custom_campaign].resource_pack
+		if Global.custom_campaign_jsons[Global.current_custom_campaign].has("resource_pack"):
+			Global.custom_pack = Global.custom_campaign_jsons[Global.current_custom_campaign].resource_pack
+		else:
+			Global.custom_pack = ""
 		Global.current_game_mode = Global.GameMode.CAMPAIGN
 		if Global.custom_pack != "":
 			if DirAccess.dir_exists_absolute(ProjectSettings.globalize_path(Global.config_path.path_join("resource_packs/" + Global.custom_pack))) == false:
