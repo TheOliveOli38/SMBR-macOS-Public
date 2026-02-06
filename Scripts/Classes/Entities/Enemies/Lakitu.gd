@@ -18,6 +18,8 @@ var retreat := false
 
 var can_enter := false
 
+@export var max_spiny_amount := 3
+
 static var spiny_amount := 0
 @export var item: PackedScene = null
 @export var retreat_x := 3072
@@ -69,7 +71,7 @@ func summon_cloud_particle() -> void:
 	add_sibling(node)
 
 func on_timeout() -> void:
-	if spiny_amount >= 3 or retreat or $WallCheck.is_colliding():
+	if spiny_amount >= max_spiny_amount or retreat or $WallCheck.is_colliding():
 		return
 	$Cloud/Sprite.play("Throw")
 	await get_tree().create_timer(0.5, false).timeout
@@ -82,7 +84,7 @@ func throw_spiny() -> void:
 	spiny_amount += 1
 	node.set("in_egg", true)
 	node.global_position = $Cloud/Sprite.global_position
-	node.velocity = Vector2(0, -150)
+	node.set("velocity", Vector2(0, -150))
 	if Settings.file.difficulty.lakitu_style == 1:
 		node.velocity.x = 50 * (sign(player.global_position.x - global_position.x))
 		node.set("direction", sign(node.velocity.x))
