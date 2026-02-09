@@ -15,17 +15,15 @@ warnings/check_angle_interpolation_type_conflicting=false
 
 [application]
 
-config/name="Super Mario Bros. Remastered"
-config/version="1.0.2"
+config/name="SMB1R"
 run/main_scene="uid://bn66tnn8nlpi7"
 config/use_custom_user_dir=true
-config/custom_user_dir_name="SMB1R"
-config/features=PackedStringArray("4.5", "Forward Plus")
+config/features=PackedStringArray("4.6", "Forward Plus")
 boot_splash/bg_color=Color(0, 0, 0, 1)
 boot_splash/show_image=false
-boot_splash/fullsize=false
+boot_splash/stretch_mode=0
 boot_splash/use_filter=false
-config/icon="uid://dxm1xti5gx41t"
+config/icon="res://icon.png"
 use_discord=true
 
 [autoload]
@@ -50,8 +48,8 @@ gdscript/warnings/narrowing_conversion=0
 
 window/size/viewport_width=256
 window/size/viewport_height=240
-window/size/window_width_override=768
-window/size/window_height_override=720
+window/size/window_width_override=1024
+window/size/window_height_override=960
 window/stretch/mode="viewport"
 
 [dotnet]
@@ -522,7 +520,8 @@ common/physics_interpolation=true
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
-textures/vram_compression/import_etc2_astc=true
+renderer/rendering_method="gl_compatibility"
+renderer/rendering_method.mobile="gl_compatibility"
 textures/default_filters/anisotropic_filtering_level=0
 textures/decals/filter=0
 textures/light_projectors/filter=0
