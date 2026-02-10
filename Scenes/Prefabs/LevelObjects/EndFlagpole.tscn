@@ -5,6 +5,7 @@
 [ext_resource type="JSON" path="res://Assets/Sprites/Tilesets/FlagPole.json" id="4_nykv5"]
 [ext_resource type="Script" uid="uid://5octqlf4ohel" path="res://Scripts/Classes/Components/ScoreNoteSpawner.gd" id="5_dm4yn"]
 [ext_resource type="Script" uid="uid://cmvlgsjmsk0v5" path="res://Scripts/Classes/Resources/ThemedResource.gd" id="5_jihtx"]
+[ext_resource type="Texture2D" uid="uid://bwr6tw20gji88" path="res://Assets/Sprites/Tilesets/Flag.png" id="5_nykv5"]
 [ext_resource type="Script" uid="uid://cbal8ms2oe1ik" path="res://Scripts/Classes/Components/ResourceSetterNew.gd" id="5_sjcdg"]
 [ext_resource type="JSON" path="res://Assets/Sprites/Tilesets/Flag.json" id="6_tpsyw"]
 [ext_resource type="FontVariation" uid="uid://cflgloiossd8a" path="res://Resources/ThemedResources/ScoreFont.tres" id="8_sjcdg"]
@@ -17,7 +18,20 @@
 atlas = ExtResource("1_hnd65")
 region = Rect2(0, 0, 16, 176)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_jgs31"]
+atlas = ExtResource("5_nykv5")
+region = Rect2(0, 0, 16, 16)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_tpsyw"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jgs31")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_hnd65"]
 b = Vector2(0, -152)
@@ -27,14 +41,14 @@ resource_name = "FlagDown"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Flag:position")
+tracks/0/path = NodePath("FlagJoint:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0, 1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(-8, -152), Vector2(-8, -32)]
+"values": [Vector2(0, -151), Vector2(0, -29)]
 }
 
 [sub_resource type="Animation" id="Animation_xwflf"]
@@ -42,14 +56,14 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Flag:position")
+tracks/0/path = NodePath("FlagJoint:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(-8, -152)]
+"values": [Vector2(0, -151)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_62gix"]
@@ -144,13 +158,15 @@ mode = 1
 resource_json = ExtResource("4_nykv5")
 metadata/_custom_type_script = "uid://cbal8ms2oe1ik"
 
-[node name="Flag" type="AnimatedSprite2D" parent="." unique_id=333888864]
-position = Vector2(-8, -152)
+[node name="FlagJoint" type="Node2D" parent="." unique_id=431859251]
+position = Vector2(0, -151)
+
+[node name="Flag" type="AnimatedSprite2D" parent="FlagJoint" unique_id=333888864]
+position = Vector2(-7, 0)
 sprite_frames = SubResource("SpriteFrames_tpsyw")
 autoplay = "default"
-offset = Vector2(-1, 0)
 
-[node name="ResourceSetterNew" type="Node" parent="Flag" unique_id=494528197 node_paths=PackedStringArray("node_to_affect")]
+[node name="ResourceSetterNew" type="Node" parent="FlagJoint/Flag" unique_id=494528197 node_paths=PackedStringArray("node_to_affect")]
 script = ExtResource("5_sjcdg")
 node_to_affect = NodePath("..")
 property_name = "sprite_frames"

@@ -55,15 +55,15 @@ func _process(_delta: float) -> void:
 		return
 	if Global.server_version > Global.current_version:
 		modulate = Color.RED
-		text = \"OUTDATED!\"
+		text = \"VERSION_OUTDATED\"
 		set_process(false)
 	elif Global.server_version <= Global.current_version:
 		modulate = Color.GREEN
-		text = \"Latest!\"
+		text = \"VERSION_LATEST\"
 		set_process(false)
 	elif Global.server_version == -2:
 		modulate = Color.YELLOW
-		text = \"Error!\"
+		text = \"VERSION_ERROR\"
 		set_process(false)
 "
 
@@ -360,7 +360,7 @@ layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 8
 theme_override_colors/font_shadow_color = Color(0.12156863, 0.12156863, 0.12156863, 1)
-text = "Checking..."
+text = "VERSION_CHECKING"
 uppercase = true
 script = SubResource("GDScript_wjo1g")
 

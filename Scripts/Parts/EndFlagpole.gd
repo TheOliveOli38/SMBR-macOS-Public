@@ -8,6 +8,8 @@ signal player_reached
 
 signal sequence_begin
 
+var flag_direction := -1
+
 func on_area_entered(area: Area2D) -> void:
 	if area.owner is Player:
 		player_touch(area.owner)
@@ -28,7 +30,7 @@ func player_touch(player: Player) -> void:
 	Global.can_time_tick = false
 	if player.can_pose_anim == false:
 		player.z_index = -2
-	player.global_position.x = $Flag.global_position.x + 3
+	player.global_position.x = global_position.x - 5
 	$Animation.play("FlagDown")
 	player.state_machine.transition_to("FlagPole")
 	if not player.physics_params("FLAG_SKIP_GRAB", player.ENDING_PARAMETERS):
@@ -55,10 +57,13 @@ func deactivate_all_generators() -> void:
 		i.deactivate()
 	get_tree().call_group("Enemies", "start_retreat") # Lakitus
 
+func _ready() -> void:
+	$FlagJoint/Flag.position.x = 8 * flag_direction
+
 func _physics_process(_delta: float) -> void:
 	$Hollow.visible = not ConditionalClear.valid
 	$Pole.visible = ConditionalClear.valid
-	$Flag.visible = $Pole.visible
+	$FlagJoint.visible = $Pole.visible
 
 func give_points(player: Player) -> void:
 	var value = clamp(int(lerp(0, 4, (player.global_position.y / -144))), 0, 4)

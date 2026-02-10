@@ -147,7 +147,7 @@ tracks/8/keys = {
 "times": PackedFloat32Array(0, 1.5, 3.5, 5.5, 7, 8.9),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [&"Idle", &"Emote", &"Emote", &"Idle", &"Emote", &"Idle"]
+"values": [&"Idle", &"Talk", &"Talk", &"Idle", &"Talk", &"Idle"]
 }
 tracks/9/type = "method"
 tracks/9/imported = false
@@ -421,6 +421,10 @@ region = Rect2(0, 0, 16, 32)
 atlas = ExtResource("7_y11uu")
 region = Rect2(16, 0, 16, 32)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_02i7h"]
+atlas = ExtResource("7_y11uu")
+region = Rect2(32, 0, 16, 32)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_nud7a"]
 atlas = ExtResource("7_y11uu")
 region = Rect2(32, 0, 16, 32)
@@ -428,10 +432,6 @@ region = Rect2(32, 0, 16, 32)
 [sub_resource type="AtlasTexture" id="AtlasTexture_d76il"]
 atlas = ExtResource("7_y11uu")
 region = Rect2(48, 0, 16, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_02i7h"]
-atlas = ExtResource("7_y11uu")
-region = Rect2(32, 0, 16, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_woqpu"]
 animations = [{
@@ -448,22 +448,22 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_02i7h")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_nud7a")
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_d76il")
 }],
 "loop": true,
-"name": &"Emote",
+"name": &"Talk",
 "speed": 8.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_02i7h")
-}],
-"loop": true,
-"name": &"Idle",
-"speed": 5.0
 }]
 
 [sub_resource type="Shader" id="Shader_vohx7"]
@@ -830,11 +830,12 @@ uppercase = true
 [node name="Results" type="Label" parent="SpeechBubble/Your" unique_id=1456303163]
 use_parent_material = true
 layout_mode = 0
-offset_left = 27.0
+offset_left = -13.0
 offset_top = 8.0
-offset_right = 131.0
+offset_right = 91.0
 offset_bottom = 31.0
-text = "results"
+text = "RESULTS"
+horizontal_alignment = 2
 uppercase = true
 
 [node name="Coins" type="Label" parent="SpeechBubble" unique_id=893262062]

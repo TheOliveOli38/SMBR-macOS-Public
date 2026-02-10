@@ -589,7 +589,7 @@ func create_translation_from_json(locale := "") -> void:
 				value = $ResourceSetterNew.get_variation_json(value).source
 			value = remove_cryllic_characters(value)
 			if locale_json.has(i) == false:
-				locale_json[i] = value
+				locale_json[i] = value.to_upper()
 	var trans = Translation.new()
 	trans.locale = locale
 	for i in locale_json.keys():

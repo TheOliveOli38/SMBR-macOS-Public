@@ -48,6 +48,10 @@ func _ready() -> void:
 	if LIFETIME >= 0:
 		await get_tree().create_timer(LIFETIME).timeout
 		hit(true, true)
+	await get_tree().physics_frame
+	if get_node_or_null("VisibleOnScreenNotifier2D") != null:
+		if get_node_or_null("VisibleOnScreenNotifier2D").is_on_screen() == false:
+			queue_free()
 
 func _physics_process(delta: float) -> void:
 	$Sprite.flip_h = direction == 1

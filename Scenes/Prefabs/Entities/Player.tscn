@@ -8,6 +8,7 @@
 [ext_resource type="Script" uid="uid://blxvov3jyx8gg" path="res://Scripts/Classes/States/Player/Normal.gd" id="3_f6bau"]
 [ext_resource type="Texture2D" uid="uid://dlxt4l5kpe2i8" path="res://Assets/Sprites/Players/Luigi/ColourPalette.png" id="3_fqdtv"]
 [ext_resource type="Texture2D" uid="uid://bdurtsr7cld64" path="res://Assets/Sprites/Players/Mario/ColourPalette.png" id="3_x2idl"]
+[ext_resource type="SpriteFrames" uid="uid://cjblhx4flkqva" path="res://Resources/SpriteFrames/Player/Mario/Big.tres" id="4_ny1wd"]
 [ext_resource type="Script" uid="uid://dvbib1gtmmvui" path="res://Scripts/Classes/States/Player/Pipe.gd" id="5_hodem"]
 [ext_resource type="Script" uid="uid://c8xvkkv34fjr4" path="res://Scripts/Classes/PowerStates/PowerUpState.gd" id="5_rs3l8"]
 [ext_resource type="Script" uid="uid://caq1qiwmy0mox" path="res://Scripts/Parts/BetterAnimatedSprite.gd" id="5_x2idl"]
@@ -526,8 +527,8 @@ power_state = NodePath("PowerStates/Small")
 unique_name_in_owner = true
 physics_interpolation_mode = 2
 material = SubResource("ShaderMaterial_4ojwh")
-position = Vector2(0, -24)
-sprite_frames = ExtResource("23_445e4")
+position = Vector2(0, -16)
+sprite_frames = ExtResource("4_ny1wd")
 animation = &"Idle"
 offset = Vector2(0, 1)
 script = ExtResource("5_x2idl")

@@ -8,11 +8,12 @@ func update_locale_keys() -> void:
 	get_locale_keys()
 	get_locale_files()
 	for i in locale_files:
-		update_locale_file_keys(i )
+		update_locale_file_keys(i)
+	print("Done")
 
 func get_locale_keys() -> void:
-	var file = FileAccess.open("res://Assets/Locale/locale_keys.txt", FileAccess.READ).get_as_text()
-	keys = file.split("\n", false)
+	var file = FileAccess.open("res://Assets/Locale/en.json", FileAccess.READ).get_as_text()
+	keys = JSON.parse_string(file).keys()
 
 func get_locale_files() -> void:
 	for i in DirAccess.get_files_at("res://Assets/Locale/"):

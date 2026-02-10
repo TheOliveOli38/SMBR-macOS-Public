@@ -24,6 +24,7 @@ Overworld = ExtResource("2_ap2o3")
 metadata/_custom_type_script = "uid://cmvlgsjmsk0v5"
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ssycu"]
+radius = 4.0
 
 [sub_resource type="GDScript" id="GDScript_ohmvf"]
 script/source = "extends Node

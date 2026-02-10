@@ -264,14 +264,6 @@ region_rect = Rect2(84, 12, 12, 12)
 texture = ExtResource("4_thawd")
 region_rect = Rect2(84, 0, 12, 12)
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_23rw0"]
-texture = ExtResource("4_thawd")
-region_rect = Rect2(60, 12, 12, 12)
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_f6fd5"]
-texture = ExtResource("4_thawd")
-region_rect = Rect2(60, 0, 12, 12)
-
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_tsu3a"]
 texture = ExtResource("4_thawd")
 region_rect = Rect2(72, 12, 12, 12)
@@ -713,16 +705,6 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_jdin3")
 toggle_mode = true
 button_pressed = true
 
-[node name="Snapshot" type="Button" parent="CanvasLayer/Tools/MarginContainer/HBoxContainer/TheRest" unique_id=5428952]
-custom_minimum_size = Vector2(12, 12)
-layout_mode = 2
-size_flags_vertical = 4
-mouse_filter = 1
-theme_override_styles/normal = SubResource("StyleBoxTexture_23rw0")
-theme_override_styles/pressed = SubResource("StyleBoxTexture_f6fd5")
-theme_override_styles/hover = SubResource("StyleBoxTexture_f6fd5")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_jdin3")
-
 [node name="ResetLevel" type="Button" parent="CanvasLayer/Tools/MarginContainer/HBoxContainer/TheRest" unique_id=253086116]
 custom_minimum_size = Vector2(12, 12)
 layout_mode = 2
@@ -777,15 +759,13 @@ layout_mode = 2
 [node name="Label2" type="Label" parent="CanvasLayer/DeletionWarning/VBoxContainer" unique_id=1415277210]
 modulate = Color(1, 0, 0, 1)
 layout_mode = 2
-text = "WARNING!!!"
+text = "EDITOR_DELETION_WARNING"
 horizontal_alignment = 1
 autowrap_mode = 2
 
 [node name="Label" type="Label" parent="CanvasLayer/DeletionWarning/VBoxContainer" unique_id=1594128819]
 layout_mode = 2
-text = "THIS WILL PERMANENTLY WIPE YOUR LEVEL!
-
-ARE YOU SURE YOU WANT TO PROCEED?"
+text = "EDITOR_DELETION_DESCRIPTION"
 horizontal_alignment = 1
 autowrap_mode = 2
 
@@ -795,12 +775,12 @@ layout_mode = 2
 [node name="Button" type="Button" parent="CanvasLayer/DeletionWarning/VBoxContainer/HBoxContainer" unique_id=53645459]
 layout_mode = 2
 size_flags_horizontal = 3
-text = "YES"
+text = "MENU_YES"
 
 [node name="Button2" type="Button" parent="CanvasLayer/DeletionWarning/VBoxContainer/HBoxContainer" unique_id=1768782632]
 layout_mode = 2
 size_flags_horizontal = 3
-text = "NO"
+text = "MENU_NO"
 
 [node name="Grid" type="Parallax2D" parent="." unique_id=466111830]
 unique_name_in_owner = true
@@ -3582,7 +3562,7 @@ script = ExtResource("20_jc7xg")
 layout_mode = 0
 offset_right = 16.0
 offset_bottom = 16.0
-tile_name = "ENEMY_BULLET"
+tile_name = "ENEMY_BULLETBILL"
 type = 1
 icon_texture = ExtResource("46_kk6ga")
 entity_id = "AR"
@@ -4716,7 +4696,7 @@ entity_id = "DO"
 layout_mode = 0
 offset_right = 16.0
 offset_bottom = 16.0
-tile_name = "OBJ_TRACK_RIDING_PLATFORM"
+tile_name = "OBJ_TRACK_PLATFORM"
 type = 1
 icon_texture = ExtResource("104_111c4")
 icon_region_override = Rect2(0, 0, 16, 16)
@@ -5118,7 +5098,7 @@ entity_id = "B7"
 
 [node name="WaterArea" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Objects/MarginContainer/GridContainer" unique_id=2019926222 groups=["Selectors"] instance=ExtResource("8_wkmjk")]
 layout_mode = 2
-tile_name = "WATER_AREA"
+tile_name = "OBJ_WATER_AREA"
 type = 1
 icon_texture = ExtResource("131_606p5")
 icon_region_override = Rect2(0, 0, 16, 16)
@@ -5661,7 +5641,8 @@ metadata/can_be_stored = true
 
 [node name="Vine2" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Items/MarginContainer/GridContainer" unique_id=1019494875 groups=["Selectors"] instance=ExtResource("8_wkmjk")]
 layout_mode = 2
-tile_name = "ITEM_WARP_VINE"
+tile_name = "ITEM_EXIT_VINE"
+tile_desc = "Use this for the cutscene when transitioning to a Coin Heaven."
 type = 1
 icon_texture = ExtResource("276_fvohb")
 icon_region_override = Rect2(0, 0, 16, 16)
@@ -5715,7 +5696,7 @@ script = ExtResource("20_jc7xg")
 layout_mode = 0
 offset_right = 16.0
 offset_bottom = 16.0
-tile_name = "Player Detection"
+tile_name = "GIZMO_PLAYER_DETECT"
 tile_desc = "Powers on, when the player is inside, Powers off when the player is outside."
 type = 1
 icon_texture = ExtResource("153_gf7vd")
@@ -5737,7 +5718,7 @@ texture = ExtResource("194_24ald")
 layout_mode = 0
 offset_right = 16.0
 offset_bottom = 16.0
-tile_name = "Player Event Detection"
+tile_name = "GIZMO_PLAYER_EVENT"
 tile_desc = "Will emit a pulse, when a specific event with the player happens."
 type = 1
 icon_texture = ExtResource("155_k5kal")
@@ -5769,7 +5750,7 @@ stretch_mode = 3
 
 [node name="InputDetection" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Gizmos/MarginContainer/VBoxContainer/Inputs" unique_id=954674848 groups=["Selectors"] instance=ExtResource("8_wkmjk")]
 layout_mode = 2
-tile_name = "Input Detection"
+tile_name = "GIZMO_INPUT_DETECT"
 tile_desc = "Will turn on, if a specific input is either held down. OR will emit a pulse, if a specific input is pressed (configurable)"
 type = 1
 icon_texture = ExtResource("173_x027r")
@@ -5798,7 +5779,7 @@ script = ExtResource("20_jc7xg")
 layout_mode = 0
 offset_right = 16.0
 offset_bottom = 16.0
-tile_name = "Enemy Detection"
+tile_name = "GIZMO_ENEMY_DETECT"
 tile_desc = "Will Turn on, when an enemy on the same layer, is inside it."
 type = 1
 icon_texture = ExtResource("157_sf60c")
@@ -5821,7 +5802,7 @@ texture = ExtResource("194_24ald")
 layout_mode = 0
 offset_right = 16.0
 offset_bottom = 16.0
-tile_name = "Enemy Defeat Detect"
+tile_name = "GIZMO_ENEMY_DEFEAT"
 tile_desc = "Will emit a pulse, when an enemy on the same layer, is defeated."
 type = 1
 icon_texture = ExtResource("177_2l75x")
@@ -5854,7 +5835,7 @@ stretch_mode = 3
 
 [node name="Broadcaster" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Gizmos/MarginContainer/VBoxContainer/Inputs" unique_id=1587515387 groups=["Selectors"] instance=ExtResource("8_wkmjk")]
 layout_mode = 2
-tile_name = "Broadcaster"
+tile_name = "GIZMO_BROADCASTER"
 tile_desc = "Will send out a signal, to any broadcasters on the same channel, even if theyre in a different room."
 type = 1
 icon_texture = ExtResource("163_0bfpc")
@@ -5875,7 +5856,7 @@ texture = ExtResource("194_24ald")
 
 [node name="ItemCollectDetection" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Gizmos/MarginContainer/VBoxContainer/Inputs" unique_id=2012844368 groups=["Selectors"] instance=ExtResource("8_wkmjk")]
 layout_mode = 2
-tile_name = "Item Collect Detection"
+tile_name = "GIZMO_ITEM_DETECTION"
 tile_desc = "Will emit a pulse, when an item on its layer is collected."
 type = 1
 icon_texture = ExtResource("166_dp0ao")
@@ -5899,7 +5880,7 @@ layout_mode = 2
 
 [node name="Switch" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Gizmos/MarginContainer/VBoxContainer/Logic" unique_id=923873617 groups=["Selectors"] instance=ExtResource("8_wkmjk")]
 layout_mode = 2
-tile_name = "Switch"
+tile_name = "GIZMO_SWITCH"
 tile_desc = "Toggle switch, will switch on / off when powered"
 type = 1
 icon_texture = ExtResource("157_26a4w")
@@ -5919,7 +5900,7 @@ texture = ExtResource("194_24ald")
 
 [node name="Trigger" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Gizmos/MarginContainer/VBoxContainer/Logic" unique_id=1211905887 groups=["Selectors"] instance=ExtResource("8_wkmjk")]
 layout_mode = 2
-tile_name = "Trigger"
+tile_name = "GIZMO_TRIGGER"
 tile_desc = "Will emit a pulse, when triggered / powered."
 type = 1
 icon_texture = ExtResource("167_swqrt")
@@ -5961,7 +5942,7 @@ stretch_mode = 3
 layout_mode = 0
 offset_right = 16.0
 offset_bottom = 16.0
-tile_name = "Counter"
+tile_name = "GIZMO_COUNTER"
 tile_desc = "Will count up, every time it's pulsed or powered, will emit a pulse, when its threshold is reached."
 type = 1
 icon_texture = ExtResource("159_itqoj")
@@ -5985,7 +5966,7 @@ texture = ExtResource("194_24ald")
 layout_mode = 0
 offset_right = 16.0
 offset_bottom = 16.0
-tile_name = "Global Counter"
+tile_name = "GIZMO_GLOBAL_COUNTER"
 tile_desc = "Same as the regular counter, however its amount is shared between all other global counters, with a matching channel."
 type = 1
 icon_texture = ExtResource("174_qebwb")
@@ -6019,7 +6000,7 @@ stretch_mode = 3
 
 [node name="Timer" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Gizmos/MarginContainer/VBoxContainer/Logic" unique_id=2051023015 groups=["Selectors"] instance=ExtResource("8_wkmjk")]
 layout_mode = 2
-tile_name = "Timer"
+tile_name = "GIZMO_TIMER"
 tile_desc = "Emits a pulse, once finished counting down. Will start counting when a pulse is recieved, otherwise will begin counting on level start."
 type = 1
 icon_texture = ExtResource("172_xde7w")
@@ -6041,7 +6022,7 @@ texture = ExtResource("194_24ald")
 
 [node name="Repeater" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Gizmos/MarginContainer/VBoxContainer/Logic" unique_id=1671354315 groups=["Selectors"] instance=ExtResource("8_wkmjk")]
 layout_mode = 2
-tile_name = "Repeater"
+tile_name = "GIZMO_REPEATER"
 tile_desc = "Will repeat a power off, power on, or pulse signal, a specific number of times."
 type = 1
 icon_texture = ExtResource("173_yjk03")
@@ -6063,7 +6044,7 @@ texture = ExtResource("194_24ald")
 
 [node name="Fuse" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Gizmos/MarginContainer/VBoxContainer/Logic" unique_id=15943736 groups=["Selectors"] instance=ExtResource("8_wkmjk")]
 layout_mode = 2
-tile_name = "Fuse"
+tile_name = "GIZMO_FUSE"
 tile_desc = "Will destroy itself and relay the signal, when powered, useful for one-time events."
 type = 1
 icon_texture = ExtResource("175_sf60c")
@@ -6085,7 +6066,7 @@ texture = ExtResource("194_24ald")
 
 [node name="Dice" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Gizmos/MarginContainer/VBoxContainer/Logic" unique_id=603260121 groups=["Selectors"] instance=ExtResource("8_wkmjk")]
 layout_mode = 2
-tile_name = "Dice"
+tile_name = "GIZMO_DICE"
 tile_desc = "Will emit a pulse when powered, if a random number matches its odds."
 type = 1
 icon_texture = ExtResource("181_k6wox")
@@ -6115,7 +6096,7 @@ script = ExtResource("20_jc7xg")
 layout_mode = 0
 offset_right = 16.0
 offset_bottom = 16.0
-tile_name = "AND GATE"
+tile_name = "GIZMO_AND"
 tile_desc = "Powers on if all inputs are powered."
 type = 1
 icon_texture = ExtResource("163_hiqwy")
@@ -6136,7 +6117,7 @@ texture = ExtResource("194_24ald")
 layout_mode = 0
 offset_right = 16.0
 offset_bottom = 16.0
-tile_name = "OR GATE"
+tile_name = "GIZMO_OR"
 tile_desc = "Powers on, if atleast one input is powered."
 type = 1
 icon_texture = ExtResource("165_gq8kq")
@@ -6157,7 +6138,7 @@ texture = ExtResource("194_24ald")
 layout_mode = 0
 offset_right = 16.0
 offset_bottom = 16.0
-tile_name = "NOT GATE"
+tile_name = "GIZMO_NOT"
 tile_desc = "Powers on, only if not powered."
 type = 1
 icon_texture = ExtResource("167_snabn")
@@ -6178,7 +6159,7 @@ texture = ExtResource("194_24ald")
 layout_mode = 0
 offset_right = 16.0
 offset_bottom = 16.0
-tile_name = "XOR GATE"
+tile_name = "GIZMO_XOR"
 tile_desc = "Will power on, if one or more BUT NOT ALL inputs are powered."
 type = 1
 icon_texture = ExtResource("169_a6wyw")
@@ -6212,7 +6193,7 @@ layout_mode = 2
 
 [node name="Lamp" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Gizmos/MarginContainer/VBoxContainer/Output" unique_id=543186162 groups=["Selectors"] instance=ExtResource("8_wkmjk")]
 layout_mode = 2
-tile_name = "LAMP"
+tile_name = "GIZMO_LAMP"
 tile_desc = "Turns on, when powered, changes colour, depending on how many inputs are powered."
 type = 1
 icon_texture = ExtResource("155_wo43l")
@@ -6232,7 +6213,7 @@ texture = ExtResource("194_24ald")
 
 [node name="Placer" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Gizmos/MarginContainer/VBoxContainer/Output" unique_id=528780198 groups=["Selectors"] instance=ExtResource("8_wkmjk")]
 layout_mode = 2
-tile_name = "Tile Placer"
+tile_name = "GIZMO_PLACER"
 tile_desc = "Spawns in a specific entity / tile, at it's current location, when powered."
 type = 1
 icon_texture = ExtResource("173_a6wyw")
@@ -6253,7 +6234,7 @@ texture = ExtResource("194_24ald")
 
 [node name="Teleporter" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Gizmos/MarginContainer/VBoxContainer/Output" unique_id=1161625026 groups=["Selectors"] instance=ExtResource("8_wkmjk")]
 layout_mode = 2
-tile_name = "Player Teleporter"
+tile_name = "GIZMO_TELEPORTER"
 tile_desc = "Teleports the player to itself, when powered."
 type = 1
 icon_texture = ExtResource("175_al0re")
@@ -6274,7 +6255,7 @@ texture = ExtResource("194_24ald")
 
 [node name="Speaker" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Gizmos/MarginContainer/VBoxContainer/Output" unique_id=789673022 groups=["Selectors"] instance=ExtResource("8_wkmjk")]
 layout_mode = 2
-tile_name = "Speaker"
+tile_name = "GIZMO_SPEAKER"
 tile_desc = "Plays a specific Sound Effect, when powered."
 type = 1
 icon_texture = ExtResource("189_3c4c7")
@@ -6295,7 +6276,7 @@ texture = ExtResource("194_24ald")
 
 [node name="MusicPlayer" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Gizmos/MarginContainer/VBoxContainer/Output" unique_id=1292935067 groups=["Selectors"] instance=ExtResource("8_wkmjk")]
 layout_mode = 2
-tile_name = "Music Player"
+tile_name = "GIZMO_MUSIC_PLAYER"
 tile_desc = "Changes the current level song, when powered."
 type = 1
 icon_texture = ExtResource("197_5mw2n")
@@ -6316,7 +6297,7 @@ texture = ExtResource("194_24ald")
 
 [node name="ConditionalClear" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Gizmos/MarginContainer/VBoxContainer/Output" unique_id=1550750723 groups=["Selectors"] instance=ExtResource("8_wkmjk")]
 layout_mode = 2
-tile_name = "Conditional Clearer"
+tile_name = "GIZMO_CONDITIONAL"
 tile_desc = "When powered, will either validate or fail the condition required to beat a level."
 type = 1
 icon_texture = ExtResource("196_i2jbr")
@@ -6337,7 +6318,7 @@ texture = ExtResource("194_24ald")
 
 [node name="Warper" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Gizmos/MarginContainer/VBoxContainer/Output" unique_id=991496675 groups=["Selectors"] instance=ExtResource("8_wkmjk")]
 layout_mode = 2
-tile_name = "Room Warper"
+tile_name = "GIZMO_WARPER"
 tile_desc = "Will transition to a different room, when powered. Use matching channels on other Room Warpers, to define positions upon warping."
 type = 1
 icon_texture = ExtResource("207_7a43i")
@@ -6585,7 +6566,7 @@ layout_mode = 2
 
 [node name="Label" type="Label" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/BG/ScrollContainer/VBoxContainer/HBoxContainer" unique_id=329289335]
 layout_mode = 2
-text = "1ST LAYER:"
+text = "BG_SETTINGS_LAYER_1"
 
 [node name="PrimaryLayer" type="OptionButton" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/BG/ScrollContainer/VBoxContainer/HBoxContainer" unique_id=1436567487]
 unique_name_in_owner = true
@@ -6595,11 +6576,11 @@ layout_mode = 2
 size_flags_horizontal = 10
 selected = 0
 item_count = 3
-popup/item_0/text = "HILLS"
+popup/item_0/text = "BG_LAYER1_1"
 popup/item_0/id = 0
-popup/item_1/text = "BUSH"
+popup/item_1/text = "BG_LAYER1_2"
 popup/item_1/id = 1
-popup/item_2/text = "NONE"
+popup/item_2/text = "MENU_NONE"
 popup/item_2/id = 2
 script = ExtResource("241_8au2b")
 metadata/_custom_type_script = "uid://codql1f5eca56"
@@ -6609,7 +6590,7 @@ layout_mode = 2
 
 [node name="Label" type="Label" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/BG/ScrollContainer/VBoxContainer/HBoxContainer2" unique_id=1335089879]
 layout_mode = 2
-text = "2ND LAYER:"
+text = "BG_SETTINGS_LAYER_2"
 
 [node name="SecondLayer" type="OptionButton" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/BG/ScrollContainer/VBoxContainer/HBoxContainer2" unique_id=365231962]
 unique_name_in_owner = true
@@ -6619,11 +6600,11 @@ layout_mode = 2
 size_flags_horizontal = 10
 selected = 0
 item_count = 3
-popup/item_0/text = "NONE"
+popup/item_0/text = "MENU_NONE"
 popup/item_0/id = 0
-popup/item_1/text = "MUSHROOMS"
+popup/item_1/text = "BG_LAYER2_1"
 popup/item_1/id = 1
-popup/item_2/text = "TREES"
+popup/item_2/text = "BG_LAYER2_2"
 popup/item_2/id = 2
 script = ExtResource("241_8au2b")
 metadata/_custom_type_script = "uid://codql1f5eca56"
@@ -6633,7 +6614,7 @@ layout_mode = 2
 
 [node name="Label" type="Label" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/BG/ScrollContainer/VBoxContainer/HBoxContainer7" unique_id=1077123352]
 layout_mode = 2
-text = "2ND LAYER:"
+text = "BG_SETTINGS_LAYER_2_ORDER"
 
 [node name="SecondLayerOrder" type="OptionButton" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/BG/ScrollContainer/VBoxContainer/HBoxContainer7" unique_id=1065976449]
 unique_name_in_owner = true
@@ -6643,32 +6624,9 @@ layout_mode = 2
 size_flags_horizontal = 10
 selected = 0
 item_count = 2
-popup/item_0/text = "BEHIND"
+popup/item_0/text = "BG_ORDER_1"
 popup/item_0/id = 0
-popup/item_1/text = "IN FRONT"
-popup/item_1/id = 1
-script = ExtResource("241_8au2b")
-metadata/_custom_type_script = "uid://codql1f5eca56"
-
-[node name="HBoxContainer8" type="HBoxContainer" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/BG/ScrollContainer/VBoxContainer" unique_id=631883510]
-visible = false
-layout_mode = 2
-
-[node name="Label" type="Label" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/BG/ScrollContainer/VBoxContainer/HBoxContainer8" unique_id=184389148]
-layout_mode = 2
-text = "2ND LAYER:"
-
-[node name="TimeOfDay" type="OptionButton" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/BG/ScrollContainer/VBoxContainer/HBoxContainer8" unique_id=1782387180]
-unique_name_in_owner = true
-texture_filter = 1
-texture_repeat = 1
-layout_mode = 2
-size_flags_horizontal = 10
-selected = 0
-item_count = 2
-popup/item_0/text = "BEHIND"
-popup/item_0/id = 0
-popup/item_1/text = "IN FRONT"
+popup/item_1/text = "BG_ORDER_2"
 popup/item_1/id = 1
 script = ExtResource("241_8au2b")
 metadata/_custom_type_script = "uid://codql1f5eca56"
@@ -6678,7 +6636,7 @@ layout_mode = 2
 
 [node name="Label" type="Label" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/BG/ScrollContainer/VBoxContainer/HBoxContainer5" unique_id=593334939]
 layout_mode = 2
-text = "PARTICLES:"
+text = "BG_SETTINGS_PARTICLES"
 
 [node name="Particles" type="OptionButton" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/BG/ScrollContainer/VBoxContainer/HBoxContainer5" unique_id=1181531765]
 unique_name_in_owner = true
@@ -6688,13 +6646,13 @@ layout_mode = 2
 size_flags_horizontal = 10
 selected = 0
 item_count = 4
-popup/item_0/text = "NONE"
+popup/item_0/text = "MENU_NONE"
 popup/item_0/id = 0
-popup/item_1/text = "SNOW"
+popup/item_1/text = "BG_PARTICLES_1"
 popup/item_1/id = 1
-popup/item_2/text = "LEAVES"
-popup/item_2/id = 1
-popup/item_3/text = "EMBER"
+popup/item_2/text = "BG_PARTICLES_2"
+popup/item_2/id = 2
+popup/item_3/text = "BG_PARTICLES_3"
 popup/item_3/id = 3
 script = ExtResource("241_8au2b")
 metadata/_custom_type_script = "uid://codql1f5eca56"
@@ -6704,7 +6662,7 @@ layout_mode = 2
 
 [node name="Label" type="Label" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/BG/ScrollContainer/VBoxContainer/HBoxContainer6" unique_id=615074021]
 layout_mode = 2
-text = "LIQUID:"
+text = "BG_SETTINGS_LIQUID"
 
 [node name="LiquidLayer" type="OptionButton" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/BG/ScrollContainer/VBoxContainer/HBoxContainer6" unique_id=570904618]
 unique_name_in_owner = true
@@ -6714,13 +6672,13 @@ layout_mode = 2
 size_flags_horizontal = 10
 selected = 0
 item_count = 4
-popup/item_0/text = "NONE"
+popup/item_0/text = "MENU_NONE"
 popup/item_0/id = 0
-popup/item_1/text = "WATER"
+popup/item_1/text = "BG_LIQUID_1"
 popup/item_1/id = 1
-popup/item_2/text = "LAVA"
+popup/item_2/text = "BG_LIQUID_2"
 popup/item_2/id = 2
-popup/item_3/text = "POISON"
+popup/item_3/text = "BG_LIQUID_3"
 popup/item_3/id = 3
 script = ExtResource("241_8au2b")
 metadata/_custom_type_script = "uid://codql1f5eca56"
@@ -6731,7 +6689,7 @@ layout_mode = 2
 [node name="Backscroll" type="Label" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/BG/ScrollContainer/VBoxContainer/HBoxContainer3" unique_id=290747511]
 layout_mode = 2
 size_flags_horizontal = 3
-text = "OVERLAY CLOUDS:"
+text = "BG_SETTINGS_OVERLAY_CLOUDS"
 uppercase = true
 
 [node name="OverlayClouds" type="CheckBox" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/BG/ScrollContainer/VBoxContainer/HBoxContainer3" unique_id=1126680199]
@@ -6756,13 +6714,13 @@ theme_override_constants/separation = 0
 [node name="Button" type="Button" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/Blueprints/VBoxContainer/HBoxContainer" unique_id=1242165372]
 layout_mode = 2
 size_flags_horizontal = 0
-text = "REFRESH LIST"
+text = "RESOURCE_REFRESH"
 alignment = 0
 
 [node name="Button2" type="Button" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/Blueprints/VBoxContainer/HBoxContainer" unique_id=97974041]
 layout_mode = 2
 size_flags_horizontal = 10
-text = "OPEN FOLDER"
+text = "RESOURCE_OPEN_FOLDER"
 alignment = 0
 
 [node name="ScrollContainer" type="ScrollContainer" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/Blueprints/VBoxContainer" unique_id=1497148269]
@@ -6792,7 +6750,7 @@ grow_vertical = 0
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 7
-text = "e to open menu"
+text = "EDITOR_HUD_MENU"
 uppercase = true
 
 [node name="LayerDisplay" type="Control" parent="Info" unique_id=2063273062]
@@ -6946,7 +6904,7 @@ layout_mode = 2
 [node name="Label" type="Label" parent="Info/SaveLevelDialog/VBoxContainer" unique_id=732870694]
 layout_mode = 2
 size_flags_horizontal = 4
-text = "Save Level"
+text = "EDITOR_SAVE_TITLE"
 uppercase = true
 
 [node name="HSeparator" type="HSeparator" parent="Info/SaveLevelDialog/VBoxContainer/Label" unique_id=154795242]
@@ -6983,7 +6941,7 @@ layout_mode = 2
 
 [node name="Label" type="Label" parent="Info/SaveLevelDialog/VBoxContainer/HBoxContainer2" unique_id=1800469563]
 layout_mode = 2
-text = "Author:"
+text = "EDITOR_SAVE_AUTHOR"
 uppercase = true
 
 [node name="LevelAuthor" type="LineEdit" parent="Info/SaveLevelDialog/VBoxContainer/HBoxContainer2" unique_id=1724282110]
@@ -7003,7 +6961,7 @@ size_flags_vertical = 3
 [node name="Label" type="Label" parent="Info/SaveLevelDialog/VBoxContainer/HBoxContainer3" unique_id=1975974559]
 layout_mode = 2
 size_flags_vertical = 0
-text = "desc:"
+text = "EDITOR_SAVE_DESC"
 uppercase = true
 
 [node name="TextValidator" type="Node" parent="Info/SaveLevelDialog/VBoxContainer/HBoxContainer3" unique_id=1176385668 node_paths=PackedStringArray("node_to_validate")]
@@ -7022,7 +6980,7 @@ layout_mode = 2
 [node name="Label" type="Label" parent="Info/SaveLevelDialog/VBoxContainer/HBoxContainer4" unique_id=814128295]
 layout_mode = 2
 size_flags_vertical = 0
-text = "difficulty"
+text = "EDITOR_SAVE_DIFFICULTY"
 uppercase = true
 
 [node name="TextValidator" type="Node" parent="Info/SaveLevelDialog/VBoxContainer/HBoxContainer4" unique_id=767662515]
@@ -7043,12 +7001,12 @@ layout_mode = 2
 [node name="Button2" type="Button" parent="Info/SaveLevelDialog/VBoxContainer/HSplitContainer" unique_id=608599908]
 layout_mode = 2
 size_flags_horizontal = 8
-text = "CANCEL"
+text = "MENU_CANCEL"
 
 [node name="Button" type="Button" parent="Info/SaveLevelDialog/VBoxContainer/HSplitContainer" unique_id=15509029]
 layout_mode = 2
 size_flags_horizontal = 8
-text = "SAVE"
+text = "EDITOR_SAVE"
 
 [node name="SaveDialog" type="Label" parent="Info" unique_id=188622919]
 unique_name_in_owner = true
@@ -7154,25 +7112,23 @@ autostart = true
 [connection signal="mouse_entered" from="CanvasLayer/Tools" to="." method="on_mouse_entered"]
 [connection signal="mouse_exited" from="CanvasLayer/Tools" to="." method="on_mouse_exited"]
 [connection signal="toggled" from="CanvasLayer/Tools/MarginContainer/HBoxContainer/Button" to="CanvasLayer/Tools/MarginContainer/HBoxContainer/TheRest" method="set_visible"]
-[connection signal="mouse_entered" from="CanvasLayer/Tools/MarginContainer/HBoxContainer/TheRest/Undo" to="." method="set_toolbar_tooltip" binds= ["Undo"]]
-[connection signal="mouse_exited" from="CanvasLayer/Tools/MarginContainer/HBoxContainer/TheRest/Undo" to="." method="clear_toolbar_tooltip" binds= ["Undo"]]
+[connection signal="mouse_entered" from="CanvasLayer/Tools/MarginContainer/HBoxContainer/TheRest/Undo" to="." method="set_toolbar_tooltip" binds= ["EDITOR_TOOLBAR_UNDO"]]
+[connection signal="mouse_exited" from="CanvasLayer/Tools/MarginContainer/HBoxContainer/TheRest/Undo" to="." method="clear_toolbar_tooltip" binds= ["EDITOR_TOOLBAR_UNDO"]]
 [connection signal="pressed" from="CanvasLayer/Tools/MarginContainer/HBoxContainer/TheRest/Undo" to="." method="undo"]
-[connection signal="mouse_entered" from="CanvasLayer/Tools/MarginContainer/HBoxContainer/TheRest/Redo" to="." method="set_toolbar_tooltip" binds= ["Redo"]]
-[connection signal="mouse_exited" from="CanvasLayer/Tools/MarginContainer/HBoxContainer/TheRest/Redo" to="." method="clear_toolbar_tooltip" binds= ["Redo"]]
+[connection signal="mouse_entered" from="CanvasLayer/Tools/MarginContainer/HBoxContainer/TheRest/Redo" to="." method="set_toolbar_tooltip" binds= ["EDITOR_TOOLBAR_REDO"]]
+[connection signal="mouse_exited" from="CanvasLayer/Tools/MarginContainer/HBoxContainer/TheRest/Redo" to="." method="clear_toolbar_tooltip" binds= ["EDITOR_TOOLBAR_REDO"]]
 [connection signal="pressed" from="CanvasLayer/Tools/MarginContainer/HBoxContainer/TheRest/Redo" to="." method="redo"]
-[connection signal="mouse_entered" from="CanvasLayer/Tools/MarginContainer/HBoxContainer/TheRest/ShowTrail" to="." method="set_toolbar_tooltip" binds= ["Toggle Trail"]]
-[connection signal="mouse_exited" from="CanvasLayer/Tools/MarginContainer/HBoxContainer/TheRest/ShowTrail" to="." method="clear_toolbar_tooltip" binds= ["Toggle Trail"]]
+[connection signal="mouse_entered" from="CanvasLayer/Tools/MarginContainer/HBoxContainer/TheRest/ShowTrail" to="." method="set_toolbar_tooltip" binds= ["EDITOR_TOOLBAR_TRAIL"]]
+[connection signal="mouse_exited" from="CanvasLayer/Tools/MarginContainer/HBoxContainer/TheRest/ShowTrail" to="." method="clear_toolbar_tooltip" binds= ["EDITOR_TOOLBAR_TRAIL"]]
 [connection signal="toggled" from="CanvasLayer/Tools/MarginContainer/HBoxContainer/TheRest/ShowTrail" to="PlayerTrail" method="set_visible"]
-[connection signal="mouse_entered" from="CanvasLayer/Tools/MarginContainer/HBoxContainer/TheRest/ShowGrid" to="." method="set_toolbar_tooltip" binds= ["Toggle Grid"]]
-[connection signal="mouse_exited" from="CanvasLayer/Tools/MarginContainer/HBoxContainer/TheRest/ShowGrid" to="." method="clear_toolbar_tooltip" binds= ["Toggle Grid"]]
+[connection signal="mouse_entered" from="CanvasLayer/Tools/MarginContainer/HBoxContainer/TheRest/ShowGrid" to="." method="set_toolbar_tooltip" binds= ["EDITOR_TOOLBAR_GRID"]]
+[connection signal="mouse_exited" from="CanvasLayer/Tools/MarginContainer/HBoxContainer/TheRest/ShowGrid" to="." method="clear_toolbar_tooltip" binds= ["EDITOR_TOOLBAR_GRID"]]
 [connection signal="toggled" from="CanvasLayer/Tools/MarginContainer/HBoxContainer/TheRest/ShowGrid" to="Grid" method="set_visible"]
-[connection signal="mouse_entered" from="CanvasLayer/Tools/MarginContainer/HBoxContainer/TheRest/ShowGizmos" to="." method="set_toolbar_tooltip" binds= ["Show Gizmos"]]
-[connection signal="mouse_exited" from="CanvasLayer/Tools/MarginContainer/HBoxContainer/TheRest/ShowGizmos" to="." method="clear_toolbar_tooltip" binds= ["Show Gizmos"]]
+[connection signal="mouse_entered" from="CanvasLayer/Tools/MarginContainer/HBoxContainer/TheRest/ShowGizmos" to="." method="set_toolbar_tooltip" binds= ["EDITOR_TOOLBAR_GIZMOS"]]
+[connection signal="mouse_exited" from="CanvasLayer/Tools/MarginContainer/HBoxContainer/TheRest/ShowGizmos" to="." method="clear_toolbar_tooltip" binds= ["EDITOR_TOOLBAR_GIZMOS"]]
 [connection signal="toggled" from="CanvasLayer/Tools/MarginContainer/HBoxContainer/TheRest/ShowGizmos" to="." method="toggle_gizmos"]
-[connection signal="mouse_entered" from="CanvasLayer/Tools/MarginContainer/HBoxContainer/TheRest/Snapshot" to="." method="set_toolbar_tooltip" binds= ["Screenshot"]]
-[connection signal="mouse_exited" from="CanvasLayer/Tools/MarginContainer/HBoxContainer/TheRest/Snapshot" to="." method="clear_toolbar_tooltip" binds= ["Screenshot"]]
-[connection signal="mouse_entered" from="CanvasLayer/Tools/MarginContainer/HBoxContainer/TheRest/ResetLevel" to="." method="set_toolbar_tooltip" binds= ["Reset Level"]]
-[connection signal="mouse_exited" from="CanvasLayer/Tools/MarginContainer/HBoxContainer/TheRest/ResetLevel" to="." method="clear_toolbar_tooltip" binds= ["Reset Level"]]
+[connection signal="mouse_entered" from="CanvasLayer/Tools/MarginContainer/HBoxContainer/TheRest/ResetLevel" to="." method="set_toolbar_tooltip" binds= ["EDITOR_TOOLBAR_RESET"]]
+[connection signal="mouse_exited" from="CanvasLayer/Tools/MarginContainer/HBoxContainer/TheRest/ResetLevel" to="." method="clear_toolbar_tooltip" binds= ["EDITOR_TOOLBAR_RESET"]]
 [connection signal="pressed" from="CanvasLayer/Tools/MarginContainer/HBoxContainer/TheRest/ResetLevel" to="CanvasLayer/DeletionWarning" method="show"]
 [connection signal="mouse_entered" from="CanvasLayer/DeletionWarning" to="." method="on_mouse_entered"]
 [connection signal="mouse_exited" from="CanvasLayer/DeletionWarning" to="." method="on_mouse_exited"]
@@ -7248,7 +7204,6 @@ autostart = true
 [connection signal="item_selected" from="TileMenu/MarginContainer/VBoxContainer/PanelContainer/BG/ScrollContainer/VBoxContainer/HBoxContainer/PrimaryLayer" to="." method="set_bg_value" binds= ["primary_layer"]]
 [connection signal="item_selected" from="TileMenu/MarginContainer/VBoxContainer/PanelContainer/BG/ScrollContainer/VBoxContainer/HBoxContainer2/SecondLayer" to="." method="set_bg_value" binds= ["second_layer"]]
 [connection signal="item_selected" from="TileMenu/MarginContainer/VBoxContainer/PanelContainer/BG/ScrollContainer/VBoxContainer/HBoxContainer7/SecondLayerOrder" to="." method="set_bg_value" binds= ["second_layer_order"]]
-[connection signal="item_selected" from="TileMenu/MarginContainer/VBoxContainer/PanelContainer/BG/ScrollContainer/VBoxContainer/HBoxContainer8/TimeOfDay" to="." method="set_bg_value" binds= ["time_of_day"]]
 [connection signal="item_selected" from="TileMenu/MarginContainer/VBoxContainer/PanelContainer/BG/ScrollContainer/VBoxContainer/HBoxContainer5/Particles" to="." method="set_bg_value" binds= ["particles"]]
 [connection signal="item_selected" from="TileMenu/MarginContainer/VBoxContainer/PanelContainer/BG/ScrollContainer/VBoxContainer/HBoxContainer6/LiquidLayer" to="." method="set_bg_value" binds= ["liquid_layer"]]
 [connection signal="toggled" from="TileMenu/MarginContainer/VBoxContainer/PanelContainer/BG/ScrollContainer/VBoxContainer/HBoxContainer3/OverlayClouds" to="." method="set_bg_value" binds= ["overlay_clouds"]]

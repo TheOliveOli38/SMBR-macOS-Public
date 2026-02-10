@@ -11,6 +11,8 @@ signal switched_on
 signal switched_off
 signal switched
 
+static var has_switched := false
+
 var spawned := false
 
 func _ready() -> void:
@@ -32,9 +34,14 @@ func on_switch(emit := true) -> void:
 	update_stuff()
 
 func switch() -> void:
+	if has_switched:
+		return
+	has_switched = true
 	active = not active
 	AudioManager.play_sfx("switch", owner.global_position)
 	get_tree().call_group("OnOffSwitches", "on_switch")
+	await get_tree().physics_frame
+	has_switched = false
 
 func update_stuff() -> void:
 	var is_on = active

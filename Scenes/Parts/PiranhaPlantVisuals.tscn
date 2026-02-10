@@ -83,6 +83,7 @@ hitbox = NodePath("../../Hitbox")
 metadata/_custom_type_script = "uid://ba18grqjixded"
 
 [node name="Hitbox" type="Area2D" parent="." unique_id=537098004]
+unique_name_in_owner = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=161644648]
 position = Vector2(0, -6)

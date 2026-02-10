@@ -826,7 +826,7 @@ script = SubResource("GDScript_ksnto")
 [node name="Label" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/KeyboardControls" unique_id=1334471349]
 layout_mode = 2
 size_flags_vertical = 10
-text = "PRESS F5 TO RESET BINDINGS."
+text = "SETTINGS_INPUT_RESET"
 uppercase = true
 
 [node name="Controller" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=1141401155 node_paths=PackedStringArray("options")]
@@ -919,7 +919,7 @@ type = 1
 [node name="Label" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/Controller" unique_id=2039855002]
 layout_mode = 2
 size_flags_vertical = 10
-text = "PRESS F5 TO RESET BINDINGS."
+text = "SETTINGS_INPUT_RESET"
 uppercase = true
 
 [node name="Data" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=320183905 node_paths=PackedStringArray("options")]
@@ -987,7 +987,7 @@ layout_mode = 2
 
 [node name="RegenROM" parent="PanelContainer/MarginContainer/VBoxContainer/Data" unique_id=1130591797 instance=ExtResource("9_t6b48")]
 layout_mode = 2
-title = "Reverify ROM"
+title = "DATA_ROM_REVERIFY"
 
 [node name="Control" type="Control" parent="PanelContainer" unique_id=2141427129]
 custom_minimum_size = Vector2(24, 0)
@@ -1029,6 +1029,7 @@ anchor_bottom = 0.95
 script = ExtResource("19_k6yev")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1052541210]
+layer = 999
 visible = false
 
 [node name="Panel" type="PanelContainer" parent="CanvasLayer" unique_id=383732120]
@@ -1109,7 +1110,7 @@ uppercase = true
 [connection signal="button_pressed" from="PanelContainer/MarginContainer/VBoxContainer/ResourcePacks/VBoxContainer/SelectableOptionNode" to="PanelContainer/MarginContainer/VBoxContainer/ResourcePacks/ResourcePackLoader" method="open_folder"]
 [connection signal="button_pressed" from="PanelContainer/MarginContainer/VBoxContainer/ResourcePacks/VBoxContainer/SelectableOptionNode2" to="PanelContainer/MarginContainer/VBoxContainer/ResourcePacks/ResourcePackLoader" method="get_resource_packs"]
 [connection signal="button_pressed" from="PanelContainer/MarginContainer/VBoxContainer/ResourcePacks/VBoxContainer/SelectableOptionNode3" to="ResourcePackTemplateCreator" method="create_template"]
-[connection signal="button_pressed" from="PanelContainer/MarginContainer/VBoxContainer/ResourcePacks/VBoxContainer/SelectableOptionNode3" to="PanelContainer/MarginContainer/VBoxContainer/ResourcePacks/VBoxContainer/SelectableOptionNode3" method="set_title" binds= ["Creating Resource Pack..."]]
+[connection signal="button_pressed" from="PanelContainer/MarginContainer/VBoxContainer/ResourcePacks/VBoxContainer/SelectableOptionNode3" to="PanelContainer/MarginContainer/VBoxContainer/ResourcePacks/VBoxContainer/SelectableOptionNode3" method="set_title" binds= ["RESOURCE_PACK_CREATE_PROGRESS"]]
 [connection signal="value_changed" from="PanelContainer/MarginContainer/VBoxContainer/Difficulty/ScrollContainer/VBoxContainer/PhysicsStyle" to="." method="show_physics_warning"]
 [connection signal="value_changed" from="PanelContainer/MarginContainer/VBoxContainer/Difficulty/ScrollContainer/VBoxContainer/PhysicsStyle" to="PanelContainer/MarginContainer/VBoxContainer/Difficulty/DifficultySetter" method="physics_style_changed"]
 [connection signal="value_changed" from="PanelContainer/MarginContainer/VBoxContainer/Difficulty/ScrollContainer/VBoxContainer/DamageStyle" to="PanelContainer/MarginContainer/VBoxContainer/Difficulty/DifficultySetter" method="damage_style_changed"]
@@ -1129,8 +1130,8 @@ uppercase = true
 [connection signal="deleted" from="PanelContainer/MarginContainer/VBoxContainer/Data/AchievementData" to="PanelContainer/MarginContainer/VBoxContainer/Data/DataDeletion" method="delete_achievement"]
 [connection signal="deleted" from="PanelContainer/MarginContainer/VBoxContainer/Data/Everything" to="PanelContainer/MarginContainer/VBoxContainer/Data/DataDeletion" method="delete_everything"]
 [connection signal="button_pressed" from="PanelContainer/MarginContainer/VBoxContainer/Data/RegenROM" to="PanelContainer/MarginContainer/VBoxContainer/Data/DataDeletion" method="regen_rom"]
-[connection signal="pack_created" from="ResourcePackTemplateCreator" to="PanelContainer/MarginContainer/VBoxContainer/ResourcePacks/VBoxContainer/SelectableOptionNode3" method="set_title" binds= ["RESOURCE_PACK_CREATE"]]
 [connection signal="pack_created" from="ResourcePackTemplateCreator" to="PanelContainer/MarginContainer/VBoxContainer/ResourcePacks/VBoxContainer/SelectableOptionNode3" method="play_sfx" binds= ["correct"]]
+[connection signal="pack_created" from="ResourcePackTemplateCreator" to="PanelContainer/MarginContainer/VBoxContainer/ResourcePacks/VBoxContainer/SelectableOptionNode3" method="set_title" binds= ["RESOURCE_PACK_CREATE"]]
 
 [editable path="PanelContainer/MarginContainer/VBoxContainer/Video/Language"]
 [editable path="PanelContainer/MarginContainer/VBoxContainer/Audio/SelectableOptionNode"]

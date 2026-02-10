@@ -347,7 +347,7 @@ func handle_layers() -> void:
 		for i in tile_layer_nodes:
 			i.self_modulate = Color.WHITE if current_state != EditorState.CONNECTING else Color.DIM_GRAY
 		level.get_node("LevelBG").modulate = Color.WHITE if current_state != EditorState.CONNECTING else Color.DIM_GRAY
-	%LayerLabel.text = "Layer " + str(current_layer + 1)
+	%LayerLabel.text = tr("EDITOR_HUD_LAYER").replace("{LAYER}", str(current_layer + 1))
 
 func save_level() -> void:
 	level_author = %LevelAuthor.text
@@ -1137,7 +1137,6 @@ func update_menu_values() -> void:
 	%SecondLayerOrder.selected = level_bg.second_layer_order
 	%PrimaryLayer.selected = level_bg.primary_layer
 	%SecondLayer.selected = level_bg.second_layer
-	%TimeOfDay.selected = level_bg.time_of_day
 	%Particles.selected = level_bg.particles
 	%LiquidLayer.selected = level_bg.liquid_layer
 	%OverlayClouds.set_pressed_no_signal(level_bg.overlay_clouds)

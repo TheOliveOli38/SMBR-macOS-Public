@@ -427,7 +427,9 @@ const COMBO_VALS := [100, 200, 400, 500, 800, 1000, 2000, 4000, 5000, 8000, null
 @onready var normal_state: Node = $States/Normal
 @export var auto_death_pit := true
 
-var can_hurt := true
+var can_hurt := true:
+	set(value):
+		can_hurt = value
 
 var in_water := false
 
@@ -1394,10 +1396,11 @@ var exiting_pipe := false
 func go_to_exit_pipe(pipe: PipeArea) -> void:
 	Global.can_time_tick = false
 	exiting_pipe = true
-	can_hurt = false
 	pipe_enter_direction = Vector2.ZERO
 	state_machine.transition_to("Freeze")
+	can_hurt = false
 	global_position = pipe.global_position + (pipe.get_vector(pipe.enter_direction) * 32)
+	reset_physics_interpolation()
 	if pipe.enter_direction == 1:
 		global_position = pipe.global_position + Vector2(0, -8)
 	recenter_camera()
@@ -1416,6 +1419,7 @@ func exit_pipe(pipe: PipeArea) -> void:
 	pipe_enter_direction = -pipe.get_vector(pipe.enter_direction)
 	AudioManager.play_sfx("pipe", global_position)
 	state_machine.transition_to("Pipe")
+	can_hurt = false
 	await get_tree().create_timer(0.65, false).timeout
 	Global.can_pause = true
 	can_hurt = true

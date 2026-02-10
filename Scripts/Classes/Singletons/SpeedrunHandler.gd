@@ -3,8 +3,8 @@ extends Node
 var timer := 0.0
 var best_time := 0.0
 
-var marathon_best_any_time := 0.0
-var marathon_best_warpless_time := 0.0
+var marathon_best_any_time := -1.0
+var marathon_best_warpless_time := -1.0
 
 var timer_active := false
 
@@ -230,7 +230,7 @@ func format_time(time_time := 0.0) -> Dictionary:
 	return {"mils": int(mils), "secs": int(secs), "mins": int(mins)}
 	
 func met_target_time(record_time := -1.0, target_time := 0.0) -> bool:
-	if record_time < 0.0:
+	if record_time <= 0.0:
 		return false
 	# Ignore units of time smaller than a centisecond, as they're not displayed.
 	# Matching time exactly counts as beating it.
@@ -437,7 +437,7 @@ func check_for_medal_achievement() -> void:
 				has_bronze_levels_warpless = false
 			level += 1
 		world += 1
-	
+	 
 	if (met_target_time(marathon_best_any_time, GOLD_ANY_TIMES[Global.current_campaign]) and 
 		met_target_time(marathon_best_warpless_time, GOLD_WARPLESS_TIMES[Global.current_campaign])):
 		has_gold_full = true
