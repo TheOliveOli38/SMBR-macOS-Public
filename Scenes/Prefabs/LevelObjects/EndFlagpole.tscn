@@ -212,7 +212,7 @@ resource = SubResource("Resource_a0hgu")
 json_file_path = "res://Assets/Sprites/Tilesets/FlagPole.json"
 metadata/_custom_type_script = "uid://cqif1li7otvpl"
 
-[node name="Hollow" type="Sprite2D" parent="." unique_id=382138517]
+[node name="Hollow" type="Sprite2D" parent="." unique_id=1482269532]
 visible = false
 position = Vector2(0, -96)
 texture = ExtResource("11_tpsyw")

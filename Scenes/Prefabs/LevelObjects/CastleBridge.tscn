@@ -9,6 +9,7 @@
 [ext_resource type="Script" uid="uid://cq6f682453q6o" path="res://Scripts/Classes/Components/ResourceSetter.gd" id="5_vt2ac"]
 [ext_resource type="Script" uid="uid://cmvlgsjmsk0v5" path="res://Scripts/Classes/Resources/ThemedResource.gd" id="8_geany"]
 [ext_resource type="Texture2D" uid="uid://d3enhh06i7xe2" path="res://Assets/Sprites/Items/InvalidAxe.png" id="8_m5y50"]
+[ext_resource type="Script" uid="uid://364rywt44hy6" path="res://Scripts/Classes/UI/PackSprite.gd" id="9_kvynl"]
 [ext_resource type="Script" uid="uid://cbal8ms2oe1ik" path="res://Scripts/Classes/Components/ResourceSetterNew.gd" id="9_m5y50"]
 [ext_resource type="JSON" path="res://Assets/Sprites/Items/BridgeAxe.json" id="10_kvynl"]
 [ext_resource type="Script" uid="uid://ctfbuoxtnnl0q" path="res://Scripts/Classes/Components/EditorPropertyExposer.gd" id="10_wgdlx"]
@@ -200,10 +201,12 @@ property_name = "sprite_frames"
 resource_json = ExtResource("10_kvynl")
 metadata/_custom_type_script = "uid://cbal8ms2oe1ik"
 
-[node name="Invalid" type="Sprite2D" parent="Axe" unique_id=298037483]
+[node name="Invalid" type="Sprite2D" parent="Axe" unique_id=943384056]
 unique_name_in_owner = true
 visible = false
 texture = ExtResource("8_m5y50")
+script = ExtResource("9_kvynl")
+metadata/_custom_type_script = "uid://364rywt44hy6"
 
 [node name="BridgeChain" type="Sprite2D" parent="." unique_id=1002244871]
 position = Vector2(192, -16)

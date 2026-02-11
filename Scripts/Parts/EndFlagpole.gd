@@ -59,6 +59,7 @@ func deactivate_all_generators() -> void:
 
 func _ready() -> void:
 	$FlagJoint/Flag.position.x = 8 * flag_direction
+	$FlagJoint/Flag.scale.x = -flag_direction
 
 func _physics_process(_delta: float) -> void:
 	$Hollow.visible = not ConditionalClear.valid
