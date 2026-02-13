@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bwqwdrxx2t2tb"
-path="res://.godot/imported/Warper.png-9a4c76bac65e86443c9e1b3aac3d77ad.ctex"
+uid="uid://ds7hexn5nb4vt"
+path="res://.godot/imported/Warper.png-c5e3df66f483bd9f4e755dad560ce213.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/Editor/Warper.png"
-dest_files=["res://.godot/imported/Warper.png-9a4c76bac65e86443c9e1b3aac3d77ad.ctex"]
+source_file="res://Assets/Sprites/Editor/Gizmos/Warper.png"
+dest_files=["res://.godot/imported/Warper.png-c5e3df66f483bd9f4e755dad560ce213.ctex"]
 
 [params]
 

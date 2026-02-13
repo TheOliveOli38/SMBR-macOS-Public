@@ -88,6 +88,7 @@ linked_platform = NodePath("../CornerR/RPlatform")
 [node name="EditorPropertyExposer" type="Node" parent="." unique_id=1858502840]
 script = ExtResource("6_lcqnt")
 properties = Array[String](["width", "left_height", "right_height"])
+animate_change = false
 metadata/_custom_type_script = "uid://ctfbuoxtnnl0q"
 
 [node name="Node" type="Node" parent="." unique_id=1998864420]

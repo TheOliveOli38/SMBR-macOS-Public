@@ -166,6 +166,8 @@ func update_visuals() -> void:
 				scroll_scale = 0.5
 			if scroll_scale != -1:
 				i.scroll_scale.x = scroll_scale
+		if Settings.file.visuals.parallax_style == 0:
+			$FGLayer.scroll_scale.x = 1
 	$LiquidLayer.visible = liquid_layer > 0
 	$LiquidLayer/Lava.visible = liquid_layer == 2
 	$LiquidLayer/Water.visible = liquid_layer == 1

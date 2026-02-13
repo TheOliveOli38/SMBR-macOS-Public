@@ -197,8 +197,8 @@
 [ext_resource type="JSON" path="res://Assets/Sprites/Tilesets/LockedDoors.json" id="205_gsewy"]
 [ext_resource type="PackedScene" uid="uid://bdctqn5p6wxna" path="res://Scenes/Prefabs/UI/ThemeSelect.tscn" id="206_dsu6a"]
 [ext_resource type="JSON" path="res://Assets/Sprites/Items/BlueCoin.json" id="206_ofliq"]
-[ext_resource type="Texture2D" uid="uid://bwqwdrxx2t2tb" path="res://Assets/Sprites/Editor/Warper.png" id="207_7a43i"]
 [ext_resource type="JSON" path="res://Assets/Sprites/Tilesets/PDoors.json" id="207_sucb6"]
+[ext_resource type="Texture2D" uid="uid://ds7hexn5nb4vt" path="res://Assets/Sprites/Editor/Gizmos/Warper.png" id="208_606p5"]
 [ext_resource type="Texture2D" uid="uid://ejdm7k30661p" path="res://Assets/Sprites/Editor/SecondCamera.png" id="208_ji0c6"]
 [ext_resource type="JSON" path="res://Assets/Sprites/Items/Hachisuke.json" id="211_fe6cg"]
 [ext_resource type="PackedScene" uid="uid://k4bgruingvi0" path="res://Scenes/Prefabs/UI/EditorGuide.tscn" id="211_numt2"]
@@ -797,7 +797,6 @@ offset_bottom = 512.0
 mouse_filter = 2
 texture = ExtResource("2_8q7yr")
 stretch_mode = 1
-metadata/_edit_use_anchors_ = true
 
 [node name="ChunkGrid" type="Parallax2D" parent="Grid" unique_id=1780023524]
 unique_name_in_owner = true
@@ -1861,7 +1860,7 @@ tile_coords = Vector2i(4, 10)
 layout_mode = 0
 offset_right = 16.0
 offset_bottom = 16.0
-tile_name = "TILE_WALLBASE"
+tile_name = "TILE_WALL_BASE"
 icon_texture = ExtResource("10_vhlvp")
 icon_region_override = Rect2(80, 160, 16, 16)
 tile_coords = Vector2i(5, 10)
@@ -3572,7 +3571,7 @@ metadata/cannon_ammo = false
 layout_mode = 0
 offset_right = 16.0
 offset_bottom = 16.0
-tile_name = "ENEMY_HOMING_BULLET"
+tile_name = "ENEMY_HOMING_BILL"
 type = 1
 icon_texture = ExtResource("77_da0p4")
 icon_region_override = Rect2(0, 0, 16, 16)
@@ -6321,7 +6320,7 @@ layout_mode = 2
 tile_name = "GIZMO_WARPER"
 tile_desc = "Will transition to a different room, when powered. Use matching channels on other Room Warpers, to define positions upon warping."
 type = 1
-icon_texture = ExtResource("207_7a43i")
+icon_texture = ExtResource("208_606p5")
 icon_region_override = Rect2(0, 0, 16, 16)
 secondary_icon_region_override = Rect2(0, 0, 16, 16)
 entity_id = "DU"
