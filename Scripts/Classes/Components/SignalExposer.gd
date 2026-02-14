@@ -53,6 +53,8 @@ const WIRE_COLOURS := [
 
 var no_moving = null
 
+var saved_offset := Vector2.ZERO
+
 func _ready() -> void:
 	add_child(recursive_check)
 	if get_process_delta_time() > 0:
@@ -68,9 +70,13 @@ func _ready() -> void:
 		owner.remove_meta("save_string")
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	show_behind_parent = true
-	var pos_save = global_position
-	top_level = true
-	global_position = pos_save
+	if top_level == false:
+		var pos_save = global_position
+		saved_offset = position
+		top_level = true
+		global_position = pos_save
+	else:
+		global_position = owner.position + saved_offset
 	call_deferred("connect_pre_existing_signals")
 	queue_redraw()
 	if Global.level_editor != null:
