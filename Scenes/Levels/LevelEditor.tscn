@@ -7102,10 +7102,6 @@ wait_time = 0.25
 [node name="PlayerTrail" type="Node2D" parent="." unique_id=2144528200]
 visible = false
 
-[node name="Timer" type="Timer" parent="." unique_id=1206061399]
-wait_time = 600.0
-autostart = true
-
 [connection signal="connection_node_found" from="." to="CanvasLayer/TileModifierMenu" method="connect_signal"]
 [connection signal="open_scene_ref_tile_menu" from="CanvasLayer/TileModifierMenu" to="." method="open_tile_selection_menu_scene_ref"]
 [connection signal="mouse_entered" from="CanvasLayer/Tools" to="." method="on_mouse_entered"]
@@ -7220,4 +7216,3 @@ autostart = true
 [connection signal="pressed" from="Info/SaveBlueprint/VBoxContainer/HBoxContainer/Button" to="." method="save_blueprint"]
 [connection signal="pressed" from="Info/SaveBlueprint/VBoxContainer/HBoxContainer/Button" to="Info/SaveBlueprint" method="hide"]
 [connection signal="pressed" from="Info/SaveBlueprint/VBoxContainer/HBoxContainer/Cancel" to="Info/SaveBlueprint" method="hide"]
-[connection signal="timeout" from="Timer" to="." method="save_reminder"]
