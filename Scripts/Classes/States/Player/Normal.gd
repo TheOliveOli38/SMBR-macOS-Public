@@ -299,11 +299,11 @@ func get_animation_name() -> String:
 		if on_floor:
 			if player.skidding:
 				return "SkidAttack"
+			if player.in_water:
+				return "SwimAttack"
+			if has_flight:
+				return "FlyAttack"
 			if moving:
-				if player.in_water:
-					return "SwimAttack"
-				if has_flight:
-					return "FlyAttack"
 				return "RunAttack" if running else "WalkAttack"
 			return "IdleAttack"
 		else:
