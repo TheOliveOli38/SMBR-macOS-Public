@@ -16,6 +16,9 @@ var character_sprite_jsons := [
 	"res://Assets/Sprites/Players/Toadette/Small.json"
 ]
 
+const PLAYER_SCENE = "res://Scenes/Prefabs/Entities/Player.tscn"
+
+
 func _process(_delta: float) -> void:
 	if active:
 		handle_input()
@@ -48,6 +51,13 @@ func get_custom_characters() -> void:
 		var char_info_path = char_path.path_join("CharacterInfo.json")
 		if FileAccess.file_exists(char_info_path):
 			var json = JSON.parse_string(FileAccess.open(char_path.path_join("CharacterInfo.json"), FileAccess.READ).get_as_text())
+			if json == null:
+				continue
+			if json.has("physics"):
+				if json.physics.has("PHYSICS_PARAMETERS") == false:
+					json = CustomCharacterUpdater.update_json(json)
+					Global.log_comment("Updated CharacterInfo for: " + i)
+					FileAccess.open(char_path.path_join("CharacterInfo.json"), FileAccess.WRITE).store_string((JSON.stringify(json, "\t", false)))
 			Player.CHARACTERS.append(i)
 			Player.CHARACTER_NAMES.append(json.name)
 			
@@ -70,6 +80,7 @@ func get_custom_characters() -> void:
 				AudioManager.character_sfx_map[i] = JSON.parse_string(FileAccess.open(char_path.path_join("SFX.json"), FileAccess.READ).get_as_text())
 			else:
 				AudioManager.character_sfx_map[i] = {}
+
 
 func open() -> void:
 	get_custom_characters()

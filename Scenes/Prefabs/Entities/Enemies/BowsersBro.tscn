@@ -1,16 +1,16 @@
-[gd_scene load_steps=3 format=3 uid="uid://bjysym6bhxljv"]
+[gd_scene format=3 uid="uid://bjysym6bhxljv"]
 
 [ext_resource type="PackedScene" uid="uid://pfhvflypjq6y" path="res://Scenes/Prefabs/Entities/Enemies/TrueBowser.tscn" id="1_qcxx5"]
 [ext_resource type="JSON" path="res://Assets/Sprites/Enemies/BowsersBro.json" id="2_qcxx5"]
 
-[node name="BowsersBro" instance=ExtResource("1_qcxx5")]
+[node name="BowsersBro" unique_id=1453527754 instance=ExtResource("1_qcxx5")]
 music_enabled = false
 
-[node name="ResourceSetterNew" parent="SpriteScaleJoint/Sprite" index="2"]
+[node name="ResourceSetterNew" parent="SpriteScaleJoint/Sprite" parent_id_path=PackedInt32Array(756073436) index="2" unique_id=555266942]
 resource_json = ExtResource("2_qcxx5")
 
-[node name="ResourceSetterNew" parent="SpriteScaleJoint/DeathSprite" index="0"]
+[node name="ResourceSetterNew" parent="SpriteScaleJoint/DeathSprite" parent_id_path=PackedInt32Array(1311530935) index="0" unique_id=381174695]
 resource_json = ExtResource("2_qcxx5")
 
-[node name="GibSpawner" parent="." index="8" node_paths=PackedStringArray("visuals")]
+[node name="GibSpawner" parent="." index="8" unique_id=383912089 node_paths=PackedStringArray("visuals")]
 visuals = NodePath("../SpriteScaleJoint/DeathSprite")

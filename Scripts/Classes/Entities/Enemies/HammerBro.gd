@@ -21,7 +21,7 @@ func _process(delta: float) -> void:
 	target_player = get_tree().get_first_node_in_group("Players")
 	direction = sign(target_player.global_position.x - global_position.x)
 
-	$MovementJoint/Sprite.scale.x = -direction
+	$MovementJoint/Sprite.scale.x = direction
 	if $TrackJoint.is_attached: $MovementAnimations.play("RESET")
 
 func _physics_process(delta: float) -> void:
@@ -78,7 +78,10 @@ func throw_hammer() -> void:
 func spawn_hammer() -> void:
 	var node = HAMMER.instantiate()
 	node.global_position = $MovementJoint/Sprite/Hammer.global_position
+	node.velocity.y = -200
 	node.direction = direction
+	if Settings.file.audio.extra_sfx == 1:
+		AudioManager.play_sfx("hammer_throw", global_position)
 	if $TrackJoint.is_attached:
 		get_parent().owner.add_sibling(node)
 	else:

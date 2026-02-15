@@ -5,10 +5,22 @@ extends Control
 
 var selectors: Array[Control] = []
 
+var duped_selectors: Array[Control] = []
+
+var expanded := false
+
 func _ready() -> void:
 	for i in get_children():
 		if i is EditorTileSelector:
 			selectors.append(i)
+			duped_selectors.append(i.duplicate())
+	add_expanded()
+
+func add_expanded() -> void:
+	return
+	for i in duped_selectors:
+		add_sibling(i)
+		i.hide()
 
 func _process(_delta: float) -> void:
 	handle_inputs()
