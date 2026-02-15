@@ -25,7 +25,8 @@ var file := {
 	},
 	"game": {
 		"campaign": "SMB1",
-		"lang": "en"
+		"lang": "en",
+		"editor_seen_guide": false,
 	},
 	"keyboard":
 	{
@@ -84,7 +85,8 @@ var file := {
 		"extra_checkpoints": 0,
 		"back_scroll": 0,
 		"time_limit": 1,
-		"lakitu_style": 0
+		"lakitu_style": 0,
+		"physics_style": 1
 	}
 }
 
@@ -104,9 +106,15 @@ func update_window_size() -> void:
 
 func save_settings() -> void:
 	var cfg_file = ConfigFile.new()
-	for section in file.keys():
-		for key in file[section].keys():
-			cfg_file.set_value(section, key, file[section][key])
+	var file_to_save = file.duplicate_deep()
+	var idx := 0
+	for i in file_to_save.visuals.resource_packs:
+		if i == Global.custom_pack:
+			file_to_save.visuals.resource_packs.remove_at(idx)
+		idx += 1
+	for section in file_to_save.keys():
+		for key in file_to_save[section].keys():
+			cfg_file.set_value(section, key, file_to_save[section][key])
 	cfg_file.set_value("game", "seen_disclaimer", true)
 	cfg_file.set_value("game", "campaign", Global.current_campaign)
 	cfg_file.save(SETTINGS_DIR)

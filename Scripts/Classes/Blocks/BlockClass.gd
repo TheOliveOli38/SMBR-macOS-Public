@@ -23,8 +23,10 @@ const NO_SFX_ITEMS := ["res://Scenes/Prefabs/Entities/Items/SpinningRedCoin.tscn
 
 @export var start_z := -1
 signal item_changed
+signal block_hit
 signal block_emptied
 signal block_destroyed
+
 
 func _enter_tree() -> void:
 	z_index = start_z
@@ -36,16 +38,20 @@ func _enter_tree() -> void:
 func dispense_item() -> void:
 	if can_hit == false:
 		return
+	block_hit.emit()
 	can_hit = false
 	await get_tree().create_timer(0.1, false).timeout
 	DiscoLevel.combo_meter += combo_meter_amount
 	var item_to_dispense = player_mushroom_check(get_tree().get_first_node_in_group("Players"))
 	var node = item_to_dispense.instantiate()
+	node.set_meta("block_item", true)
+	node.set_meta("no_persist", true)
 	if node is PowerUpItem or node.has_meta("is_item"):
 		for i in get_tree().get_nodes_in_group("Players"):
-			node.position = position + Vector2(0, -1)
-			node.hide()
 			add_sibling(node)
+			node.global_position = global_position - Vector2(0, 1)
+			node.hide()
+			node.reset_physics_interpolation()
 			if node is PowerUpItem:
 				if Global.connected_players > 1:
 					AudioManager.play_sfx("item_appear", global_position)
@@ -61,6 +67,7 @@ func dispense_item() -> void:
 		if get_parent().get_parent() is TrackRider:
 			parent = get_parent().get_parent().get_parent()
 		parent.add_child(node)
+		node.reset_physics_interpolation()
 		parent.move_child(node, get_index() - 1)
 		print("FUCK: " + str(item.resource_path))
 		if NO_SFX_ITEMS.has(item.resource_path) == false:
@@ -73,6 +80,9 @@ func dispense_item() -> void:
 			item = load("res://Scenes/Prefabs/Entities/Items/SpinningRedCoin.tscn")
 	if item_amount <= 0:
 		spawn_empty_block()
+
+func hit_block() -> void:
+	shell_block_hit.emit(null)
 
 func player_mushroom_check(player: Player = null) -> PackedScene:
 	if player.power_state.hitbox_size == "Small" and mushroom_if_small:

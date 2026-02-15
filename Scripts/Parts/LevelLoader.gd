@@ -66,7 +66,7 @@ func add_entities(chunk := "", chunk_id := 0, layer := 0) -> void:
 		var entity_tile_position = decode_tile_position_from_chars(entity_chunk_position[0], entity_chunk_position[1], chunk_id)
 		var entity_node: Node = null
 		if entity_map.has(entity_id) == false:
-			Global.log_error("MISSING ENTITY ID!!!! JOE FORGOT TO UPDATE THE MAP AGAIN :(")
+			print("ID: ", entity_id)
 			continue
 		if entity_map[entity_id][0] != "res://Scenes/Prefabs/Entities/Player.tscn":
 			entity_node = load(entity_map[entity_id][0]).instantiate()
@@ -82,6 +82,7 @@ func add_entities(chunk := "", chunk_id := 0, layer := 0) -> void:
 		entity_node.set_meta("tile_offset", Vector2(int(offset[0]), int(offset[1])))
 		if entity_node.has_node("EditorPropertyExposer"):
 			entity_node.get_node("EditorPropertyExposer").apply_string(entity)
+
 
 func reset_player(player: Player) -> void: ## Function literally here to just reset the player back to default starting, if loading into a level file, that hasnt been written yet (pipes)
 	player.show()
@@ -126,7 +127,7 @@ func apply_level_data(data := "") -> void:
 		%HeightLimit.value = values[5]
 		%TimeLimit.value = values[6]
 		%SubLevelID.selected = editor.sub_level_id
-	ResourceSetterNew.cache.clear()
+	ResourceSetterNew.clear_cache()
 	Global.level_theme_changed.emit()
 
 func apply_bg_data(data := "") -> void:

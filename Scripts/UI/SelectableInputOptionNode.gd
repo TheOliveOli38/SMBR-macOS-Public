@@ -51,10 +51,10 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	if selected:
 		handle_inputs()
+	$Title.text = tr(title) + ":"
 	$Cursor.modulate.a = int(selected)
 
 func update_value() -> void:
-	$Title.text = tr(title) + ":"
 	if awaiting_input:
 		$Value.text = "Press Any..."
 	else:

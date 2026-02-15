@@ -51,5 +51,5 @@ func play_sfx_preview() -> void:
 
 
 func on_screen_entered() -> void:
-	if play_on_load and LevelEditor.playing_level:
+	if play_on_load and not Global.level_editor_is_editing():
 		play_sfx_preview()

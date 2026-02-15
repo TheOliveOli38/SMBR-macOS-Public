@@ -5,11 +5,10 @@ var moving := false
 
 var moving_time := 0.0
 
-const MOVE_SPEED := 192
-const AIR_MOVE_SPEED := 64
+const MOVE_SPEED := 160
+const AIR_MOVE_SPEED := 80
 
 var combo := 0
-@export var colour := "Green"
 var flipped := false
 
 

@@ -1,3 +1,4 @@
+class_name Podoboo
 extends Node2D
 
 var velocity := 5.0
@@ -12,11 +13,17 @@ signal killed
 
 const BASE_LINE := 48
 
-func _ready() -> void:
-	if Global.current_game_mode != Global.GameMode.LEVEL_EDITOR and global_position.y > -32:
-		Global.log_warning("Podoboo is too low! Forgot to update!")
-
 func _physics_process(delta: float) -> void:
+	var old_position = global_position
+	if $TrackJoint.is_attached == false:
+		handle_movement(delta)
+		$Sprite.flip_v = velocity > 0
+	else:
+		await get_tree().physics_frame
+		$Sprite.flip_v = false
+		$Sprite.rotation = (old_position - global_position).normalized().angle() - deg_to_rad(90)
+
+func handle_movement(delta: float) -> void:
 	velocity += (5 / delta) * delta
 	velocity = clamp(velocity, -INF, 280)
 	global_position.y += velocity * delta
@@ -24,8 +31,6 @@ func _physics_process(delta: float) -> void:
 	if global_position.y >= BASE_LINE and can_jump:
 		can_jump = false
 		do_jump()
-		
-	$Sprite.flip_v = velocity > 0
 
 func do_jump() -> void:
 	if jump_delay > 0:
@@ -38,20 +43,19 @@ func do_jump() -> void:
 	await get_tree().physics_frame
 	can_jump = true
 
-func damage_player(player: Player) -> void:
-	player.damage()
-
 func calculate_jump_height() -> float:
 	global_position.y = BASE_LINE
 	return -sqrt(2 * 5 * abs(starting_y - (global_position.y))) * 8
 	
+
+func damage_player(player: Player, type: String = "Normal") -> void:
+	player.damage(type if type != "Normal" else "")
+
 const SMOKE_PARTICLE = preload("uid://d08nv4qtfouv1")
 
 func flag_die() -> void:
 	if $VisibleOnScreenEnabler2D.is_on_screen():
 		die()
-	else:
-		queue_free()
 
 func die() -> void:
 	killed.emit()

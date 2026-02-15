@@ -571,22 +571,12 @@
 		},
 		"Pipeland": {
 			"Day": {
-				"source": "PipeLandDeco.png",
-				"rect": [
-					0.0,
-					0.0,
-					80.0,
-					32.0
-				]
+				"SMB1": {"source": "PipeLandDeco.png","rect": [0.0,0.0,80.0,32.0]},
+				"SMBLL": {"source": "PipeLandDecoLL.png","rect": [0.0,0.0,80.0,32.0]}
 			},
 			"Night": {
-				"source": "PipeLandDeco.png",
-				"rect": [
-					0.0,
-					32.0,
-					80.0,
-					32.0
-				]
+				"SMB1": {"source": "PipeLandDeco.png","rect": [0.0,32,80.0,32.0]},
+				"SMBLL": {"source": "PipeLandDecoLL.png","rect": [0.0,32,80.0,32.0]}
 			}
 		},
 		"Space": {

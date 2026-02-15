@@ -41,7 +41,7 @@ const SMB1_ICONS := [
 		["night", [0,0]],["night", [0,2]],["night", [1,1]],["night", [1,4]],
 	],
 	[
-		["night", [0,3]],["night", [0,4]],["night", [1,2]],["night", [1,5]],
+		["night", [0,3]],["night", [3,1]],["night", [1,2]],["night", [1,5]],
 	],
 	[
 		["night", [0,1]],["night", [0,3]],["night", [2,0]],["night", [1,6]],
@@ -153,6 +153,8 @@ const NUMBER_Y := [
 	"Volcano"
 ]
 
+
+
 func _ready() -> void:
 	for i in %SlotContainer.get_children():
 		i.focus_entered.connect(slot_selected.bind(i.get_index()))
@@ -161,7 +163,8 @@ func _ready() -> void:
 
 func start_particle(particle: GPUParticles2D) -> void:
 	await get_tree().create_timer(randf_range(0, 5)).timeout
-	particle.emitting = true
+	if is_instance_valid(particle):
+		particle.emitting = true
 
 func _process(_delta: float) -> void:
 	if active:
@@ -215,11 +218,12 @@ func setup_visuals() -> void:
 		i.get_node("Icon").region_rect = Rect2(clamp_icon[0], clamp_icon[1], icon_size[0], icon_size[1])
 		i.get_node("Icon/Number").region_rect.position.y = clamp(NUMBER_Y.find(level_theme) * 12, 0, 9999)
 		i.get_node("Icon/Number").region_rect.position.x = (idx) * 12
-		i.get_node("Icon/RankMedal").visible = Global.current_campaign == "SMBANN"
 		i.get_node("ChallengeModeBits").visible = Global.current_game_mode == Global.GameMode.CHALLENGE
+		i.get_node("Icon/RankMedal").hide()
 		if Global.current_game_mode == Global.GameMode.CHALLENGE:
 			setup_challenge_mode_bits(i.get_node("ChallengeModeBits"), idx + 1)
-		if Global.current_campaign == "SMBANN":
+		if has_disco_stuff:
+			i.get_node("Icon/RankMedal").show()
 			i.get_node("Icon/RankMedal").frame = "ZFDCBASP".find(DiscoLevel.level_ranks[SaveManager.get_level_idx(Global.world_num, idx + 1)])
 			i.get_node("Icon/RankMedal/SRankParticles").visible = i.get_node("Icon/RankMedal").frame == 6
 			i.get_node("Icon/RankMedal/PRankParticles").visible = i.get_node("Icon/RankMedal").frame == 7

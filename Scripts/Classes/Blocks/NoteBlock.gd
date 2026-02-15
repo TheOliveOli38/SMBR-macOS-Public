@@ -43,16 +43,18 @@ func bounce_down(body: PhysicsBody2D) -> void:
 
 func bounce_bodies() -> void:
 	for i in bodies:
+		if is_instance_valid(i) == false:
+			continue
 		if i is Player:
 			i.spring_bouncing = false
 			if Global.player_action_pressed("jump", i.player_id):
 				i.jump_cancelled = false
 				i.has_jumped = true
 				i.velocity.y = -350
-				i.gravity = i.JUMP_GRAVITY
+				i.gravity = i.calculate_speed_param("JUMP_GRAVITY")
 			else:
 				i.velocity.y = -300
-				i.gravity = i.FALL_GRAVITY
+				i.gravity = i.calculate_speed_param("FALL_GRAVITY", i.velocity_x_jump_stored)
 		else:
 			i.velocity.y = -200
 		if i is Thwomp:
@@ -68,3 +70,12 @@ func dispense_item(direction := -1) -> void:
 	node.set("velocity", Vector2(0, (100 if direction == 1 else -150)))
 	add_sibling(node)
 	AudioManager.play_sfx("item_appear", global_position)
+
+const SMOKE_PARTICLE = preload("uid://d08nv4qtfouv1")
+
+func summon_puff() -> void:
+	$Particles.reparent(get_parent())
+	var node = SMOKE_PARTICLE.instantiate()
+	node.global_position = global_position + Vector2(0, 8)
+	add_sibling(node)
+	queue_free()

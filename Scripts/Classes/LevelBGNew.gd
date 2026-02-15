@@ -66,10 +66,6 @@ var sky_scroll_speed := -4.0
 
 const disco_sfx_threshold := [0.05, 0.5, 0.8]
 
-var primary_layer_size = Vector2(512, 512)
-var secondary_layer_size = Vector2(512, 512)
-var sky_layer_size = Vector2(512, 512)
-
 func set_second_y_offset(value := 0.0) -> void:
 	second_layer_offset.y = -value
 
@@ -94,12 +90,16 @@ func _ready() -> void:
 		Global.level_theme_changed.connect(update_visuals)
 		Global.level_time_changed.connect(update_visuals)
 		update_visuals()
+	handle_disco_visuals(1)
 
 func _physics_process(delta: float) -> void:
 	handle_disco_visuals(delta)
 	if Engine.is_editor_hint() == false:
 		if Global.current_level != null:
-			$PrimaryLayer/TopEdge.position.y = Global.current_level.vertical_height - $PrimaryLayer/TopEdge.size.y
+			var frame = $TopEdge/Sprite.sprite_frames.get_frame_texture($TopEdge/Sprite.animation, 0)
+			$TopEdge/Sprite.position.y = Global.current_level.vertical_height - 32
+			$TopEdge.repeat_size.x = frame.get_width()
+			$TopEdge.repeat_times = (ceil(get_viewport_rect().size.x / $TopEdge.repeat_size.x) + 1) * 2
 		var repeat_times = (ceil(get_viewport_rect().size.x / 512) + 1) * 2
 		for i in [$SkyLayer, $PrimaryLayer, $DiscoBits/Rainbow, $DiscoBits/SpotLights, $SecondaryLayer, $OverlayLayer/CloudLayer, $OverlayLayer/Particles, $LiquidLayer, $Parallax2D, $FGLayer]:
 			i.repeat_times = repeat_times
@@ -166,6 +166,8 @@ func update_visuals() -> void:
 				scroll_scale = 0.5
 			if scroll_scale != -1:
 				i.scroll_scale.x = scroll_scale
+		if Settings.file.visuals.parallax_style == 0:
+			$FGLayer.scroll_scale.x = 1
 	$LiquidLayer.visible = liquid_layer > 0
 	$LiquidLayer/Lava.visible = liquid_layer == 2
 	$LiquidLayer/Water.visible = liquid_layer == 1
@@ -191,9 +193,18 @@ func update_visuals() -> void:
 	$SecondaryLayer/Mushrooms.get_node("Tint").visible = can_mushroom_tint
 	$SecondaryLayer/Trees.get_node("Tint").visible = can_tree_tint
 	
-	$PrimaryLayer.repeat_size = primary_layer_size
-	$SecondaryLayer.repeat_size = secondary_layer_size
-	$SkyLayer.repeat_size = sky_layer_size
+	if primary_layer != 3:
+		var current_primary_layer: AnimatedSprite2D = [$PrimaryLayer/Hills, $PrimaryLayer/Bush, null][primary_layer]
+		if current_primary_layer != null:
+			$PrimaryLayer.repeat_size = current_primary_layer.sprite_frames.get_frame_texture(current_primary_layer.animation, current_primary_layer.frame).get_size()
+			$PrimaryLayer.repeat_size.y = 0
+
+	var current_secondary_layer: AnimatedSprite2D = [null, $SecondaryLayer/Trees, $SecondaryLayer/Mushrooms][second_layer]
+	if current_secondary_layer != null:
+		$SecondaryLayer.repeat_size = current_secondary_layer.sprite_frames.get_frame_texture(current_secondary_layer.animation, current_secondary_layer.frame).get_size()
+		$SecondaryLayer.repeat_size.y = 0
+	
+	$SkyLayer.repeat_size = $SkyLayer/Sky.sprite_frames.get_frame_texture($SkyLayer/Sky.animation, $SkyLayer/Sky.frame).get_size()
 	
 	var tree_tint_amount = inverse_lerp(1, 0, parallax_amount)
 	var mushroom_tint_amount = tree_tint_amount
@@ -207,4 +218,4 @@ func update_visuals() -> void:
 	
 	$PrimaryLayer.z_index = int(not bool(second_layer_order))
 	$OverlayLayer/CloudLayer.visible = overlay_clouds and Settings.file.visuals.bg_particles == 1
-	$PrimaryLayer/TopEdge.visible = ["Underground", "Castle", "GhostHouse", "Bonus"].has(Global.level_theme) and primary_layer == 0 and top_edge_enabled
+	$TopEdge.visible = ["Underground", "Castle", "GhostHouse", "Bonus"].has(Global.level_theme) and primary_layer == 0 and top_edge_enabled
