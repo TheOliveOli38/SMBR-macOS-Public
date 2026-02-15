@@ -10,8 +10,8 @@ const PIPE_CUTSCENE_LEVELS := {
 
 const PIPE_CUTSCENE_OVERRIDE := {
 	"SMB1": {[2, 2]: "res://Scenes/Levels/PipeCutsceneWater.tscn", [7, 2]: "res://Scenes/Levels/PipeCutsceneWater.tscn"},
-	"SMBLL": {[3, 2]: "res://Scenes/Levels/PipeCutsceneWater.tscn", [11, 2]: "res://Scenes/Levels/PipeCutsceneWater.tscn"},
-	"SMBS": {[3, 1]: "res://Scenes/Levels/SMBS/SPCastlePipeCutscene.tscn", [7, 2]: "res://Scenes/Levels/PipeCutsceneWater.tscn"},
+	"SMBLL": {[3, 2]: "res://Scenes/Levels/PipeCutsceneWater.tscn", [6, 2]: "res://Scenes/Levels/PipeCutsceneWater.tscn", [11, 2]: "res://Scenes/Levels/PipeCutsceneWater.tscn"},
+	"SMBS": {[2, 2]: "res://Scenes/Levels/PipeCutsceneWater.tscn", [3, 1]: "res://Scenes/Levels/SMBS/SPCastlePipeCutscene.tscn", [7, 2]: "res://Scenes/Levels/PipeCutsceneWater.tscn"},
 	"SMBANN": {[2, 2]: "res://Scenes/Levels/PipeCutsceneWater.tscn", [7, 2]: "res://Scenes/Levels/PipeCutsceneWater.tscn"},
 }
 
@@ -156,7 +156,7 @@ func transition() -> void:
 	if Global.current_game_mode == Global.GameMode.CUSTOM_LEVEL or Global.in_custom_campaign():
 		Global.transition_to_scene(NewLevelBuilder.sub_levels[Checkpoint.sublevel_id])
 	else:
-		if PIPE_CUTSCENE_LEVELS[Global.current_campaign].has([Global.world_num, Global.level_num]) and not PipeCutscene.seen_cutscene and [Global.GameMode.BOO_RACE, Global.GameMode.MARATHON].has(Global.current_game_mode) == false:
+		if PIPE_CUTSCENE_LEVELS[Global.current_campaign].has([Global.world_num, Global.level_num]) and not PipeCutscene.seen_cutscene and [Global.GameMode.BOO_RACE, Global.GameMode.MARATHON_PRACTICE].has(Global.current_game_mode) == false:
 			if PIPE_CUTSCENE_OVERRIDE[Global.current_campaign].has([Global.world_num, Global.level_num]):
 				Global.transition_to_scene(PIPE_CUTSCENE_OVERRIDE[Global.current_campaign][[Global.world_num, Global.level_num]])
 			else:

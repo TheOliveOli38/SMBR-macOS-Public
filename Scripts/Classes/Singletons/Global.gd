@@ -304,7 +304,7 @@ func handle_p_switch(delta: float) -> void:
 			p_switch_toggle.emit()
 			AudioManager.stop_music_override(AudioManager.MUSIC_OVERRIDES.PSWITCH)
 
-func get_build_time() -> void:
+func get_build_time() -> String:
 	# SkyanUltra: Slightly expanded function to make it easier to get snapshot build numbers.
 	var date = Time.get_date_dict_from_system()
 	var year_last_two = date.year % 100
@@ -324,6 +324,7 @@ func get_build_time() -> void:
 	var week = int(days_since_year_start / 7) + 1
 	var build_date = "%02dw%02d" % [year_last_two, week]
 	print_rich("[b][color=cyan]Partial snapshot build ID:[/color][/b] ", build_date)
+	return build_date
 
 func get_version_number() -> int:
 	var number = (FileAccess.open("res://version.txt", FileAccess.READ).get_as_text())

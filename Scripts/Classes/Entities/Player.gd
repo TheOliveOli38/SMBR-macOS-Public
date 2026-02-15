@@ -103,6 +103,7 @@ extends CharacterBody2D
 	},
 	"Big": {},
 	"Fire": {},
+	"Superball": {}
 }
 ## Determines the physics properties of the character while "Classic Physics" are enabled.
 @export var CLASSIC_PARAMETERS: Dictionary = {
@@ -205,6 +206,7 @@ extends CharacterBody2D
 	},
 	"Big": {},
 	"Fire": {},
+	"Superball": {}
 }
 ## Determines parameters typically involved with power-up behavior, mainly projectiles fired by the player.
 @export var POWER_PARAMETERS: Dictionary = {
@@ -256,7 +258,7 @@ extends CharacterBody2D
 	"Superball": {
 		"PROJ_TYPE": "res://Scenes/Prefabs/Entities/Items/SuperballProjectile",
 		"PROJ_PARTICLE": "res://Scenes/Prefabs/Particles/SmokeParticle",
-		"PROJ_SFX_THROW": "fireball",
+		"PROJ_SFX_THROW": "superball",
 		"PROJ_GRAVITY": 0.0, 
 		"PROJ_LIFETIME": 10.0,
 		"PROJ_WALL_BOUNCE": true,
@@ -287,10 +289,7 @@ extends CharacterBody2D
 		"DOOR_POSE_OFFSET": 0.0,           # The offset of where the player performs their PoseDoor animation, if applicable.
 		"TOAD_POSE_OFFSET": -12.0,         # The offset of where the player performs their PoseToad animation, if applicable.
 		"PEACH_POSE_OFFSET": -12.0,        # The offset of where the player performs their PosePeach animation, if applicable.
-	},
-	"Small": {},
-	"Big": {},
-	"Fire": {},
+	}
 }
 ## Determines values involving death, unique separated by damage types rather than power states.
 @export var DEATH_PARAMETERS: Dictionary = {
@@ -302,8 +301,7 @@ extends CharacterBody2D
 		"DEATH_JUMP_SPEED": 300.0,         # The strength of the player's "jump" during the death animation, measured in px/sec
 		"DEATH_FALL_GRAVITY": 11.0,        # The player's gravity while falling during death, measured in px/frame
 		"DEATH_MAX_FALL_SPEED": 280.0,     # The player's maximum fall speed during death, measured in px/sec
-	},
-	"Fire": {},
+	}
 }
 ## Determines values involving purely cosmetic changes, including offsets for the wing and hammer sprites and configuration for various visual and audio effects.
 @export var COSMETIC_PARAMETERS: Dictionary = {
@@ -312,7 +310,7 @@ extends CharacterBody2D
 		"HAMMER_OFFSET": [0.0, -8.0],      # The visual offset of the hammer which appears with the Hammer power-up.
 		
 		"MOVE_ANIM_SPEED_DIV": 32,         # Determines the value used for division in the animation speed formula for walk/run animations. Lower is faster.
-		
+		"CHECKPOINT_ICON_HEIGHT": -40,
 		"RAINBOW_STAR_FX_SPEED": 15.0,     # Determines the speed of the rainbow effect under the effects of a star, measured in cycles/sec
 		"RAINBOW_STAR_SLOW_FX_SPEED": 7.5, # Determines the speed of the rainbow effect nearing the end of a star's duration, measured in cycles/sec
 		"RAINBOW_POWERUP_FX": true,        # Determines whether or not the player will play the rainbow effect when powering up.
@@ -333,11 +331,11 @@ extends CharacterBody2D
 		"JUMP_SFX": "small_jump",
 		"TRAMPOLINE_SFX": "small_trampoline",
 		"TRAMPOLINE_USED_SFX": "small_used_trampoline",
+		"CHECKPOINT_ICON_HEIGHT": -24,
 	},
 	"Big": {
 		"RAINBOW_POWERUP_FX": false,
-	},
-	"Fire": {},
+	}
 } 
 #endregion
 @export_group("")
@@ -999,7 +997,6 @@ func throw_projectile() -> void:
 	attacking = false
 
 func handle_power_up_states(delta) -> void:
-	$Checkpoint.position.y = -24 if power_state.hitbox_size == "Small" else -40
 	power_state.update(delta)
 
 func handle_collision_shapes() -> void:
@@ -1033,8 +1030,7 @@ func handle_step_collision() -> void:
 		var step_enabled = (not on_wall and (actual_velocity_y()) >= 0 and abs(velocity.x) > 5)
 		i.set_deferred("disabled", not step_enabled)
 		i.position.x = ((collision_size.x / 2)) * sign(i.position.x)
-		if physics_params("ROUNDED_FLOOR_COLLISION") == false:
-			i.position.x += 1 * sign(i.position.x)
+		i.position.x += 1 * sign(i.position.x)
 
 func handle_star(delta:float) -> void:
 	star_meter -= delta
@@ -1234,7 +1230,7 @@ func set_power_state_frame() -> void:
 		can_push_anim = frames.has_animation("Push")
 		can_spring_land_anim = frames.has_animation("SpringLand")
 		can_spring_fall_anim = frames.has_animation("SpringFall")
-
+	$Checkpoint.position.y = physics_params("CHECKPOINT_ICON_HEIGHT", COSMETIC_PARAMETERS)
 func get_power_up(power_name := "", give_points := true) -> void:
 	if is_dead:
 		return

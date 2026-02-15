@@ -1,6 +1,7 @@
 # Super Mario Bros. Remastered - Update 1.1
 
 # Breaking Changes (*FOR CUSTOM CHARACTER / RESOURCE PACK MAKERS*)
+- Updated to Godot 4.6 Stable (This will break basically all GML mods, afaik, and theyll need to be manually updated. Sorry.)
 - Starting Castles now have their own unique json files, Meaning that any unique castle sprites you had for end castles wont be applied to them, they work identically to the end castles, so you can just copy paste them if needed.
 - Turn Blocks now have 2 unique animations, before they had none, and could only swap textures, (Idle, Turn)
 - Peach + Toad have 3 animations (Idle (before the cutscene), Await (while the players walking to them), Talk (while the dialogues showing)), instead of (Idle, Emote) for Toad only.
