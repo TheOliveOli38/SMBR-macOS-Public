@@ -14,7 +14,7 @@ signal level_time_changed
 
 const BASE64_CHARSET := "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/"
 
-const VERSION_CHECK_URL := "https://cdn.jsdelivr.net/gh/JHDev2006/Super-Mario-Bros.-Remastered-Public@main/version.txt"
+const VERSION_CHECK_URL := "https://cdn.jsdelivr.net/gh/TheOliveOli38/SMBR-macOS-Public@main/version.txt"
 @onready var screen_shaker: Node = $ScreenShaker
 
 var entity_gravity := 10.0
