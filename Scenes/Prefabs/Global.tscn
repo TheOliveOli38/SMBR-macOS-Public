@@ -448,6 +448,10 @@ text = "Comment"
 autowrap_mode = 1
 uppercase = true
 
+[node name="Panel" type="Panel" parent="CanvasLayer/VBoxContainer" unique_id=47806423]
+custom_minimum_size = Vector2(0, 10.66)
+layout_mode = 2
+
 [node name="PanelSetter" type="Node" parent="." unique_id=1039533656]
 script = SubResource("GDScript_30rl1")
 panel = ExtResource("16_l7dvb")
@@ -507,3 +511,4 @@ metadata/_custom_type_script = "uid://cbal8ms2oe1ik"
 [connection signal="finished" from="ScoreTallyEnd" to="." method="on_score_sfx_finished"]
 [connection signal="timeout" from="Timer" to="." method="refresh_discord_rpc"]
 [connection signal="timeout" from="Framerule" to="." method="emit_signal" binds= ["frame_rule"]]
+[connection signal="gui_input" from="CanvasLayer/VBoxContainer/Panel" to="." method="on_gui_input"]
