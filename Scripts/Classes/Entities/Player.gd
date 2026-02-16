@@ -218,9 +218,9 @@ extends CharacterBody2D
 		
 		"PROJ_TYPE": "",
 		"PROJ_PARTICLE": "",
-		# Determines what projectile/particle scene is used, starting from
-		# "res://Scenes/Prefabs/". Leaving this blank disables firing
-		# projectiles and displaying particles respectively.
+		# Determines what projectile/particle scene is used. Leaving
+		# this blank disables firing projectiles and displaying
+		# particles respectively.
 		"PROJ_PARTICLE_ON_CONTACT": false, # Defines if the particle will play when making contact without being destroyed.
 		"PROJ_SFX_THROW": "fireball",      # Defines the sound effect that plays when this projectile is fired.
 		"PROJ_SFX_COLLIDE": "bump",        # Defines the sound effect that plays when this projectile collides.
