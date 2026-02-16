@@ -454,8 +454,6 @@ func transition_to_scene(scene_path = "") -> void:
 	transitioning_scene = false
 	transition_finished.emit()
 
-
-
 func do_fake_transition(duration := 0.2) -> void:
 	if fade_transition:
 		$Transition/AnimationPlayer.play("FadeIn")
