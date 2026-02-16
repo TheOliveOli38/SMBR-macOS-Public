@@ -13,6 +13,7 @@
 [ext_resource type="Script" uid="uid://cqif1li7otvpl" path="res://Scripts/Parts/SpriteFramesToJsonConverter.gd" id="10_nptu4"]
 [ext_resource type="Script" uid="uid://cixtosud3mfaq" path="res://Scripts/Classes/Resources/CampaignResource.gd" id="13_30rl1"]
 [ext_resource type="PackedScene" uid="uid://btiev75x1wtvk" path="res://Scenes/Prefabs/Entities/PlayerGhost.tscn" id="14_6o310"]
+[ext_resource type="Theme" uid="uid://u8vjy2a2tfiv" path="res://Resources/UI/BorderlessPanel.tres" id="14_81m3w"]
 [ext_resource type="StyleBox" uid="uid://comkghpj0djcl" path="res://Resources/UI/Panel.tres" id="16_l7dvb"]
 [ext_resource type="Texture2D" uid="uid://bnv2ocqgws3p7" path="res://Assets/Sprites/UI/Panel.png" id="16_qalov"]
 [ext_resource type="Script" uid="uid://ctsjagoa5t33f" path="res://Scripts/Parts/FontUpdater.gd" id="18_1la0o"]
@@ -451,6 +452,9 @@ uppercase = true
 [node name="Panel" type="Panel" parent="CanvasLayer/VBoxContainer" unique_id=47806423]
 custom_minimum_size = Vector2(0, 10.66)
 layout_mode = 2
+mouse_filter = 1
+mouse_behavior_recursive = 2
+theme = ExtResource("14_81m3w")
 
 [node name="PanelSetter" type="Node" parent="." unique_id=1039533656]
 script = SubResource("GDScript_30rl1")
