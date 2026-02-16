@@ -44,7 +44,6 @@ script/source = "extends Label
 
 func _ready() -> void:
 	if Global.is_snapshot == true:
-		var temptext = Global.version_number
 		match Global.version_number.substr(12,1):
 			\"1\":
 				text = \"V\" + Global.version_number.erase(11,2) + \"a\"

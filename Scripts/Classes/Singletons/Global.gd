@@ -499,7 +499,7 @@ func get_server_version() -> void:
 	if is_snapshot == true:
 		VERSION_CHECK_URL = "https://github.com/TheOliveOli38/SMBR-macOS-Public/raw/refs/heads/main/version.txt"
 	elif is_snapshot == false:
-		VERSION_CHECK_URL = ""
+		VERSION_CHECK_URL = "https://github.com/yuriko-shimizu/Super-Mario-Bros.-Remastered-Public-Mac/raw/refs/heads/main/version.txt"
 	var http = HTTPRequest.new()
 	add_child(http)
 	http.request_completed.connect(version_got)
@@ -508,7 +508,6 @@ func get_server_version() -> void:
 func version_got(_result, response_code, _headers, body) -> void:
 	current_version = get_version_num_int(version_number)
 	if response_code == 200:
-		print(body.get_string_from_utf8())
 		server_version = int(get_version_num_int(body.get_string_from_utf8()))
 	else:
 		server_version = -2
