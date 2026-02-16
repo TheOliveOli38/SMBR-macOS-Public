@@ -3,6 +3,7 @@ This port is distributed as a Universal 2 binary, with support for both x86_64 I
 
 ## Compatible Macs (Vulkan renderer)
 On macOS 10.15 Catalina to macOS 12 Monterey, SMB1R makes use of the Vulkan rendering engine. While not as fast as native Metal rendering, it supports a much wider range of hardware.
+
 The following Macs are compatible with SMB1R: (only oldest compatible models listed)
 - MacBook (Early 2015)
 - MacBook Air (Mid 2012)
@@ -15,6 +16,7 @@ The following Macs are compatible with SMB1R: (only oldest compatible models lis
 
 ## Compatible Macs (Metal 3 renderer)
 On macOS 13 Ventura or later, SMB1R uses native Metal 3 rendering, allowing for much higher performance than Vulkan rendering on supported machines.
+
 The following Macs are compatible with Metal 3: (only oldest compatible models listed)
 - MacBook (2017)
 - MacBook Air (2018)
