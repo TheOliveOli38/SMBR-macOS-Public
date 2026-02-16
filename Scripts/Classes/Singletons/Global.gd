@@ -14,7 +14,7 @@ signal level_time_changed
 
 const BASE64_CHARSET := "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/"
 
-const VERSION_CHECK_URL := "https://cdn.jsdelivr.net/gh/TheOliveOli38/SMBR-macOS-Public@main/version.txt"
+var VERSION_CHECK_URL := ""
 @onready var screen_shaker: Node = $ScreenShaker
 
 var entity_gravity := 10.0
@@ -498,6 +498,10 @@ func on_score_sfx_finished() -> void:
 		$ScoreTally.play()
 
 func get_server_version() -> void:
+	if is_snapshot == true:
+		VERSION_CHECK_URL = "https://cdn.jsdelivr.net/gh/TheOliveOli38/SMBR-macOS-Public@main/version.txt"
+	elif is_snapshot == false:
+		VERSION_CHECK_URL = "https://cdn.jsdelivr.net/gh/TheOliveOli38/SMBR-macOS-Public@main/version.txt"
 	var http = HTTPRequest.new()
 	add_child(http)
 	http.request_completed.connect(version_got)

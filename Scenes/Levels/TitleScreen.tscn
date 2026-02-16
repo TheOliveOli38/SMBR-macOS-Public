@@ -43,9 +43,21 @@
 script/source = "extends Label
 
 func _ready() -> void:
-	text = \"V\" + Global.version_number
-	if Global.is_snapshot:
-		text += \" - \" + Global.get_build_time()
+	if Global.is_snapshot == true:
+		var temptext = Global.version_number
+		match Global.version_number.substr(12,1):
+			\"1\":
+				text = \"V\" + Global.version_number.erase(11,2) + \"a\"
+			\"2\":
+				text = \"V\" + Global.version_number.erase(11,2) + \"b\"
+			\"3\":
+				text = \"V\" + Global.version_number.erase(11,2) + \"c\"
+			\"4\":
+				text = \"V\" + Global.version_number.erase(11,2) + \"d\"
+			\"5\":
+				text = \"V\" + Global.version_number.erase(11,2) + \"e\"
+	else:
+		text = \"V\" + Global.version_number
 "
 
 [sub_resource type="GDScript" id="GDScript_wjo1g"]
