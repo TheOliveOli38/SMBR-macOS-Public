@@ -8,8 +8,7 @@
 	{
 		"default":
 		{
-			"source": "EndingCastleSprite.png",
-			"rect": [0.1, 0.1, 0.1, 0.1]
+			"source": "EndingFinalCastleSprite.png"
 		}
 	}
 }

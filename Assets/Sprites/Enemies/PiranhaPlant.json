@@ -60,6 +60,10 @@
 				]
 			}
 		},
+		"Underwater": {
+			"SMB1": {"source": "PiranhaPlant.png", "rect": [64, 0, 32, 24]},
+			"SMBANN": {"source": "DiscoPiranha.png", "rect": [64, 0, 32, 24]}
+		},
 		"Castle": {
 			"link": "Underground"
 		},

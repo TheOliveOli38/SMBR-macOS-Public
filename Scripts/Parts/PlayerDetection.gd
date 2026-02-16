@@ -18,3 +18,6 @@ func on_area_exited(area: Area2D) -> void:
 
 func is_player_in_area() -> bool:
 	return get_overlapping_areas().any(func(area: Area2D) -> bool: return area.owner is Player and area.name != "HammerHitbox")
+
+func damage_player(player: Player) -> void:
+	player.damage()

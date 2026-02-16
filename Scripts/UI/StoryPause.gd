@@ -57,6 +57,5 @@ func close() -> void:
 	selected_index = 0
 	hide()
 	closed.emit()
-	await get_tree().create_timer(0.1).timeout
 	Global.game_paused = false
 	get_tree().paused = false

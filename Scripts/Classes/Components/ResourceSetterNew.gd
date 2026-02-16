@@ -13,8 +13,11 @@ extends Node
 enum ResourceMode {SPRITE_FRAMES, TEXTURE, AUDIO, RAW, FONT}
 @export var use_cache := true
 
+@export var sync: Array[ResourceSetterNew] = []
+
 static var cache := {}
 static var property_cache := {}
+static var active_flags := []
 
 var current_json_path := ""
 
@@ -32,6 +35,8 @@ var current_resource_pack := ""
 
 @export var force_properties := {}
 var update_on_spawn := true
+
+var source_json := {}
 
 func _init() -> void:
 	set_process_mode(Node.PROCESS_MODE_ALWAYS)
@@ -55,6 +60,7 @@ func update_resource() -> void:
 		return
 	if state != [Global.level_theme, Global.theme_time, Global.current_room]:
 		cache.clear()
+		active_flags.clear()
 		property_cache.clear()
 	if node_to_affect != null:
 		var resource = get_resource(resource_json)
@@ -80,20 +86,29 @@ func get_resource(json_file: JSON) -> Resource:
 			current_resource_pack = i
 		resource_path = new_path
 	
-	var source_json = JSON.parse_string(FileAccess.open(resource_path, FileAccess.READ).get_as_text())
+	source_json = JSON.parse_string(FileAccess.open(resource_path, FileAccess.READ).get_as_text())
 	if source_json == null:
 		Global.log_error("Error parsing " + resource_path + "!")
 		return
 	var json = source_json.duplicate()
 	var source_resource_path = ""
-	if json.has("variations"):
-		json = get_variation_json(json.variations)
-		if json.has("source"):
-			if json.get("source") is String:
-				source_resource_path = json_file.resource_path.replace(json_file.resource_path.get_file(), json.source)
-		else:
-			Global.log_error("Error getting variations! " + resource_path)
-			return
+	var finished = false
+	while finished == false:
+		if json.has("variations"):
+			json = get_variation_json(json.variations)
+			sync_metadata()
+			if json.has("source"):
+				if json.get("source") is String:
+					source_resource_path = json_file.resource_path.replace(json_file.resource_path.get_file(), json.source)
+			else:
+				Global.log_error("Error getting variations! " + resource_path)
+				return
+			if json.has("flags"):
+				for i in json["flags"]:
+					active_flags.append(i)
+					json = get_variation_json(source_json)
+				finished = false
+		finished = true
 	for i in Settings.file.visuals.resource_packs:
 		source_resource_path = get_resource_pack_path(source_resource_path, i)
 	if json.has("rect"):
@@ -114,10 +129,10 @@ func get_resource(json_file: JSON) -> Resource:
 		ResourceMode.SPRITE_FRAMES:
 			var animation_json = {}
 			
-			if source_json.has("animations"):
-				animation_json = source_json.get("animations")
-			elif json.has("animations"):
+			if json.has("animations"):
 				animation_json = json.get("animations")
+			elif source_json.has("animations"):
+				animation_json = source_json.get("animations")
 			
 			if json.has("animation_overrides"):
 				for i in json.get("animation_overrides").keys():
@@ -196,12 +211,10 @@ func apply_properties(properties := {}) -> void:
 
 
 func get_variation_json(json := {}) -> Dictionary:
-	var level_theme = Global.level_theme
-	if force_properties.has("Theme"):
-		level_theme = force_properties.Theme
 	for i in json.keys().filter(func(key): return key.contains("config:")):
 		get_config_file(current_resource_pack)
 		if config_to_use != {}:
+			print(current_resource_pack)
 			var option_name = i.get_slice(":", 1)
 			if config_to_use.options.has(option_name):
 				var config_json = json[i][config_to_use.options[option_name]]
@@ -211,6 +224,14 @@ func get_variation_json(json := {}) -> Dictionary:
 					json = get_variation_json(config_json)
 				break
 	
+	for i in json.keys().filter(func(key): return key.contains("flag:")):
+		if active_flags.has(i):
+			json = get_variation_json(json[i])
+			break
+	var level_theme = Global.level_theme
+	
+	if force_properties.has("Theme"):
+		level_theme = force_properties.Theme
 	if json.has(level_theme) == false:
 		level_theme = "default"
 	if json.has(level_theme):
@@ -238,7 +259,12 @@ func get_variation_json(json := {}) -> Dictionary:
 	
 	if json.has("choices"):
 		is_random = true
-		var random_json = json.choices.pick_random()
+		var idx := randi_range(0, json.choices.size() - 1)
+		if has_meta("RNGChoice"):
+			idx = get_meta("RNGChoice", -1)
+		else:
+			set_meta("RNGChoice", idx)
+		var random_json = json.choices[idx]
 		if random_json.has("link"):
 			json = get_variation_json(json[random_json.get("link")])
 		else:
@@ -301,7 +327,6 @@ func get_variation_json(json := {}) -> Dictionary:
 			json = get_variation_json(json[json.get(boo).get("link")])
 		else:
 			json = get_variation_json(json[boo])
-	
 	return json
 
 func get_config_file(resource_pack := "") -> void:
@@ -310,8 +335,6 @@ func get_config_file(resource_pack := "") -> void:
 		if config_to_use == null:
 			Global.log_error("Error parsing Config File! (" + resource_pack + ")")
 			config_to_use = {}
-	else:
-		print("resource pack to use: " + resource_pack)
 
 func get_resource_pack_path(res_path := "", resource_pack := "") -> String:
 	var user_path := res_path.replace("res://Assets", Global.config_path.path_join("resource_packs/" + resource_pack))
@@ -325,11 +348,13 @@ func create_sprite_frames_from_image(image: Resource, animation_json := {}) -> S
 	var sprite_frames = SpriteFrames.new()
 	sprite_frames.remove_animation("default")
 	for anim_name in animation_json.keys():
+		if animation_json[anim_name].has("link"):
+			animation_json[anim_name] = animation_json[animation_json[anim_name].link]
 		sprite_frames.add_animation(anim_name)
 		for frame in animation_json[anim_name].frames:
 			var frame_texture = AtlasTexture.new()
 			frame_texture.atlas = image
-			frame_texture.region = Rect2(frame[0], frame[1], frame[2], frame[3])
+			frame_texture.region = Rect2(int(frame[0]), int(frame[1]), int(frame[2]), int(frame[3]))
 			frame_texture.filter_clip = true
 			sprite_frames.add_frame(anim_name, frame_texture)
 		sprite_frames.set_animation_loop(anim_name, animation_json[anim_name].loop)
@@ -337,11 +362,12 @@ func create_sprite_frames_from_image(image: Resource, animation_json := {}) -> S
 	
 	return sprite_frames
 
-func clear_cache() -> void:
+static func clear_cache() -> void:
 	for i in cache.keys():
 		if cache[i] == null:
 			cache.erase(i)
 	cache.clear()
+	active_flags.clear()
 	property_cache.clear()
 
 func load_image_from_path(path := "") -> Texture2D:
@@ -366,3 +392,15 @@ func load_audio_from_path(path := "") -> AudioStream:
 	elif path.contains(".ogg"):
 		stream = AudioStreamOggVorbis.load_from_file(path)
 	return stream
+
+func sync_metadata() -> void:
+	for i in sync:
+		copy_meta(i)
+
+func clear_metadata() -> void:
+	for meta in get_meta_list():
+		remove_meta(meta)
+
+func copy_meta(new_node: Node) -> void:
+	for meta in get_meta_list():
+		new_node.set_meta(meta, get_meta(meta))

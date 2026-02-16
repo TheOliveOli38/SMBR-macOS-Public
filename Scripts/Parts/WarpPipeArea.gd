@@ -40,7 +40,7 @@ func run_player_check(player: Player) -> void:
 			await get_tree().create_timer(1, false).timeout
 			Global.open_marathon_results()
 			return
-		elif Global.current_campaign == "SMBANN":
+		elif Global.current_game_mode == Global.GameMode.DISCO:
 			Global.current_level.get_node("DiscoLevel").level_finished()
 			await get_tree().create_timer(1, false).timeout
 			AudioManager.stop_all_music()

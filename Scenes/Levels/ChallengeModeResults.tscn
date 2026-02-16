@@ -1,4 +1,4 @@
-[gd_scene load_steps=64 format=3 uid="uid://blv1d12smlibh"]
+[gd_scene format=3 uid="uid://blv1d12smlibh"]
 
 [ext_resource type="Script" uid="uid://bqhrq7sabq811" path="res://Scripts/UI/ChallengeModeResults.gd" id="1_3x4fv"]
 [ext_resource type="Texture2D" uid="uid://116yaio262mj" path="res://Assets/Sprites/UI/ChallengeResultsTemplate.png" id="3_um36a"]
@@ -21,9 +21,9 @@
 [ext_resource type="JSON" path="res://Assets/Audio/BGM/ChallengeEnd.json" id="12_y63tt"]
 [ext_resource type="JSON" path="res://Assets/Sprites/Players/ToadNPC.json" id="14_sv6qk"]
 [ext_resource type="Texture2D" uid="uid://cxtan2ap83u3d" path="res://Assets/Sprites/UI/ChallengeMedals.png" id="14_woqpu"]
-[ext_resource type="Texture2D" uid="uid://c7jq6t1d2mhur" path="res://Assets/Sprites/Items/YoshiEgg.png" id="16_1h3k2"]
 [ext_resource type="AudioStream" uid="uid://bvyklj5qhjkvn" path="res://Assets/Audio/SFX/ChallengeMedalAward.wav" id="16_eupxr"]
 [ext_resource type="Texture2D" uid="uid://hdpdek7jitea" path="res://Assets/Sprites/Players/Yoshi.png" id="18_n4lt1"]
+[ext_resource type="Texture2D" uid="uid://sccnux5ovdi4" path="res://Assets/Sprites/UI/EggMedals.png" id="18_y63tt"]
 [ext_resource type="AudioStream" uid="uid://cl4e0p4fnpjn1" path="res://Assets/Audio/SFX/Yoshi.wav" id="19_n4lt1"]
 [ext_resource type="Texture2D" uid="uid://byy3k1pdrp77" path="res://Assets/Sprites/Particles/Smoke.png" id="20_n4lt1"]
 [ext_resource type="PackedScene" uid="uid://cinr6kcbmo6gr" path="res://Scenes/Parts/DropShadowRenderer.tscn" id="21_bob8r"]
@@ -147,7 +147,7 @@ tracks/8/keys = {
 "times": PackedFloat32Array(0, 1.5, 3.5, 5.5, 7, 8.9),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [&"Idle", &"Emote", &"Emote", &"Idle", &"Emote", &"Idle"]
+"values": [&"Idle", &"Talk", &"Talk", &"Idle", &"Talk", &"Idle"]
 }
 tracks/9/type = "method"
 tracks/9/imported = false
@@ -421,6 +421,10 @@ region = Rect2(0, 0, 16, 32)
 atlas = ExtResource("7_y11uu")
 region = Rect2(16, 0, 16, 32)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_02i7h"]
+atlas = ExtResource("7_y11uu")
+region = Rect2(32, 0, 16, 32)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_nud7a"]
 atlas = ExtResource("7_y11uu")
 region = Rect2(32, 0, 16, 32)
@@ -428,10 +432,6 @@ region = Rect2(32, 0, 16, 32)
 [sub_resource type="AtlasTexture" id="AtlasTexture_d76il"]
 atlas = ExtResource("7_y11uu")
 region = Rect2(48, 0, 16, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_02i7h"]
-atlas = ExtResource("7_y11uu")
-region = Rect2(32, 0, 16, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_woqpu"]
 animations = [{
@@ -448,22 +448,22 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_02i7h")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_nud7a")
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_d76il")
 }],
 "loop": true,
-"name": &"Emote",
+"name": &"Talk",
 "speed": 8.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_02i7h")
-}],
-"loop": true,
-"name": &"Idle",
-"speed": 5.0
 }]
 
 [sub_resource type="Shader" id="Shader_vohx7"]
@@ -699,7 +699,7 @@ position = Vector2(72, 12)
 [node name="1" type="Sprite2D" parent="Sprite2D/Sprite2D3/Coins" unique_id=1528461058]
 position = Vector2(-5, 36)
 texture = ExtResource("10_d76il")
-hframes = 2
+hframes = 3
 region_rect = Rect2(8, 0, 8, 8)
 script = ExtResource("3_xe6g7")
 metadata/_custom_type_script = "uid://364rywt44hy6"
@@ -707,7 +707,7 @@ metadata/_custom_type_script = "uid://364rywt44hy6"
 [node name="2" type="Sprite2D" parent="Sprite2D/Sprite2D3/Coins" unique_id=1836829558]
 position = Vector2(3, 36)
 texture = ExtResource("10_d76il")
-hframes = 2
+hframes = 3
 frame = 1
 region_rect = Rect2(8, 0, 8, 8)
 script = ExtResource("3_xe6g7")
@@ -716,7 +716,7 @@ metadata/_custom_type_script = "uid://364rywt44hy6"
 [node name="3" type="Sprite2D" parent="Sprite2D/Sprite2D3/Coins" unique_id=831763568]
 position = Vector2(11, 36)
 texture = ExtResource("10_d76il")
-hframes = 2
+hframes = 3
 frame = 1
 region_rect = Rect2(8, 0, 8, 8)
 script = ExtResource("3_xe6g7")
@@ -725,7 +725,7 @@ metadata/_custom_type_script = "uid://364rywt44hy6"
 [node name="4" type="Sprite2D" parent="Sprite2D/Sprite2D3/Coins" unique_id=696674550]
 position = Vector2(19, 36)
 texture = ExtResource("10_d76il")
-hframes = 2
+hframes = 3
 frame = 1
 region_rect = Rect2(8, 0, 8, 8)
 script = ExtResource("3_xe6g7")
@@ -734,7 +734,7 @@ metadata/_custom_type_script = "uid://364rywt44hy6"
 [node name="5" type="Sprite2D" parent="Sprite2D/Sprite2D3/Coins" unique_id=1701753957]
 position = Vector2(27, 36)
 texture = ExtResource("10_d76il")
-hframes = 2
+hframes = 3
 frame = 1
 region_rect = Rect2(8, 0, 8, 8)
 script = ExtResource("3_xe6g7")
@@ -764,6 +764,7 @@ script = ExtResource("7_bob8r")
 metadata/_custom_type_script = "uid://cbal8ms2oe1ik"
 
 [node name="ChallengeResults" type="AudioStreamPlayer" parent="." unique_id=1689039047]
+process_mode = 3
 stream = ExtResource("7_6dwpv")
 bus = &"Music"
 
@@ -788,9 +789,7 @@ resource_json = ExtResource("12_y63tt")
 metadata/_custom_type_script = "uid://cbal8ms2oe1ik"
 
 [node name="MainSequence" type="AnimationPlayer" parent="." unique_id=877815898]
-libraries = {
-&"": SubResource("AnimationLibrary_nud7a")
-}
+libraries/ = SubResource("AnimationLibrary_nud7a")
 autoplay = &"Main"
 speed_scale = 0.8
 
@@ -831,11 +830,12 @@ uppercase = true
 [node name="Results" type="Label" parent="SpeechBubble/Your" unique_id=1456303163]
 use_parent_material = true
 layout_mode = 0
-offset_left = 27.0
+offset_left = -13.0
 offset_top = 8.0
-offset_right = 131.0
+offset_right = 91.0
 offset_bottom = 31.0
-text = "results"
+text = "RESULTS"
+horizontal_alignment = 2
 uppercase = true
 
 [node name="Coins" type="Label" parent="SpeechBubble" unique_id=893262062]
@@ -855,7 +855,7 @@ visible = false
 position = Vector2(52, 12)
 texture = ExtResource("10_d76il")
 centered = false
-hframes = 2
+hframes = 3
 frame = 1
 region_rect = Rect2(8, 0, 8, 8)
 script = ExtResource("3_xe6g7")
@@ -865,7 +865,7 @@ metadata/_custom_type_script = "uid://364rywt44hy6"
 position = Vector2(60, 12)
 texture = ExtResource("10_d76il")
 centered = false
-hframes = 2
+hframes = 3
 frame = 1
 region_rect = Rect2(8, 0, 8, 8)
 script = ExtResource("3_xe6g7")
@@ -875,7 +875,7 @@ metadata/_custom_type_script = "uid://364rywt44hy6"
 position = Vector2(68, 12)
 texture = ExtResource("10_d76il")
 centered = false
-hframes = 2
+hframes = 3
 frame = 1
 region_rect = Rect2(8, 0, 8, 8)
 script = ExtResource("3_xe6g7")
@@ -885,7 +885,7 @@ metadata/_custom_type_script = "uid://364rywt44hy6"
 position = Vector2(76, 12)
 texture = ExtResource("10_d76il")
 centered = false
-hframes = 2
+hframes = 3
 frame = 1
 region_rect = Rect2(8, 0, 8, 8)
 script = ExtResource("3_xe6g7")
@@ -895,7 +895,7 @@ metadata/_custom_type_script = "uid://364rywt44hy6"
 position = Vector2(84, 12)
 texture = ExtResource("10_d76il")
 centered = false
-hframes = 2
+hframes = 3
 frame = 1
 region_rect = Rect2(8, 0, 8, 8)
 script = ExtResource("3_xe6g7")
@@ -949,11 +949,13 @@ script = ExtResource("3_xe6g7")
 metadata/_custom_type_script = "uid://364rywt44hy6"
 
 [node name="YoshiEgg" type="Sprite2D" parent="Sprite2D3" unique_id=1296085224]
+unique_name_in_owner = true
 visible = false
 position = Vector2(46, 12)
-texture = ExtResource("16_1h3k2")
+texture = ExtResource("18_y63tt")
 hframes = 2
-vframes = 4
+vframes = 2
+frame = 2
 script = ExtResource("3_xe6g7")
 metadata/_custom_type_script = "uid://364rywt44hy6"
 

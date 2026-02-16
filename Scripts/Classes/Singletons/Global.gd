@@ -14,7 +14,8 @@ signal level_time_changed
 
 const BASE64_CHARSET := "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/"
 
-const VERSION_CHECK_URL := "https://raw.githubusercontent.com/JHDev2006/smb1r-version/refs/heads/main/version.txt"
+const VERSION_CHECK_URL := "https://cdn.jsdelivr.net/gh/JHDev2006/Super-Mario-Bros.-Remastered-Public@main/version.txt"
+@onready var screen_shaker: Node = $ScreenShaker
 
 var entity_gravity := 10.0
 var entity_max_fall_speed := 280
@@ -24,7 +25,7 @@ var current_level: Level = null
 
 var second_quest := false
 var extra_worlds_win := false
-const lang_codes := ["en", "fr", "es", "de", "it", "pt", "pl", "tr", "ru", "jp", "fil", "id", "ga"]
+const lang_codes := ["en", "fr", "es", "de", "it", "pt_br", "pl", "tr", "ru", "jp", "fil", "id", "gal"]
 
 var config_path : String = get_config_path()
 
@@ -48,6 +49,11 @@ const LEVEL_THEMES := {
 	"SMBS": SMBS_LEVEL_THEMES
 }
 
+var custom_campaigns := []
+var custom_pack := ""
+var custom_level_idx := 0
+var current_custom_campaign := ""
+
 const SMB1_LEVEL_THEMES := ["Overworld", "Desert", "Snow", "Jungle", "Desert", "Snow", "Jungle", "Overworld", "Space", "Autumn", "Pipeland", "Skyland", "Volcano"]
 const SMBS_LEVEL_THEMES := ["Overworld", "Garden", "Beach", "Mountain", "Garden", "Beach", "Mountain", "Overworld", "Autumn", "Pipeland", "Skyland", "Volcano", "Fuck"]
 
@@ -65,6 +71,10 @@ var time_tween = null
 
 var total_deaths := 0
 
+var portable_mode := false
+var checked_portable := false
+
+
 var score := 0:
 	set(value):
 		if disco_mode == true:
@@ -75,15 +85,17 @@ var score := 0:
 				score = value
 		else:
 			score = value
+		score = clamp(score, 0, 9999990)
 var coins := 0:
 	set(value):
 		coins = value
 		if coins >= 100:#
-			if Settings.file.difficulty.inf_lives == 0 and (Global.current_game_mode != Global.GameMode.CHALLENGE and Global.current_campaign != "SMBANN"):
+			if Settings.file.difficulty.inf_lives == 0 and (current_game_mode != GameMode.CHALLENGE and current_campaign != "SMBANN"):
 				lives += floor(coins / 100.0)
 				AudioManager.play_sfx("1_up", get_viewport().get_camera_2d().get_screen_center_position())
 			coins = coins % 100
 var time := 300
+var inf_time := false
 var lives := 3
 var world_num := 1
 
@@ -134,7 +146,7 @@ var connected_players := 1
 
 const CAMPAIGNS := ["SMB1", "SMBLL", "SMBS", "SMBANN"]
 
-var player_characters := [0, 0, 0, 0]:
+var player_characters := [0, 1, 2, 3]:
 	set(value):
 		player_characters = value
 		player_characters_changed.emit()
@@ -157,7 +169,7 @@ var in_title_screen := false
 var game_paused := false
 var can_pause := true
 
-var fade_transition := true
+var fade_transition := false
 
 enum GameMode{NONE, CAMPAIGN, BOO_RACE, CHALLENGE, MARATHON, MARATHON_PRACTICE, LEVEL_EDITOR, CUSTOM_LEVEL, DISCO}
 
@@ -175,6 +187,10 @@ var p_switch_timer_paused := false
 
 var debug_mode := false
 
+var custom_campaign_jsons := {}
+
+var level_sequence_captured := false
+
 func _ready() -> void:
 	if is_snapshot: get_build_time()
 	if OS.is_debug_build(): debug_mode = false
@@ -182,6 +198,8 @@ func _ready() -> void:
 	get_server_version()
 	setup_config_dirs()
 	check_for_rom()
+	load_default_translations()
+	level_theme_changed.connect(load_default_translations)
 
 func setup_config_dirs() -> void:
 	var dirs = [
@@ -191,11 +209,13 @@ func setup_config_dirs() -> void:
 		"marathon_recordings",
 		"resource_packs",
 		"saves",
-		"screenshots"
+		"screenshots",
+		"level_packs",
+		"blueprints"
 	]
 
 	for d in dirs:
-		var full_path = Global.config_path.path_join(d)
+		var full_path = config_path.path_join(d)
 		if not DirAccess.dir_exists_absolute(full_path):
 			DirAccess.make_dir_recursive_absolute(full_path)
 
@@ -224,9 +244,9 @@ func get_config_path() -> String:
 func check_for_rom() -> void:
 	rom_path = ""
 	rom_assets_exist = false
-	if FileAccess.file_exists(Global.ROM_PATH) == false:
+	if FileAccess.file_exists(ROM_PATH) == false:
 		return
-	var path = Global.ROM_PATH 
+	var path = ROM_PATH 
 	if FileAccess.file_exists(path):
 		if ROMVerifier.is_valid_rom(path):
 			rom_path = path
@@ -242,11 +262,16 @@ func check_for_rom() -> void:
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("debug_reload"):
 		ResourceSetter.cache.clear()
-		ResourceSetterNew.cache.clear()
+		ResourceSetterNew.clear_cache()
 		ResourceGetter.cache.clear()
 		AudioManager.current_level_theme = ""
 		level_theme_changed.emit()
+		TranslationServer.reload_pseudolocalization()
 		log_comment("Reloaded resource packs!")
+	
+	## Imagine being such a shit game engine, that you somehow BROKE ALT-F4, SERIOUSLY.
+	if Input.is_key_pressed(KEY_ALT) and Input.is_key_pressed(KEY_4):
+		get_tree().quit()
 	
 	if Input.is_action_just_pressed("toggle_fps_count"):
 		%FPSCount.visible = !%FPSCount.visible
@@ -263,7 +288,7 @@ func _process(delta: float) -> void:
 
 func take_screenshot() -> void:
 	var img: Image = get_viewport().get_texture().get_image()
-	var filename = Global.config_path.path_join("screenshots/screenshot_" + str(int(Time.get_unix_time_from_system())) + ".png")
+	var filename = config_path.path_join("screenshots/screenshot_" + str(int(Time.get_unix_time_from_system())) + ".png")
 	var err = img.save_png(filename)
 	if !err:
 		log_comment("Screenshot Saved!")
@@ -279,7 +304,7 @@ func handle_p_switch(delta: float) -> void:
 			p_switch_toggle.emit()
 			AudioManager.stop_music_override(AudioManager.MUSIC_OVERRIDES.PSWITCH)
 
-func get_build_time() -> void:
+func get_build_time() -> String:
 	# SkyanUltra: Slightly expanded function to make it easier to get snapshot build numbers.
 	var date = Time.get_date_dict_from_system()
 	var year_last_two = date.year % 100
@@ -299,19 +324,29 @@ func get_build_time() -> void:
 	var week = int(days_since_year_start / 7) + 1
 	var build_date = "%02dw%02d" % [year_last_two, week]
 	print_rich("[b][color=cyan]Partial snapshot build ID:[/color][/b] ", build_date)
+	return build_date
 
 func get_version_number() -> int:
 	var number = (FileAccess.open("res://version.txt", FileAccess.READ).get_as_text())
-	version_number = str(number)
+	version_number = str(number).replace("\n", "")
 	return int(number)
 
-func player_action_pressed(action := "", player_id := 0) -> bool:
+func get_int_version_num(version_num := "") -> int:
+	return int(version_num.replace(".", "").pad_zeros(3))
+
+func player_action_pressed(action := "", player_id = 0) -> bool:
+	if SpeedrunHandler.simulating_inputs:
+		player_id = "s"
 	return Input.is_action_pressed(action + "_" + str(player_id))
 
-func player_action_just_pressed(action := "", player_id := 0) -> bool:
+func player_action_just_pressed(action := "", player_id = 0) -> bool:
+	if SpeedrunHandler.simulating_inputs:
+		player_id = "s"
 	return Input.is_action_just_pressed(action + "_" + str(player_id))
 
-func player_action_just_released(action := "", player_id := 0) -> bool:
+func player_action_just_released(action := "", player_id = 0) -> bool:
+	if SpeedrunHandler.simulating_inputs:
+		player_id = "s"
 	return Input.is_action_just_released(action + "_" + str(player_id))
 
 func tally_time() -> void:
@@ -323,6 +358,7 @@ func tally_time() -> void:
 	score_tween = create_tween()
 	time_tween = create_tween()
 	var duration = float(time) / 120
+	duration = min(duration, 5)
 	
 	score_tween.tween_property(self, "score", target_score, duration)
 	time_tween.tween_property(self, "time", 0, duration)
@@ -351,12 +387,19 @@ func reset_values() -> void:
 	PlayerGhost.idx = 0
 	Checkpoint.passed_checkpoints.clear()
 	Checkpoint.sublevel_id = 0
-	Global.total_deaths = 0
+	total_deaths = 0
+	OnOffSwitcher.active = false
 	Door.unlocked_doors = []
+	Door.exiting_door_id = -1
 	Checkpoint.unlocked_doors = []
 	KeyItem.total_collected = 0
 	Checkpoint.keys_collected = 0
-	Level.start_level_path = Level.get_scene_string(Global.world_num, Global.level_num)
+	Broadcaster.active_channels = []
+	Warper.target_channel = -1
+	ConditionalClear.valid = true
+	ConditionalClear.checked = false
+	GlobalCounter.amounts = {}
+	Level.start_level_path = Level.get_scene_string(world_num, level_num)
 	LevelPersistance.reset_states()
 	Level.first_load = true
 	Level.can_set_time = true
@@ -364,7 +407,7 @@ func reset_values() -> void:
 	Level.vine_return_level = ""
 	Level.vine_warp_level = ""
 	p_switch_active = false
-	p_switch_timer = 0.0
+	p_switch_timer = -1.0
 
 func clear_saved_values() -> void:
 	coins = 0
@@ -372,8 +415,8 @@ func clear_saved_values() -> void:
 	lives = 3
 	player_power_states = "0000"
 
-func transition_to_scene(scene_path := "") -> void:
-	Global.fade_transition = bool(Settings.file.visuals.transition_animation)
+func transition_to_scene(scene_path = "") -> void:
+	fade_transition = bool(Settings.file.visuals.transition_animation)
 	if transitioning_scene:
 		return
 	transitioning_scene = true
@@ -385,7 +428,10 @@ func transition_to_scene(scene_path := "") -> void:
 		%TransitionBlock.modulate.a = 1
 		$Transition.show()
 		await get_tree().create_timer(0.1, true).timeout
-	get_tree().change_scene_to_file(scene_path)
+	if scene_path is String:
+		get_tree().change_scene_to_file(scene_path)
+	elif scene_path is PackedScene:
+		get_tree().change_scene_to_packed(scene_path)
 	await get_tree().scene_changed
 	await get_tree().create_timer(0.15, true).timeout
 	if fade_transition:
@@ -424,10 +470,10 @@ func close_freeze() -> void:
 var recording_dir = config_path.path_join("marathon_recordings")
 
 func update_game_status() -> void:
-	var lives_str := str(Global.lives)
+	var lives_str := str(lives)
 	if Settings.file.difficulty.inf_lives == 1:
 		lives_str = "∞"
-	var string := "Coins = " + str(Global.coins) + " Lives = " + lives_str
+	var string := "Coins = " + str(coins) + " Lives = " + lives_str
 
 func open_marathon_results() -> void:
 	get_node("GameHUD/MarathonResults").open()
@@ -446,40 +492,59 @@ func get_server_version() -> void:
 	http.request(VERSION_CHECK_URL, [], HTTPClient.METHOD_GET)
 
 func version_got(_result, response_code, _headers, body) -> void:
+	current_version = get_version_num_int(version_number)
 	if response_code == 200:
-		server_version = int(body.get_string_from_utf8())
+		server_version = int(get_version_num_int(body.get_string_from_utf8()))
 	else:
 		server_version = -2
 
-func log_error(msg := "") -> void:
+var error_log_cooldown := false
+
+func log_error(msg := "", can_spam := true) -> void:
+	if error_log_cooldown and not can_spam:
+		return
 	var error_message = $CanvasLayer/VBoxContainer/ErrorMessage.duplicate()
 	error_message.text = "Error - " + msg
 	error_message.visible = true
+	if can_spam == false:
+		do_cooldown()
 	$CanvasLayer/VBoxContainer.add_child(error_message)
 	await get_tree().create_timer(10, false).timeout
 	error_message.queue_free()
 
-func log_warning(msg := "") -> void:
-	var error_message = $CanvasLayer/VBoxContainer/Warning.duplicate()
-	error_message.text = "Warning - " + msg
+func do_cooldown() -> void:
+	error_log_cooldown = true
+	await get_tree().create_timer(1, false).timeout
+	error_log_cooldown = false
+
+func log_warning(text) -> void:
+	var error_message: Label = $CanvasLayer/VBoxContainer/Warning.duplicate()
+	error_message.text = "Warning - " + str(text)
 	error_message.visible = true
 	$CanvasLayer/VBoxContainer.add_child(error_message)
 	await get_tree().create_timer(10, false).timeout
 	error_message.queue_free()
 	
-func log_comment(msg := "") -> void:
+func log_comment(text) -> void:
 	var error_message = $CanvasLayer/VBoxContainer/Comment.duplicate()
-	error_message.text =  msg
+	error_message.text = str(text)
 	error_message.visible = true
 	$CanvasLayer/VBoxContainer.add_child(error_message)
 	await get_tree().create_timer(2, false).timeout
 	error_message.queue_free()
 
 func level_editor_is_playtesting() -> bool:
-	if Global.current_game_mode == Global.GameMode.LEVEL_EDITOR:
-		if Global.level_editor.current_state == LevelEditor.EditorState.PLAYTESTING:
+	if level_editor == null:
+		return false
+	if current_game_mode == GameMode.LEVEL_EDITOR:
+		if level_editor.current_state == LevelEditor.EditorState.PLAYTESTING:
 			return true
 	return false
+
+func level_editor_is_editing() -> bool:
+	if level_editor == null:
+		return false
+	return level_editor.current_state != LevelEditor.EditorState.PLAYTESTING
 
 func unlock_achievement(achievement_id := AchievementID.SMB1_CLEAR) -> void:
 	achievements[achievement_id] = "1"
@@ -501,13 +566,68 @@ func sanitize_string(string := "") -> String:
 	return string
 
 func get_base_asset_version() -> int:
-	var json = JSON.parse_string(FileAccess.open(Global.config_path.path_join("BaseAssets/pack_info.json"), FileAccess.READ).get_as_text())
+	var json = JSON.parse_string(FileAccess.open(config_path.path_join("BaseAssets/pack_info.json"), FileAccess.READ).get_as_text())
 	var version = json.version
 	return get_version_num_int(version)
 
 func get_version_num_int(ver_num := "0.0.0") -> int:
 	return int(ver_num.replace(".", ""))
 
+func load_default_translations() -> void:
+	for i in lang_codes:
+		if i != "gal":
+			create_translation_from_json(i)
+	create_gal_translation("res://Assets/Locale/en.json")
+
+func create_translation_from_json(locale := "") -> void:
+	var locale_json := {}
+	for resource_pack in Settings.file.visuals.resource_packs:
+		var path = $ResourceSetterNew.get_resource_pack_path("res://Assets/Locale/" + locale + ".json", resource_pack)
+		var file_json = JSON.parse_string(FileAccess.open(path, FileAccess.READ).get_as_text())
+		for i in file_json.keys():
+			var value = file_json[i]
+			if value is Dictionary:
+				value = $ResourceSetterNew.get_variation_json(value).source
+			value = remove_cryllic_characters(value)
+			if locale_json.has(i) == false:
+				locale_json[i] = value.to_upper()
+	var trans = Translation.new()
+	trans.locale = locale
+	for i in locale_json.keys():
+		trans.add_message(i, locale_json[i])
+	TranslationServer.remove_translation(TranslationServer.get_translation_object(locale))
+	TranslationServer.add_translation(trans)
+
+func remove_cryllic_characters(message := "") -> String:
+	const cryllic := "авекмнорстух’"
+	const latin := "abekmhopctyx'"
+	var idx := 0
+	for i in cryllic:
+		message = message.replace(i, latin[idx])
+		idx += 1
+	return message
+
+func create_gal_translation(en_json_path := "") -> void:
+	var en_json = JSON.parse_string(FileAccess.open(en_json_path, FileAccess.READ).get_as_text())
+	var translation = Translation.new()
+	for i in en_json.keys():
+		translation.add_message(i, convert_en_to_gal(en_json[i]))
+	translation.locale = "gal"
+	if TranslationServer.get_translation_object("gal") != null:
+		TranslationServer.remove_translation(TranslationServer.get_translation_object("gal"))
+	TranslationServer.add_translation(translation)
+
+func convert_en_to_gal(en_string := "") -> String:
+	var gal_string = en_string.to_upper()
+	var idx := 0
+	for i in gal_string:
+		if gal_string[idx] in "ABCDEFGHIJKLMNOPQRSTUVWXYZ":
+			gal_string[idx] = String.chr(i.unicode_at(0) + 65248)
+		idx += 1
+	return gal_string
+
+func in_custom_campaign(campaign := current_custom_campaign) -> bool:
+	return campaign != ""
 func merge_dict(target: Dictionary, source: Dictionary) -> void:
 	# SkyanUltra: Used to properly merge dictionaries JSONs rather than out right overwriting entries.
 	for key in source.keys():
@@ -515,3 +635,43 @@ func merge_dict(target: Dictionary, source: Dictionary) -> void:
 			merge_dict(target[key], source[key])
 		else:
 			target[key] = source[key]
+
+func nice_json_format(json_string := "") -> String:
+	var inside_array := 0
+	var inside_obj := 0
+	var indents := 0
+	var end_reached := false
+	for i in json_string.length():
+		if json_string[i] == "{":
+			inside_obj += 1
+			if json_string[i + 1] != "}":
+				indents += 1
+				json_string = json_string.insert(i + 1, "\n")
+				i += 1
+				for x in indents:
+					json_string = json_string.insert(i + 2, "\t")
+					i += 1
+		if json_string[i] == "[":
+			inside_array += 1
+			if inside_array > 1:
+				indents += 1
+		if json_string[i] == "]":
+			inside_array -= 1
+			if inside_array > 1:
+				indents -= 1
+		if json_string[i] == "}":
+			if inside_obj > 0:
+				indents -= 1
+				json_string = json_string.insert(i + 1, "\n")
+				i += 1
+				for x in indents:
+					json_string = json_string.insert(i - 1, "\t")
+					i += 1
+		if json_string[i] == ",":
+			if inside_array <= 0:
+				json_string = json_string.insert(i + 1, "\n")
+				i += 1
+				for x in indents:
+					json_string = json_string.insert(i + 2, "\t")
+					i += 1
+	return json_string

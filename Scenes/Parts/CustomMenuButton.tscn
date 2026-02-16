@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://ckc73w2p3cdvj"]
+[gd_scene format=3 uid="uid://ckc73w2p3cdvj"]
 
 [ext_resource type="Texture2D" uid="uid://3p2l7rec0gh5" path="res://Assets/Sprites/UI/Cursor.png" id="1_744m4"]
 [ext_resource type="StyleBox" uid="uid://comkghpj0djcl" path="res://Resources/UI/Panel.tres" id="2_oamdf"]
@@ -15,14 +15,14 @@ region = Rect2(24, 0, 12, 12)
 atlas = ExtResource("1_744m4")
 region = Rect2(0, 0, 8, 8)
 
-[node name="BoxContainer" type="MarginContainer"]
+[node name="BoxContainer" type="MarginContainer" unique_id=1979739147]
 offset_right = 16.0
 offset_bottom = 16.0
 focus_mode = 2
 focus_behavior_recursive = 2
 theme_override_constants/margin_left = 8
 
-[node name="Button" type="Button" parent="."]
+[node name="Button" type="Button" parent="." unique_id=47319333]
 layout_mode = 2
 size_flags_horizontal = 3
 focus_behavior_recursive = 2
@@ -31,29 +31,29 @@ theme_override_styles/pressed = ExtResource("3_d66fe")
 theme_override_styles/hover = ExtResource("2_oamdf")
 theme_override_styles/focus = ExtResource("3_d66fe")
 
-[node name="Icon" type="TextureRect" parent="."]
+[node name="Icon" type="TextureRect" parent="." unique_id=1961946869]
 layout_mode = 2
 size_flags_horizontal = 4
 texture = SubResource("AtlasTexture_hykrg")
 stretch_mode = 3
 
-[node name="Label" type="Label" parent="."]
+[node name="Label" type="Label" parent="." unique_id=1354378166]
 visible = false
 layout_mode = 2
 text = "Play"
 uppercase = true
 
-[node name="Cursor" type="Control" parent="."]
+[node name="Cursor" type="Control" parent="." unique_id=1084264804]
 visible = false
 layout_mode = 2
 
-[node name="Control" type="Control" parent="Cursor"]
+[node name="Control" type="Control" parent="Cursor" unique_id=585994547]
 layout_mode = 1
 anchors_preset = 9
 anchor_bottom = 1.0
 grow_vertical = 2
 
-[node name="TextureRect" type="TextureRect" parent="Cursor/Control"]
+[node name="TextureRect" type="TextureRect" parent="Cursor/Control" unique_id=332120313]
 layout_mode = 1
 anchors_preset = -1
 anchor_top = 0.5
@@ -65,7 +65,7 @@ offset_bottom = 4.0
 grow_vertical = 2
 texture = SubResource("AtlasTexture_744m4")
 
-[node name="ResourceSetterNew" type="Node" parent="Cursor/Control/TextureRect" node_paths=PackedStringArray("node_to_affect")]
+[node name="ResourceSetterNew" type="Node" parent="Cursor/Control/TextureRect" unique_id=376339991 node_paths=PackedStringArray("node_to_affect")]
 script = ExtResource("5_d66fe")
 node_to_affect = NodePath("..")
 property_name = "texture"

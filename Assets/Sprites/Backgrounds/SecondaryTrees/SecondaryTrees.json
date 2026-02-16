@@ -99,7 +99,7 @@
 					"source": "CastleTrees.png"
 				},
 				"Night": {
-					"source": "CastleNightTrees.png"
+					"source": "CastleTreesNight.png"
 				}
 			},
 			"SMBLL": {
@@ -107,7 +107,7 @@
 					"source": "CastleTreesLL.png"
 				},
 				"Night": {
-					"source": "CastleNightTreesLL.png"
+					"source": "CastleTreesNightLL.png"
 				}
 			}
 		},

@@ -24,6 +24,7 @@
 	"variations": {
 	"default": {"source": "RockyWrench.png", "rect": [0, 0, 80, 32]},
 	"Underground": {"source": "RockyWrench.png", "rect": [80, 0, 80, 32]},
+	"GhostHouse": {"link": "Underground"},
 	"Castle": {"source": "RockyWrench.png", "rect": [160, 0, 80, 32]},
 	"Underwater": {"source": "RockyWrench.png", "rect": [240, 0, 80, 32]},
 	"Desert": {"source": "RockyWrench.png", "rect": [0, 32, 80, 32]},

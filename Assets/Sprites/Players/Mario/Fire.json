@@ -9,8 +9,8 @@
 					32.0
 				]
 			],
-			"speed": 5.0,
-			"loop": true
+			"speed": 15.0,
+			"loop": false
 		},
 		"Attack": {
 			"frames": [
@@ -19,10 +19,10 @@
 					32.0,
 					32.0,
 					32.0
-				]
+				],
 			],
-			"speed": 5.0,
-			"loop": true
+			"speed": 15.0,
+			"loop": false
 		},
 		"Climb": {
 			"frames": [
@@ -153,8 +153,8 @@
 					32.0
 				]
 			],
-			"speed": 5.0,
-			"loop": true
+			"speed": 15.0,
+			"loop": false
 		},
 		"SwimIdle": {
 			"frames": [
