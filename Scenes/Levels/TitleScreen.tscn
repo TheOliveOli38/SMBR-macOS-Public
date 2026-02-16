@@ -45,17 +45,17 @@ script/source = "extends Label
 func _ready() -> void:
 	if Global.is_snapshot == true:
 		var temptext = Global.version_number
-		match Global.version_number.substr(11,1):
+		match Global.version_number.substr(12,1):
 			\"1\":
-				text = \"V\" + Global.version_number.erase(11,1) + \"a\"
+				text = \"V\" + Global.version_number.erase(11,2) + \"a\"
 			\"2\":
-				text = \"V\" + Global.version_number.erase(11,1) + \"b\"
+				text = \"V\" + Global.version_number.erase(11,2) + \"b\"
 			\"3\":
-				text = \"V\" + Global.version_number.erase(11,1) + \"c\"
+				text = \"V\" + Global.version_number.erase(11,2) + \"c\"
 			\"4\":
-				text = \"V\" + Global.version_number.erase(11,1) + \"d\"
+				text = \"V\" + Global.version_number.erase(11,2) + \"d\"
 			\"5\":
-				text = \"V\" + Global.version_number.erase(11,1) + \"e\"
+				text = \"V\" + Global.version_number.erase(11,2) + \"e\"
 	else:
 		text = \"V\" + Global.version_number
 "
