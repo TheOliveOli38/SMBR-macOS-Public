@@ -422,11 +422,6 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="Panel" type="Panel" parent="CanvasLayer/VBoxContainer" unique_id=223735495]
-z_index = 4
-custom_minimum_size = Vector2(0, 10.89)
-layout_mode = 2
-
 [node name="ErrorMessage" type="Label" parent="CanvasLayer/VBoxContainer" unique_id=1615437496]
 visible = false
 modulate = Color(1, 0, 0, 1)
@@ -512,4 +507,3 @@ metadata/_custom_type_script = "uid://cbal8ms2oe1ik"
 [connection signal="finished" from="ScoreTallyEnd" to="." method="on_score_sfx_finished"]
 [connection signal="timeout" from="Timer" to="." method="refresh_discord_rpc"]
 [connection signal="timeout" from="Framerule" to="." method="emit_signal" binds= ["frame_rule"]]
-[connection signal="gui_input" from="CanvasLayer/VBoxContainer/Panel" to="." method="on_gui_input"]

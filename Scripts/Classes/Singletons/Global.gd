@@ -675,7 +675,3 @@ func nice_json_format(json_string := "") -> String:
 					json_string = json_string.insert(i + 2, "\t")
 					i += 1
 	return json_string
-
-
-func on_gui_input(event: InputEvent) -> void:
-	print(event)
