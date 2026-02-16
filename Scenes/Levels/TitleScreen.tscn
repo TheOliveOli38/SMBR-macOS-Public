@@ -55,6 +55,14 @@ func _ready() -> void:
 				text = \"V\" + Global.version_number.erase(11,2) + \"d\"
 			\"5\":
 				text = \"V\" + Global.version_number.erase(11,2) + \"e\"
+			\"6\":
+				text = \"V\" + Global.version_number.erase(11,2) + \"f\"
+			\"7\":
+				text = \"V\" + Global.version_number.erase(11,2) + \"g\"
+			\"8\":
+				text = \"V\" + Global.version_number.erase(11,2) + \"h\"
+			\"9\":
+				text = \"V\" + Global.version_number.erase(11,2) + \"i\"
 	else:
 		text = \"V\" + Global.version_number
 "
