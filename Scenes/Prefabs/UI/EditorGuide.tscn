@@ -156,7 +156,7 @@ layout_mode = 2
 [node name="Title" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/HSplitContainer/PanelContainer/Guides/Controls" unique_id=1987339254]
 layout_mode = 2
 size_flags_horizontal = 4
-text = "Controls"
+text = "GUIDE_CONTROL_TITLE"
 uppercase = true
 
 [node name="HSeparator" type="HSeparator" parent="MarginContainer/PanelContainer/MarginContainer/HSplitContainer/PanelContainer/Guides/Controls/Title" unique_id=250393058]
@@ -187,7 +187,7 @@ size_flags_vertical = 3
 [node name="Heading" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/HSplitContainer/PanelContainer/Guides/Controls/ScrollContainer/VBoxContainer" unique_id=493315102]
 layout_mode = 2
 size_flags_vertical = 0
-text = "PLACING / REMOVING TILES"
+text = "GUIDE_CONTROL_SEC1"
 horizontal_alignment = 1
 autowrap_mode = 2
 uppercase = true
@@ -206,7 +206,7 @@ theme_override_styles/separator = SubResource("StyleBoxLine_1mv3v")
 [node name="Label" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/HSplitContainer/PanelContainer/Guides/Controls/ScrollContainer/VBoxContainer" unique_id=227857286]
 layout_mode = 2
 size_flags_vertical = 1
-text = "To place tiles, simply use left click, you can hold down left click, and drag the mouse around, to use it as a brush. to remove tiles, simply use right click."
+text = "GUIDE_CONTROL_SEC1_TEXT"
 autowrap_mode = 2
 uppercase = true
 
@@ -217,7 +217,7 @@ layout_mode = 2
 [node name="Heading2" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/HSplitContainer/PanelContainer/Guides/Controls/ScrollContainer/VBoxContainer" unique_id=37648190]
 layout_mode = 2
 size_flags_vertical = 0
-text = "CAMERA"
+text = "GUIDE_CONTROL_SEC2"
 horizontal_alignment = 1
 autowrap_mode = 2
 uppercase = true
@@ -236,7 +236,7 @@ theme_override_styles/separator = SubResource("StyleBoxLine_1mv3v")
 [node name="Label2" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/HSplitContainer/PanelContainer/Guides/Controls/ScrollContainer/VBoxContainer" unique_id=1743356377]
 layout_mode = 2
 size_flags_vertical = 1
-text = "You can move the camera around using WASD, and speed up the movement of it by holding down SHIFT."
+text = "GUIDE_CONTROL_SEC2_TEXT"
 autowrap_mode = 2
 uppercase = true
 
@@ -247,7 +247,7 @@ layout_mode = 2
 [node name="Heading3" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/HSplitContainer/PanelContainer/Guides/Controls/ScrollContainer/VBoxContainer" unique_id=1485532421]
 layout_mode = 2
 size_flags_vertical = 0
-text = "PLAYING LEVEL / MOVING PLAYER"
+text = "GUIDE_CONTROL_SEC3"
 horizontal_alignment = 1
 autowrap_mode = 2
 uppercase = true
@@ -266,9 +266,7 @@ theme_override_styles/separator = SubResource("StyleBoxLine_1mv3v")
 [node name="Label3" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/HSplitContainer/PanelContainer/Guides/Controls/ScrollContainer/VBoxContainer" unique_id=1816581500]
 layout_mode = 2
 size_flags_vertical = 1
-text = "To playtest your level, simply press ENTER, To return to the editor, press Enter Again.
-
-If you want to move the players starting position, simply press SHIFT + MIDDLE CLICK Or press M."
+text = "GUIDE_CONTROL_SEC3_TEXT"
 autowrap_mode = 2
 uppercase = true
 
@@ -279,7 +277,7 @@ layout_mode = 2
 [node name="Heading4" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/HSplitContainer/PanelContainer/Guides/Controls/ScrollContainer/VBoxContainer" unique_id=1481737604]
 layout_mode = 2
 size_flags_vertical = 0
-text = "ACTION MENU"
+text = "GUIDE_CONTROL_SEC4"
 horizontal_alignment = 1
 autowrap_mode = 2
 uppercase = true
@@ -298,7 +296,7 @@ theme_override_styles/separator = SubResource("StyleBoxLine_1mv3v")
 [node name="Label4" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/HSplitContainer/PanelContainer/Guides/Controls/ScrollContainer/VBoxContainer" unique_id=120941645]
 layout_mode = 2
 size_flags_vertical = 1
-text = "In the top left of the screen, you can see a small cogwheel icon, if you click it, it will reveal lots of options to you, which can help in making / testing levels. These include completely resetting a level, undo, redo, toggling the tile grid, toggling a player trail, and showing gizmos while playtesting a level, to better debug issues."
+text = "GUIDE_CONTROL_SEC4_TEXT"
 autowrap_mode = 2
 uppercase = true
 
@@ -313,7 +311,7 @@ layout_mode = 2
 [node name="Title" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/HSplitContainer/PanelContainer/Guides/TileMenu" unique_id=322793091]
 layout_mode = 2
 size_flags_horizontal = 4
-text = "Tile Menu"
+text = "GUIDE_TILEMEN_TITLE"
 uppercase = true
 
 [node name="HSeparator" type="HSeparator" parent="MarginContainer/PanelContainer/MarginContainer/HSplitContainer/PanelContainer/Guides/TileMenu/Title" unique_id=1377783004]
@@ -344,11 +342,7 @@ size_flags_vertical = 3
 [node name="Label" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/HSplitContainer/PanelContainer/Guides/TileMenu/ScrollContainer/VBoxContainer" unique_id=229518099]
 layout_mode = 2
 size_flags_vertical = 1
-text = "When pressing E, you can open up the tile menu! this is the main place where you will be choosing which objects to place in your level. It should all be fairly basic, but theres a few hidden features you may not know about.
-
-If an option in the menu has a small + in the corner, it means it contains multiple different tiles within. Use the scroll wheel or R/T keys when hovering over it, to choose other tiles inside.
-
-When hovering over an option, if the nametag contains \"...\" at the bottom, it has a readable description, which you can view by holding SHIFT. This can provide useful context on certain objects, and how to use them."
+text = "GUIDE_TILEMEN_TEXT"
 autowrap_mode = 2
 uppercase = true
 
