@@ -100,7 +100,7 @@ layout_mode = 2
 [node name="Title" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/HSplitContainer/PanelContainer/Guides/Introduction" unique_id=534263787]
 layout_mode = 2
 size_flags_horizontal = 4
-text = "INTRODUCTION"
+text = "GUIDE_INTRO_TITLE"
 uppercase = true
 
 [node name="HSeparator" type="HSeparator" parent="MarginContainer/PanelContainer/MarginContainer/HSplitContainer/PanelContainer/Guides/Introduction/Title" unique_id=1227336600]
@@ -131,12 +131,7 @@ size_flags_vertical = 3
 [node name="Label" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/HSplitContainer/PanelContainer/Guides/Introduction/ScrollContainer/VBoxContainer" unique_id=496830112]
 layout_mode = 2
 size_flags_vertical = 3
-text = "Welcome to the level editor!
-
-Although this may seem a bit complex, the editor itself, is quite simple to understand. It's not as polished or seamless as Super Mario Maker, but it gets the job done, and can actually do some extra things aswell if you know what you're doing!
-Feel free to take your time, reading through all the features the editor has to offer.
-
-If you ever need to open this guide again, simply press this icon in the tile menu. "
+text = "GUIDE_INTRO_TEXT"
 autowrap_mode = 2
 uppercase = true
 
@@ -149,7 +144,7 @@ metadata/_edit_use_anchors_ = true
 [node name="Label2" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/HSplitContainer/PanelContainer/Guides/Introduction/ScrollContainer/VBoxContainer" unique_id=727954813]
 layout_mode = 2
 size_flags_vertical = 3
-text = "HAVE FUN!"
+text = "GUIDE_INTRO_TEXT2"
 horizontal_alignment = 1
 autowrap_mode = 2
 uppercase = true

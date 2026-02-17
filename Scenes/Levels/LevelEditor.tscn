@@ -6858,7 +6858,7 @@ offset_left = -84.0
 offset_right = 84.0
 offset_bottom = 16.0
 grow_horizontal = 2
-text = "Save Before Exiting?"
+text = "EDITOR_CLOSE_DIALOG"
 uppercase = true
 
 [node name="Yes" type="Button" parent="Info/QuitDialog" unique_id=940072914]
@@ -6922,7 +6922,7 @@ layout_mode = 2
 
 [node name="Label" type="Label" parent="Info/SaveLevelDialog/VBoxContainer/HBoxContainer" unique_id=1326711612]
 layout_mode = 2
-text = "Level Name:"
+text = "EDITOR_SAVE_NAME"
 uppercase = true
 
 [node name="LevelName" type="LineEdit" parent="Info/SaveLevelDialog/VBoxContainer/HBoxContainer" unique_id=1515649382]
@@ -7017,7 +7017,7 @@ offset_left = -152.0
 offset_bottom = 16.0
 grow_horizontal = 0
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-text = "\"level.lvl\" saved."
+text = "EDITOR_SAVE_MSG"
 uppercase = true
 
 [node name="SaveAnimation" type="AnimationPlayer" parent="Info/SaveDialog" unique_id=918877818]
