@@ -6,7 +6,7 @@ const HAMMER = preload("res://Scenes/Prefabs/Entities/Items/Hammer.tscn")
 
 @export var can_hammer := false
 @export var can_fire := true
-@export var is_real := true
+@export var is_real := false
 @export var music_enabled := true
 
 var target_player: Player = null
@@ -79,25 +79,25 @@ func breathe_fire() -> void:
 	await get_tree().create_timer(0.5, false).timeout
 	sprite.play("Idle")
 
-func bridge_fall(start: bool = false) -> void:
-	if start:
-		process_mode = Node.PROCESS_MODE_ALWAYS
-		direction = 1
-		sprite.play("Fall")
-		sprite.reset_physics_interpolation()
-		$FlameTimer.queue_free()
-		$HammerTime.queue_free()
-		$JumpTimer.queue_free()
-		$MoveAnimation.queue_free()
-		can_fall = false
-		velocity.y = 0
-	else:
-		$FallSFX.play()
-		ignore_flag_die = true
-		can_fall = true
-		$Collision.queue_free()
-		await get_tree().create_timer(5).timeout
-		queue_free()
+func bridge_fall() -> void:
+	AudioManager.play_global_sfx("bowser_fall")
+	ignore_flag_die = true
+	can_fall = true
+	$Collision.queue_free()
+	await get_tree().create_timer(5).timeout
+	queue_free()
+
+func do_start_fall() -> void:
+	process_mode = Node.PROCESS_MODE_ALWAYS
+	direction = 1
+	sprite.play("Fall")
+	sprite.reset_physics_interpolation()
+	$FlameTimer.queue_free()
+	$HammerTime.queue_free()
+	$JumpTimer.queue_free()
+	$MoveAnimation.queue_free()
+	can_fall = false
+	velocity.y = 0
 
 func throw_hammers() -> void:
 	if can_hammer == false:
@@ -117,6 +117,8 @@ func throw_hammers() -> void:
 		node.velocity.y = -200
 		node.global_position = $Hammer.global_position
 		node.direction = direction
+		if Settings.file.audio.extra_sfx == 1:
+			AudioManager.play_sfx("hammer_throw", global_position)
 		if $TrackJoint.is_attached:
 			get_parent().owner.add_sibling(node)
 		else:
@@ -153,9 +155,9 @@ func on_timeout() -> void:
 
 func on_gib_about_to_spawn() -> void:
 	if is_real:
-		$FallSFX.play()
-		$FallSFX.finished.connect($FallSFX.queue_free)
-		$FallSFX.reparent(get_parent())
+		AudioManager.play_global_sfx("bowser_fall")
+	else:
+		$GibSpawner.gib_type = 0
 	# guzlad: ugly but it'll have to do until we move the metadata stuff to actual variables
 	if ((Global.current_game_mode == Global.GameMode.CUSTOM_LEVEL) or (Global.current_game_mode == Global.GameMode.LEVEL_EDITOR)) and !is_real:
 		$SpriteScaleJoint/DeathSprite/ResourceSetterNew.resource_json = load("res://Assets/Sprites/Enemies/Goomba.json")

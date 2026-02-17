@@ -1,4 +1,4 @@
-[gd_scene load_steps=2 format=3 uid="uid://b8e82usnfbw1t"]
+[gd_scene format=3 uid="uid://b8e82usnfbw1t"]
 
 [ext_resource type="PackedScene" uid="uid://dntk2js0tu3y2" path="res://Scenes/Prefabs/UI/WorldSelect.tscn" id="1_fvn0p"]
 
@@ -8,6 +8,9 @@ num_of_worlds = 4
 
 [node name="Slot1" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer/SlotContainer" parent_id_path=PackedInt32Array(181733477) index="0" unique_id=1293243576]
 focus_neighbor_left = NodePath("../Slot5")
+
+[node name="Cursor" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer/SlotContainer/Slot1" index="1" unique_id=962917386]
+visible = true
 
 [node name="Slot5" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer/SlotContainer" parent_id_path=PackedInt32Array(181733477) index="4" unique_id=286713451]
 focus_neighbor_right = NodePath("../Slot1")

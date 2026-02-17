@@ -27,7 +27,7 @@ func _enter_tree() -> void:
 
 func _ready() -> void:
 	setup_stars()
-	$CanvasLayer2/VersionLabel/DevBuildWarning.visible = Global.is_snapshot
+	%DevBuildWarning.visible = Global.is_snapshot
 	Global.level_theme_changed.connect(setup_stars)
 	DiscoLevel.in_disco_level = false
 	get_tree().paused = false
@@ -74,9 +74,11 @@ func campaign_selected() -> void:
 	$CanvasLayer/Options1.close()
 	if last_campaign != Global.current_campaign:
 		last_campaign = Global.current_campaign
-		update_title()
+		await update_title()
 	if Global.current_campaign == "SMBANN":
-		$CanvasLayer/Options2Stripped.open()
+		Global.current_game_mode = Global.GameMode.DISCO
+		$CanvasLayer/AllNightNippon/WorldSelect.open()
+		$%Options1.show()
 		return
 	$CanvasLayer/Options2.open()
 
@@ -102,10 +104,10 @@ func check_for_warpless() -> void:
 	SpeedrunHandler.is_warp_run = false
 	SpeedrunHandler.ghost_enabled = false
 	if SpeedrunHandler.WARP_LEVELS[Global.current_campaign].has(str(Global.world_num) + "-" + str(Global.level_num)):
-		%SpeedrunTypeSelect.open()
+		%SpeedrunTypeSelectLevel.open()
 	elif (SpeedrunHandler.best_level_any_times.get(str(Global.world_num) + "-" + str(Global.level_num), -1) > -1 or SpeedrunHandler.best_level_warpless_times[Global.world_num - 1][Global.level_num - 1] > -1):
 		$CanvasLayer/MarathonMode/HasRan/GhostSelect.open()
-	else: $CanvasLayer/MarathonMode/CharacterSelect.open()
+	else: $CanvasLayer/MarathonMode/CharacterSelectLevel.open()
 
 func check_for_ghost() -> void:
 	SpeedrunHandler.ghost_enabled = false
@@ -126,6 +128,13 @@ func get_highscore() -> void:
 func clear_stats() -> void:
 	Global.clear_saved_values()
 
+func clear_custom_save() -> void:
+	Global.world_num = 1
+	Global.level_num = 1
+	Global.custom_level_idx = 0
+	Global.clear_saved_values()
+	Global.reset_values()
+
 func go_back_to_first_level() -> void:
 	Global.world_num = 1
 	Global.level_num = 1
@@ -135,7 +144,9 @@ func start_game() -> void:
 	PipeCutscene.seen_cutscene = false
 	first_load = true
 	Global.reset_values()
-	LevelTransition.level_to_transition_to = Level.get_scene_string(Global.world_num, Global.level_num)
+	NewLevelBuilder.sub_levels = [null, null, null, null, null]
+	if Global.in_custom_campaign() == false:
+		LevelTransition.level_to_transition_to = Level.get_scene_string(Global.world_num, Global.level_num)
 	Global.transition_to_scene("res://Scenes/Levels/LevelTransition.tscn")
 
 func start_full_run() -> void:
@@ -154,6 +165,15 @@ func start_full_run() -> void:
 	Global.level_num = 1
 	LevelTransition.level_to_transition_to = Level.get_scene_string(Global.world_num, Global.level_num)
 	Global.transition_to_scene("res://Scenes/Levels/LevelTransition.tscn")
+
+func open_custom_campaign() -> void:
+	$CanvasLayer/StoryMode/CustomCampaign.open()
+	$CanvasLayer/StoryMode/CustomCampaign/HighScore.text = "TOP- " + str(Global.high_score).pad_zeros(6)
+	if (Global.score <= 0) == false:
+		$CanvasLayer/StoryMode/CustomCampaign.selected_index = 0
+	else:
+		$CanvasLayer/StoryMode/CustomCampaign.selected_index = 1
+
 
 func start_level_run() -> void:
 	Global.second_quest = false

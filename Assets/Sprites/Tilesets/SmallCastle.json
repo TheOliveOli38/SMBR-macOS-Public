@@ -4,6 +4,6 @@
 		"use_sprite": false
 	},
 	"variations": {
-		"default": {"source": "NULL"}
+		"default": {"source": "EndingCastleSprite.png"}
 	}
 }

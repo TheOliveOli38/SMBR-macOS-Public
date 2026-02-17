@@ -14,12 +14,15 @@ var config := {}
 
 var config_path := ""
 
+var old_idx := -1
+
 signal resource_pack_selected()
 
 signal open_config(pack: ResourcePackContainer)
 
 func _ready() -> void:
 	setup_visuals()
+	old_idx = get_index()
 
 func setup_visuals() -> void:
 	%Title.text = pack_json.name.to_upper()
@@ -33,7 +36,12 @@ func _process(_delta: float) -> void:
 	%LoadedOrder.visible = loaded
 	%LoadedOrder.text = str(load_order + 1)
 	load_order = Settings.file.visuals.resource_packs.find(pack_name)
-	$ResourcePackContainer.self_modulate = Color.GREEN if loaded else Color.WHITE
+	var colour = Color.WHITE
+	if Global.custom_pack == pack_name:
+		colour = Color.YELLOW
+	elif loaded:
+		colour = Color.GREEN
+	$ResourcePackContainer.self_modulate = colour
 	$Edit/EditLabel.visible = selected and config != {}
 	for i in [%TitleScroll, %DescScroll]:
 		i.is_focused = selected
@@ -51,10 +59,11 @@ func open_config_menu() -> void:
 	open_config.emit(self)
 
 func select() -> void:
-	print(ResourceSetter.cache)
+	if Global.custom_pack == pack_name:
+		AudioManager.play_global_sfx("bump")
+		return
 	ResourceSetter.cache.clear()
-	print(ResourceSetter.cache)
-	ResourceSetterNew.cache.clear()
+	ResourceSetterNew.clear_cache()
 	ResourceGetter.cache.clear()
 	AudioManager.current_level_theme = ""
 	loaded = not loaded
@@ -65,8 +74,11 @@ func select() -> void:
 	else:
 		ResourceSetterNew.pack_configs.erase(pack_name)
 		Settings.file.visuals.resource_packs.erase(pack_name)
+	Global.load_default_translations()
+	TranslationServer.reload_pseudolocalization()
 	Global.level_theme_changed.emit()
 	if loaded:
 		AudioManager.play_global_sfx("coin")
 	else:
 		AudioManager.play_global_sfx("bump")
+	grab_focus()

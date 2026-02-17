@@ -51,6 +51,9 @@ const THEME_RECTS := {
 	"Bonus": Rect2(0, 128, 32, 32)
 }
 
+enum Type{ALL, SAVED, DOWNLOADED, LEVEL_PACK}
+var current_type := Type.SAVED
+
 func _ready() -> void:
 	set_process(false)
 	update_visuals()
