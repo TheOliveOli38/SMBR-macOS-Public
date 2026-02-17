@@ -801,6 +801,9 @@ func apply_character_sfx_map() -> void:
 		custom_character = true
 		path = path.replace("res://Assets/Sprites/Players", Global.config_path.path_join("custom_characters/"))
 	path = ResourceSetter.get_pure_resource_path(path)
+	if FileAccess.file_exists(path) == false:
+		AudioManager.load_sfx_map({})
+		return
 	var json = JSON.parse_string(FileAccess.open(path, FileAccess.READ).get_as_text())
 	
 	for i in json:
@@ -923,7 +926,7 @@ func handle_invincible_palette() -> void:
 
 func handle_block_collision_detection() -> void:
 	if ["Pipe"].has(state_machine.state.name): return
-	if actual_velocity_y() <= calculate_speed_param("FALL_GRAVITY", velocity_x_jump_stored) and is_on_ceiling():
+	if is_on_ceiling():
 		for i in %BlockCollision.get_overlapping_bodies():
 			if i is Block:
 				i.player_block_hit.emit(self)
