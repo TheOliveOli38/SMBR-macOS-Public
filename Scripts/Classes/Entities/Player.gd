@@ -218,9 +218,9 @@ extends CharacterBody2D
 		
 		"PROJ_TYPE": "",
 		"PROJ_PARTICLE": "",
-		# Determines what projectile/particle scene is used, starting from
-		# "res://Scenes/Prefabs/". Leaving this blank disables firing
-		# projectiles and displaying particles respectively.
+		# Determines what projectile/particle scene is used. Leaving
+		# this blank disables firing projectiles and displaying
+		# particles respectively.
 		"PROJ_PARTICLE_ON_CONTACT": false, # Defines if the particle will play when making contact without being destroyed.
 		"PROJ_SFX_THROW": "fireball",      # Defines the sound effect that plays when this projectile is fired.
 		"PROJ_SFX_COLLIDE": "bump",        # Defines the sound effect that plays when this projectile collides.
@@ -1062,7 +1062,7 @@ func handle_wing_flight(delta: float) -> void:
 	%Wing.offset = Vector2(wing_offset[0], wing_offset[1])
 	if flight_meter <= 0:
 		return
-	if actual_velocity_y() < 0:
+	if normal_state.swim_up_meter > 0:
 		%Wing.play("Flap")
 	else:
 		%Wing.play("Idle")
