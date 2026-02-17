@@ -66,8 +66,6 @@ func update_visuals() -> void:
 		$ArrowJoint/Arrow.flip_v = exit_only
 		var id := pipe_id
 		$Node2D/CenterContainer/Label.text = str(id)
-	else:
-		hide()
 
 func exit_pipe() -> void:
 	can_enter = false
