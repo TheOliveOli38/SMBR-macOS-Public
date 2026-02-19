@@ -2,7 +2,7 @@
 A Remake / Celebration of the original 'Super Mario Bros.' games. Features new levels, custom modes, new characters, alongside a full level editor / custom level system!
 
 ## Unofficial macOS Port
-Changes made in this repo have been integrated into yuriko-shimizu's [Super Mario Bros. Remastered Public (Mac)](https://github.com/yuriko-shimizu/Super-Mario-Bros.-Remastered-Public-Mac) repository. To download the latest release of SMBR for Mac, please refer to that repo instead.
+Changes made in this repo have been integrated into yuriko-shimizu's [Super Mario Bros. Remastered Public (Mac)](https://github.com/yuriko-shimizu/Super-Mario-Bros.-Remastered-Public-Mac) repository. To download the latest stable release of SMB1R for Mac, please refer to that repo instead.
 
 ### Experimental builds
 Changes that have not yet been merged to yuriko-shimizu's repository, as well as experimental snapshot builds, can still be found [here](https://github.com/TheOliveOli38/SMBR-macOS-Public/releases).
