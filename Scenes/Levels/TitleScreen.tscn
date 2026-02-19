@@ -426,6 +426,7 @@ color = Color(0, 0, 0, 1)
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_top = 11.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -433,6 +434,7 @@ grow_vertical = 2
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_top = 11.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -1078,6 +1080,7 @@ grow_vertical = 2
 unique_name_in_owner = true
 
 [node name="QuitDialog" parent="CanvasLayer" unique_id=2087177884 instance=ExtResource("22_wjo1g")]
+offset_top = 11.0
 
 [node name="DropShadow" parent="." unique_id=1607903221 instance=ExtResource("5_8t4ah")]
 
