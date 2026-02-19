@@ -1029,7 +1029,7 @@ labels = [NodePath("../PanelContainer/MarginContainer/VBoxContainer/Title"), Nod
 text = "EDITOR_DELETION_WARNING"
 
 [node name="Label2" parent="CanvasLayer/SettingsMenu/CanvasLayer/Panel/VBoxContainer" parent_id_path=PackedInt32Array(1402202267, 1535374695) index="1" unique_id=165644100]
-text = "PHYSICS_CLASSIC_WARNING"
+text = "DIFFI_PHYSICS_STYLE_WARNING"
 
 [node name="CampaignSelect" parent="CanvasLayer" unique_id=1532379340 instance=ExtResource("14_1wnbq")]
 unique_name_in_owner = true
