@@ -6867,7 +6867,7 @@ offset_left = 10.0
 offset_top = 18.0
 offset_right = 58.0
 offset_bottom = 42.0
-text = "YES"
+text = "MENU_YES"
 
 [node name="No" type="Button" parent="Info/QuitDialog" unique_id=1715691923]
 layout_mode = 0
@@ -6875,7 +6875,7 @@ offset_left = 66.0
 offset_top = 18.0
 offset_right = 114.0
 offset_bottom = 42.0
-text = "NO"
+text = "MENU_NO"
 
 [node name="Cancel" type="Button" parent="Info/QuitDialog" unique_id=702798432]
 layout_mode = 0
@@ -6883,7 +6883,7 @@ offset_left = 122.0
 offset_top = 18.0
 offset_right = 186.0
 offset_bottom = 42.0
-text = "CANCEL"
+text = "MENU_CANCEL"
 
 [node name="SaveLevelDialog" type="PanelContainer" parent="Info" unique_id=1769159289]
 unique_name_in_owner = true
