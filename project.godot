@@ -16,6 +16,7 @@ warnings/check_angle_interpolation_type_conflicting=false
 [application]
 
 config/name="Super Mario Bros. Remastered"
+config/description="A celebration of the original 'Super Mario Bros.' games. Features new levels, custom modes, new characters, alongside a full level editor and custom level system!"
 run/main_scene="uid://bn66tnn8nlpi7"
 config/use_custom_user_dir=true
 config/custom_user_dir_name="SMB1R"
@@ -24,7 +25,7 @@ boot_splash/bg_color=Color(0, 0, 0, 1)
 boot_splash/show_image=false
 boot_splash/stretch_mode=0
 boot_splash/use_filter=false
-config/icon="res://icon.png"
+config/icon="uid://ckpp4sxwfvnvm"
 config/macos_native_icon="res://icon-mac.icns"
 use_discord=true
 
