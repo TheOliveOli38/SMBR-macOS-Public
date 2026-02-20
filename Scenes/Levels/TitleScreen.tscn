@@ -1080,7 +1080,8 @@ grow_vertical = 2
 unique_name_in_owner = true
 
 [node name="QuitDialog" parent="CanvasLayer" unique_id=2087177884 instance=ExtResource("22_wjo1g")]
-offset_top = 11.0
+offset_top = 114.0
+offset_bottom = -108.0
 
 [node name="DropShadow" parent="." unique_id=1607903221 instance=ExtResource("5_8t4ah")]
 
