@@ -6,7 +6,8 @@ Changes made in this repo have been integrated into yuriko-shimizu's [Super Mari
 
 ### Experimental builds
 Changes that have not yet been merged to yuriko-shimizu's repository, as well as experimental snapshot builds, can still be found [here](https://github.com/TheOliveOli38/SMBR-macOS-Public/releases).
-System requirements for SMB1R on macOS can be viewed [here](https://github.com/TheOliveOli38/SMBR-macOS-Public/blob/main/sysreqs.md).
+
+System requirements and instructions for running SMB1R on macOS can be viewed [here](https://github.com/TheOliveOli38/SMBR-macOS-Public/blob/main/sysreqs.md).
 
 ### Notable changes in the macOS port
 - Game title changed from SMB1R to Super Mario Bros. Remastered (Working directory is still named SMB1R)
@@ -16,4 +17,4 @@ System requirements for SMB1R on macOS can be viewed [here](https://github.com/T
 - Game starts in Borderless Windowed and Widescreen aspect ratio mode by default
 
 ## German localization
-Work on SMBR's German localization can be found in the [de-loc](https://github.com/TheOliveOli38/SMBR-macOS-Public/tree/de-loc) branch of this repository.
+Work on SMB1R's German localization can be found in the [de-loc](https://github.com/TheOliveOli38/SMBR-macOS-Public/tree/de-loc) branch of this repository.
