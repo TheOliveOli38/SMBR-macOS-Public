@@ -26,3 +26,32 @@ The following Macs are compatible with Metal 3: (only oldest compatible models l
 - Mac mini (2018)
 - Mac Pro (2019) except with AMD Radeon Pro 580X GPU
 - Mac Studio (2022)
+
+## Run instructions
+1. Download the latest build from the [releases](https://github.com/TheOliveOli38/SMBR-macOS-Public/releases) page
+
+<img width="926" height="auto" alt="Screenshot 2026-02-20 at 8 43 59 AM" src="https://github.com/user-attachments/assets/45e4898b-76aa-4a97-8ba4-1d793d3560ef" />
+
+2. Extract SMB1R.zip
+
+<img width="926" height="auto" alt="Screenshot 2026-02-20 at 8 44 21 AM" src="https://github.com/user-attachments/assets/c2446144-67a9-405c-b441-f001485dbeeb" />
+
+3. Run the game. When the Gatekeeper warning shows, click "Done"
+
+<img width="auto" height="926" alt="Screenshot 2026-02-20 at 8 44 51 AM" src="https://github.com/user-attachments/assets/4ed89f84-fdcc-46b7-8c45-321a09697bdc" />
+
+4. Open System Settings, and navigate to "Privacy & Security". Scroll down to the security section and click the "Open Anyway" button
+
+<img width="926" height="auto" alt="Screenshot 2026-02-20 at 8 45 01 AM" src="https://github.com/user-attachments/assets/4e3df10d-9047-4947-ae91-b7b246f637cd" />
+
+5. When the Gatekeeper warning shows, click "Open Anyway" and type in your password
+
+<img width="auto" height="926" alt="Screenshot 2026-02-20 at 8 45 05 AM" src="https://github.com/user-attachments/assets/17454b74-3b55-4311-97f4-cc4346d03213" />
+
+<img width="auto" height="926" alt="Screenshot 2026-02-20 at 8 45 08 AM" src="https://github.com/user-attachments/assets/cf81045f-7b57-4890-b450-ef59681c2845" />
+
+
+
+
+
+
