@@ -110,17 +110,15 @@ metadata/_custom_type_script = "uid://bbww34oiexbx2"
 [node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="." unique_id=1558703781]
 position = Vector2(0, -9)
 rect = Rect2(-10, -16, 20, 26)
-enable_node_path = NodePath("../EnemyPlayerDetection")
 
 [node name="ScoreNoteSpawner" type="Node" parent="." unique_id=1707310732]
 script = ExtResource("9_8atas")
 add_score = true
 metadata/_custom_type_script = "uid://5octqlf4ohel"
 
-[node name="BlockBouncingDetection" type="Node" parent="." unique_id=140736838 node_paths=PackedStringArray("hitbox")]
+[node name="BlockBouncingDetection" type="Node" parent="." unique_id=140736838]
 script = ExtResource("10_g8vhp")
 detection_type = 1
-hitbox = NodePath("")
 metadata/_custom_type_script = "uid://cmg61722ktg2m"
 
 [node name="EnemyPlayerDetection" type="Node" parent="." unique_id=353346295 node_paths=PackedStringArray("hitbox")]
