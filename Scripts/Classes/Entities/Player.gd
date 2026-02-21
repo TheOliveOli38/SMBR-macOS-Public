@@ -690,7 +690,7 @@ func actual_velocity_y():
 		return -velocity.y
 
 func editor_level_start() -> void:
-	if PipeArea.exiting_pipe_id == -1:
+	if PipeArea.exiting_pipe_id == -1 and CoinHeavenWarpPoint.subarea_return == -1:
 		power_state = get_node("PowerStates").get_child(starting_power_state)
 	handle_power_up_states(0)
 	set_power_state_frame()

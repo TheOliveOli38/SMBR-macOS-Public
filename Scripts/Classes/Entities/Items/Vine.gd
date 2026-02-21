@@ -94,10 +94,11 @@ func handle_player_interaction(delta: float) -> void:
 				i.owner.state_machine.transition_to("Climb", {"Vine": self})
 			elif i.owner.state_machine.state.name == "Climb" and global_position.y >= top_point and can_grow:
 				i.owner.global_position.y -= SPEED * delta
+			if i.global_position.y <= top_point + 16:
+				on_player_entered(i.owner)
 
 
 func on_player_entered(_player: Player) -> void:
-	print(can_tele)
 	if can_tele == false:
 		return
 	Level.vine_return_level = Global.current_level.scene_file_path
