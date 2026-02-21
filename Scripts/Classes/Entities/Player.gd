@@ -1517,7 +1517,10 @@ func teleport_player(new_position := Vector2.ZERO) -> void:
 func do_smoke_effect() -> void:
 	for i in 2:
 		var node = SMOKE_PARTICLE.instantiate()
-		node.global_position = global_position - Vector2(0, 16 * i)
+		var target_position = global_position
+		if gravity_vector == Vector2.UP:
+			target_position += Vector2(0, 16)
+		node.global_position = target_position - Vector2(0, (16 * gravity_vector.y) * i)
 		add_sibling(node)
 		if power_state.hitbox_size == "Small":
 			break
