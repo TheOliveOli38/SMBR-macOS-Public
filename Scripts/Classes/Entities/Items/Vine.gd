@@ -22,12 +22,13 @@ var can_grow := false
 func _ready() -> void:
 	if cutscene and Global.level_editor_is_editing() == false:
 		do_cutscene()
+	else:
+		if Global.current_level != null:
+			top_point = Global.current_level.vertical_height - 48
 	if has_meta("block_item"):
 		$SFX.play()
 		can_grow = true
 		global_position.y += 8
-	if Global.current_level != null:
-		top_point = Global.current_level.vertical_height - 48
 
 func do_cutscene() -> void:
 	Level.in_vine_level = true
