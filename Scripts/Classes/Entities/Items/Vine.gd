@@ -5,7 +5,6 @@ extends Node2D
 
 const SPEED := 32.0
 @onready var collision: CollisionShape2D = $Hitbox/Collision
-@onready var visuals: NinePatchRect = $Visuals
 @onready var hitbox: Area2D = $Hitbox
 
 
@@ -26,7 +25,7 @@ func _ready() -> void:
 	if has_meta("block_item"):
 		$SFX.play()
 		can_grow = true
-		global_position.y -= 1
+		global_position.y += 8
 	if Global.current_level != null:
 		top_point = Global.current_level.vertical_height - 48
 
@@ -69,7 +68,9 @@ func do_cutscene() -> void:
 func _physics_process(delta: float) -> void:
 	if global_position.y >= top_point and can_grow:
 		global_position.y -= SPEED * delta
-		visuals.size.y += SPEED * delta
+		%Middle.position.y = %Top.position.y + 8
+		%Bottom.position.y += SPEED * delta
+		%Middle.size.y = abs(%Top.global_position.y - %Bottom.global_position.y) - 1
 		collision.shape.size.y += SPEED * delta
 		collision.position.y += (SPEED / 2) * delta
 		if %CeilingCheck.is_colliding() and not cutscene:
