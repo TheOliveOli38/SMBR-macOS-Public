@@ -16,6 +16,9 @@ const DEFAULT_SFX_LIBRARY := {
 	"enemy_stomp": ("res://Assets/Audio/SFX/Stomp.wav"),
 	"kick": ("res://Assets/Audio/SFX/Kick.wav"),
 	"fireball": ("res://Assets/Audio/SFX/Fireball.wav"),
+	"plant_fireball": ("res://Assets/Audio/SFX/Fireball.wav"),
+	"bowser_jr_fireball": ("res://Assets/Audio/SFX/Fireball.wav"),
+	"shell_spin": ("res://Assets/Audio/SFX/ShellSpin.wav"),
 	"1_up": ("res://Assets/Audio/SFX/1up.wav"),
 	"die_sting": ("res://Assets/Audio/SFX/DieSting.wav"),
 	"cannon": ("res://Assets/Audio/SFX/Cannon.wav"),
@@ -295,7 +298,7 @@ func create_stream_from_json(json_path := "") -> AudioStream:
 	path = ResourceSetter.get_pure_resource_path(json_path)
 	$ResourceSetterNew.current_resource_pack = ResourceGetter.get_resource_pack_from_path(path)
 	var final_json = $ResourceSetterNew.get_variation_json(JSON.parse_string(FileAccess.open(path, FileAccess.READ).get_as_text()).variations)
-	print(final_json)
+	#print(final_json)
 	var bgm_file = final_json.source
 	path = ResourceSetter.get_pure_resource_path(json_path.replace(json_path.get_file(), bgm_file))
 	var stream = null
