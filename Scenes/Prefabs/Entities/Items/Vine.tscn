@@ -44,6 +44,7 @@ func handle_sizing() -> void:
 [node name="Vine" type="Node2D" unique_id=1927177956]
 z_index = -5
 script = ExtResource("2_tlgk1")
+top_point = -99999
 can_tele = false
 
 [node name="Visuals" type="NinePatchRect" parent="." unique_id=338275435]

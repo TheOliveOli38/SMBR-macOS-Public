@@ -27,6 +27,8 @@ func _ready() -> void:
 		$SFX.play()
 		can_grow = true
 		global_position.y -= 1
+	if Global.current_level != null:
+		top_point = Global.current_level.vertical_height - 48
 
 func do_cutscene() -> void:
 	Level.in_vine_level = true
