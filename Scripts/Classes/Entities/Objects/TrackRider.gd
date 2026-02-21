@@ -27,6 +27,7 @@ var point_idx := 0.0
 @onready var path := Curve2D.new()
 
 func start() -> void:
+	await get_tree().physics_frame
 	if $SignalExposer.total_inputs > 0:
 		can_move = false
 	current_track = null

@@ -109,6 +109,7 @@
 [ext_resource type="Texture2D" uid="uid://bi13n4mw0to20" path="res://Assets/Sprites/Blocks/TimedBooBlock.png" id="114_swqrt"]
 [ext_resource type="Texture2D" uid="uid://cv27sth0k3amk" path="res://Assets/Sprites/Blocks/SwitchSpike.png" id="118_xde7w"]
 [ext_resource type="Texture2D" uid="uid://dnjx65qkbf1aq" path="res://Assets/Sprites/Blocks/SpringBlock.png" id="119_24ald"]
+[ext_resource type="JSON" path="res://Assets/Sprites/Players/PeachNPC.json" id="120_606p5"]
 [ext_resource type="Texture2D" uid="uid://bd25s0rlv8axh" path="res://Assets/Sprites/Blocks/SuperSpringBlock.png" id="120_i2jbr"]
 [ext_resource type="JSON" path="res://Assets/Sprites/Blocks/TrickBlock.json" id="126_606p5"]
 [ext_resource type="JSON" path="res://Assets/Sprites/Items/Clock.json" id="131_514ei"]
@@ -125,7 +126,6 @@
 [ext_resource type="JSON" path="res://Assets/Sprites/Players/ToadNPC.json" id="137_jmysq"]
 [ext_resource type="JSON" path="res://Assets/Sprites/Blocks/BurnerBlock.json" id="138_sucb6"]
 [ext_resource type="JSON" path="res://Assets/Sprites/Blocks/FrozenTurnBlock.json" id="139_ixc5s"]
-[ext_resource type="Texture2D" uid="uid://boivfkpqvnx45" path="res://Assets/Sprites/Players/Peach.png" id="139_xenld"]
 [ext_resource type="StyleBox" uid="uid://comkghpj0djcl" path="res://Resources/UI/Panel.tres" id="139_ydoon"]
 [ext_resource type="JSON" path="res://Assets/Sprites/Tilesets/Track.json" id="141_0jt4c"]
 [ext_resource type="JSON" path="res://Assets/Sprites/Blocks/FrozenMuncher.json" id="141_kxobe"]
@@ -4890,8 +4890,8 @@ offset_right = 16.0
 offset_bottom = 16.0
 tile_name = "OBJ_CASTLE_PEACH"
 type = 1
-icon_texture = ExtResource("139_xenld")
-icon_region_override = Rect2(16, 8, 16, 16)
+icon_texture = ExtResource("120_606p5")
+icon_region_override = Rect2(0, 8, 16, 16)
 entity_id = "BM"
 
 [node name="TextureRect" type="TextureRect" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Objects/MarginContainer/GridContainer/CastleNPCs" unique_id=406126953]
