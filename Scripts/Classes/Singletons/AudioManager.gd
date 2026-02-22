@@ -16,9 +16,6 @@ const DEFAULT_SFX_LIBRARY := {
 	"enemy_stomp": ("res://Assets/Audio/SFX/Stomp.wav"),
 	"kick": ("res://Assets/Audio/SFX/Kick.wav"),
 	"fireball": ("res://Assets/Audio/SFX/Fireball.wav"),
-	"plant_fireball": ("res://Assets/Audio/SFX/Fireball.wav"),
-	"bowser_jr_fireball": ("res://Assets/Audio/SFX/Fireball.wav"),
-	"shell_spin": ("res://Assets/Audio/SFX/ShellSpin.wav"),
 	"1_up": ("res://Assets/Audio/SFX/1up.wav"),
 	"die_sting": ("res://Assets/Audio/SFX/DieSting.wav"),
 	"cannon": ("res://Assets/Audio/SFX/Cannon.wav"),
@@ -84,7 +81,10 @@ const DEFAULT_SFX_LIBRARY := {
 	"speak": "res://Assets/Audio/SFX/Speaking.wav",
 	"countdown": "res://Assets/Audio/SFX/RaceCountdown.wav",
 	"bowser_fall": "res://Assets/Audio/SFX/BowserFall.wav",
-	"superball": "res://Assets/Audio/SFX/Superball.wav"
+	"superball": "res://Assets/Audio/SFX/Superball.wav",
+	"plant_fireball": ("res://Assets/Audio/SFX/Fireball.wav"),
+	"bowser_jr_fireball": ("res://Assets/Audio/SFX/Fireball.wav"),
+	"shell_spin": ("res://Assets/Audio/SFX/ShellSpin.wav"),
 }
 
 @onready var sfx_library = DEFAULT_SFX_LIBRARY.duplicate()

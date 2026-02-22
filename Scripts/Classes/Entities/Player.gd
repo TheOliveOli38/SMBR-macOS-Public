@@ -524,6 +524,7 @@ const ANIMATION_FALLBACKS := {
 	"StarRunJump": "StarJump",
 	"StarRunJumpFall": "StarJumpFall",
 	"StarRunJumpBump": "StarJumpBump",
+	"StarRun": "Run",
 	
 	"StarSpringJump": "StarJump",
 	"StarSpringFall": "StarJumpFall",
