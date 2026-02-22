@@ -179,6 +179,8 @@
 [ext_resource type="PackedScene" uid="uid://dsfyv4ulvul6q" path="res://Scenes/Prefabs/Gizmos/Outputs/Fuse.tscn" id="176_adqgr"]
 [ext_resource type="PackedScene" uid="uid://rvrkmp0wgg5w" path="res://Scenes/Prefabs/Gizmos/Outputs/Teleporter.tscn" id="176_uggri"]
 [ext_resource type="Texture2D" uid="uid://wbsdfjs21yf0" path="res://Assets/Sprites/Editor/Gizmos/EnemyDefeatDetect.png" id="177_2l75x"]
+[ext_resource type="Texture2D" uid="uid://ctlqmuaxiu28w" path="res://Assets/Sprites/Editor/Gizmos/ObjectDetection.png" id="177_bcg6t"]
+[ext_resource type="JSON" path="res://Assets/Sprites/Items/QuestionSwitch.json" id="177_ckl32"]
 [ext_resource type="PackedScene" uid="uid://dr5lmraq8gwtm" path="res://Scenes/Prefabs/Gizmos/Inputs/EnemyDefeatDetect.tscn" id="178_0bfpc"]
 [ext_resource type="Texture2D" uid="uid://cp6jjfs5n3jjd" path="res://Assets/Sprites/Editor/Gizmos/Dice.png" id="181_k6wox"]
 [ext_resource type="PackedScene" uid="uid://bbc6s5nyphtn2" path="res://Scenes/Prefabs/Gizmos/Outputs/Dice.tscn" id="182_3c4c7"]
@@ -201,6 +203,7 @@
 [ext_resource type="JSON" path="res://Assets/Sprites/Tilesets/PDoors.json" id="207_sucb6"]
 [ext_resource type="Texture2D" uid="uid://ds7hexn5nb4vt" path="res://Assets/Sprites/Editor/Gizmos/Warper.png" id="208_606p5"]
 [ext_resource type="Texture2D" uid="uid://ejdm7k30661p" path="res://Assets/Sprites/Editor/SecondCamera.png" id="208_ji0c6"]
+[ext_resource type="JSON" path="res://Assets/Sprites/Blocks/SwitchBlocks.json" id="211_bcg6t"]
 [ext_resource type="JSON" path="res://Assets/Sprites/Items/Hachisuke.json" id="211_fe6cg"]
 [ext_resource type="PackedScene" uid="uid://k4bgruingvi0" path="res://Scenes/Prefabs/UI/EditorGuide.tscn" id="211_numt2"]
 [ext_resource type="JSON" path="res://Assets/Sprites/Items/WingItem.json" id="221_o0k3u"]
@@ -5895,6 +5898,48 @@ grow_vertical = 2
 mouse_filter = 2
 texture = ExtResource("194_24ald")
 
+[node name="ObjectDetection" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Gizmos/MarginContainer/VBoxContainer/Inputs" unique_id=1428110027 groups=["Selectors"] instance=ExtResource("8_wkmjk")]
+layout_mode = 2
+tile_name = "GIZMO_OBJECT_DETECTION"
+tile_desc = "Will turn on or off, depending on if a specific object is inside its area."
+type = 1
+icon_texture = ExtResource("177_bcg6t")
+icon_region_override = Rect2(0, 0, 16, 16)
+secondary_icon_region_override = Rect2(0, 0, 16, 16)
+entity_id = "Dc"
+entity_scene = ExtResource("158_5yjx1")
+
+[node name="TextureRect" type="TextureRect" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Gizmos/MarginContainer/VBoxContainer/Inputs/ObjectDetection" unique_id=1144061763]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("194_24ald")
+
+[node name="QuestionSwitch" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Gizmos/MarginContainer/VBoxContainer/Inputs" unique_id=1796843749 groups=["Selectors"] instance=ExtResource("8_wkmjk")]
+layout_mode = 2
+tile_name = "GIZMO_QUESTION_SWITCH"
+tile_desc = "A Generic Switch Object, Emits a pulse when activated, power or pulse it to restore it."
+type = 1
+icon_texture = ExtResource("177_ckl32")
+icon_region_override = Rect2(0, 0, 16, 16)
+secondary_icon_region_override = Rect2(0, 0, 16, 16)
+entity_id = "Da"
+entity_scene = ExtResource("178_0bfpc")
+
+[node name="TextureRect" type="TextureRect" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Gizmos/MarginContainer/VBoxContainer/Inputs/QuestionSwitch" unique_id=1359170727]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("194_24ald")
+
 [node name="Logic" type="HFlowContainer" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Gizmos/MarginContainer/VBoxContainer" unique_id=1170676853]
 layout_mode = 2
 
@@ -6348,6 +6393,27 @@ entity_id = "DU"
 entity_scene = ExtResource("176_uggri")
 
 [node name="TextureRect" type="TextureRect" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Gizmos/MarginContainer/VBoxContainer/Output/Warper" unique_id=725773224]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("194_24ald")
+
+[node name="SwitchBlocks" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Gizmos/MarginContainer/VBoxContainer/Output" unique_id=981661468 groups=["Selectors"] instance=ExtResource("8_wkmjk")]
+layout_mode = 2
+tile_name = "GIZMO_SWITCH_BLOCK"
+tile_desc = "A Generic Switch Block, can be turned on and off via gizmos, has a customizable colour."
+type = 1
+icon_texture = ExtResource("211_bcg6t")
+icon_region_override = Rect2(0, 0, 16, 16)
+secondary_icon_region_override = Rect2(0, 0, 16, 16)
+entity_id = "Db"
+entity_scene = ExtResource("176_uggri")
+
+[node name="TextureRect" type="TextureRect" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Gizmos/MarginContainer/VBoxContainer/Output/SwitchBlocks" unique_id=1373282081]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0

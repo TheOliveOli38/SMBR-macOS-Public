@@ -2,15 +2,20 @@ extends CharacterBody2D
 
 var is_pressed := false
 
+@export var has_gravity := true
+@export_enum("Up", "Down") var direction := 0
+
 signal switch_pressed
 
-@export var one_time := true
-
 func on_player_entered(player: Player) -> void:
-	if player.velocity.y >= 0:
-		pressed(one_time)
+	if (player.velocity.y >= 0 and direction == 0) or (player.velocity.y < 0 and direction == 1):
+		pressed()
 
-func pressed(destroy := true) -> void:
+func _physics_process(delta: float) -> void:
+	if has_gravity:
+		$BasicStaticMovement.handle_movement(delta)
+
+func pressed() -> void:
 	if is_pressed:
 		return
 	switch_pressed.emit()
@@ -19,14 +24,7 @@ func pressed(destroy := true) -> void:
 	is_pressed = true
 	$Sprite.play("Pressed")
 	AudioManager.play_global_sfx("switch")
-	AudioManager.play_global_sfx("pswitch_pressed")
 	$AnimationPlayer.play("Pressed")
-	Global.activate_p_switch()
-	await get_tree().create_timer(0.5, false).timeout
-	if destroy:
-		delete()
-	else:
-		Global.p_switch_toggle.connect(restore, CONNECT_ONE_SHOT)
 
 func restore() -> void:
 	$Sprite.play("Idle")
