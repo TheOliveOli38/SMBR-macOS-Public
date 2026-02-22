@@ -452,6 +452,7 @@
 	"BLOCK_FROZEN_MUNCHER": "Frozen Muncher",
 	"BLOCK_BUBBLE": "Bubble Noteblock",
 	"BLOCK_SNAKE": "Snake Block",
+	"BLOCK_BUMP": "Bump Block",
 	"OBJ_CRATE": "Crate",
 	"OBJ_FIREBAR": "Fire Bar",
 	"OBJ_BURNER": "Burner",

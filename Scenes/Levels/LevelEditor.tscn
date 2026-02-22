@@ -88,6 +88,7 @@
 [ext_resource type="Texture2D" uid="uid://boj5qawy6b6t2" path="res://Assets/Sprites/Editor/SmallCastle.png" id="96_lm8lu"]
 [ext_resource type="Texture2D" uid="uid://m86epuy45c3u" path="res://Assets/Sprites/Editor/LargeCastle.png" id="98_2umvb"]
 [ext_resource type="JSON" path="res://Assets/Sprites/Enemies/WigglerHead.json" id="99_4cny5"]
+[ext_resource type="JSON" path="res://Assets/Sprites/Blocks/BumpBlock.json" id="100_kr3hc"]
 [ext_resource type="JSON" path="res://Assets/Sprites/Enemies/Barrel.json" id="102_6c7k7"]
 [ext_resource type="JSON" path="res://Assets/Sprites/Blocks/OnOffSwitch.json" id="103_mbniv"]
 [ext_resource type="JSON" path="res://Assets/Sprites/Tilesets/Platform.json" id="104_111c4"]
@@ -4461,6 +4462,26 @@ grow_vertical = 2
 mouse_filter = 2
 texture = ExtResource("194_24ald")
 
+[node name="BumpBlock" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Blocks/MarginContainer/GridContainer" unique_id=1899920323 groups=["Selectors"] instance=ExtResource("8_wkmjk")]
+layout_mode = 2
+tile_name = "BLOCK_BUMP"
+type = 1
+icon_texture = ExtResource("100_kr3hc")
+icon_region_override = Rect2(0, 0, 16, 16)
+entity_id = "DZ"
+entity_scene = ExtResource("94_jmysq")
+metadata/_edit_group_ = true
+
+[node name="TextureRect" type="TextureRect" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Blocks/MarginContainer/GridContainer/BumpBlock" unique_id=205035660]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("194_24ald")
+
 [node name="Objects" type="VBoxContainer" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer" unique_id=1913042751]
 layout_mode = 2
 
@@ -6858,7 +6879,7 @@ offset_left = -84.0
 offset_right = 84.0
 offset_bottom = 16.0
 grow_horizontal = 2
-text = "EDITOR_CLOSE_DIALOG"
+text = "EDITOR_SAVE_WARNING"
 uppercase = true
 
 [node name="Yes" type="Button" parent="Info/QuitDialog" unique_id=940072914]
@@ -7187,6 +7208,7 @@ visible = false
 [connection signal="tile_selected" from="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Blocks/MarginContainer/GridContainer/Burner" to="." method="on_tile_selected"]
 [connection signal="tile_selected" from="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Blocks/MarginContainer/GridContainer/Crate" to="." method="on_tile_selected"]
 [connection signal="tile_selected" from="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Blocks/MarginContainer/GridContainer/SnakeBlock" to="." method="on_tile_selected"]
+[connection signal="tile_selected" from="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Blocks/MarginContainer/GridContainer/BumpBlock" to="." method="on_tile_selected"]
 [connection signal="pressed" from="TileMenu/MarginContainer/VBoxContainer/PanelContainer/LEVEL/ScrollContainer/VBoxContainer/HBoxContainer/HBoxContainer/Button" to="TileMenu/ThemeSelect" method="open"]
 [connection signal="item_selected" from="TileMenu/MarginContainer/VBoxContainer/PanelContainer/LEVEL/ScrollContainer/VBoxContainer/HBoxContainer8/SubLevelID" to="." method="transition_to_sublevel"]
 [connection signal="item_selected" from="TileMenu/MarginContainer/VBoxContainer/PanelContainer/LEVEL/ScrollContainer/VBoxContainer/HBoxContainer7/ThemeTime" to="." method="time_selected"]

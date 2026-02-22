@@ -818,5 +818,9 @@
 	"DY": [
 		"res://Scenes/Prefabs/LevelObjects/WaterArea.tscn",
 		"0,0"
+	],
+	"DZ": [
+		"res://Scenes/Prefabs/Blocks/BumpBlock.tscn",
+		"0,0"
 	]
 }
