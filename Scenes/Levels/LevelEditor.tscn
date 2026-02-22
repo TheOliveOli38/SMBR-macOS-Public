@@ -3568,6 +3568,7 @@ offset_bottom = 16.0
 tile_name = "ENEMY_BULLETBILL"
 type = 1
 icon_texture = ExtResource("46_kk6ga")
+icon_region_override = Rect2(0, 0, 16, 16)
 entity_id = "AR"
 metadata/cannon_ammo = false
 

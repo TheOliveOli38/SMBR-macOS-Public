@@ -554,6 +554,8 @@
 	"GIZMO_CONDITIONAL": "Conditional Clearer",
 	"GIZMO_WARPER": "Room Warper",
 	"GIZMO_QUESTION_SWITCH": "? Switch",
+	"GIZMO_SWITCH_BLOCK": "Switch Block",
+	"GIZMO_OBJECT_DETECTION": "Object Detection",
 	"LEVEL_SETTINGS_THEME": "Theme:",
 	"THEME_OVERWORLD": "Overworld",
 	"THEME_UNDERGROUND": "Underground",
