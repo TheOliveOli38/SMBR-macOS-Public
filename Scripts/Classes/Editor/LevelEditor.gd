@@ -301,8 +301,7 @@ func play_level() -> void:
 	level.apply_resolution_enforcement()
 	level.inf_time_check()
 	level_start.emit()
-	if gizmos_visible == false:
-		get_tree().call_group("Gizmos", "hide")
+	get_tree().call_group("Gizmos", "set_visible", gizmos_visible)
 	get_tree().call_group("Players", "editor_level_start")
 	save_current_level()
 	level.process_mode = Node.PROCESS_MODE_PAUSABLE

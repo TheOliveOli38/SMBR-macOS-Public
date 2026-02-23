@@ -31,6 +31,8 @@ func physics_update(delta: float) -> void:
 	handle_death_pits()
 
 func handle_death_pits() -> void:
+	if Warper.warping:
+		return
 	if player.global_position.y > 64 and not Level.in_vine_level and player.auto_death_pit and player.gravity_vector == Vector2.DOWN:
 		player.die(true)
 	elif player.global_position.y < Global.current_level.vertical_height - 32 and player.gravity_vector == Vector2.UP:
@@ -255,10 +257,12 @@ func swim_up() -> void:
 func handle_animations() -> void:
 	var animation = get_animation_name()
 	player.sprite.speed_scale = 1
-	if ["Walk", "Move", "Run", "Jog"].has(animation):
-		player.sprite.speed_scale = abs(player.velocity.x) / player.physics_params("MOVE_ANIM_SPEED_DIV", player.COSMETIC_PARAMETERS)
-		if player.on_ice:
-			player.sprite.speed_scale *= player.physics_params("ICE_SPEED_MOD", player.COSMETIC_PARAMETERS)
+	for i in ["Walk", "Move", "Run", "Jog"]:
+		if animation.contains(i):
+			player.sprite.speed_scale = abs(player.velocity.x) / player.physics_params("MOVE_ANIM_SPEED_DIV", player.COSMETIC_PARAMETERS)
+			if player.on_ice:
+				player.sprite.speed_scale *= player.physics_params("ICE_SPEED_MOD", player.COSMETIC_PARAMETERS)
+			break
 	player.play_animation(animation)
 	if player.sprite.animation == "Move":
 		walk_frame = player.sprite.frame
@@ -285,7 +289,9 @@ func get_animation_name() -> String:
 	elif has_flight: state_context = "Wing"
 
 	var state = func(anim_name: String) -> String:
-		return state_context + anim_name
+		if player.sprite.sprite_frames.has_animation(state_context + anim_name):
+			return state_context + anim_name
+		return anim_name
 
 	var jump_context := ""
 	if player.has_spring_jumped: jump_context = "Spring"
@@ -294,7 +300,9 @@ func get_animation_name() -> String:
 	if player.has_star: jump_context = "Star" + jump_context
 	
 	var jump = func(anim_name: String) -> String:
-		return jump_context + anim_name
+		if player.sprite.sprite_frames.has_animation(state_context + anim_name):
+			return jump_context + anim_name
+		return anim_name
 
 	# --- Attack Animations ---
 	if player.attacking:

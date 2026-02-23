@@ -149,6 +149,10 @@ func play_sfx(stream_name = "", position := Vector2.ZERO, pitch := 1.0, can_over
 			var stream_path = sfx_library[stream_name]
 			if stream_path is Array:
 				stream_path = stream_path.pick_random()
+			stream_path = ResourceSetter.get_pure_resource_path(stream_path)
+			var json_path = ResourceSetter.get_pure_resource_path(stream_path.replace(stream_path.get_extension(), "json"))
+			if FileAccess.file_exists(json_path):
+				stream_path = json_path
 			stream = import_stream(stream_path)
 		if is_custom == false:
 			player.stream = ResourceSetter.get_resource(stream, player)
@@ -311,6 +315,8 @@ func create_stream_from_json(json_path := "") -> AudioStream:
 			stream = AudioStreamMP3.load_from_file(path)
 		elif path.ends_with(".ogg"):
 			stream = AudioStreamOggVorbis.load_from_file(path)
+		elif path.ends_with(".wav"):
+			stream = AudioStreamWAV.load_from_file(path)
 	return stream
 
 func generate_interactive_stream(bgm_file := {}) -> AudioStreamInteractive:
@@ -322,24 +328,22 @@ func generate_interactive_stream(bgm_file := {}) -> AudioStreamInteractive:
 	return stream
 
 func import_stream(file_path := "", loop_point := -1.0) -> AudioStream:
-	var path = file_path
 	var stream = null
-	if path.begins_with("res://"):
-		stream = load(path)
-	elif path.ends_with(".mp3"):
-		stream = AudioStreamMP3.load_from_file(ResourceSetter.get_pure_resource_path(file_path))
-	elif path.ends_with(".ogg"):
-		stream = AudioStreamOggVorbis.load_from_file(ResourceSetter.get_pure_resource_path(file_path))
-	elif path.ends_with(".wav"):
-		stream = AudioStreamWAV.load_from_file(path)
-		#print([path, stream])
-	if path.ends_with(".mp3"):
+	if file_path.begins_with("res://"):
+		stream = load(file_path)
+	elif file_path.ends_with(".mp3"):
+		stream = AudioStreamMP3.load_from_file(file_path)
+	elif file_path.ends_with(".ogg"):
+		stream = AudioStreamOggVorbis.load_from_file(file_path)
+	elif file_path.ends_with(".wav"):
+		stream = AudioStreamWAV.load_from_file(file_path)
+	if file_path.ends_with(".mp3"):
 		stream.set_loop(loop_point >= 0)
 		stream.set_loop_offset(loop_point)
-	elif path.ends_with(".ogg"):
+	elif file_path.ends_with(".ogg"):
 		stream.set_loop(loop_point >= 0)
 		stream.set_loop_offset(loop_point)
-	elif path.ends_with(".json"):
-		stream = create_stream_from_json(path)
+	elif file_path.ends_with(".json"):
+		stream = create_stream_from_json(file_path)
 	return stream
 	

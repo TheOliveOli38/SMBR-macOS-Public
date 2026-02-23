@@ -421,6 +421,7 @@ func transition_to_scene(scene_path = "") -> void:
 		return
 	transitioning_scene = true
 	if fade_transition:
+		freeze_screen()
 		$Transition/AnimationPlayer.play("FadeIn")
 		await $Transition/AnimationPlayer.animation_finished
 		await get_tree().create_timer(0.1, true).timeout
@@ -435,6 +436,7 @@ func transition_to_scene(scene_path = "") -> void:
 	await get_tree().scene_changed
 	await get_tree().create_timer(0.15, true).timeout
 	if fade_transition:
+		close_freeze()
 		$Transition/AnimationPlayer.play_backwards("FadeIn")
 	else:
 		$Transition/AnimationPlayer.play("RESET")
@@ -465,7 +467,6 @@ func freeze_screen() -> void:
 
 func close_freeze() -> void:
 	$Transition/Freeze.hide()
-	$Transition.hide()
 
 var recording_dir = config_path.path_join("marathon_recordings")
 

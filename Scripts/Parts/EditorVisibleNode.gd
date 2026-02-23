@@ -10,6 +10,8 @@ func _ready() -> void:
 
 func update() -> void:
 	var is_visible = (Global.level_editor_is_editing())
+	set("visible", true)
+	return
 	if is_gizmo == false:
 		if is_visible == false:
 			set("visible", false)

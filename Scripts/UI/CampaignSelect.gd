@@ -146,6 +146,7 @@ func select() -> void:
 		ResourceSetterNew.clear_cache()
 		ResourceGetter.cache.clear()
 		Global.level_theme_changed.emit()
+		Global.get_node("Transition").hide()
 		for i in 2:
 			await get_tree().process_frame
 		Global.close_freeze()
