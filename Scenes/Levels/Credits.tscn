@@ -364,7 +364,7 @@ offset_top = -8.0
 offset_bottom = 8.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "Created by JoeMama"
+text = "CREDITS_CREATOR"
 horizontal_alignment = 1
 uppercase = true
 metadata/time = 2
@@ -386,7 +386,7 @@ offset_left = 8.0
 offset_top = 16.0
 offset_right = 112.0
 offset_bottom = 32.0
-text = "Tile Artists"
+text = "CREDITS_TILES"
 uppercase = true
 
 [node name="HSeparator" type="HSeparator" parent="Labels/TileArtists/Label" unique_id=413502125]
@@ -395,17 +395,16 @@ anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -3.0
-offset_bottom = 1.0
+offset_top = -4.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_styles/separator = SubResource("StyleBoxLine_g2gtw")
 
 [node name="Label2" type="Label" parent="Labels/TileArtists/Label" unique_id=1323437201]
 layout_mode = 0
-offset_top = 17.0
-offset_right = 64.0
-offset_bottom = 33.0
+offset_top = 16.0
+offset_right = 40.0
+offset_bottom = 32.0
 text = "amer241"
 uppercase = true
 
@@ -424,9 +423,9 @@ metadata/_custom_type_script = "uid://ca3bew33g45eq"
 
 [node name="Label3" type="Label" parent="Labels/TileArtists/Label" unique_id=1116434938]
 layout_mode = 0
-offset_top = 33.0
+offset_top = 32.0
 offset_right = 112.0
-offset_bottom = 49.0
+offset_bottom = 48.0
 text = "HOT CROSS BUN"
 uppercase = true
 
@@ -445,9 +444,9 @@ metadata/_custom_type_script = "uid://ca3bew33g45eq"
 
 [node name="Label4" type="Label" parent="Labels/TileArtists/Label" unique_id=2146106582]
 layout_mode = 0
-offset_top = 49.0
-offset_right = 112.0
-offset_bottom = 65.0
+offset_top = 48.0
+offset_right = 56.0
+offset_bottom = 64.0
 text = "MARTIN LOZANO"
 uppercase = true
 
@@ -466,9 +465,9 @@ metadata/_custom_type_script = "uid://ca3bew33g45eq"
 
 [node name="Label5" type="Label" parent="Labels/TileArtists/Label" unique_id=902465977]
 layout_mode = 0
-offset_top = 81.0
+offset_top = 80.0
 offset_right = 40.0
-offset_bottom = 97.0
+offset_bottom = 96.0
 text = "hdtv"
 uppercase = true
 
@@ -487,9 +486,9 @@ metadata/_custom_type_script = "uid://ca3bew33g45eq"
 
 [node name="Label7" type="Label" parent="Labels/TileArtists/Label" unique_id=144779880]
 layout_mode = 0
-offset_top = 97.0
-offset_right = 64.0
-offset_bottom = 113.0
+offset_top = 96.0
+offset_right = 40.0
+offset_bottom = 112.0
 text = "CRAFINK"
 uppercase = true
 
@@ -508,9 +507,9 @@ metadata/_custom_type_script = "uid://ca3bew33g45eq"
 
 [node name="Label6" type="Label" parent="Labels/TileArtists/Label" unique_id=721563025]
 layout_mode = 0
-offset_top = 65.0
+offset_top = 64.0
 offset_right = 200.0
-offset_bottom = 81.0
+offset_bottom = 80.0
 text = "DIAMOND-LOCK PRODUCTIONS"
 uppercase = true
 
@@ -554,7 +553,7 @@ offset_left = 16.0
 offset_top = 16.0
 offset_right = 104.0
 offset_bottom = 32.0
-text = "BG ARTISTS"
+text = "CREDITS_BGS"
 uppercase = true
 
 [node name="HSeparator" type="HSeparator" parent="Labels/BGArtists/Label" unique_id=1916951870]
@@ -563,17 +562,16 @@ anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -3.0
-offset_bottom = 1.0
+offset_top = -4.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_styles/separator = SubResource("StyleBoxLine_g2gtw")
 
 [node name="Label2" type="Label" parent="Labels/BGArtists/Label" unique_id=30312686]
 layout_mode = 0
-offset_top = 17.0
+offset_top = 16.0
 offset_right = 64.0
-offset_bottom = 33.0
+offset_bottom = 32.0
 text = "amer241"
 uppercase = true
 
@@ -592,9 +590,9 @@ metadata/_custom_type_script = "uid://ca3bew33g45eq"
 
 [node name="Label3" type="Label" parent="Labels/BGArtists/Label" unique_id=1951279647]
 layout_mode = 0
-offset_top = 33.0
+offset_top = 32.0
 offset_right = 112.0
-offset_bottom = 49.0
+offset_bottom = 48.0
 text = "HOT CROSS BUN"
 uppercase = true
 
@@ -613,9 +611,9 @@ metadata/_custom_type_script = "uid://ca3bew33g45eq"
 
 [node name="Label4" type="Label" parent="Labels/BGArtists/Label" unique_id=894357634]
 layout_mode = 0
-offset_top = 49.0
+offset_top = 48.0
 offset_right = 200.0
-offset_bottom = 65.0
+offset_bottom = 64.0
 text = "Diamond-Lock Productions"
 uppercase = true
 
@@ -634,9 +632,9 @@ metadata/_custom_type_script = "uid://ca3bew33g45eq"
 
 [node name="Label6" type="Label" parent="Labels/BGArtists/Label" unique_id=774170081]
 layout_mode = 0
-offset_top = 65.0
+offset_top = 64.0
 offset_right = 80.0
-offset_bottom = 81.0
+offset_bottom = 80.0
 text = "vannyarts"
 uppercase = true
 
@@ -655,9 +653,9 @@ metadata/_custom_type_script = "uid://ca3bew33g45eq"
 
 [node name="Label5" type="Label" parent="Labels/BGArtists/Label" unique_id=1797572479]
 layout_mode = 0
-offset_top = 81.0
+offset_top = 80.0
 offset_right = 80.0
-offset_bottom = 97.0
+offset_bottom = 96.0
 text = "SamButSam"
 uppercase = true
 
@@ -701,7 +699,7 @@ offset_left = 16.0
 offset_top = 8.0
 offset_right = 128.0
 offset_bottom = 24.0
-text = "ENEMY, PLAYER, NPC ARTISTS"
+text = "CREDITS_ENEMIES"
 uppercase = true
 
 [node name="HSeparator" type="HSeparator" parent="Labels/EnemyArtists/Label" unique_id=371901040]
@@ -710,17 +708,16 @@ anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -3.0
-offset_bottom = 1.0
+offset_top = -4.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_styles/separator = SubResource("StyleBoxLine_g2gtw")
 
 [node name="Label2" type="Label" parent="Labels/EnemyArtists/Label" unique_id=1441140488]
 layout_mode = 0
-offset_top = 17.0
+offset_top = 16.0
 offset_right = 64.0
-offset_bottom = 33.0
+offset_bottom = 32.0
 text = "amer241"
 uppercase = true
 
@@ -739,9 +736,9 @@ metadata/_custom_type_script = "uid://ca3bew33g45eq"
 
 [node name="Label3" type="Label" parent="Labels/EnemyArtists/Label" unique_id=2025192778]
 layout_mode = 0
-offset_top = 33.0
+offset_top = 32.0
 offset_right = 80.0
-offset_bottom = 49.0
+offset_bottom = 48.0
 text = "SamButSam"
 uppercase = true
 
@@ -760,9 +757,9 @@ metadata/_custom_type_script = "uid://ca3bew33g45eq"
 
 [node name="Label4" type="Label" parent="Labels/EnemyArtists/Label" unique_id=678889969]
 layout_mode = 0
-offset_top = 49.0
+offset_top = 48.0
 offset_right = 200.0
-offset_bottom = 65.0
+offset_bottom = 64.0
 text = "Diamond-Lock Productions"
 uppercase = true
 
@@ -781,9 +778,9 @@ metadata/_custom_type_script = "uid://ca3bew33g45eq"
 
 [node name="Label5" type="Label" parent="Labels/EnemyArtists/Label" unique_id=1757666780]
 layout_mode = 0
-offset_top = 65.0
+offset_top = 64.0
 offset_right = 112.0
-offset_bottom = 81.0
+offset_bottom = 80.0
 text = "Hot Cross Bun"
 uppercase = true
 
@@ -802,9 +799,9 @@ metadata/_custom_type_script = "uid://ca3bew33g45eq"
 
 [node name="Label6" type="Label" parent="Labels/EnemyArtists/Label" unique_id=257533778]
 layout_mode = 0
-offset_top = 81.0
+offset_top = 80.0
 offset_right = 128.0
-offset_bottom = 97.0
+offset_bottom = 96.0
 text = "GLACIALSIREN484"
 uppercase = true
 
@@ -823,9 +820,9 @@ metadata/_custom_type_script = "uid://ca3bew33g45eq"
 
 [node name="Label7" type="Label" parent="Labels/EnemyArtists/Label" unique_id=548305807]
 layout_mode = 0
-offset_top = 97.0
-offset_right = 104.0
-offset_bottom = 113.0
+offset_top = 96.0
+offset_right = 64.0
+offset_bottom = 112.0
 text = "FUNGICAPTAIN"
 uppercase = true
 
@@ -855,9 +852,9 @@ metadata/_custom_type_script = "uid://ca3bew33g45eq"
 [node name="Label10" type="Label" parent="Labels/EnemyArtists" unique_id=1292644810]
 layout_mode = 0
 offset_left = 16.0
-offset_top = 121.0
+offset_top = 120.0
 offset_right = 96.0
-offset_bottom = 137.0
+offset_bottom = 136.0
 text = "OhthatGuy"
 uppercase = true
 
@@ -891,7 +888,7 @@ offset_left = 8.0
 offset_top = 112.0
 offset_right = 112.0
 offset_bottom = 128.0
-text = "Level Design"
+text = "CREDITS_LEVELS"
 uppercase = true
 
 [node name="HSeparator" type="HSeparator" parent="Labels/LevelDesign/Label" unique_id=1385727988]
@@ -900,17 +897,16 @@ anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -3.0
-offset_bottom = 1.0
+offset_top = -4.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_styles/separator = SubResource("StyleBoxLine_g2gtw")
 
 [node name="Label2" type="Label" parent="Labels/LevelDesign/Label" unique_id=757006949]
 layout_mode = 0
-offset_top = 17.0
+offset_top = 16.0
 offset_right = 64.0
-offset_bottom = 33.0
+offset_bottom = 32.0
 text = "amer241"
 uppercase = true
 
@@ -929,9 +925,9 @@ metadata/_custom_type_script = "uid://ca3bew33g45eq"
 
 [node name="Label4" type="Label" parent="Labels/LevelDesign/Label" unique_id=1629488230]
 layout_mode = 0
-offset_top = 33.0
+offset_top = 32.0
 offset_right = 72.0
-offset_bottom = 49.0
+offset_bottom = 48.0
 text = "SlavaWow"
 uppercase = true
 
@@ -971,9 +967,9 @@ metadata/_custom_type_script = "uid://ca3bew33g45eq"
 
 [node name="Label5" type="Label" parent="Labels/LevelDesign/Label" unique_id=2024049267]
 layout_mode = 0
-offset_top = 65.0
+offset_top = 64.0
 offset_right = 40.0
-offset_bottom = 81.0
+offset_bottom = 80.0
 text = "hdtv"
 uppercase = true
 
@@ -992,9 +988,9 @@ metadata/_custom_type_script = "uid://ca3bew33g45eq"
 
 [node name="Label7" type="Label" parent="Labels/LevelDesign/Label" unique_id=1277194893]
 layout_mode = 0
-offset_top = 81.0
+offset_top = 80.0
 offset_right = 96.0
-offset_bottom = 97.0
+offset_bottom = 96.0
 text = "speedymcfly"
 uppercase = true
 
@@ -1026,9 +1022,9 @@ metadata/_custom_type_script = "uid://ca3bew33g45eq"
 
 [node name="Label3" type="Label" parent="Labels/LevelDesign/Label" unique_id=985983840]
 layout_mode = 0
-offset_top = 97.0
+offset_top = 96.0
 offset_right = 80.0
-offset_bottom = 113.0
+offset_bottom = 112.0
 text = "SamButSam"
 uppercase = true
 
@@ -1051,7 +1047,7 @@ offset_left = 8.0
 offset_top = 56.0
 offset_right = 136.0
 offset_bottom = 72.0
-text = "UI DESIGN + ART"
+text = "CREDITS_UI"
 horizontal_alignment = 1
 uppercase = true
 
@@ -1061,17 +1057,16 @@ anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -3.0
-offset_bottom = 1.0
+offset_top = -4.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_styles/separator = SubResource("StyleBoxLine_g2gtw")
 
 [node name="Label4" type="Label" parent="Labels/LevelDesign/Label2" unique_id=1559988485]
 layout_mode = 0
-offset_top = 33.0
+offset_top = 32.0
 offset_right = 64.0
-offset_bottom = 49.0
+offset_bottom = 48.0
 text = "amer241"
 uppercase = true
 
@@ -1090,9 +1085,9 @@ metadata/_custom_type_script = "uid://ca3bew33g45eq"
 
 [node name="Label2" type="Label" parent="Labels/LevelDesign/Label2" unique_id=1431763982]
 layout_mode = 0
-offset_top = 17.0
-offset_right = 80.0
-offset_bottom = 33.0
+offset_top = 16.0
+offset_right = 64.0
+offset_bottom = 32.0
 text = "VannyArts"
 uppercase = true
 
@@ -1115,7 +1110,7 @@ offset_left = 8.0
 offset_top = 16.0
 offset_right = 96.0
 offset_bottom = 32.0
-text = "LSS BANNER + ICON"
+text = "CREDITS_LSSART"
 uppercase = true
 
 [node name="HSeparator" type="HSeparator" parent="Labels/LevelDesign/Label3" unique_id=568309226]
@@ -1124,17 +1119,16 @@ anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -3.0
-offset_bottom = 1.0
+offset_top = -4.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_styles/separator = SubResource("StyleBoxLine_g2gtw")
 
 [node name="Label2" type="Label" parent="Labels/LevelDesign/Label3" unique_id=896461844]
 layout_mode = 0
-offset_top = 17.0
-offset_right = 128.0
-offset_bottom = 33.0
+offset_top = 16.0
+offset_right = 64.0
+offset_bottom = 32.0
 text = "KrystalPhantasm"
 uppercase = true
 
@@ -1178,7 +1172,7 @@ offset_left = 8.0
 offset_top = 16.0
 offset_right = 88.0
 offset_bottom = 32.0
-text = "Composers"
+text = "CREDITS_OST"
 uppercase = true
 
 [node name="HSeparator" type="HSeparator" parent="Labels/Sound/Label" unique_id=1108875636]
@@ -1187,17 +1181,16 @@ anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -3.0
-offset_bottom = 1.0
+offset_top = -4.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_styles/separator = SubResource("StyleBoxLine_g2gtw")
 
 [node name="Label2" type="Label" parent="Labels/Sound/Label" unique_id=1785519546]
 layout_mode = 0
-offset_top = 17.0
+offset_top = 16.0
 offset_right = 64.0
-offset_bottom = 33.0
+offset_bottom = 32.0
 text = "amer241"
 uppercase = true
 
@@ -1216,9 +1209,9 @@ metadata/_custom_type_script = "uid://ca3bew33g45eq"
 
 [node name="Label3" type="Label" parent="Labels/Sound/Label" unique_id=776334170]
 layout_mode = 0
-offset_top = 33.0
+offset_top = 32.0
 offset_right = 40.0
-offset_bottom = 49.0
+offset_bottom = 48.0
 text = "hdtv"
 uppercase = true
 
@@ -1237,9 +1230,9 @@ metadata/_custom_type_script = "uid://ca3bew33g45eq"
 
 [node name="Label4" type="Label" parent="Labels/Sound/Label" unique_id=185060448]
 layout_mode = 0
-offset_top = 49.0
+offset_top = 48.0
 offset_right = 88.0
-offset_bottom = 65.0
+offset_bottom = 64.0
 text = "Blindspuut"
 uppercase = true
 
@@ -1258,9 +1251,9 @@ metadata/_custom_type_script = "uid://ca3bew33g45eq"
 
 [node name="Label6" type="Label" parent="Labels/Sound/Label" unique_id=1335191705]
 layout_mode = 0
-offset_top = 65.0
+offset_top = 64.0
 offset_right = 88.0
-offset_bottom = 81.0
+offset_bottom = 80.0
 text = "LeviR.star"
 uppercase = true
 
@@ -1283,7 +1276,7 @@ offset_left = 8.0
 offset_top = 112.0
 offset_right = 48.0
 offset_bottom = 128.0
-text = "SFXs"
+text = "CREDITS_SFX"
 uppercase = true
 
 [node name="HSeparator" type="HSeparator" parent="Labels/Sound/Label2" unique_id=221115915]
@@ -1292,17 +1285,16 @@ anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -3.0
-offset_bottom = 1.0
+offset_top = -4.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_styles/separator = SubResource("StyleBoxLine_g2gtw")
 
 [node name="Label2" type="Label" parent="Labels/Sound/Label2" unique_id=830366301]
 layout_mode = 0
-offset_top = 17.0
-offset_right = 88.0
-offset_bottom = 33.0
+offset_top = 16.0
+offset_right = 64.0
+offset_bottom = 32.0
 text = "QuagIsCool"
 uppercase = true
 
@@ -1321,9 +1313,9 @@ metadata/_custom_type_script = "uid://ca3bew33g45eq"
 
 [node name="Label6" type="Label" parent="Labels/Sound/Label2" unique_id=1789199205]
 layout_mode = 0
-offset_top = 33.0
+offset_top = 32.0
 offset_right = 88.0
-offset_bottom = 49.0
+offset_bottom = 48.0
 text = "LeviR.star"
 uppercase = true
 
@@ -1342,9 +1334,9 @@ metadata/_custom_type_script = "uid://ca3bew33g45eq"
 
 [node name="Label7" type="Label" parent="Labels/Sound/Label2" unique_id=32654506]
 layout_mode = 0
-offset_top = 49.0
+offset_top = 48.0
 offset_right = 88.0
-offset_bottom = 65.0
+offset_bottom = 64.0
 text = "BlindSpuut"
 uppercase = true
 
@@ -1363,9 +1355,9 @@ metadata/_custom_type_script = "uid://ca3bew33g45eq"
 
 [node name="Label8" type="Label" parent="Labels/Sound/Label2" unique_id=1754150621]
 layout_mode = 0
-offset_top = 65.0
+offset_top = 64.0
 offset_right = 64.0
-offset_bottom = 81.0
+offset_bottom = 80.0
 text = "Trimint"
 uppercase = true
 
@@ -1409,8 +1401,7 @@ offset_left = 8.0
 offset_top = 8.0
 offset_right = 104.0
 offset_bottom = 24.0
-text = "original
-localizers"
+text = "CREDITS_LOCALE"
 uppercase = true
 
 [node name="HSeparator" type="HSeparator" parent="Labels/Localizers/Label" unique_id=8788557]
@@ -1419,19 +1410,16 @@ anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 4.0
-offset_top = -2.0
-offset_right = 4.0
-offset_bottom = 2.0
+offset_top = -4.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_styles/separator = SubResource("StyleBoxLine_g2gtw")
 
 [node name="Label2" type="Label" parent="Labels/Localizers/Label" unique_id=667289768]
 layout_mode = 0
-offset_top = 30.0
+offset_top = 16.0
 offset_right = 40.0
-offset_bottom = 46.0
+offset_bottom = 32.0
 text = "Cube"
 uppercase = true
 
@@ -1463,9 +1451,9 @@ metadata/_custom_type_script = "uid://ca3bew33g45eq"
 
 [node name="Label3" type="Label" parent="Labels/Localizers/Label" unique_id=2142714979]
 layout_mode = 0
-offset_top = 46.0
-offset_right = 56.0
-offset_bottom = 62.0
+offset_top = 32.0
+offset_right = 40.0
+offset_bottom = 48.0
 text = "TRIPPY"
 uppercase = true
 
@@ -1497,9 +1485,9 @@ metadata/_custom_type_script = "uid://ca3bew33g45eq"
 
 [node name="Label4" type="Label" parent="Labels/Localizers/Label" unique_id=1979044852]
 layout_mode = 0
-offset_top = 62.0
-offset_right = 72.0
-offset_bottom = 78.0
+offset_top = 48.0
+offset_right = 40.0
+offset_bottom = 64.0
 text = "SlavaWow"
 uppercase = true
 
@@ -1531,9 +1519,9 @@ metadata/_custom_type_script = "uid://ca3bew33g45eq"
 
 [node name="Label5" type="Label" parent="Labels/Localizers/Label" unique_id=905706831]
 layout_mode = 0
-offset_top = 78.0
+offset_top = 64.0
 offset_right = 64.0
-offset_bottom = 94.0
+offset_bottom = 80.0
 text = "Makerk6"
 uppercase = true
 
@@ -1565,9 +1553,9 @@ metadata/_custom_type_script = "uid://ca3bew33g45eq"
 
 [node name="Label6" type="Label" parent="Labels/Localizers/Label" unique_id=1331486162]
 layout_mode = 0
-offset_top = 94.0
-offset_right = 80.0
-offset_bottom = 110.0
+offset_top = 80.0
+offset_right = 64.0
+offset_bottom = 96.0
 text = "vannyarts"
 uppercase = true
 
@@ -1599,9 +1587,9 @@ metadata/_custom_type_script = "uid://ca3bew33g45eq"
 
 [node name="Label7" type="Label" parent="Labels/Localizers/Label" unique_id=1980451453]
 layout_mode = 0
-offset_top = 110.0
-offset_right = 96.0
-offset_bottom = 126.0
+offset_top = 96.0
+offset_right = 80.0
+offset_bottom = 112.0
 text = "speedymcfly"
 uppercase = true
 
@@ -1633,9 +1621,9 @@ metadata/_custom_type_script = "uid://ca3bew33g45eq"
 
 [node name="Label8" type="Label" parent="Labels/Localizers/Label" unique_id=1165600220]
 layout_mode = 0
-offset_top = 126.0
-offset_right = 120.0
-offset_bottom = 142.0
+offset_top = 112.0
+offset_right = 96.0
+offset_bottom = 128.0
 text = "Kirbo The Poyo"
 uppercase = true
 
@@ -1667,9 +1655,9 @@ metadata/_custom_type_script = "uid://ca3bew33g45eq"
 
 [node name="Label9" type="Label" parent="Labels/Localizers/Label" unique_id=1215010210]
 layout_mode = 0
-offset_top = 142.0
+offset_top = 128.0
 offset_right = 96.0
-offset_bottom = 158.0
+offset_bottom = 144.0
 text = "_Apostrophe"
 uppercase = true
 
@@ -1701,9 +1689,9 @@ metadata/_custom_type_script = "uid://ca3bew33g45eq"
 
 [node name="Label10" type="Label" parent="Labels/Localizers/Label" unique_id=706928944]
 layout_mode = 0
-offset_top = 158.0
+offset_top = 144.0
 offset_right = 56.0
-offset_bottom = 174.0
+offset_bottom = 160.0
 text = "TBB369"
 uppercase = true
 
@@ -1735,9 +1723,9 @@ metadata/_custom_type_script = "uid://ca3bew33g45eq"
 
 [node name="Label11" type="Label" parent="Labels/Localizers/Label" unique_id=520566711]
 layout_mode = 0
-offset_top = 174.0
+offset_top = 160.0
 offset_right = 56.0
-offset_bottom = 190.0
+offset_bottom = 176.0
 text = "CHRYSS"
 uppercase = true
 
@@ -1769,9 +1757,9 @@ metadata/_custom_type_script = "uid://ca3bew33g45eq"
 
 [node name="Label12" type="Label" parent="Labels/Localizers/Label" unique_id=1758826491]
 layout_mode = 0
-offset_top = 190.0
-offset_right = 96.0
-offset_bottom = 206.0
+offset_top = 176.0
+offset_right = 56.0
+offset_bottom = 192.0
 text = "TheOliveOli"
 uppercase = true
 
@@ -1803,9 +1791,9 @@ metadata/_custom_type_script = "uid://ca3bew33g45eq"
 
 [node name="Label13" type="Label" parent="Labels/Localizers/Label" unique_id=1786291351]
 layout_mode = 0
-offset_top = 206.0
-offset_right = 136.0
-offset_bottom = 222.0
+offset_top = 192.0
+offset_right = 96.0
+offset_bottom = 208.0
 text = "Edwrin (Skopler)"
 uppercase = true
 
@@ -1863,7 +1851,7 @@ offset_left = 8.0
 offset_top = 8.0
 offset_right = 112.0
 offset_bottom = 24.0
-text = "Beta Testers"
+text = "CREDITS_TESTERS"
 uppercase = true
 
 [node name="HSeparator" type="HSeparator" parent="Labels/BetaTesters/Label" unique_id=601599773]
@@ -1872,17 +1860,16 @@ anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -3.0
-offset_bottom = 1.0
+offset_top = -4.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_styles/separator = SubResource("StyleBoxLine_g2gtw")
 
 [node name="Label2" type="Label" parent="Labels/BetaTesters/Label" unique_id=1659423336]
 layout_mode = 0
-offset_top = 17.0
+offset_top = 16.0
 offset_right = 32.0
-offset_bottom = 33.0
+offset_bottom = 32.0
 text = "ian"
 uppercase = true
 
@@ -1901,9 +1888,9 @@ metadata/_custom_type_script = "uid://ca3bew33g45eq"
 
 [node name="Label3" type="Label" parent="Labels/BetaTesters/Label" unique_id=1213203338]
 layout_mode = 0
-offset_top = 33.0
-offset_right = 56.0
-offset_bottom = 49.0
+offset_top = 32.0
+offset_right = 32.0
+offset_bottom = 48.0
 text = "Raykol"
 uppercase = true
 
@@ -1922,9 +1909,9 @@ metadata/_custom_type_script = "uid://ca3bew33g45eq"
 
 [node name="Label4" type="Label" parent="Labels/BetaTesters/Label" unique_id=1432224768]
 layout_mode = 0
-offset_top = 49.0
-offset_right = 64.0
-offset_bottom = 65.0
+offset_top = 48.0
+offset_right = 56.0
+offset_bottom = 64.0
 text = "Gweenie"
 uppercase = true
 
@@ -1943,9 +1930,9 @@ metadata/_custom_type_script = "uid://ca3bew33g45eq"
 
 [node name="Label5" type="Label" parent="Labels/BetaTesters/Label" unique_id=594628709]
 layout_mode = 0
-offset_top = 65.0
+offset_top = 64.0
 offset_right = 64.0
-offset_bottom = 81.0
+offset_bottom = 80.0
 text = "Cr4ftex"
 uppercase = true
 
@@ -1964,9 +1951,9 @@ metadata/_custom_type_script = "uid://ca3bew33g45eq"
 
 [node name="Label6" type="Label" parent="Labels/BetaTesters/Label" unique_id=965887058]
 layout_mode = 0
-offset_top = 81.0
+offset_top = 80.0
 offset_right = 72.0
-offset_bottom = 97.0
+offset_bottom = 96.0
 text = "Pincelle"
 uppercase = true
 
@@ -1985,9 +1972,9 @@ metadata/_custom_type_script = "uid://ca3bew33g45eq"
 
 [node name="Label7" type="Label" parent="Labels/BetaTesters/Label" unique_id=432678459]
 layout_mode = 0
-offset_top = 97.0
+offset_top = 96.0
 offset_right = 88.0
-offset_bottom = 113.0
+offset_bottom = 112.0
 text = "JamiesName"
 uppercase = true
 
@@ -2006,9 +1993,9 @@ metadata/_custom_type_script = "uid://ca3bew33g45eq"
 
 [node name="Label8" type="Label" parent="Labels/BetaTesters/Label" unique_id=981060182]
 layout_mode = 0
-offset_top = 113.0
+offset_top = 112.0
 offset_right = 48.0
-offset_bottom = 129.0
+offset_bottom = 128.0
 text = "vorzo"
 uppercase = true
 
@@ -2027,9 +2014,9 @@ metadata/_custom_type_script = "uid://ca3bew33g45eq"
 
 [node name="Label9" type="Label" parent="Labels/BetaTesters/Label" unique_id=1048578919]
 layout_mode = 0
-offset_top = 129.0
+offset_top = 128.0
 offset_right = 72.0
-offset_bottom = 145.0
+offset_bottom = 144.0
 text = "leanycat"
 uppercase = true
 
@@ -2048,9 +2035,9 @@ metadata/_custom_type_script = "uid://ca3bew33g45eq"
 
 [node name="Label12" type="Label" parent="Labels/BetaTesters/Label" unique_id=420321967]
 layout_mode = 0
-offset_top = 161.0
+offset_top = 160.0
 offset_right = 56.0
-offset_bottom = 177.0
+offset_bottom = 176.0
 text = "Hooked"
 uppercase = true
 
@@ -2069,9 +2056,9 @@ metadata/_custom_type_script = "uid://ca3bew33g45eq"
 
 [node name="Label14" type="Label" parent="Labels/BetaTesters/Label" unique_id=1253117288]
 layout_mode = 0
-offset_top = 177.0
+offset_top = 176.0
 offset_right = 112.0
-offset_bottom = 193.0
+offset_bottom = 192.0
 text = "Pixelcraftian"
 uppercase = true
 
@@ -2090,9 +2077,9 @@ metadata/_custom_type_script = "uid://ca3bew33g45eq"
 
 [node name="Label13" type="Label" parent="Labels/BetaTesters/Label" unique_id=1889039056]
 layout_mode = 0
-offset_top = 145.0
+offset_top = 144.0
 offset_right = 56.0
-offset_bottom = 161.0
+offset_bottom = 160.0
 text = "Rhyvit"
 uppercase = true
 
@@ -2122,9 +2109,9 @@ metadata/_custom_type_script = "uid://ca3bew33g45eq"
 [node name="Label2" type="Label" parent="Labels/BetaTesters" unique_id=2117320765]
 layout_mode = 0
 offset_left = 8.0
-offset_top = 201.0
+offset_top = 200.0
 offset_right = 96.0
-offset_bottom = 217.0
+offset_bottom = 216.0
 text = "Starrymari"
 uppercase = true
 
@@ -2144,9 +2131,9 @@ metadata/_custom_type_script = "uid://ca3bew33g45eq"
 [node name="Label3" type="Label" parent="Labels/BetaTesters" unique_id=1219203622]
 layout_mode = 0
 offset_left = 8.0
-offset_top = 217.0
+offset_top = 216.0
 offset_right = 96.0
-offset_bottom = 233.0
+offset_bottom = 232.0
 text = "Jonthejeph"
 uppercase = true
 
@@ -2181,7 +2168,7 @@ offset_left = 16.0
 offset_top = 16.0
 offset_right = 144.0
 offset_bottom = 32.0
-text = "Beta Testers..."
+text = "CREDITS_TESTERS2"
 uppercase = true
 
 [node name="HSeparator" type="HSeparator" parent="Labels/BetaTesters2/Label" unique_id=1910113220]
@@ -2190,17 +2177,16 @@ anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -3.0
-offset_bottom = 1.0
+offset_top = -4.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_styles/separator = SubResource("StyleBoxLine_g2gtw")
 
 [node name="Label4" type="Label" parent="Labels/BetaTesters2/Label" unique_id=1991560384]
 layout_mode = 0
-offset_top = 17.0
+offset_top = 16.0
 offset_right = 56.0
-offset_bottom = 33.0
+offset_bottom = 32.0
 text = "kosmic"
 uppercase = true
 
@@ -2219,9 +2205,9 @@ metadata/_custom_type_script = "uid://ca3bew33g45eq"
 
 [node name="Label5" type="Label" parent="Labels/BetaTesters2/Label" unique_id=1722516790]
 layout_mode = 0
-offset_top = 33.0
+offset_top = 32.0
 offset_right = 80.0
-offset_bottom = 49.0
+offset_bottom = 48.0
 text = "TheLBcats"
 uppercase = true
 
@@ -2240,9 +2226,9 @@ metadata/_custom_type_script = "uid://ca3bew33g45eq"
 
 [node name="Label6" type="Label" parent="Labels/BetaTesters2/Label" unique_id=653990033]
 layout_mode = 0
-offset_top = 49.0
+offset_top = 48.0
 offset_right = 104.0
-offset_bottom = 65.0
+offset_bottom = 64.0
 text = "LadiesMan217"
 uppercase = true
 
@@ -2260,9 +2246,9 @@ metadata/_custom_type_script = "uid://ca3bew33g45eq"
 
 [node name="Label7" type="Label" parent="Labels/BetaTesters2/Label" unique_id=1960364287]
 layout_mode = 0
-offset_top = 97.0
+offset_top = 96.0
 offset_right = 104.0
-offset_bottom = 113.0
+offset_bottom = 112.0
 text = "MusicalMan"
 uppercase = true
 
@@ -2280,9 +2266,9 @@ metadata/_custom_type_script = "uid://ca3bew33g45eq"
 
 [node name="Label8" type="Label" parent="Labels/BetaTesters2/Label" unique_id=880666726]
 layout_mode = 0
-offset_top = 113.0
+offset_top = 112.0
 offset_right = 72.0
-offset_bottom = 129.0
+offset_bottom = 128.0
 text = "bluseven"
 uppercase = true
 
@@ -2301,9 +2287,9 @@ metadata/_custom_type_script = "uid://ca3bew33g45eq"
 
 [node name="Label9" type="Label" parent="Labels/BetaTesters2/Label" unique_id=1617908933]
 layout_mode = 0
-offset_top = 145.0
+offset_top = 144.0
 offset_right = 104.0
-offset_bottom = 161.0
+offset_bottom = 160.0
 text = "MRGERUND"
 uppercase = true
 
@@ -2323,9 +2309,9 @@ metadata/_custom_type_script = "uid://ca3bew33g45eq"
 
 [node name="Label10" type="Label" parent="Labels/BetaTesters2/Label" unique_id=511259083]
 layout_mode = 0
-offset_top = 81.0
+offset_top = 80.0
 offset_right = 112.0
-offset_bottom = 97.0
+offset_bottom = 96.0
 text = "popthatcorn14"
 uppercase = true
 
@@ -2343,9 +2329,9 @@ metadata/_custom_type_script = "uid://ca3bew33g45eq"
 
 [node name="Label11" type="Label" parent="Labels/BetaTesters2/Label" unique_id=1938967264]
 layout_mode = 0
-offset_top = 129.0
+offset_top = 128.0
 offset_right = 112.0
-offset_bottom = 145.0
+offset_bottom = 144.0
 text = "LuigiBonus"
 uppercase = true
 
@@ -2363,9 +2349,9 @@ metadata/_custom_type_script = "uid://ca3bew33g45eq"
 
 [node name="Label12" type="Label" parent="Labels/BetaTesters2/Label" unique_id=1188931550]
 layout_mode = 0
-offset_top = 65.0
+offset_top = 64.0
 offset_right = 136.0
-offset_bottom = 81.0
+offset_bottom = 80.0
 text = "EngingerBreadMan"
 uppercase = true
 
@@ -2412,7 +2398,7 @@ offset_top = 8.0
 offset_right = 80.0
 offset_bottom = 24.0
 grow_horizontal = 2
-text = "GITHUB CONTRIBUTORS"
+text = "CREDITS_GITHUB"
 uppercase = true
 
 [node name="HSeparator" type="HSeparator" parent="Labels/Github/Label3" unique_id=436724697]
@@ -2421,8 +2407,7 @@ anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -3.0
-offset_bottom = 1.0
+offset_top = -4.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_styles/separator = SubResource("StyleBoxLine_g2gtw")
@@ -2980,7 +2965,7 @@ offset_right = 56.0
 offset_bottom = 24.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "Special Thanks"
+text = "CREDITS_SPECIAL"
 horizontal_alignment = 1
 uppercase = true
 
@@ -2990,8 +2975,7 @@ anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -3.0
-offset_bottom = 1.0
+offset_top = -4.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_styles/separator = SubResource("StyleBoxLine_g2gtw")
@@ -3061,8 +3045,7 @@ uppercase = true
 
 [node name="Label10" type="Label" parent="Labels/SpecialThanks/Label/HFlowContainer" unique_id=1587600019]
 layout_mode = 2
-text = "
-...and you!"
+text = "CREDITS_SPECIAL_PLAYER"
 uppercase = true
 
 [node name="MadeWith" type="Control" parent="Labels" unique_id=634566690]
@@ -3085,12 +3068,12 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -40.0
-offset_top = -105.0
+offset_top = -104.0
 offset_right = 40.0
-offset_bottom = -89.0
+offset_bottom = -88.0
 grow_horizontal = 2
 grow_vertical = 0
-text = "Made With"
+text = "CREDITS_MADEWITH"
 horizontal_alignment = 1
 uppercase = true
 
@@ -3100,8 +3083,7 @@ anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -3.0
-offset_bottom = 1.0
+offset_top = -4.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_styles/separator = SubResource("StyleBoxLine_g2gtw")
@@ -3113,9 +3095,9 @@ anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = -16.0
-offset_top = 65.0
+offset_top = 64.0
 offset_right = 16.0
-offset_bottom = 81.0
+offset_bottom = 80.0
 grow_horizontal = 2
 grow_vertical = 0
 text = "Godot Engine"
@@ -3128,8 +3110,7 @@ anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = 1.0
-offset_bottom = 65.0
+offset_bottom = 64.0
 grow_horizontal = 2
 grow_vertical = 0
 texture = SubResource("AtlasTexture_7s4gc")
@@ -3147,7 +3128,7 @@ offset_top = 17.0
 offset_right = 68.0
 offset_bottom = 33.0
 grow_horizontal = 2
-text = "original game by"
+text = "CREDITS_MADEWITH_NIN"
 horizontal_alignment = 1
 uppercase = true
 
@@ -3157,8 +3138,7 @@ anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -3.0
-offset_bottom = 1.0
+offset_top = -4.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_styles/separator = SubResource("StyleBoxLine_g2gtw")
@@ -3201,7 +3181,7 @@ offset_top = -8.0
 offset_bottom = 8.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "Thank you for Playing! :)"
+text = "CREDITS_THANKYOU"
 horizontal_alignment = 1
 uppercase = true
 
@@ -3213,7 +3193,7 @@ anchor_bottom = 1.0
 offset_top = -16.0
 offset_right = 168.0
 grow_vertical = 0
-text = "Press Any To Skip..."
+text = "CREDITS_SKIP"
 uppercase = true
 
 [node name="LabelFontChanger" type="Node" parent="." unique_id=1386281980 node_paths=PackedStringArray("labels")]
