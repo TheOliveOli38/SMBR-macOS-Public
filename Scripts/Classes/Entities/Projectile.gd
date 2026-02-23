@@ -58,7 +58,7 @@ func _ready() -> void:
 	var collision = get_node_or_null("Collision")
 	if not HAS_COLLISION and collision != null: collision.disabled = true
 	if LIFETIME >= 0:
-		await get_tree().create_timer(LIFETIME).timeout
+		await get_tree().create_timer(LIFETIME, false).timeout
 		hit(true, true)
 	await get_tree().physics_frame
 	if get_node_or_null("VisibleOnScreenNotifier2D") != null:
