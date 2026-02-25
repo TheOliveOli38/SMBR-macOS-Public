@@ -1109,6 +1109,7 @@ func load_level(level_id := 0) -> void:
 	else:
 		save_current_level()
 		node.process_mode = ProcessMode.PROCESS_MODE_PAUSABLE
+		await get_tree().physics_frame
 		get_tree().call_group("Players", "editor_level_start")
 
 func convert_scenes_to_nodes() -> void:
