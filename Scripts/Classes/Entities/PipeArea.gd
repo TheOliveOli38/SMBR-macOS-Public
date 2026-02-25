@@ -37,7 +37,7 @@ func _ready() -> void:
 	update_visuals()
 	if Engine.is_editor_hint() == false:
 		run_pipe_check.call_deferred()
-		hide()
+		visible = Global.level_editor_is_editing()
 
 func run_pipe_check() -> void:
 	if exiting_pipe_id == pipe_id and exit_only:
