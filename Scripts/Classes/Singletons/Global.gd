@@ -36,7 +36,7 @@ var ROM_POINTER_PATH = config_path.path_join("rom_pointer.smb")
 var ROM_PATH = config_path.path_join("baserom.nes")
 var ROM_ASSETS_PATH = config_path.path_join("resource_packs/BaseAssets")
 const ROM_PACK_NAME := "BaseAssets"
-const ROM_ASSETS_VERSION := 3
+const ROM_ASSETS_VERSION := 4
 
 var server_version := -1
 var current_version := -1
@@ -703,3 +703,7 @@ func nice_json_format(json_string := "") -> String:
 					json_string = json_string.insert(i + 2, "\t")
 					i += 1
 	return json_string
+
+func warper_cooldown() -> void:
+	await get_tree().create_timer(1, false).timeout
+	Warper.can_warp = true
