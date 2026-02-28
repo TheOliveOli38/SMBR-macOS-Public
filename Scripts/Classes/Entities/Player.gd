@@ -256,7 +256,7 @@ extends CharacterBody2D
 		"PROJ_GRAVITY": 15.0,              # The projectile's gravity, measured in px/frame
 		"PROJ_BOUNCE_HEIGHT": 125.0,       # The projectile's bounce velocity upon landing on the ground.
 		"PROJ_MAX_FALL_SPEED": 150.0,      # The projectile's maximum fall speed, measured in px/sec
-		
+		"MAX_PROJ_COUNT_PER_JUMP": 0.0,
 		"PROJ_COOLDOWN": 1.0,
 	},
 	"Small": {
