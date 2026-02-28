@@ -68,7 +68,7 @@ radius = 4.0
 
 [node name="Hammer" type="CharacterBody2D" unique_id=1546191736 groups=["Enemies"]]
 collision_layer = 0
-collision_mask = 2
+collision_mask = 0
 script = ExtResource("1_sp1e8")
 MOVE_SPEED = 120
 GRAVITY = 10
