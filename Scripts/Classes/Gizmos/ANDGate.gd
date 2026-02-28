@@ -18,6 +18,8 @@ func input_added() -> void:
 	update()
 
 func update() -> void:
+	if is_inside_tree(): #dunno why, but this line is needed fsr, guess we'll never know lmao
+		await get_tree().process_frame
 	total_inputs = clamp(total_inputs, 0, INF)
 	var test_condition = get_condition()
 	if test_condition != condition_filled:
