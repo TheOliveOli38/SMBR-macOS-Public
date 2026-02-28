@@ -294,7 +294,8 @@ func get_animation_name() -> String:
 		return anim_name
 
 	var jump_context := ""
-	if player.has_spring_jumped: jump_context = "Spring"
+	if player.has_flung: jump_context = "Fling"
+	elif player.has_spring_jumped: jump_context = "Spring"
 	elif run_jump: jump_context = "Run"
 	elif jog_jump: jump_context = "Jog"
 	if player.has_star: jump_context = "Star" + jump_context
@@ -331,6 +332,13 @@ func get_animation_name() -> String:
 	# --- Kick Animation ---
 	if player.kicking and player.can_kick_anim:
 		return state.call("Kick")
+		
+	# --- Flung by a gizmo ---
+	if player.has_flung and not wall_pushing:
+		if player.bumping and player.can_bump_fling_anim:
+			return "FlingJumpBump"
+		if airborne:
+			return state.call("FlingJumpFall") if vel_y >= 0 else "FlingJump"
 
 	# --- Crouch Animations ---
 	if player.crouching and not wall_pushing:
