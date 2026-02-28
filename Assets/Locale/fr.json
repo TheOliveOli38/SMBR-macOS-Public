@@ -532,6 +532,7 @@
 	"ITEM_CLOCK": "Horloge",
 	"GIZMO_PLAYER_DETECT": "Détecteur de Joueur",
 	"GIZMO_PLAYER_EVENT": "Détecteur d'Événement Joueur",
+	"GIZMO_PLAYER_STATE": "",
 	"GIZMO_INPUT_DETECT": "Détecteur d'entrée",
 	"GIZMO_ENEMY_DETECT": "Détecteur d'ennemi",
 	"GIZMO_ENEMY_DEFEAT": "Détecteur de Défaite d'ennemi",

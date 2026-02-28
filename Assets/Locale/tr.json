@@ -532,6 +532,7 @@
 	"ITEM_CLOCK": "Saat",
 	"GIZMO_PLAYER_DETECT": "Oyuncu Algılama",
 	"GIZMO_PLAYER_EVENT": "Oyuncu Olayı Algılama",
+	"GIZMO_PLAYER_STATE": "",
 	"GIZMO_INPUT_DETECT": "Tuş Algılama",
 	"GIZMO_ENEMY_DETECT": "Düşman Algılama",
 	"GIZMO_ENEMY_DEFEAT": "Ölü Düşman Algılama",
