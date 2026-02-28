@@ -838,5 +838,9 @@
 	"Dd": [
 		"res://Scenes/Prefabs/Gizmos/Outputs/Flinger.tscn",
 		"0,0"
+	],
+	"De": [
+		"res://Scenes/Prefabs/Gizmos/Inputs/PlayerStateDetection.tscn",
+		"0,0"
 	]
 }

@@ -12,6 +12,7 @@ horizontal_speed = 0.0
 upwards_speed = 0.0
 relative_to_direction = false
 additive = true
+update_player_direction = true
 
 [node name="Sprite2D" parent="." index="0" unique_id=1224179792]
 texture = ExtResource("3_tdafo")
@@ -22,14 +23,15 @@ can_output = false
 
 [node name="EditorPropertyExposer" type="Node" parent="." index="2" unique_id=1367816059]
 script = ExtResource("4_h25ba")
-properties = Array[String](["horizontal_speed", "upwards_speed", "relative_to_direction", "additive"])
+properties = Array[String](["horizontal_speed", "upwards_speed", "relative_to_direction", "additive", "update_player_direction"])
 properties_force_selector = Dictionary[String, PackedScene]({
 "horizontal_speed": ExtResource("5_66x6m"),
 "upwards_speed": ExtResource("5_66x6m")
 })
 metadata/_custom_type_script = "uid://ctfbuoxtnnl0q"
 
-[connection signal="recieved_power" from="SignalExposer" to="." method="launch"]
+[connection signal="lost_power" from="SignalExposer" to="." method="turn_off"]
+[connection signal="recieved_power" from="SignalExposer" to="." method="turn_on"]
 [connection signal="recieved_power" from="SignalExposer" to="." method="play_sfx"]
 [connection signal="recieved_pulse" from="SignalExposer" to="." method="launch"]
 [connection signal="recieved_pulse" from="SignalExposer" to="." method="play_sfx"]

@@ -10,6 +10,19 @@ extends Node2D
 
 @export var relative_to_direction := false
 @export var additive := true
+@export var update_player_direction := true
+
+var active := false
+
+func _physics_process(_delta: float) -> void:
+	if active:
+		launch()
+
+func turn_on() -> void:
+	active = true
+
+func turn_off() -> void:
+	active = false
 
 func launch() -> void:
 	if get_tree():
@@ -29,3 +42,9 @@ func launch() -> void:
 						i.velocity.x = horizontal_speed*50*i.direction
 					else:
 						i.velocity.x = horizontal_speed*50
+			if update_player_direction:
+				if i.velocity.x != 0:
+					i.direction = sign(i.velocity.x)
+				if i.velocity.y < 0:
+					i.gravity = i.calculate_speed_param("JUMP_GRAVITY")
+					i.jump_cancelled = false

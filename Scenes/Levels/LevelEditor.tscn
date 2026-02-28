@@ -161,6 +161,7 @@
 [ext_resource type="Texture2D" uid="uid://bv04xn76b41tw" path="res://Assets/Sprites/Editor/Gizmos/Trigger.png" id="167_swqrt"]
 [ext_resource type="PackedScene" uid="uid://b2hdafieb7w6x" path="res://Scenes/Prefabs/Gizmos/Outputs/NOTGate.tscn" id="168_chiiq"]
 [ext_resource type="Texture2D" uid="uid://7vndrgnnti11" path="res://Assets/Sprites/Editor/CheepCheepGenerator.png" id="169_2vwpv"]
+[ext_resource type="Texture2D" uid="uid://b78wawq5ds3gm" path="res://Assets/Sprites/Editor/Gizmos/PlayerStateDetection.png" id="169_401qx"]
 [ext_resource type="Texture2D" uid="uid://kvnxeoyttopv" path="res://Assets/Sprites/Editor/Gizmos/XOR.png" id="169_a6wyw"]
 [ext_resource type="PackedScene" uid="uid://sc5j2y2vpiyd" path="res://Scenes/Prefabs/Gizmos/Outputs/XORGate.tscn" id="170_wc8ue"]
 [ext_resource type="Texture2D" uid="uid://dtgpkjj1dy7pu" path="res://Assets/Sprites/Editor/BowserFlameGenerator.png" id="171_adqgr"]
@@ -5755,6 +5756,28 @@ entity_id = "Cz"
 entity_scene = ExtResource("156_6c7k7")
 
 [node name="TextureRect" type="TextureRect" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Gizmos/MarginContainer/VBoxContainer/Inputs/PlayerStuff/PlayerEventDetection2" unique_id=50838470]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("194_24ald")
+
+[node name="PlayerStateDetection" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Gizmos/MarginContainer/VBoxContainer/Inputs/PlayerStuff" unique_id=659664314 groups=["Selectors"] instance=ExtResource("8_wkmjk")]
+layout_mode = 0
+offset_right = 16.0
+offset_bottom = 16.0
+tile_name = "GIZMO_PLAYER_STATE"
+tile_desc = "Will turn on or off, depending on if the player matches the current state."
+type = 1
+icon_texture = ExtResource("169_401qx")
+icon_region_override = Rect2(0, 0, 16, 16)
+entity_id = "De"
+entity_scene = ExtResource("156_6c7k7")
+
+[node name="TextureRect" type="TextureRect" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Gizmos/MarginContainer/VBoxContainer/Inputs/PlayerStuff/PlayerStateDetection" unique_id=1196736295]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
