@@ -104,6 +104,7 @@ func handle_player_interaction(delta: float) -> void:
 func on_player_entered(_player: Player) -> void:
 	if can_tele == false:
 		return
+	can_tele = false
 	Level.vine_return_level = Global.current_level.scene_file_path
 	if Global.level_editor_is_playtesting():
 		CoinHeavenWarpPoint.subarea_return = Global.level_editor.sub_level_id

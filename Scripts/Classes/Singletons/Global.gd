@@ -655,7 +655,8 @@ func convert_en_to_gal(en_string := "") -> String:
 	return gal_string
 
 func in_custom_campaign(campaign := current_custom_campaign) -> bool:
-	return campaign != ""
+	return campaign not in CAMPAIGNS and campaign != ""
+
 func merge_dict(target: Dictionary, source: Dictionary) -> void:
 	# SkyanUltra: Used to properly merge dictionaries JSONs rather than out right overwriting entries.
 	for key in source.keys():
