@@ -256,8 +256,7 @@ extends CharacterBody2D
 		"PROJ_GRAVITY": 15.0,              # The projectile's gravity, measured in px/frame
 		"PROJ_BOUNCE_HEIGHT": 125.0,       # The projectile's bounce velocity upon landing on the ground.
 		"PROJ_MAX_FALL_SPEED": 150.0,      # The projectile's maximum fall speed, measured in px/sec
-		"MAX_PROJ_COUNT_PER_JUMP": 0.0,
-		"PROJ_COOLDOWN": 1.0,
+		"PROJ_COOLDOWN": 0.0,
 	},
 	"Small": {
 		"PROJ_OFFSET": [-4.0, 8.0],
@@ -820,7 +819,7 @@ func camera_make_current() -> void:
 	camera.make_current()
 	
 func can_fire_projectile():
-	return (not cooldown) and ((projectile_amount < physics_params("MAX_PROJ_COUNT", POWER_PARAMETERS) or physics_params("MAX_PROJ_COUNT", POWER_PARAMETERS) < 0)) and (physics_params("MAX_PROJ_COUNT_PER_JUMP", POWER_PARAMETERS) == null or (physics_params("MAX_PROJ_COUNT_PER_JUMP", POWER_PARAMETERS) < 0) or projectiles_fired_since_left_ground < physics_params("MAX_PROJ_COUNT_PER_JUMP", POWER_PARAMETERS))
+	return (not cooldown) and ((projectile_amount < physics_params("MAX_PROJ_COUNT", POWER_PARAMETERS) or physics_params("MAX_PROJ_COUNT", POWER_PARAMETERS) < 0))
 
 func play_animation(animation_name := "", force := false) -> void:
 	if sprite.sprite_frames == null: return
