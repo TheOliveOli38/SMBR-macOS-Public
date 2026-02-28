@@ -970,7 +970,7 @@ func handle_invincible_palette() -> void:
 	sprite.material.set_shader_parameter("enabled", (has_star or (palette_transform and transforming)))
 
 func handle_block_collision_detection() -> void:
-	if ["Pipe"].has(state_machine.state.name): return
+	if ["Pipe", "Dead"].has(state_machine.state.name): return
 	if is_on_ceiling():
 		for i in %BlockCollision.get_overlapping_bodies():
 			if i is Block:
