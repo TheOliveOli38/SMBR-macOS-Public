@@ -505,10 +505,7 @@ func get_server_version() -> void:
 	http.request(url, [], HTTPClient.METHOD_GET)
 
 func version_got(_result, response_code, _headers, body) -> void:
-	if is_snapshot:
-		current_version = get_snapshot_num_int(current_snapshot)
-	else:
-		current_version = get_version_num_int(version_number)
+	current_version = get_version_num_int(version_number)
 	if response_code == 200:
 		if is_snapshot:
 			server_version = int(get_snapshot_num_int(body.get_string_from_utf8()))
@@ -599,7 +596,7 @@ func get_snapshot_num_int(ver_num := "26w00a") -> int:
 	
 	print([year, week, num])
 	
-	return (int(year) * int(week)) + int(num)
+	return (int(year) * int(week)) + int(num.unicode_at(0))
 
 func load_default_translations() -> void:
 	for i in lang_codes:
@@ -655,6 +652,7 @@ func convert_en_to_gal(en_string := "") -> String:
 	return gal_string
 
 func in_custom_campaign(campaign := current_custom_campaign) -> bool:
+	print([campaign, CAMPAIGNS])
 	return campaign not in CAMPAIGNS and campaign != ""
 
 func merge_dict(target: Dictionary, source: Dictionary) -> void:
