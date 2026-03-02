@@ -45,6 +45,7 @@
 [ext_resource type="Script" uid="uid://cwti0ks5sfov3" path="res://Scripts/Classes/Components/ScalableCollisionPolygon.gd" id="35_nbkfn"]
 [ext_resource type="AudioStream" uid="uid://oghj2q665pfj" path="res://Assets/Audio/SFX/TimerRunningLow.wav" id="40_o70e0"]
 [ext_resource type="Script" uid="uid://dl6pv24h16rgb" path="res://Scripts/Classes/Components/PlayerMoveEffects.gd" id="42_fqdtv"]
+[ext_resource type="Script" uid="uid://dde1tbnfum3yr" path="res://Scripts/Classes/Components/PackParticles.gd" id="45_2t4xr"]
 
 [sub_resource type="Shader" id="Shader_7nbqp"]
 code = "shader_type canvas_item;
@@ -1104,6 +1105,7 @@ lifetime = 0.25
 gravity = Vector2(0, 0)
 anim_speed_min = 1.0
 anim_speed_max = 1.0
+script = ExtResource("45_2t4xr")
 
 [node name="MoveEffects" type="Node" parent="." unique_id=794346187]
 unique_name_in_owner = true
