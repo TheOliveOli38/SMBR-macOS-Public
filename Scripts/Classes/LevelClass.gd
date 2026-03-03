@@ -107,7 +107,7 @@ func _enter_tree() -> void:
 	else:
 		level_id = Global.level_num
 		world_id = Global.world_num
-	if Settings.file.difficulty.back_scroll == 1 and Global.current_game_mode != Global.GameMode.CUSTOM_LEVEL:
+	if Settings.file.gameplay.back_scroll == 1 and Global.current_game_mode != Global.GameMode.CUSTOM_LEVEL:
 		can_backscroll = true
 	first_load = false
 	if Global.connected_players > 1:
@@ -157,8 +157,8 @@ func update_theme() -> void:
 			if Global.current_campaign == "SMBANN":
 				theme_time = "Night"
 		else:
-			theme = Global.custom_campaign_jsons[Global.current_custom_campaign].world_themes[Global.world_num][0]
-			theme_time = Global.custom_campaign_jsons[Global.current_custom_campaign].world_themes[Global.world_num][1]
+			theme = Global.custom_campaign_jsons[Global.current_custom_campaign].world_themes[Global.world_num - 1][0]
+			theme_time = Global.custom_campaign_jsons[Global.current_custom_campaign].world_themes[Global.world_num - 1][1]
 		campaign = Global.current_campaign
 		ResourceSetterNew.clear_cache()
 	Global.current_campaign = campaign

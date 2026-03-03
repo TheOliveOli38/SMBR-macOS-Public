@@ -37,6 +37,10 @@ func _ready() -> void:
 	update_visuals()
 	if Engine.is_editor_hint() == false:
 		run_pipe_check.call_deferred()
+		if Global.level_editor != null:
+			visible = Global.level_editor_is_editing() or Global.level_editor.gizmos_visible
+		else:
+			hide()
 
 func run_pipe_check() -> void:
 	if exiting_pipe_id == pipe_id and exit_only:
@@ -67,7 +71,7 @@ func update_visuals() -> void:
 		var id := pipe_id
 		$Node2D/CenterContainer/Label.text = str(id)
 	else:
-		hide()
+		$ArrowJoint.hide()
 
 func exit_pipe() -> void:
 	can_enter = false
