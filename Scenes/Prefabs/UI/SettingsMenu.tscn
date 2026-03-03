@@ -638,7 +638,7 @@ layout_mode = 2
 option_key = "physics_style"
 title = "DIFFI_PHYSICS_STYLE"
 value_descs = Array[String](["DESC_PHYSICS_0", "DESC_PHYSICS_1"])
-values = ["SETTINGS_CLASSIC", "SETTINGS_MODERN"]
+values = ["SETTINGS_CLASSIC", "SETTINGS_REMASTERED"]
 settings_category = "gameplay"
 
 [node name="Checkpoints" parent="PanelContainer/MarginContainer/VBoxContainer/Gameplay/ScrollContainer/VBoxContainer" unique_id=998939456 groups=["Options"] instance=ExtResource("3_dl6kk")]
@@ -662,7 +662,7 @@ layout_mode = 2
 option_key = "bowser_style"
 title = "DIFFI_BOWSER"
 value_descs = Array[String](["DESC_BOWSER_0", "DESC_BOWSER_1"])
-values = ["SETTINGS_CLASSIC", "SETTINGS_MODERN"]
+values = ["SETTINGS_CLASSIC", "SETTINGS_REMASTERED"]
 settings_category = "gameplay"
 
 [node name="HammerBroBehaviour" parent="PanelContainer/MarginContainer/VBoxContainer/Gameplay/ScrollContainer/VBoxContainer" unique_id=785749135 groups=["Options"] instance=ExtResource("3_dl6kk")]
@@ -670,7 +670,7 @@ layout_mode = 2
 option_key = "hammer_bro_style"
 title = "DIFFI_HAMMER_BRO"
 value_descs = Array[String](["DESC_HAMMER_BRO_0", "DESC_HAMMER_BRO_1"])
-values = ["SETTINGS_CLASSIC", "SETTINGS_MODERN"]
+values = ["SETTINGS_CLASSIC", "SETTINGS_REMASTERED"]
 settings_category = "gameplay"
 
 [node name="LakituBehaviour" parent="PanelContainer/MarginContainer/VBoxContainer/Gameplay/ScrollContainer/VBoxContainer" unique_id=1627108422 groups=["Options"] instance=ExtResource("3_dl6kk")]
@@ -686,7 +686,7 @@ layout_mode = 2
 option_key = "spiny_style"
 title = "DIFFI_SPINY"
 value_descs = Array[String](["DESC_SPINY_0", "DESC_SPINY_1"])
-values = ["SETTINGS_CLASSIC", "SETTINGS_MODERN"]
+values = ["SETTINGS_CLASSIC", "SETTINGS_REMASTERED"]
 settings_category = "gameplay"
 
 [node name="HSeparator" type="HSeparator" parent="PanelContainer/MarginContainer/VBoxContainer/Gameplay" unique_id=1702276510]
@@ -796,7 +796,7 @@ layout_mode = 2
 option_key = "level_design"
 title = "DIFFI_LEVEL_DESIGN"
 value_descs = Array[String](["DESC_LEVEL_DESIGN_0", "DESC_LEVEL_DESIGN_1"])
-values = ["SETTINGS_CLASSIC", "SETTINGS_MODERN"]
+values = ["SETTINGS_CLASSIC", "SETTINGS_TWEAKED"]
 settings_category = "difficulty"
 
 [node name="TimeLimit" parent="PanelContainer/MarginContainer/VBoxContainer/Difficulty/ScrollContainer/VBoxContainer" unique_id=684614334 groups=["Options"] instance=ExtResource("3_dl6kk")]
