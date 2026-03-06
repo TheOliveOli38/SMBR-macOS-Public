@@ -46,12 +46,10 @@ one_shot = true
 
 [node name="EditorPropertyExposer" type="Node" parent="." unique_id=1294009337]
 script = ExtResource("4_855jj")
-
 properties = Array[String](["duration", "loop", "reset_when_lost_power"])
 properties_force_selector = Dictionary[String, PackedScene]({
 "duration": ExtResource("6_et032")
 })
-
 metadata/_custom_type_script = "uid://ctfbuoxtnnl0q"
 
 [node name="LevelEditorToggleDetection" type="Node" parent="." unique_id=544234059]

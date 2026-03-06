@@ -87,6 +87,7 @@ var can_rotate := true
 
 func _ready() -> void:
 	await get_tree().physics_frame
+	owner.bar_rotation = owner.starting_angle
 	%RotationJoint.global_rotation_degrees = owner.starting_angle
 
 func _process(_delta: float) -> void:
@@ -102,6 +103,7 @@ func _process(_delta: float) -> void:
 	if Engine.is_editor_hint() == false:
 		if Global.current_game_mode == Global.GameMode.LEVEL_EDITOR and LevelEditor.playing_level == false:
 			%RotationJoint.global_rotation_degrees = owner.starting_angle
+			owner.bar_rotation = owner.starting_angle
 	else:
 		%RotationJoint.global_rotation_degrees = owner.starting_angle
 	$\"../RotationJoint/Hitbox/Shape\".shape.b = Vector2(0, -(owner.length - 1) * 8)

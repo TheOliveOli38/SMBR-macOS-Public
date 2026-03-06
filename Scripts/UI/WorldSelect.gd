@@ -140,6 +140,9 @@ func setup_disco_bits(medal_outline: TextureRect, medal: NinePatchRect, s_rank_p
 	var lowest_rank = -1
 	for i in 4:
 		saved_rank_ids.append(DiscoLevel.level_ranks[SaveManager.get_level_idx(world_num + 1, i + 1)])
+		if saved_rank_ids[i] == "Z":
+			lowest_rank = -1
+			break
 		for rank in DiscoLevel.RANK_IDs.size():
 			if DiscoLevel.RANK_IDs[rank] == saved_rank_ids[i] and (lowest_rank > rank + 1 or lowest_rank < 0):
 				lowest_rank = rank + 1
