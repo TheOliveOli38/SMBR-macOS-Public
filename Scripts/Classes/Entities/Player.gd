@@ -611,6 +611,8 @@ var air_frames := 0
 
 var skid_frames := 0
 
+var teleporting := false
+
 var on_ice := false
 var cooldown := false
 
@@ -1578,6 +1580,9 @@ func calculate_jump_height(jump_height = physics_params("JUMP_SPEED_IDLE"), jump
 const SMOKE_PARTICLE = preload("res://Scenes/Prefabs/Particles/SmokeParticle.tscn")
 
 func teleport_player(new_position := Vector2.ZERO) -> void:
+	if teleporting:
+		return
+	teleporting = true
 	hide()
 	can_hurt = false
 	do_smoke_effect()
@@ -1592,6 +1597,7 @@ func teleport_player(new_position := Vector2.ZERO) -> void:
 	show()
 	velocity = Vector2.ZERO
 	do_smoke_effect()
+	teleporting = false
 
 func do_smoke_effect() -> void:
 	for i in 2:

@@ -9,6 +9,10 @@ var item_amount := 0
 func start() -> void:
 	if $SignalExposer.total_inputs <= 0:
 		$Timer.start()
+	if Global.level_editor != null:
+		if Global.level_editor.gizmos_visible:
+			return
+	hide()
 
 func _physics_process(_delta: float) -> void:
 	$Check.target_position = [Vector2.UP, Vector2.DOWN, Vector2.LEFT, Vector2.RIGHT][direction] * 16
