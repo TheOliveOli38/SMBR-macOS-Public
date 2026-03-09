@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://dcmjifllvi3qd" path="res://Scripts/UI/SettingsCategory.gd" id="4_avtty"]
 [ext_resource type="Script" uid="uid://26yissv8bnqw" path="res://Scripts/UI/WindowChanger.gd" id="5_hnwhb"]
 [ext_resource type="Texture2D" uid="uid://deooy8040yx2u" path="res://Assets/Sprites/UI/LocaleFlags.png" id="5_q6iis"]
+[ext_resource type="Script" uid="uid://xem6lai3ufyj" path="res://Scripts/Classes/UI/PackNinePatch.gd" id="6_yvj4y"]
 [ext_resource type="PackedScene" uid="uid://dtiqcfrw110kd" path="res://Scenes/Parts/SelectableSliderNode.tscn" id="7_om3lc"]
 [ext_resource type="Script" uid="uid://bdgvsycico544" path="res://Scripts/UI/AudioAdjuster.gd" id="8_yclde"]
 [ext_resource type="Script" uid="uid://idiqu54si1n4" path="res://Scripts/Parts/ResourcePackLoader.gd" id="9_2qqpf"]
@@ -203,7 +204,6 @@ color = Color(1, 1, 1, 1)
 
 [node name="SettingsMenu" type="Control" unique_id=540914940 node_paths=PackedStringArray("containers")]
 process_mode = 4
-visible = false
 custom_minimum_size = Vector2(250, 0)
 layout_mode = 3
 anchor_left = 0.1
@@ -315,13 +315,15 @@ title = "SETTINGS_LANGUAGE"
 values = ["LANGUAGE_NAME", "LANGUAGE_NAME", "LANGUAGE_NAME", "LANGUAGE_NAME", "LANGUAGE_NAME", "LANGUAGE_NAME", "LANGUAGE_NAME", "LANGUAGE_NAME", "LANGUAGE_NAME", "LANGUAGE_NAME", "LANGUAGE_NAME", "LANGUAGE_NAME", "LANGUAGE_NAME"]
 settings_category = "game"
 
-[node name="Flag" type="NinePatchRect" parent="PanelContainer/MarginContainer/VBoxContainer/Video/Language/HBoxContainer" parent_id_path=PackedInt32Array(1089169309, 1680938547) index="0" unique_id=2029262217]
+[node name="Flag" type="NinePatchRect" parent="PanelContainer/MarginContainer/VBoxContainer/Video/Language/HBoxContainer" parent_id_path=PackedInt32Array(1089169309, 1680938547) index="0" unique_id=2139547146]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(16, 0)
 layout_mode = 2
 size_flags_horizontal = 8
 texture = ExtResource("5_q6iis")
 region_rect = Rect2(0, 0, 16, 16)
+script = ExtResource("6_yvj4y")
+metadata/_custom_type_script = "uid://xem6lai3ufyj"
 
 [node name="WindowMode" parent="PanelContainer/MarginContainer/VBoxContainer/Video" unique_id=1187590105 groups=["Options"] instance=ExtResource("3_dl6kk")]
 layout_mode = 2
@@ -1081,7 +1083,7 @@ layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 0
 
-[node name="Icon" type="NinePatchRect" parent="PanelContainer/Control" unique_id=222118440]
+[node name="Icon" type="NinePatchRect" parent="PanelContainer/Control" unique_id=711348978]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(24, 23)
 layout_mode = 1
@@ -1097,6 +1099,8 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("3_7l5ko")
 region_rect = Rect2(24, 0, 24, 23)
+script = ExtResource("6_yvj4y")
+metadata/_custom_type_script = "uid://xem6lai3ufyj"
 
 [node name="LabelFontChanger" type="Node" parent="." unique_id=1797639177 node_paths=PackedStringArray("labels")]
 script = ExtResource("13_iwu7d")
