@@ -77,8 +77,6 @@ func setup_visuals() -> void:
 			level_theme = "Mystery"
 		var campaign_idx := 0
 		if ((idx >= 4 and idx <= 8) or Global.current_campaign == "SMBANN"): campaign_idx = 1
-		print([Global.current_campaign, campaign_idx])
-		print(CustomLevelContainer.ICON_TEXTURES[campaign_idx].resource_path)
 		i.get_node("Icon").region_rect = CustomLevelContainer.THEME_RECTS[level_theme]
 		i.get_node("Icon").texture = (CustomLevelContainer.ICON_TEXTURES[campaign_idx])
 		i.get_node("Icon/Number").position.y = 10 if has_challenge_stuff else 17

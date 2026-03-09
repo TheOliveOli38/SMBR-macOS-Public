@@ -240,7 +240,6 @@ func load_sfx_map(json := {}) -> void:
 	sfx_library = DEFAULT_SFX_LIBRARY.duplicate()
 	for i in json:
 		sfx_library[i] = json[i]
-	print(json)
 
 func handle_music() -> void:
 	if Global.in_title_screen:

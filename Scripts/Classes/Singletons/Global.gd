@@ -594,8 +594,6 @@ func get_snapshot_num_int(ver_num := "26w00a") -> int:
 	var week = ver_num.substr(3, 2)
 	var num = ver_num[5]
 	
-	print([year, week, num])
-	
 	return (int(year) * int(week)) + int(num.unicode_at(0))
 
 func load_default_translations() -> void:
@@ -652,7 +650,6 @@ func convert_en_to_gal(en_string := "") -> String:
 	return gal_string
 
 func in_custom_campaign(campaign := current_custom_campaign) -> bool:
-	print([campaign, CAMPAIGNS])
 	return campaign not in CAMPAIGNS and campaign != ""
 
 func merge_dict(target: Dictionary, source: Dictionary) -> void:

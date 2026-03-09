@@ -257,6 +257,9 @@ extends CharacterBody2D
 		"PROJ_BOUNCE_HEIGHT": 125.0,       # The projectile's bounce velocity upon landing on the ground.
 		"PROJ_MAX_FALL_SPEED": 150.0,      # The projectile's maximum fall speed, measured in px/sec
 		"PROJ_COOLDOWN": 0.0,
+		"PROJ_HARMLESS": false,
+		"PROJ_ELASTIC_BOUNCE_LIMIT": -1,
+		"PROJ_ELASTIC_BOUNCE": [0, 0]
 	},
 	"Small": {
 		"PROJ_OFFSET": [-4.0, 8.0],
@@ -677,8 +680,27 @@ func physics_params(type: String, params_dict: Dictionary = {}, key: String = ""
 			if (value is int or value is float) and not (value is bool):
 				return value * mult_applied
 			return value
-	print("NULL PARAMETER! Looking up: type='%s', key='%s'\nparams_dict='%s'" % [type, key, params_dict["Default"]])
+	print("NULL PARAMETER! Looking up: type='%s', key='%s'" % [type, key])
 	return null
+
+func has_param(type: String, params_dict: Dictionary = {}, key: String = "") -> bool:
+	var is_movement = false
+	# SkyanUltra: This is a stupid workaround for a stupid issue with this stupid
+	# engine. I can't just set params_dict to physics_dict... So I have to do this
+	# work around. I hate it. If anyone can fix it, then please. Do it.
+	if params_dict == {}: params_dict = physics_dict
+	
+	if power_state != null:
+		if key == "": key = power_state.state_name
+		if key in params_dict:
+			var state_dict = params_dict[key]
+			if type in state_dict:
+				return true
+	if "Default" in params_dict:
+		var default_dict = params_dict["Default"]
+		if type in default_dict:
+			return true
+	return false
 
 func apply_character_physics() -> void:
 	var apply_gameplay_changes = true

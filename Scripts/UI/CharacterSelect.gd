@@ -33,7 +33,6 @@ func get_custom_characters() -> void:
 	var idx := 0
 	for i in Player.CHARACTERS:
 		var path = ResourceSetter.get_pure_resource_path("res://Assets/Sprites/Players/" + i + "/CharacterInfo.json")
-		print(path)
 		if FileAccess.file_exists(path):
 			var json = JSON.parse_string(FileAccess.open(path, FileAccess.READ).get_as_text())
 			Player.CHARACTER_NAMES[idx] = json.name
@@ -41,7 +40,6 @@ func get_custom_characters() -> void:
 		if FileAccess.file_exists(path):
 			Player.CHARACTER_COLOURS[idx] = load(path)
 		idx += 1
-	print(Player.CHARACTER_NAMES)
 	
 	var base_path = Global.config_path
 	var char_dir = base_path.path_join("custom_characters") 

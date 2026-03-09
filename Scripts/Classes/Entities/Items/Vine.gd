@@ -55,9 +55,7 @@ func do_cutscene() -> void:
 		var climb_state = i.get_node("States/Climb")
 		climb_state.climb_direction = -1
 		var distance = abs(i.global_position.y - (top_point + 32))
-		print([i.global_position.y, top_point])
 		var climb_time = distance / (50)
-		print([distance, climb_time])
 		await get_tree().create_timer(climb_time, false).timeout
 		i.direction = -1
 		climb_state.climb_direction = 0

@@ -19,7 +19,6 @@ func _ready() -> void:
 	can_continue = true
 
 func _process(_delta: float) -> void:
-	print(can_continue)
 	if Input.is_action_just_pressed("jump_0") and can_continue:
 		can_continue = false
 		if Global.transitioning_scene:

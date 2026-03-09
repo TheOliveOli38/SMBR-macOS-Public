@@ -35,7 +35,6 @@ func on_timeout() -> void:
 	node.tree_exiting.connect(item_deleted)
 	await get_tree().process_frame
 	if is_instance_valid(node) == false:
-		print(node)
 		return
 	node.show()
 	node.reset_physics_interpolation()
