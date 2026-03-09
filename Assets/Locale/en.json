@@ -351,7 +351,7 @@
 	"TILE_WATER_1": "FG Water",
 	"TILE_WATER_2": "BG Water",
 	"TILE_LAVA": "Lava",
-	"TILE_POISION": "Poison",
+	"TILE_POISON": "Poison",
 	"TILE_BLASTER_TOP": "Bill Blaster Top",
 	"TILE_BLASTER_MIDDLE": "Bill Blaster Middle",
 	"TILE_BLASTER_BOTTOM": "Bill Blaster Bottom",

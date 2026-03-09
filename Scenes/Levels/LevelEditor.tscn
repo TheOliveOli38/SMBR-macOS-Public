@@ -1512,7 +1512,7 @@ terrain_id = 10
 
 [node name="Poison" parent="TileMenu/MarginContainer/VBoxContainer/PanelContainer/TILES/ScrollContainer/VBoxContainer/Tiles/MarginContainer/GridContainer" unique_id=1067052546 groups=["Selectors"] instance=ExtResource("8_wkmjk")]
 layout_mode = 2
-tile_name = "TILE_POISION"
+tile_name = "TILE_POISON"
 type = 2
 icon_texture = ExtResource("17_awwgo")
 icon_region_override = Rect2(0, 96, 16, 16)
