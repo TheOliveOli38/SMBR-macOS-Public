@@ -49,7 +49,10 @@ static var can_play := false
 		pitch = get_pitch_scale()
 		play_sfx_preview()
 
-@export_range(0.0, 1.0, 0.1) var volume := 1.0
+@export_range(0.0, 1.0, 0.1) var volume := 1.0:
+	set(value):
+		volume = value
+		play_sfx_preview()
 
 func _ready() -> void:
 	await get_tree().create_timer(0.1, true).timeout
