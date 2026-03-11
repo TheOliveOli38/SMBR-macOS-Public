@@ -196,6 +196,9 @@ var level_sequence_captured := false
 var process_multibind_pressed_buttons: Dictionary[StringName, int] = {}
 var physics_multibind_pressed_buttons: Dictionary[StringName, int] = {}
 
+var unpressed_buttons: Dictionary[StringName, bool] = {}
+
+
 func _ready() -> void:
 	if is_snapshot: 
 		get_build_time()
@@ -285,6 +288,9 @@ func _process(delta: float) -> void:
 	%FPSCount.text = str(int(Engine.get_frames_per_second())) + " FPS"
 
 	handle_p_switch(delta)
+	
+	handle_input()
+	
 	if Input.is_key_label_pressed(KEY_F11) and debug_mode == false and OS.is_debug_build():
 		AudioManager.play_global_sfx("switch")
 		debug_mode = true
@@ -717,11 +723,20 @@ func _input(event: InputEvent) -> void:
 		return
 	for action in InputMap.get_actions():
 		if event.is_action_pressed(action):
+			if event is InputEventJoypadMotion:
+				if unpressed_buttons[action] == false:
+					return
+			unpressed_buttons[action] = false
 			process_multibind_pressed_buttons[action] = Engine.get_process_frames()
 			# Add 1 physics frame, like Godot also does,
 			# because "input may come in part way through a physics tick"
 			# https://github.com/godotengine/godot/blob/2327a823578a30f09068f97272598521896d5633/core/input/input.cpp#L1025
 			physics_multibind_pressed_buttons[action] = Engine.get_physics_frames() + 1
+
+func handle_input() -> void:
+	for action in InputMap.get_actions():
+		if Input.is_action_pressed(action) == false:
+			unpressed_buttons[action] = true
 
 func warper_cooldown() -> void:
 	await get_tree().create_timer(1, false).timeout
