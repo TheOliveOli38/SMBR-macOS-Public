@@ -75,6 +75,8 @@ func apply_string(entity_string := "") -> void:
 		if slice.size() <= idx:
 			return
 		var value = slice[idx]
+		if value.contains("$"):
+			return ## its a signal connection, we dont want the rest. we're done
 		idx += 1
 		if owner is Track:
 			if owner.get(i) is Array:

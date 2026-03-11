@@ -25,13 +25,17 @@ func _draw() -> void:
 	draw_rect(Rect2(Vector2(-size_x / 2.0, -size_y / 2.0) * 16, Vector2(size_x, size_y) * 16), Color.WHITE, false, 1.0)
 
 func run_check() -> void:
+	if get_tree().paused or is_inside_tree() == false:
+		return
 	var save = object_in_area
 	object_in_area = false
 	if type != 2:
 		for i in $Hitbox.get_overlapping_areas():
+			print(i.owner)
 			if i.owner == null:
 				continue
 			var node_layer = get_meta("layer", -1)
+			print([node_layer, i.owner.get_meta("layer", -2)])
 			if node_layer != i.owner.get_meta("layer", -2):
 				continue
 			var node_owner = i.owner
