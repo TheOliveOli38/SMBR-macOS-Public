@@ -35,6 +35,7 @@ func do_cutscene() -> void:
 	if owner is WarpVine:
 		top_point = global_position.y
 	global_position.y = 40
+	Global.can_time_tick = false
 	$SFX.play()
 	can_grow = true
 	can_tele = false
@@ -64,6 +65,7 @@ func do_cutscene() -> void:
 		i.auto_death_pit = true
 		for x in [1, 2]:
 			i.set_collision_mask_value(x, true)
+	Global.can_time_tick = true
 
 func _physics_process(delta: float) -> void:
 	if global_position.y >= top_point and can_grow:
