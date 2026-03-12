@@ -90,15 +90,19 @@ func get_starting_position() -> void:
 		selected_index = campaign.find(Global.current_campaign)
 
 func handle_input() -> void:
-	if Input.is_action_just_pressed("ui_left"):
+	if Global.multibind_action_just_pressed("ui_left"):
 		selected_index -= 1
-	if Input.is_action_just_pressed("ui_right"):
+		if Settings.file.audio.extra_sfx == 1:
+			AudioManager.play_global_sfx("menu_move")
+	if Global.multibind_action_just_pressed("ui_right"):
 		selected_index += 1
+		if Settings.file.audio.extra_sfx == 1:
+			AudioManager.play_global_sfx("menu_move")
 	selected_index = wrap(selected_index, 0, campaign.size())
 	Global.current_campaign = campaign[selected_index]
-	if Input.is_action_just_pressed("ui_accept"):
+	if Global.multibind_action_just_pressed("ui_accept"):
 		select()
-	elif Input.is_action_just_pressed("ui_back"):
+	elif Global.multibind_action_just_pressed("ui_back"):
 		close()
 		Global.current_campaign = old_campaign
 		cancelled.emit()

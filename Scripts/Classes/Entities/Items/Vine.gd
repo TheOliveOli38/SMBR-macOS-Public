@@ -35,6 +35,7 @@ func do_cutscene() -> void:
 	if owner is WarpVine:
 		top_point = global_position.y
 	global_position.y = 40
+	Global.can_time_tick = false
 	$SFX.play()
 	can_grow = true
 	can_tele = false
@@ -55,9 +56,7 @@ func do_cutscene() -> void:
 		var climb_state = i.get_node("States/Climb")
 		climb_state.climb_direction = -1
 		var distance = abs(i.global_position.y - (top_point + 32))
-		print([i.global_position.y, top_point])
 		var climb_time = distance / (50)
-		print([distance, climb_time])
 		await get_tree().create_timer(climb_time, false).timeout
 		i.direction = -1
 		climb_state.climb_direction = 0
@@ -66,6 +65,7 @@ func do_cutscene() -> void:
 		i.auto_death_pit = true
 		for x in [1, 2]:
 			i.set_collision_mask_value(x, true)
+	Global.can_time_tick = true
 
 func _physics_process(delta: float) -> void:
 	if global_position.y >= top_point and can_grow:

@@ -35,7 +35,7 @@ var ROM_POINTER_PATH = config_path.path_join("rom_pointer.smb")
 var ROM_PATH = config_path.path_join("baserom.nes")
 var ROM_ASSETS_PATH = config_path.path_join("resource_packs/BaseAssets")
 const ROM_PACK_NAME := "BaseAssets"
-const ROM_ASSETS_VERSION := 3
+const ROM_ASSETS_VERSION := 5
 
 var server_version := -1
 var current_version := -1
@@ -191,6 +191,12 @@ var custom_campaign_jsons := {}
 
 var level_sequence_captured := false
 
+var process_multibind_pressed_buttons: Dictionary[StringName, int] = {}
+var physics_multibind_pressed_buttons: Dictionary[StringName, int] = {}
+
+var unpressed_buttons: Dictionary[StringName, bool] = {}
+
+
 func _ready() -> void:
 	if is_snapshot: get_build_time()
 	if OS.is_debug_build(): debug_mode = false
@@ -269,7 +275,7 @@ func on_gui_input(event: InputEvent) -> void:
 		moving = event.is_pressed()
 
 func _process(delta: float) -> void:
-	if Input.is_action_just_pressed("debug_reload"):
+	if multibind_action_just_pressed("debug_reload"):
 		ResourceSetter.cache.clear()
 		ResourceSetterNew.clear_cache()
 		ResourceGetter.cache.clear()
@@ -285,17 +291,20 @@ func _process(delta: float) -> void:
 	if Input.is_key_pressed(KEY_ALT) and Input.is_key_pressed(KEY_4):
 		get_tree().quit()
 	
-	if Input.is_action_just_pressed("toggle_fps_count"):
+	if multibind_action_just_pressed("toggle_fps_count"):
 		%FPSCount.visible = !%FPSCount.visible
 	%FPSCount.text = str(int(Engine.get_frames_per_second())) + " FPS"
 
 	handle_p_switch(delta)
+	
+	handle_input()
+	
 	if Input.is_key_label_pressed(KEY_F11) and debug_mode == false and OS.is_debug_build():
 		AudioManager.play_global_sfx("switch")
 		debug_mode = true
 		log_comment("Debug Mode enabled! some bugs may occur!")
 		
-	if Input.is_action_just_pressed("ui_screenshot"):
+	if multibind_action_just_pressed("ui_screenshot"):
 		take_screenshot()
 
 func take_screenshot() -> void:
@@ -354,7 +363,7 @@ func player_action_pressed(action := "", player_id = 0) -> bool:
 func player_action_just_pressed(action := "", player_id = 0) -> bool:
 	if SpeedrunHandler.simulating_inputs:
 		player_id = "s"
-	return Input.is_action_just_pressed(action + "_" + str(player_id))
+	return multibind_action_just_pressed(action + "_" + str(player_id))
 
 func player_action_just_released(action := "", player_id = 0) -> bool:
 	if SpeedrunHandler.simulating_inputs:
@@ -641,7 +650,8 @@ func convert_en_to_gal(en_string := "") -> String:
 	return gal_string
 
 func in_custom_campaign(campaign := current_custom_campaign) -> bool:
-	return campaign != ""
+	return campaign not in CAMPAIGNS and campaign != ""
+
 func merge_dict(target: Dictionary, source: Dictionary) -> void:
 	# SkyanUltra: Used to properly merge dictionaries JSONs rather than out right overwriting entries.
 	for key in source.keys():
@@ -689,3 +699,36 @@ func nice_json_format(json_string := "") -> String:
 					json_string = json_string.insert(i + 2, "\t")
 					i += 1
 	return json_string
+
+# Like Input.is_action_just_pressed, but it allows pressing
+# a button while another bind for it is already pressed.
+func multibind_action_just_pressed(action: StringName) -> bool:
+	if Engine.is_in_physics_frame():
+		return physics_multibind_pressed_buttons.get(action, -1) \
+			== Engine.get_physics_frames()
+	return process_multibind_pressed_buttons.get(action, -1) \
+		== Engine.get_process_frames()
+
+func _input(event: InputEvent) -> void:
+	if not event.is_action_type() or not event.is_pressed():
+		return
+	for action in InputMap.get_actions():
+		if event.is_action_pressed(action):
+			if event is InputEventJoypadMotion:
+				if unpressed_buttons[action] == false:
+					return
+			unpressed_buttons[action] = false
+			process_multibind_pressed_buttons[action] = Engine.get_process_frames()
+			# Add 1 physics frame, like Godot also does,
+			# because "input may come in part way through a physics tick"
+			# https://github.com/godotengine/godot/blob/2327a823578a30f09068f97272598521896d5633/core/input/input.cpp#L1025
+			physics_multibind_pressed_buttons[action] = Engine.get_physics_frames() + 1
+
+func handle_input() -> void:
+	for action in InputMap.get_actions():
+		if Input.is_action_pressed(action) == false:
+			unpressed_buttons[action] = true
+
+func warper_cooldown() -> void:
+	await get_tree().create_timer(1, false).timeout
+	Warper.can_warp = true

@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://s1utdly4mtbi" path="res://Scripts/Classes/Entities/Items/Hammer.gd" id="1_sp1e8"]
 [ext_resource type="Texture2D" uid="uid://3xmhfi556p3s" path="res://Assets/Sprites/Items/Hammer.png" id="2_7yb3k"]
+[ext_resource type="Script" uid="uid://caq1qiwmy0mox" path="res://Scripts/Parts/BetterAnimatedSprite.gd" id="3_g65ak"]
 [ext_resource type="Script" uid="uid://cbal8ms2oe1ik" path="res://Scripts/Classes/Components/ResourceSetterNew.gd" id="3_i5dos"]
 [ext_resource type="JSON" path="res://Assets/Sprites/Items/Hammer.json" id="4_2dg23"]
 [ext_resource type="Script" uid="uid://chj8hu207lrh" path="res://Scripts/Classes/Components/EnemyPlayerDetection.gd" id="5_3cdd7"]
@@ -74,10 +75,13 @@ MOVE_SPEED = 120
 GRAVITY = 10
 metadata/_custom_type_script = "uid://c5elnt7uap15b"
 
-[node name="Sprite" type="AnimatedSprite2D" parent="." unique_id=414837106]
+[node name="Sprite" type="AnimatedSprite2D" parent="." unique_id=211900336]
 physics_interpolation_mode = 2
 sprite_frames = SubResource("SpriteFrames_g65ak")
 autoplay = "default"
+script = ExtResource("3_g65ak")
+do_offset = false
+metadata/_custom_type_script = "uid://caq1qiwmy0mox"
 
 [node name="ResourceSetterNew" type="Node" parent="Sprite" unique_id=1106373086 node_paths=PackedStringArray("node_to_affect", "property_node")]
 script = ExtResource("3_i5dos")

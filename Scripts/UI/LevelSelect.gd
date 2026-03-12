@@ -174,7 +174,6 @@ func _process(_delta: float) -> void:
 func open() -> void:
 	if starting_value == -1:
 		starting_value = Global.level_num
-	print([Global.level_num, starting_value])
 	selected_level = Global.level_num - 1
 	setup_level_icon_data()
 	setup_visuals()
@@ -209,7 +208,6 @@ func setup_visuals() -> void:
 			continue
 		var level_theme = Global.LEVEL_THEMES[Global.current_campaign][Global.world_num - 1]
 		visited_levels = (SaveManager.visited_levels.substr((Global.world_num - 1) * 4, 4))
-		print(visited_levels)
 		var level_visited = SaveManager.visited_levels[SaveManager.get_level_idx(Global.world_num, idx + 1)] != "0" or Global.debug_mode
 		var cur_level = LEVEL_ICONS[Global.current_campaign][Global.world_num - 1][idx]
 		var cur_icon = ICON_LOCKED if not level_visited else ICON_NIGHT if cur_level[0] == "night" else ICON_DAY
@@ -268,12 +266,12 @@ func update_pb() -> void:
 
 func handle_input() -> void:
 	selected_level = clamp(selected_level, 0, 3)
-	if Input.is_action_just_pressed("ui_accept"):
+	if Global.multibind_action_just_pressed("ui_accept"):
 		if visited_levels[selected_level] == "0" and selected_level != 0 and not Global.debug_mode:
 			AudioManager.play_sfx("bump")
 		else:
 			select_world()
-	elif Input.is_action_just_pressed("ui_back"):
+	elif Global.multibind_action_just_pressed("ui_back"):
 		close()
 		cleanup()
 		cancelled.emit()

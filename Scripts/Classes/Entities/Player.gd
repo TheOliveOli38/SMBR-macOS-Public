@@ -257,6 +257,9 @@ extends CharacterBody2D
 		"PROJ_BOUNCE_HEIGHT": 125.0,       # The projectile's bounce velocity upon landing on the ground.
 		"PROJ_MAX_FALL_SPEED": 150.0,      # The projectile's maximum fall speed, measured in px/sec
 		"PROJ_COOLDOWN": 0.0,
+		"PROJ_HARMLESS": false,
+		"PROJ_ELASTIC_BOUNCE_LIMIT": -1,
+		"PROJ_ELASTIC_BOUNCE": [0, 0]
 	},
 	"Small": {
 		"PROJ_OFFSET": [-4.0, 8.0],
@@ -608,6 +611,8 @@ var air_frames := 0
 
 var skid_frames := 0
 
+var teleporting := false
+
 var on_ice := false
 var cooldown := false
 
@@ -677,8 +682,27 @@ func physics_params(type: String, params_dict: Dictionary = {}, key: String = ""
 			if (value is int or value is float) and not (value is bool):
 				return value * mult_applied
 			return value
-	print("NULL PARAMETER! Looking up: type='%s', key='%s'\nparams_dict='%s'" % [type, key, params_dict["Default"]])
+	print("NULL PARAMETER! Looking up: type='%s', key='%s'" % [type, key])
 	return null
+
+func has_param(type: String, params_dict: Dictionary = {}, key: String = "") -> bool:
+	var is_movement = false
+	# SkyanUltra: This is a stupid workaround for a stupid issue with this stupid
+	# engine. I can't just set params_dict to physics_dict... So I have to do this
+	# work around. I hate it. If anyone can fix it, then please. Do it.
+	if params_dict == {}: params_dict = physics_dict
+	
+	if power_state != null:
+		if key == "": key = power_state.state_name
+		if key in params_dict:
+			var state_dict = params_dict[key]
+			if type in state_dict:
+				return true
+	if "Default" in params_dict:
+		var default_dict = params_dict["Default"]
+		if type in default_dict:
+			return true
+	return false
 
 func apply_character_physics() -> void:
 	var apply_gameplay_changes = true
@@ -740,15 +764,15 @@ func editor_level_start() -> void:
 
 
 func _physics_process(delta: float) -> void:
-	if Input.is_action_just_pressed("debug_reload"):
+	if Global.multibind_action_just_pressed("debug_reload"):
 		set_power_state_frame()
 
 	# guzlad: noclip without dev only works while playtesting.
-	if (Input.is_action_just_pressed("debug_noclip") or Input.is_action_just_pressed("jump_0")) and ((Global.debug_mode) or (Global.level_editor_is_playtesting())):
+	if (Global.multibind_action_just_pressed("debug_noclip") or Global.multibind_action_just_pressed("jump_0")) and ((Global.debug_mode) or (Global.level_editor_is_playtesting())):
 		if state_machine.is_state("NoClip"):
 			state_machine.transition_to("Normal")
 			Global.log_comment("NOCLIP Disabled")
-		elif !Input.is_action_just_pressed("jump_0") and !state_machine.is_state("NoClip"):
+		elif !Global.multibind_action_just_pressed("jump_0") and !state_machine.is_state("NoClip"):
 			state_machine.transition_to("NoClip")
 			Global.log_comment("NOCLIP Enabled")
 
@@ -1556,6 +1580,9 @@ func calculate_jump_height(jump_height = physics_params("JUMP_SPEED_IDLE"), jump
 const SMOKE_PARTICLE = preload("res://Scenes/Prefabs/Particles/SmokeParticle.tscn")
 
 func teleport_player(new_position := Vector2.ZERO) -> void:
+	if teleporting:
+		return
+	teleporting = true
 	hide()
 	can_hurt = false
 	do_smoke_effect()
@@ -1570,6 +1597,7 @@ func teleport_player(new_position := Vector2.ZERO) -> void:
 	show()
 	velocity = Vector2.ZERO
 	do_smoke_effect()
+	teleporting = false
 
 func do_smoke_effect() -> void:
 	for i in 2:
